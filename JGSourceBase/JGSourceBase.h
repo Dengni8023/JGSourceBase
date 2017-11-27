@@ -16,5 +16,10 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <JGSourceBase/PublicHeader.h>
 
+#if __has_include(<JGSourceBase/JGSourceCommon.h>)
+#import <JGSourceBase/JGSourceCommon.h>
+#import <JGSourceBase/JGSourceResource.h>
+#else
 #import "JGSourceCommon.h"
 #import "JGSourceResource.h"
+#endif
