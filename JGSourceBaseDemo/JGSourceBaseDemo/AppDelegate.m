@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  JGSourceBaseDemo
 //
-//  Created by Mei Jigao on 2017/11/24.
-//  Copyright © 2017年 MeiJigao. All rights reserved.
+//  Created by Mei Jigao on 2018/3/16.
+//  Copyright © 2018年 MeiJigao. All rights reserved.
 //
 
 #import "AppDelegate.h"

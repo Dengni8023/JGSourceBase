@@ -1,0 +1,16 @@
+PODS:
+  - JGSourceBase (0.0.3)
+
+DEPENDENCIES:
+  - JGSourceBase (from `.`)
+
+EXTERNAL SOURCES:
+  JGSourceBase:
+    :path: .
+
+SPEC CHECKSUMS:
+  JGSourceBase: 98832306ed01ee0ca5f017aaa66019bd5a28ce77
+
+PODFILE CHECKSUM: 8d84f3cc680f8cbfd7cdfbcdab59e9a79bf65dac
+
+COCOAPODS: 1.4.0

@@ -8,6 +8,3 @@
 
 #import "JGSourceResource.h"
 
-@implementation JGSourceResource
-
-@end

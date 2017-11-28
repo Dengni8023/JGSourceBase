@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSourceBaseDemo : UITableViewController
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
-- (instancetype)initWithStyle:(UITableViewStyle)style NS_UNAVAILABLE;
-- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name          = "JGSourceBase"
-s.version       = "0.0.2"
+s.version       = "0.0.3"
 
 s.summary       = "JGSourceCode 通用定义、功能模块"
 s.description   = <<-DESC
@@ -31,7 +31,9 @@ s.source        = {
 s.platforms     = {
 	:ios => 8.0,
 }
-s.source_files  = "JGSourceBase/*.{h,m}"
+s.source_files  = "JGSourceBase/**/*.{h,m}"
+s.public_header_files  = "JGSourceBase/**/*.h"
+
 # s.resource    = "JGSourceBase.bundle"
 
 # s.framework  = "SomeFramework"

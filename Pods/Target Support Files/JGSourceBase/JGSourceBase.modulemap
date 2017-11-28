@@ -1,0 +1,6 @@
+framework module JGSourceBase {
+  umbrella header "JGSourceBase-umbrella.h"
+
+  export *
+  module * { export * }
+}
