@@ -12,7 +12,7 @@ platform :ios, '9.0'
 # JGSourceBase
 target "JGSourceBaseDemo" do
     
-    # JGSourceBase
+    # Local
     pod 'JGSourceBase', :path => "."
 
     # project

@@ -24,11 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JGDemoTableSectionData : NSObject
 
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy, nullable) NSString *title;
 @property (nonatomic, strong) NSArray<JGDemoTableRowData *> *rows;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithTitle:(NSString *)title rows:(NSArray<JGDemoTableRowData *> *)rows;
+- (instancetype)initWithTitle:(nullable NSString *)title rows:(NSArray<JGDemoTableRowData *> *)rows;
 
 @end
 

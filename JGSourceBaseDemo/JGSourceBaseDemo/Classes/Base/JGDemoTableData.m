@@ -9,7 +9,7 @@
 #import "JGDemoTableData.h"
 #import <JGSourceBase/JGSourceBase.h>
 
-JGDemoTableRowData *JGDemoTableRowMake(NSString *title, SEL selector) {
+JGDemoTableRowData *JGDemoTableRowMakeSelector(NSString *title, SEL selector) {
     return [[JGDemoTableRowData alloc] initWithTitle:title selector:selector];
 }
 

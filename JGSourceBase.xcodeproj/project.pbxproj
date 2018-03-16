@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A4B41E5ED47BDED9CCBA36B /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246E4BA190A141C33B6E2917 /* Pods_JGSourceBaseDemo.framework */; };
 		D41FE200202DA72900CCD667 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41FE1FF202DA72900CCD667 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D41FE202202DA73000CCD667 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41FE201202DA73000CCD667 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D4C9BB2B1FC84267003D0976 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4C9BB291FC84267003D0976 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,7 +27,6 @@
 		D4C9BB321FC849C6003D0976 /* JGSourceCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSourceCommon.m; sourceTree = "<group>"; };
 		D4C9BB351FC849D9003D0976 /* JGSourceResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceResource.h; sourceTree = "<group>"; };
 		D4C9BB361FC849D9003D0976 /* JGSourceResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSourceResource.m; sourceTree = "<group>"; };
-		D4C9BB3D1FC849FE003D0976 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C9BB5C1FC84B33003D0976 /* JGSourceBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JGSourceBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D4C9BB5D1FC84B33003D0976 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,14 +38,6 @@
 			files = (
 				D41FE202202DA73000CCD667 /* UIKit.framework in Frameworks */,
 				D41FE200202DA72900CCD667 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4C9BB3A1FC849FE003D0976 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A4B41E5ED47BDED9CCBA36B /* Pods_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				D4C9BB261FC84267003D0976 /* JGSourceBase.framework */,
-				D4C9BB3D1FC849FE003D0976 /* JGSourceBaseDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,26 +128,6 @@
 			productReference = D4C9BB261FC84267003D0976 /* JGSourceBase.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D4C9BB3C1FC849FE003D0976 /* JGSourceBaseDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D4C9BB501FC849FF003D0976 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
-			buildPhases = (
-				816E814C7278445B17FE43FE /* [CP] Check Pods Manifest.lock */,
-				D4C9BB391FC849FE003D0976 /* Sources */,
-				D4C9BB3A1FC849FE003D0976 /* Frameworks */,
-				D4C9BB3B1FC849FE003D0976 /* Resources */,
-				CCFAA489804D5600EDE1BD54 /* [CP] Embed Pods Frameworks */,
-				9241361F8DB9B4DAC67B090D /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSourceBaseDemo;
-			productName = JGSourceBaseDemo;
-			productReference = D4C9BB3D1FC849FE003D0976 /* JGSourceBaseDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -169,10 +138,6 @@
 				ORGANIZATIONNAME = MeiJigao;
 				TargetAttributes = {
 					D4C9BB251FC84267003D0976 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
-					D4C9BB3C1FC849FE003D0976 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -192,7 +157,6 @@
 			projectRoot = "";
 			targets = (
 				D4C9BB251FC84267003D0976 /* JGSourceBase */,
-				D4C9BB3C1FC849FE003D0976 /* JGSourceBaseDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -205,68 +169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4C9BB3B1FC849FE003D0976 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		816E814C7278445B17FE43FE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JGSourceBaseDemo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9241361F8DB9B4DAC67B090D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCFAA489804D5600EDE1BD54 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JGSourceBase/JGSourceBase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGSourceBase.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4C9BB211FC84267003D0976 /* Sources */ = {
@@ -275,13 +178,6 @@
 			files = (
 				D4C9BB341FC849C6003D0976 /* JGSourceCommon.m in Sources */,
 				D4C9BB381FC849D9003D0976 /* JGSourceResource.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4C9BB391FC849FE003D0976 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,36 +334,6 @@
 			};
 			name = Release;
 		};
-		D4C9BB511FC849FF003D0976 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AAAD3152DC14F57F0B822BE /* Pods-JGSourceBaseDemo.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27ZN797VLM;
-				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MeiJigao.JGSourceBaseDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D4C9BB521FC849FF003D0976 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2E8865A716EC67B7FE28603 /* Pods-JGSourceBaseDemo.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27ZN797VLM;
-				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MeiJigao.JGSourceBaseDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -485,15 +351,6 @@
 			buildConfigurations = (
 				D4C9BB2F1FC84267003D0976 /* Debug */,
 				D4C9BB301FC84267003D0976 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D4C9BB501FC849FF003D0976 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4C9BB511FC849FF003D0976 /* Debug */,
-				D4C9BB521FC849FF003D0976 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

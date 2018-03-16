@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "JGSourceBaseDemo.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    JGSourceBaseDemo *vcT = [[JGSourceBaseDemo alloc] init];
+    ViewController *vcT = [[ViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vcT];
     _window.rootViewController = nav;
     
