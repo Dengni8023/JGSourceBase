@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name          = "JGSourceBase"
-s.version       = "0.0.3"
+s.version       = "0.0.4"
 
 s.summary       = "JGSourceCode 通用定义、功能模块"
 s.description   = <<-DESC

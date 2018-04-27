@@ -28,9 +28,9 @@ FOUNDATION_EXTERN void JGEnableLogWithMode(JGLogMode mode);
 
 // LOG，Xcode控制台日志结尾换行无效，增加空格才有效
 #define JGLogOnly(fmt, ...)     NSLog((@"" fmt ""), ##__VA_ARGS__)
-#define JGLogFunc(fmt, ...)     NSLog((@"%s Line: %zd " fmt ""), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define JGLogPretty(fmt, ...)   NSLog((@"\nFunc:\t%s\nLine:\t%zd\n" fmt ""), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define JGLogFile(fmt, ...)     NSLog((@"\nFile:\t%@\nFunc:\t%s\nLine:\t%zd\n" fmt ""), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define JGLogFunc(fmt, ...)     NSLog((@"%s Line: %@ " fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__)
+#define JGLogPretty(fmt, ...)   NSLog((@"\nFunc:\t%s\nLine:\t%@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__)
+#define JGLogFile(fmt, ...)     NSLog((@"\nFile:\t%@\nFunc:\t%s\nLine:\t%@\n" fmt ""), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__)
 
 #define JGLog(fmt, ...) {\
     switch (JGEnableLogMode) {\
