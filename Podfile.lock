@@ -1,16 +1,16 @@
 PODS:
-  - JGSourceBase (0.0.3)
+  - JGSourceBase (0.0.5)
 
 DEPENDENCIES:
   - JGSourceBase (from `.`)
 
 EXTERNAL SOURCES:
   JGSourceBase:
-    :path: .
+    :path: "."
 
 SPEC CHECKSUMS:
-  JGSourceBase: 98832306ed01ee0ca5f017aaa66019bd5a28ce77
+  JGSourceBase: a134a228f6edaae741741bd64fc964e5afc97039
 
 PODFILE CHECKSUM: 83d92b3959d6ad8c3deaf1bc81b7a97badeb32b4
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

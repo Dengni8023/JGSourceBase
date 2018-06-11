@@ -51,47 +51,47 @@
 
 - (void)initDatas {
     
-    JGWeak(self);
+    JGSCWeak(self);
     _demoData = @[
                   JGDemoTableSectionMake(@"日志开关、设置",
                                          @[
                                            JGDemoTableRowMakeBlock(@"Log disable", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGEnableLogWithMode(JGLogModeNone);
+                      JGSCEnableLogWithMode(JGSCLogModeNone);
                       [weakself.tableView reloadData];
                   }),
                                            JGDemoTableRowMakeBlock(@"Log only", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGEnableLogWithMode(JGLogModeLog);
+                      JGSCEnableLogWithMode(JGSCLogModeLog);
                       [weakself.tableView reloadData];
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with function line", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGEnableLogWithMode(JGLogModeFunc);
+                      JGSCEnableLogWithMode(JGSCLogModeFunc);
                       [weakself.tableView reloadData];
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with function line and pretty out", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGEnableLogWithMode(JGLogModePretty);
+                      JGSCEnableLogWithMode(JGSCLogModePretty);
                       [weakself.tableView reloadData];
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with file function line", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGEnableLogWithMode(JGLogModeFile);
+                      JGSCEnableLogWithMode(JGSCLogModeFile);
                       [weakself.tableView reloadData];
                   }),
                                            ]),
                   JGDemoTableSectionMake(@"打印日志",
                                          @[
                                            JGDemoTableRowMakeBlock(@"Log with mode setting", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGLog(@"%@", rowData.title);
+                      JGSCLog(@"%@", rowData.title);
                   }),
                                            JGDemoTableRowMakeBlock(@"Log only", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGLogOnly(@"%@", rowData.title);
+                      JGSCLogOnly(@"%@", rowData.title);
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with function line", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGLogFunc(@"%@", rowData.title);
+                      JGSCLogFunc(@"%@", rowData.title);
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with function line and pretty out", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGLogPretty(@"%@", rowData.title);
+                      JGSCLogPretty(@"%@", rowData.title);
                   }),
                                            JGDemoTableRowMakeBlock(@"Log with file function line", ^(JGDemoTableRowData * _Nonnull rowData) {
-                      JGLogFile(@"%@", rowData.title);
+                      JGSCLogFile(@"%@", rowData.title);
                   }),
                                            ]),
                   ];
@@ -99,7 +99,7 @@
 
 - (void)dealloc {
     
-    JGLog(@"<%@: %p>, %@", NSStringFromClass([self class]), self, self.title);
+    JGSCLog(@"<%@: %p>, %@", NSStringFromClass([self class]), self, self.title);
 }
 
 #pragma mark - Controller
@@ -111,7 +111,7 @@
     
     self.tableView.sectionHeaderHeight = 44;
     self.tableView.rowHeight = 44;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JGReuseIdentifier(UITableViewCell)];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JGSCReuseIdentifier(UITableViewCell)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,7 +130,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSCReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
@@ -142,7 +142,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     if (section == 0) {
-        return [self.demoData[section].title stringByAppendingFormat:@"(type : %zd)", JGEnableLogMode];
+        return [self.demoData[section].title stringByAppendingFormat:@"(type : %zd)", JGSCEnableLogMode];
     }
     return self.demoData[section].title;
 }
@@ -150,8 +150,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    JGLogError(@"Error Log");
-    JGLogWarning(@"Warning Log");
+    JGSCLogError(@"Error Log");
+    JGSCLogWarning(@"Warning Log");
     
     JGDemoTableRowData *rowData = self.demoData[indexPath.section].rows[indexPath.row];
     if (rowData.selectBlock) {

@@ -1,22 +1,16 @@
 //
-//  JGSourceCommon.m
+//  JGSCRuntime.m
 //  JGSourceBase
 //
-//  Created by Mei Jigao on 2017/11/24.
-//  Copyright © 2017年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2018/6/11.
+//  Copyright © 2018年 MeiJigao. All rights reserved.
 //
 
-#import "JGSourceCommon.h"
+#import "JGSCRuntime.h"
 #import <objc/runtime.h>
 
-#pragma mark - Log
-JGLogMode JGEnableLogMode = JGLogModeNone;
-FOUNDATION_EXTERN void JGEnableLogWithMode(JGLogMode mode) {
-    JGEnableLogMode = mode;
-}
 
-#pragma mark - Runtime
-FOUNDATION_EXPORT void JGRuntimeSwizzledSelector(Class cls, SEL originSelector, SEL swizzledSelector) {
+FOUNDATION_EXPORT void JGSCRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
     
     Method originMethod = class_getInstanceMethod(cls, originSelector);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);

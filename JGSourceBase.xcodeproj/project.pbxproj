@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		D41FE200202DA72900CCD667 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41FE1FF202DA72900CCD667 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D41FE202202DA73000CCD667 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41FE201202DA73000CCD667 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D4C9BB2B1FC84267003D0976 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4C9BB291FC84267003D0976 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4C9BB341FC849C6003D0976 /* JGSourceCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C9BB321FC849C6003D0976 /* JGSourceCommon.m */; };
-		D4C9BB381FC849D9003D0976 /* JGSourceResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C9BB361FC849D9003D0976 /* JGSourceResource.m */; };
+		D48607CD20CE6B7100CEF10B /* JGSCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D48607CB20CE6B7100CEF10B /* JGSCLog.m */; };
+		D48607D720CE6CA700CEF10B /* JGSCRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = D48607D520CE6CA700CEF10B /* JGSCRuntime.h */; };
+		D48607D820CE6CA700CEF10B /* JGSCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = D48607D620CE6CA700CEF10B /* JGSCRuntime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,13 +20,15 @@
 		A2E8865A716EC67B7FE28603 /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D41FE1FF202DA72900CCD667 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D41FE201202DA73000CCD667 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D48607C920CE6B3C00CEF10B /* JGSCWeakStrongProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCWeakStrongProperty.h; sourceTree = "<group>"; };
+		D48607CA20CE6B7100CEF10B /* JGSCLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCLog.h; sourceTree = "<group>"; };
+		D48607CB20CE6B7100CEF10B /* JGSCLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSCLog.m; sourceTree = "<group>"; };
+		D48607D420CE6C2200CEF10B /* JGSCCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCCommon.h; sourceTree = "<group>"; };
+		D48607D520CE6CA700CEF10B /* JGSCRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCRuntime.h; sourceTree = "<group>"; };
+		D48607D620CE6CA700CEF10B /* JGSCRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSCRuntime.m; sourceTree = "<group>"; };
 		D4C9BB261FC84267003D0976 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C9BB291FC84267003D0976 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4C9BB2A1FC84267003D0976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4C9BB311FC849C6003D0976 /* JGSourceCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceCommon.h; sourceTree = "<group>"; };
-		D4C9BB321FC849C6003D0976 /* JGSourceCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSourceCommon.m; sourceTree = "<group>"; };
-		D4C9BB351FC849D9003D0976 /* JGSourceResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceResource.h; sourceTree = "<group>"; };
-		D4C9BB361FC849D9003D0976 /* JGSourceResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSourceResource.m; sourceTree = "<group>"; };
 		D4C9BB5C1FC84B33003D0976 /* JGSourceBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JGSourceBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D4C9BB5D1FC84B33003D0976 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,11 +79,13 @@
 			isa = PBXGroup;
 			children = (
 				D4C9BB2A1FC84267003D0976 /* Info.plist */,
+				D48607D420CE6C2200CEF10B /* JGSCCommon.h */,
+				D48607CA20CE6B7100CEF10B /* JGSCLog.h */,
+				D48607CB20CE6B7100CEF10B /* JGSCLog.m */,
+				D48607D520CE6CA700CEF10B /* JGSCRuntime.h */,
+				D48607D620CE6CA700CEF10B /* JGSCRuntime.m */,
+				D48607C920CE6B3C00CEF10B /* JGSCWeakStrongProperty.h */,
 				D4C9BB291FC84267003D0976 /* JGSourceBase.h */,
-				D4C9BB311FC849C6003D0976 /* JGSourceCommon.h */,
-				D4C9BB321FC849C6003D0976 /* JGSourceCommon.m */,
-				D4C9BB351FC849D9003D0976 /* JGSourceResource.h */,
-				D4C9BB361FC849D9003D0976 /* JGSourceResource.m */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -103,7 +107,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C9BB2B1FC84267003D0976 /* JGSourceBase.h in Headers */,
+				D48607D720CE6CA700CEF10B /* JGSCRuntime.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,8 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C9BB341FC849C6003D0976 /* JGSourceCommon.m in Sources */,
-				D4C9BB381FC849D9003D0976 /* JGSourceResource.m in Sources */,
+				D48607CD20CE6B7100CEF10B /* JGSCLog.m in Sources */,
+				D48607D820CE6CA700CEF10B /* JGSCRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

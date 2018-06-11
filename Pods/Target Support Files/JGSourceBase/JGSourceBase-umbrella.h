@@ -10,9 +10,11 @@
 #endif
 #endif
 
+#import "JGSCCommon.h"
+#import "JGSCLog.h"
+#import "JGSCRuntime.h"
+#import "JGSCWeakStrongProperty.h"
 #import "JGSourceBase.h"
-#import "JGSourceCommon.h"
-#import "JGSourceResource.h"
 
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
 FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
