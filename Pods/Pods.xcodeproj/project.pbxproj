@@ -3,23 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		19B2DEC29D066A3245D22E603AA4274B /* JGSCRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCD6963BF8B3F367E972F350118A0A2 /* JGSCRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A2ABD43624F5B4E662E2625440762EB /* Pods-JGSourceBaseDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A9920BBD199758F9CB962777BF28F8A5 /* Pods-JGSourceBaseDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25B743B7C64007F2FA23925CE92A4514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		297971BFCAB23EF7CD65FF795738FE84 /* JGSCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C0A615031D2333B5A3E4DDD38D6C7A /* JGSCLog.m */; };
 		525E35BC5D8C2842F2B5ABC68330EF71 /* JGSCLog.h in Headers */ = {isa = PBXBuildFile; fileRef = E1FBED33C6F51797AD495FF19E015B0C /* JGSCLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55D3FE89C4572041CAF9290E15CDF6DB /* JGSCWeakStrongProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DEAB30D0D1FD230B5200A4B59B4A48C5 /* JGSCWeakStrongProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D317221575D3F7BF46E3C9C3AE72F89 /* JGSCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C0A615031D2333B5A3E4DDD38D6C7A /* JGSCLog.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5D5793D4584A61E773A3FF41120F1416 /* JGSourceBase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 117F156ED43EC41E512CC601D5C6812A /* JGSourceBase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A9FFACBCE22AE8017F1F91DE5079ACA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		850B8DC1FF102E90C7463461CB3D04C6 /* JGSourceBase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8173FCE952BECE4C5DBA8C8EDD77C64A /* JGSourceBase-dummy.m */; };
-		C9677160AB0A13317D42D582B46765BD /* JGSCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = CB781957545B7ECC7EDE557F30F21717 /* JGSCRuntime.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CE37ED7CBCE36B11A6D82673B58C13DE /* JGSCCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C43B697847941E291DB3421E16C41F9 /* JGSCCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D990107E5D9E385D26B045B8DE5986DA /* JGSourceBase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8173FCE952BECE4C5DBA8C8EDD77C64A /* JGSourceBase-dummy.m */; };
 		EA8545CCC81BB907E279153BBA738F02 /* Pods-JGSourceBaseDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2D4386388429CC7F5E14D2BB365EFC /* Pods-JGSourceBaseDemo-dummy.m */; };
 		EAB5F6E3AADBA9F742FBD42CDE42196A /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = F772F6889734E782C671B1482955EC18 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAADBF2720C091014DB625679B8ACF42 /* JGSCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = CB781957545B7ECC7EDE557F30F21717 /* JGSCRuntime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 		117F156ED43EC41E512CC601D5C6812A /* JGSourceBase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JGSourceBase-umbrella.h"; sourceTree = "<group>"; };
 		1F8F0E3A4B29EA45FCB6EFB0A80144C1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35C102377180C7AE97C2B05943CAD942 /* JGSourceBase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JGSourceBase.modulemap; sourceTree = "<group>"; };
-		3A9430F39AC5FF6BE39DEFD2AADA8416 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9430F39AC5FF6BE39DEFD2AADA8416 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JGSourceBaseDemo.framework; path = "Pods-JGSourceBaseDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C43B697847941E291DB3421E16C41F9 /* JGSCCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JGSCCommon.h; path = JGSourceBase/JGSCCommon.h; sourceTree = "<group>"; };
 		562780D3AC444E0FF19D86A87D464C6B /* JGSourceBase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JGSourceBase-prefix.pch"; sourceTree = "<group>"; };
 		57D556E7C5E9C5B1EE80765A536A2E55 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,13 +47,13 @@
 		8173FCE952BECE4C5DBA8C8EDD77C64A /* JGSourceBase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JGSourceBase-dummy.m"; sourceTree = "<group>"; };
 		843EA12CFBB8A4686E1DF80A98F31B87 /* Pods-JGSourceBaseDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JGSourceBaseDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		86E9CCB75F3EC6712297FB77179BF4FE /* Pods-JGSourceBaseDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JGSourceBaseDemo-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9482F2F6C93094C03EAD0662DC46921A /* Pods-JGSourceBaseDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JGSourceBaseDemo-resources.sh"; sourceTree = "<group>"; };
 		A7E7CC5DE2DD419C6E6BED4E40A1AAC2 /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		A9920BBD199758F9CB962777BF28F8A5 /* Pods-JGSourceBaseDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JGSourceBaseDemo-umbrella.h"; sourceTree = "<group>"; };
-		A9CBCDEF9766400591BBD6B73046AD87 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B29D633189FB15338CCF736CA90400E8 /* JGSourceBase.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = JGSourceBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B9F74E22C97B531CBA39BC899FA2078B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A9CBCDEF9766400591BBD6B73046AD87 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JGSourceBase.framework; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29D633189FB15338CCF736CA90400E8 /* JGSourceBase.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = JGSourceBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B9F74E22C97B531CBA39BC899FA2078B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		C925BA5FDEA29451535FF102AB3E625C /* Pods-JGSourceBaseDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JGSourceBaseDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB781957545B7ECC7EDE557F30F21717 /* JGSCRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JGSCRuntime.m; path = JGSourceBase/JGSCRuntime.m; sourceTree = "<group>"; };
 		CC1EBEB5FCB4D3488822E0050B8DA871 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		DE91FD0322265826E392E8FA5713BBBD /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DEAB30D0D1FD230B5200A4B59B4A48C5 /* JGSCWeakStrongProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JGSCWeakStrongProperty.h; path = JGSourceBase/JGSCWeakStrongProperty.h; sourceTree = "<group>"; };
 		E1FBED33C6F51797AD495FF19E015B0C /* JGSCLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JGSCLog.h; path = JGSourceBase/JGSCLog.h; sourceTree = "<group>"; };
-		E454C67F23561E437113874220D80F1E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E454C67F23561E437113874220D80F1E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		F772F6889734E782C671B1482955EC18 /* JGSourceBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JGSourceBase.h; path = JGSourceBase/JGSourceBase.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,7 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1158DECB41170F0D93BD326B27A74D8F /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
 			buildPhases = (
-				CC874231FBCCFDB65E45119D3FEE7DA5 /* Sources */,
+				B3FBF6888EF93AE1BFF914C36DB1FF77 /* Sources */,
 				AA39EC95F5E92617C17B26E3993ED726 /* Frameworks */,
 				7F9924969880EF08A41E7E4D27571A7C /* Headers */,
 			);
@@ -294,13 +294,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC874231FBCCFDB65E45119D3FEE7DA5 /* Sources */ = {
+		B3FBF6888EF93AE1BFF914C36DB1FF77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D317221575D3F7BF46E3C9C3AE72F89 /* JGSCLog.m in Sources */,
-				C9677160AB0A13317D42D582B46765BD /* JGSCRuntime.m in Sources */,
-				850B8DC1FF102E90C7463461CB3D04C6 /* JGSourceBase-dummy.m in Sources */,
+				297971BFCAB23EF7CD65FF795738FE84 /* JGSCLog.m in Sources */,
+				FAADBF2720C091014DB625679B8ACF42 /* JGSCRuntime.m in Sources */,
+				D990107E5D9E385D26B045B8DE5986DA /* JGSourceBase-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
