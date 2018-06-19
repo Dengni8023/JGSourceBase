@@ -26,5 +26,29 @@
   },
   "source_files": "JGSourceBase/*.{h,m}",
   "public_header_files": "JGSourceBase/*.h",
-  "requires_arc": true
+  "default_subspecs": [
+    "Common",
+    "Logger",
+    "Runtime"
+  ],
+  "libraries": "objc",
+  "frameworks": "Foundation",
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Common",
+      "source_files": "JGSourceBase/Common/*.{h,m}",
+      "public_header_files": "JGSourceBase/Common/*.h"
+    },
+    {
+      "name": "Logger",
+      "source_files": "JGSourceBase/Logger/*.{h,m}",
+      "public_header_files": "JGSourceBase/Logger/*.h"
+    },
+    {
+      "name": "Runtime",
+      "source_files": "JGSourceBase/Runtime/*.{h,m}",
+      "public_header_files": "JGSourceBase/Runtime/*.h"
+    }
+  ]
 }

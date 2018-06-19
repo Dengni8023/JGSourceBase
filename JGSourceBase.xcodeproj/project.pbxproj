@@ -78,16 +78,40 @@
 		D4C9BB281FC84267003D0976 /* JGSourceBase */ = {
 			isa = PBXGroup;
 			children = (
+				D4E9F23920D90147005FF3E0 /* Common */,
 				D4C9BB2A1FC84267003D0976 /* Info.plist */,
-				D48607D420CE6C2200CEF10B /* JGSCCommon.h */,
-				D48607CA20CE6B7100CEF10B /* JGSCLog.h */,
-				D48607CB20CE6B7100CEF10B /* JGSCLog.m */,
-				D48607D520CE6CA700CEF10B /* JGSCRuntime.h */,
-				D48607D620CE6CA700CEF10B /* JGSCRuntime.m */,
-				D48607C920CE6B3C00CEF10B /* JGSCWeakStrongProperty.h */,
 				D4C9BB291FC84267003D0976 /* JGSourceBase.h */,
+				D4E9F23A20D9017B005FF3E0 /* Logger */,
+				D4E9F23B20D90185005FF3E0 /* Runtime */,
 			);
 			path = JGSourceBase;
+			sourceTree = "<group>";
+		};
+		D4E9F23920D90147005FF3E0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D48607D420CE6C2200CEF10B /* JGSCCommon.h */,
+				D48607C920CE6B3C00CEF10B /* JGSCWeakStrongProperty.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D4E9F23A20D9017B005FF3E0 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				D48607CA20CE6B7100CEF10B /* JGSCLog.h */,
+				D48607CB20CE6B7100CEF10B /* JGSCLog.m */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		D4E9F23B20D90185005FF3E0 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				D48607D520CE6CA700CEF10B /* JGSCRuntime.h */,
+				D48607D620CE6CA700CEF10B /* JGSCRuntime.m */,
+			);
+			path = Runtime;
 			sourceTree = "<group>";
 		};
 		F1FC3ED55606DF37967A7184 /* Frameworks */ = {

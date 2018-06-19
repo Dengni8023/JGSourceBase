@@ -1,5 +1,11 @@
 PODS:
-  - JGSourceBase (0.0.5)
+  - JGSourceBase (0.0.5):
+    - JGSourceBase/Common (= 0.0.5)
+    - JGSourceBase/Logger (= 0.0.5)
+    - JGSourceBase/Runtime (= 0.0.5)
+  - JGSourceBase/Common (0.0.5)
+  - JGSourceBase/Logger (0.0.5)
+  - JGSourceBase/Runtime (0.0.5)
 
 DEPENDENCIES:
   - JGSourceBase (from `.`)
@@ -9,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  JGSourceBase: a134a228f6edaae741741bd64fc964e5afc97039
+  JGSourceBase: 67a2f42edea98c4dc29e1effc1a59630e6255f23
 
 PODFILE CHECKSUM: d961e69ca30b4e963ceb2b58aa831256ed969748
 
