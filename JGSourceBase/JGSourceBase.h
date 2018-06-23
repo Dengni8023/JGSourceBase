@@ -22,16 +22,30 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 #if __has_include(<JGSourceBase/JGSourceBase.h>)
 
+// Common
 #import <JGSourceBase/JGSCCommon.h>
-#import <JGSourceBase/JGSCLog.h>
-#import <JGSourceBase/JGSCRuntime.h>
-#import <JGSourceBase/JGSCWeakStrongProperty.h>
+#import <JGSourceBase/NSDictionary+JGSCEasyUse.h>
+#import <JGSourceBase/NSString+JGSCURL.h>
+#import <JGSourceBase/NSURL+JGSCURLQuery.h>
+
+// NSObject
+#ifdef JGSC_NSObject
+#import <JGSourceBase/NSObject+JGSCJSON.h>
+#import <JGSourceBase/NSObject+JGSCObject2Dict.h>
+#endif
 
 #else
 
+// Common
 #import "JGSCCommon.h"
-#import "JGSCLog.h"
-#import "JGSCRuntime.h"
-#import "JGSCWeakStrongProperty.h"
+#import "NSDictionary+JGSCEasyUse.h"
+#import "NSString+JGSCURL.h"
+#import "NSURL+JGSCURLQuery.h"
+
+// NSObject
+#ifdef JGSC_NSObject
+#import "NSObject+JGSCJSON.h"
+#import "NSObject+JGSCObject2Dict.h"
+#endif
 
 #endif

@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70EF645F5792E9D517278BDE /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D7E28D93C8E20E8F6C9FFB /* Pods_JGSourceBaseDemo.framework */; };
+		2CE9F78734F8F2C959F0EEEF /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17024F60CCEDDA2A9CD29A94 /* Pods_JGSourceBaseDemo.framework */; };
 		D4672493205BB827001CC143 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4672492205BB827001CC143 /* AppDelegate.m */; };
 		D467249B205BB827001CC143 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D467249A205BB827001CC143 /* Assets.xcassets */; };
 		D46724A1205BB827001CC143 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D46724A0205BB827001CC143 /* main.m */; };
 		D46724AD205BB883001CC143 /* JGDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D46724AA205BB883001CC143 /* JGDemoTableData.m */; };
 		D4D1D814205F4DB600AA4B61 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D1D813205F4DB600AA4B61 /* ViewController.m */; };
 		D4D1D882205FB83E00AA4B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4D1D881205FB83E00AA4B61 /* LaunchScreen.storyboard */; };
+		D4EEB30520DEB40A00A649B7 /* Object2DictionaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */; };
+		D4EEB30820DEB42A00A649B7 /* Object2DictionaryModelLeaf.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */; };
+		D4EEB30B20DEB47D00A649B7 /* Object2DictionaryPropery.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17024F60CCEDDA2A9CD29A94 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C6CF79FBF6C75F8EDA394B /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		30EE0D60C018F1B17022A72A /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		C0D7E28D93C8E20E8F6C9FFB /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D467248E205BB827001CC143 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4672491205BB827001CC143 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4672492205BB827001CC143 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,6 +34,12 @@
 		D4D1D812205F4DB600AA4B61 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D4D1D813205F4DB600AA4B61 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D4D1D881205FB83E00AA4B61 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D4EEB30320DEB40A00A649B7 /* Object2DictionaryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryModel.h; sourceTree = "<group>"; };
+		D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryModel.m; sourceTree = "<group>"; };
+		D4EEB30620DEB42A00A649B7 /* Object2DictionaryModelLeaf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryModelLeaf.h; sourceTree = "<group>"; };
+		D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryModelLeaf.m; sourceTree = "<group>"; };
+		D4EEB30920DEB47D00A649B7 /* Object2DictionaryPropery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryPropery.h; sourceTree = "<group>"; };
+		D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryPropery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70EF645F5792E9D517278BDE /* Pods_JGSourceBaseDemo.framework in Frameworks */,
+				2CE9F78734F8F2C959F0EEEF /* Pods_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +57,7 @@
 		09A80B1CBD6500F1834982F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0D7E28D93C8E20E8F6C9FFB /* Pods_JGSourceBaseDemo.framework */,
+				17024F60CCEDDA2A9CD29A94 /* Pods_JGSourceBaseDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,6 +109,12 @@
 			isa = PBXGroup;
 			children = (
 				D46724A8205BB883001CC143 /* Base */,
+				D4EEB30320DEB40A00A649B7 /* Object2DictionaryModel.h */,
+				D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */,
+				D4EEB30920DEB47D00A649B7 /* Object2DictionaryPropery.h */,
+				D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */,
+				D4EEB30620DEB42A00A649B7 /* Object2DictionaryModelLeaf.h */,
+				D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -124,7 +139,7 @@
 				D467248A205BB827001CC143 /* Sources */,
 				D467248B205BB827001CC143 /* Frameworks */,
 				D467248C205BB827001CC143 /* Resources */,
-				6249757F60725B47583BB122 /* [CP] Embed Pods Frameworks */,
+				1433E676E29E97B96AC85BF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,7 +214,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6249757F60725B47583BB122 /* [CP] Embed Pods Frameworks */ = {
+		1433E676E29E97B96AC85BF3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46724AD205BB883001CC143 /* JGDemoTableData.m in Sources */,
+				D4EEB30820DEB42A00A649B7 /* Object2DictionaryModelLeaf.m in Sources */,
+				D4EEB30520DEB40A00A649B7 /* Object2DictionaryModel.m in Sources */,
+				D4EEB30B20DEB47D00A649B7 /* Object2DictionaryPropery.m in Sources */,
 				D46724A1205BB827001CC143 /* main.m in Sources */,
 				D4672493205BB827001CC143 /* AppDelegate.m in Sources */,
 				D4D1D814205F4DB600AA4B61 /* ViewController.m in Sources */,

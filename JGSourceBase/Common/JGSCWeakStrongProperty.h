@@ -9,6 +9,8 @@
 #ifndef JGSCWeakStrongProperty_h
 #define JGSCWeakStrongProperty_h
 
+NS_ASSUME_NONNULL_BEGIN
+
 // block循环引用处理宏定义
 // 使用形如：JGSCWeak(object)
 
@@ -61,5 +63,7 @@ __strong __typeof__(weak##object) object = weak##object;\
 _Pragma("clang diagnostic pop")
 
 #endif
+
+NS_ASSUME_NONNULL_END
 
 #endif /* JGSCWeakStrongProperty_h */

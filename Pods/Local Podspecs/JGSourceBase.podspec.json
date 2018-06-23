@@ -1,6 +1,6 @@
 {
   "name": "JGSourceBase",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "summary": "JGSourceCode 通用定义、功能模块",
   "description": "JGSourceCode 通用定义、功能模块\n\n功能包括：\n1、通用日志控制模式\n2、通用重用标示快速定义\n3、Block循环引用常用定义weak、strong快捷处理",
   "homepage": "https://github.com/dengni8023/JGSourceBase",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/dengni8023/JGSourceBase.git",
-    "tag": "0.0.5"
+    "tag": "0.1.0"
   },
   "authors": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "git": "https://github.com/dengni8023/JGSourceBase.git",
-      "tag": "0.0.5"
+      "tag": "0.1.0"
     }
   ],
   "platforms": {
@@ -26,29 +26,26 @@
   },
   "source_files": "JGSourceBase/*.{h,m}",
   "public_header_files": "JGSourceBase/*.h",
-  "default_subspecs": [
-    "Common",
-    "Logger",
-    "Runtime"
-  ],
-  "libraries": "objc",
-  "frameworks": "Foundation",
   "requires_arc": true,
+  "default_subspecs": "Common",
   "subspecs": [
     {
       "name": "Common",
       "source_files": "JGSourceBase/Common/*.{h,m}",
-      "public_header_files": "JGSourceBase/Common/*.h"
+      "public_header_files": "JGSourceBase/Common/*.h",
+      "xcconfig": {
+        "OTHER_LDFLAGS": "$(inherited) -ObjC"
+      }
     },
     {
-      "name": "Logger",
-      "source_files": "JGSourceBase/Logger/*.{h,m}",
-      "public_header_files": "JGSourceBase/Logger/*.h"
-    },
-    {
-      "name": "Runtime",
-      "source_files": "JGSourceBase/Runtime/*.{h,m}",
-      "public_header_files": "JGSourceBase/Runtime/*.h"
+      "name": "NSObject",
+      "source_files": "JGSourceBase/NSObject/*.{h,m}",
+      "public_header_files": "JGSourceBase/NSObject/*.h",
+      "libraries": "objc",
+      "xcconfig": {
+        "OTHER_LDFLAGS": "$(inherited) -ObjC",
+        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) JGSC_NSObject"
+      }
     }
   ]
 }

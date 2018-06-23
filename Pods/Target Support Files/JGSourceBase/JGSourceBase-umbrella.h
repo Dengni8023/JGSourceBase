@@ -12,9 +12,13 @@
 
 #import "JGSourceBase.h"
 #import "JGSCCommon.h"
+#import "JGSCLogDefine.h"
 #import "JGSCWeakStrongProperty.h"
-#import "JGSCLog.h"
-#import "JGSCRuntime.h"
+#import "NSDictionary+JGSCEasyUse.h"
+#import "NSString+JGSCURL.h"
+#import "NSURL+JGSCURLQuery.h"
+#import "NSObject+JGSCJSON.h"
+#import "NSObject+JGSCObject2Dict.h"
 
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
 FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];

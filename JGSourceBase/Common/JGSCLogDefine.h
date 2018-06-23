@@ -1,12 +1,15 @@
 //
-//  JGSCLog.h
+//  JGSCLogDefine.h
 //  JGSourceBase
 //
-//  Created by 梅继高 on 2018/6/11.
+//  Created by 梅继高 on 2018/6/23.
 //  Copyright © 2018年 MeiJigao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef JGSCLogDefine_h
+#define JGSCLogDefine_h
+
+NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Log
 typedef NS_ENUM(NSInteger, JGSCLogMode) {
@@ -16,12 +19,6 @@ typedef NS_ENUM(NSInteger, JGSCLogMode) {
     JGSCLogModePretty, // 打印日志所在方法名、行号，各部分分行显示
     JGSCLogModeFile // 打印文件名、方法名、行号、日志内容，各部分分行显示
 };
-
-/** 日志输出模式，默认 JGSCLogModeNone 不输出日志 */
-FOUNDATION_EXTERN JGSCLogMode JGSCEnableLogMode;
-
-/** 日志输出模式，默认 JGSCLogModeNone 不输出日志 */
-FOUNDATION_EXTERN void JGSCEnableLogWithMode(JGSCLogMode mode);
 
 // LOG
 #define JGSCLogOnly(fmt, ...)     NSLog((@"" fmt ""), ##__VA_ARGS__)
@@ -51,3 +48,7 @@ FOUNDATION_EXTERN void JGSCEnableLogWithMode(JGSCLogMode mode);
 #define JGSCLogInfo(fmt, ...)     JGSCLog(@"<Info> " fmt, ##__VA_ARGS__)
 #define JGSCLogWarning(fmt, ...)  JGSCLog(@"<Warning> " fmt, ##__VA_ARGS__)
 #define JGSCLogError(fmt, ...)    JGSCLog(@"<Error> " fmt, ##__VA_ARGS__)
+
+NS_ASSUME_NONNULL_END
+
+#endif /* JGSCLogDefine_h */

@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "0.0.6"
+    s.version       = "0.1.0"
     
     s.summary       = "JGSourceCode 通用定义、功能模块"
     s.description   = <<-DESC
@@ -36,35 +36,42 @@ Pod::Spec.new do |s|
     s.public_header_files   = "JGSourceBase/*.h"
     # s.resource    = "JGSourceBase.bundle"
     
-    s.default_subspec = 'Common', 'Logger', 'Runtime'
-    
-    s.subspec 'Common' do |ss|
-        ss.source_files         = "JGSourceBase/Common/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Common/*.h"
-    end
-    
-    s.subspec 'Logger' do |ss|
-        ss.source_files         = "JGSourceBase/Logger/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Logger/*.h"
-    end
-    
-    s.subspec 'Runtime' do |ss|
-        ss.source_files         = "JGSourceBase/Runtime/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Runtime/*.h"
-        
-        s.library               = "objc"
-    end
-    
-    s.framework  = "Foundation"
+    # s.framework  = "Foundation"
     # s.frameworks = "SomeFramework", "AnotherFramework"
-    
-    #s.library   = "SomeLibararyy"
-    # s.libraries = "SomeLibararyy", "AnotherLibararyy"
+    # s.library    = "SomeLibararyy"
+    # s.libraries  = "SomeLibararyy", "AnotherLibararyy"
     
     # s.dependency "Dependency", "~> 4.0"
     # s.dependency "Dependency/SUB"
     # s.dependency "Dependency", "~> 2.1"
     
     s.requires_arc = true
+    
+    # subspec
+    s.default_subspec = 'Common'
+    
+    # Common
+    s.subspec 'Common' do |ss|
+        ss.source_files         = "JGSourceBase/Common/*.{h,m}"
+        ss.public_header_files  = "JGSourceBase/Common/*.h"
+        
+        #ss.frameworks   = "Foundation", "UIKit"
+        ss.xcconfig     = {
+            "OTHER_LDFLAGS" => '$(inherited) -ObjC',
+        }
+    end
+    
+    # NSObject
+    s.subspec 'NSObject' do |ss|
+        ss.source_files         = "JGSourceBase/NSObject/*.{h,m}"
+        ss.public_header_files  = "JGSourceBase/NSObject/*.h"
+        
+        #ss.framework   = "Foundation"
+        ss.library      = "objc"
+        ss.xcconfig     = {
+            "OTHER_LDFLAGS" => '$(inherited) -ObjC',
+            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGSC_NSObject'
+        }
+    end
     
 end
