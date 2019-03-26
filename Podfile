@@ -15,8 +15,11 @@ target "JGSourceBaseDemo" do
     
     # Local
     pod 'JGSourceBase', :path => "."
-    pod 'JGSourceBase/NSObject', :path => "."
-
+    pod 'JGSourceBase/AlertController', :path => "."
+    pod 'JGSourceBase/Reachability', :path => "."
+    pod 'JGSourceBase/LoadingHUD', :path => "."
+    pod 'JGSourceBase/Toast', :path => "."
+    
     # project
     project "JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj"
 end

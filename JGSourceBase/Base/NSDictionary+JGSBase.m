@@ -1,14 +1,14 @@
 //
-//  NSDictionary+JGSCEasyUse.m
+//  NSDictionary+JGSBase.m
 //  JGSourceBase
 //
-//  Created by 梅继高 on 2018/6/21.
-//  Copyright © 2018年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2019/3/25.
+//  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import "NSDictionary+JGSCEasyUse.h"
+#import "NSDictionary+JGSBase.h"
 
-@implementation NSDictionary (JGSCEasyUse)
+@implementation NSDictionary (JGSBase)
 
 #pragma mark - String
 - (NSString *)jg_stringForKey:(const id)key {

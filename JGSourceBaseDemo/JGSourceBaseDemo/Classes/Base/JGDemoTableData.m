@@ -46,7 +46,7 @@ JGDemoTableSectionData *JGDemoTableSectionMake(NSString *title, NSArray<JGDemoTa
 
 - (void)dealloc {
     
-    JGSCLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
 #pragma mark - End
@@ -68,7 +68,7 @@ JGDemoTableSectionData *JGDemoTableSectionMake(NSString *title, NSArray<JGDemoTa
 
 - (void)dealloc {
     
-    JGSCLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
 #pragma mark - End

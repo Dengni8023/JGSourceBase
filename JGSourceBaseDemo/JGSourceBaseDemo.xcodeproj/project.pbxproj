@@ -14,9 +14,6 @@
 		D46724AD205BB883001CC143 /* JGDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D46724AA205BB883001CC143 /* JGDemoTableData.m */; };
 		D4D1D814205F4DB600AA4B61 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D1D813205F4DB600AA4B61 /* ViewController.m */; };
 		D4D1D882205FB83E00AA4B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4D1D881205FB83E00AA4B61 /* LaunchScreen.storyboard */; };
-		D4EEB30520DEB40A00A649B7 /* Object2DictionaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */; };
-		D4EEB30820DEB42A00A649B7 /* Object2DictionaryModelLeaf.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */; };
-		D4EEB30B20DEB47D00A649B7 /* Object2DictionaryPropery.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +31,6 @@
 		D4D1D812205F4DB600AA4B61 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D4D1D813205F4DB600AA4B61 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D4D1D881205FB83E00AA4B61 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D4EEB30320DEB40A00A649B7 /* Object2DictionaryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryModel.h; sourceTree = "<group>"; };
-		D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryModel.m; sourceTree = "<group>"; };
-		D4EEB30620DEB42A00A649B7 /* Object2DictionaryModelLeaf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryModelLeaf.h; sourceTree = "<group>"; };
-		D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryModelLeaf.m; sourceTree = "<group>"; };
-		D4EEB30920DEB47D00A649B7 /* Object2DictionaryPropery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object2DictionaryPropery.h; sourceTree = "<group>"; };
-		D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object2DictionaryPropery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,12 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				D46724A8205BB883001CC143 /* Base */,
-				D4EEB30320DEB40A00A649B7 /* Object2DictionaryModel.h */,
-				D4EEB30420DEB40A00A649B7 /* Object2DictionaryModel.m */,
-				D4EEB30920DEB47D00A649B7 /* Object2DictionaryPropery.h */,
-				D4EEB30A20DEB47D00A649B7 /* Object2DictionaryPropery.m */,
-				D4EEB30620DEB42A00A649B7 /* Object2DictionaryModelLeaf.h */,
-				D4EEB30720DEB42A00A649B7 /* Object2DictionaryModelLeaf.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -222,10 +207,12 @@
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JGSourceBase/JGSourceBase.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGSourceBase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -240,9 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46724AD205BB883001CC143 /* JGDemoTableData.m in Sources */,
-				D4EEB30820DEB42A00A649B7 /* Object2DictionaryModelLeaf.m in Sources */,
-				D4EEB30520DEB40A00A649B7 /* Object2DictionaryModel.m in Sources */,
-				D4EEB30B20DEB47D00A649B7 /* Object2DictionaryPropery.m in Sources */,
 				D46724A1205BB827001CC143 /* main.m in Sources */,
 				D4672493205BB827001CC143 /* AppDelegate.m in Sources */,
 				D4D1D814205F4DB600AA4B61 /* ViewController.m in Sources */,
@@ -366,7 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MeiJigao.JGSourceBaseDemo;
@@ -381,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27ZN797VLM;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MeiJigao.JGSourceBaseDemo;

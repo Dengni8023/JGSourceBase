@@ -1,14 +1,14 @@
 //
-//  NSObject+JGSCJSON.m
+//  NSObject+JGS_JSON.m
 //  JGSourceBase
 //
-//  Created by 梅继高 on 2018/6/22.
-//  Copyright © 2018年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2019/3/25.
+//  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import "NSObject+JGSCJSON.h"
+#import "NSObject+JGS_JSON.h"
 
-@implementation NSObject (JGSCJSON)
+@implementation NSObject (JGS_JSON)
 
 #pragma mark - Parser
 - (id)jg_JSONObject {

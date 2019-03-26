@@ -1,16 +1,16 @@
 //
-//  NSDictionary+JGSCEasyUse.h
+//  NSDictionary+JGSBase.h
 //  JGSourceBase
 //
-//  Created by 梅继高 on 2018/6/21.
-//  Copyright © 2018年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2019/3/25.
+//  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JGSCEasyUse)
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JGSBase)
 
 // String
 - (nullable NSString *)jg_stringForKey:(const KeyType)key;

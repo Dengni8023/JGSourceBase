@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Availability.h>
+
+// 最低版本限制处理
+#if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_9_0
+#error "JGSourceBase uses features only available in iOS SDK 9.0 and later."
+#endif
 
 //! Project version number for JGSourceBase.
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
@@ -16,36 +22,40 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <JGSourceBase/PublicHeader.h>
 
-// JGSC 缩写说明
+// JGS 缩写说明
 // JG: 作者
-// SC: Source Code
+// S: SourceCode
 
 #if __has_include(<JGSourceBase/JGSourceBase.h>)
 
-// Common
-#import <JGSourceBase/JGSCCommon.h>
-#import <JGSourceBase/NSDictionary+JGSCEasyUse.h>
-#import <JGSourceBase/NSString+JGSCURL.h>
-#import <JGSourceBase/NSURL+JGSCURLQuery.h>
-
-// NSObject
-#ifdef JGSC_NSObject
-#import <JGSourceBase/NSObject+JGSCJSON.h>
-#import <JGSourceBase/NSObject+JGSCObject2Dict.h>
+#import <JGSourceBase/JGSBase.h>
+#ifdef JGS_AlertController
+#import <JGSourceBase/JGSAlertController.h> // JGSAlertController
+#endif
+#ifdef JGS_Reachability
+#import <JGSourceBase/JGSReachability.h> // JGSReachability
+#endif
+#ifdef JGS_LoadingHUD
+#import <JGSourceBase/JGSLoadingHUD.h> // JGSLoadingHUD
+#endif
+#ifdef JGS_Toast
+#import <JGSourceBase/JGSToast.h> // JGSToast
 #endif
 
 #else
 
-// Common
-#import "JGSCCommon.h"
-#import "NSDictionary+JGSCEasyUse.h"
-#import "NSString+JGSCURL.h"
-#import "NSURL+JGSCURLQuery.h"
-
-// NSObject
-#ifdef JGSC_NSObject
-#import "NSObject+JGSCJSON.h"
-#import "NSObject+JGSCObject2Dict.h"
+#import "JGSBase.h"
+#ifdef JGS_AlertController
+#import "JGSAlertController.h" // JGSAlertController
+#endif
+#ifdef JGS_Reachability
+#import "JGSReachability.h" // JGSReachability
+#endif
+#ifdef JGS_LoadingHUD
+#import "JGSLoadingHUD.h" // JGSLoadingHUD
+#endif
+#ifdef JGS_Toast
+#import "JGSToast.h" // JGSToast
 #endif
 
 #endif
