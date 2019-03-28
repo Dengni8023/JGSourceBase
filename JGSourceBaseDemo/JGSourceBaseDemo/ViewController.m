@@ -12,7 +12,7 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) NSArray<JGDemoTableSectionData *> *demoData;
+@property (nonatomic, copy) NSArray<JGDemoTableSectionData *> *demoData;
 
 @end
 
@@ -188,17 +188,20 @@
 #pragma mark - Log
 - (void)showLogModeList {
     
-    JGSWeakSelf
     NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
-    [self jg_actionSheetWithTitle:@"选择日志类型" cancel:nil others:types btnAction:^(UIAlertController * _Nonnull alert, NSInteger idx) {
-        
-        JGSStrongSelf
+    [JGSAlertController actionSheetWithTitle:@"选择日志类型" cancel:nil others:types action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+        JGSLog();
         NSInteger selIdx = idx - alert.jg_firstOtherIdx;
         JGSEnableLogWithMode(JGSLogModeNone + selIdx);
-        [self jg_alertWithTitle:@"日志输出设置" message:types[selIdx] cancel:@"确定" btnAction:^(UIAlertController * _Nonnull _alert, NSInteger _idx) {
+        [JGSAlertController alertWithTitle:@"日志输出设置" message:types[selIdx] cancel:@"确定" action:^(UIAlertController * _Nonnull _alert, NSInteger _idx) {
             JGSLog(@"<%@: %p> %@", NSStringFromClass([_alert class]), _alert, @(_idx));
         }];
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        JGSLog();
+        [JGSAlertController hideAlert];
+    });
 }
 
 #pragma mark - 字典取值

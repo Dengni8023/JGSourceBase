@@ -1,8 +1,8 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/JGSourceBase" "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) JGS_AlertController $(inherited) JGS_LoadingHUD $(inherited) JGS_Reachability $(inherited) JGS_Toast
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/JGSourceBase/JGSourceBase.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/JGSourceBase/JGSourceBase.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -ObjC -framework "JGSourceBase" -framework "MBProgressHUD"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "JGSourceBase" -framework "MBProgressHUD" -framework "QuartzCore" -framework "SystemConfiguration" -framework "UIKit"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/..

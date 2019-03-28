@@ -205,7 +205,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JGSourceBase/JGSourceBase.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
@@ -216,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

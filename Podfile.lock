@@ -1,5 +1,6 @@
 PODS:
   - JGSourceBase (1.0.1):
+    - JGSourceBase/AlertController (= 1.0.1)
     - JGSourceBase/Base (= 1.0.1)
   - JGSourceBase/AlertController (1.0.1):
     - JGSourceBase/Base
@@ -15,7 +16,6 @@ PODS:
 
 DEPENDENCIES:
   - JGSourceBase (from `.`)
-  - JGSourceBase/AlertController (from `.`)
   - JGSourceBase/LoadingHUD (from `.`)
   - JGSourceBase/Reachability (from `.`)
   - JGSourceBase/Toast (from `.`)
@@ -29,9 +29,9 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  JGSourceBase: b26bf2874c0e59ef75043cceb5b5f697442d7e68
+  JGSourceBase: 956c02afb800f89b5103cc679e9f54e5f9fb0082
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
-PODFILE CHECKSUM: 0c19f8ab4f187bf2037fe3f14b6bd2c9a3efb43f
+PODFILE CHECKSUM: 609cf59b08223fab7130fb8ee9d31e55baa6b366
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

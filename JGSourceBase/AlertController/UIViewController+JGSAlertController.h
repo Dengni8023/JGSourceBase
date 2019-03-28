@@ -40,10 +40,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param title 标题，默认“提示”
  @param message 提示内容
  @param cancel 取消按钮标题
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel action:(nullable JGSAlertControllerAction)action;
 
 /**
  * Alert 双按钮
@@ -52,10 +52,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param message 提示内容
  @param cancel 取消按钮标题
  @param other 确定按钮标题
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other action:(nullable JGSAlertControllerAction)action;
 
 /**
  * Alert 双按钮，红色警告destructive按钮
@@ -64,10 +64,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param message 提示内容
  @param cancel 取消按钮标题
  @param destructive 警告按钮标题
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive action:(nullable JGSAlertControllerAction)action;
 
 /**
  Alert 多按钮
@@ -76,10 +76,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param message 提示内容
  @param cancel 取消按钮标题
  @param others 目前仅支持不多于20个，多余不显示
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 /**
  Alert 多按钮，红色警告destructive按钮
@@ -89,10 +89,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param cancel 取消按钮标题
  @param destructive 警告按钮标题
  @param others 目前仅支持不多于20个，多余不显示
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 #pragma mark - ActionSheet
 /**
@@ -101,10 +101,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param title 标题，默认“提示”
  @param cancel 提示内容
  @param others 目前仅支持不多于20个，多余不显示
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(NSArray<NSString *> *)others btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 /**
  Actionsheet，红色警告destructive按钮
@@ -113,10 +113,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param cancel 提示内容
  @param destructive 警告按钮标题
  @param others 目前仅支持不多于20个，多余不显示
- @param btnAction 点击响应block
+ @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(NSArray<NSString *> *)others btnAction:(nullable JGSAlertControllerAction)btnAction;
+- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 #pragma mark - Hide
 /**

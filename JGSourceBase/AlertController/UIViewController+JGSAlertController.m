@@ -17,40 +17,40 @@
 }
 
 - (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel {
-    return [self jg_alertWithTitle:title message:message cancel:cancel btnAction:nil];
+    return [self jg_alertWithTitle:title message:message cancel:cancel action:nil];
 }
 
-- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_alertWithTitle:title message:message cancel:cancel other:nil btnAction:btnAction];
+- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel action:(JGSAlertControllerAction)action {
+    return [self jg_alertWithTitle:title message:message cancel:cancel other:nil action:action];
 }
 
-- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel other:(NSString *)other btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_alertWithTitle:title message:message cancel:cancel others:[NSArray arrayWithObjects:other, nil] btnAction:btnAction];
+- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel other:(NSString *)other action:(JGSAlertControllerAction)action {
+    return [self jg_alertWithTitle:title message:message cancel:cancel others:[NSArray arrayWithObjects:other, nil] action:action];
 }
 
-- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel others:(NSArray<NSString *> *)others btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_alertWithTitle:title message:message cancel:cancel destructive:nil others:others btnAction:btnAction];
+- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
+    return [self jg_alertWithTitle:title message:message cancel:cancel destructive:nil others:others action:action];
 }
 
-- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel destructive:(NSString *)destructive btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_alertWithTitle:title message:message cancel:cancel destructive:destructive others:nil btnAction:btnAction];
+- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel destructive:(NSString *)destructive action:(JGSAlertControllerAction)action {
+    return [self jg_alertWithTitle:title message:message cancel:cancel destructive:destructive others:nil action:action];
 }
 
-- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_showAlertWithTitle:title message:message style:UIAlertControllerStyleAlert cancel:cancel destructive:destructive others:others btnAction:btnAction];
+- (UIAlertController *)jg_alertWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
+    return [self jg_showAlertWithTitle:title message:message style:UIAlertControllerStyleAlert cancel:cancel destructive:destructive others:others action:action];
 }
 
 #pragma mark - ActionSheet
-- (UIAlertController *)jg_actionSheetWithTitle:(NSString *)title cancel:(NSString *)cancel others:(NSArray<NSString *> *)others btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_actionSheetWithTitle:title cancel:cancel destructive:nil others:others btnAction:btnAction];
+- (UIAlertController *)jg_actionSheetWithTitle:(NSString *)title cancel:(NSString *)cancel others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
+    return [self jg_actionSheetWithTitle:title cancel:cancel destructive:nil others:others action:action];
 }
 
-- (UIAlertController *)jg_actionSheetWithTitle:(NSString *)title cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others btnAction:(JGSAlertControllerAction)btnAction {
-    return [self jg_showAlertWithTitle:title message:nil style:UIAlertControllerStyleActionSheet cancel:cancel destructive:destructive others:others btnAction:btnAction];
+- (UIAlertController *)jg_actionSheetWithTitle:(NSString *)title cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
+    return [self jg_showAlertWithTitle:title message:nil style:UIAlertControllerStyleActionSheet cancel:cancel destructive:destructive others:others action:action];
 }
 
 #pragma mark - Alert & ActionSheet
-- (UIAlertController *)jg_showAlertWithTitle:(NSString *)title message:(NSString *)message style:(UIAlertControllerStyle)style cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others btnAction:(JGSAlertControllerAction)btnAction {
+- (UIAlertController *)jg_showAlertWithTitle:(NSString *)title message:(NSString *)message style:(UIAlertControllerStyle)style cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)btnAction {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
     
