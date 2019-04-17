@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, JGSToastPosition) {
 @property (nonatomic, assign) CGFloat bottomMargin; // Toast底部显示时与底部间距，默认32
 
 @property (nonatomic, assign) CGFloat cornerRadius; // Toast圆角，默认2.5
-@property (nonatomic, strong, null_resettable) UIColor *backgroundColor; // Toast背景色，默认黑色50%透明度
+@property (nonatomic, strong, null_resettable) UIColor *backgroundColor; // Toast背景色，默认黑色75%透明度
 
 @property (nonatomic, strong, null_resettable) UIFont *textFont; // Toast文字字体，默认16号系统字体
 @property (nonatomic, strong, null_resettable) UIColor *textColor; // Toast文字字色，默认白色

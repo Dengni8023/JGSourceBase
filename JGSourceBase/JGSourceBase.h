@@ -29,9 +29,7 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #if __has_include(<JGSourceBase/JGSourceBase.h>)
 
 #import <JGSourceBase/JGSBase.h>
-#ifdef JGS_AlertController
-#import <JGSourceBase/JGSAlertController.h> // JGSAlertController
-#endif
+#import <JGSourceBase/JGSAlertController.h>
 #ifdef JGS_Reachability
 #import <JGSourceBase/JGSReachability.h> // JGSReachability
 #endif
@@ -43,9 +41,7 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #else
 
 #import "JGSBase.h"
-#ifdef JGS_AlertController
-#import "JGSAlertController.h" // JGSAlertController
-#endif
+#import "JGSAlertController.h"
 #ifdef JGS_Reachability
 #import "JGSReachability.h" // JGSReachability
 #endif

@@ -66,29 +66,22 @@ Pod::Spec.new do |s|
     # s.dependency "Dependency", "~> 2.1"
     
     # subspec
-    s.default_subspec = 'Base', 'AlertController'
+    s.default_subspec = 'Base'
     
     # Base
     s.subspec 'Base' do |ss|
-        ss.source_files         = "JGSourceBase/Base/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Base/*.h"
+        ss.source_files         = [
+            "JGSourceBase/Base/*.{h,m}",
+            "JGSourceBase/AlertController/*.{h,m}"
+        ]
+        ss.public_header_files  = [
+            "JGSourceBase/Base/*.h",
+            "JGSourceBase/AlertController/*.h"
+        ]
         
         ss.frameworks   = "Foundation", "UIKit", "CoreGraphics"
         ss.xcconfig     = {
             "OTHER_LDFLAGS" => '$(inherited) -ObjC',
-        }
-    end
-    
-    # AlertController
-    s.subspec 'AlertController' do |ss|
-        ss.source_files         = "JGSourceBase/AlertController/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/AlertController/*.h"
-        
-        ss.frameworks   = "Foundation", "UIKit"
-        ss.dependency   "JGSourceBase/Base"
-        ss.xcconfig     = {
-            "OTHER_LDFLAGS" => '$(inherited) -ObjC',
-            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_AlertController'
         }
     end
     
@@ -106,8 +99,14 @@ Pod::Spec.new do |s|
     
     # HUD
     s.subspec 'HUD' do |ss|
-        ss.source_files         = "JGSourceBase/LoadingHUD/*.{h,m}", "JGSourceBase/ToastHUD/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/LoadingHUD/*.h", "JGSourceBase/ToastHUD/*.h"
+        ss.source_files         = [
+            "JGSourceBase/LoadingHUD/*.{h,m}",
+            "JGSourceBase/ToastHUD/*.{h,m}"
+        ]
+        ss.public_header_files  = [
+            "JGSourceBase/LoadingHUD/*.h",
+            "JGSourceBase/ToastHUD/*.h"
+        ]
         
         ss.framework   = "Foundation", "UIKit"
         ss.dependency   'MBProgressHUD', '~> 1.1.0'

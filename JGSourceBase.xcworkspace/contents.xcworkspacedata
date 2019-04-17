@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:JGSourceBase.xcodeproj">
    </FileRef>
    <FileRef

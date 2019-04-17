@@ -29,7 +29,7 @@
 }
 
 - (UIColor *)backgroundColor {
-    return _backgroundColor ?: [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    return _backgroundColor ?: [[UIColor blackColor] colorWithAlphaComponent:0.75];
 }
 
 - (UIFont *)textFont {

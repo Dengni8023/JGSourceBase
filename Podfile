@@ -19,5 +19,5 @@ target "JGSourceBaseDemo" do
     pod 'JGSourceBase/HUD', :path => "."
     
     # project
-    project "JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj"
+    project "JGSourceBase.xcodeproj"
 end

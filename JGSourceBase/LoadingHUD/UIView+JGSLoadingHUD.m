@@ -37,7 +37,7 @@
 }
 
 - (UIColor *)bezelBackgroundColor {
-    return _bezelBackgroundColor ?: [UIColor colorWithWhite:0.36 alpha:0.9];
+    return _bezelBackgroundColor ?: [UIColor colorWithWhite:0.28 alpha:0.9];
 }
 
 - (UIColor *)indicatorColor {

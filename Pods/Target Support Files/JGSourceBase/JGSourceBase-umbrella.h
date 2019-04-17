@@ -11,8 +11,6 @@
 #endif
 
 #import "JGSourceBase.h"
-#import "JGSAlertController.h"
-#import "UIViewController+JGSAlertController.h"
 #import "JGSBase.h"
 #import "JGSBaseUtils.h"
 #import "JGSLogFunction.h"
@@ -21,6 +19,8 @@
 #import "NSDictionary+JGSBase.h"
 #import "NSObject+JGS_JSON.h"
 #import "UIColor+JGSBase.h"
+#import "JGSAlertController.h"
+#import "UIViewController+JGSAlertController.h"
 #import "JGSLoadingHUD.h"
 #import "UIView+JGSLoadingHUD.h"
 #import "JGSToast.h"

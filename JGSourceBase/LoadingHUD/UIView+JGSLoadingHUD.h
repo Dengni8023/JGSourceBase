@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, JGSHUDType) {
 @property (nonatomic, strong, nullable) UIView *customView; // 展示类行为JGSHUDTypeCustomView时的自定义View
 
 @property (nonatomic, assign) CGFloat bezelCornerRadius; // HUD中间框圆角，默认2.5
-@property (nonatomic, strong, null_resettable) UIColor *bezelBackgroundColor; // HUD中间框背景色，默认36%白色，透明度90%
+@property (nonatomic, strong, null_resettable) UIColor *bezelBackgroundColor; // HUD中间框背景色，默认28%白色，透明度90%
 
 @property (nonatomic, strong, null_resettable) UIColor *indicatorColor; // JGSHUDTypeIndicator样式indicator颜色，默认白色
 
