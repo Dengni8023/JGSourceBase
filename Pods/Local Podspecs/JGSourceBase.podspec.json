@@ -82,26 +82,15 @@
       }
     },
     {
-      "name": "Toast",
-      "source_files": "JGSourceBase/Toast/*.{h,m}",
-      "public_header_files": "JGSourceBase/Toast/*.h",
-      "frameworks": [
-        "Foundation",
-        "UIKit"
+      "name": "HUD",
+      "source_files": [
+        "JGSourceBase/LoadingHUD/*.{h,m}",
+        "JGSourceBase/ToastHUD/*.{h,m}"
       ],
-      "dependencies": {
-        "MBProgressHUD": [
-          "~> 1.1.0"
-        ]
-      },
-      "xcconfig": {
-        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) JGS_Toast"
-      }
-    },
-    {
-      "name": "LoadingHUD",
-      "source_files": "JGSourceBase/LoadingHUD/*.{h,m}",
-      "public_header_files": "JGSourceBase/LoadingHUD/*.h",
+      "public_header_files": [
+        "JGSourceBase/LoadingHUD/*.h",
+        "JGSourceBase/ToastHUD/*.h"
+      ],
       "frameworks": [
         "Foundation",
         "UIKit"
@@ -115,7 +104,7 @@
         ]
       },
       "xcconfig": {
-        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) JGS_LoadingHUD"
+        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) JGS_HUD"
       }
     }
   ]

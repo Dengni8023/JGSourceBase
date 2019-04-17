@@ -94,6 +94,13 @@
                                            JGDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
                                            JGDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
                                            ]),
+                  // Section 全屏Toast HUD
+                  JGDemoTableSectionMake(@">> 全屏Toast HUD",
+                                         @[
+                                           JGDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
+                                           JGDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
+                                           JGDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
+                                           ]),
                   ];
 }
 
@@ -365,7 +372,7 @@
     }
 }
 
-#pragma mark - Loading HUD
+#pragma mark - HUD
 - (void)showLoadingHUD:(NSInteger)rowIndex {
     
     JGSEnableLogWithMode(JGSLogModeFunc);
@@ -432,6 +439,36 @@
         JGSStrongSelf
         [self.view jg_hideLoading];
     });
+}
+
+- (void)showToastHUD:(NSInteger)rowIndex {
+    
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    switch (rowIndex) {
+        case 0: {
+            [JGSToast showToastWithMessage:@"加载中..."];
+        }
+            break;
+            
+        case 1: {
+            [JGSToast showToastWithMessage:@"加载中..." position:JGSToastPositionTop];
+        }
+            break;
+            
+        case 2: {
+            [JGSToast showToastWithMessage:@"加载中..." position:JGSToastPositionBottom];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+//    JGSWeakSelf
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        JGSStrongSelf
+//        [self.view jg_hideLoading];
+//    });
 }
 
 #pragma mark - End

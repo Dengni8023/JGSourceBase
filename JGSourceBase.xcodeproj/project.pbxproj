@@ -129,7 +129,7 @@
 				D4C9BB291FC84267003D0976 /* JGSourceBase.h */,
 				D4DE3AC3224A106E00F283C5 /* LoadingHUD */,
 				D4CA9CF92248E47B00A7FD50 /* Reachability */,
-				D4DE3AB92249EE7800F283C5 /* Toast */,
+				D4DE3AB92249EE7800F283C5 /* ToastHUD */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		D4DE3AB92249EE7800F283C5 /* Toast */ = {
+		D4DE3AB92249EE7800F283C5 /* ToastHUD */ = {
 			isa = PBXGroup;
 			children = (
 				D4DE3ABF2249F08F00F283C5 /* JGSToast.h */,
@@ -162,7 +162,7 @@
 				D4DE3ABB2249F07000F283C5 /* UIView+JGSToast.h */,
 				D4DE3ABC2249F07000F283C5 /* UIView+JGSToast.m */,
 			);
-			path = Toast;
+			path = ToastHUD;
 			sourceTree = "<group>";
 		};
 		D4DE3AC3224A106E00F283C5 /* LoadingHUD */ = {

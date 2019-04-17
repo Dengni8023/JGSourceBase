@@ -19,13 +19,14 @@
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
         
-        instance.defaultType = JGSHUDTypeIndicator;
+        instance.defaultType = JGSHUDTypeSpinningCircle;
         instance.bezelCornerRadius = 5.f;
         instance.spinningRadius = 32.f;
         instance.spinningLineWidth = 2.f;
         instance.spinningShadow = NO;
         instance.spinningDuration = M_PI_4;
         instance.textLines = 0;
+        instance.square = YES;
         instance.bezelSquareWidthThanHeight = 32;
     });
     return instance;
@@ -36,7 +37,7 @@
 }
 
 - (UIColor *)bezelBackgroundColor {
-    return _bezelBackgroundColor ?: [UIColor colorWithWhite:0.36 alpha:1.f];
+    return _bezelBackgroundColor ?: [UIColor colorWithWhite:0.36 alpha:0.9];
 }
 
 - (UIColor *)indicatorColor {
@@ -163,7 +164,7 @@ static NSPointerArray *JGSLoadingHUDStack = nil;
     hud.label.textColor = [JGSLoadingHUDStyle sharedStyle].textColor;
     hud.label.numberOfLines = [JGSLoadingHUDStyle sharedStyle].textLines;
     
-    hud.square = hud.label.text.length == 0;
+    hud.square = ([JGSLoadingHUDStyle sharedStyle].square || hud.label.text.length == 0);
     if (!hud.square) {
         [hud setNeedsLayout];
         [hud layoutIfNeeded];

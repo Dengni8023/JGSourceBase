@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     s.summary       = "JGSourceCode 通用定义、功能模块。iOS项目常用功能，UIAlertController、Reachability、Loading-HUD、Toast-HUD便捷方法封装。"
     s.description   = <<-DESC
     
-        JGSourceCode 通用定义、功能模块。iOS项目常用功能，UIAlertController、Reachability、Loading-HUD、Toast-HUD便捷方法封装。
+        JGSourceCode 通用定义、功能模块。iOS项目常用功能、UIAlertController、Reachability、HUD（Loading、Toast）便捷方法封装。
         
         功能包括：
         
@@ -29,11 +29,9 @@ Pod::Spec.new do |s|
                 原项目：JGNetworkReachability => https://github.com/dengni8023/JGNetworkReachability.git
                 1、网络状态获取、监听，支持多监听者
                 
-            LoadingHUD - Loading-HUD显示
+            HUD显示 - Loading-HUD、Toast-HUD显示
                 1、显示Loading HUD方法封装
-                
-            Toast - Toast-HUD显示
-                1、显示Toast HUD方法封装
+                2、显示Toast HUD方法封装
             
     DESC
     
@@ -106,28 +104,16 @@ Pod::Spec.new do |s|
         }
     end
     
-    # Toast
-    s.subspec 'Toast' do |ss|
-        ss.source_files         = "JGSourceBase/Toast/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Toast/*.h"
-        
-        ss.framework   = "Foundation", "UIKit"
-        ss.dependency   'MBProgressHUD', '~> 1.1.0'
-        ss.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_Toast'
-        }
-    end
-    
-    # LoadingHUD
-    s.subspec 'LoadingHUD' do |ss|
-        ss.source_files         = "JGSourceBase/LoadingHUD/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/LoadingHUD/*.h"
+    # HUD
+    s.subspec 'HUD' do |ss|
+        ss.source_files         = "JGSourceBase/LoadingHUD/*.{h,m}", "JGSourceBase/ToastHUD/*.{h,m}"
+        ss.public_header_files  = "JGSourceBase/LoadingHUD/*.h", "JGSourceBase/ToastHUD/*.h"
         
         ss.framework   = "Foundation", "UIKit"
         ss.dependency   'MBProgressHUD', '~> 1.1.0'
         ss.dependency   "JGSourceBase/Base"
         ss.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_LoadingHUD'
+            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_HUD'
         }
     end
     

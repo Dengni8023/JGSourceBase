@@ -23,9 +23,9 @@
 #import "UIColor+JGSBase.h"
 #import "JGSLoadingHUD.h"
 #import "UIView+JGSLoadingHUD.h"
-#import "JGSReachability.h"
 #import "JGSToast.h"
 #import "UIView+JGSToast.h"
+#import "JGSReachability.h"
 
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
 FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];

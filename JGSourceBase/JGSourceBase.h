@@ -35,10 +35,8 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #ifdef JGS_Reachability
 #import <JGSourceBase/JGSReachability.h> // JGSReachability
 #endif
-#ifdef JGS_LoadingHUD
+#ifdef JGS_HUD
 #import <JGSourceBase/JGSLoadingHUD.h> // JGSLoadingHUD
-#endif
-#ifdef JGS_Toast
 #import <JGSourceBase/JGSToast.h> // JGSToast
 #endif
 
@@ -51,10 +49,8 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #ifdef JGS_Reachability
 #import "JGSReachability.h" // JGSReachability
 #endif
-#ifdef JGS_LoadingHUD
+#ifdef JGS_HUD
 #import "JGSLoadingHUD.h" // JGSLoadingHUD
-#endif
-#ifdef JGS_Toast
 #import "JGSToast.h" // JGSToast
 #endif
 

@@ -23,11 +23,11 @@ typedef NS_ENUM(NSInteger, JGSHUDType) {
 
 @property (nonatomic, strong, null_resettable) UIColor *backgroundColor; // HUD背景色，默认黑色28%透明度
 
-@property (nonatomic, assign) JGSHUDType defaultType; // 默认展示HUD类型，默认JGSHUDTypeIndicator
+@property (nonatomic, assign) JGSHUDType defaultType; // 默认展示HUD类型，默认JGSHUDTypeSpinningCircle
 @property (nonatomic, strong, nullable) UIView *customView; // 展示类行为JGSHUDTypeCustomView时的自定义View
 
 @property (nonatomic, assign) CGFloat bezelCornerRadius; // HUD中间框圆角，默认2.5
-@property (nonatomic, strong, null_resettable) UIColor *bezelBackgroundColor; // HUD中间框背景色，默认36%白色
+@property (nonatomic, strong, null_resettable) UIColor *bezelBackgroundColor; // HUD中间框背景色，默认36%白色，透明度90%
 
 @property (nonatomic, strong, null_resettable) UIColor *indicatorColor; // JGSHUDTypeIndicator样式indicator颜色，默认白色
 
@@ -42,7 +42,8 @@ typedef NS_ENUM(NSInteger, JGSHUDType) {
 @property (nonatomic, strong, null_resettable) UIColor *textColor; // HUD文字字色，默认白色，
 @property (nonatomic, assign) NSUInteger textLines; // HUD文字行数，默认0-不限制行数
 
-@property (nonatomic, assign) CGFloat bezelSquareWidthThanHeight; // HUD中间框默认为正方形，当存在文字且宽大于高超过该值则长方形显示，默认32
+@property (nonatomic, assign) BOOL square; // HUD中间框是否为正方形
+@property (nonatomic, assign) CGFloat bezelSquareWidthThanHeight; // HUD中间框默认为正方形，当square为NO且存在文字且宽大于高超过该值则长方形显示，默认32
 
 + (instancetype)sharedStyle;
 

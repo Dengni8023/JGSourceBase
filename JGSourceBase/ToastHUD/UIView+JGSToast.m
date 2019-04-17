@@ -166,8 +166,8 @@ static NSPointerArray *JGSToastStack = nil;
         safeInsets = self.safeAreaInsets;
     }
     
-    hud.minSize = CGSizeMake(width / 3.f, width / 3.f / 5.f);
-    hud.margin = 12;
+    hud.minSize = CGSizeMake(width / 4.f, width / 4.f / 5.f);
+    hud.margin = 6;
     
     CGFloat safeTopOffset = safeInsets.top + [JGSToastStyle sharedStyle].topMargin - height * 0.5;
     CGFloat safeBottomOffset = height - safeInsets.bottom - [JGSToastStyle sharedStyle].bottomMargin - height * 0.5;
