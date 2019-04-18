@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "1.0.1"
+    s.version       = "1.0.1.1"
     
     s.summary       = "JGSourceCode 通用定义、功能模块。iOS项目常用功能，UIAlertController、Reachability、Loading-HUD、Toast-HUD便捷方法封装。"
     s.description   = <<-DESC

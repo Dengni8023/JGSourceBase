@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, JGSHUDType) {
-    JGSHUDTypeIndicator = 0, // 使用系统的UIActivityIndicatorView
-    JGSHUDTypeSpinningCircle, // 使用JGSSpinningCircle
+    JGSHUDTypeSpinningCircle = 0, // 使用JGSSpinningCircle
+    JGSHUDTypeIndicator, // 使用系统的UIActivityIndicatorView
     JGSHUDTypeCustomView, // 自定义View
 };
 

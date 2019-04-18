@@ -18,6 +18,7 @@
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
         
+        instance.defaultPosition = JGSToastPositionCenter;
         instance.topMargin = 32.f;
         instance.bottomMargin = 32.f;
         instance.cornerRadius = 2.5f;
@@ -63,7 +64,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithMessage:(NSString *)message completion:(void (^)(void))completion {
-    [self jg_showToastWithMessage:message position:JGSToastPositionCenter completion:nil];
+    [self jg_showToastWithMessage:message position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
 }
 
 - (void)jg_showToastWithMessage:(NSString *)message position:(JGSToastPosition)position completion:(void (^)(void))completion {
@@ -91,7 +92,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithImage:(UIImage *)image completion:(void (^)(void))completion {
-    [self jg_showToastWithImage:image position:JGSToastPositionCenter completion:nil];
+    [self jg_showToastWithImage:image position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
 }
 
 - (void)jg_showToastWithImage:(UIImage *)image position:(JGSToastPosition)position completion:(void (^)(void))completion {
@@ -119,7 +120,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithIcon:(UIImage *)icon message:(NSString *)message completion:(void (^)(void))completion {
-    [self jg_showToastWithIcon:icon message:message position:JGSToastPositionCenter completion:nil];
+    [self jg_showToastWithIcon:icon message:message position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
 }
 
 - (void)jg_showToastWithIcon:(UIImage *)icon message:(NSString *)message position:(JGSToastPosition)position completion:(void (^)(void))completion {

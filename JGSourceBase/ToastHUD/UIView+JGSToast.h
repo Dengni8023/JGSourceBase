@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, JGSToastPosition) {
  */
 @interface JGSToastStyle : NSObject
 
+@property (nonatomic, assign) JGSToastPosition defaultPosition; // 默认显示位置，默认为JGSToastPositionCenter
 @property (nonatomic, assign) CGFloat topMargin; // Toast顶部显示时与顶部间距，默认32
 @property (nonatomic, assign) CGFloat bottomMargin; // Toast底部显示时与底部间距，默认32
 
