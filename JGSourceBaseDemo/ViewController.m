@@ -99,6 +99,8 @@
                                          @[
                                            JGDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
                                            JGDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
+                                           JGDemoTableRowMakeSelector(@"Up样式", @selector(showToastHUD:)),
+                                           JGDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
                                            JGDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
                                            ]),
                   ];
@@ -317,17 +319,15 @@
             NSURL *URL = urlStr.jg_URL;
             JGSLog(@"\n%@", urlStr.jg_URLString);
             JGSLog(@"\n%@", [URL jg_queryParams]);
-            JGSLog(@"\n%@", [URL jg_queryParams:JGSURLQueryPolicyFirstUnempty]);
-            JGSLog(@"\n%@", [URL jg_queryParams:JGSURLQueryPolicyLast]);
         }
             break;
             
         case 4: {
-            
+           
             NSString *urlStr = @"https://www.baidu.com/search?key1=你 Hello 好%5B中括号%5D";
             NSURL *URL = urlStr.jg_URL;
             JGSLog(@"\n%@", urlStr.jg_URLString);
-            JGSLog(@"\nkey1: %@", [URL jg_queryValueWithKey:@"key1"]);
+            JGSLog(@"\nkey1: %@", [URL jg_queryForKey:@"key1"]);
         }
             break;
             
@@ -358,6 +358,8 @@
         case 0: {
             
             JGSLog(@"Model to JSON : %@", [storeDictionary jg_JSONString]);
+            id object = [storeDictionary jg_JSONObjectWithOptions:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:nil];
+            JGSLog(@"Model to Mutable : %@", object);
         }
             break;
             
@@ -456,6 +458,16 @@
             break;
             
         case 2: {
+            [JGSToast showToastWithMessage:@"加载中..." position:JGSToastPositionUp];
+        }
+            break;
+            
+        case 3: {
+            [JGSToast showToastWithMessage:@"加载中..." position:JGSToastPositionLow];
+        }
+            break;
+            
+        case 4: {
             [JGSToast showToastWithMessage:@"加载中..." position:JGSToastPositionBottom];
         }
             break;

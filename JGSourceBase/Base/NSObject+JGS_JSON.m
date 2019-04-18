@@ -19,38 +19,6 @@
     return [self jg_JSONObjectWithOptions:kNilOptions error:error];
 }
 
-- (id)jg_JSONObjectAllowFragments {
-    return [self jg_JSONObjectAllowFragments:NULL];
-}
-
-- (id)jg_JSONObjectAllowFragments:(NSError * _Nullable __autoreleasing *)error {
-    return [self jg_JSONObjectWithOptions:NSJSONReadingAllowFragments error:error];
-}
-
-- (id)jg_JSONObjectWithMutableLeaf {
-    return [self jg_JSONObjectWithMutableLeaf:NULL];
-}
-
-- (id)jg_JSONObjectWithMutableLeaf:(NSError * _Nullable __autoreleasing *)error {
-    return [self jg_JSONObjectWithOptions:NSJSONReadingMutableLeaves error:error];
-}
-
-- (id)jg_JSONObjectWithMutableContainer {
-    return [self jg_JSONObjectWithMutableContainer:NULL];
-}
-
-- (id)jg_JSONObjectWithMutableContainer:(NSError * _Nullable __autoreleasing *)error {
-    return [self jg_JSONObjectWithOptions:NSJSONReadingMutableContainers error:error];
-}
-
-- (id)jg_JSONObjectWithMutableContainerLeaf {
-    return [self jg_JSONObjectWithMutableContainer:NULL];
-}
-
-- (id)jg_JSONObjectWithMutableContainerLeaf:(NSError * _Nullable __autoreleasing *)error {
-    return [self jg_JSONObjectWithOptions:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves) error:error];
-}
-
 - (id)jg_JSONObjectWithOptions:(NSJSONReadingOptions)options error:(NSError * _Nullable __autoreleasing *)error {
     
     if (([self isKindOfClass:[NSNumber class]] || [self isEqual:[NSNull null]]) && (options & NSJSONReadingAllowFragments)) {
@@ -61,14 +29,15 @@
     if ([NSJSONSerialization isValidJSONObject:self]) {
         
         // 已经是合法的JSON对象，判断处理options
-        if (options & (NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers)) {
+        if (options & (NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers | NSJSONReadingAllowFragments)) {
             
             encodeData = [NSJSONSerialization dataWithJSONObject:self options:kNilOptions error:error];
             if (!encodeData || (error != NULL && *error)) {
                 return nil;
             }
+        } else {
+            return self;
         }
-        return self;
     }
     
     // 非JSON对象转NSData
@@ -81,9 +50,7 @@
     
     // 无法转换为NSData处理
     if (!encodeData) {
-        
         if (error != NULL) {
-            
             *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Can't parser object <%@>, a kind of class %@.", self, NSStringFromClass([self class])]}];
         }
         return nil;
@@ -196,7 +163,6 @@
             return nil;
         }
     }
-    
     return self;
 }
 

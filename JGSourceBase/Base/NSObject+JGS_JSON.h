@@ -14,59 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Parser
 /**
- JSON解析NSString、NSData获取合法的JSON对象（NSArray、NSDictionary）
- NSData必须为UTF8编码的JSON，若已是合法JSON对象则原样返回
- 
- @param error 解析错误
- @return 合法的JSON对象（NSArray、NSDictionary）
- */
-- (nullable id)jg_JSONObject:(NSError **)error;
-- (nullable id)jg_JSONObject;
-
-/**
- JSON解析NSString、NSData，获取JSON对象可能不合法（NSNumber, NSArray, NSDictionary, or NSNull）
- NSData必须为UTF8编码的JSON，若已是合法JSON对象则原样返回
- 
- @param error 解析错误
- @return JSON对象（NSNumber, NSArray, NSDictionary, or NSNull）
- */
-- (nullable id)jg_JSONObjectAllowFragments:(NSError **)error;
-- (nullable id)jg_JSONObjectAllowFragments;
-
-/**
- JSON解析NSString、NSData获取合法的JSON对象（NSArray、NSDictionary），叶子结点为可变类型（字符串为NSMutableString）
- NSData必须为UTF8编码的JSON，若已是合法JSON对象则处理叶子结点为可变类型
- 
- #param error 解析错误信息
- @return 合法的JSON对象（NSArray、NSDictionary）
- */
-- (nullable id)jg_JSONObjectWithMutableLeaf:(NSError **)error;
-- (nullable id)jg_JSONObjectWithMutableLeaf;
-
-/**
- JSON解析NSString、NSData获取合法的JSON对象（NSArray、NSDictionary），容器为可变类型（NSMutableDictionary、NSMutableArray，嵌套时每层均可变）
- NSData必须为UTF8编码的JSON，若已是合法JSON对象则处理容器为可变类型
- 
- #param error 解析错误信息
- @return 合法的JSON对象（NSMutableDictionary、NSMutableArray）
- */
-- (nullable id)jg_JSONObjectWithMutableContainer:(NSError **)error;
-- (nullable id)jg_JSONObjectWithMutableContainer;
-
-/**
- JSON解析NSString、NSData获取可变的JSON对象（NSArray、NSDictionary）
- 容器为可变类型（NSMutableDictionary、NSMutableArray，嵌套时每层均可变）
- 叶子结点为可变类型（字符串为NSMutableString）
- NSData必须为UTF8编码的JSON，若已是合法JSON对象则处理容器、叶子结点为可变类型
- 
- #param error 解析错误信息
- @return 合法的JSON对象（NSMutableDictionary、NSMutableArray）
- */
-- (nullable id)jg_JSONObjectWithMutableContainerLeaf:(NSError **)error;
-- (nullable id)jg_JSONObjectWithMutableContainerLeaf;
-
-/**
- JSON解析NSString、NSData
+ JSON解析，NSString、NSData获取合法的JSON对象（NSArray、NSDictionary）
  NSData必须为UTF8编码的JSON，若已是合法JSON对象则根据options判断是否处理容器、叶子结点为可变类型
  
  @param options 解析配置Options
@@ -74,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return JSON解析结果
  */
 - (nullable id)jg_JSONObjectWithOptions:(NSJSONReadingOptions)options error:(NSError **)error;
+- (nullable id)jg_JSONObject:(NSError **)error;
+- (nullable id)jg_JSONObject;
 
 #pragma mark - Encode
 /**

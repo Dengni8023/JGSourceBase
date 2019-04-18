@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 FOUNDATION_EXPORT CGFloat const JGSToastTopBottomMargin;
 typedef NS_ENUM(NSInteger, JGSToastPosition) {
     JGSToastPositionCenter = 0, // 视图居中，默认
-    JGSToastPositionTop, // SafeArea顶边距JGSToastTopBottomMargin
+    JGSToastPositionTop, // SafeArea顶边距JGSToastStyle.topMargin
     JGSToastPositionUp, // 视图 1/4顶部
     JGSToastPositionLow, // 视图 1/4底部
-    JGSToastPositionBottom, // SafeArea底边距JGSToastTopBottomMargin
+    JGSToastPositionBottom, // SafeArea底边距JGSToastStyle.bottomMargin
 };
 
 /**

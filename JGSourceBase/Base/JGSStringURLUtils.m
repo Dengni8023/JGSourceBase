@@ -18,7 +18,7 @@
 static NSString * const kJGSURL_AFCharactersGeneralDelimitersToEncode = @":#[]@";
 static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
 
-- (instancetype)jg_URLEncodeString {
+- (NSString *)jg_URLEncodeString {
     
     NSMutableCharacterSet *allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
     [allowedCharacterSet removeCharactersInString:[kJGSURL_AFCharactersGeneralDelimitersToEncode stringByAppendingString:kJGSURL_AFCharactersSubDelimitersToEncode]];
@@ -50,7 +50,7 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
     return escaped;
 }
 
-- (instancetype)jg_URLString {
+- (NSString *)jg_URLString {
     
     NSString *URLString = self.copy;
     
@@ -135,63 +135,50 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
 
 - (NSDictionary<NSString *,NSString *> *)jg_queryParams {
     
-    return [self jg_queryParams:JGSURLQueryPolicyFirst];
-}
-
-- (NSDictionary<NSString *,NSString *> *)jg_queryParams:(JGSURLQueryPolicy)policy {
-    
     // iOS 8以后不需要使用正则表达式，系统提供方法获取query
     NSMutableDictionary<NSString *, NSString *> *params = @{}.mutableCopy;
     for (NSURLQueryItem *queryItem in self.jg_queryItems) {
         
-        if ([params.allKeys containsObject:queryItem.name]) {
-            
-            switch (policy) {
-                case JGSURLQueryPolicyFirst:
-                    continue;
-                    break;
-                    
-                case JGSURLQueryPolicyFirstUnempty: {
-                    if (params[queryItem.name].length > 0) {
-                        continue;
-                    }
-                }
-                    break;
-                    
-                case JGSURLQueryPolicyLast:
-                    break;
-            }
+        NSString *name = queryItem.name;
+        NSString *value = queryItem.value ?: @"";
+        if ([params.allKeys containsObject:name]) {
+            value = [params[name] stringByAppendingFormat:@",%@", value];
         }
-        [params setObject:queryItem.value ?: @"" forKey:queryItem.name];
+        [params setObject:value forKey:name];
     }
     
-    return params.copy;
+    return params.count > 0 ? params.copy : nil;
+}
+
+- (NSDictionary<NSString *,NSString *> *)jg_queryParams:(JGSURLQueryPolicy)policy {
+    return self.jg_queryParams;
+}
+
+- (BOOL)jg_existQueryForKey:(NSString *)key {
+    NSAssert(key.length > 0, @"Please use a certain key");
+    return [self.jg_queryParams.allKeys containsObject:key];
 }
 
 - (BOOL)jg_existQueryKey:(NSString *)key {
-    
-    NSAssert(key.length > 0, @"Please use a certain key");
-    
-    NSDictionary *queryParams = [self jg_queryParams];
-    
-    return [queryParams.allKeys containsObject:key];
+    return [self jg_existQueryForKey:key];
 }
 
-- (NSString *)jg_queryValueWithKey:(NSString *)key {
-    
-    return [self jg_queryValueWithKey:key policy:JGSURLQueryPolicyFirst];
-}
-
-- (NSString *)jg_queryValueWithKey:(NSString *)key policy:(JGSURLQueryPolicy)policy {
+- (NSString *)jg_queryForKey:(NSString *)key {
     
     NSAssert(key.length > 0, @"Please use a certain key");
-    
-    NSDictionary *queryParams = [self jg_queryParams:policy];
+    NSDictionary *queryParams = self.jg_queryParams;
     if ([queryParams.allKeys containsObject:key]) {
-        
         return queryParams[key];
     }
     return nil;
+}
+
+- (NSString *)jg_queryValueWithKey:(NSString *)key {
+    return [self jg_queryForKey:key];
+}
+
+- (NSString *)jg_queryValueWithKey:(NSString *)key policy:(JGSURLQueryPolicy)policy {
+    return [self jg_queryForKey:key];
 }
 
 @end
