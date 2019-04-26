@@ -15,9 +15,6 @@
 #import <JGSourceBase/JGSLogFunction.h>
 #import <JGSourceBase/JGSStringURLUtils.h>
 #import <JGSourceBase/JGSWeakStrong.h>
-#import <JGSourceBase/NSDictionary+JGSBase.h>
-#import <JGSourceBase/NSObject+JGS_JSON.h>
-#import <JGSourceBase/UIColor+JGSBase.h>
 
 #else
 
@@ -25,9 +22,6 @@
 #import "JGSLogFunction.h"
 #import "JGSStringURLUtils.h"
 #import "JGSWeakStrong.h"
-#import "NSDictionary+JGSBase.h"
-#import "NSObject+JGS_JSON.h"
-#import "UIColor+JGSBase.h"
 
 #endif
 

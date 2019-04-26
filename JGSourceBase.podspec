@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "1.0.1.1"
+    s.version       = "1.0.2"
     
     s.summary       = "JGSourceCode 通用定义、功能模块。iOS项目常用功能，UIAlertController、Reachability、Loading-HUD、Toast-HUD便捷方法封装。"
     s.description   = <<-DESC
@@ -54,35 +54,53 @@ Pod::Spec.new do |s|
     
     s.source_files          = "JGSourceBase/*.{h,m}"
     s.public_header_files   = "JGSourceBase/*.h"
-    # s.resource    = "JGSourceBase.bundle"
-    
-    # s.framework  = "Foundation"
-    # s.frameworks = "SomeFramework", "AnotherFramework"
-    # s.library    = "SomeLibararyy"
-    # s.libraries  = "SomeLibararyy", "AnotherLibararyy"
-    
-    # s.dependency "Dependency", "~> 4.0"
-    # s.dependency "Dependency/SUB"
-    # s.dependency "Dependency", "~> 2.1"
     
     # subspec
-    s.default_subspec = 'Base'
+    s.default_subspecs = [
+        'Base',
+        'AlertController',
+        'Category',
+    ]
     
     # Base
     s.subspec 'Base' do |ss|
         ss.source_files         = [
             "JGSourceBase/Base/*.{h,m}",
-            "JGSourceBase/AlertController/*.{h,m}"
         ]
         ss.public_header_files  = [
             "JGSourceBase/Base/*.h",
-            "JGSourceBase/AlertController/*.h"
+        ]
+        
+        ss.frameworks   = "Foundation"
+        ss.xcconfig     = {
+            #"OTHER_LDFLAGS" => '$(inherited) -ObjC',
+            "OTHER_LDFLAGS" => '-ObjC',
+        }
+    end
+    
+    # AlertController
+    s.subspec 'AlertController' do |ss|
+        ss.source_files    = [
+            "JGSourceBase/AlertController/*.{h,m}",
+        ]
+        ss.public_header_files = [
+            "JGSourceBase/AlertController/*.h",
+        ]
+        
+        ss.frameworks   = "Foundation", "UIKit"
+        ss.dependency   "JGSourceBase/Base"
+    end
+    
+    # Category
+    s.subspec 'Category' do |ss|
+        ss.source_files    = [
+            "JGSourceBase/Category/*.{h,m}",
+        ]
+        ss.public_header_files = [
+            "JGSourceBase/Category/*.h",
         ]
         
         ss.frameworks   = "Foundation", "UIKit", "CoreGraphics"
-        ss.xcconfig     = {
-            "OTHER_LDFLAGS" => '$(inherited) -ObjC',
-        }
     end
     
     # Reachability
@@ -90,30 +108,47 @@ Pod::Spec.new do |s|
         ss.source_files         = "JGSourceBase/Reachability/*.{h,m}"
         ss.public_header_files  = "JGSourceBase/Reachability/*.h"
         
-        ss.framework   = "Foundation", "SystemConfiguration", "CoreTelephony"
+        ss.framework    = "SystemConfiguration", "CoreTelephony"
         ss.dependency   "JGSourceBase/Base"
         ss.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_Reachability'
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
         }
     end
     
     # HUD
     s.subspec 'HUD' do |ss|
         ss.source_files         = [
-            "JGSourceBase/LoadingHUD/*.{h,m}",
-            "JGSourceBase/ToastHUD/*.{h,m}"
+            "JGSourceBase/HUD/*.{h,m}",
         ]
         ss.public_header_files  = [
-            "JGSourceBase/LoadingHUD/*.h",
-            "JGSourceBase/ToastHUD/*.h"
+            "JGSourceBase/HUD/*.h",
         ]
         
-        ss.framework   = "Foundation", "UIKit"
         ss.dependency   'MBProgressHUD', '~> 1.1.0'
-        ss.dependency   "JGSourceBase/Base"
+        ss.dependency   "JGSourceBase/Category"
         ss.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited) JGS_HUD'
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_HUD',
         }
+        
+        # LoadingHUD
+        ss.subspec 'LoadingHUD' do |sss|
+            sss.source_files    = [
+                "JGSourceBase/HUD/LoadingHUD/*.{h,m}",
+            ]
+            sss.public_header_files = [
+                "JGSourceBase/HUD/LoadingHUD/*.h",
+            ]
+        end
+        
+        # ToastHUD
+        ss.subspec 'ToastHUD' do |sss|
+            sss.source_files    = [
+                "JGSourceBase/HUD/ToastHUD/*.{h,m}",
+            ]
+            sss.public_header_files = [
+                "JGSourceBase/HUD/ToastHUD/*.h",
+            ]
+        end
     end
     
     s.requires_arc = true

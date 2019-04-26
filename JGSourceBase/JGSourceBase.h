@@ -14,12 +14,6 @@
 #error "JGSourceBase uses features only available in iOS SDK 9.0 and later."
 #endif
 
-//! Project version number for JGSourceBase.
-FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
-
-//! Project version string for JGSourceBase.
-FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
-
 // In this header, you should import all the public headers of your framework using statements like #import <JGSourceBase/PublicHeader.h>
 
 // JGS 缩写说明
@@ -30,24 +24,28 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 #import <JGSourceBase/JGSBase.h>
 #import <JGSourceBase/JGSAlertController.h>
+#import <JGSourceBase/JGSCategory.h>
+// JGSReachability
 #ifdef JGS_Reachability
-#import <JGSourceBase/JGSReachability.h> // JGSReachability
+#import <JGSourceBase/JGSReachability.h>
 #endif
+// JGSHUD
 #ifdef JGS_HUD
-#import <JGSourceBase/JGSLoadingHUD.h> // JGSLoadingHUD
-#import <JGSourceBase/JGSToast.h> // JGSToast
+#import <JGSourceBase/JGSHUD.h>
 #endif
 
 #else
 
 #import "JGSBase.h"
 #import "JGSAlertController.h"
+#import "JGSCategory.h"
+// JGSReachability
 #ifdef JGS_Reachability
-#import "JGSReachability.h" // JGSReachability
+#import "JGSReachability.h"
 #endif
+// JGSToast
 #ifdef JGS_HUD
-#import "JGSLoadingHUD.h" // JGSLoadingHUD
-#import "JGSToast.h" // JGSToast
+#import "JGSHUD.h"
 #endif
 
 #endif
