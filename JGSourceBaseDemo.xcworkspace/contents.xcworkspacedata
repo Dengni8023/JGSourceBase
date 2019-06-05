@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:JGSourceBase.podspec">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <Group
+      location = "group:JGSourceBase"
+      name = "JGSourceBase">
+      <Group
+         location = "group:AlertController"
+         name = "AlertController">
+         <FileRef
+            location = "group:UIViewController+JGSAlertController.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSAlertController.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIViewController+JGSAlertController.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSAlertController.h">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Base"
+         name = "Base">
+         <FileRef
+            location = "group:JGSBaseUtils.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSWeakStrong.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSStringURLUtils.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSLogFunction.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSBaseUtils.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSStringURLUtils.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSBase.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSLogFunction.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Category"
+         name = "Category">
+         <FileRef
+            location = "group:JGSCategory.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor+JGSBase.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+JGSBase.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+JGS_JSON.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor+JGSBase.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+JGSBase.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+JGS_JSON.h">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:HUD"
+         name = "HUD">
+         <Group
+            location = "group:ToastHUD"
+            name = "ToastHUD">
+            <FileRef
+               location = "group:JGSToast.m">
+            </FileRef>
+            <FileRef
+               location = "group:UIView+JGSToast.m">
+            </FileRef>
+            <FileRef
+               location = "group:JGSToast.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIView+JGSToast.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:JGSHUD.h">
+         </FileRef>
+         <Group
+            location = "group:LoadingHUD"
+            name = "LoadingHUD">
+            <FileRef
+               location = "group:JGSLoadingHUD.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIView+JGSLoadingHUD.m">
+            </FileRef>
+            <FileRef
+               location = "group:JGSLoadingHUD.m">
+            </FileRef>
+            <FileRef
+               location = "group:UIView+JGSLoadingHUD.h">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:JGSourceBase.h">
+      </FileRef>
+      <Group
+         location = "group:Reachability"
+         name = "Reachability">
+         <FileRef
+            location = "group:JGSReachability.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSReachability.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:SecurityKeyboard"
+         name = "SecurityKeyboard">
+         <FileRef
+            location = "group:JGSBaseKeyboard.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSBaseKeyboard.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSLetterKeyboard.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSLetterKeyboard.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSNumberKeyboard.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSNumberKeyboard.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSSecurityKeyboard.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSSecurityKeyboard.m">
+         </FileRef>
+         <FileRef
+            location = "group:JGSSymbolKeyboard.h">
+         </FileRef>
+         <FileRef
+            location = "group:JGSSymbolKeyboard.m">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:JGSourceBaseDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

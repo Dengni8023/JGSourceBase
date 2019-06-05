@@ -1,6 +1,6 @@
 # JGSourceBase
 
-JGSourceCode 通用定义、功能模块。iOS项目常用功能、UIAlertController、Reachability、HUD（Loading、Toast）便捷方法封装。
+JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。
 
 功能包括：
 
@@ -30,24 +30,33 @@ JGSourceCode 通用定义、功能模块。iOS项目常用功能、UIAlertContro
 >
 1. 网络状态获取、监听，支持多监听者
 	
-#### HUD显示 - Loading-HUD、Toast-HUD显示
+#### HUD - Loading-HUD、Toast-HUD显示
 
 >
 1. 显示Loading HUD方法封装
 2. 显示Toast HUD方法封装
 
+#### SecurityKeyboard - 自定义安全键盘
 
-## 引用方法
+>
+1. 字母键盘支持单字母大小写切换、选中大写
+2. 符号键盘支持与数字混合展示，支持全角、半角字符
+3. 数字键盘支持随机/非随机
 
-引用基础功能模块、UIAlertController便捷封装功能
+## 使用方法
+
+##### 基础功能模块、UIAlertController便捷封装功能
 
 	pod 'JGSourceBase'
 
-引用网络状态监听模块
+##### 网络状态监听模块
 
 	pod 'JGSourceBase/Reachability'
 
-引用HUD（Loading、Toast）功能
+##### HUD（Loading、Toast）功能
 
 	pod 'JGSourceBase/HUD'
     
+##### 自定义安全键盘
+
+	pod 'JGSourceBase/SecurityKeyboard'

@@ -38,6 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXTERN JGDemoTableRowData *JGDemoTableRowMakeSelector(NSString *title, SEL selector);
 FOUNDATION_EXTERN JGDemoTableRowData *JGDemoTableRowMakeBlock(NSString *title, void (^selectBlock)(JGDemoTableRowData *rowData));
-FOUNDATION_EXTERN JGDemoTableSectionData *JGDemoTableSectionMake(NSString *title, NSArray<JGDemoTableRowData *> *rows);
+FOUNDATION_EXTERN JGDemoTableSectionData *JGDemoTableSectionMake(NSString * _Nullable title, NSArray<JGDemoTableRowData *> *rows);
 
 NS_ASSUME_NONNULL_END

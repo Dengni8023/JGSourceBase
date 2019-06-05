@@ -33,6 +33,10 @@
 #ifdef JGS_HUD
 #import <JGSourceBase/JGSHUD.h>
 #endif
+// JGSSecurityKeyboard
+#ifdef JGS_SecurityKeyboard
+#import <JGSourceBase/JGSSecurityKeyboard.h>
+#endif
 
 #else
 
@@ -46,6 +50,10 @@
 // JGSToast
 #ifdef JGS_HUD
 #import "JGSHUD.h"
+#endif
+// JGSSecurityKeyboard
+#ifdef JGS_SecurityKeyboard
+#import "JGSSecurityKeyboard.h"
 #endif
 
 #endif

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C74C189E715C3DB2A1F0C017 /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246E4BA190A141C33B6E2917 /* Pods_JGSourceBaseDemo.framework */; };
+		D41663EC229E80CB00C0A171 /* JGSBaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41663EB229E80CB00C0A171 /* JGSBaseDemoViewController.m */; };
+		D41663EF229E818200C0A171 /* JGSHUDDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41663EE229E818200C0A171 /* JGSHUDDemoViewController.m */; };
+		D41663F2229E819E00C0A171 /* JGSKeyboardDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41663F1229E819E00C0A171 /* JGSKeyboardDemoViewController.m */; };
 		D418E52B2267523A00BD49F6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D418E52A2267523A00BD49F6 /* AppDelegate.m */; };
 		D418E52E2267523A00BD49F6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D418E52D2267523A00BD49F6 /* ViewController.m */; };
 		D418E5332267523C00BD49F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D418E5322267523C00BD49F6 /* Assets.xcassets */; };
@@ -20,6 +23,12 @@
 		0AAAD3152DC14F57F0B822BE /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		246E4BA190A141C33B6E2917 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E8865A716EC67B7FE28603 /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D41663EA229E80CB00C0A171 /* JGSBaseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSBaseDemoViewController.h; sourceTree = "<group>"; };
+		D41663EB229E80CB00C0A171 /* JGSBaseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSBaseDemoViewController.m; sourceTree = "<group>"; };
+		D41663ED229E818200C0A171 /* JGSHUDDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSHUDDemoViewController.h; sourceTree = "<group>"; };
+		D41663EE229E818200C0A171 /* JGSHUDDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSHUDDemoViewController.m; sourceTree = "<group>"; };
+		D41663F0229E819E00C0A171 /* JGSKeyboardDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardDemoViewController.h; sourceTree = "<group>"; };
+		D41663F1229E819E00C0A171 /* JGSKeyboardDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardDemoViewController.m; sourceTree = "<group>"; };
 		D418E5272267523A00BD49F6 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D418E5292267523A00BD49F6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D418E52A2267523A00BD49F6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,6 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				D418E53E2267529000BD49F6 /* Base */,
+				D41663EA229E80CB00C0A171 /* JGSBaseDemoViewController.h */,
+				D41663EB229E80CB00C0A171 /* JGSBaseDemoViewController.m */,
+				D41663ED229E818200C0A171 /* JGSHUDDemoViewController.h */,
+				D41663EE229E818200C0A171 /* JGSHUDDemoViewController.m */,
+				D41663F0229E819E00C0A171 /* JGSKeyboardDemoViewController.h */,
+				D41663F1229E819E00C0A171 /* JGSKeyboardDemoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -154,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4C9BB201FC84267003D0976 /* Build configuration list for PBXProject "JGSourceBase" */;
+			buildConfigurationList = D4C9BB201FC84267003D0976 /* Build configuration list for PBXProject "JGSourceBaseDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -216,15 +231,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JGSourceBase/JGSourceBase.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGSourceBase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -239,8 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D418E5412267529000BD49F6 /* JGDemoTableData.m in Sources */,
+				D41663EC229E80CB00C0A171 /* JGSBaseDemoViewController.m in Sources */,
 				D418E52E2267523A00BD49F6 /* ViewController.m in Sources */,
 				D418E5392267523C00BD49F6 /* main.m in Sources */,
+				D41663EF229E818200C0A171 /* JGSHUDDemoViewController.m in Sources */,
+				D41663F2229E819E00C0A171 /* JGSKeyboardDemoViewController.m in Sources */,
 				D418E52B2267523A00BD49F6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +296,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -292,6 +315,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -422,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4C9BB201FC84267003D0976 /* Build configuration list for PBXProject "JGSourceBase" */ = {
+		D4C9BB201FC84267003D0976 /* Build configuration list for PBXProject "JGSourceBaseDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4C9BB2C1FC84267003D0976 /* Debug */,

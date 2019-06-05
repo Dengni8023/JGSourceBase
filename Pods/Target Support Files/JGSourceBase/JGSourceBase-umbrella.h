@@ -28,6 +28,11 @@
 #import "JGSToast.h"
 #import "UIView+JGSToast.h"
 #import "JGSReachability.h"
+#import "JGSBaseKeyboard.h"
+#import "JGSLetterKeyboard.h"
+#import "JGSNumberKeyboard.h"
+#import "JGSSecurityKeyboard.h"
+#import "JGSSymbolKeyboard.h"
 
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
 FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];

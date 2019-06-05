@@ -2,9 +2,9 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "1.0.2"
+    s.version       = "1.1.0"
     
-    s.summary       = "JGSourceCode 通用定义、功能模块。iOS项目常用功能，UIAlertController、Reachability、Loading-HUD、Toast-HUD便捷方法封装。"
+    s.summary       = "JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。"
     s.description   = <<-DESC
     
         JGSourceCode 通用定义、功能模块。iOS项目常用功能、UIAlertController、Reachability、HUD（Loading、Toast）便捷方法封装。
@@ -29,9 +29,14 @@ Pod::Spec.new do |s|
                 原项目：JGNetworkReachability => https://github.com/dengni8023/JGNetworkReachability.git
                 1、网络状态获取、监听，支持多监听者
                 
-            HUD显示 - Loading-HUD、Toast-HUD显示
+            HUD - Loading-HUD、Toast-HUD显示
                 1、显示Loading HUD方法封装
                 2、显示Toast HUD方法封装
+                
+            SecurityKeyboard - 自定义安全键盘
+                1、字母键盘支持单字母大小写切换、选中大写
+                2、符号键盘支持与数字混合展示，支持全角、半角字符
+                3、数字键盘支持随机/非随机
             
     DESC
     
@@ -71,9 +76,7 @@ Pod::Spec.new do |s|
             "JGSourceBase/Base/*.h",
         ]
         
-        ss.frameworks   = "Foundation"
         ss.xcconfig     = {
-            #"OTHER_LDFLAGS" => '$(inherited) -ObjC',
             "OTHER_LDFLAGS" => '-ObjC',
         }
     end
@@ -87,7 +90,6 @@ Pod::Spec.new do |s|
             "JGSourceBase/AlertController/*.h",
         ]
         
-        ss.frameworks   = "Foundation", "UIKit"
         ss.dependency   "JGSourceBase/Base"
     end
     
@@ -100,7 +102,7 @@ Pod::Spec.new do |s|
             "JGSourceBase/Category/*.h",
         ]
         
-        ss.frameworks   = "Foundation", "UIKit", "CoreGraphics"
+        ss.dependency   "JGSourceBase/Base"
     end
     
     # Reachability
@@ -108,7 +110,6 @@ Pod::Spec.new do |s|
         ss.source_files         = "JGSourceBase/Reachability/*.{h,m}"
         ss.public_header_files  = "JGSourceBase/Reachability/*.h"
         
-        ss.framework    = "SystemConfiguration", "CoreTelephony"
         ss.dependency   "JGSourceBase/Base"
         ss.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
@@ -149,6 +150,17 @@ Pod::Spec.new do |s|
                 "JGSourceBase/HUD/ToastHUD/*.h",
             ]
         end
+    end
+    
+    # SecurityKeyboard
+    s.subspec 'SecurityKeyboard' do |ss|
+        ss.source_files         = "JGSourceBase/SecurityKeyboard/*.{h,m}"
+        ss.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
+        
+        ss.dependency   "JGSourceBase/Category"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_SecurityKeyboard',
+        }
     end
     
     s.requires_arc = true

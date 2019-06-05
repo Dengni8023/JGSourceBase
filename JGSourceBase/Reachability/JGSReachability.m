@@ -104,9 +104,7 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     if (_reachabilityRef != NULL) {
-        
         CFRelease(_reachabilityRef);
         _reachabilityRef = NULL;
     }
