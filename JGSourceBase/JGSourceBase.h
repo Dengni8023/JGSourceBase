@@ -2,8 +2,8 @@
 //  JGSourceBase.h
 //  JGSourceBase
 //
-//  Created by Mei Jigao on 2017/11/24.
-//  Copyright © 2017年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2019/7/30.
+//  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,6 +13,12 @@
 #if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_9_0
 #error "JGSourceBase uses features only available in iOS SDK 9.0 and later."
 #endif
+
+//! Project version number for JGSourceBase.
+FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
+
+//! Project version string for JGSourceBase.
+FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <JGSourceBase/PublicHeader.h>
 

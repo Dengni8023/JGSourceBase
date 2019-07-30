@@ -6,7 +6,7 @@
 //
 
 #import "JGSBaseKeyboard.h"
-#import <JGSourceBase/JGSCategory.h>
+#import "JGSCategory.h"
 
 FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarColor(void) {
     return JGSColorRGB(253, 253, 253); // 系统键盘截图取色
@@ -242,7 +242,8 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     if (self.type == JGSKeyboardKeyTypeShift) {
-        self.backgroundColor = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? self.highlightedBgColor : self.normalBgColor);
+        self.shiftStatus = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? JGSKeyboardShiftKeySelected : JGSKeyboardShiftKeyDefault);
+        self.backgroundColor = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? self.normalBgColor : self.highlightedBgColor);
     }
     else {
         self.backgroundColor = self.highlightedBgColor;
@@ -260,34 +261,24 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    if (CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
+    if (self.type == JGSKeyboardKeyTypeShift ||
+        CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
         return;
     }
     
-    if (self.type == JGSKeyboardKeyTypeShift) {
-        self.shiftStatus = (self.shiftStatus != JGSKeyboardShiftKeyDefault ? JGSKeyboardShiftKeyDefault : JGSKeyboardShiftKeySelected);
-        self.backgroundColor = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? self.normalBgColor : self.highlightedBgColor);
-    }
-    else {
-        self.backgroundColor = self.normalBgColor;
-    }
+    self.backgroundColor = self.normalBgColor;
     self.highlighted = NO;
     [self setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    if (!CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
+    if (self.type == JGSKeyboardKeyTypeShift ||
+        !CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
         return;
     }
     
-    if (self.type == JGSKeyboardKeyTypeShift) {
-        self.shiftStatus = (self.shiftStatus != JGSKeyboardShiftKeyDefault ? JGSKeyboardShiftKeyDefault : JGSKeyboardShiftKeySelected);
-        self.backgroundColor = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? self.normalBgColor : self.highlightedBgColor);
-    }
-    else {
-        self.backgroundColor = self.normalBgColor;
-    }
+    self.backgroundColor = self.normalBgColor;
     self.highlighted = NO;
     [self setNeedsDisplay];
     

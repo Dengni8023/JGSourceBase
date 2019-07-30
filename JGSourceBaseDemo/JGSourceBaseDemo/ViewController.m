@@ -2,8 +2,8 @@
 //  ViewController.m
 //  JGSourceBaseDemo
 //
-//  Created by Mei Jigao on 2018/3/19.
-//  Copyright © 2018年 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2019/7/30.
+//  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -29,15 +29,15 @@
 - (void)initDatas {
     
     self.demoData = @[
-                  // Section 日志
-                  JGDemoTableSectionMake(nil,
-                                         @[
-                                           JGDemoTableRowMakeSelector(@"调试日志控制", @selector(showLogModeList)),
-                                           JGDemoTableRowMakeSelector(@"通用功能", @selector(jumpToBaseDemo)),
-                                           JGDemoTableRowMakeSelector(@"HUD（Loading、Toast）", @selector(jumpToHudDemo)),
-                                           JGDemoTableRowMakeSelector(@"Security Keyboard", @selector(jumpToKeyboardDemo)),
-                                           ]),
-                  ];
+                      // Section 日志
+                      JGDemoTableSectionMake(nil,
+                                             @[
+                                               JGDemoTableRowMakeSelector(@"调试日志控制", @selector(showLogModeList)),
+                                               JGDemoTableRowMakeSelector(@"通用功能", @selector(jumpToBaseDemo)),
+                                               JGDemoTableRowMakeSelector(@"HUD（Loading、Toast）", @selector(jumpToHudDemo)),
+                                               JGDemoTableRowMakeSelector(@"Security Keyboard", @selector(jumpToKeyboardDemo)),
+                                               ]),
+                      ];
 }
 
 #pragma mark - Controller

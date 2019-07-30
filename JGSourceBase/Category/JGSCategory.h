@@ -9,10 +9,12 @@
 #define JGSCategory_h
 
 #if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/NSDate+JGSBase.h>
 #import <JGSourceBase/NSDictionary+JGSBase.h>
 #import <JGSourceBase/NSObject+JGS_JSON.h>
 #import <JGSourceBase/UIColor+JGSBase.h>
 #else
+#import "NSDate+JGSBase.h"
 #import "NSDictionary+JGSBase.h"
 #import "NSObject+JGS_JSON.h"
 #import "UIColor+JGSBase.h"

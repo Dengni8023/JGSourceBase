@@ -58,7 +58,7 @@
     });
     static BOOL JGSIQKeyboardEnable = NO;
     JGSIQKeyboardEnable = !JGSIQKeyboardEnable;
-    [IQKeyboardManager sharedManager].enable = JGSIQKeyboardEnable; // 控制整个功能是否启用
+    [IQKeyboardManager sharedManager].enableAutoToolbar = JGSIQKeyboardEnable; // 控制整个功能是否启用
     
     [self addViewElements];
 }
@@ -107,14 +107,27 @@
     self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"安全键盘非加密输入"];
     
     self.secPwdInput = fields[2];
-    self.secPwdInput.placeholder = @"";//@"安全键盘加密输入";
+    self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
-    self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:@"" randomNumPad:NO];
+    self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:NO];
 }
 
 #pragma mark - Action
 
 #pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]] && [(JGSSecurityKeyboard *)textField.inputView title].length > 0) {
+        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+    }
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if ([textField isEqual:self.normalInput]) {
         [self.accountInput becomeFirstResponder];

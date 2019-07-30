@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA8E22F02B04002EF0F0 /* JGSReachability.h */; };
+		D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */; };
+		D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */; };
+		D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */; };
+		D4F3DAC322F02B05002EF0F0 /* JGSStringURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */; };
+		D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */; };
+		D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */; };
+		D4F3DAC622F02B05002EF0F0 /* JGSStringURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */; };
+		D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9722F02B04002EF0F0 /* JGSBase.h */; };
+		D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */; };
+		D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */; };
+		D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */; };
+		D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9D22F02B04002EF0F0 /* JGSToast.h */; };
+		D4F3DACC22F02B05002EF0F0 /* UIView+JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9E22F02B04002EF0F0 /* UIView+JGSToast.h */; };
+		D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9F22F02B04002EF0F0 /* JGSHUD.h */; };
+		D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAA122F02B04002EF0F0 /* JGSLoadingHUD.h */; };
+		D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAA222F02B04002EF0F0 /* UIView+JGSLoadingHUD.m */; };
+		D4F3DAD022F02B05002EF0F0 /* JGSLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAA322F02B04002EF0F0 /* JGSLoadingHUD.m */; };
+		D4F3DAD122F02B05002EF0F0 /* UIView+JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAA422F02B04002EF0F0 /* UIView+JGSLoadingHUD.h */; };
+		D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAA622F02B04002EF0F0 /* JGSSecurityKeyboard.h */; };
+		D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAA722F02B04002EF0F0 /* JGSNumberKeyboard.m */; };
+		D4F3DAD422F02B05002EF0F0 /* JGSSymbolKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAA822F02B04002EF0F0 /* JGSSymbolKeyboard.m */; };
+		D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAA922F02B04002EF0F0 /* JGSLetterKeyboard.h */; };
+		D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAAA22F02B04002EF0F0 /* JGSBaseKeyboard.m */; };
+		D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAAB22F02B04002EF0F0 /* JGSNumberKeyboard.h */; };
+		D4F3DAD822F02B05002EF0F0 /* JGSSecurityKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAAC22F02B04002EF0F0 /* JGSSecurityKeyboard.m */; };
+		D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAAD22F02B04002EF0F0 /* JGSLetterKeyboard.m */; };
+		D4F3DADA22F02B05002EF0F0 /* JGSSymbolKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAAE22F02B04002EF0F0 /* JGSSymbolKeyboard.h */; };
+		D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAAF22F02B04002EF0F0 /* JGSBaseKeyboard.h */; };
+		D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB122F02B05002EF0F0 /* JGSCategory.h */; };
+		D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */; };
+		D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */; };
+		D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */; };
+		D4F3DAE022F02B05002EF0F0 /* NSObject+JGS_JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */; };
+		D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */; };
+		D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */; };
+		D4F3DAE322F02B05002EF0F0 /* NSObject+JGS_JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */; };
+		D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */; };
+		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
+		D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */; };
+		D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */; };
+		D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
+		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4F3DA7222F028E0002EF0F0 /* JGSourceBase.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = JGSourceBase.podspec; sourceTree = "<group>"; };
+		D4F3DA7322F028E0002EF0F0 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D4F3DA7422F028E0002EF0F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D4F3DA8E22F02B04002EF0F0 /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
+		D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
+		D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBaseUtils.h; sourceTree = "<group>"; };
+		D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSWeakStrong.h; sourceTree = "<group>"; };
+		D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSStringURLUtils.m; sourceTree = "<group>"; };
+		D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLogFunction.h; sourceTree = "<group>"; };
+		D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseUtils.m; sourceTree = "<group>"; };
+		D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSStringURLUtils.h; sourceTree = "<group>"; };
+		D4F3DA9722F02B04002EF0F0 /* JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
+		D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLogFunction.m; sourceTree = "<group>"; };
+		D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSToast.m; sourceTree = "<group>"; };
+		D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JGSToast.m"; sourceTree = "<group>"; };
+		D4F3DA9D22F02B04002EF0F0 /* JGSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSToast.h; sourceTree = "<group>"; };
+		D4F3DA9E22F02B04002EF0F0 /* UIView+JGSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JGSToast.h"; sourceTree = "<group>"; };
+		D4F3DA9F22F02B04002EF0F0 /* JGSHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSHUD.h; sourceTree = "<group>"; };
+		D4F3DAA122F02B04002EF0F0 /* JGSLoadingHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLoadingHUD.h; sourceTree = "<group>"; };
+		D4F3DAA222F02B04002EF0F0 /* UIView+JGSLoadingHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JGSLoadingHUD.m"; sourceTree = "<group>"; };
+		D4F3DAA322F02B04002EF0F0 /* JGSLoadingHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLoadingHUD.m; sourceTree = "<group>"; };
+		D4F3DAA422F02B04002EF0F0 /* UIView+JGSLoadingHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JGSLoadingHUD.h"; sourceTree = "<group>"; };
+		D4F3DAA622F02B04002EF0F0 /* JGSSecurityKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSSecurityKeyboard.h; sourceTree = "<group>"; };
+		D4F3DAA722F02B04002EF0F0 /* JGSNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNumberKeyboard.m; sourceTree = "<group>"; };
+		D4F3DAA822F02B04002EF0F0 /* JGSSymbolKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSSymbolKeyboard.m; sourceTree = "<group>"; };
+		D4F3DAA922F02B04002EF0F0 /* JGSLetterKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLetterKeyboard.h; sourceTree = "<group>"; };
+		D4F3DAAA22F02B04002EF0F0 /* JGSBaseKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseKeyboard.m; sourceTree = "<group>"; };
+		D4F3DAAB22F02B04002EF0F0 /* JGSNumberKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNumberKeyboard.h; sourceTree = "<group>"; };
+		D4F3DAAC22F02B04002EF0F0 /* JGSSecurityKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSSecurityKeyboard.m; sourceTree = "<group>"; };
+		D4F3DAAD22F02B04002EF0F0 /* JGSLetterKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLetterKeyboard.m; sourceTree = "<group>"; };
+		D4F3DAAE22F02B04002EF0F0 /* JGSSymbolKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSSymbolKeyboard.h; sourceTree = "<group>"; };
+		D4F3DAAF22F02B04002EF0F0 /* JGSBaseKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBaseKeyboard.h; sourceTree = "<group>"; };
+		D4F3DAB122F02B05002EF0F0 /* JGSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSCategory.h; sourceTree = "<group>"; };
+		D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JGSBase.h"; sourceTree = "<group>"; };
+		D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JGSBase.h"; sourceTree = "<group>"; };
+		D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JGSBase.m"; sourceTree = "<group>"; };
+		D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGS_JSON.m"; sourceTree = "<group>"; };
+		D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JGSBase.m"; sourceTree = "<group>"; };
+		D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JGSBase.m"; sourceTree = "<group>"; };
+		D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGS_JSON.h"; sourceTree = "<group>"; };
+		D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
+		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
+		D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
+		D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGSAlertController.h"; sourceTree = "<group>"; };
+		D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4F3DA4222F0279D002EF0F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4F3DA3B22F0279D002EF0F0 = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA7222F028E0002EF0F0 /* JGSourceBase.podspec */,
+				D4F3DA7322F028E0002EF0F0 /* LICENSE */,
+				D4F3DA7422F028E0002EF0F0 /* README.md */,
+				D4F3DA4722F0279D002EF0F0 /* JGSourceBase */,
+				D4F3DA4622F0279D002EF0F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4F3DA4622F0279D002EF0F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4F3DA4722F0279D002EF0F0 /* JGSourceBase */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DABA22F02B05002EF0F0 /* AlertController */,
+				D4F3DA9022F02B04002EF0F0 /* Base */,
+				D4F3DAB022F02B04002EF0F0 /* Category */,
+				D4F3DA9922F02B04002EF0F0 /* HUD */,
+				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
+				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
+				D4F3DA8D22F02B04002EF0F0 /* Reachability */,
+				D4F3DAA522F02B04002EF0F0 /* SecurityKeyboard */,
+			);
+			path = JGSourceBase;
+			sourceTree = "<group>";
+		};
+		D4F3DA8D22F02B04002EF0F0 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA8E22F02B04002EF0F0 /* JGSReachability.h */,
+				D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		D4F3DA9022F02B04002EF0F0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA9722F02B04002EF0F0 /* JGSBase.h */,
+				D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */,
+				D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */,
+				D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */,
+				D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */,
+				D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */,
+				D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */,
+				D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D4F3DA9922F02B04002EF0F0 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA9F22F02B04002EF0F0 /* JGSHUD.h */,
+				D4F3DAA022F02B04002EF0F0 /* LoadingHUD */,
+				D4F3DA9A22F02B04002EF0F0 /* ToastHUD */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		D4F3DA9A22F02B04002EF0F0 /* ToastHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DA9D22F02B04002EF0F0 /* JGSToast.h */,
+				D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */,
+				D4F3DA9E22F02B04002EF0F0 /* UIView+JGSToast.h */,
+				D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */,
+			);
+			path = ToastHUD;
+			sourceTree = "<group>";
+		};
+		D4F3DAA022F02B04002EF0F0 /* LoadingHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DAA122F02B04002EF0F0 /* JGSLoadingHUD.h */,
+				D4F3DAA322F02B04002EF0F0 /* JGSLoadingHUD.m */,
+				D4F3DAA422F02B04002EF0F0 /* UIView+JGSLoadingHUD.h */,
+				D4F3DAA222F02B04002EF0F0 /* UIView+JGSLoadingHUD.m */,
+			);
+			path = LoadingHUD;
+			sourceTree = "<group>";
+		};
+		D4F3DAA522F02B04002EF0F0 /* SecurityKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DAAF22F02B04002EF0F0 /* JGSBaseKeyboard.h */,
+				D4F3DAAA22F02B04002EF0F0 /* JGSBaseKeyboard.m */,
+				D4F3DAA922F02B04002EF0F0 /* JGSLetterKeyboard.h */,
+				D4F3DAAD22F02B04002EF0F0 /* JGSLetterKeyboard.m */,
+				D4F3DAAB22F02B04002EF0F0 /* JGSNumberKeyboard.h */,
+				D4F3DAA722F02B04002EF0F0 /* JGSNumberKeyboard.m */,
+				D4F3DAA622F02B04002EF0F0 /* JGSSecurityKeyboard.h */,
+				D4F3DAAC22F02B04002EF0F0 /* JGSSecurityKeyboard.m */,
+				D4F3DAAE22F02B04002EF0F0 /* JGSSymbolKeyboard.h */,
+				D4F3DAA822F02B04002EF0F0 /* JGSSymbolKeyboard.m */,
+			);
+			path = SecurityKeyboard;
+			sourceTree = "<group>";
+		};
+		D4F3DAB022F02B04002EF0F0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DAB122F02B05002EF0F0 /* JGSCategory.h */,
+				D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */,
+				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
+				D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */,
+				D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */,
+				D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */,
+				D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */,
+				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
+				D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D4F3DABA22F02B05002EF0F0 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */,
+				D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */,
+				D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */,
+				D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D4F3DA4022F0279D002EF0F0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4F3DAC622F02B05002EF0F0 /* JGSStringURLUtils.h in Headers */,
+				D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */,
+				D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */,
+				D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */,
+				D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */,
+				D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */,
+				D4F3DADA22F02B05002EF0F0 /* JGSSymbolKeyboard.h in Headers */,
+				D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */,
+				D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */,
+				D4F3DAD122F02B05002EF0F0 /* UIView+JGSLoadingHUD.h in Headers */,
+				D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */,
+				D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */,
+				D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */,
+				D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */,
+				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
+				D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */,
+				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
+				D4F3DACC22F02B05002EF0F0 /* UIView+JGSToast.h in Headers */,
+				D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */,
+				D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */,
+				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
+				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
+				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
+				D4F3DAE322F02B05002EF0F0 /* NSObject+JGS_JSON.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D4F3DA4422F0279D002EF0F0 /* JGSourceBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
+			buildPhases = (
+				D4F3DA4022F0279D002EF0F0 /* Headers */,
+				D4F3DA4122F0279D002EF0F0 /* Sources */,
+				D4F3DA4222F0279D002EF0F0 /* Frameworks */,
+				D4F3DA4322F0279D002EF0F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JGSourceBase;
+			productName = JGSourceBase;
+			productReference = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4F3DA3C22F0279D002EF0F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = MeiJigao;
+				TargetAttributes = {
+					D4F3DA4422F0279D002EF0F0 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = D4F3DA3F22F0279D002EF0F0 /* Build configuration list for PBXProject "JGSourceBase" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D4F3DA3B22F0279D002EF0F0;
+			productRefGroup = D4F3DA4622F0279D002EF0F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4F3DA4422F0279D002EF0F0 /* JGSourceBase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4F3DA4322F0279D002EF0F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4F3DA4122F0279D002EF0F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */,
+				D4F3DAC322F02B05002EF0F0 /* JGSStringURLUtils.m in Sources */,
+				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
+				D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */,
+				D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */,
+				D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */,
+				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
+				D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */,
+				D4F3DAE022F02B05002EF0F0 /* NSObject+JGS_JSON.m in Sources */,
+				D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */,
+				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
+				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
+				D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */,
+				D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */,
+				D4F3DAD022F02B05002EF0F0 /* JGSLoadingHUD.m in Sources */,
+				D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */,
+				D4F3DAD822F02B05002EF0F0 /* JGSSecurityKeyboard.m in Sources */,
+				D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */,
+				D4F3DAD422F02B05002EF0F0 /* JGSSymbolKeyboard.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D4F3DA4B22F0279D002EF0F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D4F3DA4C22F0279D002EF0F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D4F3DA4E22F0279D002EF0F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = JGSourceBase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4F3DA4F22F0279D002EF0F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = JGSourceBase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4F3DA3F22F0279D002EF0F0 /* Build configuration list for PBXProject "JGSourceBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4F3DA4B22F0279D002EF0F0 /* Debug */,
+				D4F3DA4C22F0279D002EF0F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4F3DA4E22F0279D002EF0F0 /* Debug */,
+				D4F3DA4F22F0279D002EF0F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4F3DA3C22F0279D002EF0F0 /* Project object */;
+}

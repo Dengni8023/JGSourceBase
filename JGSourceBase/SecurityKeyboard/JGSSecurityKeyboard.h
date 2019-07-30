@@ -5,12 +5,13 @@
 //  Created by 梅继高 on 2019/5/29.
 //
 
-#import "JGSBaseKeyboard.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSSecurityKeyboard : UIView
 
+@property (nonatomic, copy, nullable, readonly) NSString *title;
 @property (nonatomic, weak, readonly) UITextField *textField; // 输入框
 
 + (instancetype)new NS_UNAVAILABLE;

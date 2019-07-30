@@ -1,27 +1,28 @@
 PODS:
   - IQKeyboardManager (6.2.1)
-  - JGSourceBase (1.1.0):
-    - JGSourceBase/AlertController (= 1.1.0)
-    - JGSourceBase/Base (= 1.1.0)
-    - JGSourceBase/Category (= 1.1.0)
-  - JGSourceBase/AlertController (1.1.0):
+  - JGSourceBase (1.1.1):
+    - JGSourceBase/AlertController (= 1.1.1)
+    - JGSourceBase/Base (= 1.1.1)
+    - JGSourceBase/Category (= 1.1.1)
+  - JGSourceBase/AlertController (1.1.1):
     - JGSourceBase/Base
-  - JGSourceBase/Base (1.1.0)
-  - JGSourceBase/Category (1.1.0)
-  - JGSourceBase/HUD (1.1.0):
-    - JGSourceBase/Category
-    - JGSourceBase/HUD/LoadingHUD (= 1.1.0)
-    - JGSourceBase/HUD/ToastHUD (= 1.1.0)
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/HUD/LoadingHUD (1.1.0):
-    - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/HUD/ToastHUD (1.1.0):
-    - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/Reachability (1.1.0):
+  - JGSourceBase/Base (1.1.1)
+  - JGSourceBase/Category (1.1.1):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.1.0):
+  - JGSourceBase/HUD (1.1.1):
+    - JGSourceBase/Category
+    - JGSourceBase/HUD/LoadingHUD (= 1.1.1)
+    - JGSourceBase/HUD/ToastHUD (= 1.1.1)
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/HUD/LoadingHUD (1.1.1):
+    - JGSourceBase/Category
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/HUD/ToastHUD (1.1.1):
+    - JGSourceBase/Category
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/Reachability (1.1.1):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.1.1):
     - JGSourceBase/Category
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -53,10 +54,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
-  JGSourceBase: 80a7671adeeb80678bc24695107898a9c914ee3d
+  JGSourceBase: 9102f64fc7e2d37bb72319119076c97e8050b81e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
-PODFILE CHECKSUM: c47cfdd7fa0257770adcdc153cdb005602923614
+PODFILE CHECKSUM: ae2578058fd6563c9e1c8791697b4c2c1937a742
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.5

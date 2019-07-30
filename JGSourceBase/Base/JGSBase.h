@@ -10,19 +10,15 @@
 #define JGSBase_h
 
 #if __has_include(<JGSourceBase/JGSBase.h>)
-
 #import <JGSourceBase/JGSBaseUtils.h>
 #import <JGSourceBase/JGSLogFunction.h>
 #import <JGSourceBase/JGSStringURLUtils.h>
 #import <JGSourceBase/JGSWeakStrong.h>
-
 #else
-
 #import "JGSBaseUtils.h"
 #import "JGSLogFunction.h"
 #import "JGSStringURLUtils.h"
 #import "JGSWeakStrong.h"
-
 #endif
 
 #endif /* JGSBase_h */

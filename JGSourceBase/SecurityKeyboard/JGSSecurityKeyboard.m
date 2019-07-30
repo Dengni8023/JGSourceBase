@@ -12,7 +12,6 @@
 
 @interface JGSSecurityKeyboard ()
 
-@property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) BOOL hideToobar;
 @property (nonatomic, assign) JGSKeyboardReturnType returnType;
 @property (nonatomic, assign) CGRect keyboardFrame;
@@ -65,7 +64,8 @@
             keyboardHeight += JGSKeyboardToolbarHeight;
         }
         if (@available(iOS 11.0, *)) {
-            keyboardHeight += [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
+            UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
+            keyboardHeight += window.safeAreaInsets.bottom;
         }
         self.frame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
         self.backgroundColor = JGSKeyboardBackgroundColor();
