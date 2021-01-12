@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6875FEA24750ED3DB0E4D222 /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF5E27C44533F3374FA6815 /* Pods_JGSourceBaseDemo.framework */; };
+		69CE9E30D6B1957748ABF199 /* libPods-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56437AAC95022EAC48D0E048 /* libPods-JGSourceBaseDemo.a */; };
 		D4F3DA5E22F027E1002EF0F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA5D22F027E1002EF0F0 /* AppDelegate.m */; };
 		D4F3DA6122F027E1002EF0F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA6022F027E1002EF0F0 /* ViewController.m */; };
 		D4F3DA6622F027E1002EF0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F3DA6522F027E1002EF0F0 /* Assets.xcassets */; };
@@ -20,9 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2FF5E27C44533F3374FA6815 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56437AAC95022EAC48D0E048 /* libPods-JGSourceBaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		710D4D80C389569E98EAD95B /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		92F1F5230A6069958E6FE346 /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D4D2E88225ADBA5D0048A789 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D4F3DA5922F027E1002EF0F0 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA5C22F027E1002EF0F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4F3DA5D22F027E1002EF0F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6875FEA24750ED3DB0E4D222 /* Pods_JGSourceBaseDemo.framework in Frameworks */,
+				69CE9E30D6B1957748ABF199 /* libPods-JGSourceBaseDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +68,7 @@
 		6C9FA540B3FADD9F0305330C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2FF5E27C44533F3374FA6815 /* Pods_JGSourceBaseDemo.framework */,
+				56437AAC95022EAC48D0E048 /* libPods-JGSourceBaseDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,9 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA5B22F027E1002EF0F0 /* JGSourceBaseDemo */,
-				D4F3DA5A22F027E1002EF0F0 /* Products */,
-				56BBD6D34D44E07743C460BA /* Pods */,
 				6C9FA540B3FADD9F0305330C /* Frameworks */,
+				56BBD6D34D44E07743C460BA /* Pods */,
+				D4F3DA5A22F027E1002EF0F0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +103,7 @@
 				D4F3DA6722F027E1002EF0F0 /* LaunchScreen.storyboard */,
 				D4F3DA6A22F027E1002EF0F0 /* Info.plist */,
 				D4F3DA6B22F027E1002EF0F0 /* main.m */,
+				D4D2E88225ADBA5D0048A789 /* PrefixHeader.pch */,
 			);
 			path = JGSourceBaseDemo;
 			sourceTree = "<group>";
@@ -140,7 +142,6 @@
 				D4F3DA5522F027E1002EF0F0 /* Sources */,
 				D4F3DA5622F027E1002EF0F0 /* Frameworks */,
 				D4F3DA5722F027E1002EF0F0 /* Resources */,
-				481B8F4F1EB665B3E2AC5975 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,7 +158,7 @@
 		D4F3DA5122F027E1002EF0F0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = MeiJigao;
 				TargetAttributes = {
 					D4F3DA5822F027E1002EF0F0 = {
@@ -196,23 +197,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		481B8F4F1EB665B3E2AC5975 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4DE411687EC10914F45A7751 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +276,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -317,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -351,6 +336,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -370,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -385,11 +371,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.20;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,11 +392,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.20;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

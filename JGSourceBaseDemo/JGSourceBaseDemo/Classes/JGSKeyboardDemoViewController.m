@@ -7,9 +7,6 @@
 //
 
 #import "JGSKeyboardDemoViewController.h"
-#import <JGSourceBase/JGSourceBase.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
-#import <Masonry/Masonry.h>
 
 @interface JGSKeyboardDemoViewController () <UITextFieldDelegate>
 
@@ -24,6 +21,8 @@
 #pragma mark - Life Cycle
 - (void)dealloc {
     JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Controller
@@ -42,25 +41,13 @@
     self.title = @"iOS安全键盘";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // IQKeyboardManager设置
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-    
-        IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
-        keyboardManager.enable = YES;
-        keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘
-        keyboardManager.shouldToolbarUsesTextFieldTintColor = YES; // 控制键盘上的工具条文字颜色是否用户自定义
-        keyboardManager.toolbarManageBehaviour = IQAutoToolbarByPosition; // 有多个输入框时，可以通过点击Toolbar 上的“前一个”“后一个”按钮来实现移动到不同的输入框
-        keyboardManager.enableAutoToolbar = YES; // 控制是否显示键盘上的工具条
-        keyboardManager.shouldShowToolbarPlaceholder = YES; // 是否显示占位文字
-        keyboardManager.placeholderFont = [UIFont systemFontOfSize:16]; // 设置占位文字的字体
-        keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
-    });
-    static BOOL JGSIQKeyboardEnable = NO;
-    JGSIQKeyboardEnable = !JGSIQKeyboardEnable;
-    [IQKeyboardManager sharedManager].enableAutoToolbar = JGSIQKeyboardEnable; // 控制整个功能是否启用
-    
     [self addViewElements];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        
+        UITextField *textField = (UITextField *)note.object;
+        JGSLog(@"%@", textField.text);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -104,12 +91,12 @@
     
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
-    self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"安全键盘非加密输入"];
+    self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"自定义安全键盘"];
     
     self.secPwdInput = fields[2];
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
-    self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:NO];
+    self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:arc4random() % 2 == 0];
 }
 
 #pragma mark - Action
@@ -117,7 +104,7 @@
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]] && [(JGSSecurityKeyboard *)textField.inputView title].length > 0) {
-        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+//        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     }
 }
 

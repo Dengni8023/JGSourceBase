@@ -1,42 +1,46 @@
 PODS:
-  - IQKeyboardManager (6.2.1)
-  - JGSourceBase (1.1.1):
-    - JGSourceBase/AlertController (= 1.1.1)
-    - JGSourceBase/Base (= 1.1.1)
-    - JGSourceBase/Category (= 1.1.1)
-  - JGSourceBase/AlertController (1.1.1):
+  - IQKeyboardManager (6.5.6)
+  - JGSourceBase (1.2.0):
+    - JGSourceBase/AlertController (= 1.2.0)
+    - JGSourceBase/Base (= 1.2.0)
+    - JGSourceBase/Category (= 1.2.0)
+  - JGSourceBase/AlertController (1.2.0):
     - JGSourceBase/Base
-  - JGSourceBase/Base (1.1.1)
-  - JGSourceBase/Category (1.1.1):
+  - JGSourceBase/Base (1.2.0)
+  - JGSourceBase/Category (1.2.0):
     - JGSourceBase/Base
-  - JGSourceBase/HUD (1.1.1):
-    - JGSourceBase/Category
-    - JGSourceBase/HUD/LoadingHUD (= 1.1.1)
-    - JGSourceBase/HUD/ToastHUD (= 1.1.1)
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/HUD/LoadingHUD (1.1.1):
-    - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/HUD/ToastHUD (1.1.1):
-    - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
-  - JGSourceBase/Reachability (1.1.1):
+    - JGSourceBase/Category/Device (= 1.2.0)
+  - JGSourceBase/Category/Device (1.2.0):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.1.1):
+  - JGSourceBase/HUD (1.2.0):
+    - JGSourceBase/Category
+    - JGSourceBase/HUD/LoadingHUD (= 1.2.0)
+    - JGSourceBase/HUD/ToastHUD (= 1.2.0)
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/HUD/LoadingHUD (1.2.0):
+    - JGSourceBase/Category
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/HUD/ToastHUD (1.2.0):
+    - JGSourceBase/Category
+    - MBProgressHUD (~> 1.1.0)
+  - JGSourceBase/Reachability (1.2.0):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.2.0):
     - JGSourceBase/Category
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
 
 DEPENDENCIES:
-  - IQKeyboardManager (~> 6.2.1)
+  - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
+  - JGSourceBase/Category/Device (from `.`)
   - JGSourceBase/HUD (from `.`)
   - JGSourceBase/Reachability (from `.`)
   - JGSourceBase/SecurityKeyboard (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - IQKeyboardManager
     - MBProgressHUD
 
@@ -53,11 +57,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
-  JGSourceBase: 9102f64fc7e2d37bb72319119076c97e8050b81e
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  JGSourceBase: 57a17647d4257867bddb0605cd2b13e7322907c9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
-PODFILE CHECKSUM: ae2578058fd6563c9e1c8791697b4c2c1937a742
+PODFILE CHECKSUM: 25fcd130530b7567614144f45b12dd148c3d3cd4
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.3

@@ -31,14 +31,17 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import <JGSourceBase/JGSBase.h>
 #import <JGSourceBase/JGSAlertController.h>
 #import <JGSourceBase/JGSCategory.h>
+
 // JGSReachability
 #ifdef JGS_Reachability
 #import <JGSourceBase/JGSReachability.h>
 #endif
+
 // JGSHUD
 #ifdef JGS_HUD
 #import <JGSourceBase/JGSHUD.h>
 #endif
+
 // JGSSecurityKeyboard
 #ifdef JGS_SecurityKeyboard
 #import <JGSourceBase/JGSSecurityKeyboard.h>
@@ -49,14 +52,17 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import "JGSBase.h"
 #import "JGSAlertController.h"
 #import "JGSCategory.h"
+
 // JGSReachability
 #ifdef JGS_Reachability
 #import "JGSReachability.h"
 #endif
-// JGSToast
+
+// JGSHUD
 #ifdef JGS_HUD
 #import "JGSHUD.h"
 #endif
+
 // JGSSecurityKeyboard
 #ifdef JGS_SecurityKeyboard
 #import "JGSSecurityKeyboard.h"

@@ -50,8 +50,8 @@
         JGSKeyboardNumberPadRandomEnable(enable);
         
         _textField = textField;
+        _hideToobar = (title.length == 0);
         _title = title.length > 0 ? title : self.textField.placeholder;
-        _hideToobar = (self.title.length == 0);
         _returnType = (textField.returnKeyType == UIReturnKeyNext ? JGSKeyboardReturnTypeNext : JGSKeyboardReturnTypeDone);
         
         CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
@@ -79,8 +79,9 @@
 - (void)addViewElements {
     
     // 键盘顶部工具条
-    [self addSubview:self.keyboardTool];
-    self.keyboardTool.hidden = self.hideToobar;
+    if (!self.hideToobar) {
+        [self addSubview:self.keyboardTool];
+    }
     
     // 键盘
     JGSWeakSelf

@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  JGSourceBaseDemo
+//
+//  Created by 梅继高 on 2021/1/12.
+//  Copyright © 2021 MeiJigao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <JGSourceBase/JGSourceBase.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <Masonry/Masonry.h>
+
+#endif /* PrefixHeader_pch */

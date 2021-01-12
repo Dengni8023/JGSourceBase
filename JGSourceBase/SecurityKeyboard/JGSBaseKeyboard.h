@@ -113,8 +113,6 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardTitleLetters;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleSymbolWithNumber;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleSymbols;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleNumbers;
-FOUNDATION_EXTERN NSString * const JGSKeyboardTitleFullAngle;
-FOUNDATION_EXTERN NSString * const JGSKeyboardTitleHalfAngle;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleForType(JGSKeyboardType type);
 
 typedef NS_ENUM(NSInteger, JGSKeyboardReturnType) {

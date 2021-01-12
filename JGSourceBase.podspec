@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "1.1.1"
+    s.version       = "1.2.0"
     
     s.summary       = "JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。"
     s.description   = <<-DESC
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
         :tag => "#{s.version}",
     }
     s.platforms = {
-        :ios => 9.0,
+        :ios => 10.0,
     }
     
     s.source_files          = "JGSourceBase/*.{h,m}"
@@ -103,6 +103,18 @@ Pod::Spec.new do |s|
         ]
         
         ss.dependency   "JGSourceBase/Base"
+		
+		ss.subspec 'Device' do |sss|
+			sss.source_files	= [
+				"JGSourceBase/Category/Device/*.{h,m}",
+			]
+			sss.public_header_files	= [
+				"JGSourceBase/Category/Device/*.h",
+			]
+			sss.resources	= [
+				"JGSourceBase/Category/Device/*.csv",
+			]
+		end
     end
     
     # Reachability

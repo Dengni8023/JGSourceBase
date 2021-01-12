@@ -146,6 +146,11 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
 
 - (instancetype)initWithType:(JGSKeyboardKeyType)type text:(NSString *)text frame:(CGRect)frame {
     
+    // 微调按钮宽度，防止小数点像素值导致导致边缘出现异常线条
+    CGFloat scale = [UIScreen mainScreen].scale;
+    frame.size.width = round(frame.size.width * scale) / scale;
+    frame.size.height = round(frame.size.height * scale) / scale;
+    
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -389,6 +394,44 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
         }
             break;
             
+        case JGSKeyboardKeyTypeSymbolSwitch2Half:
+        case JGSKeyboardKeyTypeSymbolSwitch2Full: {
+            
+            // 绘制切换全半角地球
+            CGFloat centerX = CGRectGetWidth(rect) * 0.5;
+            CGFloat centerY = CGRectGetHeight(rect) * 0.5;
+            CGFloat radius = CGRectGetWidth(rect) * 0.25;
+            
+            CGContextRef ctx = UIGraphicsGetCurrentContext();
+            CGContextSetLineWidth(ctx, 1.5f);
+            CGContextSetLineCap(ctx, kCGLineCapButt);
+            CGContextSetLineJoin(ctx, kCGLineJoinRound);
+            CGContextSetStrokeColorWithColor(ctx, [UIColor colorWithWhite:0 alpha:0.52].CGColor);
+            CGContextAddArc(ctx, centerX, centerY, radius, 0, M_PI * 2.f, NO);
+            CGContextStrokePath(ctx);
+            
+            CGFloat lrRadius = 1.25 * radius; // (R-0.5r)^2 + r^2 = R^2
+            CGFloat angle = asin(radius / lrRadius);
+            CGContextAddArc(ctx, centerX + 0.5 * radius - lrRadius, centerY, lrRadius, - angle, angle, NO);
+            CGContextStrokePath(ctx);
+            CGContextAddArc(ctx, centerX - 0.5 * radius + lrRadius, centerY, lrRadius, M_PI - angle, M_PI + angle, NO);
+            CGContextStrokePath(ctx);
+            
+            CGFloat tbRadius = 5.f / 4 * (16.f / 25 + 25.f / 36) * radius; // (R-0.4r)^2 + (r*5/6)^2 = R^2
+            angle = asin(radius * 0.75 / tbRadius);
+            CGContextAddArc(ctx, centerX, centerY - radius * 0.5 - tbRadius, tbRadius, M_PI_2 - angle, M_PI_2 + angle, NO);
+            CGContextStrokePath(ctx);
+            CGContextAddArc(ctx, centerX, centerY + radius * 0.5 + tbRadius, tbRadius, M_PI * 1.5 - angle, M_PI * 1.5 + angle, NO);
+            CGContextStrokePath(ctx);
+            
+            CGContextMoveToPoint(ctx, centerX - radius, centerY);
+            CGContextAddLineToPoint(ctx, centerX + radius, centerY);
+            CGContextMoveToPoint(ctx, centerX, centerY - radius);
+            CGContextAddLineToPoint(ctx, centerX, centerY + radius);
+            CGContextStrokePath(ctx);
+        }
+            break;
+            
         default:
             break;
     }
@@ -400,8 +443,6 @@ NSString * const JGSKeyboardTitleLetters = @"Abc";
 NSString * const JGSKeyboardTitleSymbolWithNumber = @".?123";
 NSString * const JGSKeyboardTitleSymbols = @"#+=";
 NSString * const JGSKeyboardTitleNumbers = @"123";
-NSString * const JGSKeyboardTitleFullAngle = @"。，";
-NSString * const JGSKeyboardTitleHalfAngle = @".,";
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleForType(JGSKeyboardType type) {
     
     //JGSKeyboardTypeLetter = 0, // 英文字母键盘

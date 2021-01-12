@@ -86,7 +86,7 @@
             [tmpKeys addObject:deleteBtn];
             
             lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
-            funcItemWidth += (JGSKeyboardInteritemSpacing + itemWidth);
+            funcItemWidth += (JGSKeyboardInteritemSpacing + itemWidth) * 0.5;
             
             // switch
             JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Symbol text:JGSKeyboardTitleSymbolWithNumber frame:CGRectMake(minX, lineY, funcItemWidth, itemHeight)];

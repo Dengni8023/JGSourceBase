@@ -7,7 +7,6 @@
 //
 
 #import "JGSHUDDemoViewController.h"
-#import <JGSourceBase/JGSourceBase.h>
 #import "JGDemoTableData.h"
 
 @interface JGSHUDDemoViewController ()

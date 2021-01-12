@@ -46,8 +46,8 @@
     if (!_showHalfNumSyms) {
         _showHalfNumSyms = @[
                              @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"],
-                             @[@"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"\""],
-                             @[@"…", @".", @",", @"?", @"!", @"'"],
+                             @[@"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"“"],
+                             @[@".", @",", @"?", @"!", @"’"],
                              ];
     }
     return _showHalfNumSyms;
@@ -59,7 +59,7 @@
         _showHalfSymbols = @[
                              @[@"[", @"]", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"="],
                              @[@"_", @"\\", @"|", @"~", @"<", @">", @"€", @"£", @"¥", @"•"],
-                             @[@"…", @".", @",", @"?", @"!", @"'"],
+                             @[@".", @",", @"?", @"!", @"’"],
                              ];
     }
     return _showHalfSymbols;
@@ -71,7 +71,7 @@
         _showFullNumSyms = @[
                              @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"],
                              @[@"-", @"/", @"：", @"；", @"（", @"）", @"¥", @"@", @"“", @"”"],
-                             @[@"。", @"，", @"？", @"、", @"！", @"."],
+                             @[@"。", @"，", @"、", @"？", @"！", @"."],
                              ];
     }
     return _showFullNumSyms;
@@ -81,9 +81,9 @@
     
     if (!_showFullSymbols) {
         _showFullSymbols = @[
-                             @[@"【", @"】", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"="],
-                             @[@"_", @"—", @"\\", @"|", @"～", @"《", @"》", @"$", @"&", @"."],
-                             @[@"……", @"，", @"？", @"！", @"‘", @"’"],
+                             @[@"【", @"】", @"｛", @"｝", @"#", @"%", @"^", @"*", @"+", @"="],
+                             @[@"_", @"—", @"\\", @"｜", @"～", @"《", @"》", @"$", @"&", @"·"],
+                             @[@"…", @"，", @"^_^", @"？", @"！", @"’"],
                              ];
     }
     return _showFullSymbols;
@@ -115,6 +115,17 @@
             
             CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing);
             CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
+            if (lineIdx == 2) {
+                
+                // 与键盘按键第三行功能键看度计算保持一致
+                CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing, (itemWidth + JGSKeyboardInteritemSpacing) * 1.5));
+                CGFloat btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing;
+                CGFloat scale = (keyboardWidth - btnBeginX * 2) / line.count / (itemWidth + JGSKeyboardInteritemSpacing);
+                btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing * scale;
+                CGFloat btnWidth = (keyboardWidth - btnBeginX * 2 + JGSKeyboardInteritemSpacing * scale) / line.count - JGSKeyboardInteritemSpacing * scale;
+                btnX = btnBeginX + idx * (btnWidth + JGSKeyboardInteritemSpacing * scale);
+                btnFrame = CGRectMake(btnX, lineY, btnWidth, itemHeight);
+            }
             
             JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
             [tmpKeys addObject:itemBtn];
@@ -122,7 +133,8 @@
         
         if (lineIdx == 2) {
             
-            CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing, (itemWidth + JGSKeyboardInteritemSpacing) * 2));
+            // 与键盘按键第三行按钮宽度计算保持一致
+            CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing, (itemWidth + JGSKeyboardInteritemSpacing) * 1.5));
             
             // switch
             JGSKeyboardKeyType numberSymbolType = containNum ? JGSKeyboardKeyTypeSymbolSwitch2Symbols : JGSKeyboardKeyTypeSymbolSwitch2Numbers;
@@ -135,7 +147,7 @@
             [tmpKeys addObject:deleteBtn];
             
             lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
-            CGFloat switchWidth = floor((funcItemWidth + itemWidth) * 0.5);
+            CGFloat switchWidth = MIN(floor((JGSKeyboardInteritemSpacing + itemWidth) * 1.5), itemHeight);
             
             // switch
             JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
@@ -144,9 +156,10 @@
             // angle
             CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing;
             JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
-            NSString *angleTitle = angleType == JGSKeyboardKeyTypeSymbolSwitch2Full ? JGSKeyboardTitleFullAngle : JGSKeyboardTitleHalfAngle;
-            JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:angleTitle frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
+            JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
             [tmpKeys addObject:angleSwitch];
+            
+            funcItemWidth = switchWidth * 2;
             
             // space
             CGFloat spaceX = angleX + switchWidth + JGSKeyboardInteritemSpacing;
