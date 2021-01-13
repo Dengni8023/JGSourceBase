@@ -108,6 +108,17 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        
+        JGSLog(@"%@", textField.text);
+        JGSLog(@"%@: %@", NSStringFromRange(range), string);
+    }
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
         [IQKeyboardManager sharedManager].enableAutoToolbar = YES;

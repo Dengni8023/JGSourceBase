@@ -9,6 +9,16 @@
 #import "JGSLetterKeyboard.h"
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
+#import <objc/runtime.h>
+
+@interface UITextField (JGSSecurityKeyboard)
+
+@property (nonatomic, copy) NSString *jgsSecurityOriginText;
+
+// 右侧clear点击清空输入文本，不执行replace操作，需要检查记录的输入文本与文本框文本长度是否一致
+- (void)jgsCheckClearInputChangeText;
+
+@end
 
 @interface JGSSecurityKeyboard ()
 
@@ -30,7 +40,8 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title {
@@ -45,6 +56,14 @@
     
     self = [super init];
     if (self) {
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            
+            UITextField *noteField = note.object;
+            if ([noteField isEqual:textField] && [noteField isSecureTextEntry]) {
+                [noteField jgsCheckClearInputChangeText];
+            }
+        }];
         
         // 数字键盘随机开关
         JGSKeyboardNumberPadRandomEnable(enable);
@@ -331,6 +350,138 @@
 
 - (void)completeTextInput:(JGSKeyboardToolbarItem *)sender {
     [self.textField resignFirstResponder];
+}
+
+@end
+
+@implementation UITextField (JGSSecurityKeyboard)
+
+static char kJGSSecurityKeyboardTextFieldOriginKey;
+static NSString *JGSSecurityKeyboardSecChar = @"•";
+
++ (void)load {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        Class cls = [self class];
+        // 重写的系统方法处理，dealloc仅用作日志输出检测页面释放情况，dealloc在ARC不能通过@selector获取
+        NSArray<NSString *> *oriSelectors = @[NSStringFromSelector(@selector(text)),
+                                              NSStringFromSelector(@selector(setText:)),
+                                              NSStringFromSelector(@selector(replaceRange:withText:)),
+                                              NSStringFromSelector(@selector(canPerformAction:withSender:)),
+                                              ];
+        for (NSString *oriSelName in oriSelectors) {
+            
+            SEL originSelector = NSSelectorFromString(oriSelName);
+            Method originMethod = class_getInstanceMethod(cls, originSelector);
+            IMP originImpl = method_getImplementation(originMethod);
+            
+            SEL swizzledSelector = NSSelectorFromString([@"JGSSwizzing_" stringByAppendingString:oriSelName]);
+            Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
+            IMP swizzledImpl = method_getImplementation(swizzledMethod);
+            
+            /*
+             严谨的方法替换逻辑：检查运行时源方法的实现是否已执行
+             将新的实现添加到源方法，用来做检查用，避免源方法没有实现（有实现，但运行时尚未执行到该方法的实现）
+             如果源方法已有实现，会返回 NO，此时直接交换源方法与新方法的实现即可
+             如果源方法尚未实现，会返回 YES，此时新的实现已替换原方法的实现，需要将源方法的实现替换到新方法
+             
+             对于部分代理方法，可能存在该类本身是没有进行实现的，此时将新的实现添加到源方法必返回YES
+             之后不需要在进行其他操作，在新的实现内部如需执行源方法，需要判断新方法与源方法实现是否一致，一致时则不能执行原方法(否则死循环)
+             */
+            BOOL didAddMethod = class_addMethod(cls, originSelector, swizzledImpl, method_getTypeEncoding(swizzledMethod));
+            if (originImpl) {
+                if (didAddMethod) {
+                    class_replaceMethod(cls, swizzledSelector, originImpl, method_getTypeEncoding(originMethod));
+                }
+                else {
+                    method_exchangeImplementations(originMethod, swizzledMethod);
+                }
+            }
+        }
+    });
+}
+
+- (void)setJgsSecurityOriginText:(NSString *)jgsSecurityOriginText {
+    objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey, jgsSecurityOriginText, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)jgsSecurityOriginText {
+    return objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey);
+}
+
+- (void)jgsCheckClearInputChangeText {
+    
+    // 右侧clear按钮情况输入时发送UITextFieldTextDidChangeNotification通知，无其他回调
+    // 需要判断文本框展示内容长度与记录的输入内容长度是否一致
+    // 长度不一致则表示点击了clear，此时清理输入内容
+    if ([self JGSSwizzing_text].length == self.jgsSecurityOriginText.length) {
+        return;
+    }
+    self.text = nil;
+}
+
+- (void)JGSSwizzing_setText:(NSString *)text {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+        self.jgsSecurityOriginText = text;
+        for (NSInteger i = 0; i < text.length; i++) {
+            text = [text stringByReplacingCharactersInRange:NSMakeRange(i, 1) withString:JGSSecurityKeyboardSecChar];
+        }
+    }
+    [self JGSSwizzing_setText:text];
+}
+
+- (NSString *)JGSSwizzing_text {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+        return self.jgsSecurityOriginText;
+    }
+    return [self JGSSwizzing_text];
+}
+
+- (BOOL)JGSSwizzing_canPerformAction:(SEL)action withSender:(id)sender {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+        if (action == @selector(paste:) || action == @selector(copy:) || action == @selector(cut:)) {
+            return NO; // 禁止粘贴、复制、剪切
+        }
+        else if (action == @selector(select:) || action == @selector(selectAll:)) {
+            return NO; // 禁止选择、全选
+        }
+    }
+    return [self JGSSwizzing_canPerformAction:action withSender:sender];
+}
+
+- (void)JGSSwizzing_replaceRange:(UITextRange *)range withText:(NSString *)text {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+        
+        // 记录的原字符串更新
+        UITextPosition *begin = self.beginningOfDocument;
+        UITextPosition *rangeStart = range.start;
+        UITextPosition *rangeEnd = range.end;
+        
+        NSInteger location = [self offsetFromPosition:begin toPosition:rangeStart];
+        NSInteger length = [self offsetFromPosition:rangeStart toPosition:rangeEnd];
+        
+        NSString *origin = self.jgsSecurityOriginText ?: @"";
+        origin = [origin stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:text];
+        [self setJgsSecurityOriginText:origin];
+        
+        // 加密
+        text = [self secTextWithText:text];
+    }
+    [self JGSSwizzing_replaceRange:range withText:text];
+}
+
+- (NSString *)secTextWithText:(NSString *)text {
+    
+    for (NSInteger i = 0; i < text.length; i++) {
+        text = [text stringByReplacingCharactersInRange:NSMakeRange(i, 1) withString:JGSSecurityKeyboardSecChar];
+    }
+    return text;
 }
 
 @end
