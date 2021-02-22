@@ -321,52 +321,43 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
     JGSWWANType type = JGSWWANTypeUnknown;
     if (self.reachableViaWWAN) {
         
+        static NSDictionary *wwanInfoDict = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            
+            NSMutableDictionary *tmp = @{
+                CTRadioAccessTechnologyGPRS: @(JGSWWANTypeGPRS), // GPRS网络
+                CTRadioAccessTechnologyEdge: @(JGSWWANType2G), // EDGE为GPRS到第三代移动通信的过渡，EDGE俗称2.75G
+                CTRadioAccessTechnologyWCDMA: @(JGSWWANType3G), // 3G WCDMA网络
+                CTRadioAccessTechnologyHSDPA: @(JGSWWANType3G), // 3.5G网络，3G到4G的过度技术
+                CTRadioAccessTechnologyHSUPA: @(JGSWWANType3G), // 3.5G网络，3G到4G的过度技术
+                CTRadioAccessTechnologyCDMA1x: @(JGSWWANType3G), // CDMA 1X，CDMA2000的第一阶段
+                CTRadioAccessTechnologyCDMAEVDORev0: @(JGSWWANType3G), // CDMA的EVDORev0(CDMA2000的演进版本)
+                CTRadioAccessTechnologyCDMAEVDORevA: @(JGSWWANType3G), // CDMA的EVDORevA(CDMA2000的演进版本)
+                CTRadioAccessTechnologyCDMAEVDORevB: @(JGSWWANType3G), // CDMA的EVDORevB(CDMA2000的演进版本)
+                CTRadioAccessTechnologyeHRPD: @(JGSWWANType3G), // HRPD网络，电信使用的一种3G到4G的演进技术， 3.75G
+                CTRadioAccessTechnologyLTE: @(JGSWWANType4G), // LTE4G网络
+            }.mutableCopy;
+            
+            if (@available(iOS 14.0, *)) {
+                [tmp addEntriesFromDictionary:@{
+                    CTRadioAccessTechnologyNRNSA: @(JGSWWANType5G), // New Radio，新无线(5G)
+                    CTRadioAccessTechnologyNR: @(JGSWWANType5G), // 5G NR的非独立组网（NSA）模式
+                }];
+            }
+            wwanInfoDict = tmp.copy;
+        });
+        
         // 获取手机网络类型
         CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
-        NSString *currentStatus = info.currentRadioAccessTechnology;
-        if ([currentStatus isEqualToString:CTRadioAccessTechnologyGPRS]) {
-            //GPRS网络
-            type = JGSWWANTypeGPRS;
+        NSString *currentStatus = nil;
+        if (@available(iOS 12.0, *)) {
+            currentStatus = info.serviceCurrentRadioAccessTechnology.allValues.firstObject;
+        } else {
+            currentStatus = info.currentRadioAccessTechnology;
         }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyEdge]) {
-            //EDGE为GPRS到第三代移动通信的过渡，EDGE俗称2.75G
-            type = JGSWWANType2G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyWCDMA]) {
-            //3G WCDMA网络
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyHSDPA]) {
-            //3.5G网络，3G到4G的过度技术
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyHSUPA]) {
-            //3.5G网络，3G到4G的过度技术
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyCDMA1x]) {
-            // CDMA 1X，CDMA2000的第一阶段
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0]) {
-            //CDMA的EVDORev0(CDMA2000的演进版本)
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA]) {
-            //CDMA的EVDORevA(CDMA2000的演进版本)
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB]) {
-            //CDMA的EVDORevB(CDMA2000的演进版本)
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyeHRPD]) {
-            //HRPD网络，电信使用的一种3G到4G的演进技术， 3.75G
-            type = JGSWWANType3G;
-        }
-        else if ([currentStatus isEqualToString:CTRadioAccessTechnologyLTE]) {
-            //LTE4G网络
-            type = JGSWWANType4G;
+        if (currentStatus.length > 0 && [wwanInfoDict.allKeys containsObject:currentStatus]) {
+            type = [wwanInfoDict[currentStatus] integerValue];
         }
     }
     
@@ -405,6 +396,10 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
                     
                 case JGSWWANType4G:
                     statusStr = @"4G";
+                    break;
+                    
+                case JGSWWANType5G:
+                    statusStr = @"5G";
                     break;
             }
         }

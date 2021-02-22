@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, JGSWWANType) {
     JGSWWANType2G, // 2G
     JGSWWANType3G, // 3G
     JGSWWANType4G, // 4G
+    JGSWWANType5G, // 5G
 };
 
 typedef void (^JGSReachabilityStatusChangeBlock)(JGSReachabilityStatus status);
