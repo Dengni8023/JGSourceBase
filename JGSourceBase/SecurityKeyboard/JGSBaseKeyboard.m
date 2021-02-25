@@ -40,10 +40,6 @@ FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyTitleColor(void) {
     return JGSColorRGB(0, 0, 0);// 系统键盘截图取色
 }
 
-FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyHighlightedTitleColor(void) {
-    return [JGSKeyboardKeyTitleColor() colorWithAlphaComponent:JGSKeyboardHighlightedColorAlpha];
-}
-
 FOUNDATION_EXTERN UIFont * const JGSKeyboardToolBarTitleFont(void) {
     return [UIFont systemFontOfSize:16];
 }
@@ -64,7 +60,7 @@ CGFloat const JGSKeyboardHighlightedColorAlpha = 0.6;
 CGFloat const JGSKeyboardToolbarHeight = 40.f;
 NSInteger const JGSKeyboardLinesNumber = 4;
 NSInteger const JGSKeyboardMaxItemsInLine = 10;
-NSInteger const JGSKeyboardNumberItemsInLine = 4;
+NSInteger const JGSKeyboardNumberItemsInLine = 3;
 CGFloat const JGSKeyboardInteritemSpacing = 6.f;
 CGFloat const JGSKeyboardKeyLineSpacing = 10.f;
 CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;

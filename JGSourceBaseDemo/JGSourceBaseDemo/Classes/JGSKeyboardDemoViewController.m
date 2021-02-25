@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UITextField *normalInput;
 @property (nonatomic, strong) UITextField *accountInput;
 @property (nonatomic, strong) UITextField *secPwdInput;
+@property (nonatomic, strong) UITextField *secPwdFullInput;
 
 @end
 
@@ -60,7 +61,7 @@
 - (void)addViewElements {
     
     NSMutableArray<UITextField *> *fields = @[].mutableCopy;
-    for (NSInteger i = 0; i < 3; i++) {
+    for (NSInteger i = 0; i < 4; i++) {
         
         UITextField *field = [[UITextField alloc] init];
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -88,6 +89,7 @@
     // 键盘设置
     self.normalInput = fields[0];
     self.normalInput.placeholder = @"系统键盘输入";
+    self.normalInput.keyboardType = UIKeyboardTypeNumberPad;
     
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
@@ -97,6 +99,17 @@
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
     self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:arc4random() % 2 == 0];
+    if (@available(iOS 11.0, *)) {
+        self.secPwdInput.textContentType = UITextContentTypePassword;
+    }
+    
+    self.secPwdFullInput = fields[3];
+    self.secPwdFullInput.placeholder = @"安全键盘加密输入-全角";
+    self.secPwdFullInput.secureTextEntry = YES;
+    self.secPwdFullInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:nil randomNumPad:arc4random() % 2 == 0 enableFullAngle:YES];
+    if (@available(iOS 10.0, *)) {
+        self.secPwdFullInput.textContentType = UITextContentTypeNickname;
+    }
 }
 
 #pragma mark - Action
@@ -132,6 +145,9 @@
     }
     else if ([textField isEqual:self.accountInput]) {
         [self.secPwdInput becomeFirstResponder];
+    }
+    else if ([textField isEqual:self.secPwdInput]) {
+        [self.secPwdFullInput becomeFirstResponder];
     }
     else {
         [textField resignFirstResponder];

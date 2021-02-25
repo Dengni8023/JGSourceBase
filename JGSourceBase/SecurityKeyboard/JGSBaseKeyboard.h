@@ -15,22 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarTitleColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarItemTitleColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarItemSelectedTitleColor(void);
-
 FOUNDATION_EXTERN UIColor * const JGSKeyboardBackgroundColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyInputColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyFuncColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyTitleColor(void);
-FOUNDATION_EXTERN UIColor * const JGSKeyboardKeyHighlightedTitleColor(void);
 
-FOUNDATION_EXTERN UIFont * const JGSKeyboardToolBarTitleFont(void);
-FOUNDATION_EXTERN UIFont * const JGSKeyboardToolBarItemTitleFont(void);
-FOUNDATION_EXTERN UIFont * const JGSKeyboardKeyInputTitleFont(void);
-FOUNDATION_EXTERN UIFont * const JGSKeyboardKeyFuncTitleFont(void);
-
-FOUNDATION_EXTERN CGFloat const JGSKeyboardHighlightedColorAlpha; // 按钮高亮颜色alpha
 FOUNDATION_EXTERN CGFloat const JGSKeyboardToolbarHeight; // 键盘顶部工具条高度
 FOUNDATION_EXTERN NSInteger const JGSKeyboardLinesNumber; // 键盘按键行数
 FOUNDATION_EXTERN NSInteger const JGSKeyboardMaxItemsInLine; // 键盘单行最多按键
@@ -127,7 +113,7 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSString *returnKeyTitle;
 @property (nonatomic, copy, readonly) void (^keyInput)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent);
-@property (nonatomic, weak) JGSKeyboardToolbarItem *toolbarItem;
+@property (nonatomic, strong) JGSKeyboardToolbarItem *toolbarItem;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

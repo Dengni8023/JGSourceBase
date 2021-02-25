@@ -51,9 +51,10 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
             }];
         }
         _showNumbers = @[
-                         [numbers subarrayWithRange:NSMakeRange(0, 4)],
-                         [numbers subarrayWithRange:NSMakeRange(4, 4)],
-                         [numbers subarrayWithRange:NSMakeRange(8, 2)],
+                         [numbers subarrayWithRange:NSMakeRange(0, 3)],
+                         [numbers subarrayWithRange:NSMakeRange(3, 3)],
+                         [numbers subarrayWithRange:NSMakeRange(6, 3)],
+                         [numbers subarrayWithRange:NSMakeRange(9, 1)],
                          ];
     }
     return _showNumbers;
@@ -67,55 +68,47 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-    CGFloat numberItemW = floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
-    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio);
+    CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing);
+    CGFloat itemWidth = floor(itemHeight / JGSKeyboardKeyWidthHeightRatio);
+    CGFloat numberItemW = itemWidth;// floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
+    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing);
+    while (ceil((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) < keyboardWidth) {
+        numberItemW *= 1.2;
+        numberSpacingX *= 1.2;
+    }
+    numberItemW = floor(numberItemW);
+    numberSpacingX = floor(numberSpacingX / 1.2);
+    
     CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
-    CGFloat numberMaxW = (JGSKeyboardInteritemSpacing + numberItemW) * JGSKeyboardNumberItemsInLine - JGSKeyboardInteritemSpacing;
+    CGFloat numberMaxW = (numberSpacingX + numberItemW) * JGSKeyboardNumberItemsInLine - numberSpacingX;
     CGFloat minX = (keyboardWidth - numberMaxW) * 0.5f;
     
     NSMutableArray<JGSKeyboardKey *> *tmpKeys = @[].mutableCopy;
     [self.showNumbers enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
-        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing + numberItemW) * line.count - JGSKeyboardInteritemSpacing;
+        CGFloat itemsTotalW = (numberSpacingX + numberItemW) * line.count - numberSpacingX;
         CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
         CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing);
         
         [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            CGFloat btnX = beginX + idx * (numberItemW + JGSKeyboardInteritemSpacing);
+            CGFloat btnX = beginX + idx * (numberItemW + numberSpacingX);
             CGRect btnFrame = CGRectMake(btnX, lineY, numberItemW, itemHeight);
             
             JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
             [tmpKeys addObject:itemBtn];
         }];
         
-        if (lineIdx == 2) {
+        if (lineIdx == 3) {
             
             // switch
-            JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Symbol text:JGSKeyboardTitleSymbols frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
+            JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleSymbols frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
             [tmpKeys addObject:symbolBtn];
             
             // delete
             JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - numberItemW, lineY, numberItemW, itemHeight)];
             [tmpKeys addObject:deleteBtn];
-            
-            lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
-            
-            // switch
-            JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
-            [tmpKeys addObject:switchBtn];
-            
-            // dot
-            CGFloat spaceX = minX + numberItemW + JGSKeyboardInteritemSpacing;
-            CGFloat spaceW = keyboardWidth - spaceX * 2;
-            JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@"." frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
-            [tmpKeys addObject:spaceBtn];
-            
-            // enter
-            JGSKeyboardKey *enterBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeEnter text:self.returnKeyTitle frame:CGRectMake(keyboardWidth - minX - numberItemW, lineY, numberItemW, itemHeight)];
-            [tmpKeys addObject:enterBtn];
         }
     }];
     

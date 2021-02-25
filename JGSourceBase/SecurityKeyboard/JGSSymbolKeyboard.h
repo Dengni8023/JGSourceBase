@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable);
+
 @interface JGSSymbolKeyboard : JGSBaseKeyboard
 
 + (instancetype)new NS_UNAVAILABLE;

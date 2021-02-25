@@ -7,6 +7,12 @@
 
 #import "JGSSymbolKeyboard.h"
 
+BOOL JGSKeyboardSymbolFullAngle = NO;
+FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
+    JGSLog(@"字符键盘支持全角：%@", @(enable));
+    JGSKeyboardSymbolFullAngle = enable;
+}
+
 @interface JGSSymbolKeyboard ()
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showHalfNumSyms;
@@ -148,21 +154,32 @@
             
             lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
             CGFloat switchWidth = MIN(floor((JGSKeyboardInteritemSpacing + itemWidth) * 1.5), itemHeight);
+            funcItemWidth = switchWidth * 2 + JGSKeyboardInteritemSpacing;
+            CGFloat spaceX = minX + (switchWidth + JGSKeyboardInteritemSpacing) * 2;
             
-            // switch
-            JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
-            [tmpKeys addObject:switchBtn];
-            
-            // angle
-            CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing;
-            JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
-            JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
-            [tmpKeys addObject:angleSwitch];
-            
-            funcItemWidth = switchWidth * 2;
+            if (JGSKeyboardSymbolFullAngle) {
+                // switch
+                JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
+                [tmpKeys addObject:switchBtn];
+                
+                // angle
+                CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing;
+                JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
+                JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
+                [tmpKeys addObject:angleSwitch];
+            }
+            else {
+
+                switchWidth = switchWidth * 2;
+                funcItemWidth = switchWidth;
+                spaceX = minX + switchWidth + JGSKeyboardInteritemSpacing;
+
+                // switch
+                JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
+                [tmpKeys addObject:switchBtn];
+            }
             
             // space
-            CGFloat spaceX = angleX + switchWidth + JGSKeyboardInteritemSpacing;
             CGFloat spaceW = keyboardWidth - minX - spaceX - funcItemWidth - JGSKeyboardInteritemSpacing;
             JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@" " frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
             [tmpKeys addObject:spaceBtn];
