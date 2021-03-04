@@ -339,7 +339,7 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
                 CTRadioAccessTechnologyLTE: @(JGSWWANType4G), // LTE4G网络
             }.mutableCopy;
             
-            if (@available(iOS 14.0, *)) {
+            if (@available(iOS 14.1, *)) {
                 [tmp addEntriesFromDictionary:@{
                     CTRadioAccessTechnologyNRNSA: @(JGSWWANType5G), // New Radio，新无线(5G)
                     CTRadioAccessTechnologyNR: @(JGSWWANType5G), // 5G NR的非独立组网（NSA）模式
