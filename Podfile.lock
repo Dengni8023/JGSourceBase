@@ -4,6 +4,9 @@ PODS:
     - JGSourceBase/AlertController (= 1.2.0)
     - JGSourceBase/Base (= 1.2.0)
     - JGSourceBase/Category (= 1.2.0)
+    - JGSourceBase/HUD (= 1.2.0)
+    - JGSourceBase/Reachability (= 1.2.0)
+    - JGSourceBase/SecurityKeyboard (= 1.2.0)
   - JGSourceBase/AlertController (1.2.0):
     - JGSourceBase/Base
   - JGSourceBase/Base (1.2.0)
@@ -16,27 +19,23 @@ PODS:
     - JGSourceBase/Category
     - JGSourceBase/HUD/LoadingHUD (= 1.2.0)
     - JGSourceBase/HUD/ToastHUD (= 1.2.0)
-    - MBProgressHUD (~> 1.1.0)
+    - MBProgressHUD (~> 1.2.0)
   - JGSourceBase/HUD/LoadingHUD (1.2.0):
     - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
+    - MBProgressHUD (~> 1.2.0)
   - JGSourceBase/HUD/ToastHUD (1.2.0):
     - JGSourceBase/Category
-    - MBProgressHUD (~> 1.1.0)
+    - MBProgressHUD (~> 1.2.0)
   - JGSourceBase/Reachability (1.2.0):
     - JGSourceBase/Base
   - JGSourceBase/SecurityKeyboard (1.2.0):
     - JGSourceBase/Category
   - Masonry (1.1.0)
-  - MBProgressHUD (1.1.0)
+  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
-  - JGSourceBase/Category/Device (from `.`)
-  - JGSourceBase/HUD (from `.`)
-  - JGSourceBase/Reachability (from `.`)
-  - JGSourceBase/SecurityKeyboard (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
@@ -58,10 +57,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: 57a17647d4257867bddb0605cd2b13e7322907c9
+  JGSourceBase: 91eb39d9376686650dac51e8ab9b50a446eac8ad
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 70cf81a63e9da237de4635b7636adb492782810b
+PODFILE CHECKSUM: ce6d04eb8e8a86bd5d95e7cdccac9950eb569168
 
 COCOAPODS: 1.10.1

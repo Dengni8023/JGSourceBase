@@ -138,7 +138,7 @@
             break;
             
         case 1: {
-            [JGSLoadingHUD showLoadingHUD:@"showLoadingHUDWithMessage"];
+            [JGSLoadingHUD showLoadingHUD:@"加载中..."];
         }
             break;
             
@@ -148,7 +148,7 @@
             break;
             
         case 3: {
-            [JGSLoadingHUD showIndicatorLoadingHUD:@"Indicator:JGSHUDTypeIndicator"];
+            [JGSLoadingHUD showIndicatorLoadingHUD:@"加载中..."];
         }
             break;
             

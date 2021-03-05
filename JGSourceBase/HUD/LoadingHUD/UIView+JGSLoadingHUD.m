@@ -148,9 +148,10 @@ static NSPointerArray *JGSLoadingHUDStack = nil;
 #pragma mark - Customize
 - (void)jg_customizeLoadingHudStyle:(MBProgressHUD *)hud {
     
-    CGFloat width = CGRectGetWidth(self.frame), height = CGRectGetHeight(self.frame);
-    hud.minSize = CGSizeMake(width / 3.f, width / 3.f / 3.f);
-    hud.offset = CGPointMake(0, -height / 30.f);
+    CGFloat width = CGRectGetWidth(self.frame);// height = CGRectGetHeight(self.frame);
+    CGFloat minWidth = MIN(60, width / 6.f);
+    hud.minSize = CGSizeMake(minWidth, minWidth / 3.f);
+    //hud.offset = CGPointMake(0, -height / 3.f);
     
     // 全屏背景
     hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;

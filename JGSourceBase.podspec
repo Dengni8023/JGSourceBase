@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
             SecurityKeyboard - 自定义安全键盘
                 1、字母键盘支持单字母大小写切换、选中大写
                 2、符号键盘支持与数字混合展示，支持全角、半角字符
-                3、数字键盘支持随机/非随机
+                3、数字键盘支持随机、非随机
             
     DESC
     
@@ -57,22 +57,24 @@ Pod::Spec.new do |s|
         :ios => 10.0,
     }
     
-    s.source_files          = "JGSourceBase/*.{h,m}"
-    s.public_header_files   = "JGSourceBase/*.h"
+#    s.source_files          = "JGSourceBase/*.{h,m}"
+#    s.public_header_files   = "JGSourceBase/*.h"
     
-    # subspec
-    s.default_subspecs = [
-        'Base',
-        'AlertController',
-        'Category',
-    ]
-    
+    # subspec，不指定时默认安装所有subspec，用户可自行指定
+    #s.default_subspecs = [
+    #    'Base',
+    #    'AlertController',
+    #    'Category',
+    #]
+                                                        
     # Base
     s.subspec 'Base' do |ss|
         ss.source_files         = [
+            "JGSourceBase/*.{h,m}",
             "JGSourceBase/Base/*.{h,m}",
         ]
         ss.public_header_files  = [
+            "JGSourceBase/*.h",
             "JGSourceBase/Base/*.h",
         ]
         
@@ -103,18 +105,18 @@ Pod::Spec.new do |s|
         ]
         
         ss.dependency   "JGSourceBase/Base"
-		
-		ss.subspec 'Device' do |sss|
-			sss.source_files	= [
-				"JGSourceBase/Category/Device/*.{h,m}",
-			]
-			sss.public_header_files	= [
-				"JGSourceBase/Category/Device/*.h",
-			]
-			sss.resources	= [
-				"JGSourceBase/Category/Device/*.csv",
-			]
-		end
+    
+        ss.subspec 'Device' do |sss|
+          sss.source_files  = [
+            "JGSourceBase/Category/Device/*.{h,m}",
+          ]
+          sss.public_header_files  = [
+            "JGSourceBase/Category/Device/*.h",
+          ]
+          sss.resources  = [
+            "JGSourceBase/Category/Device/*.csv",
+          ]
+        end
     end
     
     # Reachability
@@ -137,7 +139,7 @@ Pod::Spec.new do |s|
             "JGSourceBase/HUD/*.h",
         ]
         
-        ss.dependency   'MBProgressHUD', '~> 1.1.0'
+        ss.dependency   'MBProgressHUD', '~> 1.2.0'
         ss.dependency   "JGSourceBase/Category"
         ss.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_HUD',
