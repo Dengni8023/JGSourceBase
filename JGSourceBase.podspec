@@ -57,25 +57,27 @@ Pod::Spec.new do |s|
         :ios => 10.0,
     }
     
-#    s.source_files          = "JGSourceBase/*.{h,m}"
-#    s.public_header_files   = "JGSourceBase/*.h"
+    s.source_files          = "JGSourceBase/*.{h,m}"
+    s.public_header_files   = "JGSourceBase/*.h"
     
     # subspec，不指定时默认安装所有subspec，用户可自行指定
     #s.default_subspecs = [
-    #    'Base',
     #    'AlertController',
+    #    'Base',
     #    'Category',
+    #    'HUD',
+    #    'Reachability',
     #]
                                                         
     # Base
     s.subspec 'Base' do |ss|
         ss.source_files         = [
             "JGSourceBase/*.{h,m}",
-            "JGSourceBase/Base/*.{h,m}",
+            "JGSourceBase/Base/*.{h,m}", # 防止用户自行指定subspec时JGSourceBase.h不会作为公共头文件导出问题
         ]
         ss.public_header_files  = [
             "JGSourceBase/*.h",
-            "JGSourceBase/Base/*.h",
+            "JGSourceBase/Base/*.h", # 防止用户自行指定subspec时JGSourceBase.h不会作为公共头文件导出问题
         ]
         
         ss.xcconfig     = {

@@ -249,3 +249,18 @@
 #pragma mark - End
 
 @end
+
+@implementation NSMutableDictionary (JGSBase)
+
+#pragma mark - Setter
+- (void)jg_setObject:(id)object forKey:(const id)key {
+    
+    if (object) {
+        [(NSMutableDictionary *)self setObject:object forKey:key];
+        return;
+    }
+    
+    [(NSMutableDictionary *)self removeObjectForKey:key];
+}
+
+@end

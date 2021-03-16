@@ -86,6 +86,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    cell.contentView.backgroundColor = JGSColorHex(arc4random() % 0xffffff);
     //cell.contentView.backgroundColor = JGSColorRGB(arc4random() % (0xff + 1), arc4random() % (0xff + 1), arc4random() % (0xff + 1));
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
     if (indexPath.section == 0 && indexPath.row == 0) {

@@ -41,7 +41,7 @@ _Pragma("clang diagnostic pop") \
 // Runtime
 #pragma mark - SwizzledMethod
 /** 更改方法实现，严谨逻辑实现 */
-FOUNDATION_EXPORT void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector);
+FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector);
 
 @interface JGSBaseUtils : NSObject
 

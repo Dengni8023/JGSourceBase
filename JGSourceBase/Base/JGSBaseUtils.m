@@ -9,7 +9,7 @@
 #import "JGSBaseUtils.h"
 #import <objc/runtime.h>
 
-FOUNDATION_EXPORT void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
     
     Method originMethod = class_getInstanceMethod(cls, originSelector);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);

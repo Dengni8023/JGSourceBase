@@ -79,6 +79,7 @@ typedef NS_ENUM(NSInteger, JGSKeyboardShiftKeyStatus) {
 @interface JGSKeyboardKey : UILabel
 
 @property (nonatomic, assign, readonly) JGSKeyboardKeyType type;
+@property (nonatomic, assign) BOOL enableHighlighted; // 点击高亮，默认允许点击高亮
 @property (nonatomic, assign) JGSKeyboardShiftKeyStatus shiftStatus;
 @property (nonatomic, copy) void (^action)(JGSKeyboardKey *key, JGSKeyboardKeyEvents event);
 
@@ -111,8 +112,10 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 
 @property (nonatomic, assign, readonly) JGSKeyboardType type;
 @property (nonatomic, copy, readonly) NSString *title;
+@property (nonatomic, assign, readonly, setter=enableHighlightedWhenTap:) BOOL enableHighlightedWhenTap; // 点击高亮，默认允许点击高亮
 @property (nonatomic, copy, readonly) NSString *returnKeyTitle;
 @property (nonatomic, copy, readonly) void (^keyInput)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent);
+
 @property (nonatomic, strong) JGSKeyboardToolbarItem *toolbarItem;
 
 + (instancetype)new NS_UNAVAILABLE;
@@ -120,6 +123,8 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type returnKeyType:(JGSKeyboardReturnType)returnKeyType keyInput:(void (^)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent))keyInput;
+
+- (void)enableHighlightedWhenTap:(BOOL)enable NS_REQUIRES_SUPER;
 
 /**
  回调通过调用super在父类中处理

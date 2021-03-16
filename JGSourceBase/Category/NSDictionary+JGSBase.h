@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JGSBase)
+@interface NSDictionary<KeyType, ObjectType> (JGSBase)
 
 // String
 - (nullable NSString *)jg_stringForKey:(const KeyType)key;
@@ -76,6 +76,13 @@ NS_ASSUME_NONNULL_BEGIN
 // Array
 - (nullable NSArray *)jg_arrayForKey:(const KeyType)key;
 - (nullable NSArray *)jg_arrayForKey:(const KeyType)key defaultValue:(nullable NSArray *)defaultValue;
+
+@end
+
+@interface NSMutableDictionary<KeyType, ObjectType> (JGSBase)
+
+// Setter
+- (void)jg_setObject:(nullable ObjectType)object forKey:(const KeyType)key;
 
 @end
 

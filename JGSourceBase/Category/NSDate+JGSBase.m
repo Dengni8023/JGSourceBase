@@ -125,20 +125,27 @@
 }
 
 #pragma mark - Format
++ (NSDateFormatter *)jg_dateFormatter {
+    
+    static NSDateFormatter *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[NSDateFormatter alloc] init];
+    });
+    return instance;
+}
+
 + (instancetype)jg_dateWithString:(NSString *)dateString format:(NSString *)format {
     return [self jg_dateWithString:dateString format:format timeZone:nil local:nil];
 }
 
 + (instancetype)jg_dateWithString:(NSString *)dateString format:(NSString *)format timeZone:(NSTimeZone *)timeZone local:(NSLocale *)locale {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [self jg_dateFormatter];
     [formatter setDateFormat:format];
-    if (timeZone) {
-        [formatter setTimeZone:timeZone];
-    }
-    if (locale) {
-        [formatter setLocale:locale];
-    }
+    [formatter setTimeZone:timeZone];
+    [formatter setLocale:locale];
+    
     return [formatter dateFromString:dateString];
 }
 
@@ -148,14 +155,11 @@
 
 - (NSString *)jg_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone local:(NSLocale *)locale {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [self.class jg_dateFormatter];
     [formatter setDateFormat:format];
-    if (timeZone) {
-        [formatter setTimeZone:timeZone];
-    }
-    if (locale) {
-        [formatter setLocale:locale];
-    }
+    [formatter setTimeZone:timeZone];
+    [formatter setLocale:locale];
+    
     return [formatter stringFromDate:self];
 }
 

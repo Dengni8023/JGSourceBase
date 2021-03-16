@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */; };
+		D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
+		D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */; };
+		D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA8E22F02B04002EF0F0 /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */; };
@@ -42,10 +46,10 @@
 		D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */; };
-		D4F3DAE022F02B05002EF0F0 /* NSObject+JGS_JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */; };
+		D4F3DAE022F02B05002EF0F0 /* NSObject+JGSJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */; };
 		D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */; };
 		D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */; };
-		D4F3DAE322F02B05002EF0F0 /* NSObject+JGS_JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4F3DAE322F02B05002EF0F0 /* NSObject+JGSJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
 		D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */; };
@@ -68,10 +72,14 @@
 
 /* Begin PBXFileReference section */
 		9ED191665617C429AACC2C17 /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JGSBase.m"; sourceTree = "<group>"; };
+		D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JGSBase.h"; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D477DA5225AD814200BE1F9B /* OutputFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OutputFiles; sourceTree = "<group>"; };
 		D477DA5525AD815100BE1F9B /* InputFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = InputFiles; sourceTree = "<group>"; };
+		D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSBase.h"; sourceTree = "<group>"; };
+		D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,10 +119,10 @@
 		D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JGSBase.m"; sourceTree = "<group>"; };
-		D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGS_JSON.m"; sourceTree = "<group>"; };
+		D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGSJSON.m"; sourceTree = "<group>"; };
 		D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JGSBase.m"; sourceTree = "<group>"; };
-		D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGS_JSON.h"; sourceTree = "<group>"; };
+		D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSJSON.h"; sourceTree = "<group>"; };
 		D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
 		D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
@@ -271,10 +279,14 @@
 				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
 				D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */,
 				D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */,
-				D4F3DAB822F02B05002EF0F0 /* NSObject+JGS_JSON.h */,
-				D4F3DAB522F02B05002EF0F0 /* NSObject+JGS_JSON.m */,
+				D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */,
+				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */,
+				D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */,
+				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
 				D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */,
+				D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */,
+				D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -315,13 +327,15 @@
 				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
 				D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
+				D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */,
+				D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */,
 				D4F3DACC22F02B05002EF0F0 /* UIView+JGSToast.h in Headers */,
 				D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */,
 				D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */,
 				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
 				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
 				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
-				D4F3DAE322F02B05002EF0F0 /* NSObject+JGS_JSON.h in Headers */,
+				D4F3DAE322F02B05002EF0F0 /* NSObject+JGSJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,9 +433,11 @@
 				D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */,
 				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
 				D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */,
-				D4F3DAE022F02B05002EF0F0 /* NSObject+JGS_JSON.m in Sources */,
+				D4F3DAE022F02B05002EF0F0 /* NSObject+JGSJSON.m in Sources */,
+				D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */,
 				D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */,
 				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
+				D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */,
 				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
 				D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */,
 				D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */,

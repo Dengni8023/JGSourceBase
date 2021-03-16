@@ -11,13 +11,17 @@
 #if __has_include(<JGSourceBase/JGSCategory.h>)
 #import <JGSourceBase/NSDate+JGSBase.h>
 #import <JGSourceBase/NSDictionary+JGSBase.h>
-#import <JGSourceBase/NSObject+JGS_JSON.h>
+#import <JGSourceBase/NSObject+JGSJSON.h>
+#import <JGSourceBase/NSString+JGSBase.h>
 #import <JGSourceBase/UIColor+JGSBase.h>
+#import <JGSourceBase/UIImage+JGSBase.h>
 #else
 #import "NSDate+JGSBase.h"
 #import "NSDictionary+JGSBase.h"
-#import "NSObject+JGS_JSON.h"
+#import "NSObject+JGSJSON.h"
+#import "NSString+JGSBase.h"
 #import "UIColor+JGSBase.h"
+#import "UIImage+JGSBase.h"
 #endif
 
 #endif /* JGSCategory_h */

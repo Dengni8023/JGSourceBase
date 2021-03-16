@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, nullable, readonly) NSString *title;
 @property (nonatomic, weak, readonly) UITextField *textField; // 输入框
+@property (nonatomic, assign) BOOL enableHighlightedWhenTap; // 点击高亮，默认允许点击高亮
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT CGFloat const JGSToastTopBottomMargin;
+FOUNDATION_EXTERN CGFloat const JGSToastTopBottomMargin;
 typedef NS_ENUM(NSInteger, JGSToastPosition) {
     JGSToastPositionCenter = 0, // 视图居中，默认
     JGSToastPositionTop, // SafeArea顶边距JGSToastStyle.topMargin

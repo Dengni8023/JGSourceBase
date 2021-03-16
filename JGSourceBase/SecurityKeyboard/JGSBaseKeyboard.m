@@ -182,6 +182,20 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
     return self;
 }
 
+- (void)setEnableHighlighted:(BOOL)enableHighlighted {
+    
+    _enableHighlighted = enableHighlighted;
+    if (enableHighlighted) {
+        
+        self.highlightedBgColor = (self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyFuncColor() : JGSKeyboardKeyInputColor());
+        self.highlightedTextColor =  [self.textColor colorWithAlphaComponent:JGSKeyboardHighlightedColorAlpha];
+    }
+    else {
+        self.highlightedBgColor = (self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputColor() : JGSKeyboardKeyFuncColor());
+        self.highlightedTextColor =  self.textColor;
+    }
+}
+
 - (void)setShiftStatus:(JGSKeyboardShiftKeyStatus)shiftStatus {
     
     _shiftStatus = shiftStatus;
@@ -478,12 +492,18 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
         
         _type = type;
         _title = JGSKeyboardTitleForType(type);
+        _enableHighlightedWhenTap = YES;
         _returnKeyTitle = JGSKeyboardReturnTitleForType(returnKeyType);
         _keyInput = keyInput;
     }
     return self;
 }
 
+- (void)enableHighlightedWhenTap:(BOOL)enable {
+    _enableHighlightedWhenTap = enable;
+}
+
+#pragma mark - Action
 - (BOOL)keyboardKeyAction:(JGSKeyboardKey *)key event:(JGSKeyboardKeyEvents)event {
     
     switch (key.type) {

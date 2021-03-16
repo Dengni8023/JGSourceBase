@@ -34,6 +34,14 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     return self;
 }
 
+- (void)enableHighlightedWhenTap:(BOOL)enable {
+    [super enableHighlightedWhenTap:enable];
+    
+    [self.showKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enableHighlighted = enable;
+    }];
+}
+
 #pragma mark - View
 - (NSArray<NSArray<NSString *> *> *)showNumbers {
     

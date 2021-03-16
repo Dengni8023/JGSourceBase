@@ -11,42 +11,43 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** 16进制RGB颜色，alpha默认1.0 */
-FOUNDATION_EXPORT UIColor *JGSColorHex(GLuint rgbHex);
+FOUNDATION_EXTERN UIColor *JGSColorHex(uint32_t rgbHex);
+FOUNDATION_EXTERN UIColor *JGSColorHexA(uint32_t rgbHex, float alpha);
 
-/** 16进制RGB颜色，alpha */
-FOUNDATION_EXPORT UIColor *JGSColorHexA(GLuint rgbHex, GLclampf alpha);
+/** 16进制RGB颜色值，alpha无效时默认1.0，hex兼容 0xff00ff, #ff00ff，数据仅前6位有效 */
+FOUNDATION_EXTERN UIColor *JGSColorHexString(NSString *hex);
+FOUNDATION_EXTERN UIColor *JGSColorHexStringA(NSString *hex, float alpha);
 
 /** RGB颜色0～255，alpha默认1.0 */
-FOUNDATION_EXPORT UIColor *JGSColorRGB(GLubyte red, GLubyte green, GLubyte blue);
-
-/** RGB颜色0～255，alpha */
-FOUNDATION_EXPORT UIColor *JGSColorRGBA(GLubyte red, GLubyte green, GLubyte blue, GLclampf alpha);
+FOUNDATION_EXTERN UIColor *JGSColorRGB(uint8_t red, uint8_t green, uint8_t blue);
+FOUNDATION_EXTERN UIColor *JGSColorRGBA(uint8_t red, uint8_t green, uint8_t blue, float alpha);
 
 /** RGB颜色0～1.0，alpha默认1.0 */
-FOUNDATION_EXPORT UIColor *JGSColorFRGB(GLclampf red, GLclampf green, GLclampf blue);
-
-/** RGB颜色0～1.0，alpha */
-FOUNDATION_EXPORT UIColor *JGSColorFRGBA(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+FOUNDATION_EXTERN UIColor *JGSColorFRGB(float red, float green, float blue);
+FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, float alpha);
 
 @interface UIColor (JGSBase)
 
-/** 16进制RGB颜色，alpha默认1.0 */
-+ (instancetype)jg_ColorHex:(GLuint)rgbHex;
+/// @see JGSColorHex
++ (instancetype)jg_ColorHex:(uint32_t)rgbHex;
+/// @see JGSColorHexA
++ (instancetype)jg_ColorHex:(uint32_t)rgbHex alpha:(float)alpha;
+/// @see JGSColorRGB
++ (instancetype)jg_ColorR:(uint8_t)red g:(uint8_t)green b:(uint8_t)blue;
+/// @see JGSColorRGBA
++ (instancetype)jg_ColorR:(uint8_t)red g:(uint8_t)green b:(uint8_t)blue alpha:(float)alpha;
+/// @see JGSColorFRGB
++ (instancetype)jg_ColorFR:(float)red g:(float)green b:(float)blue;
+/// @see JGSColorFRGBA
++ (instancetype)jg_ColorFR:(float)red g:(float)green b:(float)blue alpha:(float)alpha;
 
-/** 16进制RGB颜色，alpha */
-+ (instancetype)jg_ColorHex:(GLuint)rgbHex alpha:(GLclampf)alpha;
+@end
 
-/** RGB颜色0～255，alpha默认1.0 */
-+ (instancetype)jg_ColorR:(GLubyte)red g:(GLubyte)green b:(GLubyte)blue;
+@interface NSString (JGSBase_Hex)
 
-/** RGB颜色0～255，alpha */
-+ (instancetype)jg_ColorR:(GLubyte)red g:(GLubyte)green b:(GLubyte)blue alpha:(GLclampf)alpha;
-
-/** RGB颜色0～1.0，alpha默认1.0 */
-+ (instancetype)jg_ColorFR:(GLclampf)red g:(GLclampf)green b:(GLclampf)blue;
-
-/** RGB颜色0～1.0，alpha */
-+ (instancetype)jg_ColorFR:(GLclampf)red g:(GLclampf)green b:(GLclampf)blue alpha:(GLclampf)alpha;
++ (instancetype)jg_stringWithHex:(uint32_t)hex;
+/// 兼容0x、0X、#、无起始字符
+- (uint32_t)jg_hex;
 
 @end
 

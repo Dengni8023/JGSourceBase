@@ -99,6 +99,14 @@
     return self;
 }
 
+- (void)setEnableHighlightedWhenTap:(BOOL)enableHighlightedWhenTap {
+    
+    _enableHighlightedWhenTap = enableHighlightedWhenTap;
+    [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj enableHighlightedWhenTap:enableHighlightedWhenTap];
+    }];
+}
+
 #pragma mark - View
 - (void)addViewElements {
     
@@ -175,7 +183,6 @@
     // 键盘顶部Tool标题居中，当前键盘对应的切换item不显示
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    JGSWeakSelf
     NSMutableArray *leftItems = @[].mutableCopy;
     NSMutableArray *rightItems = @[self.keyboardDoneItem].mutableCopy;
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

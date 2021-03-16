@@ -46,6 +46,26 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     return self;
 }
 
+- (void)enableHighlightedWhenTap:(BOOL)enable {
+    [super enableHighlightedWhenTap:enable];
+    
+    [self.showHalfNumKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enableHighlighted = enable;
+    }];
+    
+    [self.showHalfSymKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enableHighlighted = enable;
+    }];
+    
+    [self.showFullNumKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enableHighlighted = enable;
+    }];
+    
+    [self.showFullSymKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enableHighlighted = enable;
+    }];
+}
+
 #pragma mark - View
 - (NSArray<NSArray<NSString *> *> *)showHalfNumSyms {
     

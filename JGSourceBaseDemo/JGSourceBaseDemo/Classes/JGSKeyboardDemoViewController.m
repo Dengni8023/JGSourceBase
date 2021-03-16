@@ -99,6 +99,7 @@
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
     self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:arc4random() % 2 == 0];
+    [(JGSSecurityKeyboard *)self.secPwdInput.inputView setEnableHighlightedWhenTap:NO];
     if (@available(iOS 11.0, *)) {
         self.secPwdInput.textContentType = UITextContentTypePassword;
     }

@@ -12,19 +12,19 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-// JGSReachability
-#ifndef JGS_Reachability
-#define JGS_Reachability
-#endif
-
-// JGSHUD
-#ifndef JGS_HUD
-#define JGS_HUD
-#endif
-
-// JGSSecurityKeyboard
-#ifndef JGS_SecurityKeyboard
-#define JGS_SecurityKeyboard
-#endif
+//// JGSReachability
+//#ifndef JGS_Reachability
+//#define JGS_Reachability
+//#endif
+//
+//// JGSHUD
+//#ifndef JGS_HUD
+//#define JGS_HUD
+//#endif
+//
+//// JGSSecurityKeyboard
+//#ifndef JGS_SecurityKeyboard
+//#define JGS_SecurityKeyboard
+//#endif
 
 #endif /* PrefixHeader_pch */
