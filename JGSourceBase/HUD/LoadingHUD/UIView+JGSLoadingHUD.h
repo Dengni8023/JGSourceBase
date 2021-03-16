@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, JGSHUDType) {
 @property (nonatomic, strong, null_resettable) UIColor *indicatorColor; // JGSHUDTypeIndicator样式indicator颜色，默认白色
 
 // SpinningCircle
-@property (nonatomic, assign) CGFloat spinningRadius; // 圆环半径，默认32
+@property (nonatomic, assign) CGFloat spinningRadius; // 圆环半径，默认28
 @property (nonatomic, strong, null_resettable) UIColor *spinningLineColor; // 圆环颜色，默认RGBA {50, 155, 255, 1.0}
 @property (nonatomic, assign) CGFloat spinningLineWidth; // 圆环线宽，默认2.0
 @property (nonatomic, assign) BOOL spinningShadow; // 是否带模糊阴影，模糊半径为圆环线宽
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, JGSHUDType) {
 @property (nonatomic, assign) NSUInteger textLines; // HUD文字行数，默认0-不限制行数
 
 @property (nonatomic, assign) BOOL square; // HUD中间框是否为正方形
-@property (nonatomic, assign) CGFloat bezelSquareWidthThanHeight; // HUD中间框默认为正方形，当square为NO且存在文字且宽大于高超过该值则长方形显示，默认32
+@property (nonatomic, assign) CGFloat bezelSquareWidthThanHeight; // HUD中间框默认为正方形，当square为NO且存在文字且宽大于高超过该值则长方形显示，默认28
 
 + (instancetype)sharedStyle;
 

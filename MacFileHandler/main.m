@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 
 static NSString *FileHandlerRootDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/MacFileHandler";
-static NSString *HandleInputFolder = @"InputFiles";
-static NSString *HandleOutputFolder = @"OutputFiles";
+static NSString *HandleFileFolder = @"Resources";
 
 void handleDevicesInfo(void) {
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@/iOSDevicesInfo.json", FileHandlerRootDir, HandleInputFolder];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@/iOSDeviceList.json", FileHandlerRootDir, HandleFileFolder];
     NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
     NSDictionary<NSString *, NSArray<NSDictionary *> *> *devices = [dict objectForKey:@"devices"];
@@ -34,7 +33,7 @@ void handleDevicesInfo(void) {
     }];
     
     NSData *newJson = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
-    NSString *newPath = [NSString stringWithFormat:@"%@/%@/iOSDevicesInfo.json", FileHandlerRootDir, HandleOutputFolder];
+    NSString *newPath = [NSString stringWithFormat:@"%@/%@/iOSDeviceList-Sorted.json", FileHandlerRootDir, HandleFileFolder];
     [newJson writeToFile:newPath options:(NSDataWritingAtomic) error:nil];
 }
 

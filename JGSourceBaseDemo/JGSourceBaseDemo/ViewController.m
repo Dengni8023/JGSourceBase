@@ -53,6 +53,9 @@
         JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
     }];
     
+    JGSLog(@"0x%X", JGSDeviceJailbrokenNone); // 4e6f6e65
+    JGSLog(@"0x%X", JGSDeviceJailbrokenIsBroken); // 6f6b656e
+    
     self.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     self.view.backgroundColor = [UIColor whiteColor];
     

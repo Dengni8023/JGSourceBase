@@ -339,6 +339,8 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
                 CTRadioAccessTechnologyLTE: @(JGSWWANType4G), // LTE4G网络
             }.mutableCopy;
             
+            // 因iOS系统SDK版本问题，iOS 14.0无5G相关定义
+            // 此处最低要求iOS 14.1版本
             if (@available(iOS 14.1, *)) {
                 [tmp addEntriesFromDictionary:@{
                     CTRadioAccessTechnologyNRNSA: @(JGSWWANType5G), // New Radio，新无线(5G)

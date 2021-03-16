@@ -79,9 +79,13 @@ Pod::Spec.new do |s|
             "JGSourceBase/*.h",
             "JGSourceBase/Base/*.h", # 防止用户自行指定subspec时JGSourceBase.h不会作为公共头文件导出问题
         ]
-        
+        ss.resources    = [
+            "JGSourceBase/Base/Resources/*.json",
+        ]
+
         ss.xcconfig     = {
             "OTHER_LDFLAGS" => '-ObjC',
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGSUserAgent=\'@"JGSourceBase 1.2.0"\'',
         }
     end
     
@@ -107,18 +111,6 @@ Pod::Spec.new do |s|
         ]
         
         ss.dependency   "JGSourceBase/Base"
-    
-        ss.subspec 'Device' do |sss|
-          sss.source_files  = [
-            "JGSourceBase/Category/Device/*.{h,m}",
-          ]
-          sss.public_header_files  = [
-            "JGSourceBase/Category/Device/*.h",
-          ]
-          sss.resources  = [
-            "JGSourceBase/Category/Device/*.csv",
-          ]
-        end
     end
     
     # Reachability

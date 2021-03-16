@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */; };
 		D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */; };
+		D416DA0B2600E6870085C6AB /* JGSDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA092600E6870085C6AB /* JGSDevice.h */; };
+		D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA0A2600E6870085C6AB /* JGSDevice.m */; };
+		D416DA87260111670085C6AB /* JGSNativeKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */; };
+		D416DA88260111670085C6AB /* JGSNativeKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
 		D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */; };
 		D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */; };
@@ -74,10 +78,14 @@
 		9ED191665617C429AACC2C17 /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JGSBase.m"; sourceTree = "<group>"; };
 		D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JGSBase.h"; sourceTree = "<group>"; };
+		D416D9F52600E2CB0085C6AB /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		D416D9F82600E3740085C6AB /* iOSDeviceList-Sorted.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "iOSDeviceList-Sorted.json"; sourceTree = "<group>"; };
+		D416DA092600E6870085C6AB /* JGSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDevice.h; sourceTree = "<group>"; };
+		D416DA0A2600E6870085C6AB /* JGSDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
+		D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNativeKeychainUtils.h; sourceTree = "<group>"; };
+		D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNativeKeychainUtils.m; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D477DA5225AD814200BE1F9B /* OutputFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OutputFiles; sourceTree = "<group>"; };
-		D477DA5525AD815100BE1F9B /* InputFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = InputFiles; sourceTree = "<group>"; };
 		D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSBase.h"; sourceTree = "<group>"; };
 		D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,12 +158,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D416D9EC2600E1020085C6AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D416D9F82600E3740085C6AB /* iOSDeviceList-Sorted.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D477DA4025AD779C00BE1F9B /* MacFileHandler */ = {
 			isa = PBXGroup;
 			children = (
 				D477DA4125AD779C00BE1F9B /* main.m */,
-				D477DA5525AD815100BE1F9B /* InputFiles */,
-				D477DA5225AD814200BE1F9B /* OutputFiles */,
+				D416D9F52600E2CB0085C6AB /* Resources */,
 			);
 			path = MacFileHandler;
 			sourceTree = "<group>";
@@ -213,11 +228,16 @@
 				D4F3DA9722F02B04002EF0F0 /* JGSBase.h */,
 				D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */,
 				D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */,
+				D416DA092600E6870085C6AB /* JGSDevice.h */,
+				D416DA0A2600E6870085C6AB /* JGSDevice.m */,
 				D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */,
 				D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */,
+				D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */,
+				D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */,
 				D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */,
 				D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */,
 				D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */,
+				D416D9EC2600E1020085C6AB /* Resources */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -314,9 +334,11 @@
 				D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */,
 				D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */,
 				D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */,
+				D416DA0B2600E6870085C6AB /* JGSDevice.h in Headers */,
 				D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */,
 				D4F3DADA22F02B05002EF0F0 /* JGSSymbolKeyboard.h in Headers */,
 				D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */,
+				D416DA87260111670085C6AB /* JGSNativeKeychainUtils.h in Headers */,
 				D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */,
 				D4F3DAD122F02B05002EF0F0 /* UIView+JGSLoadingHUD.h in Headers */,
 				D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */,
@@ -425,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */,
 				D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */,
 				D4F3DAC322F02B05002EF0F0 /* JGSStringURLUtils.m in Sources */,
 				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
@@ -439,6 +462,7 @@
 				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
 				D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */,
 				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
+				D416DA88260111670085C6AB /* JGSNativeKeychainUtils.m in Sources */,
 				D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */,
 				D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */,
 				D4F3DAD022F02B05002EF0F0 /* JGSLoadingHUD.m in Sources */,

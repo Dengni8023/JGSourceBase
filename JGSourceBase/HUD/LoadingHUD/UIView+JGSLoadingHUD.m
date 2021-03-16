@@ -21,13 +21,13 @@
         
         instance.defaultType = JGSHUDTypeSpinningCircle;
         instance.bezelCornerRadius = 5.f;
-        instance.spinningRadius = 32.f;
+        instance.spinningRadius = 28.f;
         instance.spinningLineWidth = 2.f;
         instance.spinningShadow = NO;
         instance.spinningDuration = M_PI_4;
         instance.textLines = 0;
         instance.square = YES;
-        instance.bezelSquareWidthThanHeight = 32;
+        instance.bezelSquareWidthThanHeight = 28;
     });
     return instance;
 }
@@ -149,7 +149,7 @@ static NSPointerArray *JGSLoadingHUDStack = nil;
 - (void)jg_customizeLoadingHudStyle:(MBProgressHUD *)hud {
     
     CGFloat width = CGRectGetWidth(self.frame);// height = CGRectGetHeight(self.frame);
-    CGFloat minWidth = MIN(60, width / 6.f);
+    CGFloat minWidth = MIN(48, width / 6.f);
     hud.minSize = CGSizeMake(minWidth, minWidth / 3.f);
     //hud.offset = CGPointMake(0, -height / 3.f);
     

@@ -19,8 +19,8 @@
         instance = [[self alloc] init];
         
         instance.defaultPosition = JGSToastPositionCenter;
-        instance.topMargin = 32.f;
-        instance.bottomMargin = 32.f;
+        instance.topMargin = 28.f;
+        instance.bottomMargin = 28.f;
         instance.cornerRadius = 2.5f;
         instance.textLines = 0;
         

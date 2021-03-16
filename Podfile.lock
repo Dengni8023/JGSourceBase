@@ -12,9 +12,6 @@ PODS:
   - JGSourceBase/Base (1.2.0)
   - JGSourceBase/Category (1.2.0):
     - JGSourceBase/Base
-    - JGSourceBase/Category/Device (= 1.2.0)
-  - JGSourceBase/Category/Device (1.2.0):
-    - JGSourceBase/Base
   - JGSourceBase/HUD (1.2.0):
     - JGSourceBase/Category
     - JGSourceBase/HUD/LoadingHUD (= 1.2.0)
@@ -57,7 +54,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: c6adf495e031ca9e0bb36300f403d36c147801a6
+  JGSourceBase: caac57d40cb8f2ee9de1b520abec0d816df73cf0
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
