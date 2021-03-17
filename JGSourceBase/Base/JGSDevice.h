@@ -22,7 +22,7 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (NSDictionary *)appInfo;
 + (NSString *)bundleId; // 商店版本
 + (NSString *)appVersion; // 商店版本
-+ (NSString *)appBuild; // iOS build
++ (NSString *)buildNumber; // iOS build
 + (NSString *)appUserAgent; // 携带了版本等信息的 UserAgent
 
 #pragma mark - Device

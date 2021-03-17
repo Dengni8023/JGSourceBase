@@ -57,7 +57,7 @@
     return @{
         @"bundleId": [self bundleId],
         @"appVersion": [self appVersion],
-        @"buildNumber": [self appBuild]
+        @"buildNumber": [self buildNumber]
     };
 }
 
@@ -81,14 +81,14 @@
     return appVersion;
 }
 
-+ (NSString *)appBuild {
++ (NSString *)buildNumber {
     
-    static NSString *appBuild = nil;
+    static NSString *buildNumber = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        appBuild = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] ?: @"1";
+        buildNumber = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] ?: @"1";
     });
-    return appBuild;
+    return buildNumber;
 }
 
 + (NSString *)userAgentWithAppInfo {
@@ -99,7 +99,7 @@
         NSArray *bids = [[self bundleId] componentsSeparatedByString:@"."];
         NSString *org = bids.count > 1 ? bids[1] : bids.firstObject;
         NSString *processName = [NSProcessInfo processInfo].processName;
-        appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@; %@)", org.uppercaseString, processName, [self appVersion], [self appBuild], JGSUserAgent];
+        appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@; %@)", org.uppercaseString, processName, [self appVersion], [self buildNumber], JGSUserAgent];
     });
     return appUA;
 }
