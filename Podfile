@@ -6,7 +6,7 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 install!'cocoapods', :deterministic_uuids => false
 
 # 源码测试请屏蔽此选项，否则源码库内部调用出现的警告将不会提示
-inhibit_all_warnings!
+#inhibit_all_warnings!
 #use_frameworks!
 
 # workspace

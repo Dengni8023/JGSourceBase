@@ -17,48 +17,29 @@
 
 @implementation JGSDevice
 
+static NSString *JGSourceBaseSystemUserAgent = nil;
 + (void)load {
     
-    static WKWebView *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
-        // 异步获取系统UA
-        instance = [[WKWebView alloc] init];
-        [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
-            JGSLog(@"默认 UserAgent: %@, %@", result, error);
-            if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
-                [self registAPPUserAgentWithSystemUA:(NSString *)result];
-            }
-        }];
+        JGSLog(@"默认 UserAgent");
+        [self loadSystemUserAgen:nil];
     });
-}
-
-+ (void)registAPPUserAgentWithSystemUA:(NSString *)sysUA {
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    @synchronized (userDefaults) {
-        
-        // 防止在前置加载系统UA过程时，其他位置进行了系统UserAgent修改
-        NSString *saveUA = [userDefaults stringForKey:@"UserAgent"];
-        if ([saveUA containsString:sysUA]) {
-            sysUA = saveUA;
-        }
-        NSString *newUA = [sysUA stringByAppendingFormat:@" %@", [self userAgentWithAppInfo]];
-        [userDefaults registerDefaults:@{@"UserAgent": newUA}]; // 系统获取
-        [userDefaults synchronize];
-        
-        JGSLog(@"修改默认 UserAgent: %@", newUA);
-    }
 }
 
 #pragma mark - APP
 + (NSDictionary *)appInfo {
-    return @{
-        @"bundleId": [self bundleId],
-        @"appVersion": [self appVersion],
-        @"buildNumber": [self buildNumber]
-    };
+    
+    static NSDictionary *appInfo = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        appInfo = @{
+            @"bundleId": [self bundleId],
+            @"appVersion": [self appVersion],
+            @"buildNumber": [self buildNumber]
+        };
+    });
+    return appInfo;
 }
 
 + (NSString *)bundleId {
@@ -91,7 +72,56 @@
     return buildNumber;
 }
 
-+ (NSString *)userAgentWithAppInfo {
+#pragma mark - UA
++ (void)loadSystemUserAgen:(void (^ _Nullable)(NSString * _Nullable sysUA, NSError * _Nullable error))completion {
+    
+    if (JGSourceBaseSystemUserAgent.length > 0) {
+        if (completion) {
+            completion(JGSourceBaseSystemUserAgent, nil);
+        }
+        return;
+    }
+    
+    // 异步获取系统UA
+    static WKWebView *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        JGSLog(@"默认 UserAgent Load");
+        
+        instance = instance ?: [[WKWebView alloc] init];
+        [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
+            JGSLog(@"默认 UserAgent: %@, %@", result, error);
+            if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
+                JGSourceBaseSystemUserAgent = (NSString *)result;
+            }
+            if (completion) {
+                completion(JGSourceBaseSystemUserAgent, error);
+            }
+            
+            if (JGSourceBaseSystemUserAgent.length == 0) {
+                onceToken = 0;
+            }
+        }];
+    });
+}
+
++ (NSString *)sysUserAgent {
+    
+//    if (JGSourceBaseSystemUserAgent.length > 0) {
+//        return JGSourceBaseSystemUserAgent;
+//    }
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
+    [self loadSystemUserAgen:^(NSString * _Nullable sysUA, NSError * _Nullable error) {
+        dispatch_semaphore_signal(semaphore);   //发送信号
+    }];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
+    
+    return JGSourceBaseSystemUserAgent;
+}
+
++ (NSString *)appUserAgent {
     
     static NSString *appUA = nil;
     static dispatch_once_t onceToken;
@@ -104,71 +134,85 @@
     return appUA;
 }
 
-+ (NSString *)appUserAgent {
-    NSString *userAgent = [[NSUserDefaults standardUserDefaults] stringForKey:@"UserAgent"];
-    return userAgent;
-}
-
 #pragma mark - Device
 + (NSDictionary<NSString *,id> *)deviceInfo {
     
-    BOOL isFullScreen = [self isFullScreen];
-    UIEdgeInsets insets = [self safeAreaInsets];
-    return @{
-        @"device": @{
-                @"id": [self deviceId],
-        },
-        @"edgeInsets": @{
-                @"top": @(isFullScreen ? MAX(MAX(insets.top, insets.bottom), MAX(insets.left, insets.right)) : 20),
-                @"left": @(0),
-                @"bottom": @(isFullScreen ? 34 : 0),
-                @"right": @(0),
-        },
-        @"constant": @{
-                @"navigationBarHeight": @(44),
-                @"tabBarHeight": @(49),
-        },
-    };
+    static NSDictionary *deviceInfo = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        BOOL isFullScreen = [self isFullScreen];
+        UIEdgeInsets insets = [self safeAreaInsets];
+        deviceInfo = @{
+            @"device": @{
+                    @"id": [self deviceId],
+            },
+            @"edgeInsets": @{
+                    @"top": @(isFullScreen ? MAX(MAX(insets.top, insets.bottom), MAX(insets.left, insets.right)) : 20),
+                    @"left": @(0),
+                    @"bottom": @(isFullScreen ? 34 : 0),
+                    @"right": @(0),
+            },
+            @"constant": @{
+                    @"navigationBarHeight": @(44),
+                    @"tabBarHeight": @(49),
+            },
+        };
+    });
+    
+    return deviceInfo;
 }
 
 + (UIEdgeInsets)safeAreaInsets {
     
-    if (@available(iOS 11.0, *)) {
-        // keyWindow有时候会获取不到
-        return [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
-    } else {
-        return UIEdgeInsetsZero;
-    }
+    static UIEdgeInsets instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        if (@available(iOS 11.0, *)) {
+            // keyWindow有时候会获取不到
+            instance = [UIApplication sharedApplication].windows.firstObject.safeAreaInsets;
+        } else {
+            instance = UIEdgeInsetsZero;
+        }
+    });
+    return instance;
 }
 
-+ (NSString *)idfa{
++ (NSString *)idfa {
     
-    if ([self isSimulator]) {
-        return nil;
-    }
-    
-    // iOS14获取idfa需要申请权限，否则其他系统权限发生变化时，获取的idfa也会变化
-    // Privacy - Tracking Usage Description
-    NSString *trackDes = [NSBundle mainBundle].infoDictionary[@"NSUserTrackingUsageDescription"];
-    if (@available(iOS 14.0, *) && trackDes.length > 0) {
+    static NSString *deviceIDFA = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         
-        ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
-        if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
-            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                dispatch_semaphore_signal(semaphore);   //发送信号
-            }];
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
+        if ([self isSimulator]) {
+            deviceIDFA = nil;
         }
-    }
+        
+        // iOS14获取idfa需要申请权限，否则其他系统权限发生变化时，获取的idfa也会变化
+        // Privacy - Tracking Usage Description
+        NSString *trackDes = [NSBundle mainBundle].infoDictionary[@"NSUserTrackingUsageDescription"];
+        if (trackDes.length > 0) {
+            if (@available(iOS 14.0, *)) {
+                ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
+                if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
+                    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
+                    [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                        dispatch_semaphore_signal(semaphore);   //发送信号
+                    }];
+                    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
+                }
+            }
+        }
+        
+        deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        if ([deviceIDFA hasPrefix:@"00000000"]) {
+            // 在 iOS 10.0 以后，当用户开启限制广告跟踪，advertisingIdentifier 的值将是全零
+            // 00000000-0000-0000-0000-000000000000
+            deviceIDFA = nil;
+        }
+    });
     
-    NSString *deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    if ([deviceIDFA hasPrefix:@"00000000"]) {
-        // 在 iOS 10.0 以后，当用户开启限制广告跟踪，advertisingIdentifier 的值将是全零
-        // 00000000-0000-0000-0000-000000000000
-        deviceIDFA = nil;
-    }
-    return deviceIDFA.length > 0 ? deviceIDFA : @"";
+    return deviceIDFA;
 }
 
 + (NSString *)deviceId {
@@ -274,8 +318,14 @@
 
 + (BOOL)isFullScreen {
     
-    UIEdgeInsets insets = [self safeAreaInsets];
-    return ((insets.top > 0 && insets.bottom > 0) || (insets.left > 0 && insets.right > 0));
+    static BOOL isFull = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        UIEdgeInsets insets = [self safeAreaInsets];
+        isFull = ((insets.top > 0 && insets.bottom > 0) || (insets.left > 0 && insets.right > 0));
+    });
+    return isFull;
 }
 
 + (BOOL)systemVersionBelow:(NSString *)cmp {

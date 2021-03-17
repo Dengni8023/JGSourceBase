@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// SHA256(name) -> value
 typedef NS_ENUM(uint, JGSDeviceJailbroken) {
     JGSDeviceJailbrokenNone = 'None',
     JGSDeviceJailbrokenIsBroken = 'Brok',
@@ -23,12 +22,14 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (NSString *)bundleId; // 商店版本
 + (NSString *)appVersion; // 商店版本
 + (NSString *)buildNumber; // iOS build
-+ (NSString *)appUserAgent; // 携带了版本等信息的 UserAgent
+
++ (NSString *)sysUserAgent; // 系统默认的UserAgent，请勿在应用启动直接调用，启动时调用请注意增加适当延时，约大于0.2秒
++ (NSString *)appUserAgent; // APP版本信息，不包含系统UserAgent
 
 #pragma mark - Device
 + (NSDictionary<NSString *, id> *)deviceInfo;
 
-+ (NSString *)idfa; //获取IDFA广告标示
++ (nullable NSString *)idfa; //获取IDFA广告标示
 + (NSString *)deviceId; //获取iphone手机的设备编号
 + (NSString *)systemName; //获取iphone手机的操作系统名称
 + (NSString *)systemVersion; //获取iphone手机的系统版本号

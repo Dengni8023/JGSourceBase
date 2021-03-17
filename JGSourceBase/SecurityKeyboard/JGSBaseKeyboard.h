@@ -112,7 +112,7 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 
 @property (nonatomic, assign, readonly) JGSKeyboardType type;
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, assign, readonly, setter=enableHighlightedWhenTap:) BOOL enableHighlightedWhenTap; // 点击高亮，默认允许点击高亮
+@property (nonatomic, assign, setter=enableHighlightedWhenTap:) BOOL enableHighlightedWhenTap; // 点击高亮，默认允许点击高亮
 @property (nonatomic, copy, readonly) NSString *returnKeyTitle;
 @property (nonatomic, copy, readonly) void (^keyInput)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent);
 
