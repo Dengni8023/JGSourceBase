@@ -7,8 +7,48 @@
 //
 
 #import "NSDictionary+JGSBase.h"
+#import "JGSBase.h"
 
 @implementation NSDictionary (JGSBase)
+
+#pragma mark - Swizzing
++ (void)load {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = NSClassFromString(@"__NSSingleEntryDictionaryI");
+        NSArray<NSString *> *originalArray = @[NSStringFromSelector(@selector(objectForKey:)),
+                                               NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
+                                               NSStringFromSelector(@selector(valueForKey:))];
+        
+        [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            SEL originalSelector = NSSelectorFromString(obj);
+            SEL swizzledSelector = NSSelectorFromString([@"JGSBase_" stringByAppendingString:obj]);
+            JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
+        }];
+    });
+}
+
+- (id)JGSBase_objectForKey:(id)aKey {
+    id obj = [self JGSBase_objectForKey:aKey];
+    if ([obj isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return obj;
+}
+
+- (id)JGSBase_objectForKeyedSubscript:(id)key {
+    return [self objectForKey:key];
+}
+
+- (id)JGSBase_valueForKey:(NSString *)key {
+    id obj = [self JGSBase_valueForKey:key];
+    if ([obj isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return obj;
+}
 
 #pragma mark - String
 - (NSString *)jg_stringForKey:(const id)key {
@@ -252,15 +292,56 @@
 
 @implementation NSMutableDictionary (JGSBase)
 
-#pragma mark - Setter
-- (void)jg_setObject:(id)object forKey:(const id)key {
+#pragma mark - Swizzing
++ (void)load {
     
-    if (object) {
-        [(NSMutableDictionary *)self setObject:object forKey:key];
-        return;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = NSClassFromString(@"__NSDictionaryM");
+        NSArray<NSString *> *originalArray = @[NSStringFromSelector(@selector(setObject:forKey:)),
+                                               NSStringFromSelector(@selector(setObject:forKeyedSubscript:)), // subscripting字面量方法
+                                               NSStringFromSelector(@selector(objectForKey:)),
+                                               NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
+                                               NSStringFromSelector(@selector(valueForKey:))];
+        [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            SEL originalSelector = NSSelectorFromString(obj);
+            SEL swizzledSelector = NSSelectorFromString([@"JGSBase_" stringByAppendingString:obj]);
+            JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
+        }];
+    });
+}
+
+- (void)JGSBase_setObject:(id)anObject forKey:(id<NSCopying>)aKey {
+    if (anObject == nil) {
+        [self removeObjectForKey:aKey];
+    } else {
+        [self JGSBase_setObject:anObject forKey:aKey];
     }
-    
-    [(NSMutableDictionary *)self removeObjectForKey:key];
+}
+
+- (void)JGSBase_setObject:(id)anObject forKeyedSubscript:(nonnull id<NSCopying>)key {
+    [self setObject:anObject forKey:key];
+}
+
+- (id)JGSBase_objectForKey:(id)aKey {
+    id obj = [self JGSBase_objectForKey:aKey];
+    if ([obj isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return obj;
+}
+
+- (id)JGSBase_objectForKeyedSubscript:(id)key {
+    return [self objectForKey:key];
+}
+
+- (id)JGSBase_valueForKey:(NSString *)key {
+    id obj = [self JGSBase_valueForKey:key];
+    if ([obj isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return obj;
 }
 
 @end

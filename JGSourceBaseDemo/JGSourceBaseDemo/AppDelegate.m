@@ -26,22 +26,6 @@
     
     [_window makeKeyAndVisible];
     
-    printf("0x%x\n", [JGSDevice isDeviceJailbroken]);
-    printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
-    printf("%d\n", [JGSDevice isSimulator]);
-    
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        JGSLog(@"%@", [JGSDevice sysUserAgent]);
-    });
-    
-    JGSLog(@"%@", [JGSDevice idfa]);
-    JGSLog(@"%@", [JGSDevice appInfo]);
-    JGSLog(@"%@", [JGSDevice deviceInfo]);
-    JGSLog(@"%@", [JGSDevice deviceMachine]);
-    JGSLog(@"%@", [JGSDevice deviceModel]);
-    JGSLog(@"%@", [JGSDevice appUserAgent]);
-    
     // IQKeyboardManager设置
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -56,6 +40,36 @@
         keyboardManager.placeholderFont = [UIFont systemFontOfSize:16]; // 设置占位文字的字体
         keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
     });
+    
+#pragma mark - Device
+    printf("0x%x\n", [JGSDevice isDeviceJailbroken]);
+    printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
+    printf("%d\n", [JGSDevice isSimulator]);
+    
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        JGSLog(@"%@", [JGSDevice sysUserAgent]);
+    });
+    
+    JGSLog(@"%@", [JGSDevice idfa]);
+    JGSLog(@"%@", [JGSDevice appInfo]);
+    JGSLog(@"%@", [JGSDevice deviceInfo]);
+    JGSLog(@"%@", [JGSDevice deviceMachine]);
+    JGSLog(@"%@", [JGSDevice deviceModel]);
+    JGSLog(@"%@", [JGSDevice appUserAgent]);
+    
+#pragma mark - Dictionary
+    NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;
+    JGSLog(@"%@", [tmp objectForKey:@"NullKey1"]);
+    JGSLog(@"%@", tmp[@"NullKey2"]);
+    tmp[@"Nullkey3"] = [NSNull null];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    tmp[@"Nullkey3"] = nil;
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:[NSNull null] forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:nil forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
     
     return YES;
 }

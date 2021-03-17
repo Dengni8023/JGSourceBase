@@ -1,5 +1,5 @@
 //
-//  NSObject+JGSJSON.h
+//  NSObject+JGSBase.h
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2019/3/25.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSObject (JGSJSON)
+@interface NSObject (JGSBase)
 
 #pragma mark - Parser
 /**
@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable id)jg_JSONObjectWithOptions:(NSJSONReadingOptions)options error:(NSError **)error;
 - (nullable id)jg_JSONObject:(NSError **)error;
-- (nullable id)jg_JSONObject;
+
+@property (nonatomic, copy, readonly, nullable) id jg_JSONObject;
 
 #pragma mark - Encode
 /**
@@ -35,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSData *)jg_JSONDataWithOptions:(NSJSONWritingOptions)options error:(NSError **)error;
 - (nullable NSData *)jg_JSONData:(NSError **)error;
-- (nullable NSData *)jg_JSONData;
+
+@property (nonatomic, copy, readonly, nullable) NSData *jg_JSONData;
 
 /**
  JSON构建NSString，NSString直接返回，其他则获取JSON对应的NSData后使用UTF8编码为NSString
@@ -46,7 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSString *)jg_JSONStringWithOptions:(NSJSONWritingOptions)options error:(NSError **)error;
 - (nullable NSString *)jg_JSONString:(NSError **)error;
-- (nullable NSString *)jg_JSONString;
+
+@property (nonatomic, copy, readonly, nullable) NSString *jg_JSONString;
 
 #pragma mark - NSNull
 /**
@@ -55,6 +58,13 @@ NS_ASSUME_NONNULL_BEGIN
  @return 移除后的结果
  */
 - (nullable instancetype)jg_removeAllNullValues;
+
+#pragma mark - Base64
+@property (nonatomic, copy, readonly, nullable) NSData *jg_base64EncodeData;
+@property (nonatomic, copy, readonly, nullable) NSString *jg_base64EncodeString;
+
+@property (nonatomic, copy, readonly, nullable) NSData *jg_base64DecodeData;
+@property (nonatomic, copy, readonly, nullable) NSString *jg_base64DecodeString;
 
 @end
 

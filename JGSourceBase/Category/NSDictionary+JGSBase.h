@@ -79,11 +79,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSMutableDictionary<KeyType, ObjectType> (JGSBase)
-
-// Setter
-- (void)jg_setObject:(nullable ObjectType)object forKey:(const KeyType)key;
-
-@end
-
 NS_ASSUME_NONNULL_END

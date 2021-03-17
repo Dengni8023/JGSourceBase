@@ -50,16 +50,15 @@
 		D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */; };
-		D4F3DAE022F02B05002EF0F0 /* NSObject+JGSJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */; };
+		D4F3DAE022F02B05002EF0F0 /* NSObject+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */; };
 		D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */; };
 		D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */; };
-		D4F3DAE322F02B05002EF0F0 /* NSObject+JGSJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4F3DAE322F02B05002EF0F0 /* NSObject+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
 		D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */; };
 		D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4F3DAED22F130D9002EF0F0 /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAEB22F130AF002EF0F0 /* PrefixHeader.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,16 +126,15 @@
 		D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JGSBase.m"; sourceTree = "<group>"; };
-		D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGSJSON.m"; sourceTree = "<group>"; };
+		D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JGSBase.m"; sourceTree = "<group>"; };
-		D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSJSON.h"; sourceTree = "<group>"; };
+		D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
 		D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGSAlertController.h"; sourceTree = "<group>"; };
 		D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
-		D4F3DAEB22F130AF002EF0F0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +204,6 @@
 				D4F3DA9922F02B04002EF0F0 /* HUD */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
 				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
-				D4F3DAEB22F130AF002EF0F0 /* PrefixHeader.pch */,
 				D4F3DA8D22F02B04002EF0F0 /* Reachability */,
 				D4F3DAA522F02B04002EF0F0 /* SecurityKeyboard */,
 			);
@@ -299,8 +296,8 @@
 				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
 				D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */,
 				D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */,
-				D4F3DAB822F02B05002EF0F0 /* NSObject+JGSJSON.h */,
-				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSJSON.m */,
+				D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */,
+				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */,
 				D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */,
 				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
@@ -345,7 +342,6 @@
 				D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */,
 				D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */,
 				D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */,
-				D4F3DAED22F130D9002EF0F0 /* PrefixHeader.pch in Headers */,
 				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
 				D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
@@ -357,7 +353,7 @@
 				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
 				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
 				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
-				D4F3DAE322F02B05002EF0F0 /* NSObject+JGSJSON.h in Headers */,
+				D4F3DAE322F02B05002EF0F0 /* NSObject+JGSBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +452,7 @@
 				D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */,
 				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
 				D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */,
-				D4F3DAE022F02B05002EF0F0 /* NSObject+JGSJSON.m in Sources */,
+				D4F3DAE022F02B05002EF0F0 /* NSObject+JGSBase.m in Sources */,
 				D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */,
 				D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */,
 				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
@@ -630,8 +626,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = JGSourceBase/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,8 +653,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = JGSourceBase/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

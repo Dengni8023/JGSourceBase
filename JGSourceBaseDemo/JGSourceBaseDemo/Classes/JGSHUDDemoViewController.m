@@ -153,13 +153,18 @@
             break;
             
         case 4: {
-            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoadingHUD"]];
+            
+            UIImage *hudImg = [UIImage imageNamed:@"LoadingHUD"];
+            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 30)];
+            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
             [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
         }
             break;
             
         case 5: {
-            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoadingHUD"]];
+            UIImage *hudImg = [UIImage imageNamed:@"LoadingHUD"];
+            hudImg = [hudImg jg_imageScaleAspectFill:CGSizeMake(60, 30)];
+            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
             [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Image:JGSHUDTypeCustomView"];
         }
             break;

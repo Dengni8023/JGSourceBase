@@ -1,12 +1,12 @@
 //
-//  NSObject+JGSJSON.m
+//  NSObject+JGSBase.m
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2019/3/25.
 //  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import "NSObject+JGSJSON.h"
+#import "NSObject+JGSBase.h"
 
 @implementation NSObject (JGSJSON)
 
@@ -164,6 +164,68 @@
         }
     }
     return self;
+}
+
+#pragma mark - Base64
+- (NSData *)jg_base64EncodeData {
+    
+    if ([self isKindOfClass:[NSData class]]) {
+        
+        return [(NSData *)self base64EncodedDataWithOptions:kNilOptions];
+        
+    } else if ([self isKindOfClass:[NSString class]]) {
+        
+        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
+        return [data base64EncodedDataWithOptions:kNilOptions];
+    }
+    
+    return nil;
+}
+
+- (NSString *)jg_base64EncodeString {
+    
+    if ([self isKindOfClass:[NSData class]]) {
+        
+        return [(NSData *)self base64EncodedStringWithOptions:kNilOptions];
+        
+    } else if ([self isKindOfClass:[NSString class]]) {
+        
+        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
+        return [data base64EncodedStringWithOptions:kNilOptions];
+    }
+    
+    return nil;
+}
+
+- (NSData *)jg_base64DecodeData {
+    
+    if ([self isKindOfClass:[NSData class]]) {
+        
+        return [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:kNilOptions];
+        
+    } else if ([self isKindOfClass:[NSString class]]) {
+        
+        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
+        return [[NSData alloc] initWithBase64EncodedData:data options:kNilOptions];
+    }
+    
+    return nil;
+}
+
+- (NSString *)jg_base64DecodeString {
+    
+    if ([self isKindOfClass:[NSData class]]) {
+        
+        NSData *data = [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:kNilOptions];
+        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+    } else if ([self isKindOfClass:[NSString class]]) {
+        
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:(NSString *)self options:kNilOptions];
+        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    
+    return nil;
 }
 
 #pragma mark - End

@@ -9,6 +9,7 @@
 #import "JGSLetterKeyboard.h"
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
+#import "JGSBase.h"
 #import <objc/runtime.h>
 
 @interface UITextField (JGSSecurityKeyboard)
@@ -409,7 +410,7 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        Class cls = [self class];
+        Class class = [self class];
         // 重写的系统方法处理，dealloc仅用作日志输出检测页面释放情况，dealloc在ARC不能通过@selector获取
         NSArray<NSString *> *oriSelectors = @[NSStringFromSelector(@selector(text)),
                                               NSStringFromSelector(@selector(setText:)),
@@ -418,32 +419,10 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
                                               ];
         for (NSString *oriSelName in oriSelectors) {
             
-            SEL originSelector = NSSelectorFromString(oriSelName);
-            Method originMethod = class_getInstanceMethod(cls, originSelector);
-            IMP originImpl = method_getImplementation(originMethod);
-            
+            SEL originalSelector = NSSelectorFromString(oriSelName);
             SEL swizzledSelector = NSSelectorFromString([@"JGSSwizzing_" stringByAppendingString:oriSelName]);
-            Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
-            IMP swizzledImpl = method_getImplementation(swizzledMethod);
             
-            /*
-             严谨的方法替换逻辑：检查运行时源方法的实现是否已执行
-             将新的实现添加到源方法，用来做检查用，避免源方法没有实现（有实现，但运行时尚未执行到该方法的实现）
-             如果源方法已有实现，会返回 NO，此时直接交换源方法与新方法的实现即可
-             如果源方法尚未实现，会返回 YES，此时新的实现已替换原方法的实现，需要将源方法的实现替换到新方法
-             
-             对于部分代理方法，可能存在该类本身是没有进行实现的，此时将新的实现添加到源方法必返回YES
-             之后不需要在进行其他操作，在新的实现内部如需执行源方法，需要判断新方法与源方法实现是否一致，一致时则不能执行原方法(否则死循环)
-             */
-            BOOL didAddMethod = class_addMethod(cls, originSelector, swizzledImpl, method_getTypeEncoding(swizzledMethod));
-            if (originImpl) {
-                if (didAddMethod) {
-                    class_replaceMethod(cls, swizzledSelector, originImpl, method_getTypeEncoding(originMethod));
-                }
-                else {
-                    method_exchangeImplementations(originMethod, swizzledMethod);
-                }
-            }
+            JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
         }
     });
 }
