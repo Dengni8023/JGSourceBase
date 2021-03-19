@@ -64,7 +64,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithMessage:(NSString *)message completion:(void (^)(void))completion {
-    [self jg_showToastWithMessage:message position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
+    [self jg_showToastWithMessage:message position:[JGSToastStyle sharedStyle].defaultPosition completion:completion];
 }
 
 - (void)jg_showToastWithMessage:(NSString *)message position:(JGSToastPosition)position completion:(void (^)(void))completion {
@@ -92,7 +92,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithImage:(UIImage *)image completion:(void (^)(void))completion {
-    [self jg_showToastWithImage:image position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
+    [self jg_showToastWithImage:image position:[JGSToastStyle sharedStyle].defaultPosition completion:completion];
 }
 
 - (void)jg_showToastWithImage:(UIImage *)image position:(JGSToastPosition)position completion:(void (^)(void))completion {
@@ -120,7 +120,7 @@ static NSPointerArray *JGSToastStack = nil;
 }
 
 - (void)jg_showToastWithIcon:(UIImage *)icon message:(NSString *)message completion:(void (^)(void))completion {
-    [self jg_showToastWithIcon:icon message:message position:[JGSToastStyle sharedStyle].defaultPosition completion:nil];
+    [self jg_showToastWithIcon:icon message:message position:[JGSToastStyle sharedStyle].defaultPosition completion:completion];
 }
 
 - (void)jg_showToastWithIcon:(UIImage *)icon message:(NSString *)message position:(JGSToastPosition)position completion:(void (^)(void))completion {
