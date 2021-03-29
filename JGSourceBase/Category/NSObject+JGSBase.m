@@ -21,7 +21,7 @@
 
 - (id)jg_JSONObjectWithOptions:(NSJSONReadingOptions)options error:(NSError * _Nullable __autoreleasing *)error {
     
-    if (([self isKindOfClass:[NSNumber class]] || [self isEqual:[NSNull null]]) && (options & NSJSONReadingAllowFragments)) {
+    if (([self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSNull class]]) && (options & NSJSONReadingAllowFragments)) {
         return self;
     }
     
@@ -114,7 +114,7 @@
 - (instancetype)jg_removeAllNullValues {
     
     // NSNull直接返回nil
-    if ([self isEqual:[NSNull null]]) {
+    if ([self isKindOfClass:[NSNull class]]) {
         return nil;
     }
     
@@ -125,8 +125,8 @@
         [(NSArray *)self enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             id rmObj = [obj jg_removeAllNullValues];
-            if (!rmObj/* || [rmObj isEqual:[NSNull null]]*/) {
-                [tmp  removeObjectAtIndex:idx];
+            if (!rmObj/* || [rmObj isKindOfClass:[NSNull class]]*/) {
+                [tmp removeObjectAtIndex:idx];
             }
         }];
         
@@ -147,8 +147,8 @@
         [(NSDictionary *)self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             
             id rmObj = [obj jg_removeAllNullValues];
-            if (!rmObj/* || [rmObj isEqual:[NSNull null]]*/) {
-                [tmp  removeObjectForKey:key];
+            if (!rmObj/* || [rmObj isKindOfClass:[NSNull class]]*/) {
+                [tmp removeObjectForKey:key];
             }
         }];
         

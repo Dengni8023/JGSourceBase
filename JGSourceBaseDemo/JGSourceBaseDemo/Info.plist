@@ -41,5 +41,7 @@
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>为了加强您的账户安全，以及风控安全的需要，APP需要使用您的设备信息，是否允许</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

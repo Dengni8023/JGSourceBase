@@ -20,6 +20,8 @@
     
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+    NSLog(@"APP Window: %@", _window);
+    
     ViewController *vcT = [[ViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vcT];
     _window.rootViewController = nav;

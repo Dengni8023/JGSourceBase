@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - nil null empty
 #define JGSEmptyString2Nil(object) (object.length > 0 ? object : nil)
 #define JGSNil2EmptyString(object) (!object ? @"" : object)
-#define JGSNull2Nil(object)        ([object isEqual:[NSNull null]] ? nil : object)
+#define JGSNull2Nil(object)        ([object isKindOfClass:[NSNull class]] ? nil : object)
 
 // Device
 #pragma mark - Device

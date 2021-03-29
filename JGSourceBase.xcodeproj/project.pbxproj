@@ -13,6 +13,8 @@
 		D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA0A2600E6870085C6AB /* JGSDevice.m */; };
 		D416DA87260111670085C6AB /* JGSNativeKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */; };
 		D416DA88260111670085C6AB /* JGSNativeKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */; };
+		D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D457A9722604BF6000833143 /* UIApplication+JGSBase.h */; };
+		D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D457A9732604BF6000833143 /* UIApplication+JGSBase.m */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
 		D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */; };
 		D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */; };
@@ -83,6 +85,8 @@
 		D416DA0A2600E6870085C6AB /* JGSDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
 		D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNativeKeychainUtils.h; sourceTree = "<group>"; };
 		D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNativeKeychainUtils.m; sourceTree = "<group>"; };
+		D457A9722604BF6000833143 /* UIApplication+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JGSBase.h"; sourceTree = "<group>"; };
+		D457A9732604BF6000833143 /* UIApplication+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JGSBase.m"; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSBase.h"; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */,
 				D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */,
 				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
+				D457A9722604BF6000833143 /* UIApplication+JGSBase.h */,
+				D457A9732604BF6000833143 /* UIApplication+JGSBase.m */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
 				D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */,
 				D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */,
@@ -343,6 +349,7 @@
 				D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */,
 				D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */,
 				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
+				D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */,
 				D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
 				D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */,
@@ -449,6 +456,7 @@
 				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
 				D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */,
 				D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */,
+				D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */,
 				D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */,
 				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
 				D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */,

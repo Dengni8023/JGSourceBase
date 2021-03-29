@@ -13,6 +13,7 @@
 #import <JGSourceBase/NSDictionary+JGSBase.h>
 #import <JGSourceBase/NSObject+JGSBase.h>
 #import <JGSourceBase/NSString+JGSBase.h>
+#import <JGSourceBase/UIApplication+JGSBase.h>
 #import <JGSourceBase/UIColor+JGSBase.h>
 #import <JGSourceBase/UIImage+JGSBase.h>
 #else
@@ -20,6 +21,7 @@
 #import "NSDictionary+JGSBase.h"
 #import "NSObject+JGSBase.h"
 #import "NSString+JGSBase.h"
+#import "UIApplication+JGSBase.h"
 #import "UIColor+JGSBase.h"
 #import "UIImage+JGSBase.h"
 #endif

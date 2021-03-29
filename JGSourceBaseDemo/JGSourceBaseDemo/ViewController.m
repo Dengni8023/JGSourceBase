@@ -142,7 +142,19 @@
         
         [JGSAlertController alertWithTitle:@"日志输出设置" message:types[selIdx] cancel:@"确定" action:^(UIAlertController * _Nonnull _alert, NSInteger _idx) {
             JGSLog(@"<%@: %p> %@", NSStringFromClass([_alert class]), _alert, @(_idx));
+            
+            JGSLog(@"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+            JGSLog(@"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
         }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            JGSLog(@"key: %p", [UIApplication sharedApplication].keyWindow);
+            JGSLog(@"window: %p", [UIApplication sharedApplication].delegate.window);
+            
+            JGSLog(@"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+            JGSLog(@"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
+        });
     }];
 }
 

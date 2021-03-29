@@ -32,7 +32,7 @@
 
 - (id)JGSBase_objectForKey:(id)aKey {
     id obj = [self JGSBase_objectForKey:aKey];
-    if ([obj isEqual:[NSNull null]]) {
+    if ([obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
     return obj;
@@ -44,7 +44,7 @@
 
 - (id)JGSBase_valueForKey:(NSString *)key {
     id obj = [self JGSBase_valueForKey:key];
-    if ([obj isEqual:[NSNull null]]) {
+    if ([obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
     return obj;
@@ -326,7 +326,7 @@
 
 - (id)JGSBase_objectForKey:(id)aKey {
     id obj = [self JGSBase_objectForKey:aKey];
-    if ([obj isEqual:[NSNull null]]) {
+    if ([obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
     return obj;
@@ -338,7 +338,7 @@
 
 - (id)JGSBase_valueForKey:(NSString *)key {
     id obj = [self JGSBase_valueForKey:key];
-    if ([obj isEqual:[NSNull null]]) {
+    if ([obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
     return obj;
