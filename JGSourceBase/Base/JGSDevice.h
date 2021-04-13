@@ -41,6 +41,7 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (NSString *)ipAddress:(BOOL)preferIPv4; // 获取设备IP地址
 + (NSString *)macAddress DEPRECATED_MSG_ATTRIBUTE("iOS 7之后禁止获取设备Mac地址，所有设备返回相同值");
 
++ (UIEdgeInsets)safeAreaInsets; // safeAreaInsets
 + (BOOL)isFullScreen; // 刘海屏（全面屏）判断
 + (BOOL)systemVersionBelow:(NSString *)cmp; // 判断手机系统版本是否低于某个版本
 
