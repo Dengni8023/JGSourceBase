@@ -234,6 +234,11 @@
             NSURL *URL = urlStr.jg_URL;
             JGSLog(@"\n%@", urlStr.jg_URLString);
             JGSLog(@"\n%@", [URL jg_queryParams]);
+            
+            urlStr = @"https://www.baidu.com/search?key1=%E4%BD%A0%E5%A5%BD";
+            URL = urlStr.jg_URL;
+            JGSLog(@"\n%@", urlStr.jg_URLString);
+            JGSLog(@"\n%@", [URL jg_queryParams]);
         }
             break;
             

@@ -15,6 +15,17 @@
 #import <sys/stat.h>
 #import <dlfcn.h>
 
+// IP地址
+#import <arpa/inet.h>
+#import <net/if.h>
+#import <ifaddrs.h>
+
+#define JGS_IOS_NET_CELLULAR    @"pdp_ip0"
+#define JGS_IOS_NET_WIFI        @"en0"
+#define JGS_IOS_NET_VPN         @"utun0"
+#define JGS_IP_ADDR_IPv4        @"ipv4"
+#define JGS_IP_ADDR_IPv6        @"ipv6"
+
 @implementation JGSDevice
 
 static NSString *JGSourceBaseSystemUserAgent = nil;
@@ -314,6 +325,67 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
     });
     
     return deviceModel;
+}
+
++ (NSString *)ipAddress:(BOOL)preferIPv4 {
+    
+    NSMutableDictionary *addressesInfo = @{}.mutableCopy;
+    struct ifaddrs *interfaces;
+    if (!getifaddrs(&interfaces)) {
+        struct ifaddrs *interface;
+        for (interface = interfaces; interface; interface = interface->ifa_next) {
+            if (!(interface->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */ ) {
+                continue; // deeply nested code harder to read
+            }
+            const struct sockaddr_in *addr = (const struct sockaddr_in*)interface->ifa_addr;
+            char addrBuf[MAX(INET_ADDRSTRLEN, INET6_ADDRSTRLEN)];
+            if (addr && (addr->sin_family == AF_INET || addr->sin_family == AF_INET6)) {
+                NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
+                NSString *type;
+                if (addr->sin_family == AF_INET) {
+                    if (inet_ntop(AF_INET, &addr->sin_addr, addrBuf, INET_ADDRSTRLEN)) {
+                        type = JGS_IP_ADDR_IPv4;
+                    }
+                }
+                else {
+                    const struct sockaddr_in6 *addr6 = (const struct sockaddr_in6*)interface->ifa_addr;
+                    if (inet_ntop(AF_INET6, &addr6->sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {
+                        type = JGS_IP_ADDR_IPv6;
+                    }
+                }
+                if (type) {
+                    NSString *key = [NSString stringWithFormat:@"%@/%@", name, type];
+                    addressesInfo[key] = [NSString stringWithUTF8String:addrBuf];
+                }
+            }
+        }
+        freeifaddrs(interfaces);
+    }
+    
+    NSArray<NSString *> *netType = @[JGS_IOS_NET_WIFI, JGS_IOS_NET_CELLULAR, JGS_IOS_NET_VPN];
+    NSArray<NSString *> *ipType = preferIPv4 ? @[JGS_IP_ADDR_IPv4] : @[JGS_IP_ADDR_IPv6, JGS_IP_ADDR_IPv4];
+    NSMutableArray *searchArray = @[].mutableCopy;
+    [netType enumerateObjectsUsingBlock:^(NSString * _Nonnull net, NSUInteger idx, BOOL * _Nonnull stop) {
+        [ipType enumerateObjectsUsingBlock:^(NSString * _Nonnull ip, NSUInteger idx, BOOL * _Nonnull stop) {
+            [searchArray addObject:[NSString stringWithFormat:@"%@/%@", net, ip]];
+        }];
+    }];
+    
+    //SAPPLog(@"addresses: %@", addressesInfo);
+    
+    NSString *ipAddress = nil;
+    for (NSString *key in searchArray) {
+        ipAddress = addressesInfo[key];
+        if (ipAddress.length > 0) {
+            break;
+        }
+    }
+    
+    return ipAddress ?: @"127.0.0.1";
+}
+
++ (NSString *)macAddress {
+    return @"02:00:00:00:00:00";
 }
 
 + (BOOL)isFullScreen {
