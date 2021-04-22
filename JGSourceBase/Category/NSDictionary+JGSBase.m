@@ -17,9 +17,15 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = NSClassFromString(@"__NSSingleEntryDictionaryI");
-        NSArray<NSString *> *originalArray = @[NSStringFromSelector(@selector(objectForKey:)),
-                                               NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
-                                               NSStringFromSelector(@selector(valueForKey:))];
+        NSArray<NSString *> *originalArray = @[
+            NSStringFromSelector(@selector(objectForKey:)),
+            NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
+            NSStringFromSelector(@selector(valueForKey:))
+        ];
+        //Class class = NSClassFromString(@"__NSPlaceholderDictionary");
+        //NSArray<NSString *> *originalArray = @[
+        //    NSStringFromSelector(@selector(initWithObjects:forKeys:count:)),
+        //];
         
         [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -298,11 +304,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = NSClassFromString(@"__NSDictionaryM");
-        NSArray<NSString *> *originalArray = @[NSStringFromSelector(@selector(setObject:forKey:)),
-                                               NSStringFromSelector(@selector(setObject:forKeyedSubscript:)), // subscripting字面量方法
-                                               NSStringFromSelector(@selector(objectForKey:)),
-                                               NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
-                                               NSStringFromSelector(@selector(valueForKey:))];
+        NSArray<NSString *> *originalArray = @[
+            NSStringFromSelector(@selector(setObject:forKey:)),
+            NSStringFromSelector(@selector(setObject:forKeyedSubscript:)), // subscripting字面量方法
+            //NSStringFromSelector(@selector(objectForKey:)),
+            //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
+            //NSStringFromSelector(@selector(valueForKey:))
+        ];
         [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             SEL originalSelector = NSSelectorFromString(obj);
