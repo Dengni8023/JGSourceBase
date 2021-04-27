@@ -114,6 +114,11 @@
 }
 
 #pragma mark - Action
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
+    self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
+    self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;
+}
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {

@@ -415,6 +415,7 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
         NSArray<NSString *> *oriSelectors = @[NSStringFromSelector(@selector(text)),
                                               NSStringFromSelector(@selector(setText:)),
                                               NSStringFromSelector(@selector(replaceRange:withText:)),
+                                              NSStringFromSelector(@selector(setSecureTextEntry:)),
                                               NSStringFromSelector(@selector(canPerformAction:withSender:)),
                                               ];
         for (NSString *oriSelName in oriSelectors) {
@@ -448,8 +449,8 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
 
 - (void)JGSSwizzing_setText:(NSString *)text {
     
+    self.jgsSecurityOriginText = text;
     if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
-        self.jgsSecurityOriginText = text;
         for (NSInteger i = 0; i < text.length; i++) {
             text = [text stringByReplacingCharactersInRange:NSMakeRange(i, 1) withString:JGSSecurityKeyboardSecChar];
         }
@@ -480,24 +481,29 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
 
 - (void)JGSSwizzing_replaceRange:(UITextRange *)range withText:(NSString *)text {
     
+    // 记录的原字符串更新
+    UITextPosition *begin = self.beginningOfDocument;
+    UITextPosition *rangeStart = range.start;
+    UITextPosition *rangeEnd = range.end;
+    
+    NSInteger location = [self offsetFromPosition:begin toPosition:rangeStart];
+    NSInteger length = [self offsetFromPosition:rangeStart toPosition:rangeEnd];
+    
+    NSString *origin = self.jgsSecurityOriginText ?: @"";
+    origin = [origin stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:text];
+    self.jgsSecurityOriginText = origin;
+    
     if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
-        
-        // 记录的原字符串更新
-        UITextPosition *begin = self.beginningOfDocument;
-        UITextPosition *rangeStart = range.start;
-        UITextPosition *rangeEnd = range.end;
-        
-        NSInteger location = [self offsetFromPosition:begin toPosition:rangeStart];
-        NSInteger length = [self offsetFromPosition:rangeStart toPosition:rangeEnd];
-        
-        NSString *origin = self.jgsSecurityOriginText ?: @"";
-        origin = [origin stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:text];
-        [self setJgsSecurityOriginText:origin];
-        
         // 加密
         text = [self secTextWithText:text];
     }
     [self JGSSwizzing_replaceRange:range withText:text];
+}
+
+- (void)JGSSwizzing_setSecureTextEntry:(BOOL)secureTextEntry {
+    
+    [self JGSSwizzing_setSecureTextEntry:secureTextEntry];
+    self.text = self.jgsSecurityOriginText;
 }
 
 - (NSString *)secTextWithText:(NSString *)text {
