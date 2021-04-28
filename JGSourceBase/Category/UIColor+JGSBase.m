@@ -32,6 +32,10 @@ FOUNDATION_EXTERN UIColor *JGSColorHexString(NSString *hex) {
 
 FOUNDATION_EXTERN UIColor *JGSColorHexStringA(NSString *hex, float alpha) {
     
+    if (hex.copy == 0) {
+        return [UIColor clearColor];
+    }
+    
     //JGSColorHexString(@"0xff00ff");
     //JGSColorHexString(@"0xff00ffee");
     //JGSColorHexString(@"#ff00ff");
