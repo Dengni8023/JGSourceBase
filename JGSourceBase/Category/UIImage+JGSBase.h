@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMedia/CoreMedia.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置图片透明度
 /// @param alpha 目标透明度
 - (instancetype)jg_imageByApplyingAlpha:(CGFloat)alpha;
+
+/// 添加遮罩
+/// @param mask 遮罩图
+- (nullable UIImage *)jg_imageWithMask:(UIImage *)mask;
+
+- (nullable UIImage *)jg_blurryImage:(CGFloat)radius;
 
 #pragma mark - Resize
 /// 图片中线拉伸
@@ -44,6 +51,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// 图片方向修正
 - (instancetype)jg_imageCorrectedOrientation;
 - (instancetype)jg_imageCorrectedOrientation:(UIImageOrientation)imageOrientation;
+
+/// 图片旋转
+/// @param angle 旋转角度，eg： 45
+- (nullable UIImage *)jg_rotateWithAngle:(CGFloat)angle;
+
+#pragma mark - Crop
+- (nullable UIImage *)jg_cropImageWithRect:(CGRect)rect;
+- (nullable UIImage *)jg_cropImageWithInsets:(UIEdgeInsets)insets;
+
+- (UIImage *)jg_cropImageWithScale:(CGFloat)scale;
 
 #pragma mark - Compress
 /**
@@ -68,6 +85,24 @@ NS_ASSUME_NONNULL_BEGIN
  * @return NSData 压缩后数据
  */
 - (NSData *)jg_compressSizeAndQualityDataWithExpectKBSize:(NSInteger)kb minQuality:(CGFloat)minQuality;
+
+#pragma mark - Buffer
+/// 根据像素数据生成图像
+/// @param data 像素数据
+/// @param width 宽
+/// @param height 高
++ (nullable instancetype)jg_imageWithPixelsData:(unsigned char *)pixelsData width:(CGFloat)width height:(CGFloat)height;
+
+/// 根据采样数据生成图像
+/// @param sampleBuffer 采样数据
++ (nullable instancetype)jg_imageWithSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
+#pragma mark - 图像数据
+/// 获取图像像素数据
+- (unsigned char *)jg_pixelsData;
+
+/// 获取图像灰度像素数据
+- (unsigned char *)jg_pixelsGrayData;
 
 @end
 

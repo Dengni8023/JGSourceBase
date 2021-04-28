@@ -81,6 +81,10 @@ FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, flo
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
+FOUNDATION_EXTERN UIColor *JGSRandomColor(void) {
+    return JGSColorRGBA(arc4random() % 256, arc4random() % 256, arc4random() % 256, 1.f);
+}
+
 @implementation UIColor (JGSBase)
 
 + (instancetype)jg_ColorHex:(uint32_t)rgbHex {
@@ -105,6 +109,19 @@ FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, flo
 
 + (instancetype)jg_ColorFR:(float)red g:(float)green b:(float)blue alpha:(float)alpha {
     return JGSColorFRGBA(red, green, blue, alpha);
+}
+
++ (instancetype)jg_RandomColor {
+    return JGSRandomColor();
+}
+
+- (UIColor *)jg_revertColor {
+    CGColorSpaceModel spaceModel = CGColorSpaceGetModel(CGColorGetColorSpace(self.CGColor));
+    if (spaceModel == kCGColorSpaceModelRGB) {
+        const CGFloat *components = CGColorGetComponents(self.CGColor);
+        return JGSColorRGBA((1.0 - components[0]), (1.0 - components[1]), (1.0 - components[2]), components[3]);
+    }
+    return nil;
 }
 
 @end

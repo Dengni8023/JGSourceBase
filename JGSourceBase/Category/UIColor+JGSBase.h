@@ -26,6 +26,9 @@ FOUNDATION_EXTERN UIColor *JGSColorRGBA(uint8_t red, uint8_t green, uint8_t blue
 FOUNDATION_EXTERN UIColor *JGSColorFRGB(float red, float green, float blue);
 FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, float alpha);
 
+/// 随机颜色
+FOUNDATION_EXTERN UIColor *JGSRandomColor(void);
+
 @interface UIColor (JGSBase)
 
 /// @see JGSColorHex
@@ -40,6 +43,10 @@ FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, flo
 + (instancetype)jg_ColorFR:(float)red g:(float)green b:(float)blue;
 /// @see JGSColorFRGBA
 + (instancetype)jg_ColorFR:(float)red g:(float)green b:(float)blue alpha:(float)alpha;
+/// @see JGSRandomColor
++ (instancetype)jg_RandomColor;
+/// 获取反色，透明度一致
+- (nullable UIColor *)jg_revertColor;
 
 @end
 
