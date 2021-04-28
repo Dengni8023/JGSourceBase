@@ -61,13 +61,14 @@ Pod::Spec.new do |s|
     s.public_header_files   = "JGSourceBase/*.h"
     
     # subspec，不指定时默认安装所有subspec，用户可自行指定
-    #s.default_subspecs = [
-    #    'AlertController',
-    #    'Base',
-    #    'Category',
-    #    'HUD',
-    #    'Reachability',
-    #]
+    s.default_subspecs = [
+       'AlertController',
+       'Base',
+       'Category',
+       'HUD',
+       'Reachability',
+       'SecurityKeyboard',
+    ]
                                                         
     # Base
     s.subspec 'Base' do |ss|
