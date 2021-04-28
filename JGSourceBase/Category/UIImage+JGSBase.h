@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Buffer
 /// 根据像素数据生成图像
-/// @param data 像素数据
+/// @param pixelsData 像素数据
 /// @param width 宽
 /// @param height 高
 + (nullable instancetype)jg_imageWithPixelsData:(unsigned char *)pixelsData width:(CGFloat)width height:(CGFloat)height;

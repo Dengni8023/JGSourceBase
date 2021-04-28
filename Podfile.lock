@@ -36,7 +36,7 @@ DEPENDENCIES:
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  trunk:
     - IQKeyboardManager
     - MBProgressHUD
 
@@ -58,6 +58,6 @@ SPEC CHECKSUMS:
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 96e0002b8525cc18e8d89757cdddfaaefa69ed28
+PODFILE CHECKSUM: aea816af058c48a591d0e774128956225056dc9a
 
 COCOAPODS: 1.10.1

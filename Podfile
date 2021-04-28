@@ -1,5 +1,6 @@
-#source 'https://github.com/cocoaPods/specs.git'
-source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+# source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+# source 'https://github.com/cocoapods/specs.git'
+# source 'https://cdn.cocoapods.org/'
 
 # 私有库B依赖了模块A，同时在主工程里 添加A到 development pod，cocoapods 重复生成相同库的uuid
 # pod install 警告信息 [!] [Xcodeproj] Generated duplicate UUIDs
