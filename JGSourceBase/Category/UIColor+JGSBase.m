@@ -43,6 +43,9 @@ FOUNDATION_EXTERN UIColor *JGSColorHexStringA(NSString *hex, float alpha) {
     NSString *regTags = @"^((0x|#){0,1})([0-9a-f]{6,})$";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regTags options:NSRegularExpressionCaseInsensitive error:nil];
     NSArray *matches = [regex matchesInString:hex options:0 range:NSMakeRange(0, hex.length)];
+    if (matches.copy == 0) {
+        return [UIColor clearColor];
+    }
     NSCAssert(matches.count != 0, @"颜色字符串 %@ 不符合规范，起始前缀（如有）须以\"0x\"、\"0X\"、\"#\"开头，颜色值最少6位", hex);
     
     NSString *real = hex;
@@ -147,6 +150,9 @@ FOUNDATION_EXTERN UIColor *JGSRandomColor(void) {
     NSString *regTags = @"^((0x|#){0,1})([0-9a-f]{0,})$";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regTags options:NSRegularExpressionCaseInsensitive error:nil];
     NSArray *matches = [regex matchesInString:self options:0 range:NSMakeRange(0, self.length)];
+    if (matches.count == 0) {
+        return 0x00;
+    }
     NSCAssert(matches.count > 0, @"%@ 不符合十六进制字符串规范，起始前缀（如有）须以\"0x\"、\"0X\"、\"#\"开头", self);
     
     NSString *real = self;
