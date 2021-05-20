@@ -1,3 +1,11 @@
+<!--
+ * @Author: 梅继高
+ * @Date: 2021-01-12 21:25:08
+ * @LastEditTime: 2021-05-20 21:45:06
+ * @LastEditors: 梅继高
+ * @Description: README.md
+ * @FilePath: /JGSourceBase/README.md
+-->
 # JGSourceBase
 
 JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。
@@ -60,3 +68,11 @@ JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Rea
 ##### 自定义安全键盘
 
 	pod 'JGSourceBase/SecurityKeyboard'
+
+
+## Podfile引入subpec注意事项
+
+
+	pod 'JGSourceBase', :path => ".", :subspecs => ['HUD/LoadingHUD'] # 该方式父spec文件可能不会引入
+
+	pod 'JGSourceBase/HUD/LoadingHUD', :path => "." # 该方式父spec文件可能会引入

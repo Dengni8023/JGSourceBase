@@ -140,7 +140,7 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
         NSArray *bids = [[self bundleId] componentsSeparatedByString:@"."];
         NSString *org = bids.count > 1 ? bids[1] : bids.firstObject;
         NSString *processName = [NSProcessInfo processInfo].processName;
-        appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@; %@)", org.uppercaseString, processName, [self appVersion], [self buildNumber], JGSUserAgent];
+        appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@) %s", org.uppercaseString, processName, [self appVersion], [self buildNumber], JGSUserAgent];
     });
     return appUA;
 }

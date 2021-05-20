@@ -54,39 +54,37 @@ Pod::Spec.new do |s|
         :tag => "#{s.version}",
     }
     s.platforms = {
-        :ios => 10.0,
+        :ios => '10.0',
     }
     
     s.source_files          = "JGSourceBase/*.{h,m}"
     s.public_header_files   = "JGSourceBase/*.h"
-    
+
     # subspec，不指定时默认安装所有subspec，用户可自行指定
-    s.default_subspecs = [
-       'AlertController',
-       'Base',
-       'Category',
-       'HUD',
-       'Reachability',
-       'SecurityKeyboard',
-    ]
+    # s.default_subspecs = [
+    #    'AlertController',
+    #    'Base',
+    #    'Category',
+    #    'HUD',
+    #    'Reachability',
+    #    'SecurityKeyboard',
+    # ]
                                                         
     # Base
     s.subspec 'Base' do |ss|
         ss.source_files         = [
-            "JGSourceBase/*.{h,m}",
-            "JGSourceBase/Base/*.{h,m}", # 防止用户自行指定subspec时JGSourceBase.h不会作为公共头文件导出问题
+            "JGSourceBase/Base/*.{h,m}",
         ]
         ss.public_header_files  = [
-            "JGSourceBase/*.h",
-            "JGSourceBase/Base/*.h", # 防止用户自行指定subspec时JGSourceBase.h不会作为公共头文件导出问题
+            "JGSourceBase/Base/*.h",
         ]
         ss.resources    = [
             "JGSourceBase/Base/Resources/*.json",
         ]
-
+        
         ss.xcconfig     = {
             "OTHER_LDFLAGS" => '-ObjC',
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGSUserAgent=\'@"JGSourceBase 1.2.0"\'',
+            "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{s.version}\"'",
         }
     end
     
@@ -134,7 +132,7 @@ Pod::Spec.new do |s|
             "JGSourceBase/HUD/*.h",
         ]
         
-        ss.dependency   'MBProgressHUD', '~> 1.2.0'
+        ss.dependency   'MBProgressHUD', '>= 1.2.0'
         ss.dependency   "JGSourceBase/Category"
         ss.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_HUD',
