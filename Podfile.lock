@@ -16,13 +16,13 @@ PODS:
     - JGSourceBase/Category
     - JGSourceBase/HUD/LoadingHUD (= 1.2.0)
     - JGSourceBase/HUD/ToastHUD (= 1.2.0)
-    - MBProgressHUD (~> 1.2.0)
+    - MBProgressHUD (>= 1.2.0)
   - JGSourceBase/HUD/LoadingHUD (1.2.0):
     - JGSourceBase/Category
-    - MBProgressHUD (~> 1.2.0)
+    - MBProgressHUD (>= 1.2.0)
   - JGSourceBase/HUD/ToastHUD (1.2.0):
     - JGSourceBase/Category
-    - MBProgressHUD (~> 1.2.0)
+    - MBProgressHUD (>= 1.2.0)
   - JGSourceBase/Reachability (1.2.0):
     - JGSourceBase/Base
   - JGSourceBase/SecurityKeyboard (1.2.0):
@@ -54,7 +54,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: 3b416a8dd24fa7c9d510337a6f5b02abf85d2918
+  JGSourceBase: 94eb7932266cc14e0bc5c76fcf8ba8419bec42eb
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 

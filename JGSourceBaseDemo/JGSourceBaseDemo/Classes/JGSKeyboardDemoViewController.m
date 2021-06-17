@@ -89,7 +89,7 @@
     // 键盘设置
     self.normalInput = fields[0];
     self.normalInput.placeholder = @"系统键盘输入";
-    self.normalInput.keyboardType = UIKeyboardTypeNumberPad;
+    self.normalInput.keyboardType = UIKeyboardTypeDefault;
     
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";

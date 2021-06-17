@@ -54,7 +54,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
     char timeZone[8];
     strftime(timeZone, 8, "%z", timeinfo);
     
-    NSString *logMsg = [NSString stringWithFormat:@"%s.%.6d%s %@[%d] %@\n", dateTime, microseconds, timeZone, [NSProcessInfo processInfo].processName, (UInt32)getpid(), message];
+    NSString *logMsg = [NSString stringWithFormat:@"%s.%.6d%s %@[%@] %@\n", dateTime, microseconds, timeZone, [NSProcessInfo processInfo].processName, @(getpid()), message];
     NSUInteger msgLength = [logMsg lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     if (msgLength > 4 * 1024) {
         

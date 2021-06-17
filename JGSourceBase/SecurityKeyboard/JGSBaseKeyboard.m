@@ -306,6 +306,7 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
+    CGFloat roundPx = 1.4f;
     switch (self.type) {
         case JGSKeyboardKeyTypeShift: {
             
@@ -316,11 +317,16 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
             CGMutablePathRef path = CGPathCreateMutable();
             CGPathMoveToPoint(path, NULL, centerX - 4, centerY);
             CGPathAddLineToPoint(path, NULL, centerX - 10, centerY);
-            CGPathAddLineToPoint(path, NULL, centerX, centerY - 10);
+            CGPathAddLineToPoint(path, NULL, centerX - 10, centerY - roundPx);
+            CGPathAddLineToPoint(path, NULL, centerX - roundPx * 0.5, centerY - 10);
+            CGPathAddLineToPoint(path, NULL, centerX + roundPx * 0.5, centerY - 10);
+            CGPathAddLineToPoint(path, NULL, centerX + 10, centerY - roundPx);
             CGPathAddLineToPoint(path, NULL, centerX + 10, centerY);
             CGPathAddLineToPoint(path, NULL, centerX + 4, centerY);
-            CGPathAddLineToPoint(path, NULL, centerX + 4, centerY + 8);
-            CGPathAddLineToPoint(path, NULL, centerX - 4, centerY + 8);
+            CGPathAddLineToPoint(path, NULL, centerX + 4, centerY + 8 - roundPx);
+            CGPathAddArc(path, NULL, centerX + 4 - roundPx, centerY + 8 - roundPx, roundPx, 0, M_PI_2, NO);
+            CGPathAddLineToPoint(path, NULL, centerX - 4 + roundPx, centerY + 8);
+            CGPathAddArc(path, NULL, centerX - 4 + roundPx, centerY + 8 - roundPx, roundPx, M_PI_2, M_PI, NO);
             CGPathAddLineToPoint(path, NULL, centerX - 4, centerY);
             
             // 长选中Shift
@@ -332,8 +338,8 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
             CGPathCloseSubpath(path);
             
             CGContextRef ctx = UIGraphicsGetCurrentContext();
-            CGContextSetLineWidth(ctx, 1.5f);
-            CGContextSetLineCap(ctx, kCGLineCapButt);
+            CGContextSetLineWidth(ctx, 1.2f);
+            CGContextSetLineCap(ctx, kCGLineCapRound);
             CGContextSetLineJoin(ctx, kCGLineJoinRound);
             CGContextSetStrokeColorWithColor(ctx, self.textColor.CGColor);
             CGContextAddPath(ctx, path);
@@ -358,49 +364,44 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
             
             CGMutablePathRef path = CGPathCreateMutable();
             CGPathMoveToPoint(path, NULL, centerX - 4, centerY - 8);
-            CGPathAddLineToPoint(path, NULL, centerX + 12, centerY - 8);
-            CGPathAddLineToPoint(path, NULL, centerX + 12, centerY + 8);
+            CGPathAddLineToPoint(path, NULL, centerX + 12 - roundPx, centerY - 8);
+            CGPathAddArc(path, NULL, centerX + 12 - roundPx, centerY - 8 + roundPx, roundPx, -M_PI_2, 0, NO);
+            CGPathAddLineToPoint(path, NULL, centerX + 12, centerY + 8 - roundPx);
+            CGPathAddArc(path, NULL, centerX + 12 - roundPx, centerY + 8 - roundPx, roundPx, 0, M_PI_2, NO);
             CGPathAddLineToPoint(path, NULL, centerX - 4, centerY + 8);
-            CGPathAddLineToPoint(path, NULL, centerX - 12, centerY);
+            CGPathAddLineToPoint(path, NULL, centerX - 12, centerY + roundPx * 0.5);
+            CGPathAddLineToPoint(path, NULL, centerX - 12, centerY - roundPx * 0.5);
             CGPathAddLineToPoint(path, NULL, centerX - 4, centerY - 8);
-            
-            // 正常状态黑色x
-            if (!self.highlighted) {
-                CGPathMoveToPoint(path, NULL, centerX - 2, centerY - 4);
-                CGPathAddLineToPoint(path, NULL, centerX + 6, centerY + 4);
-                CGPathMoveToPoint(path, NULL, centerX - 2, centerY + 4);
-                CGPathAddLineToPoint(path, NULL, centerX + 6, centerY - 4);
-            }
-            
             CGPathCloseSubpath(path);
             
             CGContextRef ctx = UIGraphicsGetCurrentContext();
-            CGContextSetLineWidth(ctx, 1.5f);
-            CGContextSetLineCap(ctx, kCGLineCapButt);
+            CGContextSetLineWidth(ctx, 1.2f);
+            CGContextSetLineCap(ctx, kCGLineCapRound);
             CGContextSetLineJoin(ctx, kCGLineJoinRound);
             CGContextSetStrokeColorWithColor(ctx, self.textColor.CGColor);
             CGContextAddPath(ctx, path);
-            CGContextStrokePath(ctx);
             
             // 选中填充
             if (self.highlighted) {
-                CGContextSetFillColorWithColor(ctx, self.textColor.CGColor);
-                CGContextAddPath(ctx, path);
                 CGContextFillPath(ctx);
-                
-                // 选中状态白色x
-                CGPathMoveToPoint(path, NULL, centerX - 2, centerY - 4);
-                CGPathAddLineToPoint(path, NULL, centerX + 6, centerY + 4);
-                CGPathMoveToPoint(path, NULL, centerX - 2, centerY + 4);
-                CGPathAddLineToPoint(path, NULL, centerX + 6, centerY - 4);
-                CGPathCloseSubpath(path);
-                
-                CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
-                CGContextAddPath(ctx, path);
-                CGContextStrokePath(ctx);
             }
             
+            CGContextStrokePath(ctx);
             CGPathRelease(path);
+            
+            // 绘制x
+            CGMutablePathRef xPath = CGPathCreateMutable();
+            CGPathMoveToPoint(xPath, NULL, centerX - 2, centerY - 4);
+            CGPathAddLineToPoint(xPath, NULL, centerX + 6, centerY + 4);
+            CGPathMoveToPoint(xPath, NULL, centerX - 2, centerY + 4);
+            CGPathAddLineToPoint(xPath, NULL, centerX + 6, centerY - 4);
+            CGPathCloseSubpath(xPath);
+            
+            // 选中状态白色x
+            CGContextSetStrokeColorWithColor(ctx, self.highlighted ? [UIColor whiteColor].CGColor : self.textColor.CGColor);
+            CGContextAddPath(ctx, xPath);
+            CGContextStrokePath(ctx);
+            CGPathRelease(xPath);
         }
             break;
             
@@ -410,13 +411,13 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
             // 绘制切换全半角地球
             CGFloat centerX = CGRectGetWidth(rect) * 0.5;
             CGFloat centerY = CGRectGetHeight(rect) * 0.5;
-            CGFloat radius = CGRectGetWidth(rect) * 0.25;
+            CGFloat radius = CGRectGetWidth(rect) * 0.28;
             
             CGContextRef ctx = UIGraphicsGetCurrentContext();
-            CGContextSetLineWidth(ctx, 1.5f);
-            CGContextSetLineCap(ctx, kCGLineCapButt);
+            CGContextSetLineWidth(ctx, 1.2f);
+            CGContextSetLineCap(ctx, kCGLineCapRound);
             CGContextSetLineJoin(ctx, kCGLineJoinRound);
-            CGContextSetStrokeColorWithColor(ctx, [UIColor colorWithWhite:0 alpha:0.52].CGColor);
+            CGContextSetStrokeColorWithColor(ctx, [self.textColor colorWithAlphaComponent:0.67].CGColor);
             CGContextAddArc(ctx, centerX, centerY, radius, 0, M_PI * 2.f, NO);
             CGContextStrokePath(ctx);
             
