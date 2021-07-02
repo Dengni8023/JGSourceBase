@@ -28,12 +28,10 @@
 
 @implementation JGSDevice
 
-static NSString *JGSourceBaseSystemUserAgent = nil;
 + (void)load {
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        JGSLog(@"默认 UserAgent");
         [self loadSystemUserAgen:nil];
     });
 }
@@ -86,50 +84,55 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
 #pragma mark - UA
 + (void)loadSystemUserAgen:(void (^ _Nullable)(NSString * _Nullable sysUA, NSError * _Nullable error))completion {
     
-    if (JGSourceBaseSystemUserAgent.length > 0) {
-        if (completion) {
-            completion(JGSourceBaseSystemUserAgent, nil);
-        }
-        return;
-    }
-    
     // 异步获取系统UA
+    static NSString *fakeUserAgent = nil;
+    static NSString *sysUserAgent = nil;
     static WKWebView *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        JGSLog(@"默认 UserAgent Load");
+        // 为了避免没有获取到oldAgent，所以设置一个默认的userAgent
+        // Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+        // Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+        // Mozilla/5.0 (iPad; CPU OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+        NSString *model = [[UIDevice currentDevice] model];
+        NSString *os = [model isEqualToString:@"iPhone"] ? @"CPU iPhone OS" : @"CPU OS";
+        NSString *osVersion = [[[UIDevice currentDevice] systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        fakeUserAgent = [NSString stringWithFormat:@"Mozilla/5.0 (%@; %@ %@ like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148", model, os, osVersion];
         
+        //JGSLog(@"默认 UserAgent Load");
         instance = instance ?: [[WKWebView alloc] init];
         [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
-            JGSLog(@"默认 UserAgent: %@, %@", result, error);
+            //JGSLog(@"默认 UserAgent: %@, %@", result, error);
             if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
-                JGSourceBaseSystemUserAgent = (NSString *)result;
-            }
-            if (completion) {
-                completion(JGSourceBaseSystemUserAgent, error);
+                sysUserAgent = (NSString *)result;
             }
             
-            if (JGSourceBaseSystemUserAgent.length == 0) {
+            if (sysUserAgent.length == 0) {
                 onceToken = 0;
             }
+            
+            JGSLog(@"fakeUA: %@", fakeUserAgent);
+            JGSLog(@"sys UA: %@", sysUserAgent);
         }];
     });
+    
+    if (completion) {
+        completion(sysUserAgent ?: fakeUserAgent, nil);
+    }
 }
 
 + (NSString *)sysUserAgent {
     
-//    if (JGSourceBaseSystemUserAgent.length > 0) {
-//        return JGSourceBaseSystemUserAgent;
-//    }
-    
+    __block NSString *sysUserAgent = nil;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
     [self loadSystemUserAgen:^(NSString * _Nullable sysUA, NSError * _Nullable error) {
         dispatch_semaphore_signal(semaphore);   //发送信号
+        sysUserAgent = sysUA;
     }];
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
     
-    return JGSourceBaseSystemUserAgent;
+    return sysUserAgent;
 }
 
 + (NSString *)appUserAgent {
@@ -199,6 +202,8 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
             deviceIDFA = nil;
         }
         
+        deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        
         // iOS14获取idfa需要申请权限，否则其他系统权限发生变化时，获取的idfa也会变化
         // Privacy - Tracking Usage Description
         NSString *trackDes = [NSBundle mainBundle].infoDictionary[@"NSUserTrackingUsageDescription"];
@@ -208,6 +213,7 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
                 if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
                     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
                     [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                        deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
                         dispatch_semaphore_signal(semaphore);   //发送信号
                     }];
                     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
@@ -215,7 +221,6 @@ static NSString *JGSourceBaseSystemUserAgent = nil;
             }
         }
         
-        deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         if ([deviceIDFA hasPrefix:@"00000000"]) {
             // 在 iOS 10.0 以后，当用户开启限制广告跟踪，advertisingIdentifier 的值将是全零
             // 00000000-0000-0000-0000-000000000000

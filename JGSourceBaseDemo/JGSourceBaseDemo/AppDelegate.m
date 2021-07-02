@@ -58,11 +58,13 @@
     printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
     printf("%d\n", [JGSDevice isSimulator]);
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        JGSLog(@"%@", [JGSDevice sysUserAgent]);
+    JGSLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        JGSLog(@"%@", [JGSDevice idfa]);
     });
-    
-    JGSLog(@"%@", [JGSDevice idfa]);
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //    JGSLog(@"%@", [JGSDevice idfa]);
+    //});
     JGSLog(@"%@", [JGSDevice appInfo]);
     JGSLog(@"%@", [JGSDevice deviceInfo]);
     JGSLog(@"%@", [JGSDevice deviceMachine]);

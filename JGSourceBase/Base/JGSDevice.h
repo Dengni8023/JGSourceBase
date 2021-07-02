@@ -29,7 +29,10 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 #pragma mark - Device
 + (NSDictionary<NSString *, id> *)deviceInfo;
 
-+ (nullable NSString *)idfa; //获取IDFA广告标示
+/// 获取IDFA广告标示
+/// 如在Info中设置了 NSUserTrackingUsageDescription 字段，请不要在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，以免跟踪弹窗无法弹出导致卡死
+/// 如必须在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，请使用异步/或延时处理（延时可为0）
++ (nullable NSString *)idfa; //获取IDFA广告标示，如在Info中设置了NSUserTrackingUsageDescription字段，请不要在应用启动时直接调用，以免跟踪弹窗无法弹出导致卡死
 + (NSString *)deviceId; //获取iphone手机的设备编号
 + (NSString *)systemName; //获取iphone手机的操作系统名称
 + (NSString *)systemVersion; //获取iphone手机的系统版本号

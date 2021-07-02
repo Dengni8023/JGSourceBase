@@ -55,24 +55,24 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
     strftime(timeZone, 8, "%z", timeinfo);
     
     NSString *logMsg = [NSString stringWithFormat:@"%s.%.6d%s %@[%@] %@\n", dateTime, microseconds, timeZone, [NSProcessInfo processInfo].processName, @(getpid()), message];
-    NSUInteger msgLength = [logMsg lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-    if (msgLength > 4 * 1024) {
+    //NSUInteger msgLength = [logMsg lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    //if (msgLength > 4 * 1024) {
         
         // 数据量较大时writev性能较低
-        fprintf(stderr, "%s\n", logMsg.UTF8String);
-        return;
-    }
-    
-    char msgStack[msgLength + 1];
-    BOOL isUTF8 = [logMsg getCString:msgStack maxLength:(msgLength + 1) encoding:NSUTF8StringEncoding];
-    if (!isUTF8) {
-        return;
-    }
-    
-    struct iovec msgBuffer[1];
-    msgBuffer[0].iov_base = msgStack;
-    msgBuffer[0].iov_len = msgLength;
-    writev(STDERR_FILENO, msgBuffer, 1);
+        fprintf(stderr, "%s", logMsg.UTF8String);
+    //    return;
+    //}
+    //
+    //char msgStack[msgLength + 1];
+    //BOOL isUTF8 = [logMsg getCString:msgStack maxLength:(msgLength + 1) encoding:NSUTF8StringEncoding];
+    //if (!isUTF8) {
+    //    return;
+    //}
+    //
+    //struct iovec msgBuffer[1];
+    //msgBuffer[0].iov_base = msgStack;
+    //msgBuffer[0].iov_len = msgLength;
+    //writev(STDERR_FILENO, msgBuffer, 1);
 }
 
 JGSLogMode JGSEnableLogMode = JGSLogModeNone; //默认不输出日志
