@@ -99,6 +99,10 @@
         NSString *os = [model isEqualToString:@"iPhone"] ? @"CPU iPhone OS" : @"CPU OS";
         NSString *osVersion = [[[UIDevice currentDevice] systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         fakeUserAgent = [NSString stringWithFormat:@"Mozilla/5.0 (%@; %@ %@ like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148", model, os, osVersion];
+        // 去除开头结尾的空格、换行
+        fakeUserAgent = [fakeUserAgent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        // 去除多空格
+        fakeUserAgent = [fakeUserAgent stringByReplacingOccurrencesOfString:@"  " withString:@" "];
         
         //JGSLog(@"默认 UserAgent Load");
         instance = instance ?: [[WKWebView alloc] init];
@@ -106,6 +110,11 @@
             //JGSLog(@"默认 UserAgent: %@, %@", result, error);
             if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
                 sysUserAgent = (NSString *)result;
+                
+                // 去除开头结尾的空格、换行
+                sysUserAgent = [sysUserAgent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                // 去除多空格
+                sysUserAgent = [sysUserAgent stringByReplacingOccurrencesOfString:@"  " withString:@" "];
             }
             
             if (sysUserAgent.length == 0) {
@@ -144,6 +153,10 @@
         NSString *org = bids.count > 1 ? bids[1] : bids.firstObject;
         NSString *processName = [NSProcessInfo processInfo].processName;
         appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@) %s", org.uppercaseString, processName, [self appVersion], [self buildNumber], JGSUserAgent];
+        // 去除开头结尾的空格、换行
+        appUA = [appUA stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        // 去除多空格
+        appUA = [appUA stringByReplacingOccurrencesOfString:@"  " withString:@" "];
     });
     return appUA;
 }
