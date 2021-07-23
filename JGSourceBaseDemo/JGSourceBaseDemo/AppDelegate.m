@@ -59,14 +59,14 @@
     printf("%d\n", [JGSDevice isSimulator]);
     
     JGSLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        JGSLog(@"%@", [JGSDevice idfa]);
-    });
+    //dispatch_async(dispatch_get_main_queue(), ^{
+    //    JGSLog(@"%@", [JGSDevice idfa]);
+    //});
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     //    JGSLog(@"%@", [JGSDevice idfa]);
     //});
     JGSLog(@"%@", [JGSDevice appInfo]);
-    JGSLog(@"%@", [JGSDevice deviceInfo]);
+    //JGSLog(@"%@", [JGSDevice deviceInfo]);
     JGSLog(@"%@", [JGSDevice deviceMachine]);
     JGSLog(@"%@", [JGSDevice deviceModel]);
     JGSLog(@"%@", [JGSDevice appUserAgent]);

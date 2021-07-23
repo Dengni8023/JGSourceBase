@@ -64,13 +64,7 @@
     self = [super init];
     if (self) {
         
-        [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-            
-            UITextField *noteField = note.object;
-            if ([noteField isEqual:textField] && [noteField isSecureTextEntry]) {
-                [noteField jgsCheckClearInputChangeText];
-            }
-        }];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
         
         JGSKeyboardNumberPadRandomEnable(randomNum); // 数字键盘随机开关
         JGSKeyboardSymbolFullAngleEnable(fullAngle); // 字符键盘支持全角
@@ -81,7 +75,7 @@
         
         CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
         CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-        CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio);
+        CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
         CGFloat keyboardHeight = JGSKeyboardKeyLineSpacing + (itemHeight + JGSKeyboardKeyLineSpacing) * JGSKeyboardLinesNumber;
         self.keyboardFrame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
         if (self.title.length > 0) {
@@ -106,6 +100,15 @@
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj enableHighlightedWhenTap:enableHighlightedWhenTap];
     }];
+}
+
+#pragma mark - Notification
+- (void)textFieldTextDidChange:(NSNotification *)noti {
+    
+    UITextField *noteField = noti.object;
+    if ([noteField isEqual:self.textField] && [noteField isSecureTextEntry]) {
+        [noteField jgsCheckClearInputChangeText];
+    }
 }
 
 #pragma mark - View

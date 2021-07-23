@@ -1,7 +1,7 @@
 <!--
  * @Author: 梅继高
  * @Date: 2021-01-12 21:25:08
- * @LastEditTime: 2021-05-20 21:45:06
+ * @LastEditTime: 2021-07-19 15:56:14
  * @LastEditors: 梅继高
  * @Description: README.md
  * @FilePath: /JGSourceBase/README.md
@@ -73,6 +73,6 @@ JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Rea
 ## Podfile引入subpec注意事项
 
 
-	pod 'JGSourceBase', :path => ".", :subspecs => ['HUD/LoadingHUD'] # 该方式父spec文件可能不会引入
+	pod 'JGSourceBase', :path => ".", :subspecs => ['HUD/LoadingHUD'] # 该方式父spec文件可能不会引入，不同Pod版本存在差异
 
-	pod 'JGSourceBase/HUD/LoadingHUD', :path => "." # 该方式父spec文件可能会引入
+	pod 'JGSourceBase/HUD/LoadingHUD', :path => "." # 该方式父spec文件可能会引入，不同Pod版本存在差异

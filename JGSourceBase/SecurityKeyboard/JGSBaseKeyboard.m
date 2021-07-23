@@ -63,7 +63,10 @@ NSInteger const JGSKeyboardMaxItemsInLine = 10;
 NSInteger const JGSKeyboardNumberItemsInLine = 3;
 CGFloat const JGSKeyboardInteritemSpacing = 6.f;
 CGFloat const JGSKeyboardKeyLineSpacing = 10.f;
-CGFloat const JGSKeyboardKeyWidthHeightRatio = 0.75;
+CGFloat const JGSKeyboardKeyWidthHeightRatio() {
+    CGRect rect = [UIScreen mainScreen].bounds;
+    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 4.f / 3.f : 3.f / 4.f;
+}
 
 @implementation JGSKeyboardToolbarItem
 
@@ -502,6 +505,12 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 
 - (void)enableHighlightedWhenTap:(BOOL)enable {
     _enableHighlightedWhenTap = enable;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    JGSLog(@"%@", NSStringFromCGRect(self.frame));
 }
 
 #pragma mark - Action

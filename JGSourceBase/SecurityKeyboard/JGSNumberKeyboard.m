@@ -77,7 +77,7 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
     CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing);
-    CGFloat itemWidth = floor(itemHeight / JGSKeyboardKeyWidthHeightRatio);
+    CGFloat itemWidth = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
     CGFloat numberItemW = itemWidth;// floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
     CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing);
     while (ceil((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) < keyboardWidth) {

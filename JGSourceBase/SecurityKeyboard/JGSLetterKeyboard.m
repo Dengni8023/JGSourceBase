@@ -59,7 +59,7 @@
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
     CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio);
+    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
     CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
     CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing;
