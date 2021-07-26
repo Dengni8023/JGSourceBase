@@ -65,7 +65,7 @@ CGFloat const JGSKeyboardInteritemSpacing = 6.f;
 CGFloat const JGSKeyboardKeyLineSpacing = 10.f;
 CGFloat const JGSKeyboardKeyWidthHeightRatio() {
     CGRect rect = [UIScreen mainScreen].bounds;
-    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 8.f / 5.f : 4.f / 5.f;
+    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 8.f / 5.f : 3.f / 4.f;
 }
 
 @implementation JGSKeyboardToolbarItem
@@ -482,6 +482,12 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
     return titles.firstObject;
 }
 
+@interface JGSBaseKeyboard ()
+
+@property (nonatomic, assign) CGFloat keyboardWidth;
+
+@end
+
 @implementation JGSBaseKeyboard
 
 #pragma mark - Life Cycle
@@ -499,6 +505,8 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
         _enableHighlightedWhenTap = YES;
         _returnKeyTitle = JGSKeyboardReturnTitleForType(returnKeyType);
         _keyInput = keyInput;
+        
+        _keyboardWidth = CGRectGetWidth(frame);
     }
     return self;
 }
@@ -510,7 +518,20 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    JGSLog(@"%@", NSStringFromCGRect(self.frame));
+    // 键盘布局变化
+    if (ABS(self.keyboardWidth - CGRectGetWidth(self.frame)) >= 1.f) {
+        
+        CGFloat scale = CGRectGetWidth(self.frame) / self.keyboardWidth;
+        self.keyboardWidth = CGRectGetWidth(self.frame);
+        
+        // 更新键盘内按钮布局
+        [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGRect newKeyFrame = obj.frame;
+            newKeyFrame.origin.x *= scale;
+            newKeyFrame.size.width *= scale;
+            obj.frame = newKeyFrame;
+        }];
+    }
 }
 
 #pragma mark - Action

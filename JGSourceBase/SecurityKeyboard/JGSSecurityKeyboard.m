@@ -117,6 +117,9 @@
     // 键盘顶部工具条
     if (self.title.length > 0 && self.keyboardTool) {
         [self addSubview:self.keyboardTool];
+        
+        // 键盘宽度根据父视图自动变化
+        [self.keyboardTool setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
     }
     
     // 键盘
@@ -125,6 +128,9 @@
         
         JGSStrongSelf
         [self addSubview:obj];
+        
+        // 键盘宽度根据父视图自动变化
+        [obj setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
         
         // 默认显示英文字母键盘
         BOOL isShow = [obj isEqual:self.letterKeyboard];
