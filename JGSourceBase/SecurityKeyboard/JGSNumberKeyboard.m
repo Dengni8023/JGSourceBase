@@ -74,18 +74,24 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
         return nil;
     }
     
+    CGFloat numberScale = 1.2;
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
     CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing);
-    CGFloat itemWidth = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat numberItemW = itemWidth;// floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
-    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing);
-    while (ceil((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) < keyboardWidth) {
-        numberItemW *= 1.2;
-        numberSpacingX *= 1.2;
+    //CGFloat itemWidth = floor(itemHeight / JGSKeyboardKeyWidthHeightRatio());
+    CGFloat numberItemW = floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
+    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing * numberScale);
+    if (keyboardWidth > keyboardHeight) {
+        numberSpacingX *= 2;
     }
-    numberItemW = floor(numberItemW);
-    numberSpacingX = floor(numberSpacingX / 1.2);
+    while (ceil((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) < keyboardWidth &&
+           ceil(((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) * numberScale) < keyboardWidth &&
+           YES) {
+        numberItemW *= numberScale;
+        numberSpacingX *= pow(numberScale, 4);
+    }
+    // 以上处理后，需重新计算按钮宽度，间隔以以上计算为准
+    numberItemW = floor((keyboardWidth - numberSpacingX * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
     
     CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
