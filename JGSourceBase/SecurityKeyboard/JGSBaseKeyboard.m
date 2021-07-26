@@ -65,7 +65,7 @@ CGFloat const JGSKeyboardInteritemSpacing = 6.f;
 CGFloat const JGSKeyboardKeyLineSpacing = 10.f;
 CGFloat const JGSKeyboardKeyWidthHeightRatio() {
     CGRect rect = [UIScreen mainScreen].bounds;
-    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 4.f / 3.f : 3.f / 4.f;
+    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 8.f / 5.f : 4.f / 5.f;
 }
 
 @implementation JGSKeyboardToolbarItem
