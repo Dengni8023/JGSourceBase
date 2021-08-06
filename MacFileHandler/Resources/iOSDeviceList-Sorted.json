@@ -359,6 +359,54 @@
     "SizePT" : "820x1180",
     "SizePX" : "1640x2360"
   },
+  "iPad13,4" : {
+    "Generation" : "iPad Pro (11-inch) (3rd generation)",
+    "Scale" : "2x",
+    "SizePT" : "834x1194",
+    "SizePX" : "1668x2388"
+  },
+  "iPad13,5" : {
+    "Generation" : "iPad Pro (11-inch) (3rd generation)",
+    "Scale" : "2x",
+    "SizePT" : "834x1194",
+    "SizePX" : "1668x2388"
+  },
+  "iPad13,6" : {
+    "Generation" : "iPad Pro (11-inch) (3rd generation)",
+    "Scale" : "2x",
+    "SizePT" : "834x1194",
+    "SizePX" : "1668x2388"
+  },
+  "iPad13,7" : {
+    "Generation" : "iPad Pro (11-inch) (3rd generation)",
+    "Scale" : "2x",
+    "SizePT" : "834x1194",
+    "SizePX" : "1668x2388"
+  },
+  "iPad13,8" : {
+    "Generation" : "iPad Pro (12.9-inch) (4th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1024x1366",
+    "SizePX" : "2048x2732"
+  },
+  "iPad13,9" : {
+    "Generation" : "iPad Pro (12.9-inch) (4th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1024x1366",
+    "SizePX" : "2048x2732"
+  },
+  "iPad13,10" : {
+    "Generation" : "iPad Pro (12.9-inch) (4th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1024x1366",
+    "SizePX" : "2048x2732"
+  },
+  "iPad13,11" : {
+    "Generation" : "iPad Pro (12.9-inch) (4th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1024x1366",
+    "SizePX" : "2048x2732"
+  },
   "iPhone3,1" : {
     "Generation" : "iPhone 4",
     "Scale" : "2x",

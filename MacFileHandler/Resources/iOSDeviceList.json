@@ -125,6 +125,18 @@
                 "Scale": "2x",
                 "SizePT": "1024x1366",
                 "SizePX": "2048x2732"
+            }, {
+                "Generation": "iPad Pro (11-inch) (3rd generation)",
+                "Identifier": ["iPad13,4", "iPad13,5", "iPad13,6", "iPad13,7"],
+                "Scale": "2x",
+                "SizePT": "834x1194",
+                "SizePX": "1668x2388"
+            }, {
+                "Generation": "iPad Pro (12.9-inch) (4th generation)",
+                "Identifier": ["iPad13,8", "iPad13,9", "iPad13,10", "iPad13,11"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
             }],
         "iPad mini": [
             {
