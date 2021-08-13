@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "JGSourceBase"
-    s.version       = "1.2.0"
+    s.version       = "1.2.1"
     
     s.summary       = "JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。"
     s.description   = <<-DESC
@@ -61,15 +61,15 @@ Pod::Spec.new do |s|
     s.public_header_files   = "JGSourceBase/*.h"
 
     # subspec，不指定时默认安装所有subspec，用户可自行指定
-    # s.default_subspecs = [
-    #    'AlertController',
-    #    'Base',
-    #    'Category',
-    #    'HUD',
-    #    'Reachability',
-    #    'SecurityKeyboard',
-    # ]
-                                                        
+    s.default_subspecs = [
+        'Base',
+        'AlertController',
+        'Category',
+        'HUD',
+        'Reachability',
+        'SecurityKeyboard',
+    ]
+    
     # Base
     s.subspec 'Base' do |ss|
         ss.source_files         = [
@@ -86,6 +86,7 @@ Pod::Spec.new do |s|
             "OTHER_LDFLAGS" => '-ObjC',
             "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{s.version}\"'",
         }
+        
     end
     
     # AlertController

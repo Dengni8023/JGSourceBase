@@ -1,31 +1,31 @@
 PODS:
   - IQKeyboardManager (6.5.6)
-  - JGSourceBase (1.2.0):
-    - JGSourceBase/AlertController (= 1.2.0)
-    - JGSourceBase/Base (= 1.2.0)
-    - JGSourceBase/Category (= 1.2.0)
-    - JGSourceBase/HUD (= 1.2.0)
-    - JGSourceBase/Reachability (= 1.2.0)
-    - JGSourceBase/SecurityKeyboard (= 1.2.0)
-  - JGSourceBase/AlertController (1.2.0):
+  - JGSourceBase (1.2.1):
+    - JGSourceBase/AlertController (= 1.2.1)
+    - JGSourceBase/Base (= 1.2.1)
+    - JGSourceBase/Category (= 1.2.1)
+    - JGSourceBase/HUD (= 1.2.1)
+    - JGSourceBase/Reachability (= 1.2.1)
+    - JGSourceBase/SecurityKeyboard (= 1.2.1)
+  - JGSourceBase/AlertController (1.2.1):
     - JGSourceBase/Base
-  - JGSourceBase/Base (1.2.0)
-  - JGSourceBase/Category (1.2.0):
+  - JGSourceBase/Base (1.2.1)
+  - JGSourceBase/Category (1.2.1):
     - JGSourceBase/Base
-  - JGSourceBase/HUD (1.2.0):
+  - JGSourceBase/HUD (1.2.1):
     - JGSourceBase/Category
-    - JGSourceBase/HUD/LoadingHUD (= 1.2.0)
-    - JGSourceBase/HUD/ToastHUD (= 1.2.0)
+    - JGSourceBase/HUD/LoadingHUD (= 1.2.1)
+    - JGSourceBase/HUD/ToastHUD (= 1.2.1)
     - MBProgressHUD (>= 1.2.0)
-  - JGSourceBase/HUD/LoadingHUD (1.2.0):
-    - JGSourceBase/Category
-    - MBProgressHUD (>= 1.2.0)
-  - JGSourceBase/HUD/ToastHUD (1.2.0):
+  - JGSourceBase/HUD/LoadingHUD (1.2.1):
     - JGSourceBase/Category
     - MBProgressHUD (>= 1.2.0)
-  - JGSourceBase/Reachability (1.2.0):
+  - JGSourceBase/HUD/ToastHUD (1.2.1):
+    - JGSourceBase/Category
+    - MBProgressHUD (>= 1.2.0)
+  - JGSourceBase/Reachability (1.2.1):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.2.0):
+  - JGSourceBase/SecurityKeyboard (1.2.1):
     - JGSourceBase/Category
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -33,6 +33,9 @@ PODS:
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
+  - JGSourceBase/Base (from `.`)
+  - JGSourceBase/HUD (from `.`)
+  - JGSourceBase/HUD/LoadingHUD (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
@@ -54,10 +57,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: 94eb7932266cc14e0bc5c76fcf8ba8419bec42eb
+  JGSourceBase: b44fd955ffacfd804af6f05c061ecd8dff82aff0
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 1effb180873969f136d4c4f7ed54c07d3ef60c5f
+PODFILE CHECKSUM: 83ef0d3d0f7af391cdf5abab4d880067e9a6e787
 
 COCOAPODS: 1.10.1

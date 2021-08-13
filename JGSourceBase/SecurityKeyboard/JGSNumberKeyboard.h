@@ -5,7 +5,11 @@
 //  Created by 梅继高 on 2019/5/31.
 //
 
+#if __has_include(<JGSourceBase/JGSBaseKeyboard.h>)
+#import <JGSourceBase/JGSBaseKeyboard.h>
+#else
 #import "JGSBaseKeyboard.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

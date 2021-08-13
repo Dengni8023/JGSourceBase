@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString *FileHandlerRootDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/MacFileHandler";
-static NSString *HandleFileFolder = @"Resources";
+static NSString *FileHandlerRootDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/MacFileHandler/Resources";
 
 void handleDevicesInfo(void) {
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@/iOSDeviceList.json", FileHandlerRootDir, HandleFileFolder];
+    NSString *filePath = [FileHandlerRootDir stringByAppendingPathComponent:@"iOSDeviceList.json"];
     NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
     NSDictionary<NSString *, NSArray<NSDictionary *> *> *devices = [dict objectForKey:@"devices"];
@@ -33,14 +32,12 @@ void handleDevicesInfo(void) {
     }];
     
     NSData *newJson = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
-    NSString *newPath = [NSString stringWithFormat:@"%@/%@/iOSDeviceList-Sorted.json", FileHandlerRootDir, HandleFileFolder];
+    NSString *newPath = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/JGSourceBase/Base/Resources/iOSDeviceList-Sorted.json";
     [newJson writeToFile:newPath options:(NSDataWritingAtomic) error:nil];
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
         handleDevicesInfo();
     }
     return 0;
