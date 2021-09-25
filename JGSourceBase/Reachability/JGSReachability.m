@@ -7,7 +7,7 @@
 //
 
 #import "JGSReachability.h"
-#import "JGSBase.h"
+#import "JGSourceBase.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <netinet/in.h>

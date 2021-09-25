@@ -8,7 +8,7 @@
 
 #import "NSObject+JGSBase.h"
 
-@implementation NSObject (JGSJSON)
+@implementation NSObject (JGSBase)
 
 #pragma mark - Parser
 - (id)jg_JSONObject {

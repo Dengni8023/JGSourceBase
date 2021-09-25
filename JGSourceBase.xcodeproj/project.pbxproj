@@ -11,11 +11,17 @@
 		D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */; };
 		D416DA0B2600E6870085C6AB /* JGSDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA092600E6870085C6AB /* JGSDevice.h */; };
 		D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA0A2600E6870085C6AB /* JGSDevice.m */; };
-		D416DA87260111670085C6AB /* JGSNativeKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */; };
-		D416DA88260111670085C6AB /* JGSNativeKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */; };
+		D416DA87260111670085C6AB /* JGSKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSKeychainUtils.h */; };
+		D416DA88260111670085C6AB /* JGSKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSKeychainUtils.m */; };
 		D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D457A9722604BF6000833143 /* UIApplication+JGSBase.h */; };
 		D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D457A9732604BF6000833143 /* UIApplication+JGSBase.m */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
+		D49BD7D626F24E61005C3AED /* NSURL+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */; };
+		D49BD7D726F24E61005C3AED /* NSURL+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */; };
+		D4AD24DB26F08B3C0008AA3A /* UIAlertController+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */; };
+		D4AD24DC26F08B3C0008AA3A /* UIAlertController+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */; };
+		D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */; };
+		D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */; };
 		D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */; };
 		D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,10 +29,8 @@
 		D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */; };
 		D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4F3DAC322F02B05002EF0F0 /* JGSStringURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */; };
 		D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */; };
-		D4F3DAC622F02B05002EF0F0 /* JGSStringURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9722F02B04002EF0F0 /* JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */; };
 		D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */; };
@@ -58,9 +62,7 @@
 		D4F3DAE322F02B05002EF0F0 /* NSObject+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
-		D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */; };
 		D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,12 +85,18 @@
 		D416D9F82600E3740085C6AB /* iOSDeviceList-Sorted.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "iOSDeviceList-Sorted.json"; sourceTree = "<group>"; };
 		D416DA092600E6870085C6AB /* JGSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDevice.h; sourceTree = "<group>"; };
 		D416DA0A2600E6870085C6AB /* JGSDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
-		D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNativeKeychainUtils.h; sourceTree = "<group>"; };
-		D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNativeKeychainUtils.m; sourceTree = "<group>"; };
+		D416DA85260111670085C6AB /* JGSKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeychainUtils.h; sourceTree = "<group>"; };
+		D416DA86260111670085C6AB /* JGSKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeychainUtils.m; sourceTree = "<group>"; };
 		D457A9722604BF6000833143 /* UIApplication+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JGSBase.h"; sourceTree = "<group>"; };
 		D457A9732604BF6000833143 /* UIApplication+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JGSBase.m"; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+JGSBase.h"; sourceTree = "<group>"; };
+		D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JGSBase.m"; sourceTree = "<group>"; };
+		D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+JGSBase.h"; sourceTree = "<group>"; };
+		D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+JGSBase.m"; sourceTree = "<group>"; };
+		D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
+		D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSBase.h"; sourceTree = "<group>"; };
 		D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSBase.m"; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,10 +109,8 @@
 		D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
 		D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBaseUtils.h; sourceTree = "<group>"; };
 		D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSWeakStrong.h; sourceTree = "<group>"; };
-		D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSStringURLUtils.m; sourceTree = "<group>"; };
 		D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLogFunction.h; sourceTree = "<group>"; };
 		D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseUtils.m; sourceTree = "<group>"; };
-		D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSStringURLUtils.h; sourceTree = "<group>"; };
 		D4F3DA9722F02B04002EF0F0 /* JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
 		D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLogFunction.m; sourceTree = "<group>"; };
 		D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSToast.m; sourceTree = "<group>"; };
@@ -136,9 +142,7 @@
 		D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
 		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
-		D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGSAlertController.h"; sourceTree = "<group>"; };
-		D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,32 @@
 			path = MacFileHandler;
 			sourceTree = "<group>";
 		};
+		D49BD78626F0FCB8005C3AED /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		D49BD78726F0FCD9005C3AED /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D416DA85260111670085C6AB /* JGSKeychainUtils.h */,
+				D416DA86260111670085C6AB /* JGSKeychainUtils.m */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		D49BD78826F0FE59005C3AED /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				D416DA092600E6870085C6AB /* JGSDevice.h */,
+				D416DA0A2600E6870085C6AB /* JGSDevice.m */,
+				D416D9EC2600E1020085C6AB /* Resources */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
 		D4F3DA3B22F0279D002EF0F0 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +235,9 @@
 				D4F3DABA22F02B05002EF0F0 /* AlertController */,
 				D4F3DA9022F02B04002EF0F0 /* Base */,
 				D4F3DAB022F02B04002EF0F0 /* Category */,
+				D49BD78726F0FCD9005C3AED /* DataStorage */,
+				D49BD78826F0FE59005C3AED /* Device */,
+				D49BD78626F0FCB8005C3AED /* Encryption */,
 				D4F3DA9922F02B04002EF0F0 /* HUD */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
 				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
@@ -229,16 +262,9 @@
 				D4F3DA9722F02B04002EF0F0 /* JGSBase.h */,
 				D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */,
 				D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */,
-				D416DA092600E6870085C6AB /* JGSDevice.h */,
-				D416DA0A2600E6870085C6AB /* JGSDevice.m */,
 				D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */,
 				D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */,
-				D416DA85260111670085C6AB /* JGSNativeKeychainUtils.h */,
-				D416DA86260111670085C6AB /* JGSNativeKeychainUtils.m */,
-				D4F3DA9622F02B04002EF0F0 /* JGSStringURLUtils.h */,
-				D4F3DA9322F02B04002EF0F0 /* JGSStringURLUtils.m */,
 				D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */,
-				D416D9EC2600E1020085C6AB /* Resources */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -304,6 +330,10 @@
 				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */,
 				D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */,
 				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
+				D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */,
+				D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */,
+				D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */,
+				D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */,
 				D457A9722604BF6000833143 /* UIApplication+JGSBase.h */,
 				D457A9732604BF6000833143 /* UIApplication+JGSBase.m */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
@@ -317,8 +347,8 @@
 		D4F3DABA22F02B05002EF0F0 /* AlertController */ = {
 			isa = PBXGroup;
 			children = (
-				D4F3DABE22F02B05002EF0F0 /* JGSAlertController.h */,
-				D4F3DABC22F02B05002EF0F0 /* JGSAlertController.m */,
+				D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */,
+				D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */,
 				D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */,
 				D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */,
 			);
@@ -332,19 +362,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F3DAC622F02B05002EF0F0 /* JGSStringURLUtils.h in Headers */,
 				D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */,
 				D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */,
 				D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */,
 				D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */,
 				D416DA0B2600E6870085C6AB /* JGSDevice.h in Headers */,
 				D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */,
+				D49BD7D626F24E61005C3AED /* NSURL+JGSBase.h in Headers */,
 				D4F3DADA22F02B05002EF0F0 /* JGSSymbolKeyboard.h in Headers */,
 				D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */,
-				D416DA87260111670085C6AB /* JGSNativeKeychainUtils.h in Headers */,
+				D416DA87260111670085C6AB /* JGSKeychainUtils.h in Headers */,
 				D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */,
 				D4F3DAD122F02B05002EF0F0 /* UIView+JGSLoadingHUD.h in Headers */,
-				D4F3DAE822F02B05002EF0F0 /* JGSAlertController.h in Headers */,
 				D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */,
 				D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */,
 				D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */,
@@ -354,12 +383,14 @@
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
 				D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */,
 				D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */,
+				D4AD24DB26F08B3C0008AA3A /* UIAlertController+JGSBase.h in Headers */,
 				D4F3DACC22F02B05002EF0F0 /* UIView+JGSToast.h in Headers */,
 				D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */,
 				D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */,
 				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
 				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
 				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
+				D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */,
 				D4F3DAE322F02B05002EF0F0 /* NSObject+JGSBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,27 +483,28 @@
 			files = (
 				D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */,
 				D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */,
-				D4F3DAC322F02B05002EF0F0 /* JGSStringURLUtils.m in Sources */,
 				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
 				D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */,
 				D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */,
+				D49BD7D726F24E61005C3AED /* NSURL+JGSBase.m in Sources */,
 				D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */,
 				D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */,
 				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
-				D4F3DAE622F02B05002EF0F0 /* JGSAlertController.m in Sources */,
 				D4F3DAE022F02B05002EF0F0 /* NSObject+JGSBase.m in Sources */,
 				D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */,
 				D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */,
 				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
 				D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */,
 				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
-				D416DA88260111670085C6AB /* JGSNativeKeychainUtils.m in Sources */,
+				D416DA88260111670085C6AB /* JGSKeychainUtils.m in Sources */,
+				D4AD24DC26F08B3C0008AA3A /* UIAlertController+JGSBase.m in Sources */,
 				D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */,
 				D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */,
 				D4F3DAD022F02B05002EF0F0 /* JGSLoadingHUD.m in Sources */,
 				D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */,
 				D4F3DAD822F02B05002EF0F0 /* JGSSecurityKeyboard.m in Sources */,
 				D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */,
+				D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */,
 				D4F3DAD422F02B05002EF0F0 /* JGSSymbolKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -614,7 +646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

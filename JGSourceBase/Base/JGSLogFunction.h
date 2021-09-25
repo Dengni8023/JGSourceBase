@@ -15,8 +15,9 @@ typedef NS_ENUM(NSInteger, JGSLogMode) {
     JGSLogModeNone = 0, // 不打印日志
     JGSLogModeLog, // 仅打印日志内容
     JGSLogModeFunc, // 打印日志所在方法名、行号、日志内容
-    JGSLogModePretty, // 打印日志所在方法名、行号，各部分分行显示
-    JGSLogModeFile // 打印文件名、方法名、行号、日志内容，各部分分行显示
+    JGSLogModeFile, // 打印文件名、方法名、行号、日志内容，各部分分行显示
+    
+    JGSLogModePretty NS_ENUM_DEPRECATED_IOS(8_0, 10_0, "Use JGSLogModeFile") = JGSLogModeFile, // 打印日志所在方法名、行号，各部分分行显示
 };
 
 FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void);
@@ -44,9 +45,6 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
             case JGSLogModeFunc:\
                 JGSLogWithFormat((@"%@ %s Line:%@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
                 break; \
-            case JGSLogModePretty: \
-                JGSLogWithFormat((@"%@ \nFunc:\t%s \nLine:\t%@ \n" fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
-                break; \
             case JGSLogModeFile: { \
                 NSString *file = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \
                 JGSLogWithFormat((@"%@ \nFile:\t%@ \nFunc:\t%s \nLine:\t%@ \n" fmt ""), lvStr, file, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
@@ -70,17 +68,29 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
 #define JGSLogError(fmt, ...)   JGSLogE(fmt, ##__VA_ARGS__)
 #define JGSLogOnly(fmt, ...)    JGSLogWithModeLevel(JGSLogModeLog, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
 #define JGSLogFunc(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFunc, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
-#define JGSLogPretty(fmt, ...)  JGSLogWithModeLevel(JGSLogModePretty, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
+#define JGSLogPretty(fmt, ...)  JGSLogFile(fmt, ##__VA_ARGS__)
 #define JGSLogFile(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFile, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
 
 #pragma mark - Logger
-/** 日志输出模式，默认 JGSLogModeNone 不输出日志 */
+/**
+ 日志输出模式，默认 JGSLogModeNone 不输出日志
+ */
 FOUNDATION_EXTERN void JGSEnableLogWithMode(JGSLogMode mode);
 FOUNDATION_EXTERN JGSLogMode JGSEnableLogMode;
 
-/** 日志输出级别，默认 JGSLogLevelDebug 输出所有级别日志，日志输出结合 JGSLogMode 使用 */
+/**
+ 日志输出级别，默认 JGSLogLevelDebug 输出所有级别日志，日志输出结合 JGSLogMode 使用
+ */
 FOUNDATION_EXTERN void JGSConsoleLogWithLevel(JGSLogLevel level);
 FOUNDATION_EXTERN JGSLogLevel JGSConsoleLogLevel;
+
+/**
+ 日志输出方式，是否使用NSLog，默认NO，使用print ;
+ 使用NSLog时，若 scheme-run-Arhuments 设置了OS_ACTIVITY_MODE=disable，则NSLog将无法输出任何日志（Xcode调试控制台无日志，且Mac系统控制台也无日志）
+ 不使用NSLog时，OS_ACTIVITY_MODE设置不影响Xcode调试控制台日志输出，但Mac系统控制台无日志
+ */
+FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog);
+FOUNDATION_EXTERN BOOL JGSConsoleWithNSLog;
 
 @interface JGSLogFunction : NSObject
 

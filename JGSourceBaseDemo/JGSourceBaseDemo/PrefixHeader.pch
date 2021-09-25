@@ -9,11 +9,14 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import <Availability.h>
+
+// 最低版本限制处理
+#if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_10_0
+#error "JGSourceBase uses features only available in iOS SDK 10.0 and later."
+#endif
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
-#import <JGSourceBase/JGSourceBase.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
-#import <Masonry/Masonry.h>
 
 #endif /* PrefixHeader_pch */

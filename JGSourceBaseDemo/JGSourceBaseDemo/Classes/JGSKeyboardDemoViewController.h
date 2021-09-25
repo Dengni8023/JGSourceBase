@@ -6,15 +6,14 @@
 //  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JGSDemoViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGSKeyboardDemoViewController : UIViewController
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
-- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+#ifdef JGS_SecurityKeyboard
+@interface JGSKeyboardDemoViewController : JGSDemoViewController
 
 @end
+#endif
 
 NS_ASSUME_NONNULL_END

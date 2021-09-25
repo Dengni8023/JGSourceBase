@@ -1,96 +1,78 @@
 
-Pod::Spec.new do |s|
+Pod::Spec.new do |spec|
     
-    s.name          = "JGSourceBase"
-    s.version       = "1.2.1"
+    spec.name          = "JGSourceBase"
+    spec.version       = "1.2.1"
     
-    s.summary       = "JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Reachability、Loading-HUD、Toast-HUD）；自定义安全键盘。"
-    s.description   = <<-DESC
+    spec.summary       = "JGSourceCode通用功能组件库。"
+    spec.description   = <<-DESC
     
-        JGSourceCode 通用定义、功能模块。iOS项目常用功能、UIAlertController、Reachability、HUD（Loading、Toast）便捷方法封装。
-        
+        JGSourceCode 通用功能组件库。
         功能包括：
         
-            Base - 通用定义、功能模块、iOS项目常用功能
-                1、常用宏定义、常用警告消除、SwizzledMethod的严谨实现
-                2、通用日志控制功能
-                3、字符串、URL常用方法
-                4、Block循环引用常用定义weak、strong快捷处理
-                5、NSDictionary便捷取指定类型值方法
-                6、NSJSONSerialization便捷方法封装
-                7、UIColor便捷方法封装
-            
-            AlertController - 系统UIAlertController便捷方法封装(原项目：JGActionSheetAlert/JGAlertController)
-                原项目：JGActionSheetAlert => https://github.com/dengni8023/JGActionSheetAlert.git
-                原项目：JGAlertController => https://github.com/dengni8023/JGAlertController.git
-                1、UIAlertController便捷方法封装
-            
-            Reachability - 网络状态监听(原项目：JGNetworkReachability)
-                原项目：JGNetworkReachability => https://github.com/dengni8023/JGNetworkReachability.git
-                1、网络状态获取、监听，支持多监听者
-                
-            HUD - Loading-HUD、Toast-HUD显示
-                1、显示Loading HUD方法封装
-                2、显示Toast HUD方法封装
-                
-            SecurityKeyboard - 自定义安全键盘
-                1、字母键盘支持单字母大小写切换、选中大写
-                2、符号键盘支持与数字混合展示，支持全角、半角字符
-                3、数字键盘支持随机、非随机
-            
+            • Base - 通用定义、功能模块、iOS项目常用功能
+            • AlertController - 系统UIAlertController便捷方法封装
+            • Category - 通用扩展方法定义
+            • DataStorage - 通用数据持久化功能
+            • Device - iOS设备相关方法
+            • Encryption - 常用加解密方法
+            • HUD - Loading-HUD、Toast-HUD显示
+            • Reachability - 网络状态监听，支持多观察着/监听者
+            • SecurityKeyboard - 自定义安全键盘
     DESC
     
-    s.homepage  = "https://github.com/dengni8023/JGSourceBase"
-    s.license   = {
+    spec.homepage  = "https://github.com/dengni8023/JGSourceBase"
+    spec.license   = {
         :type => 'MIT',
         :file => 'LICENSE',
     }
-    s.authors   = {
+    spec.authors   = {
         "等你8023" => "945835664@qq.com",
     },
     
-    s.source    = {
+    spec.source    = {
         :git => "https://github.com/dengni8023/JGSourceBase.git",
-        :tag => "#{s.version}",
+        :tag => "#{spec.version}",
     }
-    s.platforms = {
+    spec.platforms = {
         :ios => '10.0',
     }
     
-    s.source_files          = "JGSourceBase/*.{h,m}"
-    s.public_header_files   = "JGSourceBase/*.h"
+    # ss.deprecated = true # 该Pod已被废弃
+    # ss.deprecated_in_favor_of = 'xxxx' # 该Pod已被废弃，并推荐使用xxxx
+    spec.source_files          = "JGSourceBase/*.{h,m}"
+    spec.public_header_files   = "JGSourceBase/*.h"
 
     # subspec，不指定时默认安装所有subspec，用户可自行指定
-    s.default_subspecs = [
-        'Base',
+    spec.default_subspecs = [
         'AlertController',
+        'Base',
         'Category',
-        'HUD',
+        'DataStorage',
+        'Device',
+        'Encryption',
         'Reachability',
         'SecurityKeyboard',
     ]
     
     # Base
-    s.subspec 'Base' do |ss|
+    spec.subspec 'Base' do |ss|
         ss.source_files         = [
             "JGSourceBase/Base/*.{h,m}",
         ]
         ss.public_header_files  = [
             "JGSourceBase/Base/*.h",
         ]
-        ss.resources    = [
-            "JGSourceBase/Base/Resources/*.json",
-        ]
         
         ss.xcconfig     = {
             "OTHER_LDFLAGS" => '-ObjC',
-            "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{s.version}\"'",
+            "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"'",
         }
         
     end
     
     # AlertController
-    s.subspec 'AlertController' do |ss|
+    spec.subspec 'AlertController' do |ss|
         ss.source_files    = [
             "JGSourceBase/AlertController/*.{h,m}",
         ]
@@ -98,11 +80,14 @@ Pod::Spec.new do |s|
             "JGSourceBase/AlertController/*.h",
         ]
         
-        ss.dependency   "JGSourceBase/Base"
+        ss.dependency   "JGSourceBase/Category"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_AlertController',
+        }
     end
     
     # Category
-    s.subspec 'Category' do |ss|
+    spec.subspec 'Category' do |ss|
         ss.source_files    = [
             "JGSourceBase/Category/*.{h,m}",
         ]
@@ -111,21 +96,62 @@ Pod::Spec.new do |s|
         ]
         
         ss.dependency   "JGSourceBase/Base"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Category',
+        }
     end
     
-    # Reachability
-    s.subspec 'Reachability' do |ss|
-        ss.source_files         = "JGSourceBase/Reachability/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Reachability/*.h"
+    # DataStorage
+    spec.subspec 'DataStorage' do |ss|
+        ss.source_files    = [
+            "JGSourceBase/DataStorage/*.{h,m}",
+        ]
+        ss.public_header_files = [
+            "JGSourceBase/DataStorage/*.h",
+        ]
         
-        ss.dependency   "JGSourceBase/Base"
+        ss.dependency   "JGSourceBase/Category"
         ss.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_DataStorage',
+        }
+    end
+    
+    
+    # Device
+    spec.subspec 'Device' do |ss|
+        ss.source_files    = [
+            "JGSourceBase/Device/*.{h,m}",
+        ]
+        ss.public_header_files = [
+            "JGSourceBase/Device/*.h",
+        ]
+        ss.resources    = [
+            "JGSourceBase/Device/Resources/*.json",
+        ]
+        
+        ss.dependency   "JGSourceBase/DataStorage"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Device',
+        }
+    end
+    
+    # Encryption
+    spec.subspec 'Encryption' do |ss|
+        ss.source_files    = [
+            "JGSourceBase/Encryption/*.{h,m}",
+        ]
+        ss.public_header_files = [
+            "JGSourceBase/Encryption/*.h",
+        ]
+        
+        ss.dependency   "JGSourceBase/Category"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Encryption',
         }
     end
     
     # HUD
-    s.subspec 'HUD' do |ss|
+    spec.subspec 'HUD' do |ss|
         ss.source_files         = [
             "JGSourceBase/HUD/*.{h,m}",
         ]
@@ -160,8 +186,19 @@ Pod::Spec.new do |s|
         end
     end
     
+    # Reachability
+    spec.subspec 'Reachability' do |ss|
+        ss.source_files         = "JGSourceBase/Reachability/*.{h,m}"
+        ss.public_header_files  = "JGSourceBase/Reachability/*.h"
+        
+        ss.dependency   "JGSourceBase/Base"
+        ss.xcconfig     = {
+            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
+        }
+    end
+    
     # SecurityKeyboard
-    s.subspec 'SecurityKeyboard' do |ss|
+    spec.subspec 'SecurityKeyboard' do |ss|
         ss.source_files         = "JGSourceBase/SecurityKeyboard/*.{h,m}"
         ss.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
         
@@ -171,6 +208,6 @@ Pod::Spec.new do |s|
         }
     end
     
-    s.requires_arc = true
+    spec.requires_arc = true
     
 end

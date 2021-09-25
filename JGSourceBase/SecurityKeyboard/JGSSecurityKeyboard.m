@@ -9,7 +9,7 @@
 #import "JGSLetterKeyboard.h"
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
-#import "JGSBase.h"
+#import "JGSourceBase.h"
 #import <objc/runtime.h>
 
 @interface UITextField (JGSSecurityKeyboard)

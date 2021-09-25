@@ -6,7 +6,7 @@
 //  Copyright © 2021 MeiJigao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,28 +18,65 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 @interface JGSDevice : NSObject
 
 #pragma mark - APP
+/** 获取APP信息， 示例：
+ {
+     "bundleId": com.xxxx.xxxx,
+     "appVersion": 1.0.0,
+     "buildNumber": 20210813
+ }
+ */
 + (NSDictionary *)appInfo;
-+ (NSString *)bundleId; // 商店版本
-+ (NSString *)appVersion; // 商店版本
-+ (NSString *)buildNumber; // iOS build
+/// 应用Bundle ID
++ (NSString *)bundleId;
+/// 应用version版本号，对应Android VersionName
++ (NSString *)appVersion;
+/// 应用build构建号，对应Android VersionCode
++ (NSString *)buildNumber;
 
-+ (NSString *)sysUserAgent; // 系统默认的UserAgent，请勿在应用启动直接调用，启动时调用请注意增加适当延时，约大于0.2秒
-+ (NSString *)appUserAgent; // APP版本信息，不包含系统UserAgent
+/// 系统默认的UserAgent，请勿在应用启动直接调用，启动时调用请注意增加适当延时，约大于0.2秒
++ (NSString *)sysUserAgent;
+/// 包含APP版本信息的自定义UserAgent内容，不包含系统UserAgent
++ (NSString *)appUserAgent;
 
 #pragma mark - Device
+/**
+ * 应用设备相关信息，示例
+ {
+     "device":  {
+             "id": xxxxxxxxxxxxxx,
+     },
+     "edgeInsets": {
+             "top": 20,
+             "left": 0,
+             "bottom": 34,
+             "right": 0,
+     },
+     "constant": @{
+             "navigationBarHeight": 44,
+             "tabBarHeight": 49,
+     },
+ }
+ */
 + (NSDictionary<NSString *, id> *)deviceInfo;
 
 /// 获取IDFA广告标示
 /// 如在Info中设置了 NSUserTrackingUsageDescription 字段，请不要在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，以免跟踪弹窗无法弹出导致卡死
 /// 如必须在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，请使用异步/或延时处理（延时可为0）
-+ (nullable NSString *)idfa; //获取IDFA广告标示，如在Info中设置了NSUserTrackingUsageDescription字段，请不要在应用启动时直接调用，以免跟踪弹窗无法弹出导致卡死
-+ (NSString *)deviceId; //获取iphone手机的设备编号
-+ (NSString *)systemName; //获取iphone手机的操作系统名称
-+ (NSString *)systemVersion; //获取iphone手机的系统版本号
-+ (NSString *)localizedModel; //获取iphone手机的localizedModel
-+ (NSString *)deviceName; //获取iphone手机的自定义名称
-+ (NSString *)deviceMachine; //获取设备信息（设备类型及版本号）
-+ (NSString *)deviceModel; //获取iphone手机的Model
++ (nullable NSString *)idfa;
+/// 获取iphone手机的设备编号
++ (NSString *)deviceId;
+/// 获取iphone手机的操作系统名称
++ (NSString *)systemName;
+/// 获取iphone手机的系统版本号
++ (NSString *)systemVersion;
+/// 获取iphone手机的localizedModel
++ (NSString *)localizedModel;
+/// 获取iphone手机的自定义名称
++ (NSString *)deviceName;
+/// 获取设备信息（设备类型及版本号）
++ (NSString *)deviceMachine;
+/// 获取iphone手机的Model
++ (NSString *)deviceModel;
 
 + (NSString *)ipAddress:(BOOL)preferIPv4; // 获取设备IP地址
 + (NSString *)macAddress DEPRECATED_MSG_ATTRIBUTE("iOS 7之后禁止获取设备Mac地址，所有设备返回相同值");

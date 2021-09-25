@@ -26,36 +26,32 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 // JG: 作者
 // S: SourceCode
 
-#if __has_include(<JGSourceBase/JGSourceBase.h>)
-
-#import <JGSourceBase/JGSBase.h>
-#import <JGSourceBase/JGSAlertController.h>
-#import <JGSourceBase/JGSCategory.h>
-
-// JGSReachability
-#ifdef JGS_Reachability
-#import <JGSourceBase/JGSReachability.h>
-#endif
-
-// JGSHUD
-#ifdef JGS_HUD
-#import <JGSourceBase/JGSHUD.h>
-#endif
-
-// JGSSecurityKeyboard
-#ifdef JGS_SecurityKeyboard
-#import <JGSourceBase/JGSSecurityKeyboard.h>
-#endif
-
-#else
-
 #import "JGSBase.h"
-#import "JGSAlertController.h"
-#import "JGSCategory.h"
 
-// JGSReachability
-#ifdef JGS_Reachability
-#import "JGSReachability.h"
+// Alert
+#ifdef JGS_AlertController
+#import "JGSAlertController.h" // Deprecated
+#import "UIViewController+JGSAlertController.h" // Deprecated
+#endif
+
+// Category
+#ifdef JGS_Category
+#import "JGSCategory.h"
+#endif
+
+// DataStorage
+#ifdef JGS_DataStorage
+#import "JGSKeychainUtils.h"
+#endif
+
+// Device
+#ifdef JGS_Device
+#import "JGSDevice.h"
+#endif
+
+// Encryption
+#ifdef JGS_Encryption
+
 #endif
 
 // JGSHUD
@@ -63,9 +59,12 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import "JGSHUD.h"
 #endif
 
+// JGSReachability
+#ifdef JGS_Reachability
+#import "JGSReachability.h"
+#endif
+
 // JGSSecurityKeyboard
 #ifdef JGS_SecurityKeyboard
 #import "JGSSecurityKeyboard.h"
-#endif
-
 #endif

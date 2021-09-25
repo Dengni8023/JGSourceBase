@@ -6,10 +6,9 @@
 //  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JGSDemoTableViewController.h"
 
-@interface ViewController : UITableViewController
-
+@interface ViewController : JGSDemoTableViewController
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "UIApplication+JGSBase.h"
 #import <objc/message.h>
-#import "JGSBase.h"
+#import "JGSourceBase.h"
 
 FOUNDATION_EXTERN UIViewController *JGSTopViewController(UIViewController *rootViewController) {
     

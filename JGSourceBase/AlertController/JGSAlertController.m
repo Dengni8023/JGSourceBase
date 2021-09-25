@@ -7,26 +7,13 @@
 //
 
 #import "JGSAlertController.h"
+#import "JGSourceBase.h"
 
 @implementation JGSAlertController
 
 #pragma mark - Alert
 + (BOOL)hideAlert {
-    
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    window = window ?: [[UIApplication sharedApplication] windows].firstObject;
-    UIViewController *vcT = window.rootViewController;
-    while (vcT.presentedViewController) {
-        vcT = vcT.presentedViewController;
-        if ([vcT isKindOfClass:[UIAlertController class]]) {
-            [vcT dismissViewControllerAnimated:YES completion:^{
-                
-            }];
-            return YES;
-        }
-    }
-    
-    return NO;
+    return [UIAlertController jg_hideAllAlert:YES];
 }
 
 + (UIAlertController *)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message {
@@ -68,28 +55,7 @@
 
 #pragma mark - UIAlertController
 + (UIAlertController *)shoWithTitle:(NSString *)title message:(NSString *)message style:(UIAlertControllerStyle)style cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
-    
-    UIViewController *vcT = [self viewControllerForPresent];
-    switch (style) {
-        case UIAlertControllerStyleAlert:
-            return [vcT jg_alertWithTitle:title message:message cancel:cancel destructive:destructive others:others action:action];
-            break;
-            
-        case UIAlertControllerStyleActionSheet:
-            return [vcT jg_actionSheetWithTitle:(title.length > 0 ? title : message) cancel:cancel destructive:destructive others:others action:action];
-            break;
-    }
-}
-
-+ (UIViewController *)viewControllerForPresent {
-    
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    window = window ?: [[UIApplication sharedApplication] windows].firstObject;
-    UIViewController *vcT = window.rootViewController;
-    while (vcT.presentedViewController) {
-        vcT = vcT.presentedViewController;
-    }
-    return vcT;
+    return [UIAlertController jg_showAlertWithTitle:title message:message style:style cancel:cancel destructive:destructive others:others action:action];
 }
 
 #pragma mark - End

@@ -8,6 +8,7 @@
 
 #import "JGSKeyboardDemoViewController.h"
 
+#ifdef JGS_SecurityKeyboard
 @interface JGSKeyboardDemoViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *normalInput;
@@ -19,28 +20,11 @@
 
 @implementation JGSKeyboardDemoViewController
 
-#pragma mark - Life Cycle
-- (void)dealloc {
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    
-    [[JGSReachability sharedInstance] startMonitor];
-    [[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
-        
-        JGSEnableLogWithMode(JGSLogModeFunc);
-        JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
-    }];
-    
     self.title = @"iOS安全键盘";
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [self addViewElements];
     
@@ -54,7 +38,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
 }
 
 #pragma mark - View
@@ -162,3 +145,5 @@
 }
 
 @end
+
+#endif

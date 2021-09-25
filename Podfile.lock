@@ -1,17 +1,28 @@
 PODS:
+  - AMapFoundation-NO-IDFA (1.6.8)
+  - AMapLocation-NO-IDFA (2.6.9):
+    - AMapFoundation-NO-IDFA (~> 1.6.8)
   - IQKeyboardManager (6.5.6)
   - JGSourceBase (1.2.1):
     - JGSourceBase/AlertController (= 1.2.1)
     - JGSourceBase/Base (= 1.2.1)
     - JGSourceBase/Category (= 1.2.1)
-    - JGSourceBase/HUD (= 1.2.1)
+    - JGSourceBase/DataStorage (= 1.2.1)
+    - JGSourceBase/Device (= 1.2.1)
+    - JGSourceBase/Encryption (= 1.2.1)
     - JGSourceBase/Reachability (= 1.2.1)
     - JGSourceBase/SecurityKeyboard (= 1.2.1)
   - JGSourceBase/AlertController (1.2.1):
-    - JGSourceBase/Base
+    - JGSourceBase/Category
   - JGSourceBase/Base (1.2.1)
   - JGSourceBase/Category (1.2.1):
     - JGSourceBase/Base
+  - JGSourceBase/DataStorage (1.2.1):
+    - JGSourceBase/Category
+  - JGSourceBase/Device (1.2.1):
+    - JGSourceBase/DataStorage
+  - JGSourceBase/Encryption (1.2.1):
+    - JGSourceBase/Category
   - JGSourceBase/HUD (1.2.1):
     - JGSourceBase/Category
     - JGSourceBase/HUD/LoadingHUD (= 1.2.1)
@@ -31,15 +42,16 @@ PODS:
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
+  - AMapLocation-NO-IDFA (~> 2.6.8)
   - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
-  - JGSourceBase/Base (from `.`)
   - JGSourceBase/HUD (from `.`)
-  - JGSourceBase/HUD/LoadingHUD (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
   trunk:
+    - AMapFoundation-NO-IDFA
+    - AMapLocation-NO-IDFA
     - IQKeyboardManager
     - MBProgressHUD
 
@@ -56,11 +68,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
+  AMapFoundation-NO-IDFA: 444163c19aa10720c3ecd57b1f071ecdfe0edead
+  AMapLocation-NO-IDFA: 20aa76ba9c7f295a04ef99dfa5466523100d0dca
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: b44fd955ffacfd804af6f05c061ecd8dff82aff0
+  JGSourceBase: e620c6dcf5297b82a77966470b1062e868c3ab4e
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 83ef0d3d0f7af391cdf5abab4d880067e9a6e787
+PODFILE CHECKSUM: bb6f63e80173c6bccf5de219f172046ceb18227f
 
 COCOAPODS: 1.10.1

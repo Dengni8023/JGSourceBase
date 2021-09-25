@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIAlertController+JGSBase.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSInteger idx);
-
+NS_UNAVAILABLE
 @interface UIViewController (JGSAlertController)
 
 #pragma mark - Alert
@@ -22,7 +22,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param message 提示内容
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  Alert 单个按钮，无点击响应
@@ -32,7 +32,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param cancel 取消按钮标题
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  Alert 单个按钮，有点击响应
@@ -43,7 +43,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  * Alert 双按钮
@@ -55,7 +55,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  * Alert 双按钮，红色警告destructive按钮
@@ -67,7 +67,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  Alert 多按钮
@@ -79,7 +79,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  Alert 多按钮，红色警告destructive按钮
@@ -92,7 +92,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIAlertController
  */
-- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_alertWithTitle:(nullable NSString *)title message:(NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 #pragma mark - ActionSheet
 /**
@@ -104,7 +104,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 /**
  Actionsheet，红色警告destructive按钮
@@ -116,7 +116,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
+- (UIAlertController *)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 #pragma mark - Hide
 /**
@@ -124,15 +124,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  
  @return 是否需要隐藏
  */
-- (BOOL)jg_hideCurrentAlert:(BOOL)animated;
-
-@end
-
-@interface UIAlertController (JGSAlertController)
-
-@property (nonatomic, assign, readonly) NSInteger jg_cancelIdx; // 0
-@property (nonatomic, assign, readonly) NSInteger jg_destructiveIdx; // 1
-@property (nonatomic, assign, readonly) NSInteger jg_firstOtherIdx; // 2
+- (BOOL)jg_hideCurrentAlert:(BOOL)animated DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.");
 
 @end
 

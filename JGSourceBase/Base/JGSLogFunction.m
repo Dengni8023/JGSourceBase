@@ -32,10 +32,15 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
     // 如屏蔽调试控制台输出的系统提示信息，在
     // Edit Scheme -> Run -> Arguments -> Environment Variables 添加: OS_ACTIVITY_MODE: disable
     // 此时使用的NSLog日志也不会输出
-    va_list L;
-    va_start(L, format);
-    NSString *message = [[NSString alloc] initWithFormat:format arguments:L];
-    va_end(L);
+    va_list varList;
+    va_start(varList, format);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:varList];
+    va_end(varList);
+    
+    if (JGSConsoleWithNSLog) {
+        NSLogv(format, varList);
+        return;
+    }
     
     // 处理类似NSLog输出的日志头
     // 2021-03-11 20:25:42.949957+0800 JGSourceBaseDemo[25823:826858]
@@ -77,12 +82,17 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
 
 JGSLogMode JGSEnableLogMode = JGSLogModeNone; //默认不输出日志
 FOUNDATION_EXTERN void JGSEnableLogWithMode(JGSLogMode mode) {
-    JGSEnableLogMode = mode;
+    JGSEnableLogMode = MIN(MAX(JGSLogModeNone, mode), JGSLogModeFile);
 }
 
 JGSLogLevel JGSConsoleLogLevel = JGSLogLevelDebug; //默认输出所有级别日志
 FOUNDATION_EXTERN void JGSConsoleLogWithLevel(JGSLogLevel level) {
-    JGSConsoleLogLevel = level;
+    JGSConsoleLogLevel = MIN(MAX(JGSLogLevelDebug, level), JGSLogLevelError);
+}
+
+BOOL JGSConsoleWithNSLog = NO; // 默认使用printf，不使用NSLog
+FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog) {
+    JGSConsoleWithNSLog = useNSLog;
 }
 
 @implementation JGSLogFunction

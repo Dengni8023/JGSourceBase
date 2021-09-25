@@ -14,18 +14,19 @@ install!'cocoapods', :deterministic_uuids => false
 workspace "JGSourceBase"
 
 # platform
-platform :ios, 10.0
+platform :ios, 11.0
 
 # JGSourceBaseDemo
 target "JGSourceBaseDemo" do
   
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
+  pod 'AMapLocation-NO-IDFA','~> 2.6.8' # http://lbs.amap.com/api/ios-location-sdk/summary/
   
   # Local
   pod 'JGSourceBase', :path => "."
-  pod 'JGSourceBase', :path => ".", :subspecs => ['Base', 'HUD', 'HUD/LoadingHUD'] # 该方式父spec文件可能不会引入
-  # pod 'JGSourceBase/HUD', :path => "." # 该方式父spec文件可能会引入
-  # pod 'JGSourceBase/HUD/LoadingHUD', :path => "." # 该方式父spec文件可能会引入
+  pod 'JGSourceBase', :path => ".", :subspecs => [
+       'HUD',
+  ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
   pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
@@ -55,8 +56,8 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       # 设置Pods最低版本
-      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 10.0
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 10.0
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 11.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 11.0
       end
     end
   end

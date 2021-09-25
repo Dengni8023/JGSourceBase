@@ -1,5 +1,5 @@
 //
-//  JGSNativeKeychainUtils.h
+//  JGSKeychainUtils.h
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2021/3/17.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGSNativeKeychainUtils : NSObject
+@interface JGSKeychainUtils : NSObject
 
 + (void)saveToKeychain:(id _Nullable )data forKey:(NSString *)key;
 + (id)readFromKeychain:(NSString *)key;

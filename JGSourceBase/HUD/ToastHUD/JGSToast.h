@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<JGSourceBase/JGSToast.h>)
-#import <JGSourceBase/UIView+JGSToast.h>
-#else
 #import "UIView+JGSToast.h"
-#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

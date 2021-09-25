@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+JGSAlertController.h"
-#import "JGSBase.h"
+#import "JGSourceBase.h"
 
 @implementation UIViewController (JGSAlertController)
 
@@ -50,79 +50,13 @@
 }
 
 #pragma mark - Alert & ActionSheet
-- (UIAlertController *)jg_showAlertWithTitle:(NSString *)title message:(NSString *)message style:(UIAlertControllerStyle)style cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)btnAction {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
-    
-    JGSWeak(alert);
-    if (cancel) {
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            JGSStrong(alert);
-            if (btnAction) {
-                btnAction(alert, alert.jg_cancelIdx);
-            }
-        }];
-        [alert addAction:cancelAction];
-    }
-    
-    if (destructive) {
-        UIAlertAction *destructiveAction = [UIAlertAction actionWithTitle:destructive style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            JGSStrong(alert);
-            if (btnAction) {
-                btnAction(alert, alert.jg_destructiveIdx);
-            }
-        }];
-        [alert addAction:destructiveAction];
-    }
-    
-    for (NSUInteger i = 0; i < [others count]; i++) {
-        
-        UIAlertAction *otherAction = [UIAlertAction actionWithTitle:others[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            JGSStrong(alert);
-            if (btnAction) {
-                btnAction(alert, alert.jg_firstOtherIdx + i);
-            }
-        }];
-        [alert addAction:otherAction];
-    }
-    
-    if (alert.popoverPresentationController) {
-        [alert.popoverPresentationController setSourceView:self.view];
-        [alert.popoverPresentationController setSourceRect:self.view.bounds];
-        [alert.popoverPresentationController setPermittedArrowDirections:(UIPopoverArrowDirection)0];
-    }
-    
-    [self presentViewController:alert animated:YES completion:nil];
-    
-    return alert;
+- (UIAlertController *)jg_showAlertWithTitle:(NSString *)title message:(NSString *)message style:(UIAlertControllerStyle)style cancel:(NSString *)cancel destructive:(NSString *)destructive others:(NSArray<NSString *> *)others action:(JGSAlertControllerAction)action {
+    return [UIAlertController jg_showAlertWithTitle:title message:message style:style cancel:cancel destructive:destructive others:others action:action];
 }
 
 #pragma mark - Hide
 - (BOOL)jg_hideCurrentAlert:(BOOL)animated {
-    
-    if (self.presentedViewController && [self.presentedViewController isKindOfClass:[UIAlertController class]]) {
-        [self.presentedViewController dismissViewControllerAnimated:animated completion:^{
-            
-        }];
-        return YES;
-    }
-    return NO;
-}
-
-@end
-
-@implementation UIAlertController (JGSAlertController)
-
-- (NSInteger)jg_cancelIdx {
-    return 0;
-}
-
-- (NSInteger)jg_destructiveIdx {
-    return 1;
-}
-
-- (NSInteger)jg_firstOtherIdx {
-    return 2;
+    return [UIAlertController jg_hideCurrentAlert:animated];
 }
 
 @end

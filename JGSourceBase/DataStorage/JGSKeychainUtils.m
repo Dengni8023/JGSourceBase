@@ -1,16 +1,16 @@
 //
-//  JGSNativeKeychainUtils.m
+//  JGSKeychainUtils.m
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2021/3/17.
 //  Copyright © 2021 MeiJigao. All rights reserved.
 //
 
-#import "JGSNativeKeychainUtils.h"
+#import "JGSKeychainUtils.h"
 #import <Security/Security.h>
-#import "JGSBase.h"
+#import "JGSourceBase.h"
 
-@implementation JGSNativeKeychainUtils
+@implementation JGSKeychainUtils
 
 + (NSDictionary *)keychainQuery:(NSString *)key {
     return @{

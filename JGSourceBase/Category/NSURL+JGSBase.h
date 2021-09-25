@@ -1,9 +1,9 @@
 //
-//  JGSStringURLUtils.h
+//  NSURL+JGSBase.h
 //  JGSourceBase
 //
-//  Created by 梅继高 on 2019/3/25.
-//  Copyright © 2019 MeiJigao. All rights reserved.
+//  Created by 梅继高 on 2021/9/15.
+//  Copyright © 2021 MeiJigao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -20,30 +20,7 @@ typedef NS_ENUM(NSInteger, JGSURLQueryPolicy) {
     JGSURLQueryPolicyLast, // 重名时使用最后一个Query参数
 } NS_UNAVAILABLE;
 
-@interface JGSStringURLUtils : NSObject
-
-@end
-
-@interface NSString (JGSStringURLUtils)
-
-/** URL参数特殊字符串编码 */
-@property (nonatomic, copy, nullable, readonly) NSString *jg_URLEncodeString;
-
-/**
- URL字符串中文、不可见字符处理
- 作为URL的各部分包含特殊字符“&”与”?“的内容必须已进行url编码处理，处理方式参考jg_URLEncodeString
- */
-@property (nonatomic, copy, nullable, readonly) NSString *jg_URLString;
-
-/**
- URL字符串中文、不可见字符处理
- 作为URL的各部分包含特殊字符“&”与”?“的内容必须已进行url编码处理，处理方式参考jg_URLEncodeString
- */
-@property (nonatomic, strong, nullable, readonly) NSURL *jg_URL;
-
-@end
-
-@interface NSURL (JGSStringURLUtils)
+@interface NSURL (JGSBase)
 
 /** 参数信息 */
 @property (nonatomic, copy, nullable, readonly) NSArray<NSURLQueryItem *> *jg_queryItems;

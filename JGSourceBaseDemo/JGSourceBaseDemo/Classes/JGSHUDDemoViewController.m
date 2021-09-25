@@ -7,45 +7,39 @@
 //
 
 #import "JGSHUDDemoViewController.h"
-#import "JGDemoTableData.h"
+#import "JGSDemoTableData.h"
 
+#ifdef JGS_HUD
 @interface JGSHUDDemoViewController ()
-
-@property (nonatomic, copy) NSArray<JGDemoTableSectionData *> *demoData;
 
 @end
 
 @implementation JGSHUDDemoViewController
 
-#pragma mark - Life Cycle
-- (void)dealloc {
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
-}
-
-- (void)initDatas {
+- (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
-    self.demoData = @[
+    return @[
                       // Section 全屏Loading HUD
-                      JGDemoTableSectionMake(@">> 全屏Loading HUD",
+                      JGSDemoTableSectionMake(@">> 全屏Loading HUD",
                                              @[
-                                               JGDemoTableRowMakeSelector(@"Default样式", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Custom Image样式", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Custom Image样式 + Message", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Default样式", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Custom Image样式", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Custom Image样式 + Message", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
                                                ]),
                       // Section 全屏Toast HUD
-                      JGDemoTableSectionMake(@">> 全屏Toast HUD",
+                      JGSDemoTableSectionMake(@">> 全屏Toast HUD",
                                              @[
-                                               JGDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Up样式", @selector(showToastHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
-                                               JGDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Up样式", @selector(showToastHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
+                                               JGSDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
                                                ]),
                       ];
 }
@@ -54,83 +48,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    [self initDatas];
-    
-    [[JGSReachability sharedInstance] startMonitor];
-    [[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
-        
-        JGSEnableLogWithMode(JGSLogModeFunc);
-        JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
-    }];
-    
     self.title = @"Loading HUD、Toast";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.tableView.sectionHeaderHeight = 44;
-    self.tableView.rowHeight = 44;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JGSReuseIdentifier(UITableViewCell)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.demoData.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.demoData[section].rows.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    //cell.contentView.backgroundColor = JGSColorRGB(arc4random() % (0xff + 1), arc4random() % (0xff + 1), arc4random() % (0xff + 1));
-    cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
-    
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.demoData[section].title;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    JGDemoTableRowData *rowData = self.demoData[indexPath.section].rows[indexPath.row];
-    if (rowData.selectBlock) {
-        rowData.selectBlock(rowData);
-    }
-    else if (rowData.selector && [self respondsToSelector:rowData.selector]) {
-        
-        // 避免警告
-        IMP imp = [self methodForSelector:rowData.selector];
-        id (*func)(id, SEL, NSInteger) = (void *)imp;
-        func(self, rowData.selector, indexPath.row);
-    }
-    
-    JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
-    if (indexPath.section == 0) {
-        
-        JGSLogInfo(@"Info Log");
-        JGSLogError(@"Error Log");
-        JGSLogWarning(@"Warning Log");
-    }
 }
 
 #pragma mark - Action
-- (void)showLoadingHUD:(NSInteger)rowIndex {
+- (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
     JGSEnableLogWithMode(JGSLogModeFunc);
+    NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {
             [JGSLoadingHUD showLoadingHUD];
@@ -201,9 +131,10 @@
     });
 }
 
-- (void)showToastHUD:(NSInteger)rowIndex {
+- (void)showToastHUD:(NSIndexPath *)indexPath {
     
     JGSEnableLogWithMode(JGSLogModeFunc);
+    NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {
             [JGSToast showToastWithMessage:@"加载中..."];
@@ -238,3 +169,5 @@
 #pragma mark - End
 
 @end
+
+#endif

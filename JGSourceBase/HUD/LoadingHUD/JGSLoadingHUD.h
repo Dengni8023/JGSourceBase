@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<JGSourceBase/JGSLoadingHUD.h>)
-#import <JGSourceBase/UIView+JGSLoadingHUD.h>
-#else
 #import "UIView+JGSLoadingHUD.h"
-#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

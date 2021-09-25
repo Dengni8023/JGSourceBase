@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "JGSDemoNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +25,7 @@
     NSLog(@"APP Window: %@", _window);
     
     ViewController *vcT = [[ViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vcT];
+    JGSDemoNavigationController *nav = [[JGSDemoNavigationController alloc] initWithRootViewController:vcT];
     _window.rootViewController = nav;
     
     [_window makeKeyAndVisible];
@@ -54,6 +55,7 @@
     JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
     
 #pragma mark - Device
+#ifdef JGS_Device
     printf("0x%x\n", [JGSDevice isDeviceJailbroken]);
     printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
     printf("%d\n", [JGSDevice isSimulator]);
@@ -70,8 +72,10 @@
     JGSLog(@"%@", [JGSDevice deviceMachine]);
     JGSLog(@"%@", [JGSDevice deviceModel]);
     JGSLog(@"%@", [JGSDevice appUserAgent]);
+#endif
     
 #pragma mark - Dictionary
+#ifdef JGS_Category
     NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;
     JGSLog(@"%@", [tmp objectForKey:@"NullKey1"]);
     JGSLog(@"%@", tmp[@"NullKey2"]);
@@ -83,6 +87,9 @@
     JGSLog(@"%@", tmp.jg_JSONString);
     [tmp setObject:nil forKey:@"Nullkey4"];
     JGSLog(@"%@", tmp.jg_JSONString);
+#endif
+    
+    sleep(1);
     
     return YES;
 }

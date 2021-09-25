@@ -8,20 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		3BF9A33CF7782F761596FC82 /* libPods-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F65894208A86508A1E8DB415 /* libPods-JGSourceBaseDemo.a */; };
+		D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */; };
+		D49BD78B26F18AA9005C3AED /* JGSDataStorageDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */; };
+		D49BD78E26F18ACA005C3AED /* JGSDeviceDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */; };
+		D49BD79126F18AE4005C3AED /* JGSEncryptionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */; };
+		D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */; };
+		D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79626F20E28005C3AED /* JGSDemoViewController.m */; };
 		D4F3DA5E22F027E1002EF0F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA5D22F027E1002EF0F0 /* AppDelegate.m */; };
 		D4F3DA6122F027E1002EF0F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA6022F027E1002EF0F0 /* ViewController.m */; };
 		D4F3DA6622F027E1002EF0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F3DA6522F027E1002EF0F0 /* Assets.xcassets */; };
 		D4F3DA6922F027E1002EF0F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F3DA6722F027E1002EF0F0 /* LaunchScreen.storyboard */; };
 		D4F3DA6C22F027E1002EF0F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA6B22F027E1002EF0F0 /* main.m */; };
-		D4F3DA8922F0292B002EF0F0 /* JGSBaseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8122F0292B002EF0F0 /* JGSBaseDemoViewController.m */; };
+		D4F3DA8922F0292B002EF0F0 /* JGSCategoryDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */; };
 		D4F3DA8A22F0292B002EF0F0 /* JGSKeyboardDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8222F0292B002EF0F0 /* JGSKeyboardDemoViewController.m */; };
 		D4F3DA8B22F0292B002EF0F0 /* JGSHUDDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */; };
-		D4F3DA8C22F0292B002EF0F0 /* JGDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8722F0292B002EF0F0 /* JGDemoTableData.m */; };
+		D4F3DA8C22F0292B002EF0F0 /* JGSDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		710D4D80C389569E98EAD95B /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		92F1F5230A6069958E6FE346 /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D4211E6F26FF236C00E8E766 /* JGSDemoNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoNavigationController.h; sourceTree = "<group>"; };
+		D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoNavigationController.m; sourceTree = "<group>"; };
+		D49BD78926F18AA9005C3AED /* JGSDataStorageDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDataStorageDemoViewController.h; sourceTree = "<group>"; };
+		D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDataStorageDemoViewController.m; sourceTree = "<group>"; };
+		D49BD78C26F18ACA005C3AED /* JGSDeviceDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDeviceDemoViewController.h; sourceTree = "<group>"; };
+		D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDeviceDemoViewController.m; sourceTree = "<group>"; };
+		D49BD78F26F18AE4005C3AED /* JGSEncryptionDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSEncryptionDemoViewController.h; sourceTree = "<group>"; };
+		D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSEncryptionDemoViewController.m; sourceTree = "<group>"; };
+		D49BD79226F2066D005C3AED /* JGSDemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoTableViewController.h; sourceTree = "<group>"; };
+		D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableViewController.m; sourceTree = "<group>"; };
+		D49BD79526F20E28005C3AED /* JGSDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoViewController.h; sourceTree = "<group>"; };
+		D49BD79626F20E28005C3AED /* JGSDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoViewController.m; sourceTree = "<group>"; };
+		D4AE4EDD26E614E4008174BE /* JGSourceBaseDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JGSourceBaseDemo.entitlements; sourceTree = "<group>"; };
 		D4D2E88225ADBA5D0048A789 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D4F3DA5922F027E1002EF0F0 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA5C22F027E1002EF0F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,13 +52,13 @@
 		D4F3DA6A22F027E1002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F3DA6B22F027E1002EF0F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4F3DA8022F0292B002EF0F0 /* JGSHUDDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSHUDDemoViewController.h; sourceTree = "<group>"; };
-		D4F3DA8122F0292B002EF0F0 /* JGSBaseDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseDemoViewController.m; sourceTree = "<group>"; };
+		D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSCategoryDemoViewController.m; sourceTree = "<group>"; };
 		D4F3DA8222F0292B002EF0F0 /* JGSKeyboardDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardDemoViewController.m; sourceTree = "<group>"; };
 		D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSHUDDemoViewController.m; sourceTree = "<group>"; };
-		D4F3DA8422F0292B002EF0F0 /* JGSBaseDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBaseDemoViewController.h; sourceTree = "<group>"; };
+		D4F3DA8422F0292B002EF0F0 /* JGSCategoryDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSCategoryDemoViewController.h; sourceTree = "<group>"; };
 		D4F3DA8522F0292B002EF0F0 /* JGSKeyboardDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardDemoViewController.h; sourceTree = "<group>"; };
-		D4F3DA8722F0292B002EF0F0 /* JGDemoTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGDemoTableData.m; sourceTree = "<group>"; };
-		D4F3DA8822F0292B002EF0F0 /* JGDemoTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGDemoTableData.h; sourceTree = "<group>"; };
+		D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableData.m; sourceTree = "<group>"; };
+		D4F3DA8822F0292B002EF0F0 /* JGSDemoTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSDemoTableData.h; sourceTree = "<group>"; };
 		F65894208A86508A1E8DB415 /* libPods-JGSourceBaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,6 +113,7 @@
 		D4F3DA5B22F027E1002EF0F0 /* JGSourceBaseDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D4AE4EDD26E614E4008174BE /* JGSourceBaseDemo.entitlements */,
 				D4F3DA7F22F0292B002EF0F0 /* Classes */,
 				D4F3DA5C22F027E1002EF0F0 /* AppDelegate.h */,
 				D4F3DA5D22F027E1002EF0F0 /* AppDelegate.m */,
@@ -112,8 +132,14 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA8622F0292B002EF0F0 /* Base */,
-				D4F3DA8422F0292B002EF0F0 /* JGSBaseDemoViewController.h */,
-				D4F3DA8122F0292B002EF0F0 /* JGSBaseDemoViewController.m */,
+				D4F3DA8422F0292B002EF0F0 /* JGSCategoryDemoViewController.h */,
+				D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */,
+				D49BD78926F18AA9005C3AED /* JGSDataStorageDemoViewController.h */,
+				D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */,
+				D49BD78C26F18ACA005C3AED /* JGSDeviceDemoViewController.h */,
+				D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */,
+				D49BD78F26F18AE4005C3AED /* JGSEncryptionDemoViewController.h */,
+				D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */,
 				D4F3DA8022F0292B002EF0F0 /* JGSHUDDemoViewController.h */,
 				D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */,
 				D4F3DA8522F0292B002EF0F0 /* JGSKeyboardDemoViewController.h */,
@@ -125,8 +151,14 @@
 		D4F3DA8622F0292B002EF0F0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				D4F3DA8822F0292B002EF0F0 /* JGDemoTableData.h */,
-				D4F3DA8722F0292B002EF0F0 /* JGDemoTableData.m */,
+				D4211E6F26FF236C00E8E766 /* JGSDemoNavigationController.h */,
+				D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */,
+				D4F3DA8822F0292B002EF0F0 /* JGSDemoTableData.h */,
+				D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */,
+				D49BD79226F2066D005C3AED /* JGSDemoTableViewController.h */,
+				D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */,
+				D49BD79526F20E28005C3AED /* JGSDemoViewController.h */,
+				D49BD79626F20E28005C3AED /* JGSDemoViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -142,7 +174,7 @@
 				D4F3DA5522F027E1002EF0F0 /* Sources */,
 				D4F3DA5622F027E1002EF0F0 /* Frameworks */,
 				D4F3DA5722F027E1002EF0F0 /* Resources */,
-				409568BB5839909D5D18DE0C /* [CP] Copy Pods Resources */,
+				632C13023D993A116E76261C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,23 +232,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		409568BB5839909D5D18DE0C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4DE411687EC10914F45A7751 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +254,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		632C13023D993A116E76261C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -248,11 +280,17 @@
 			files = (
 				D4F3DA8A22F0292B002EF0F0 /* JGSKeyboardDemoViewController.m in Sources */,
 				D4F3DA6122F027E1002EF0F0 /* ViewController.m in Sources */,
-				D4F3DA8922F0292B002EF0F0 /* JGSBaseDemoViewController.m in Sources */,
-				D4F3DA8C22F0292B002EF0F0 /* JGDemoTableData.m in Sources */,
+				D4F3DA8922F0292B002EF0F0 /* JGSCategoryDemoViewController.m in Sources */,
+				D4F3DA8C22F0292B002EF0F0 /* JGSDemoTableData.m in Sources */,
+				D49BD78B26F18AA9005C3AED /* JGSDataStorageDemoViewController.m in Sources */,
 				D4F3DA6C22F027E1002EF0F0 /* main.m in Sources */,
+				D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */,
 				D4F3DA8B22F0292B002EF0F0 /* JGSHUDDemoViewController.m in Sources */,
+				D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */,
+				D49BD78E26F18ACA005C3AED /* JGSDeviceDemoViewController.m in Sources */,
 				D4F3DA5E22F027E1002EF0F0 /* AppDelegate.m in Sources */,
+				D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */,
+				D49BD79126F18AE4005C3AED /* JGSEncryptionDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -376,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -390,6 +428,8 @@
 			baseConfigurationReference = 710D4D80C389569E98EAD95B /* Pods-JGSourceBaseDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JGSourceBaseDemo/JGSourceBaseDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -402,6 +442,7 @@
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -411,6 +452,8 @@
 			baseConfigurationReference = 92F1F5230A6069958E6FE346 /* Pods-JGSourceBaseDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JGSourceBaseDemo/JGSourceBaseDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -423,6 +466,7 @@
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

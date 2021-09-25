@@ -7,8 +7,8 @@
 //
 
 #import "JGSDevice.h"
+#import "JGSourceBase.h"
 #import <WebKit/WebKit.h>
-#import "JGSBase.h"
 #import <AdSupport/ASIdentifierManager.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
 #import <sys/utsname.h>
@@ -254,7 +254,7 @@
     
     // iOS14其他权限变化时会导致idfa变化，因此做存储
     NSString *keychainDeviceIdKey = @"JGSourceBaseDeviceId";
-    deviceId = [JGSNativeKeychainUtils readFromKeychain:keychainDeviceIdKey];
+    deviceId = [JGSKeychainUtils readFromKeychain:keychainDeviceIdKey];
     if (deviceId.length > 0) {
         JGSLog(@"getDeviceId DeviceId Stored: %@", deviceId);
         return deviceId;
@@ -277,7 +277,7 @@
         JGSLog(@"getDeviceId DeviceId uuid: %@", deviceId);
     }
     
-    [JGSNativeKeychainUtils saveToKeychain:deviceId forKey:keychainDeviceIdKey];
+    [JGSKeychainUtils saveToKeychain:deviceId forKey:keychainDeviceIdKey];
     return deviceId;
 }
 

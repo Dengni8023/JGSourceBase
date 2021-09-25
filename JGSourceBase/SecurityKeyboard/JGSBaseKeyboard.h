@@ -6,11 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<JGSourceBase/JGSBaseKeyboard.h>)
-#import <JGSourceBase/JGSBase.h>
-#else
-#import "JGSBase.h"
-#endif
+#import "JGSourceBase.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
