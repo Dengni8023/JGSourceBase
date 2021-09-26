@@ -61,11 +61,11 @@ CGFloat const JGSKeyboardToolbarHeight = 40.f;
 NSInteger const JGSKeyboardLinesNumber = 4;
 NSInteger const JGSKeyboardMaxItemsInLine = 10;
 NSInteger const JGSKeyboardNumberItemsInLine = 3;
-CGFloat const JGSKeyboardInteritemSpacing = 6.f;
-CGFloat const JGSKeyboardKeyLineSpacing = 10.f;
+CGFloat const JGSKeyboardInteritemSpacing = 4.f;
+CGFloat const JGSKeyboardKeyLineSpacing = 8.f;
 CGFloat const JGSKeyboardKeyWidthHeightRatio() {
     CGRect rect = [UIScreen mainScreen].bounds;
-    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 16.f / 9.f : 5.f / 6.f;
+    return CGRectGetWidth(rect) > CGRectGetHeight(rect) ? 16.f / 9.f : 3.f / 4.f;
 }
 
 @implementation JGSKeyboardToolbarItem

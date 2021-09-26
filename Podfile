@@ -59,6 +59,11 @@ post_install do |installer|
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 11.0
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 11.0
       end
+      # 编译架构
+      config.build_settings['ARCHS'] = "$(ARCHS_STANDARD)"
+      # 解决最新Mac系统编模拟器译报错：
+      # building for iOS Simulator-x86_64 but attempting to link with file built for iOS Simulator-arm64
+      config.build_settings['ONLY_ACTIVE_ARCH'] = false
     end
   end
   

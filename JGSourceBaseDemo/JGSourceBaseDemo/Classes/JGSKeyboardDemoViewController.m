@@ -94,10 +94,24 @@
     if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
     }
-}
+    
+    UILabel *tips = [[UILabel alloc] init];
+    tips.text = @"点击页面切换secureTextEntry属性值";
+    [self.view addSubview:tips];
+    
+    [tips mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view).mas_offset(28);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(12);
+        } else {
+            make.top.mas_equalTo(self.view.mas_bottom).inset(20);
+        }
+    }];}
 
 #pragma mark - Action
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
     self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
     self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
     self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;
@@ -115,7 +129,7 @@
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
         
         JGSLog(@"%@", textField.text);
-        JGSLog(@"%@: %@", NSStringFromRange(range), string);
+        JGSLog(@"%@ -> (%@)", NSStringFromRange(range), string);
     }
     
     return YES;

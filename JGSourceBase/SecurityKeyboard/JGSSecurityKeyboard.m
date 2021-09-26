@@ -105,9 +105,8 @@
 #pragma mark - Notification
 - (void)textFieldTextDidChange:(NSNotification *)noti {
     
-    UITextField *noteField = noti.object;
-    if ([noteField isEqual:self.textField] && [noteField isSecureTextEntry]) {
-        [noteField jgsCheckClearInputChangeText];
+    if ([noti.object isEqual:self.textField]) {
+        [self.textField jgsCheckClearInputChangeText];
     }
 }
 
@@ -447,13 +446,13 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
 
 - (void)jgsCheckClearInputChangeText {
     
-    // 右侧clear按钮情况输入时发送UITextFieldTextDidChangeNotification通知，无其他回调
-    // 需要判断文本框展示内容长度与记录的输入内容长度是否一致
-    // 长度不一致则表示点击了clear，此时清理输入内容
-    if ([self JGSSwizzing_text].length == self.jgsSecurityOriginText.length) {
+    // 点击clear、paste输入时发送UITextFieldTextDidChangeNotification通知，无其他回调
+    // 因安全键盘输入时禁止选择、全选、复制、剪切，仅空白状态是允许粘贴
+    // 此处在长度不一致时需要设置text以更新jgsSecurityOriginText
+    if (self.JGSSwizzing_text.length == self.jgsSecurityOriginText.length) {
         return;
     }
-    self.text = nil;
+    self.text = [self JGSSwizzing_text];
 }
 
 - (void)JGSSwizzing_setText:(NSString *)text {
@@ -469,7 +468,7 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
 
 - (NSString *)JGSSwizzing_text {
     
-    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
         return self.jgsSecurityOriginText;
     }
     return [self JGSSwizzing_text];
@@ -477,14 +476,17 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
 
 - (BOOL)JGSSwizzing_canPerformAction:(SEL)action withSender:(id)sender {
     
-    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
-        if (action == @selector(paste:) || action == @selector(copy:) || action == @selector(cut:)) {
-            return NO; // 禁止粘贴、复制、剪切
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        // 安全键盘输入时禁止选择、全选、复制、剪切
+        // 仅空白状态是允许粘贴
+        if (action == @selector(paste:) && self.text.length > 0) {
+            return NO; // 空白状态是允许粘贴
         }
-        else if (action == @selector(select:) || action == @selector(selectAll:)) {
-            return NO; // 禁止选择、全选
+        else if (action == @selector(select:) || action == @selector(selectAll:) || action == @selector(copy:) || action == @selector(cut:)) {
+            return NO; // 禁止选择、全选、复制、剪切
         }
     }
+    
     return [self JGSSwizzing_canPerformAction:action withSender:sender];
 }
 
