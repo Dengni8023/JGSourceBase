@@ -32,25 +32,25 @@
                 "SizePT": "768x1024",
                 "SizePX": "1536x2048"
             }, {
-                "Generation": "iPad (6th generation",
+                "Generation": "iPad (6th generation)",
                 "Identifier": ["iPad7,5", "iPad7,6"],
                 "Scale": "2x",
                 "SizePT": "768x1024",
                 "SizePX": "1536x2048"
             }, {
-                "Generation": "iPad (7th generation",
+                "Generation": "iPad (7th generation)",
                 "Identifier": ["iPad7,11", "iPad7,12"],
                 "Scale": "2x",
                 "SizePT": "768x1024",
                 "SizePX": "1536x2048"
             }, {
-                "Generation": "iPad (8th generation",
+                "Generation": "iPad (8th generation)",
                 "Identifier": ["iPad11,6", "iPad11,7"],
                 "Scale": "2x",
                 "SizePT": "810x1080",
                 "SizePX": "1620x2160"
             }, {
-                "Generation": "iPad (9th generation",
+                "Generation": "iPad (9th generation)",
                 "Identifier": ["iPad12,1", "iPad12,2"],
                 "Scale": "2x",
                 "SizePT": "810x1080",
