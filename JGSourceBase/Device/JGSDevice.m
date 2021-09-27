@@ -628,10 +628,12 @@
     }
     
     // 检测当前程序运行的环境变量
-    char *env = getenv("DYLD_INSERT_LIBRARIES");
-    if (env != NULL) {
-        return JGSDeviceJailbrokenIsBroken;
-    }
+    // Xcode13开始，在使用部分系统库/三方库/SDK时，调试状态该接口获取到的环境变量可能不为空
+    // 因此此处屏蔽检测，不同项目根据实际情况自行处理
+    //char *env = getenv("DYLD_INSERT_LIBRARIES");
+    //if (env != NULL) {
+    //    return JGSDeviceJailbrokenIsBroken;
+    //}
     
     return JGSDeviceJailbrokenNone;
 }
