@@ -11,7 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//NS_UNAVAILABLE
 //API_DEPRECATED("Use UIAlertController directly.", ios(8.0, 10.0))
 DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.")
 @interface JGSAlertController : NSObject

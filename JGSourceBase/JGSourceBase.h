@@ -41,7 +41,7 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 // DataStorage
 #ifdef JGS_DataStorage
-#import "JGSKeychainUtils.h"
+#import "JGSDataStorage.h"
 #endif
 
 // Device
@@ -51,7 +51,7 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 
 // Encryption
 #ifdef JGS_Encryption
-
+#import "JGSEncryption.h"
 #endif
 
 // JGSHUD

@@ -13,6 +13,14 @@
 		D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA0A2600E6870085C6AB /* JGSDevice.m */; };
 		D416DA87260111670085C6AB /* JGSKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSKeychainUtils.h */; };
 		D416DA88260111670085C6AB /* JGSKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSKeychainUtils.m */; };
+		D425C1292701E4F800F65909 /* JGSAESEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C1272701E4F800F65909 /* JGSAESEncryption.h */; };
+		D425C12A2701E4F800F65909 /* JGSAESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C1282701E4F800F65909 /* JGSAESEncryption.m */; };
+		D425C12D2701E50900F65909 /* JGSRSAEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C12B2701E50900F65909 /* JGSRSAEncryption.h */; };
+		D425C12E2701E50900F65909 /* JGSRSAEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C12C2701E50900F65909 /* JGSRSAEncryption.m */; };
+		D425C1312701E5A300F65909 /* JGSCommonEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C12F2701E5A300F65909 /* JGSCommonEncryption.h */; };
+		D425C1322701E5A300F65909 /* JGSCommonEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C1302701E5A300F65909 /* JGSCommonEncryption.m */; };
+		D425C1352701E61A00F65909 /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C1332701E61A00F65909 /* JGSUserDefaults.h */; };
+		D425C1362701E61A00F65909 /* JGSUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C1342701E61A00F65909 /* JGSUserDefaults.m */; };
 		D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D457A9722604BF6000833143 /* UIApplication+JGSBase.h */; };
 		D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D457A9732604BF6000833143 /* UIApplication+JGSBase.m */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
@@ -87,6 +95,16 @@
 		D416DA0A2600E6870085C6AB /* JGSDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
 		D416DA85260111670085C6AB /* JGSKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeychainUtils.h; sourceTree = "<group>"; };
 		D416DA86260111670085C6AB /* JGSKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeychainUtils.m; sourceTree = "<group>"; };
+		D425C1252701E45900F65909 /* JGSDataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDataStorage.h; sourceTree = "<group>"; };
+		D425C1262701E4B100F65909 /* JGSEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSEncryption.h; sourceTree = "<group>"; };
+		D425C1272701E4F800F65909 /* JGSAESEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSAESEncryption.h; sourceTree = "<group>"; };
+		D425C1282701E4F800F65909 /* JGSAESEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSAESEncryption.m; sourceTree = "<group>"; };
+		D425C12B2701E50900F65909 /* JGSRSAEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSRSAEncryption.h; sourceTree = "<group>"; };
+		D425C12C2701E50900F65909 /* JGSRSAEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSRSAEncryption.m; sourceTree = "<group>"; };
+		D425C12F2701E5A300F65909 /* JGSCommonEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCommonEncryption.h; sourceTree = "<group>"; };
+		D425C1302701E5A300F65909 /* JGSCommonEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSCommonEncryption.m; sourceTree = "<group>"; };
+		D425C1332701E61A00F65909 /* JGSUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSUserDefaults.h; sourceTree = "<group>"; };
+		D425C1342701E61A00F65909 /* JGSUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSUserDefaults.m; sourceTree = "<group>"; };
 		D457A9722604BF6000833143 /* UIApplication+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JGSBase.h"; sourceTree = "<group>"; };
 		D457A9732604BF6000833143 /* UIApplication+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JGSBase.m"; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +202,13 @@
 		D49BD78626F0FCB8005C3AED /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
+				D425C1272701E4F800F65909 /* JGSAESEncryption.h */,
+				D425C1282701E4F800F65909 /* JGSAESEncryption.m */,
+				D425C12F2701E5A300F65909 /* JGSCommonEncryption.h */,
+				D425C1302701E5A300F65909 /* JGSCommonEncryption.m */,
+				D425C1262701E4B100F65909 /* JGSEncryption.h */,
+				D425C12B2701E50900F65909 /* JGSRSAEncryption.h */,
+				D425C12C2701E50900F65909 /* JGSRSAEncryption.m */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -191,8 +216,11 @@
 		D49BD78726F0FCD9005C3AED /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				D425C1252701E45900F65909 /* JGSDataStorage.h */,
 				D416DA85260111670085C6AB /* JGSKeychainUtils.h */,
 				D416DA86260111670085C6AB /* JGSKeychainUtils.m */,
+				D425C1332701E61A00F65909 /* JGSUserDefaults.h */,
+				D425C1342701E61A00F65909 /* JGSUserDefaults.m */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -370,6 +398,7 @@
 				D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */,
 				D49BD7D626F24E61005C3AED /* NSURL+JGSBase.h in Headers */,
 				D4F3DADA22F02B05002EF0F0 /* JGSSymbolKeyboard.h in Headers */,
+				D425C1352701E61A00F65909 /* JGSUserDefaults.h in Headers */,
 				D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */,
 				D416DA87260111670085C6AB /* JGSKeychainUtils.h in Headers */,
 				D4F3DADD22F02B05002EF0F0 /* UIColor+JGSBase.h in Headers */,
@@ -380,16 +409,19 @@
 				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
 				D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */,
 				D4F3DAD722F02B05002EF0F0 /* JGSNumberKeyboard.h in Headers */,
+				D425C1312701E5A300F65909 /* JGSCommonEncryption.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
 				D416D9DB2600DA540085C6AB /* UIImage+JGSBase.h in Headers */,
 				D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */,
 				D4AD24DB26F08B3C0008AA3A /* UIAlertController+JGSBase.h in Headers */,
 				D4F3DACC22F02B05002EF0F0 /* UIView+JGSToast.h in Headers */,
+				D425C1292701E4F800F65909 /* JGSAESEncryption.h in Headers */,
 				D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */,
 				D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */,
 				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
 				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
 				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
+				D425C12D2701E50900F65909 /* JGSRSAEncryption.h in Headers */,
 				D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */,
 				D4F3DAE322F02B05002EF0F0 /* NSObject+JGSBase.h in Headers */,
 			);
@@ -485,6 +517,7 @@
 				D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */,
 				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
 				D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */,
+				D425C1322701E5A300F65909 /* JGSCommonEncryption.m in Sources */,
 				D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */,
 				D49BD7D726F24E61005C3AED /* NSURL+JGSBase.m in Sources */,
 				D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */,
@@ -492,6 +525,9 @@
 				D4F3DACF22F02B05002EF0F0 /* UIView+JGSLoadingHUD.m in Sources */,
 				D4F3DAE022F02B05002EF0F0 /* NSObject+JGSBase.m in Sources */,
 				D416D9DA2600DA540085C6AB /* UIImage+JGSBase.m in Sources */,
+				D425C12A2701E4F800F65909 /* JGSAESEncryption.m in Sources */,
+				D425C12E2701E50900F65909 /* JGSRSAEncryption.m in Sources */,
+				D425C1362701E61A00F65909 /* JGSUserDefaults.m in Sources */,
 				D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */,
 				D4F3DAD322F02B05002EF0F0 /* JGSNumberKeyboard.m in Sources */,
 				D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */,

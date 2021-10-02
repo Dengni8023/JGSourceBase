@@ -171,12 +171,12 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        return [(NSData *)self base64EncodedDataWithOptions:kNilOptions];
+        return [(NSData *)self base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
         
     } else if ([self isKindOfClass:[NSString class]]) {
         
         NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data base64EncodedDataWithOptions:kNilOptions];
+        return [data base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     }
     
     return nil;
@@ -186,12 +186,12 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        return [(NSData *)self base64EncodedStringWithOptions:kNilOptions];
+        return [(NSData *)self base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
         
     } else if ([self isKindOfClass:[NSString class]]) {
         
         NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data base64EncodedStringWithOptions:kNilOptions];
+        return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     }
     
     return nil;
@@ -201,12 +201,12 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        return [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:kNilOptions];
+        return [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
         
     } else if ([self isKindOfClass:[NSString class]]) {
         
         NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [[NSData alloc] initWithBase64EncodedData:data options:kNilOptions];
+        return [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
     }
     
     return nil;
@@ -216,12 +216,12 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        NSData *data = [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:kNilOptions];
+        NSData *data = [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
         return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
     } else if ([self isKindOfClass:[NSString class]]) {
         
-        NSData *data = [[NSData alloc] initWithBase64EncodedString:(NSString *)self options:kNilOptions];
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:(NSString *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
         return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     

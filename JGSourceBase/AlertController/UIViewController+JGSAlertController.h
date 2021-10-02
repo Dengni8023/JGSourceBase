@@ -11,7 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NS_UNAVAILABLE
 @interface UIViewController (JGSAlertController)
 
 #pragma mark - Alert
