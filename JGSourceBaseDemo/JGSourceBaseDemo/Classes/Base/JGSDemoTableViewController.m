@@ -99,10 +99,10 @@
 
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
     if (indexPath.section == 0 && indexPath.row == 0) {
-        JGSLog(@"%@", @(JGSLogModeNone));
-        JGSLog(@"%@", @(JGSLogModeLog));
-        JGSLog(@"%@", @(JGSLogModeFunc));
-        JGSLog(@"%@", @(JGSLogModeFile));
+        //JGSLog(@"%@", @(JGSLogModeNone));
+        //JGSLog(@"%@", @(JGSLogModeLog));
+        //JGSLog(@"%@", @(JGSLogModeFunc));
+        //JGSLog(@"%@", @(JGSLogModeFile));
         cell.textLabel.text = [cell.textLabel.text stringByAppendingFormat:@"（type: %@）", @(JGSEnableLogMode)];
     }
     
@@ -111,7 +111,7 @@
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 32;
+    return self.demoData[section].title.length > 0 ? 32 : CGFLOAT_MIN;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

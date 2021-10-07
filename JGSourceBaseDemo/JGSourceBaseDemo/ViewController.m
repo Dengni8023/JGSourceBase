@@ -11,7 +11,7 @@
 #import "JGSCategoryDemoViewController.h"
 #import "JGSHUDDemoViewController.h"
 #import "JGSKeyboardDemoViewController.h"
-#import <sys/time.h>
+#import "JGSEncryptionDemoViewController.h"
 
 @interface ViewController ()
 
@@ -23,16 +23,17 @@
     
     return @[
         // Section Base
-        JGSDemoTableSectionMake(@"基础功能",
+        JGSDemoTableSectionMake(@" 基础功能",
                                 @[
                                     JGSDemoTableRowMakeSelector(@"调试日志控制", @selector(showLogModeList))
                                 ]),
         // Section 扩展功能
-        JGSDemoTableSectionMake(@"扩展功能",
+        JGSDemoTableSectionMake(@" 扩展功能",
                                 @[
                                     JGSDemoTableRowMakeSelector(@"Category功能", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeSelector(@"HUD（Loading、Toast）", @selector(jumpToHudDemo)),
                                     JGSDemoTableRowMakeSelector(@"Security Keyboard", @selector(jumpToKeyboardDemo)),
+                                    JGSDemoTableRowMakeSelector(@"Encryption Demo", @selector(jumpToEncryptionDemo)),
                                 ]),
     ];
 }
@@ -112,6 +113,14 @@
     
 #ifdef JGS_SecurityKeyboard
     JGSKeyboardDemoViewController *vcT = [[JGSKeyboardDemoViewController alloc] init];
+    [self.navigationController pushViewController:vcT animated:YES];
+#endif
+}
+
+- (void)jumpToEncryptionDemo {
+    
+#ifdef JGS_Encryption
+    JGSEncryptionDemoViewController *vcT = [[JGSEncryptionDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 #endif
 }

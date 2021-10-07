@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"iOS安全键盘";
+    self.title = @"SecurityKeyboard";
     
     [self addViewElements];
     

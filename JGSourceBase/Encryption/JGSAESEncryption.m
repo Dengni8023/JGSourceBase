@@ -97,10 +97,13 @@
     NSUInteger dataLength = self.length;
     void const *contentBytes = self.bytes;
     void const *keyBytes = [key dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    void const *ivBytes = [iv dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    if (iv.length == 0){
-        ivBytes = NULL;
-    }
+    
+    // 初始偏移向量，默认全置零，避免iv长度不符合规范情况导致无法解析
+    // 便宜向量长度为块大小 BlockSize
+    char ivBytes[kCCBlockSizeAES128 + 1];
+    memset(ivBytes, 0, sizeof(ivBytes));
+    [iv getCString:ivBytes maxLength:sizeof(ivBytes) encoding:NSUTF8StringEncoding];
+    
     size_t operationSize = dataLength + kCCBlockSizeAES128; // 密文长度 <= 明文长度 + BlockSize
     void *operationBytes = malloc(operationSize);
     if (operationBytes == NULL) {

@@ -19,36 +19,36 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
-                      // Section 全屏Loading HUD
-                      JGSDemoTableSectionMake(@">> 全屏Loading HUD",
-                                             @[
-                                               JGSDemoTableRowMakeSelector(@"Default样式", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Custom Image样式", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Custom Image样式 + Message", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
-                                               ]),
-                      // Section 全屏Toast HUD
-                      JGSDemoTableSectionMake(@">> 全屏Toast HUD",
-                                             @[
-                                               JGSDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Up样式", @selector(showToastHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
-                                               JGSDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
-                                               ]),
-                      ];
+        // Section 全屏Loading HUD
+        JGSDemoTableSectionMake(@" 全屏Loading HUD",
+                                @[
+                                    JGSDemoTableRowMakeSelector(@"Default样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Image样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Image样式 + Message", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
+                                ]),
+        // Section 全屏Toast HUD
+        JGSDemoTableSectionMake(@" 全屏Toast HUD",
+                                @[
+                                    JGSDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Up样式", @selector(showToastHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
+                                ]),
+    ];
 }
 
 #pragma mark - Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Loading HUD、Toast";
+    self.title = @"HUD Loading&Toast";
 }
 
 - (void)viewWillAppear:(BOOL)animated {

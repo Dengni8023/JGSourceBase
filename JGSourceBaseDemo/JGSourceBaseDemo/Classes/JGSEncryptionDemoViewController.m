@@ -15,81 +15,51 @@
 
 @implementation JGSEncryptionDemoViewController
 
+- (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
+    
+    return @[
+        JGSDemoTableSectionMake(nil,
+                                @[
+                                    JGSDemoTableRowMakeSelector(@"AES加解密字符串", @selector(aesDemo:)),
+                                ]),
+    ];
+}
+
+#pragma mark - Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.title = @"EncryptionDemo";
+}
+
+#pragma mark - Action
+- (void)aesDemo:(NSIndexPath *)indexPath {
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    // 加解密可以和在线工具进行对比验证：https://www.qtool.net/aes
+    NSString *aes128Key = @"1234567890abcdef";
+    NSString *aes256Key = @"1234567890abcdef1234567890ABCDEF";
     
-    // Configure the cell...
+    NSString *origin = @"- (void)aesDemo:(NSIndexPath *)indexPath {";
+    NSString *encrypt = [origin jg_AES128EncryptWithKey:aes128Key iv:nil];
+    JGSLog(@"128 encrypt: %@", encrypt);
+    JGSLog(@"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:nil]);
+
+    encrypt = [origin jg_AES128EncryptWithKey:aes128Key iv:aes128Key];
+    JGSLog(@"128 encrypt: %@", encrypt);
+    JGSLog(@"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:aes128Key]);
+
+    encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:nil];
+    JGSLog(@"256 encrypt: %@", encrypt);
+    JGSLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:nil]);
     
-    return cell;
+    encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:@"12345"];
+    JGSLog(@"256 encrypt: %@", encrypt);
+    JGSLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:@"12345"]);
+    
+    encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:aes256Key];
+    JGSLog(@"256 encrypt: %@", encrypt);
+    JGSLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:aes256Key]);
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
 
