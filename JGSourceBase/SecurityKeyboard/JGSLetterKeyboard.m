@@ -6,6 +6,7 @@
 //
 
 #import "JGSLetterKeyboard.h"
+#import "JGSourceBase.h"
 
 @interface JGSLetterKeyboard ()
 

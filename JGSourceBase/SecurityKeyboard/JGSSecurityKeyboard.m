@@ -23,16 +23,15 @@
 
 @interface JGSSecurityKeyboard ()
 
+@property (nonatomic, assign) JGSKeyboardOptions keyboardOptions;
 @property (nonatomic, assign) JGSKeyboardReturnType returnType;
 @property (nonatomic, assign) CGRect keyboardFrame;
 
-@property (nonatomic, strong) UIToolbar *keyboardTool;
-@property (nonatomic, strong) JGSKeyboardToolbarItem *keyboardTitleItem;
-@property (nonatomic, strong) JGSKeyboardToolbarItem *keyboardDoneItem;
-
+@property (nonatomic, strong) JGSKeyboardToolbar *keyboardTool;
 @property (nonatomic, strong) JGSLetterKeyboard *letterKeyboard;
 @property (nonatomic, strong) JGSSymbolKeyboard *symbolKeyboard;
 @property (nonatomic, strong) JGSNumberKeyboard *numberKeyboard;
+@property (nonatomic, strong) JGSNumberKeyboard *idCardKeyboard;
 @property (nonatomic, copy) NSArray<JGSBaseKeyboard *> *keyboards;
 
 @property (nonatomic, strong) NSTimer *deleteTimer;
@@ -56,10 +55,18 @@
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle {
-    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:fullAngle];
+    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:fullAngle options:kNilOptions];
 }
 
-- (instancetype)initWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle {
++ (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
+    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:NO options:JGSKeyboardOptionNumber];
+}
+
++ (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
+    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:NO options:JGSKeyboardOptionIDCard];
+}
+
+- (instancetype)initWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle options:(JGSKeyboardOptions)options {
     
     self = [super init];
     if (self) {
@@ -72,6 +79,15 @@
         _textField = textField;
         _title = title;//.length > 0 ? title : self.textField.placeholder;
         _returnType = (textField.returnKeyType == UIReturnKeyNext ? JGSKeyboardReturnTypeNext : JGSKeyboardReturnTypeDone);
+        if (options != kNilOptions) {
+            _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
+        }
+        else {
+            _keyboardOptions = (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol);
+            if (self.title.length > 0) {
+                _keyboardOptions = (_keyboardOptions | JGSKeyboardOptionNumber);
+            }
+        }
         
         CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
         CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
@@ -132,8 +148,7 @@
         [obj setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
         
         // 默认显示英文字母键盘
-        BOOL isShow = [obj isEqual:self.letterKeyboard];
-        obj.toolbarItem.customView.enabled = !isShow;
+        BOOL isShow = idx == 0;
         obj.hidden = !isShow;
     }];
     [self refreshKeyboardTool];
@@ -142,43 +157,43 @@
 - (NSArray<JGSBaseKeyboard *> *)keyboards {
     
     if (!_keyboards) {
-        _keyboards = @[self.letterKeyboard, self.symbolKeyboard, self.numberKeyboard];
+        NSMutableArray *keyboards = @[].mutableCopy;
+        if (self.keyboardOptions & JGSKeyboardOptionLetter) {
+            [keyboards addObject:self.letterKeyboard];
+        }
+        if (self.keyboardOptions & JGSKeyboardOptionSymbol) {
+            [keyboards addObject:self.symbolKeyboard];
+        }
+        if (self.keyboardOptions & JGSKeyboardOptionNumber) {
+            [keyboards addObject:self.numberKeyboard];
+        }
+        if (self.keyboardOptions & JGSKeyboardOptionIDCard) {
+            [keyboards addObject:self.idCardKeyboard];
+        }
+        _keyboards = keyboards;
     }
     return _keyboards;
 }
 
-- (UIToolbar *)keyboardTool {
+- (JGSKeyboardToolbar *)keyboardTool {
     
     if (_keyboardTool) {
         return _keyboardTool;
     }
     
-    _keyboardTool = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), JGSKeyboardToolbarHeight)];
-    _keyboardTool.barTintColor = JGSKeyboardToolBarColor();
-    
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _keyboardTool = [[JGSKeyboardToolbar alloc] initWithTitle:self.title];
     
     // 键盘切换
     JGSWeakSelf
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        JGSKeyboardToolbarItem *toolItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:obj.title type:JGSKeyboardToolbarItemTypeSwitch action:^(JGSKeyboardToolbarItem * _Nonnull toolbarItem) {
-            JGSStrongSelf
-            [self switchKeyboardType:toolbarItem];
-        }];
+        JGSStrongSelf
+        JGSKeyboardToolbarItem *toolItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:obj.title type:JGSKeyboardToolbarItemTypeSwitch target:self action:@selector(switchKeyboardType:)];
         obj.toolbarItem = toolItem;
     }];
     
-    // 标题
-    _keyboardTitleItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:self.title type:JGSKeyboardToolbarItemTypeTitle action:nil];
-    
     // 完成
-    _keyboardDoneItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:@"完成" type:JGSKeyboardToolbarItemTypeDone action:^(JGSKeyboardToolbarItem * _Nonnull toolbarItem) {
-        JGSStrongSelf
-        [self completeTextInput:toolbarItem];
-    }];
-    
-    _keyboardTool.items = @[flexSpace, flexSpace, self.keyboardTitleItem, flexSpace, self.keyboardDoneItem];
+    [self.keyboardTool.doneToolbarItem setTarget:self action:@selector(completeTextInput:)];
     
     return _keyboardTool;
 }
@@ -190,27 +205,17 @@
     }
     
     // 键盘顶部Tool标题居中，当前键盘对应的切换item不显示
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
     NSMutableArray *leftItems = @[].mutableCopy;
-    NSMutableArray *rightItems = @[self.keyboardDoneItem].mutableCopy;
-    [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        if (obj.isHidden) {
-            [leftItems addObject:obj.toolbarItem];
-            [leftItems addObject:flexSpace];
+    if (self.keyboards.count > 1) {
+        [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            [rightItems insertObject:flexSpace atIndex:0];
-            if (idx > 0) {
-                [rightItems insertObject:flexSpace atIndex:0];
+            if (obj.isHidden) {
+                [leftItems addObject:obj.toolbarItem];
             }
-        }
-    }];
+        }];
+    }
     
-    NSMutableArray *toolItems = leftItems.mutableCopy;
-    [toolItems addObject:self.keyboardTitleItem];
-    [toolItems addObjectsFromArray:rightItems];
-    [self.keyboardTool setItems:toolItems];
+    self.keyboardTool.leftToolbarItems = leftItems;
 }
 
 - (JGSLetterKeyboard *)letterKeyboard {
@@ -251,6 +256,19 @@
     return _numberKeyboard;
 }
 
+- (JGSBaseKeyboard *)idCardKeyboard {
+    
+    if (!_idCardKeyboard) {
+        JGSWeakSelf
+        _idCardKeyboard = [[JGSNumberKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeIDCard returnKeyType:self.returnType keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
+            JGSStrongSelf
+            [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
+        }];
+        _idCardKeyboard.hidden = YES;
+    }
+    return _idCardKeyboard;
+}
+
 #pragma mark - Action
 - (void)keyboardKeyAction:(JGSBaseKeyboard *)keyboard key:(JGSKeyboardKey *)key keyEvent:(JGSKeyboardKeyEvents)keyEvent {
     
@@ -279,30 +297,25 @@
             
             [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 obj.hidden = YES;
-                obj.toolbarItem.customView.enabled = YES;
             }];
             
             switch (keyboard.type) {
                 case JGSKeyboardTypeLetter: {
                     self.symbolKeyboard.hidden = NO;
-                    self.symbolKeyboard.toolbarItem.customView.enabled = NO;
                 }
                     break;
                     
                 case JGSKeyboardTypeSymbol: {
                     self.letterKeyboard.hidden = NO;
-                    self.letterKeyboard.toolbarItem.customView.enabled = NO;
                 }
                     break;
                     
                 case JGSKeyboardTypeNumber: {
                     if (key.type == JGSKeyboardKeyTypeSwitch2Symbol) {
                         self.symbolKeyboard.hidden = NO;
-                        self.symbolKeyboard.toolbarItem.customView.enabled = NO;
                     }
                     else /*if (key.type == JGSKeyboardKeyTypeSwitch2Letter)*/ {
                         self.letterKeyboard.hidden = NO;
-                        self.letterKeyboard.toolbarItem.customView.enabled = NO;
                     }
                 }
                     break;
@@ -396,7 +409,6 @@
     
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         BOOL isShow = [obj.toolbarItem isEqual:sender];
-        obj.toolbarItem.customView.enabled = !isShow;
         obj.hidden = !isShow;
     }];
     [self refreshKeyboardTool];

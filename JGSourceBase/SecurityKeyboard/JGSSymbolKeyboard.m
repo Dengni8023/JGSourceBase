@@ -6,6 +6,7 @@
 //
 
 #import "JGSSymbolKeyboard.h"
+#import "JGSourceBase.h"
 
 BOOL JGSKeyboardSymbolFullAngle = NO;
 FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {

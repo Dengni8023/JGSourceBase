@@ -108,18 +108,7 @@
     }
     
     size_t actualOutSize = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(operation,
-                                          kCCAlgorithmAES,
-                                          options,
-                                          keyBytes,
-                                          keyLength,
-                                          ivBytes,
-                                          contentBytes,
-                                          dataLength,
-                                          operationBytes,
-                                          operationSize,
-                                          &actualOutSize);
-    
+    CCCryptorStatus cryptStatus = CCCrypt(operation, kCCAlgorithmAES, options, keyBytes, keyLength, ivBytes, contentBytes, dataLength, operationBytes, operationSize, &actualOutSize);
     if (cryptStatus == kCCSuccess) {
         // operationBytes 自动释放
         return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
@@ -169,6 +158,7 @@
         NSData *encryptData = [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:options];
         
         // 加密Data不能直接转UTF8字符串，需使用base64编码
+        // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
         NSString *string = encryptData ? [encryptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed] : nil;
         
         return string;

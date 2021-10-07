@@ -43,8 +43,9 @@
 #pragma mark - View
 - (void)addViewElements {
     
+    static NSInteger accountInputShow = 0;
     NSMutableArray<UITextField *> *fields = @[].mutableCopy;
-    for (NSInteger i = 0; i < 4; i++) {
+    for (NSInteger i = 0; i < 6; i++) {
         
         UITextField *field = [[UITextField alloc] init];
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -73,11 +74,13 @@
     self.normalInput = fields[0];
     self.normalInput.placeholder = @"系统键盘输入";
     self.normalInput.keyboardType = UIKeyboardTypeDefault;
-    
+
+    accountInputShow += 1;
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
     self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"自定义安全键盘"];
-    
+    self.accountInput.returnKeyType = (accountInputShow % 2 == 0 ? UIReturnKeyDone : UIReturnKeyNext);
+
     self.secPwdInput = fields[2];
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
@@ -86,7 +89,7 @@
     if (@available(iOS 11.0, *)) {
         self.secPwdInput.textContentType = UITextContentTypePassword;
     }
-    
+
     self.secPwdFullInput = fields[3];
     self.secPwdFullInput.placeholder = @"安全键盘加密输入-全角";
     self.secPwdFullInput.secureTextEntry = YES;
@@ -94,9 +97,16 @@
     if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
     }
+
+    fields[4].placeholder = @"纯数字键盘";
+    fields[4].inputView = [JGSSecurityKeyboard numberKeyboardWithTextField:fields[4] title:@"数字键盘" randomNumPad:(accountInputShow % 2 == 0)];
+    fields[5].placeholder = @"身份证键盘";
+    fields[5].inputView = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘" randomNumPad:(accountInputShow % 2 == 0)];
     
     UILabel *tips = [[UILabel alloc] init];
     tips.text = @"点击页面切换secureTextEntry属性值";
+    tips.textColor = [UIColor lightGrayColor];
+    tips.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:tips];
     
     [tips mas_makeConstraints:^(MASConstraintMaker *make) {

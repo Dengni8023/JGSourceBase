@@ -6,6 +6,7 @@
 //
 
 #import "JGSNumberKeyboard.h"
+#import "JGSourceBase.h"
 
 BOOL JGSKeyboardNumberPadRandom = YES;
 FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
@@ -116,8 +117,9 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
         
         if (lineIdx == 3) {
             
-            // switch
-            JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleSymbols frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
+            // 小数点/身份证X
+            NSString *keyText = self.type == JGSKeyboardTypeIDCard ? @"X" : @".";
+            JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:keyText frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
             [tmpKeys addObject:symbolBtn];
             
             // delete

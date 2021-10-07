@@ -169,6 +169,7 @@
 #pragma mark - Base64
 - (NSData *)jg_base64EncodeData {
     
+    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
     if ([self isKindOfClass:[NSData class]]) {
         
         return [(NSData *)self base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
@@ -184,6 +185,7 @@
 
 - (NSString *)jg_base64EncodeString {
     
+    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
     if ([self isKindOfClass:[NSData class]]) {
         
         return [(NSData *)self base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];

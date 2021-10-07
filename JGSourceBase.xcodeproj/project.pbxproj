@@ -13,6 +13,10 @@
 		D416DA0C2600E6870085C6AB /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA0A2600E6870085C6AB /* JGSDevice.m */; };
 		D416DA87260111670085C6AB /* JGSKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D416DA85260111670085C6AB /* JGSKeychainUtils.h */; };
 		D416DA88260111670085C6AB /* JGSKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D416DA86260111670085C6AB /* JGSKeychainUtils.m */; };
+		D4255470270EB2A0004011C4 /* JGSKeyboardToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = D425546E270EB2A0004011C4 /* JGSKeyboardToolbar.h */; };
+		D4255471270EB2A0004011C4 /* JGSKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D425546F270EB2A0004011C4 /* JGSKeyboardToolbar.m */; };
+		D4255474270EB316004011C4 /* JGSKeyboardConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D4255472270EB316004011C4 /* JGSKeyboardConstants.h */; };
+		D4255475270EB316004011C4 /* JGSKeyboardConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D4255473270EB316004011C4 /* JGSKeyboardConstants.m */; };
 		D425C1292701E4F800F65909 /* JGSAESEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C1272701E4F800F65909 /* JGSAESEncryption.h */; };
 		D425C12A2701E4F800F65909 /* JGSAESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C1282701E4F800F65909 /* JGSAESEncryption.m */; };
 		D425C12D2701E50900F65909 /* JGSRSAEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = D425C12B2701E50900F65909 /* JGSRSAEncryption.h */; };
@@ -95,6 +99,10 @@
 		D416DA0A2600E6870085C6AB /* JGSDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
 		D416DA85260111670085C6AB /* JGSKeychainUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeychainUtils.h; sourceTree = "<group>"; };
 		D416DA86260111670085C6AB /* JGSKeychainUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeychainUtils.m; sourceTree = "<group>"; };
+		D425546E270EB2A0004011C4 /* JGSKeyboardToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardToolbar.h; sourceTree = "<group>"; };
+		D425546F270EB2A0004011C4 /* JGSKeyboardToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardToolbar.m; sourceTree = "<group>"; };
+		D4255472270EB316004011C4 /* JGSKeyboardConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardConstants.h; sourceTree = "<group>"; };
+		D4255473270EB316004011C4 /* JGSKeyboardConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardConstants.m; sourceTree = "<group>"; };
 		D425C1252701E45900F65909 /* JGSDataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDataStorage.h; sourceTree = "<group>"; };
 		D425C1262701E4B100F65909 /* JGSEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSEncryption.h; sourceTree = "<group>"; };
 		D425C1272701E4F800F65909 /* JGSAESEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSAESEncryption.h; sourceTree = "<group>"; };
@@ -334,6 +342,10 @@
 			children = (
 				D4F3DAAF22F02B04002EF0F0 /* JGSBaseKeyboard.h */,
 				D4F3DAAA22F02B04002EF0F0 /* JGSBaseKeyboard.m */,
+				D4255472270EB316004011C4 /* JGSKeyboardConstants.h */,
+				D4255473270EB316004011C4 /* JGSKeyboardConstants.m */,
+				D425546E270EB2A0004011C4 /* JGSKeyboardToolbar.h */,
+				D425546F270EB2A0004011C4 /* JGSKeyboardToolbar.m */,
 				D4F3DAA922F02B04002EF0F0 /* JGSLetterKeyboard.h */,
 				D4F3DAAD22F02B04002EF0F0 /* JGSLetterKeyboard.m */,
 				D4F3DAAB22F02B04002EF0F0 /* JGSNumberKeyboard.h */,
@@ -391,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */,
+				D4255470270EB2A0004011C4 /* JGSKeyboardToolbar.h in Headers */,
 				D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */,
 				D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */,
 				D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */,
@@ -419,6 +432,7 @@
 				D4F3DADB22F02B05002EF0F0 /* JGSBaseKeyboard.h in Headers */,
 				D4F3DAD522F02B05002EF0F0 /* JGSLetterKeyboard.h in Headers */,
 				D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */,
+				D4255474270EB316004011C4 /* JGSKeyboardConstants.h in Headers */,
 				D4F3DACE22F02B05002EF0F0 /* JGSLoadingHUD.h in Headers */,
 				D4F3DACB22F02B05002EF0F0 /* JGSToast.h in Headers */,
 				D425C12D2701E50900F65909 /* JGSRSAEncryption.h in Headers */,
@@ -534,10 +548,12 @@
 				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
 				D416DA88260111670085C6AB /* JGSKeychainUtils.m in Sources */,
 				D4AD24DC26F08B3C0008AA3A /* UIAlertController+JGSBase.m in Sources */,
+				D4255471270EB2A0004011C4 /* JGSKeyboardToolbar.m in Sources */,
 				D4F3DAD922F02B05002EF0F0 /* JGSLetterKeyboard.m in Sources */,
 				D4F3DADF22F02B05002EF0F0 /* NSDate+JGSBase.m in Sources */,
 				D4F3DAD022F02B05002EF0F0 /* JGSLoadingHUD.m in Sources */,
 				D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */,
+				D4255475270EB316004011C4 /* JGSKeyboardConstants.m in Sources */,
 				D4F3DAD822F02B05002EF0F0 /* JGSSecurityKeyboard.m in Sources */,
 				D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */,
 				D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */,
