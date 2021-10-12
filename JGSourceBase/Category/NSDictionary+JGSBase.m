@@ -206,8 +206,11 @@
 
 - (BOOL)jg_boolForKey:(const id)key defaultValue:(BOOL)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.boolValue;
+    id obj = [self jg_objectForKey:key];
+    if (obj == nil) {
+        return NO;
+    }
+    return [obj respondsToSelector:@selector(boolValue)] ? [obj boolValue] : YES;
 }
 
 #pragma mark - CGFloat

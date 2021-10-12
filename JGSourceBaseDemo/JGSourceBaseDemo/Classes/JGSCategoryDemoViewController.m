@@ -65,12 +65,15 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         storeDictionary = @{
-                            @"NumberVale1": @"655381234567890",
-                            @"NumberVale2": @(1989.55),
-                            @"StringVale": @"AB090BA",
-                            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
-                            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
-                            };
+            //@"NumberVale1": @{@"key": @"v"},//@"655381234567890",
+            @"NumberVale1": @"true",//@"655381234567890",
+            //@"NumberVale1": @"NO",//@"655381234567890",
+            //@"NumberVale1": @"655381234567890",
+            @"NumberVale2": @(1989.55),
+            @"StringVale": @"AB090BA",
+            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
+            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
+        };
     });
     
     JGSEnableLogWithMode(JGSLogModeFunc);
