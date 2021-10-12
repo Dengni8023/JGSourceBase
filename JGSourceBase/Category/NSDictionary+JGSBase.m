@@ -208,9 +208,13 @@
     
     id obj = [self jg_objectForKey:key];
     if (obj == nil) {
-        return NO;
+        return defaultValue;
     }
-    return [obj respondsToSelector:@selector(boolValue)] ? [obj boolValue] : YES;
+    if ([obj respondsToSelector:@selector(boolValue)]) {
+        return [obj boolValue];
+    }
+    
+    return YES;
 }
 
 #pragma mark - CGFloat
