@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JGSReachability.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -84,6 +85,11 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (UIEdgeInsets)safeAreaInsets; // safeAreaInsets
 + (BOOL)isFullScreen; // 刘海屏（全面屏）判断
 + (BOOL)systemVersionBelow:(NSString *)cmp; // 判断手机系统版本是否低于某个版本
+
+#pragma mark - NetworkStatus
++ (BOOL)networkReachable;
++ (JGSReachabilityStatus)reachabilityStatus;
++ (NSString *)reachabilityStatusString;
 
 #pragma mark - 越狱检测
 + (BOOL)isSimulator;

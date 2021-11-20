@@ -89,7 +89,7 @@
     JGSLog(@"%@", tmp.jg_JSONString);
 #endif
     
-    sleep(1);
+    sleep(3);
     
     return YES;
 }

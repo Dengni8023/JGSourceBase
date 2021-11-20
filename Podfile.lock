@@ -13,15 +13,29 @@ PODS:
     - JGSourceBase/Reachability (= 1.2.1)
     - JGSourceBase/SecurityKeyboard (= 1.2.1)
   - JGSourceBase/AlertController (1.2.1):
-    - JGSourceBase/Category
+    - JGSourceBase/Category/UIAlertController
   - JGSourceBase/Base (1.2.1)
   - JGSourceBase/Category (1.2.1):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/Date (= 1.2.1)
+    - JGSourceBase/Category/Image (= 1.2.1)
+    - JGSourceBase/Category/Object (= 1.2.1)
+    - JGSourceBase/Category/UIAlertController (= 1.2.1)
+  - JGSourceBase/Category/Date (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/Image (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/Object (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIAlertController (1.2.1):
     - JGSourceBase/Base
   - JGSourceBase/DataStorage (1.2.1):
     - JGSourceBase/Category
   - JGSourceBase/Device (1.2.1):
     - JGSourceBase/DataStorage
+    - JGSourceBase/Reachability
   - JGSourceBase/Encryption (1.2.1):
+    - JGSourceBase/Base
     - JGSourceBase/Category
   - JGSourceBase/HUD (1.2.1):
     - JGSourceBase/Category
@@ -71,7 +85,7 @@ SPEC CHECKSUMS:
   AMapFoundation-NO-IDFA: 444163c19aa10720c3ecd57b1f071ecdfe0edead
   AMapLocation-NO-IDFA: 20aa76ba9c7f295a04ef99dfa5466523100d0dca
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: e620c6dcf5297b82a77966470b1062e868c3ab4e
+  JGSourceBase: 01a0923cae4ca803e2005a0b2b8bec172747d696
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 

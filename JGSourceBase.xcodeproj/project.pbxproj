@@ -198,6 +198,36 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D45F49DC2742A683009B920E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		D45F49DD2742A693009B920E /* Date */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		D45F49DE2742A69D009B920E /* Object */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		D45F49DF2742A6DA009B920E /* UIAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */,
+				D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */,
+			);
+			path = UIAlertController;
+			sourceTree = "<group>";
+		};
 		D477DA4025AD779C00BE1F9B /* MacFileHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +391,9 @@
 		D4F3DAB022F02B04002EF0F0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				D45F49DF2742A6DA009B920E /* UIAlertController */,
+				D45F49DD2742A693009B920E /* Date */,
+				D45F49DC2742A683009B920E /* Image */,
 				D4F3DAB122F02B05002EF0F0 /* JGSCategory.h */,
 				D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */,
 				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
@@ -372,8 +405,7 @@
 				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
 				D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */,
 				D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */,
-				D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */,
-				D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */,
+				D45F49DE2742A69D009B920E /* Object */,
 				D457A9722604BF6000833143 /* UIApplication+JGSBase.h */,
 				D457A9732604BF6000833143 /* UIApplication+JGSBase.m */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,

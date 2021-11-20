@@ -38,8 +38,8 @@ Pod::Spec.new do |spec|
         :ios => '10.0',
     }
     
-    # ss.deprecated = true # 该Pod已被废弃
-    # ss.deprecated_in_favor_of = 'xxxx' # 该Pod已被废弃，并推荐使用xxxx
+    # spec.deprecated = true # 该Pod已被废弃
+    # spec.deprecated_in_favor_of = 'xxxx' # 该Pod已被废弃，并推荐使用xxxx
     spec.source_files          = "JGSourceBase/*.{h,m}"
     spec.public_header_files   = "JGSourceBase/*.h"
 
@@ -56,15 +56,15 @@ Pod::Spec.new do |spec|
     ]
     
     # Base
-    spec.subspec 'Base' do |ss|
-        ss.source_files         = [
+    spec.subspec 'Base' do |sub|
+        sub.source_files         = [
             "JGSourceBase/Base/*.{h,m}",
         ]
-        ss.public_header_files  = [
+        sub.public_header_files  = [
             "JGSourceBase/Base/*.h",
         ]
         
-        ss.xcconfig     = {
+        sub.xcconfig     = {
             "OTHER_LDFLAGS" => '-ObjC',
             "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"'",
         }
@@ -72,138 +72,180 @@ Pod::Spec.new do |spec|
     end
     
     # AlertController
-    spec.subspec 'AlertController' do |ss|
-        ss.source_files    = [
+    spec.subspec 'AlertController' do |sub|
+        sub.source_files    = [
             "JGSourceBase/AlertController/*.{h,m}",
         ]
-        ss.public_header_files = [
+        sub.public_header_files = [
             "JGSourceBase/AlertController/*.h",
         ]
         
-        ss.dependency   "JGSourceBase/Category"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Category/UIAlertController"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_AlertController',
         }
     end
     
     # Category
-    spec.subspec 'Category' do |ss|
-        ss.source_files    = [
+    spec.subspec 'Category' do |sub|
+        sub.source_files    = [
             "JGSourceBase/Category/*.{h,m}",
         ]
-        ss.public_header_files = [
+        sub.public_header_files = [
             "JGSourceBase/Category/*.h",
         ]
         
-        ss.dependency   "JGSourceBase/Base"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Base"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Category',
         }
+        
+        sub.subspec 'UIAlertController' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/UIAlertController/*.{h,m}",
+            ]
+            
+            sub.public_header_files = [
+                "JGSourceBase/Category/UIAlertController/*.h",
+            ]
+        end
+        
+        sub.subspec 'Date' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/Date/*.{h,m}",
+            ]
+            
+            sub.public_header_files = [
+                "JGSourceBase/Category/Date/*.h",
+            ]
+        end
+        
+        sub.subspec 'Image' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/Image/*.{h,m}",
+            ]
+            
+            sub.public_header_files = [
+                "JGSourceBase/Category/Image/*.h",
+            ]
+        end
+        
+        sub.subspec 'Object' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/Object/*.{h,m}",
+            ]
+            
+            sub.public_header_files = [
+                "JGSourceBase/Category/Object/*.h",
+            ]
+        end
     end
     
     # DataStorage
-    spec.subspec 'DataStorage' do |ss|
-        ss.source_files    = [
+    spec.subspec 'DataStorage' do |sub|
+        sub.source_files    = [
             "JGSourceBase/DataStorage/*.{h,m}",
         ]
-        ss.public_header_files = [
+        sub.public_header_files = [
             "JGSourceBase/DataStorage/*.h",
         ]
         
-        ss.dependency   "JGSourceBase/Category"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Category"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_DataStorage',
         }
     end
     
     
     # Device
-    spec.subspec 'Device' do |ss|
-        ss.source_files    = [
+    spec.subspec 'Device' do |sub|
+        sub.source_files    = [
             "JGSourceBase/Device/*.{h,m}",
         ]
-        ss.public_header_files = [
+        sub.public_header_files = [
             "JGSourceBase/Device/*.h",
         ]
-        ss.resources    = [
+        sub.resources    = [
             "JGSourceBase/Device/Resources/*.json",
         ]
         
-        ss.dependency   "JGSourceBase/DataStorage"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/DataStorage"
+        sub.dependency   "JGSourceBase/Reachability"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Device',
         }
     end
     
     # Encryption
-    spec.subspec 'Encryption' do |ss|
-        ss.source_files    = [
+    spec.subspec 'Encryption' do |sub|
+        sub.source_files    = [
             "JGSourceBase/Encryption/*.{h,m}",
         ]
-        ss.public_header_files = [
+        sub.public_header_files = [
             "JGSourceBase/Encryption/*.h",
         ]
         
-        ss.dependency   "JGSourceBase/Category"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Base"
+        sub.dependency   "JGSourceBase/Category"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Encryption',
         }
     end
     
     # HUD
-    spec.subspec 'HUD' do |ss|
-        ss.source_files         = [
+    spec.subspec 'HUD' do |sub|
+        sub.source_files         = [
             "JGSourceBase/HUD/*.{h,m}",
         ]
-        ss.public_header_files  = [
+        sub.public_header_files  = [
             "JGSourceBase/HUD/*.h",
         ]
         
-        ss.dependency   'MBProgressHUD', '>= 1.2.0'
-        ss.dependency   "JGSourceBase/Category"
-        ss.xcconfig     = {
+        sub.dependency   'MBProgressHUD', '>= 1.2.0'
+        sub.dependency   "JGSourceBase/Category"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_HUD',
         }
         
         # LoadingHUD
-        ss.subspec 'LoadingHUD' do |sss|
-            sss.source_files    = [
+        sub.subspec 'LoadingHUD' do |subspec|
+            subspec.source_files    = [
                 "JGSourceBase/HUD/LoadingHUD/*.{h,m}",
             ]
-            sss.public_header_files = [
+            subspec.public_header_files = [
                 "JGSourceBase/HUD/LoadingHUD/*.h",
             ]
         end
         
         # ToastHUD
-        ss.subspec 'ToastHUD' do |sss|
-            sss.source_files    = [
+        sub.subspec 'ToastHUD' do |subspec|
+            subspec.source_files    = [
                 "JGSourceBase/HUD/ToastHUD/*.{h,m}",
             ]
-            sss.public_header_files = [
+            subspec.public_header_files = [
                 "JGSourceBase/HUD/ToastHUD/*.h",
             ]
         end
     end
     
     # Reachability
-    spec.subspec 'Reachability' do |ss|
-        ss.source_files         = "JGSourceBase/Reachability/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/Reachability/*.h"
+    spec.subspec 'Reachability' do |sub|
+        sub.source_files         = "JGSourceBase/Reachability/*.{h,m}"
+        sub.public_header_files  = "JGSourceBase/Reachability/*.h"
         
-        ss.dependency   "JGSourceBase/Base"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Base"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
         }
     end
     
     # SecurityKeyboard
-    spec.subspec 'SecurityKeyboard' do |ss|
-        ss.source_files         = "JGSourceBase/SecurityKeyboard/*.{h,m}"
-        ss.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
+    spec.subspec 'SecurityKeyboard' do |sub|
+        sub.source_files         = "JGSourceBase/SecurityKeyboard/*.{h,m}"
+        sub.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
         
-        ss.dependency   "JGSourceBase/Category"
-        ss.xcconfig     = {
+        sub.dependency   "JGSourceBase/Category"
+        sub.xcconfig     = {
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_SecurityKeyboard',
         }
     end

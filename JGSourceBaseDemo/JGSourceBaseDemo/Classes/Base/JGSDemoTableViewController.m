@@ -59,8 +59,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 #ifdef JGS_Category
-        self.navigationController.navigationBar.tintColor = JGSColorHex(0xffffff);
-    self.navigationController.navigationBar.barTintColor =  JGSColorHexA(0x0B5CDA, 0.82);
+    self.navigationController.navigationBar.tintColor = JGSColorHex(0xffffff);
+    self.navigationController.navigationBar.barTintColor = JGSDemoNavigationBarColor;
 #endif
     
     // 切换日志输出方式

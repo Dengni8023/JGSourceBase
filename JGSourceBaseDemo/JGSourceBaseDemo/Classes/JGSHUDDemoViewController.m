@@ -26,8 +26,8 @@
                                     JGSDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
-                                    JGSDemoTableRowMakeSelector(@"Custom Image样式", @selector(showLoadingHUD:)),
-                                    JGSDemoTableRowMakeSelector(@"Custom Image样式 + Message", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式 + Message", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
@@ -84,16 +84,16 @@
             
         case 4: {
             
-            UIImage *hudImg = [UIImage imageNamed:@"LoadingHUD"];
-            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 30)];
+            UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(120, 120)];
             [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
             [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
         }
             break;
             
         case 5: {
-            UIImage *hudImg = [UIImage imageNamed:@"LoadingHUD"];
-            hudImg = [hudImg jg_imageScaleAspectFill:CGSizeMake(60, 30)];
+            UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(120, 60)];
             [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
             [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Image:JGSHUDTypeCustomView"];
         }

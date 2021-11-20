@@ -12,6 +12,7 @@
 #import "JGSHUDDemoViewController.h"
 #import "JGSKeyboardDemoViewController.h"
 #import "JGSEncryptionDemoViewController.h"
+#import <AdSupport/ASIdentifierManager.h>
 
 @interface ViewController ()
 
@@ -48,6 +49,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    JGSLog(@"IDFA: %@", idfa);
 }
 
 - (void)didReceiveMemoryWarning {
