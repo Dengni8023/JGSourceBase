@@ -238,7 +238,7 @@ static NSPointerArray *JGSLoadingHUDStack = nil;
 }
 
 - (void)drawRect:(CGRect)rect {
-//    [super drawRect:rect];
+    //[super drawRect:rect];
     
     self.progress += 0.1;
     while (self.progress > M_PI * 2) {

@@ -61,17 +61,15 @@
     printf("%d\n", [JGSDevice isSimulator]);
     
     JGSLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
-    //dispatch_async(dispatch_get_main_queue(), ^{
-    //    JGSLog(@"%@", [JGSDevice idfa]);
-    //});
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //    JGSLog(@"%@", [JGSDevice idfa]);
-    //});
     JGSLog(@"%@", [JGSDevice appInfo]);
     //JGSLog(@"%@", [JGSDevice deviceInfo]);
     JGSLog(@"%@", [JGSDevice deviceMachine]);
     JGSLog(@"%@", [JGSDevice deviceModel]);
     JGSLog(@"%@", [JGSDevice appUserAgent]);
+    //dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    JGSLog(@"%@", [JGSDevice idfa]);
+    //});
 #endif
     
 #pragma mark - Dictionary
@@ -89,7 +87,7 @@
     JGSLog(@"%@", tmp.jg_JSONString);
 #endif
     
-    sleep(3);
+    //sleep(3);
     
     return YES;
 }
@@ -114,6 +112,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    static NSInteger times = 0;
+    JGSConsoleLogWithNSLog(times++ % 3 == 2);
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    // iOS 15不弹窗问题，位置修改到此处
+    //dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    JGSLog(@"%@", [JGSDevice idfa]);
+    //    JGSLog(@"%@", [JGSDevice idfa]);
+    //});
 }
 
 

@@ -18,9 +18,11 @@
     dispatch_once(&onceToken, ^{
         Class class = NSClassFromString(@"__NSSingleEntryDictionaryI");
         NSArray<NSString *> *originalArray = @[
-            NSStringFromSelector(@selector(objectForKey:)),
-            NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
-            NSStringFromSelector(@selector(valueForKey:))
+            // 为避免影响其他功能，取值方法不做默认交换
+            // 其他功能可能存在获取NSNull对象，并针对NSNull的情况做不同处理
+            //NSStringFromSelector(@selector(objectForKey:)),
+            //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
+            //NSStringFromSelector(@selector(valueForKey:))
         ];
         //Class class = NSClassFromString(@"__NSPlaceholderDictionary");
         //NSArray<NSString *> *originalArray = @[
@@ -314,6 +316,8 @@
         NSArray<NSString *> *originalArray = @[
             NSStringFromSelector(@selector(setObject:forKey:)),
             NSStringFromSelector(@selector(setObject:forKeyedSubscript:)), // subscripting字面量方法
+            // 为避免影响其他功能，取值方法不做默认交换
+            // 其他功能可能存在设置、获取NSNull对象，并针对NSNull的情况做不同处理
             //NSStringFromSelector(@selector(objectForKey:)),
             //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
             //NSStringFromSelector(@selector(valueForKey:))

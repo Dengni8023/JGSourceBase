@@ -207,30 +207,32 @@
 
 + (NSString *)idfa {
     
+    if ([self isSimulator]) {
+        return nil;
+    }
+    
     static NSString *deviceIDFA = nil;
+    if (deviceIDFA.length > 0) {
+        return deviceIDFA;
+    }
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
-        if ([self isSimulator]) {
-            deviceIDFA = nil;
-        }
         
         deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         
         // iOS14获取idfa需要申请权限，否则其他系统权限发生变化时，获取的idfa也会变化
-        // Privacy - Tracking Usage Description
-        NSString *trackDes = [NSBundle mainBundle].infoDictionary[@"NSUserTrackingUsageDescription"];
-        if (trackDes.length > 0) {
-            if (@available(iOS 14.0, *)) {
-                ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
-                if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
-                    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
-                    [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                        deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-                        dispatch_semaphore_signal(semaphore);   //发送信号
-                    }];
-                    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待
-                }
+        if (@available(iOS 14.0, *)) {
+            // Privacy - Tracking Usage Description
+            NSString *trackDes = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSUserTrackingUsageDescription"];
+            if (trackDes.length > 0 && [ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+                dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); // 创建信号量
+                // iOS 15及以后在applicationDidBecomeActive之前，request弹窗不显示
+                [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                    deviceIDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+                    dispatch_semaphore_signal(semaphore); // 发送信号
+                }];
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  // 等待
             }
         }
         
@@ -240,6 +242,17 @@
             deviceIDFA = nil;
         }
     });
+    
+    if (deviceIDFA.length == 0) {
+        if (@available(iOS 14.0, *)) {
+            NSString *trackDes = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSUserTrackingUsageDescription"];
+            if (trackDes.length > 0 && [ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+                // idfa无效时保证下次能够再次进入request弹窗逻辑
+                // 因iOS 15及以后在applicationDidBecomeActive之前，request弹窗不显示
+                onceToken = 0;
+            }
+        }
+    }
     
     return deviceIDFA;
 }

@@ -61,8 +61,11 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (NSDictionary<NSString *, id> *)deviceInfo;
 
 /// 获取IDFA广告标示
+/// iOS 15前系统：
 /// 如在Info中设置了 NSUserTrackingUsageDescription 字段，请不要在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，以免跟踪弹窗无法弹出导致卡死
 /// 如必须在应用启动 application:didFinishLaunchingWithOptions 方法中直接调用，请使用异步/或延时处理（延时可为0）
+/// iOS 15及之后系统：
+/// 必须在应用启动后 applicationDidBecomeActive: 方法中或方法执行之后调用，否则权限弹窗不展示
 + (nullable NSString *)idfa;
 /// 获取iphone手机的设备编号
 + (NSString *)deviceId;

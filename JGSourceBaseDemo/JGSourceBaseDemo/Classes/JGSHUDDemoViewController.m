@@ -19,21 +19,32 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
-        // Section 全屏Loading HUD
-        JGSDemoTableSectionMake(@" 全屏Loading HUD",
+        // Section 全屏Loading
+        JGSDemoTableSectionMake(@" 全屏Loading",
                                 @[
                                     JGSDemoTableRowMakeSelector(@"Default样式", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Default样式 + Message", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Indicator样式", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Indicator样式 + Message", @selector(showLoadingHUD:)),
-                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式", @selector(showLoadingHUD:)),
-                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式 + Message", @selector(showLoadingHUD:)),
+                                ]),
+        // Section 全屏Loading-Custom
+        JGSDemoTableSectionMake(@" 全屏Loading-Custom",
+                                @[
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Spinning样式 + Message_Short", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Icon 样式 + Message", @selector(showLoadingHUD:)),
                                 ]),
-        // Section 全屏Toast HUD
-        JGSDemoTableSectionMake(@" 全屏Toast HUD",
+        // Section 全屏Loading-Custom
+        JGSDemoTableSectionMake(@" 全屏Loading-无边框",
+                                @[
+                                    JGSDemoTableRowMakeSelector(@"Default 无边框", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Indicator 无边框", @selector(showLoadingHUD:)),
+                                    JGSDemoTableRowMakeSelector(@"Custom Icon 无边框", @selector(showLoadingHUD:)),
+                                ]),
+        // Section 全屏Toast
+        JGSDemoTableSectionMake(@" 全屏Toast",
                                 @[
                                     JGSDemoTableRowMakeSelector(@"Default样式", @selector(showToastHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Top样式", @selector(showToastHUD:)),
@@ -60,63 +71,115 @@
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
     JGSEnableLogWithMode(JGSLogModeFunc);
-    NSInteger rowIndex = indexPath.row;
-    switch (rowIndex) {
+    switch (indexPath.section) {
         case 0: {
-            [JGSLoadingHUD showLoadingHUD];
+            switch (indexPath.row) {
+                case 0: {
+                    [JGSLoadingHUD showLoadingHUD];
+                }
+                    break;
+                    
+                case 1: {
+                    [JGSLoadingHUD showLoadingHUD:@"加载中..."];
+                }
+                    break;
+                    
+                case 2: {
+                    [JGSLoadingHUD showIndicatorLoadingHUD];
+                }
+                    break;
+                    
+                case 3: {
+                    [JGSLoadingHUD showIndicatorLoadingHUD:@"加载中..."];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
             break;
             
         case 1: {
-            [JGSLoadingHUD showLoadingHUD:@"加载中..."];
+            switch (indexPath.row) {
+                case 0: {
+                    static BOOL show = NO; show = !show;
+                    [JGSLoadingHUDStyle sharedStyle].spinningShadow = show;
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:nil];
+                }
+                    break;
+                    
+                case 1: {
+                    static BOOL show = NO; show = !show;
+                    [JGSLoadingHUDStyle sharedStyle].spinningLineWidth = show ? 2.f : 4.f;
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUDTypeSpinningCircle"];
+                }
+                    break;
+                    
+                case 2: {
+                    static BOOL show = NO; show = !show;
+                    [JGSLoadingHUDStyle sharedStyle].spinningLineColor = show ? JGSColorRGB(128, 100, 72) : nil;
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUD"];
+                }
+                    break;
+                    
+                case 3: {
+                    
+                    UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+                    hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+                    [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
+                }
+                    break;
+                    
+                case 4: {
+                    UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+                    hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+                    [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Loading..."];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
             break;
             
         case 2: {
-            [JGSLoadingHUD showIndicatorLoadingHUD];
-        }
-            break;
-            
-        case 3: {
-            [JGSLoadingHUD showIndicatorLoadingHUD:@"加载中..."];
-        }
-            break;
-            
-        case 4: {
-            
-            UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(120, 120)];
-            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
-            [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
-        }
-            break;
-            
-        case 5: {
-            UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-            hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(120, 60)];
-            [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
-            [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Image:JGSHUDTypeCustomView"];
-        }
-            break;
-            
-        case 6: {
-            static BOOL show = NO; show = !show;
-            [JGSLoadingHUDStyle sharedStyle].spinningShadow = show;
-            [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:nil];
-        }
-            break;
-            
-        case 7: {
-            static BOOL show = NO; show = !show;
-            [JGSLoadingHUDStyle sharedStyle].spinningLineWidth = show ? 2.f : 4.f;
-            [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUDTypeSpinningCircle"];
-        }
-            break;
-            
-        case 8: {
-            static BOOL show = NO; show = !show;
-            [JGSLoadingHUDStyle sharedStyle].spinningLineColor = show ? JGSColorRGB(128, 100, 72) : nil;
-            [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUD"];
+            switch (indexPath.row) {
+                case 0: {
+                    static BOOL show = NO; show = !show;
+                    [JGSLoadingHUDStyle sharedStyle].spinningShadow = show;
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:nil];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = nil; // 还原设置
+                }
+                    break;
+                    
+                case 1: {
+                    static BOOL show = NO; show = !show;
+                    [JGSLoadingHUDStyle sharedStyle].spinningLineWidth = show ? 2.f : 4.f;
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeIndicator message:nil];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = nil; // 还原设置
+                }
+                    break;
+                    
+                case 2: {
+                    static BOOL show = NO; show = !show;
+                    UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+                    hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+                    [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = nil; // 还原设置
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
             break;
             

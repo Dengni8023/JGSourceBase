@@ -43,7 +43,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
                 JGSLogWithFormat((@"%@ " fmt ""), lvStr, ##__VA_ARGS__); \
                 break; \
             case JGSLogModeFunc:\
-                JGSLogWithFormat((@"%@ %s Line:%@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
+                JGSLogWithFormat((@"%@ %s Line: %@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
                 break; \
             case JGSLogModeFile: { \
                 NSString *file = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \

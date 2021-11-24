@@ -38,7 +38,6 @@
     [[JGSReachability sharedInstance] startMonitor];
     [[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
         
-        JGSEnableLogWithMode(JGSLogModeFunc);
         JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
     }];
 #endif
@@ -62,9 +61,6 @@
     self.navigationController.navigationBar.tintColor = JGSColorHex(0xffffff);
     self.navigationController.navigationBar.barTintColor = JGSDemoNavigationBarColor;
 #endif
-    
-    // 切换日志输出方式
-    JGSConsoleLogWithNSLog(!JGSConsoleWithNSLog);
     
 #ifdef JGS_Reachability
     JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
