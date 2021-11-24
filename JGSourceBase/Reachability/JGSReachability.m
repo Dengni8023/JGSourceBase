@@ -321,11 +321,11 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
     JGSWWANType type = JGSWWANTypeUnknown;
     if (self.reachableViaWWAN) {
         
-        static NSDictionary *wwanInfoDict = nil;
+        static NSDictionary<NSString *, NSNumber *> *wwanInfoDict = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             
-            NSMutableDictionary *tmp = @{
+            NSMutableDictionary<NSString *, NSNumber *> *tmp = @{
                 CTRadioAccessTechnologyGPRS: @(JGSWWANTypeGPRS), // GPRS网络
                 CTRadioAccessTechnologyEdge: @(JGSWWANType2G), // EDGE为GPRS到第三代移动通信的过渡，EDGE俗称2.75G
                 CTRadioAccessTechnologyWCDMA: @(JGSWWANType3G), // 3G WCDMA网络
@@ -379,30 +379,26 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
             break;
             
         case JGSReachabilityStatusViaWWAN: {
-            switch (self.WWANType) {
-                case JGSWWANTypeUnknown:
-                    statusStr = @"Mobile";
-                    break;
-                    
-                case JGSWWANTypeGPRS:
-                    statusStr = @"GPRS";
-                    break;
-                    
-                case JGSWWANType2G:
-                    statusStr = @"2G";
-                    break;
-                    
-                case JGSWWANType3G:
-                    statusStr = @"3G";
-                    break;
-                    
-                case JGSWWANType4G:
-                    statusStr = @"4G";
-                    break;
-                    
-                case JGSWWANType5G:
-                    statusStr = @"5G";
-                    break;
+            
+            static NSDictionary<NSNumber *, NSString *> *wwanInfoDict = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                
+                wwanInfoDict = @{
+                    @(JGSWWANTypeUnknown): @"Mobile",
+                    @(JGSWWANTypeGPRS): @"GPRS",
+                    @(JGSWWANType2G): @"2G",
+                    @(JGSWWANType3G): @"3G",
+                    @(JGSWWANType4G): @"4G",
+                    @(JGSWWANType5G): @"5G",
+                };
+            });
+            
+            if ([wwanInfoDict.allKeys containsObject:@(self.WWANType)]) {
+                statusStr = wwanInfoDict[@(self.WWANType)];
+            }
+            else {
+                statusStr = wwanInfoDict[@(JGSWWANTypeUnknown)];
             }
         }
             break;
