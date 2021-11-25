@@ -13,8 +13,6 @@
 #import "JGSKeyboardDemoViewController.h"
 #import "JGSEncryptionDemoViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
-#import <EventKit/EventKit.h>
-#import <EventKitUI/EventKitUI.h>
 
 @interface ViewController ()
 
@@ -65,90 +63,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)eventTest:(EKEventStore *)store {
-
-    EKEvent *event = [EKEvent eventWithEventStore:store];
-    event.title = @"这是一个 title";
-    event.location = @"这是一个 location";
-    event.notes = @"这是一个 notes";
-    event.URL = [NSURL URLWithString:@"tpybxsit://app"];
-
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-
-    NSDate *date = [formatter dateFromString:@"2021-11-25 18:00:00"];
-
-    // 提前一个小时开始
-    NSDate *startDate = [NSDate dateWithTimeInterval:-1800 sinceDate:date];
-    // 提前一分钟结束
-    NSDate *endDate = [NSDate dateWithTimeInterval:60 sinceDate:date];
-    
-    event.startDate = startDate;
-    event.endDate = endDate;
-    event.allDay = NO;
-    [event setCalendar:[store defaultCalendarForNewEvents]];
-    
-    // 添加闹钟结合（开始前多少秒）若为正则是开始后多少秒。
-    NSInteger sec = -20 * 60;
-    while (sec < 2 * 60) {
-
-        EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:sec];
-        [event addAlarm:alarm];
-        // 每两分钟提示一次
-        sec += 1 * 60;
-    }
-    
-    NSError *error = nil;
-    [store saveEvent:event span:EKSpanThisEvent error:&error];
-
-    if (!error) {
-        JGSLog(@"添加时间成功");
-        //添加成功后需要保存日历关键字
-        NSString *iden = event.eventIdentifier;
-        // 保存在沙盒，避免重复添加等其他判断
-        [[NSUserDefaults standardUserDefaults] setObject:iden forKey:@"my_eventIdentifier"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    else {
-        JGSLog(@"添加时间失败:%@",error);
-    }
-}
-
 #pragma mark - Action
 - (void)showLogModeList {
     
-    // 第一步
-    // 生成事件数据库对象
-    EKEventStore *store = [[EKEventStore alloc] init];
-    
-    // 第二步
-    // 申请事件类型权限
-    // EKEntityTypeEvent 事件类型
-    // EKEntityTypeReminder 提醒类型
     JGSWeakSelf
-    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
-        
-        JGSStrongSelf
-        // 第三步
-        // 判断时间类型权限结果，有权限情况下，去创建事件
-        if (error) {
-            JGSLog(@"error: %@", error);
-            return;
-        }
-        else if (!granted) {
-            JGSLog(@"No permission !");
-            return;
-        }
-        
-        JGSWeakSelf
-        dispatch_async(dispatch_get_main_queue(), ^{
-            JGSStrongSelf
-            [self eventTest:store];
-        });
-    }];
-    return;
-    
-//    JGSWeakSelf
     NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
     [UIAlertController jg_actionSheetWithTitle:@"选择日志类型" cancel:@"取消" others:types action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
         
