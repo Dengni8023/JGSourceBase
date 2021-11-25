@@ -9,6 +9,10 @@
 #ifndef JGSEncryption_h
 #define JGSEncryption_h
 
+#ifndef JGS_Encryption
+#define JGS_Encryption
+#endif
+
 #import "JGSAESEncryption.h"
 #import "JGSCommonEncryption.h"
 #import "JGSRSAEncryption.h"

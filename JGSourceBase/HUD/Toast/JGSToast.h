@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "UIView+JGSToast.h"
 
+#ifndef JGS_HUD_Toast
+#define JGS_HUD_Toast
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**

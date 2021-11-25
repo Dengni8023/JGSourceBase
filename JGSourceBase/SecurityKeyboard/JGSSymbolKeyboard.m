@@ -6,11 +6,10 @@
 //
 
 #import "JGSSymbolKeyboard.h"
-#import "JGSourceBase.h"
+#import "JGSBase.h"
 
 BOOL JGSKeyboardSymbolFullAngle = NO;
 FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
-    JGSLog(@"字符键盘支持全角：%@", @(enable));
     JGSKeyboardSymbolFullAngle = enable;
 }
 

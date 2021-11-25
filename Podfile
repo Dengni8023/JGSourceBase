@@ -22,10 +22,40 @@ target "JGSourceBaseDemo" do
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
   
   # Local
-  pod 'JGSourceBase', :path => "."
+  # pod 'JGSourceBase', :path => "."
+  # pod 'JGSourceBase/Category/UIAlertController', :path => "."
   # pod 'JGSourceBase/HUD', :path => "."
+  # pod 'JGSourceBase/Reachability', :path => "."
   pod 'JGSourceBase', :path => ".", :subspecs => [
-       'HUD',
+    # AlertController测试
+    # 'AlertController',
+    'Category/UIAlertController',
+
+    # Base测试
+    # 'Base',
+
+    # Category测试
+    # 'Category',
+    
+    # Device测试
+    'Device',
+    
+    # HUD测试
+    'HUD',
+    'Category/UIImage',
+    
+    # HUD-Loading测试
+    # 'HUD/Loading',
+    # 'Category/UIImage',
+    
+    # HUD-Toast测试
+    # 'HUD/Toast',
+    
+    # Reachability测试
+    'Reachability',
+
+    # SecurityKeyboard测试
+    'SecurityKeyboard',
   ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃

@@ -8,6 +8,10 @@
 #ifndef JGSCategory_h
 #define JGSCategory_h
 
+#ifndef JGS_Category
+#define JGS_Category
+#endif
+
 #import "NSDate+JGSBase.h"
 #import "NSDictionary+JGSBase.h"
 #import "NSObject+JGSBase.h"

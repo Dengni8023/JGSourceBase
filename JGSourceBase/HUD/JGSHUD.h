@@ -8,6 +8,10 @@
 #ifndef JGSHUD_h
 #define JGSHUD_h
 
+#ifndef JGS_HUD
+#define JGS_HUD
+#endif
+
 #import "JGSLoadingHUD.h"
 #import "JGSToast.h"
 

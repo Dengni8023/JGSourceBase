@@ -7,8 +7,9 @@
 //
 
 #import "JGSKeyboardDemoViewController.h"
+#import <Masonry/Masonry.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
-#ifdef JGS_SecurityKeyboard
 @interface JGSKeyboardDemoViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *normalInput;
@@ -20,6 +21,7 @@
 
 @implementation JGSKeyboardDemoViewController
 
+#ifdef JGS_SecurityKeyboard
 #pragma mark - Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,13 +45,14 @@
 #pragma mark - View
 - (void)addViewElements {
     
-    static NSInteger accountInputShow = 0;
     NSMutableArray<UITextField *> *fields = @[].mutableCopy;
     for (NSInteger i = 0; i < 6; i++) {
         
         UITextField *field = [[UITextField alloc] init];
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
         field.returnKeyType = (i == 2 ? UIReturnKeyDone : UIReturnKeyNext);
+        field.keyboardType = UIKeyboardTypeDefault;
+        field.placeholder = [NSString stringWithFormat:@"系统键盘输入-%@", @(i)];
         field.delegate = self;
         field.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
         field.layer.borderWidth = 1.f / [UIScreen mainScreen].scale;
@@ -72,9 +75,9 @@
     
     // 键盘设置
     self.normalInput = fields[0];
-    self.normalInput.placeholder = @"系统键盘输入";
-    self.normalInput.keyboardType = UIKeyboardTypeDefault;
-
+    
+    // 安全键盘设置
+    static NSInteger accountInputShow = 0;
     accountInputShow += 1;
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
@@ -129,15 +132,15 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]] && [(JGSSecurityKeyboard *)textField.inputView title].length > 0) {
-//        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        
         JGSLog(@"%@", textField.text);
         JGSLog(@"%@ -> (%@)", NSStringFromRange(range), string);
     }
@@ -146,9 +149,11 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
         [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     }
+    
     return YES;
 }
 
@@ -168,6 +173,6 @@
     return YES;
 }
 
-@end
-
 #endif
+
+@end

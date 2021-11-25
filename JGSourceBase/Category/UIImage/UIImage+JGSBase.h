@@ -8,6 +8,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreMedia/CoreMedia.h>
 
+#ifndef JGS_Category_UIImage
+#define JGS_Category_UIImage
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (JGSBase)

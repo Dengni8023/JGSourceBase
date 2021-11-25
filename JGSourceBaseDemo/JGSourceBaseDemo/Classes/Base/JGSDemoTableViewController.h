@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "JGSDemoTableData.h"
-#import <JGSourceBase/JGSourceBase.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
-#import <Masonry/Masonry.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

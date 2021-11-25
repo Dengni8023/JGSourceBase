@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "JGSReachability.h"
 
+#ifndef JGS_Device
+#define JGS_Device
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(uint, JGSDeviceJailbroken) {
@@ -67,7 +71,7 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 /// iOS 15及之后系统：
 /// 必须在应用启动后 applicationDidBecomeActive: 方法中或方法执行之后调用，否则权限弹窗不展示
 + (nullable NSString *)idfa;
-/// 获取iphone手机的设备编号
+/// 获取iphone手机的设备编号，idfa > idfv > 应用启动后随机生成
 + (NSString *)deviceId;
 /// 获取iphone手机的操作系统名称
 + (NSString *)systemName;
@@ -83,7 +87,7 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 + (NSString *)deviceModel;
 
 + (NSString *)ipAddress:(BOOL)preferIPv4; // 获取设备IP地址
-+ (NSString *)macAddress DEPRECATED_MSG_ATTRIBUTE("iOS 7之后禁止获取设备Mac地址，所有设备返回相同值");
++ (NSString *)macAddress API_DEPRECATED("iOS 7之后禁止获取设备Mac地址，所有设备返回相同值", ios(3.0, 7.0));
 
 + (UIEdgeInsets)safeAreaInsets; // safeAreaInsets
 + (BOOL)isFullScreen; // 刘海屏（全面屏）判断

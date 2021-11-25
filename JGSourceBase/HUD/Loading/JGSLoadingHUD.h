@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "UIView+JGSLoadingHUD.h"
 
+#ifndef JGS_HUD_Loading
+#define JGS_HUD_Loading
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSLoadingHUD : NSObject

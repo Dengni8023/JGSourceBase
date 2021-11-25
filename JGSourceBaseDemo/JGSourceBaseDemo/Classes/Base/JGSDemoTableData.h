@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JGSourceBase/JGSourceBase.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

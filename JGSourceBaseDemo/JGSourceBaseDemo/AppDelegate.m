@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "JGSDemoNavigationController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -45,6 +46,7 @@
         keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
     });
     
+#ifdef JGS_Category
 #pragma mark - URL
     NSString *urlStr = @"tpybxsit://m.baidu.com/s?from=1000539d&word=%E8%92%9C%E8%93%89%E8%99%BE%E7%9A%84%E5%81%9A%E6%B3%95";
     NSURL *URL = urlStr.jg_URL;
@@ -53,6 +55,7 @@
     urlStr = @"tpybxsit://m.baidu.com/s%3Ffrom=1000539d&word=蒜蓉虾的做法";
     URL = urlStr.jg_URL;
     JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+#endif
     
 #pragma mark - Device
 #ifdef JGS_Device
@@ -115,10 +118,13 @@
     static NSInteger times = 0;
     JGSConsoleLogWithNSLog(times++ % 3 == 2);
     JGSEnableLogWithMode(JGSLogModeFunc);
+#ifdef JGS_Device
     // iOS 15不弹窗问题，位置修改到此处
     //dispatch_async(dispatch_get_main_queue(), ^{
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    JGSLog(@"%@", [JGSDevice idfa]);
+    JGSLog(@"idfa: %@", [JGSDevice idfa]);
+    JGSLog(@"deviceId: %@", [JGSDevice deviceId]);
+#endif
     //    JGSLog(@"%@", [JGSDevice idfa]);
     //});
 }

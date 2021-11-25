@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertController+JGSBase.h"
-#import "JGSourceBase.h"
+#import "JGSBase.h"
 #import <objc/runtime.h>
 
 @implementation UIAlertController (JGSBase)

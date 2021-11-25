@@ -27,6 +27,7 @@
 		D425C1362701E61A00F65909 /* JGSUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D425C1342701E61A00F65909 /* JGSUserDefaults.m */; };
 		D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D457A9722604BF6000833143 /* UIApplication+JGSBase.h */; };
 		D457A9752604BF6000833143 /* UIApplication+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D457A9732604BF6000833143 /* UIApplication+JGSBase.m */; };
+		D46EEA5E274FBA1D00E93B5B /* JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D46EEA5D274FBA1D00E93B5B /* JGSBase.h */; };
 		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
 		D49BD7D626F24E61005C3AED /* NSURL+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */; };
 		D49BD7D726F24E61005C3AED /* NSURL+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */; };
@@ -43,7 +44,6 @@
 		D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC422F02B05002EF0F0 /* JGSLogFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC522F02B05002EF0F0 /* JGSBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */; };
-		D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA9722F02B04002EF0F0 /* JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC822F02B05002EF0F0 /* JGSLogFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */; };
 		D4F3DAC922F02B05002EF0F0 /* JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */; };
 		D4F3DACA22F02B05002EF0F0 /* UIView+JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */; };
@@ -115,6 +115,7 @@
 		D425C1342701E61A00F65909 /* JGSUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSUserDefaults.m; sourceTree = "<group>"; };
 		D457A9722604BF6000833143 /* UIApplication+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JGSBase.h"; sourceTree = "<group>"; };
 		D457A9732604BF6000833143 /* UIApplication+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JGSBase.m"; sourceTree = "<group>"; };
+		D46EEA5D274FBA1D00E93B5B /* JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
 		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+JGSBase.h"; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSWeakStrong.h; sourceTree = "<group>"; };
 		D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLogFunction.h; sourceTree = "<group>"; };
 		D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseUtils.m; sourceTree = "<group>"; };
-		D4F3DA9722F02B04002EF0F0 /* JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
 		D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLogFunction.m; sourceTree = "<group>"; };
 		D4F3DA9B22F02B04002EF0F0 /* JGSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSToast.m; sourceTree = "<group>"; };
 		D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JGSToast.m"; sourceTree = "<group>"; };
@@ -357,7 +357,6 @@
 				D49BD78626F0FCB8005C3AED /* Encryption */,
 				D4F3DA9922F02B04002EF0F0 /* HUD */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
-				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
 				D4F3DA8D22F02B04002EF0F0 /* Reachability */,
 				D4F3DAA522F02B04002EF0F0 /* SecurityKeyboard */,
 			);
@@ -376,11 +375,12 @@
 		D4F3DA9022F02B04002EF0F0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				D4F3DA9722F02B04002EF0F0 /* JGSBase.h */,
+				D46EEA5D274FBA1D00E93B5B /* JGSBase.h */,
 				D4F3DA9122F02B04002EF0F0 /* JGSBaseUtils.h */,
 				D4F3DA9522F02B04002EF0F0 /* JGSBaseUtils.m */,
 				D4F3DA9422F02B04002EF0F0 /* JGSLogFunction.h */,
 				D4F3DA9822F02B04002EF0F0 /* JGSLogFunction.m */,
+				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
 				D4F3DA9222F02B04002EF0F0 /* JGSWeakStrong.h */,
 			);
 			path = Base;
@@ -390,13 +390,13 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA9F22F02B04002EF0F0 /* JGSHUD.h */,
-				D4F3DAA022F02B04002EF0F0 /* LoadingHUD */,
-				D4F3DA9A22F02B04002EF0F0 /* ToastHUD */,
+				D4F3DAA022F02B04002EF0F0 /* Loading */,
+				D4F3DA9A22F02B04002EF0F0 /* Toast */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
 		};
-		D4F3DA9A22F02B04002EF0F0 /* ToastHUD */ = {
+		D4F3DA9A22F02B04002EF0F0 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
 				D4F3DA9D22F02B04002EF0F0 /* JGSToast.h */,
@@ -404,10 +404,10 @@
 				D4F3DA9E22F02B04002EF0F0 /* UIView+JGSToast.h */,
 				D4F3DA9C22F02B04002EF0F0 /* UIView+JGSToast.m */,
 			);
-			path = ToastHUD;
+			path = Toast;
 			sourceTree = "<group>";
 		};
-		D4F3DAA022F02B04002EF0F0 /* LoadingHUD */ = {
+		D4F3DAA022F02B04002EF0F0 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
 				D4F3DAA122F02B04002EF0F0 /* JGSLoadingHUD.h */,
@@ -415,7 +415,7 @@
 				D4F3DAA422F02B04002EF0F0 /* UIView+JGSLoadingHUD.h */,
 				D4F3DAA222F02B04002EF0F0 /* UIView+JGSLoadingHUD.m */,
 			);
-			path = LoadingHUD;
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		D4F3DAA522F02B04002EF0F0 /* SecurityKeyboard */ = {
@@ -474,9 +474,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F3DAC722F02B05002EF0F0 /* JGSBase.h in Headers */,
 				D4255470270EB2A0004011C4 /* JGSKeyboardToolbar.h in Headers */,
 				D4F3DAD222F02B05002EF0F0 /* JGSSecurityKeyboard.h in Headers */,
+				D46EEA5E274FBA1D00E93B5B /* JGSBase.h in Headers */,
 				D4F3DAE422F02B05002EF0F0 /* NSDate+JGSBase.h in Headers */,
 				D4F3DADC22F02B05002EF0F0 /* JGSCategory.h in Headers */,
 				D416DA0B2600E6870085C6AB /* JGSDevice.h in Headers */,

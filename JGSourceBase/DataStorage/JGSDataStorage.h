@@ -9,6 +9,10 @@
 #ifndef JGSDataStorage_h
 #define JGSDataStorage_h
 
+#ifndef JGS_DataStorage
+#define JGS_DataStorage
+#endif
+
 #import "JGSKeychainUtils.h"
 
 #endif /* JGSDataStorage_h */

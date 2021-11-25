@@ -8,7 +8,7 @@
 
 #import "UIView+JGSLoadingHUD.h"
 #import "MBProgressHUD.h"
-#import "JGSCategory.h"
+#import "UIColor+JGSBase.h"
 
 @implementation JGSLoadingHUDStyle
 

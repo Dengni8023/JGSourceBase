@@ -8,7 +8,7 @@
 
 #import "JGSKeychainUtils.h"
 #import <Security/Security.h>
-#import "JGSourceBase.h"
+#import "JGSBase.h"
 
 @implementation JGSKeychainUtils
 

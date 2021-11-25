@@ -7,7 +7,8 @@
 //
 
 #import "JGSDevice.h"
-#import "JGSourceBase.h"
+#import "JGSBase.h"
+//#import "JGSKeychainUtils.h"
 #import <WebKit/WebKit.h>
 #import <AdSupport/ASIdentifierManager.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
@@ -265,13 +266,14 @@
         return deviceId;
     }
     
+    // 业务系统规则要求多样，此处不再读取存储内容
     // iOS14其他权限变化时会导致idfa变化，因此做存储
-    NSString *keychainDeviceIdKey = @"JGSourceBaseDeviceId";
-    deviceId = [JGSKeychainUtils readFromKeychain:keychainDeviceIdKey];
-    if (deviceId.length > 0) {
-        JGSLog(@"getDeviceId DeviceId Stored: %@", deviceId);
-        return deviceId;
-    }
+    //NSString *keychainDeviceIdKey = @"JGSourceBaseDeviceId";
+    //deviceId = [JGSKeychainUtils readFromKeychain:keychainDeviceIdKey];
+    //if (deviceId.length > 0) {
+    //    JGSLog(@"getDeviceId DeviceId Stored: %@", deviceId);
+    //    return deviceId;
+    //}
     
     // 获取idfa，idfa获取失败则使用idfv，idfv也获取失败，则使用随机UUID
     deviceId = [self idfa];
@@ -290,7 +292,8 @@
         JGSLog(@"getDeviceId DeviceId uuid: %@", deviceId);
     }
     
-    [JGSKeychainUtils saveToKeychain:deviceId forKey:keychainDeviceIdKey];
+    // 业务系统规则要求多样，此处不再存储
+    //[JGSKeychainUtils saveToKeychain:deviceId forKey:keychainDeviceIdKey];
     return deviceId;
 }
 

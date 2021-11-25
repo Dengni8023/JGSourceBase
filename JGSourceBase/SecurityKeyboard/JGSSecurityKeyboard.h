@@ -7,6 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+#ifndef JGS_SecurityKeyboard
+#define JGS_SecurityKeyboard
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSSecurityKeyboard : UIView

@@ -7,7 +7,6 @@
 //
 
 #import "JGSDemoNavigationController.h"
-#import <JGSourceBase/JGSourceBase.h>
 
 @interface JGSDemoNavigationController ()
 

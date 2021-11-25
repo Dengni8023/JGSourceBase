@@ -6,7 +6,7 @@
 //
 
 #import "JGSBaseKeyboard.h"
-#import "JGSourceBase.h"
+//#import "JGSourceBase.h"
 
 @interface JGSKeyboardKey () <UIGestureRecognizerDelegate>
 

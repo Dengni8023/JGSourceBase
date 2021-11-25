@@ -7,9 +7,23 @@
 //
 
 #import "JGSHUDDemoViewController.h"
-#import "JGSDemoTableData.h"
+#if __has_include(<JGSourceBase/JGSHUD.h>)
+#import <JGSourceBase/JGSHUD.h>
+#else
+#if __has_include(<JGSourceBase/JGSLoadingHUD.h>)
+#import <JGSourceBase/JGSLoadingHUD.h>
+#endif
+#if __has_include(<JGSourceBase/JGSToast.h>)
+#import <JGSourceBase/JGSToast.h>
+#endif
+#endif
+#if __has_include(<JGSourceBase/UIColor+JGSBase.h>)
+#import <JGSourceBase/UIColor+JGSBase.h>
+#endif
+#if __has_include(<JGSourceBase/UIImage+JGSBase.h>)
+#import <JGSourceBase/UIImage+JGSBase.h>
+#endif
 
-#ifdef JGS_HUD
 @interface JGSHUDDemoViewController ()
 
 @end
@@ -19,6 +33,7 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
+#ifdef JGS_HUD_Loading
         // Section 全屏Loading
         JGSDemoTableSectionMake(@" 全屏Loading",
                                 @[
@@ -43,6 +58,8 @@
                                     JGSDemoTableRowMakeSelector(@"Indicator 无边框", @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Custom Icon 无边框", @selector(showLoadingHUD:)),
                                 ]),
+#endif
+#ifdef JGS_HUD_Toast
         // Section 全屏Toast
         JGSDemoTableSectionMake(@" 全屏Toast",
                                 @[
@@ -52,6 +69,7 @@
                                     JGSDemoTableRowMakeSelector(@"Low样式", @selector(showToastHUD:)),
                                     JGSDemoTableRowMakeSelector(@"Bottom样式", @selector(showToastHUD:)),
                                 ]),
+#endif
     ];
 }
 
@@ -70,6 +88,7 @@
 #pragma mark - Action
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
+#ifdef JGS_HUD_Loading
     JGSEnableLogWithMode(JGSLogModeFunc);
     switch (indexPath.section) {
         case 0: {
@@ -126,7 +145,9 @@
                 case 3: {
                     
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+#ifdef JGS_Category_UIImage
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
                 }
@@ -134,7 +155,9 @@
                     
                 case 4: {
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+#ifdef JGS_Category_UIImage
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Loading..."];
                 }
@@ -169,7 +192,9 @@
                 case 2: {
                     static BOOL show = NO; show = !show;
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
+#ifdef JGS_Category
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
+#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
                     [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
@@ -192,10 +217,12 @@
         JGSStrongSelf
         [self.view jg_hideLoading];
     });
+#endif
 }
 
 - (void)showToastHUD:(NSIndexPath *)indexPath {
     
+#ifdef JGS_HUD_Toast
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
@@ -227,10 +254,9 @@
         default:
             break;
     }
+#endif
 }
 
 #pragma mark - End
 
 @end
-
-#endif

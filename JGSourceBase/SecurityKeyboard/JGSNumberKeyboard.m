@@ -6,11 +6,10 @@
 //
 
 #import "JGSNumberKeyboard.h"
-#import "JGSourceBase.h"
+#import "JGSBase.h"
 
 BOOL JGSKeyboardNumberPadRandom = YES;
 FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
-    JGSLog(@"数字键盘随机：%@", @(enable));
     JGSKeyboardNumberPadRandom = enable;
 }
 

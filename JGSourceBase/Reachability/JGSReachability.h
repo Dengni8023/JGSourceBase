@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef JGS_Reachability
+#define JGS_Reachability
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**

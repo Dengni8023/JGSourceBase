@@ -26,45 +26,58 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 // JG: 作者
 // S: SourceCode
 
+// Base
+#if __has_include(<JGSourceBase/JGSBase.h>)
+#import <JGSourceBase/JGSBase.h>
+#elif __has_include("JGSBase.h")
 #import "JGSBase.h"
-
-// Alert
-#ifdef JGS_AlertController
-#import "JGSAlertController.h" // Deprecated
-#import "UIViewController+JGSAlertController.h" // Deprecated
 #endif
 
 // Category
-#ifdef JGS_Category
+#if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/JGSCategory.h>
+#elif __has_include("JGSCategory.h")
 #import "JGSCategory.h"
 #endif
 
 // DataStorage
-#ifdef JGS_DataStorage
+#if __has_include(<JGSourceBase/JGSDataStorage.h>)
+#import <JGSourceBase/JGSDataStorage.h>
+#elif __has_include("JGSDataStorage.h")
 #import "JGSDataStorage.h"
 #endif
 
 // Device
-#ifdef JGS_Device
+#if __has_include(<JGSourceBase/JGSDevice.h>)
+#import <JGSourceBase/JGSDevice.h>
+#elif __has_include("JGSDevice.h")
 #import "JGSDevice.h"
 #endif
 
 // Encryption
-#ifdef JGS_Encryption
+#if __has_include(<JGSourceBase/JGSEncryption.h>)
+#import <JGSourceBase/JGSEncryption.h>
+#elif __has_include("JGSEncryption.h")
 #import "JGSEncryption.h"
 #endif
 
 // JGSHUD
-#ifdef JGS_HUD
+#if __has_include(<JGSourceBase/JGSHUD.h>)
+#import <JGSourceBase/JGSHUD.h>
+#elif __has_include("JGSHUD.h")
 #import "JGSHUD.h"
 #endif
 
 // JGSReachability
-#ifdef JGS_Reachability
+#if __has_include(<JGSourceBase/JGSReachability.h>)
+#import <JGSourceBase/JGSReachability.h>
+#elif __has_include("JGSReachability.h")
 #import "JGSReachability.h"
 #endif
 
 // JGSSecurityKeyboard
-#ifdef JGS_SecurityKeyboard
+#if __has_include(<JGSourceBase/JGSSecurityKeyboard.h>)
+#import <JGSourceBase/JGSSecurityKeyboard.h>
+#elif __has_include("JGSSecurityKeyboard.h")
 #import "JGSSecurityKeyboard.h"
 #endif

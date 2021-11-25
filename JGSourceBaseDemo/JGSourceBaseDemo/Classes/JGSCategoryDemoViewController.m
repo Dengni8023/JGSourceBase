@@ -7,7 +7,6 @@
 //
 
 #import "JGSCategoryDemoViewController.h"
-#import "JGSDemoTableData.h"
 
 #ifdef JGS_Category
 

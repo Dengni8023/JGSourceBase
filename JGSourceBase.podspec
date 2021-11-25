@@ -40,12 +40,12 @@ Pod::Spec.new do |spec|
     
     # spec.deprecated = true # 该Pod已被废弃
     # spec.deprecated_in_favor_of = 'xxxx' # 该Pod已被废弃，并推荐使用xxxx
-    spec.source_files          = "JGSourceBase/*.{h,m}"
-    spec.public_header_files   = "JGSourceBase/*.h"
+    # spec.source_files          = "JGSourceBase/*.{h,m}"
+    # spec.public_header_files   = "JGSourceBase/*.h"
 
     # subspec，不指定时默认安装所有subspec，用户可自行指定
     spec.default_subspecs = [
-        'AlertController',
+        #'AlertController', # Deprecated
         'Base',
         'Category',
         'DataStorage',
@@ -81,9 +81,6 @@ Pod::Spec.new do |spec|
         ]
         
         sub.dependency   "JGSourceBase/Category/UIAlertController"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_AlertController',
-        }
     end
     
     # Category
@@ -96,9 +93,6 @@ Pod::Spec.new do |spec|
         ]
         
         sub.dependency   "JGSourceBase/Base"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Category',
-        }
         
         sub.subspec 'NSDate' do |subspec|
             subspec.source_files    = [
@@ -200,12 +194,8 @@ Pod::Spec.new do |spec|
             "JGSourceBase/DataStorage/*.h",
         ]
         
-        sub.dependency   "JGSourceBase/Category"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_DataStorage',
-        }
+        sub.dependency   "JGSourceBase/Base"
     end
-    
     
     # Device
     spec.subspec 'Device' do |sub|
@@ -219,11 +209,7 @@ Pod::Spec.new do |spec|
             "JGSourceBase/Device/Resources/*.json",
         ]
         
-        sub.dependency   "JGSourceBase/DataStorage"
         sub.dependency   "JGSourceBase/Reachability"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Device',
-        }
     end
     
     # Encryption
@@ -238,7 +224,7 @@ Pod::Spec.new do |spec|
         sub.dependency   "JGSourceBase/Base"
         sub.dependency   "JGSourceBase/Category"
         sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Encryption',
+            # "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Encryption',
         }
     end
     
@@ -252,28 +238,25 @@ Pod::Spec.new do |spec|
         ]
         
         sub.dependency   'MBProgressHUD', '>= 1.2.0'
-        sub.dependency   "JGSourceBase/Category"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_HUD',
-        }
+        sub.dependency   "JGSourceBase/Category/UIColor"
         
-        # LoadingHUD
-        sub.subspec 'LoadingHUD' do |subspec|
+        # Loading
+        sub.subspec 'Loading' do |subspec|
             subspec.source_files    = [
-                "JGSourceBase/HUD/LoadingHUD/*.{h,m}",
+                "JGSourceBase/HUD/Loading/*.{h,m}",
             ]
             subspec.public_header_files = [
-                "JGSourceBase/HUD/LoadingHUD/*.h",
+                "JGSourceBase/HUD/Loading/*.h",
             ]
         end
         
-        # ToastHUD
-        sub.subspec 'ToastHUD' do |subspec|
+        # Toast
+        sub.subspec 'Toast' do |subspec|
             subspec.source_files    = [
-                "JGSourceBase/HUD/ToastHUD/*.{h,m}",
+                "JGSourceBase/HUD/Toast/*.{h,m}",
             ]
             subspec.public_header_files = [
-                "JGSourceBase/HUD/ToastHUD/*.h",
+                "JGSourceBase/HUD/Toast/*.h",
             ]
         end
     end
@@ -284,20 +267,15 @@ Pod::Spec.new do |spec|
         sub.public_header_files  = "JGSourceBase/Reachability/*.h"
         
         sub.dependency   "JGSourceBase/Base"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Reachability',
-        }
     end
     
     # SecurityKeyboard
     spec.subspec 'SecurityKeyboard' do |sub|
         sub.source_files         = "JGSourceBase/SecurityKeyboard/*.{h,m}"
-        sub.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
+        # sub.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
+        sub.public_header_files  = "JGSourceBase/SecurityKeyboard/JGSSecurityKeyboard.h"
         
-        sub.dependency   "JGSourceBase/Category"
-        sub.xcconfig     = {
-            "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_SecurityKeyboard',
-        }
+        sub.dependency   "JGSourceBase/Category/UIColor"
     end
     
     spec.requires_arc = true

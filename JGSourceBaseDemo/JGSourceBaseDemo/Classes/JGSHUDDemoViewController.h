@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef JGS_HUD
 @interface JGSHUDDemoViewController : JGSDemoTableViewController
 
 @end
-#endif
 
 NS_ASSUME_NONNULL_END

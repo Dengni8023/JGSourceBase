@@ -10,7 +10,12 @@
 #define PrefixHeader_pch
 
 #import <Availability.h>
+
+#if __has_include(<JGSourceBase/JGSourceBase.h>)
 #import <JGSourceBase/JGSourceBase.h>
+#elif __has_include("JGSourceBase.h")
+#import "JGSourceBase.h"
+#endif
 
 // 最低版本限制处理
 #if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_11_0

@@ -7,12 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "JGSDemoTableData.h"
 #import "JGSCategoryDemoViewController.h"
 #import "JGSHUDDemoViewController.h"
 #import "JGSKeyboardDemoViewController.h"
 #import "JGSEncryptionDemoViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
+#if __has_include(<JGSourceBase/UIAlertController+JGSBase.h>)
+#import <JGSourceBase/UIAlertController+JGSBase.h>
+#endif
 
 @interface ViewController ()
 
@@ -54,8 +56,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    JGSLog(@"IDFA: %@", idfa);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +66,7 @@
 #pragma mark - Action
 - (void)showLogModeList {
     
+#ifdef JGS_Category_UIAlertController
     JGSWeakSelf
     NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
     [UIAlertController jg_actionSheetWithTitle:@"选择日志类型" cancel:@"取消" others:types action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
@@ -99,6 +100,7 @@
 #endif
         });
     }];
+#endif
 }
 
 - (void)jumpToCategoryDemo {
@@ -111,18 +113,14 @@
 
 - (void)jumpToHudDemo {
     
-#ifdef JGS_HUD
     JGSHUDDemoViewController *vcT = [[JGSHUDDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
-#endif
 }
 
 - (void)jumpToKeyboardDemo {
     
-#ifdef JGS_SecurityKeyboard
     JGSKeyboardDemoViewController *vcT = [[JGSKeyboardDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
-#endif
 }
 
 - (void)jumpToEncryptionDemo {

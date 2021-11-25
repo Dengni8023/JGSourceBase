@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#ifndef JGS_Category_UIColor
+#define JGS_Category_UIColor
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 /** 16进制RGB颜色，alpha默认1.0 */
