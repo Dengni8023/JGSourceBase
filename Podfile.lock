@@ -1,7 +1,4 @@
 PODS:
-  - AMapFoundation-NO-IDFA (1.6.8)
-  - AMapLocation-NO-IDFA (2.6.9):
-    - AMapFoundation-NO-IDFA (~> 1.6.8)
   - IQKeyboardManager (6.5.6)
   - JGSourceBase (1.2.1):
     - JGSourceBase/AlertController (= 1.2.1)
@@ -17,17 +14,32 @@ PODS:
   - JGSourceBase/Base (1.2.1)
   - JGSourceBase/Category (1.2.1):
     - JGSourceBase/Base
-    - JGSourceBase/Category/Date (= 1.2.1)
-    - JGSourceBase/Category/Image (= 1.2.1)
-    - JGSourceBase/Category/Object (= 1.2.1)
+    - JGSourceBase/Category/NSDate (= 1.2.1)
+    - JGSourceBase/Category/NSDictionary (= 1.2.1)
+    - JGSourceBase/Category/NSObject (= 1.2.1)
+    - JGSourceBase/Category/NSString (= 1.2.1)
+    - JGSourceBase/Category/NSURL (= 1.2.1)
     - JGSourceBase/Category/UIAlertController (= 1.2.1)
-  - JGSourceBase/Category/Date (1.2.1):
+    - JGSourceBase/Category/UIApplication (= 1.2.1)
+    - JGSourceBase/Category/UIColor (= 1.2.1)
+    - JGSourceBase/Category/UIImage (= 1.2.1)
+  - JGSourceBase/Category/NSDate (1.2.1):
     - JGSourceBase/Base
-  - JGSourceBase/Category/Image (1.2.1):
+  - JGSourceBase/Category/NSDictionary (1.2.1):
     - JGSourceBase/Base
-  - JGSourceBase/Category/Object (1.2.1):
+  - JGSourceBase/Category/NSObject (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSString (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSURL (1.2.1):
     - JGSourceBase/Base
   - JGSourceBase/Category/UIAlertController (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIApplication (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIColor (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIImage (1.2.1):
     - JGSourceBase/Base
   - JGSourceBase/DataStorage (1.2.1):
     - JGSourceBase/Category
@@ -56,7 +68,6 @@ PODS:
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
-  - AMapLocation-NO-IDFA (~> 2.6.8)
   - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
   - JGSourceBase/HUD (from `.`)
@@ -64,8 +75,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AMapFoundation-NO-IDFA
-    - AMapLocation-NO-IDFA
     - IQKeyboardManager
     - MBProgressHUD
 
@@ -82,13 +91,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
-  AMapFoundation-NO-IDFA: 444163c19aa10720c3ecd57b1f071ecdfe0edead
-  AMapLocation-NO-IDFA: 20aa76ba9c7f295a04ef99dfa5466523100d0dca
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  JGSourceBase: 01a0923cae4ca803e2005a0b2b8bec172747d696
+  JGSourceBase: 6c17c011cd9187469025080c4d72b0b9d8b356a2
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: d8c277b8f8c2f9b317e15fbdfb51da1ae77c1960
+PODFILE CHECKSUM: 4846bdbae16981b3d09f360e698aa32e790c1d40
 
 COCOAPODS: 1.10.1

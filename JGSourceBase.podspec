@@ -35,7 +35,7 @@ Pod::Spec.new do |spec|
         :tag => "#{spec.version}",
     }
     spec.platforms = {
-        :ios => '10.0',
+        :ios => '11.0',
     }
     
     # spec.deprecated = true # 该Pod已被废弃
@@ -100,43 +100,93 @@ Pod::Spec.new do |spec|
             "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Category',
         }
         
+        sub.subspec 'NSDate' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/NSDate/*.{h,m}",
+            ]
+            
+            subspec.public_header_files = [
+                "JGSourceBase/Category/NSDate/*.h",
+            ]
+        end
+        
+        sub.subspec 'NSDictionary' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/NSDictionary/*.{h,m}",
+            ]
+            
+            subspec.public_header_files = [
+                "JGSourceBase/Category/NSDictionary/*.h",
+            ]
+        end
+        
+        sub.subspec 'NSObject' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/NSObject/*.{h,m}",
+            ]
+            
+            subspec.public_header_files = [
+                "JGSourceBase/Category/NSObject/*.h",
+            ]
+        end
+        
+        sub.subspec 'NSString' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/NSString/*.{h,m}",
+            ]
+            
+            subspec.public_header_files = [
+                "JGSourceBase/Category/NSString/*.h",
+            ]
+        end
+        
+        sub.subspec 'NSURL' do |subspec|
+            subspec.source_files    = [
+                "JGSourceBase/Category/NSURL/*.{h,m}",
+            ]
+            
+            subspec.public_header_files = [
+                "JGSourceBase/Category/NSURL/*.h",
+            ]
+        end
+        
         sub.subspec 'UIAlertController' do |subspec|
             subspec.source_files    = [
                 "JGSourceBase/Category/UIAlertController/*.{h,m}",
             ]
             
-            sub.public_header_files = [
+            subspec.public_header_files = [
                 "JGSourceBase/Category/UIAlertController/*.h",
             ]
         end
         
-        sub.subspec 'Date' do |subspec|
+        sub.subspec 'UIApplication' do |subspec|
             subspec.source_files    = [
-                "JGSourceBase/Category/Date/*.{h,m}",
+                "JGSourceBase/Category/UIApplication/*.{h,m}",
             ]
             
-            sub.public_header_files = [
-                "JGSourceBase/Category/Date/*.h",
+            subspec.public_header_files = [
+                "JGSourceBase/Category/UIApplication/*.h",
             ]
         end
         
-        sub.subspec 'Image' do |subspec|
+        sub.subspec 'UIColor' do |subspec|
             subspec.source_files    = [
-                "JGSourceBase/Category/Image/*.{h,m}",
+                "JGSourceBase/Category/UIColor/*.{h,m}",
             ]
             
-            sub.public_header_files = [
-                "JGSourceBase/Category/Image/*.h",
+            subspec.public_header_files = [
+                "JGSourceBase/Category/UIColor/*.h",
             ]
         end
         
-        sub.subspec 'Object' do |subspec|
+        sub.subspec 'UIImage' do |subspec|
             subspec.source_files    = [
-                "JGSourceBase/Category/Object/*.{h,m}",
+                "JGSourceBase/Category/UIImage/*.{h,m}",
             ]
             
-            sub.public_header_files = [
-                "JGSourceBase/Category/Object/*.h",
+            subspec.public_header_files = [
+                "JGSourceBase/Category/UIImage/*.h",
             ]
         end
     end

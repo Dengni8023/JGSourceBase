@@ -1,6 +1,6 @@
 # source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 # source 'https://github.com/cocoapods/specs.git'
-# source 'https://cdn.cocoapods.org/'
+source 'https://cdn.cocoapods.org/'
 
 # 私有库B依赖了模块A，同时在主工程里 添加A到 development pod，cocoapods 重复生成相同库的uuid
 # pod install 警告信息 [!] [Xcodeproj] Generated duplicate UUIDs
@@ -20,10 +20,10 @@ platform :ios, 11.0
 target "JGSourceBaseDemo" do
   
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
-  pod 'AMapLocation-NO-IDFA','~> 2.6.8' # http://lbs.amap.com/api/ios-location-sdk/summary/
   
   # Local
   pod 'JGSourceBase', :path => "."
+  # pod 'JGSourceBase/HUD', :path => "."
   pod 'JGSourceBase', :path => ".", :subspecs => [
        'HUD',
   ]
