@@ -42,7 +42,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 //- (instancetype)initWithStyle:(UITableViewStyle)style NS_UNAVAILABLE;
 - (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
-@property (nonatomic, copy, readonly) NSArray<JGSDemoTableSectionData *> *tableSectionData;
+@property (nonatomic, copy) NSArray<JGSDemoTableSectionData *> *tableSectionData;
 
 @end
 

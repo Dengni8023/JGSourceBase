@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
             "JGSourceBase/AlertController/*.h",
         ]
         
-        sub.dependency   "JGSourceBase/Category/UIAlertController"
+        sub.dependency "JGSourceBase/Category/UIAlertController"
     end
     
     # Category
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
             "JGSourceBase/Category/*.h",
         ]
         
-        sub.dependency   "JGSourceBase/Base"
+        sub.dependency "JGSourceBase/Base"
         
         sub.subspec 'NSDate' do |subspec|
             subspec.source_files    = [
@@ -194,7 +194,7 @@ Pod::Spec.new do |spec|
             "JGSourceBase/DataStorage/*.h",
         ]
         
-        sub.dependency   "JGSourceBase/Base"
+        sub.dependency "JGSourceBase/Base"
     end
     
     # Device
@@ -209,7 +209,7 @@ Pod::Spec.new do |spec|
             "JGSourceBase/Device/Resources/*.json",
         ]
         
-        sub.dependency   "JGSourceBase/Reachability"
+        sub.dependency "JGSourceBase/Reachability"
     end
     
     # Encryption
@@ -221,8 +221,8 @@ Pod::Spec.new do |spec|
             "JGSourceBase/Encryption/*.h",
         ]
         
-        sub.dependency   "JGSourceBase/Base"
-        sub.dependency   "JGSourceBase/Category"
+        sub.dependency "JGSourceBase/Base"
+        sub.dependency "JGSourceBase/Category"
         sub.xcconfig     = {
             # "GCC_PREPROCESSOR_DEFINITIONS" => 'JGS_Encryption',
         }
@@ -237,8 +237,8 @@ Pod::Spec.new do |spec|
             "JGSourceBase/HUD/*.h",
         ]
         
-        sub.dependency   'MBProgressHUD', '>= 1.2.0'
-        sub.dependency   "JGSourceBase/Category/UIColor"
+        sub.dependency 'MBProgressHUD', '>= 1.2.0'
+        sub.dependency "JGSourceBase/Category/UIColor"
         
         # Loading
         sub.subspec 'Loading' do |subspec|
@@ -266,7 +266,7 @@ Pod::Spec.new do |spec|
         sub.source_files         = "JGSourceBase/Reachability/*.{h,m}"
         sub.public_header_files  = "JGSourceBase/Reachability/*.h"
         
-        sub.dependency   "JGSourceBase/Base"
+        sub.dependency "JGSourceBase/Base"
     end
     
     # SecurityKeyboard
@@ -275,7 +275,8 @@ Pod::Spec.new do |spec|
         # sub.public_header_files  = "JGSourceBase/SecurityKeyboard/*.h"
         sub.public_header_files  = "JGSourceBase/SecurityKeyboard/JGSSecurityKeyboard.h"
         
-        sub.dependency   "JGSourceBase/Category/UIColor"
+        sub.dependency "JGSourceBase/Base"
+        sub.dependency "JGSourceBase/Category/UIColor"
     end
     
     spec.requires_arc = true

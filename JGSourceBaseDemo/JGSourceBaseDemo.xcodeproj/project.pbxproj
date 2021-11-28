@@ -10,9 +10,6 @@
 		3BF9A33CF7782F761596FC82 /* libPods-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F65894208A86508A1E8DB415 /* libPods-JGSourceBaseDemo.a */; };
 		D41F36B8274520F000B3A95E /* LoadingWithAlpha-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = D41F36B7274520F000B3A95E /* LoadingWithAlpha-5.gif */; };
 		D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */; };
-		D49BD78B26F18AA9005C3AED /* JGSDataStorageDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */; };
-		D49BD78E26F18ACA005C3AED /* JGSDeviceDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */; };
-		D49BD79126F18AE4005C3AED /* JGSEncryptionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */; };
 		D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */; };
 		D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79626F20E28005C3AED /* JGSDemoViewController.m */; };
 		D4C21BA0274520980001E928 /* LoadingWithoutAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D4C21B9B274520980001E928 /* LoadingWithoutAlpha-1.gif */; };
@@ -27,7 +24,6 @@
 		D4F3DA6C22F027E1002EF0F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA6B22F027E1002EF0F0 /* main.m */; };
 		D4F3DA8922F0292B002EF0F0 /* JGSCategoryDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */; };
 		D4F3DA8A22F0292B002EF0F0 /* JGSKeyboardDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8222F0292B002EF0F0 /* JGSKeyboardDemoViewController.m */; };
-		D4F3DA8B22F0292B002EF0F0 /* JGSHUDDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */; };
 		D4F3DA8C22F0292B002EF0F0 /* JGSDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */; };
 /* End PBXBuildFile section */
 
@@ -37,12 +33,6 @@
 		D41F36B7274520F000B3A95E /* LoadingWithAlpha-5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-5.gif"; sourceTree = "<group>"; };
 		D4211E6F26FF236C00E8E766 /* JGSDemoNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoNavigationController.h; sourceTree = "<group>"; };
 		D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoNavigationController.m; sourceTree = "<group>"; };
-		D49BD78926F18AA9005C3AED /* JGSDataStorageDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDataStorageDemoViewController.h; sourceTree = "<group>"; };
-		D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDataStorageDemoViewController.m; sourceTree = "<group>"; };
-		D49BD78C26F18ACA005C3AED /* JGSDeviceDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDeviceDemoViewController.h; sourceTree = "<group>"; };
-		D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDeviceDemoViewController.m; sourceTree = "<group>"; };
-		D49BD78F26F18AE4005C3AED /* JGSEncryptionDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSEncryptionDemoViewController.h; sourceTree = "<group>"; };
-		D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSEncryptionDemoViewController.m; sourceTree = "<group>"; };
 		D49BD79226F2066D005C3AED /* JGSDemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoTableViewController.h; sourceTree = "<group>"; };
 		D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableViewController.m; sourceTree = "<group>"; };
 		D49BD79526F20E28005C3AED /* JGSDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoViewController.h; sourceTree = "<group>"; };
@@ -63,10 +53,8 @@
 		D4F3DA6822F027E1002EF0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4F3DA6A22F027E1002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F3DA6B22F027E1002EF0F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4F3DA8022F0292B002EF0F0 /* JGSHUDDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSHUDDemoViewController.h; sourceTree = "<group>"; };
 		D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSCategoryDemoViewController.m; sourceTree = "<group>"; };
 		D4F3DA8222F0292B002EF0F0 /* JGSKeyboardDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardDemoViewController.m; sourceTree = "<group>"; };
-		D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSHUDDemoViewController.m; sourceTree = "<group>"; };
 		D4F3DA8422F0292B002EF0F0 /* JGSCategoryDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSCategoryDemoViewController.h; sourceTree = "<group>"; };
 		D4F3DA8522F0292B002EF0F0 /* JGSKeyboardDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardDemoViewController.h; sourceTree = "<group>"; };
 		D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableData.m; sourceTree = "<group>"; };
@@ -168,14 +156,6 @@
 				D4F3DA8622F0292B002EF0F0 /* Base */,
 				D4F3DA8422F0292B002EF0F0 /* JGSCategoryDemoViewController.h */,
 				D4F3DA8122F0292B002EF0F0 /* JGSCategoryDemoViewController.m */,
-				D49BD78926F18AA9005C3AED /* JGSDataStorageDemoViewController.h */,
-				D49BD78A26F18AA9005C3AED /* JGSDataStorageDemoViewController.m */,
-				D49BD78C26F18ACA005C3AED /* JGSDeviceDemoViewController.h */,
-				D49BD78D26F18ACA005C3AED /* JGSDeviceDemoViewController.m */,
-				D49BD78F26F18AE4005C3AED /* JGSEncryptionDemoViewController.h */,
-				D49BD79026F18AE4005C3AED /* JGSEncryptionDemoViewController.m */,
-				D4F3DA8022F0292B002EF0F0 /* JGSHUDDemoViewController.h */,
-				D4F3DA8322F0292B002EF0F0 /* JGSHUDDemoViewController.m */,
 				D4F3DA8522F0292B002EF0F0 /* JGSKeyboardDemoViewController.h */,
 				D4F3DA8222F0292B002EF0F0 /* JGSKeyboardDemoViewController.m */,
 			);
@@ -322,15 +302,11 @@
 				D4F3DA6122F027E1002EF0F0 /* ViewController.m in Sources */,
 				D4F3DA8922F0292B002EF0F0 /* JGSCategoryDemoViewController.m in Sources */,
 				D4F3DA8C22F0292B002EF0F0 /* JGSDemoTableData.m in Sources */,
-				D49BD78B26F18AA9005C3AED /* JGSDataStorageDemoViewController.m in Sources */,
 				D4F3DA6C22F027E1002EF0F0 /* main.m in Sources */,
 				D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */,
-				D4F3DA8B22F0292B002EF0F0 /* JGSHUDDemoViewController.m in Sources */,
 				D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */,
-				D49BD78E26F18ACA005C3AED /* JGSDeviceDemoViewController.m in Sources */,
 				D4F3DA5E22F027E1002EF0F0 /* AppDelegate.m in Sources */,
 				D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */,
-				D49BD79126F18AE4005C3AED /* JGSEncryptionDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

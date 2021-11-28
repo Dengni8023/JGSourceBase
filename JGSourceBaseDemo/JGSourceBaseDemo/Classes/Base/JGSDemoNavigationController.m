@@ -14,6 +14,10 @@
 
 @implementation JGSDemoNavigationController
 
+- (void)dealloc {
+    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -27,11 +31,7 @@
     style.lineBreakMode = NSLineBreakByWordWrapping;
     self.navigationBar.titleTextAttributes = @{
         NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightMedium],
-#ifdef JGS_Category_UIColor
-        NSForegroundColorAttributeName: JGSColorHex(0xffffff),
-#else
         NSForegroundColorAttributeName: [UIColor whiteColor],
-#endif
         NSParagraphStyleAttributeName: style};
 }
 

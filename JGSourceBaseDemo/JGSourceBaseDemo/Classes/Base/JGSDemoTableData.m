@@ -8,8 +8,12 @@
 
 #import "JGSDemoTableData.h"
 
-JGsDemoTableRowData *JGSDemoTableRowMakeSelector(NSString *title, SEL selector) {
+JGsDemoTableRowData *JGSDemoTableRowMakeWithSelector(NSString *title, SEL _Nullable selector) {
     return [[JGsDemoTableRowData alloc] initWithTitle:title selector:selector];
+}
+
+JGsDemoTableRowData *JGSDemoTableRowMakeWithObjectSelector(NSString *title, id _Nullable object, SEL _Nullable selector) {
+    return [[JGsDemoTableRowData alloc] initWithTitle:title object:object selector:selector];
 }
 
 JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDemoTableRowData *> *rows) {
@@ -19,6 +23,10 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
 @implementation JGsDemoTableRowData
 
 #pragma mark - init & dealloc
+- (void)dealloc {
+    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+}
+
 - (instancetype)initWithTitle:(NSString *)title selector:(SEL)selector {
     
     self = [super init];
@@ -29,9 +37,15 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
     return self;
 }
 
-- (void)dealloc {
+- (instancetype)initWithTitle:(NSString *)title object:(nullable id)object selector:(nonnull SEL)selector {
     
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    self = [super init];
+    if (self) {
+        _title = title;
+        _object = object;
+        _selector = selector;
+    }
+    return self;
 }
 
 #pragma mark - End
@@ -41,6 +55,10 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
 @implementation JGSDemoTableSectionData
 
 #pragma mark - init & dealloc
+- (void)dealloc {
+    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+}
+
 - (instancetype)initWithTitle:(NSString *)title rows:(NSArray<JGsDemoTableRowData *> *)rows {
     
     self = [super init];
@@ -51,15 +69,14 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
     return self;
 }
 
-- (void)dealloc {
-    
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
-}
-
 #pragma mark - End
 
 @end
 
 @implementation JGSDemoTableData
+
+- (void)dealloc {
+    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+}
 
 @end

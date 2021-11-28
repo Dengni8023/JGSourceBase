@@ -57,24 +57,6 @@
     JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
 #endif
     
-#pragma mark - Device
-#ifdef JGS_Device
-    printf("0x%x\n", [JGSDevice isDeviceJailbroken]);
-    printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
-    printf("%d\n", [JGSDevice isSimulator]);
-    
-    JGSLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
-    JGSLog(@"%@", [JGSDevice appInfo]);
-    //JGSLog(@"%@", [JGSDevice deviceInfo]);
-    JGSLog(@"%@", [JGSDevice deviceMachine]);
-    JGSLog(@"%@", [JGSDevice deviceModel]);
-    JGSLog(@"%@", [JGSDevice appUserAgent]);
-    //dispatch_async(dispatch_get_main_queue(), ^{
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    JGSLog(@"%@", [JGSDevice idfa]);
-    //});
-#endif
-    
 #pragma mark - Dictionary
 #ifdef JGS_Category_NSObject
     NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;

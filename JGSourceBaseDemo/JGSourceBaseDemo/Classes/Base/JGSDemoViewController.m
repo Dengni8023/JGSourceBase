@@ -16,9 +16,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    
     JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -26,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = self.title ?: NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor colorWithWhite:0.99 alpha:1.f];
 }
 
