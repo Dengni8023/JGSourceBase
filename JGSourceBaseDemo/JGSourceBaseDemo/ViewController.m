@@ -167,6 +167,21 @@
 }
 
 - (void)dictionaryGetValue:(NSIndexPath *)indexPath {
+    
+#ifdef JGS_Category_NSObject
+    NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;
+    JGSLog(@"%@", [tmp objectForKey:@"NullKey1"]);
+    JGSLog(@"%@", tmp[@"NullKey2"]);
+    tmp[@"Nullkey3"] = [NSNull null];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    tmp[@"Nullkey3"] = nil;
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:[NSNull null] forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:nil forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
+#endif
+    
 #ifdef JGS_Category_NSDictionary
     static NSDictionary *storeDictionary = nil;
     static dispatch_once_t onceToken;
@@ -241,6 +256,18 @@
 }
 
 - (void)string2URL:(NSIndexPath *)indexPath {
+    
+#ifdef JGS_Category_NSURL
+#pragma mark - URL
+    NSString *urlStr = @"tpybxsit://m.baidu.com/s?from=1000539d&word=%E8%92%9C%E8%93%89%E8%99%BE%E7%9A%84%E5%81%9A%E6%B3%95";
+    NSURL *URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+    
+    urlStr = @"tpybxsit://m.baidu.com/s%3Ffrom=1000539d&word=蒜蓉虾的做法";
+    URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+#endif
+    
 #ifdef JGS_Category_NSString
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;

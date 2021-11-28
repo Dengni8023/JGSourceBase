@@ -105,14 +105,17 @@
         self.frame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
         self.backgroundColor = JGSKeyboardBackgroundColor();
         
-        [self addViewElements];
+        //[self addViewElements];
     }
     return self;
 }
 
 - (void)setEnableHighlightedWhenTap:(BOOL)enableHighlightedWhenTap {
-    
     _enableHighlightedWhenTap = enableHighlightedWhenTap;
+    if (!self.superview) {
+        return;
+    }
+    
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj enableHighlightedWhenTap:enableHighlightedWhenTap];
     }];
@@ -127,6 +130,19 @@
 }
 
 #pragma mark - View
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
+        [self addViewElements];
+    }
+    else {
+        [self.keyboardTool removeFromSuperview];
+        [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+        }];
+    }
+}
+
 - (void)addViewElements {
     
     // 键盘顶部工具条
@@ -143,6 +159,7 @@
         
         JGSStrongSelf
         [self addSubview:obj];
+        [obj enableHighlightedWhenTap:self.enableHighlightedWhenTap];
         
         // 键盘宽度根据父视图自动变化
         [obj setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
@@ -170,7 +187,17 @@
         if (self.keyboardOptions & JGSKeyboardOptionIDCard) {
             [keyboards addObject:self.idCardKeyboard];
         }
-        _keyboards = keyboards;
+        
+        // 键盘切换
+        JGSWeakSelf
+        [keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            JGSStrongSelf
+            JGSKeyboardToolbarItem *toolItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:obj.title type:JGSKeyboardToolbarItemTypeSwitch target:self action:@selector(switchKeyboardType:)];
+            obj.toolbarItem = toolItem;
+        }];
+        
+        _keyboards = keyboards.copy;
     }
     return _keyboards;
 }
@@ -182,15 +209,6 @@
     }
     
     _keyboardTool = [[JGSKeyboardToolbar alloc] initWithTitle:self.title];
-    
-    // 键盘切换
-    JGSWeakSelf
-    [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        JGSStrongSelf
-        JGSKeyboardToolbarItem *toolItem = [[JGSKeyboardToolbarItem alloc] initWithTitle:obj.title type:JGSKeyboardToolbarItemTypeSwitch target:self action:@selector(switchKeyboardType:)];
-        obj.toolbarItem = toolItem;
-    }];
     
     // 完成
     [self.keyboardTool.doneToolbarItem setTarget:self action:@selector(completeTextInput:)];

@@ -8,6 +8,7 @@
 
 #import "JGSKeyboardToolbar.h"
 #import "JGSKeyboardConstants.h"
+//#import "JGSourceBase.h"
 
 @implementation JGSKeyboardToolbarItem
 
@@ -131,6 +132,11 @@
 @end
 
 @implementation JGSKeyboardToolbar
+
+#pragma mark - Life Cycle
+- (void)dealloc {
+    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+}
 
 - (instancetype)initWithTitle:(NSString *)title {
     
