@@ -14,5 +14,6 @@
 #endif
 
 #import "JGSKeychainUtils.h"
+#import "JGSUserDefaults.h"
 
 #endif /* JGSDataStorage_h */

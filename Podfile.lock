@@ -1,7 +1,30 @@
 PODS:
   - IQKeyboardManager (6.5.6)
   - JGSourceBase/Base (1.2.1)
+  - JGSourceBase/Category (1.2.1):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/NSDate (= 1.2.1)
+    - JGSourceBase/Category/NSDictionary (= 1.2.1)
+    - JGSourceBase/Category/NSObject (= 1.2.1)
+    - JGSourceBase/Category/NSString (= 1.2.1)
+    - JGSourceBase/Category/NSURL (= 1.2.1)
+    - JGSourceBase/Category/UIAlertController (= 1.2.1)
+    - JGSourceBase/Category/UIApplication (= 1.2.1)
+    - JGSourceBase/Category/UIColor (= 1.2.1)
+    - JGSourceBase/Category/UIImage (= 1.2.1)
+  - JGSourceBase/Category/NSDate (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSDictionary (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSObject (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSString (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSURL (1.2.1):
+    - JGSourceBase/Base
   - JGSourceBase/Category/UIAlertController (1.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIApplication (1.2.1):
     - JGSourceBase/Base
   - JGSourceBase/Category/UIColor (1.2.1):
     - JGSourceBase/Base
@@ -29,7 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
-  - JGSourceBase/Category/UIAlertController (from `.`)
+  - JGSourceBase/Category (from `.`)
   - JGSourceBase/Category/UIImage (from `.`)
   - JGSourceBase/Device (from `.`)
   - JGSourceBase/HUD (from `.`)
@@ -60,6 +83,6 @@ SPEC CHECKSUMS:
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 8eaa674b4854a03194eb4a4b419c0ca94477ae5c
+PODFILE CHECKSUM: 3fbeb833760866b45d8ff549935cad9e4602cda9
 
 COCOAPODS: 1.10.1

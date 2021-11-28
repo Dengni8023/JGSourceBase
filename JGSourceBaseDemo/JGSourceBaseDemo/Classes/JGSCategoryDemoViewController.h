@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef JGS_Category
 @interface JGSCategoryDemoViewController : JGSDemoTableViewController
 
 @end
-#endif
 
 NS_ASSUME_NONNULL_END

@@ -57,7 +57,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
-#ifdef JGS_Category
+#ifdef JGS_Category_UIColor
     self.navigationController.navigationBar.tintColor = JGSColorHex(0xffffff);
     self.navigationController.navigationBar.barTintColor = JGSDemoNavigationBarColor;
 #endif
@@ -88,19 +88,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-#ifdef JGS_Category
+#ifdef JGS_Category_UIColor
     cell.backgroundColor = JGSColorHex(arc4random() % 0x01000000);
     cell.contentView.backgroundColor = JGSColorHex(0xffffff);
 #endif
 
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        //JGSLog(@"%@", @(JGSLogModeNone));
-        //JGSLog(@"%@", @(JGSLogModeLog));
-        //JGSLog(@"%@", @(JGSLogModeFunc));
-        //JGSLog(@"%@", @(JGSLogModeFile));
-        cell.textLabel.text = [cell.textLabel.text stringByAppendingFormat:@"（type: %@）", @(JGSEnableLogMode)];
-    }
     
     return cell;
 }

@@ -120,6 +120,15 @@
 		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+JGSBase.h"; sourceTree = "<group>"; };
 		D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JGSBase.m"; sourceTree = "<group>"; };
+		D4ABE0002750840E00FA445C /* JGSCategory+NSDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSDate.h"; sourceTree = "<group>"; };
+		D4ABE0012750B0BA00FA445C /* JGSCategory+NSDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSDictionary.h"; sourceTree = "<group>"; };
+		D4ABE0022750B0CD00FA445C /* JGSCategory+NSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSObject.h"; sourceTree = "<group>"; };
+		D4ABE0032750B3FE00FA445C /* JGSCategory+NSString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSString.h"; sourceTree = "<group>"; };
+		D4ABE0042750B41000FA445C /* JGSCategory+UIImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+UIImage.h"; sourceTree = "<group>"; };
+		D4ABE0052750B41F00FA445C /* JGSCategory+UIColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+UIColor.h"; sourceTree = "<group>"; };
+		D4ABE0062750B43300FA445C /* JGSCategory+UIApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+UIApplication.h"; sourceTree = "<group>"; };
+		D4ABE0072750B45100FA445C /* JGSCategory+UIAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+UIAlertController.h"; sourceTree = "<group>"; };
+		D4ABE0082750B45E00FA445C /* JGSCategory+NSURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSURL.h"; sourceTree = "<group>"; };
 		D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+JGSBase.h"; sourceTree = "<group>"; };
 		D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+JGSBase.m"; sourceTree = "<group>"; };
 		D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
@@ -201,6 +210,7 @@
 		D4221CDD274E8FBB00A40005 /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0012750B0BA00FA445C /* JGSCategory+NSDictionary.h */,
 				D4F3DAB322F02B05002EF0F0 /* NSDictionary+JGSBase.h */,
 				D4F3DAB722F02B05002EF0F0 /* NSDictionary+JGSBase.m */,
 			);
@@ -210,6 +220,7 @@
 		D4221CDE274E8FEC00A40005 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0032750B3FE00FA445C /* JGSCategory+NSString.h */,
 				D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */,
 				D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */,
 			);
@@ -219,6 +230,7 @@
 		D4221CDF274E8FF400A40005 /* NSURL */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0082750B45E00FA445C /* JGSCategory+NSURL.h */,
 				D49BD7D426F24E61005C3AED /* NSURL+JGSBase.h */,
 				D49BD7D526F24E61005C3AED /* NSURL+JGSBase.m */,
 			);
@@ -228,6 +240,7 @@
 		D4221CE0274E903300A40005 /* UIApplication */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0062750B43300FA445C /* JGSCategory+UIApplication.h */,
 				D457A9722604BF6000833143 /* UIApplication+JGSBase.h */,
 				D457A9732604BF6000833143 /* UIApplication+JGSBase.m */,
 			);
@@ -237,6 +250,7 @@
 		D4221CE1274E904200A40005 /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0052750B41F00FA445C /* JGSCategory+UIColor.h */,
 				D4F3DAB222F02B05002EF0F0 /* UIColor+JGSBase.h */,
 				D4F3DAB622F02B05002EF0F0 /* UIColor+JGSBase.m */,
 			);
@@ -246,6 +260,7 @@
 		D45F49DC2742A683009B920E /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0042750B41000FA445C /* JGSCategory+UIImage.h */,
 				D416D9D92600DA540085C6AB /* UIImage+JGSBase.h */,
 				D416D9D82600DA540085C6AB /* UIImage+JGSBase.m */,
 			);
@@ -255,6 +270,7 @@
 		D45F49DD2742A693009B920E /* NSDate */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0002750840E00FA445C /* JGSCategory+NSDate.h */,
 				D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */,
 				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
 			);
@@ -264,6 +280,7 @@
 		D45F49DE2742A69D009B920E /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0022750B0CD00FA445C /* JGSCategory+NSObject.h */,
 				D4F3DAB822F02B05002EF0F0 /* NSObject+JGSBase.h */,
 				D4F3DAB522F02B05002EF0F0 /* NSObject+JGSBase.m */,
 			);
@@ -273,6 +290,7 @@
 		D45F49DF2742A6DA009B920E /* UIAlertController */ = {
 			isa = PBXGroup;
 			children = (
+				D4ABE0072750B45100FA445C /* JGSCategory+UIAlertController.h */,
 				D4AD24D926F08B3C0008AA3A /* UIAlertController+JGSBase.h */,
 				D4AD24DA26F08B3C0008AA3A /* UIAlertController+JGSBase.m */,
 			);

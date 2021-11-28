@@ -21,13 +21,13 @@
 
 @implementation JGSKeyboardDemoViewController
 
-#ifdef JGS_SecurityKeyboard
 #pragma mark - Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"SecurityKeyboard";
     
+#ifdef JGS_SecurityKeyboard
     [self addViewElements];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
@@ -35,6 +35,7 @@
         UITextField *textField = (UITextField *)note.object;
         JGSLog(@"%@", textField.text);
     }];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,6 +43,7 @@
     
 }
 
+#ifdef JGS_SecurityKeyboard
 #pragma mark - View
 - (void)addViewElements {
     

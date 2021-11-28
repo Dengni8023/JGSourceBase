@@ -12,14 +12,23 @@
 #define JGS_Category
 #endif
 
-#import "NSDate+JGSBase.h"
-#import "NSDictionary+JGSBase.h"
-#import "NSObject+JGSBase.h"
-#import "NSString+JGSBase.h"
-#import "NSURL+JGSBase.h"
-#import "UIAlertController+JGSBase.h"
-#import "UIApplication+JGSBase.h"
-#import "UIColor+JGSBase.h"
-#import "UIImage+JGSBase.h"
+// NSDate
+#import "JGSCategory+NSDate.h"
+// NSDictionary
+#import "JGSCategory+NSDictionary.h"
+// NSObject
+#import "JGSCategory+NSObject.h"
+// NSString
+#import "JGSCategory+NSString.h"
+// NSURL
+#import "JGSCategory+NSURL.h"
+// UIAlertController
+#import "JGSCategory+UIAlertController.h"
+// UIApplication
+#import "JGSCategory+UIApplication.h"
+// UIColor
+#import "JGSCategory+UIColor.h"
+// UIImage
+#import "JGSCategory+UIImage.h"
 
 #endif /* JGSCategory_h */

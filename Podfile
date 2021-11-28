@@ -29,13 +29,13 @@ target "JGSourceBaseDemo" do
   pod 'JGSourceBase', :path => ".", :subspecs => [
     # AlertController测试
     # 'AlertController',
-    'Category/UIAlertController',
+    # 'Category/UIAlertController',
 
     # Base测试
     # 'Base',
 
     # Category测试
-    # 'Category',
+    'Category',
     
     # Device测试
     'Device',

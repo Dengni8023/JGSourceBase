@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#ifndef JGS_Category_UIAlertController
-#define JGS_Category_UIAlertController
-#endif
-
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSInteger idx);

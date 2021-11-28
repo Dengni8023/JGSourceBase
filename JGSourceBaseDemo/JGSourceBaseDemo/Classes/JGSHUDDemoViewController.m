@@ -7,22 +7,6 @@
 //
 
 #import "JGSHUDDemoViewController.h"
-#if __has_include(<JGSourceBase/JGSHUD.h>)
-#import <JGSourceBase/JGSHUD.h>
-#else
-#if __has_include(<JGSourceBase/JGSLoadingHUD.h>)
-#import <JGSourceBase/JGSLoadingHUD.h>
-#endif
-#if __has_include(<JGSourceBase/JGSToast.h>)
-#import <JGSourceBase/JGSToast.h>
-#endif
-#endif
-#if __has_include(<JGSourceBase/UIColor+JGSBase.h>)
-#import <JGSourceBase/UIColor+JGSBase.h>
-#endif
-#if __has_include(<JGSourceBase/UIImage+JGSBase.h>)
-#import <JGSourceBase/UIImage+JGSBase.h>
-#endif
 
 @interface JGSHUDDemoViewController ()
 
@@ -192,7 +176,7 @@
                 case 2: {
                     static BOOL show = NO; show = !show;
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGS_Category
+#ifdef JGS_Category_UIImage
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
 #endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];

@@ -8,8 +8,6 @@
 
 #import "JGSCategoryDemoViewController.h"
 
-#ifdef JGS_Category
-
 @interface JGSCategoryDemoViewController ()
 
 @end
@@ -19,6 +17,7 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
+#ifdef JGS_Category_NSDictionary
         // Section 字典取值
         JGSDemoTableSectionMake(@" 字典取值",
                                 @[
@@ -27,6 +26,8 @@
                                     JGSDemoTableRowMakeSelector(@"Get Dictionary", @selector(dictionaryGetValue:)),
                                     JGSDemoTableRowMakeSelector(@"Get Object", @selector(dictionaryGetValue:)),
                                 ]),
+#endif
+#ifdef JGS_Category_NSString
         // Section 字符串URL处理
         JGSDemoTableSectionMake(@" 字符串URL处理",
                                 @[
@@ -36,12 +37,15 @@
                                     JGSDemoTableRowMakeSelector(@"URL Query字典", @selector(string2URL:)),
                                     JGSDemoTableRowMakeSelector(@"URL Query参数值", @selector(string2URL:)),
                                 ]),
+#endif
+#ifdef JGS_Category_NSObject
         // Section 对象转JSON、字典
         JGSDemoTableSectionMake(@" 对象转JSON、字典",
                                 @[
-                                    JGSDemoTableRowMakeSelector(@"JSON对象转JSON字符串", @selector(objejct2JSONDictionary:)),
-                                    JGSDemoTableRowMakeSelector(@"JSON字符串转JSON对象", @selector(objejct2JSONDictionary:)),
+                                    JGSDemoTableRowMakeSelector(@"JSON对象转JSON字符串", @selector(object2JSONDictionary:)),
+                                    JGSDemoTableRowMakeSelector(@"JSON字符串转JSON对象", @selector(object2JSONDictionary:)),
                                 ]),
+#endif
     ];
 }
 
@@ -59,7 +63,7 @@
 
 #pragma mark - Action
 - (void)dictionaryGetValue:(NSIndexPath *)indexPath {
-    
+#ifdef JGS_Category_NSDictionary
     static NSDictionary *storeDictionary = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -129,10 +133,11 @@
         default:
             break;
     }
+#endif
 }
 
 - (void)string2URL:(NSIndexPath *)indexPath {
-    
+#ifdef JGS_Category_NSString
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
@@ -186,10 +191,11 @@
         default:
             break;
     }
+#endif
 }
 
-- (void)objejct2JSONDictionary:(NSIndexPath *)indexPath {
-    
+- (void)object2JSONDictionary:(NSIndexPath *)indexPath {
+#ifdef JGS_Category_NSObject
     static NSDictionary *storeDictionary = nil;
     static NSString *storeString = nil;
     static dispatch_once_t onceToken;
@@ -225,10 +231,9 @@
         default:
             break;
     }
+#endif
 }
 
 #pragma mark - End
 
 @end
-
-#endif
