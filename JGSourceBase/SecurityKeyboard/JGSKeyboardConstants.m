@@ -99,7 +99,7 @@ CGFloat const JGSKeyboardKeyLineSpacing() {
             },
             @"iPhone": @{
                     @"Portrait": @(8.f),
-                    @"Landscape": @(8.f),
+                    @"Landscape": @(4.f),
             }
         };
     });

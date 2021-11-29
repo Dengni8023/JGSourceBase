@@ -62,12 +62,12 @@
         [self.view addSubview:field];
         
         [field mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.view);
-            make.left.mas_equalTo(self.view).mas_offset(28);
             make.height.mas_equalTo(36);
             if (@available(iOS 11.0, *)) {
+                make.left.right.mas_equalTo(self.view.mas_safeAreaLayoutGuide).inset(28);
                 make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(32 + 60 * i);
             } else {
+                make.left.right.mas_equalTo(self.view).inset(28);
                 make.top.mas_equalTo(self.view.mas_top).mas_offset(96 + 60 * i);
             }
         }];
