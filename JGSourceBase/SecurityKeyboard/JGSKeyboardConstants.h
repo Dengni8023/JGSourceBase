@@ -38,8 +38,8 @@ FOUNDATION_EXTERN CGFloat const JGSKeyboardToolbarHeight; // 键盘顶部工具�
 FOUNDATION_EXTERN NSInteger const JGSKeyboardLinesNumber; // 键盘按键行数
 FOUNDATION_EXTERN NSInteger const JGSKeyboardMaxItemsInLine; // 键盘单行最多按键
 FOUNDATION_EXTERN NSInteger const JGSKeyboardNumberItemsInLine; // 数字键盘单行按键数
-FOUNDATION_EXTERN CGFloat const JGSKeyboardInteritemSpacing; // 键盘输入按钮水平间距
-FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyLineSpacing; // 键盘输入按钮行间距
+FOUNDATION_EXTERN CGFloat const JGSKeyboardInteritemSpacing(void); // 键盘输入按钮水平间距
+FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyLineSpacing(void); // 键盘输入按钮行间距
 FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyWidthHeightRatio(void); // 键盘按键宽高比
 
 typedef NS_ENUM(NSInteger, JGSKeyboardToolbarItemType) {

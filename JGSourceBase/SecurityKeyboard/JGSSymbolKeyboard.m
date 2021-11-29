@@ -123,33 +123,33 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
+    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
     CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
+    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing() + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing();
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
-    CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing;
+    CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing() + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing();
     CGFloat minX = (keyboardWidth - itemsMaxW) * 0.5f;
     
     NSMutableArray<JGSKeyboardKey *> *tmpKeys = @[].mutableCopy;
     [keyTitles enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
-        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing + itemWidth) * line.count - JGSKeyboardInteritemSpacing;
+        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing() + itemWidth) * line.count - JGSKeyboardInteritemSpacing();
         CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
-        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing);
+        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing());
         
         [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing);
+            CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing());
             CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
             if (lineIdx == 2) {
                 
                 // 与键盘按键第三行功能键看度计算保持一致
-                CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing, (itemWidth + JGSKeyboardInteritemSpacing) * 1.5));
-                CGFloat btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing;
-                CGFloat scale = (keyboardWidth - btnBeginX * 2) / line.count / (itemWidth + JGSKeyboardInteritemSpacing);
-                btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing * scale;
-                CGFloat btnWidth = (keyboardWidth - btnBeginX * 2 + JGSKeyboardInteritemSpacing * scale) / line.count - JGSKeyboardInteritemSpacing * scale;
-                btnX = btnBeginX + idx * (btnWidth + JGSKeyboardInteritemSpacing * scale);
+                CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing(), (itemWidth + JGSKeyboardInteritemSpacing()) * 1.5));
+                CGFloat btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing();
+                CGFloat scale = (keyboardWidth - btnBeginX * 2) / line.count / (itemWidth + JGSKeyboardInteritemSpacing());
+                btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing() * scale;
+                CGFloat btnWidth = (keyboardWidth - btnBeginX * 2 + JGSKeyboardInteritemSpacing() * scale) / line.count - JGSKeyboardInteritemSpacing() * scale;
+                btnX = btnBeginX + idx * (btnWidth + JGSKeyboardInteritemSpacing() * scale);
                 btnFrame = CGRectMake(btnX, lineY, btnWidth, itemHeight);
             }
             
@@ -160,7 +160,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
         if (lineIdx == 2) {
             
             // 与键盘按键第三行按钮宽度计算保持一致
-            CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing, (itemWidth + JGSKeyboardInteritemSpacing) * 1.5));
+            CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing(), (itemWidth + JGSKeyboardInteritemSpacing()) * 1.5));
             
             // switch
             JGSKeyboardKeyType numberSymbolType = containNum ? JGSKeyboardKeyTypeSymbolSwitch2Symbols : JGSKeyboardKeyTypeSymbolSwitch2Numbers;
@@ -172,10 +172,10 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
             JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - funcItemWidth, lineY, funcItemWidth, itemHeight)];
             [tmpKeys addObject:deleteBtn];
             
-            lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
-            CGFloat switchWidth = MIN(floor((JGSKeyboardInteritemSpacing + itemWidth) * 1.5), itemHeight);
-            funcItemWidth = switchWidth * 2 + JGSKeyboardInteritemSpacing;
-            CGFloat spaceX = minX + (switchWidth + JGSKeyboardInteritemSpacing) * 2;
+            lineY += (itemHeight + JGSKeyboardKeyLineSpacing());
+            CGFloat switchWidth = MIN(floor((JGSKeyboardInteritemSpacing() + itemWidth) * 1.5), itemHeight);
+            funcItemWidth = switchWidth * 2 + JGSKeyboardInteritemSpacing();
+            CGFloat spaceX = minX + (switchWidth + JGSKeyboardInteritemSpacing()) * 2;
             
             if (JGSKeyboardSymbolFullAngle) {
                 // switch
@@ -183,7 +183,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
                 [tmpKeys addObject:switchBtn];
                 
                 // angle
-                CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing;
+                CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing();
                 JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
                 JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
                 [tmpKeys addObject:angleSwitch];
@@ -192,7 +192,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
 
                 switchWidth = switchWidth * 2;
                 funcItemWidth = switchWidth;
-                spaceX = minX + switchWidth + JGSKeyboardInteritemSpacing;
+                spaceX = minX + switchWidth + JGSKeyboardInteritemSpacing();
 
                 // switch
                 JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
@@ -200,7 +200,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
             }
             
             // space
-            CGFloat spaceW = keyboardWidth - minX - spaceX - funcItemWidth - JGSKeyboardInteritemSpacing;
+            CGFloat spaceW = keyboardWidth - minX - spaceX - funcItemWidth - JGSKeyboardInteritemSpacing();
             JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@" " frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
             [tmpKeys addObject:spaceBtn];
             

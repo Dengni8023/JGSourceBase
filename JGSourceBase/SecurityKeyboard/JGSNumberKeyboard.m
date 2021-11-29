@@ -77,10 +77,10 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     CGFloat numberScale = 1.2;
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing);
+    CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing()) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing());
     //CGFloat itemWidth = floor(itemHeight / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat numberItemW = floor((keyboardWidth - JGSKeyboardInteritemSpacing * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
-    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing * numberScale);
+    CGFloat numberItemW = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
+    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing() * numberScale);
     if (keyboardWidth > keyboardHeight) {
         numberSpacingX *= 2;
     }
@@ -93,7 +93,7 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     // 以上处理后，需重新计算按钮宽度，间隔以以上计算为准
     numberItemW = floor((keyboardWidth - numberSpacingX * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
     
-    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
+    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing() + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing();
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
     CGFloat numberMaxW = (numberSpacingX + numberItemW) * JGSKeyboardNumberItemsInLine - numberSpacingX;
     CGFloat minX = (keyboardWidth - numberMaxW) * 0.5f;
@@ -103,7 +103,7 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
         
         CGFloat itemsTotalW = (numberSpacingX + numberItemW) * line.count - numberSpacingX;
         CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
-        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing);
+        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing());
         
         [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             

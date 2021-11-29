@@ -59,23 +59,23 @@
     
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
+    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
     CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing;
+    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing() + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing();
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
-    CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing;
+    CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing() + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing();
     CGFloat minX = (keyboardWidth - itemsMaxW) * 0.5f;
     
     NSMutableArray<JGSKeyboardKey *> *tmpKeys = @[].mutableCopy;
     [keyTitles enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
-        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing + itemWidth) * line.count - JGSKeyboardInteritemSpacing;
+        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing() + itemWidth) * line.count - JGSKeyboardInteritemSpacing();
         CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
-        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing);
+        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing());
         
         [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing);
+            CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing());
             CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
             
             JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
@@ -84,7 +84,7 @@
         
         if (lineIdx == 2) {
             
-            CGFloat funcItemWidth = floor(beginX - minX - JGSKeyboardInteritemSpacing);
+            CGFloat funcItemWidth = floor(beginX - minX - JGSKeyboardInteritemSpacing());
             
             // shift
             JGSKeyboardKey *shitBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeShift text:nil frame:CGRectMake(minX, lineY, funcItemWidth, itemHeight)];
@@ -94,15 +94,15 @@
             JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - funcItemWidth, lineY, funcItemWidth, itemHeight)];
             [tmpKeys addObject:deleteBtn];
             
-            lineY += (itemHeight + JGSKeyboardKeyLineSpacing);
-            funcItemWidth += (JGSKeyboardInteritemSpacing + itemWidth) * 0.5;
+            lineY += (itemHeight + JGSKeyboardKeyLineSpacing());
+            funcItemWidth += (JGSKeyboardInteritemSpacing() + itemWidth) * 0.5;
             
             // switch
             JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Symbol text:JGSKeyboardTitleSymbolWithNumber frame:CGRectMake(minX, lineY, funcItemWidth, itemHeight)];
             [tmpKeys addObject:switchBtn];
             
             // space
-            CGFloat spaceX = minX + funcItemWidth + JGSKeyboardInteritemSpacing;
+            CGFloat spaceX = minX + funcItemWidth + JGSKeyboardInteritemSpacing();
             CGFloat spaceW = keyboardWidth - spaceX * 2;
             JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@" " frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
             [tmpKeys addObject:spaceBtn];

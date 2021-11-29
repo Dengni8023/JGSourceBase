@@ -50,6 +50,7 @@ PODS:
     - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
+  - SAMKeychain (1.5.3)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
@@ -60,11 +61,13 @@ DEPENDENCIES:
   - JGSourceBase/Reachability (from `.`)
   - JGSourceBase/SecurityKeyboard (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+  - SAMKeychain
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManager
     - MBProgressHUD
+    - SAMKeychain
 
 EXTERNAL SOURCES:
   JGSourceBase:
@@ -83,7 +86,8 @@ SPEC CHECKSUMS:
   JGSourceBase: 2db2c656c5dc8fd3fcaceeedef369923418926b4
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
 
-PODFILE CHECKSUM: 3fbeb833760866b45d8ff549935cad9e4602cda9
+PODFILE CHECKSUM: 3cf02dfe43159e328bbca51cf4fcea5666991b04
 
 COCOAPODS: 1.10.1

@@ -138,9 +138,9 @@
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithTitle:(NSString *)title {
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title {
     
-    self = [super initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+    self = [super initWithFrame:frame];
     if (self) {
         
         self.title = title;

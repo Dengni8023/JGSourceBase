@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) JGSKeyboardTitleToolbarItem *titleToolbarItem;
 @property (nonatomic, strong) JGSKeyboardToolbarItem *doneToolbarItem;
 
-- (instancetype)initWithTitle:(nullable NSString *)title;
+- (instancetype)initWithFrame:(CGRect)frame title:(nullable NSString *)title;
 
 @end
 
