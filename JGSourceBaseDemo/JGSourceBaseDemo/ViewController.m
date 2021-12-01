@@ -24,6 +24,16 @@
                                 @[
                                     JGSDemoTableRowMakeWithSelector(@"调试日志控制-Alert扩展", @selector(showLogModeList))
                                 ]),
+        // Section 扩展功能
+        JGSDemoTableSectionMake(@" Base Utils",
+                                @[
+                                    JGSDemoTableRowMakeWithSelector(@"DataStorage Demo", @selector(jumpToDataStorageDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"Device Demo", @selector(jumpToDeviceDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"Encryption Demo", @selector(jumpToEncryptionDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"HUD（Loading、Toast）", @selector(jumpToHudDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"Reachability", @selector(jumpToReachabilityDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"Security Keyboard", @selector(jumpToKeyboardDemo)),
+                                ]),
         // Section Category扩展
         JGSDemoTableSectionMake(@" Category",
                                 @[
@@ -32,20 +42,10 @@
                                     JGSDemoTableRowMakeWithSelector(@"NSObject", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"NSString", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"NSURL", @selector(jumpToCategoryDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"UIAlertController", @selector(jumpToCategoryDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"UIAlertController", @selector(jumpToCategoryAlert)),
                                     JGSDemoTableRowMakeWithSelector(@"UIApplication", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"UIColor", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"UIImage", @selector(jumpToCategoryDemo)),
-                                ]),
-        // Section 扩展功能
-        JGSDemoTableSectionMake(@" Other",
-                                @[
-                                    JGSDemoTableRowMakeWithSelector(@"DataStorage Demo", @selector(jumpToDataStorageDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"Device Demo", @selector(jumpToDeviceDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"Encryption Demo", @selector(jumpToEncryptionDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"HUD（Loading、Toast）", @selector(jumpToHudDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"Reachability", @selector(jumpToReachabilityDemo)),
-                                    JGSDemoTableRowMakeWithSelector(@"Security Keyboard", @selector(jumpToKeyboardDemo)),
                                 ]),
     ];
 }
@@ -132,239 +132,7 @@
 #endif
 }
 
-#pragma mark - Category
-- (void)jumpToCategoryDemo {
-    
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
-    vcT.title = @"Category";
-    vcT.tableSectionData = @[
-        // Section 字典取值
-        JGSDemoTableSectionMake(@" 字典取值",
-                                @[
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Number", self, @selector(dictionaryGetValue:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Array", self, @selector(dictionaryGetValue:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Dictionary", self, @selector(dictionaryGetValue:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Object", self, @selector(dictionaryGetValue:)),
-                                ]),
-        // Section 字符串URL处理
-        JGSDemoTableSectionMake(@" 字符串URL处理",
-                                @[
-                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串URL编码", self, @selector(string2URL:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串中文字符处理", self, @selector(string2URL:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串query不合规范处理", self, @selector(string2URL:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"URL Query字典", self, @selector(string2URL:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"URL Query参数值", self, @selector(string2URL:)),
-                                ]),
-        // Section 对象转JSON、字典
-        JGSDemoTableSectionMake(@" 对象转JSON、字典",
-                                @[
-                                    JGSDemoTableRowMakeWithObjectSelector(@"JSON对象转JSON字符串", self, @selector(object2JSONDictionary:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"JSON字符串转JSON对象", self, @selector(object2JSONDictionary:)),
-                                ]),
-    ];
-    
-    [self.navigationController pushViewController:vcT animated:YES];
-}
-
-- (void)dictionaryGetValue:(NSIndexPath *)indexPath {
-    
-#ifdef JGS_Category_NSObject
-    NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;
-    JGSLog(@"%@", [tmp objectForKey:@"NullKey1"]);
-    JGSLog(@"%@", tmp[@"NullKey2"]);
-    tmp[@"Nullkey3"] = [NSNull null];
-    JGSLog(@"%@", tmp.jg_JSONString);
-    tmp[@"Nullkey3"] = nil;
-    JGSLog(@"%@", tmp.jg_JSONString);
-    [tmp setObject:[NSNull null] forKey:@"Nullkey4"];
-    JGSLog(@"%@", tmp.jg_JSONString);
-    [tmp setObject:nil forKey:@"Nullkey4"];
-    JGSLog(@"%@", tmp.jg_JSONString);
-#endif
-    
-#ifdef JGS_Category_NSDictionary
-    static NSDictionary *storeDictionary = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        storeDictionary = @{
-            //@"NumberVale1": @{@"key": @"v"},//@"655381234567890",
-            @"NumberVale1": @"true",//@"655381234567890",
-            //@"NumberVale1": @"NO",//@"655381234567890",
-            //@"NumberVale1": @"655381234567890",
-            @"NumberVale2": @(1989.55),
-            @"StringVale": @"AB090BA",
-            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
-            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
-        };
-    });
-    
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    NSInteger rowIndex = indexPath.row;
-    switch (rowIndex) {
-        case 0: {
-            
-            JGSLog(@"%@", [storeDictionary jg_numberForKey:@"NumberVale1"]);
-            JGSLog(@"%ud", [storeDictionary jg_shortForKey:@"NumberVale1"]);
-            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"NumberVale1"]);
-            JGSLog(@"%ld", [storeDictionary jg_longForKey:@"NumberVale1"]);
-            JGSLog(@"%f", [storeDictionary jg_floatForKey:@"NumberVale1"]);
-            JGSLog(@"%d", [storeDictionary jg_boolForKey:@"NumberVale1"]);
-            JGSLog(@"%lf", [storeDictionary jg_CGFloatForKey:@"NumberVale1"]);
-            JGSLog(@"%ud", [storeDictionary jg_unsignedIntForKey:@"NumberVale1"]);
-            
-            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"NumberVale2"]);
-            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"StringVale"]);
-            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"ArrayValue"]);
-            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"Dictionary"]);
-        }
-            break;
-            
-        case 1: {
-            
-            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"NumberVale1"]);
-            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"NumberVale2"]);
-            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"StringVale"]);
-            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"ArrayValue"]);
-            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"Dictionary"]);
-        }
-            break;
-            
-        case 2: {
-            
-            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"NumberVale1"]);
-            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"NumberVale2"]);
-            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"StringVale"]);
-            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"ArrayValue"]);
-            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"Dictionary"]);
-        }
-            break;
-            
-        case 3: {
-            
-            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"NumberVale1"]);
-            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"NumberVale2"]);
-            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"StringVale"]);
-            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"ArrayValue"]);
-            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"Dictionary"]);
-        }
-            break;
-            
-        default:
-            break;
-    }
-#endif
-}
-
-- (void)string2URL:(NSIndexPath *)indexPath {
-    
-#ifdef JGS_Category_NSURL
-#pragma mark - URL
-    NSString *urlStr = @"tpybxsit://m.baidu.com/s?from=1000539d&word=%E8%92%9C%E8%93%89%E8%99%BE%E7%9A%84%E5%81%9A%E6%B3%95";
-    NSURL *URL = urlStr.jg_URL;
-    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
-    
-    urlStr = @"tpybxsit://m.baidu.com/s%3Ffrom=1000539d&word=蒜蓉虾的做法";
-    URL = urlStr.jg_URL;
-    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
-#endif
-    
-#ifdef JGS_Category_NSString
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    NSInteger rowIndex = indexPath.row;
-    switch (rowIndex) {
-        case 0: {
-            
-            NSArray<NSString *> *oriStrs = @[@":", @"#", @"[", @"]", @"@", @"!", @"$", @"&", @"'", @"(", @")", @"*", @"+", @",", @";", @"="];
-            [oriStrs enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                JGSLog(@"Encode %@ -> %@", obj, obj.jg_URLEncodeString);
-            }];
-        }
-            break;
-            
-        case 1: {
-            
-            NSString *urlStr = @"https://www.baidu.com/search?key1=你好&key2=Key&key3= &key4=Key4&key1=&key1=好";
-            JGSLog(@"\n%@\n%@", urlStr, urlStr.jg_URLString);
-        }
-            break;
-            
-        case 2: {
-            
-            NSString *urlStr = @"https://www.baidu.com/search&key1=你好&key2=Key&key3= &key4=Key4&key1=&key1=好";
-            JGSLog(@"\n%@\n%@", urlStr, urlStr.jg_URLString);
-        }
-            break;
-            
-        case 3: {
-            
-            NSString *urlStr = @"https://www.baidu.com/search&key1=你好&key2=&key2=Key&key3= &key4=Key4&key1=&key1=好";
-            NSURL *URL = urlStr.jg_URL;
-            JGSLog(@"\n%@", urlStr.jg_URLString);
-            JGSLog(@"\n%@", [URL jg_queryParams]);
-            
-            urlStr = @"https://www.baidu.com/search?key1=%E4%BD%A0%E5%A5%BD";
-            URL = urlStr.jg_URL;
-            JGSLog(@"\n%@", urlStr.jg_URLString);
-            JGSLog(@"\n%@", [URL jg_queryParams]);
-        }
-            break;
-            
-        case 4: {
-            
-            NSString *urlStr = @"https://www.baidu.com/search?key1=你 Hello 好%5B中括号%5D";
-            NSURL *URL = urlStr.jg_URL;
-            JGSLog(@"\n%@", urlStr.jg_URLString);
-            JGSLog(@"\nkey1: %@", [URL jg_queryForKey:@"key1"]);
-        }
-            break;
-            
-        default:
-            break;
-    }
-#endif
-}
-
-- (void)object2JSONDictionary:(NSIndexPath *)indexPath {
-#ifdef JGS_Category_NSObject
-    static NSDictionary *storeDictionary = nil;
-    static NSString *storeString = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        storeDictionary = @{
-                            @"NumberVale1": @"655381234567890",
-                            @"NumberVale2": @(1989.55),
-                            @"StringVale": @"AB090BA",
-                            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
-                            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
-                            };
-        storeString = [storeDictionary jg_JSONString];
-    });
-    
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    NSInteger rowIndex = indexPath.row;
-    switch (rowIndex) {
-        case 0: {
-            
-            JGSLog(@"Model to JSON : %@", [storeDictionary jg_JSONString]);
-            id object = [storeDictionary jg_JSONObjectWithOptions:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:nil];
-            JGSLog(@"Model to Mutable : %@", object);
-        }
-            break;
-            
-        case 1: {
-            
-            JGSLog(@"Model to JSON : %@", [storeString jg_JSONObject]);
-        }
-            break;
-            
-        default:
-            break;
-    }
-#endif
-}
-
+#pragma mark -
 #pragma mark - DataStorage
 - (void)jumpToDataStorageDemo {
     
@@ -679,20 +447,402 @@
         
         [[JGSReachability sharedInstance] startMonitor];
         [[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
-            JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
+            NSString *statusString = [[JGSReachability sharedInstance] reachabilityStatusString];
+            JGSLog(@"Network status: %@", statusString);
+#ifdef JGS_Category_UIAlertController
+            [UIAlertController jg_alertWithTitle:@"网络变了" message:statusString cancel:@"确定"];
+#endif
         }];
     });
     
-    JGSLog(@"Network status: %@", [[JGSReachability sharedInstance] reachabilityStatusString]);
+    NSDictionary *netInfo = @{
+        @"Reachable": [[JGSReachability sharedInstance] reachable] ? @"YES": @"NO",
+        @"WiFi": [[JGSReachability sharedInstance] reachableViaWiFi] ? @"YES": @"NO",
+        @"WWAN": [[JGSReachability sharedInstance] reachableViaWWAN] ? @"YES": @"NO",
+        @"Network Type": [[JGSReachability sharedInstance] reachabilityStatusString],
+    };
+    
+#ifdef JGS_Category_NSObject
+    NSString *netJSON = [netInfo jg_JSONStringWithOptions:kNilOptions error:nil];
+#else
+    NSData *data = [NSJSONSerialization dataWithJSONObject:netInfo options:kNilOptions error:nil];
+    NSString *netJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+#endif
+    
+    JGSLog(@"Network info: %@", netJSON);
+#ifdef JGS_Category_UIAlertController
+    [UIAlertController jg_alertWithTitle:@"网络连接信息" message:netJSON cancel:@"确定"];
+#endif
+    
 #endif
 }
-
 
 #pragma mark - SecurityKeyboard
 - (void)jumpToKeyboardDemo {
     
     JGSKeyboardDemoViewController *vcT = [[JGSKeyboardDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
+}
+
+#pragma mark -
+#pragma mark - Category
+- (void)jumpToCategoryAlert {
+    
+    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    vcT.title = @"UIAlertController";
+    vcT.tableSectionData = @[
+        // Section Base
+        JGSDemoTableSectionMake(@" Base",
+                                @[
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide all", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide one", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & other", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & others", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive & others", self, @selector(categoryAlertDemo:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Action Sheet", self, @selector(categoryAlertDemo:)),
+                                ]),
+    ];
+    
+    [self.navigationController pushViewController:vcT animated:YES];
+}
+
+- (void)categoryAlertDemo:(NSIndexPath *)indexPath {
+    
+#ifdef JGS_Category_UIAlertController
+    switch (indexPath.section) {
+        case 0: {
+            
+            switch (indexPath.row) {
+                case 0: {
+                    
+                    // Last hide all
+                    NSInteger i = 0;
+                    while (i < 5) {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * 0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [UIAlertController jg_alertWithTitle:[@(i + 1) stringValue] message:@"5 alerts，Last hide all" cancel:(i == 4 ? @"关闭所有" : (i % 2 == 0 ? @"确定" : nil)) action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                                
+                                if (i == 4) {
+                                    [UIAlertController jg_hideAllAlert:YES];
+                                }
+                            }];
+                        });
+                        i += 1;
+                    }
+                }
+                    break;
+                    
+                case 1: {
+                    
+                    // Last hide one
+                    NSInteger i = 0;
+                    while (i < 4) {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * 0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [UIAlertController jg_alertWithTitle:[@(i + 1) stringValue] message:@"5 alerts，Last hide all" cancel:(i == 3 ? @"再关闭一个" : @"确定") action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                                
+                                if (i == 3) {
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [UIAlertController jg_hideCurrentAlert:YES];
+                                    });
+                                }
+                            }];
+                        });
+                        i += 1;
+                    }
+                }
+                    break;
+                    
+                case 2: {
+                    
+                    // canle & destructive
+                    [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" destructive:@"Destructive" action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                        
+                    }];
+                }
+                    break;
+                    
+                case 3: {
+                    
+                    // canle & other
+                    [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" other:@"Other" action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                        
+                    }];
+                }
+                    break;
+            
+                case 4: {
+                    
+                    // canle & others
+                    [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" others:@[@"Other 1", @"Other 2"] action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                        
+                    }];
+                }
+                    break;
+                    
+                case 5: {
+                    
+                    // canle & destructive & others
+                    [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" destructive:@"Destructive" others:@[@"Other 1", @"Other 2"] action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                        
+                    }];
+                }
+                    break;
+                    
+                case 6: {
+                    
+                    // Action Sheet
+                    static BOOL withCancel = YES;
+                    [UIAlertController jg_actionSheetWithTitle:@"Title" message:@"Message" cancel:(withCancel ? @"Cancel" : nil) destructive:@"Destructive" others:@[@"Other 1", @"Other 2"] action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                        withCancel = !withCancel;
+                    }];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+#endif
+}
+
+#pragma mark - Category
+- (void)jumpToCategoryDemo {
+    
+    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    vcT.title = @"Category";
+    vcT.tableSectionData = @[
+        // Section 字典取值
+        JGSDemoTableSectionMake(@" 字典取值",
+                                @[
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Number", self, @selector(dictionaryGetValue:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Array", self, @selector(dictionaryGetValue:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Dictionary", self, @selector(dictionaryGetValue:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Get Object", self, @selector(dictionaryGetValue:)),
+                                ]),
+        // Section 字符串URL处理
+        JGSDemoTableSectionMake(@" 字符串URL处理",
+                                @[
+                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串URL编码", self, @selector(string2URL:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串中文字符处理", self, @selector(string2URL:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"字符串query不合规范处理", self, @selector(string2URL:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"URL Query字典", self, @selector(string2URL:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"URL Query参数值", self, @selector(string2URL:)),
+                                ]),
+        // Section 对象转JSON、字典
+        JGSDemoTableSectionMake(@" 对象转JSON、字典",
+                                @[
+                                    JGSDemoTableRowMakeWithObjectSelector(@"JSON对象转JSON字符串", self, @selector(object2JSONDictionary:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"JSON字符串转JSON对象", self, @selector(object2JSONDictionary:)),
+                                ]),
+    ];
+    
+    [self.navigationController pushViewController:vcT animated:YES];
+}
+
+- (void)dictionaryGetValue:(NSIndexPath *)indexPath {
+    
+#ifdef JGS_Category_NSObject
+    NSMutableDictionary *tmp = @{@"NullKey1": [NSNull null], @"NullKey2": [NSNull null]}.mutableCopy;
+    JGSLog(@"%@", [tmp objectForKey:@"NullKey1"]);
+    JGSLog(@"%@", tmp[@"NullKey2"]);
+    tmp[@"Nullkey3"] = [NSNull null];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    tmp[@"Nullkey3"] = nil;
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:[NSNull null] forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
+    [tmp setObject:nil forKey:@"Nullkey4"];
+    JGSLog(@"%@", tmp.jg_JSONString);
+#endif
+    
+#ifdef JGS_Category_NSDictionary
+    static NSDictionary *storeDictionary = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        storeDictionary = @{
+            //@"NumberVale1": @{@"key": @"v"},//@"655381234567890",
+            @"NumberVale1": @"true",//@"655381234567890",
+            //@"NumberVale1": @"NO",//@"655381234567890",
+            //@"NumberVale1": @"655381234567890",
+            @"NumberVale2": @(1989.55),
+            @"StringVale": @"AB090BA",
+            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
+            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
+        };
+    });
+    
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    NSInteger rowIndex = indexPath.row;
+    switch (rowIndex) {
+        case 0: {
+            
+            JGSLog(@"%@", [storeDictionary jg_numberForKey:@"NumberVale1"]);
+            JGSLog(@"%ud", [storeDictionary jg_shortForKey:@"NumberVale1"]);
+            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"NumberVale1"]);
+            JGSLog(@"%ld", [storeDictionary jg_longForKey:@"NumberVale1"]);
+            JGSLog(@"%f", [storeDictionary jg_floatForKey:@"NumberVale1"]);
+            JGSLog(@"%d", [storeDictionary jg_boolForKey:@"NumberVale1"]);
+            JGSLog(@"%lf", [storeDictionary jg_CGFloatForKey:@"NumberVale1"]);
+            JGSLog(@"%ud", [storeDictionary jg_unsignedIntForKey:@"NumberVale1"]);
+            
+            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"NumberVale2"]);
+            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"StringVale"]);
+            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"ArrayValue"]);
+            JGSLog(@"%zd", [storeDictionary jg_integerForKey:@"Dictionary"]);
+        }
+            break;
+            
+        case 1: {
+            
+            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"NumberVale1"]);
+            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"NumberVale2"]);
+            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"StringVale"]);
+            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"ArrayValue"]);
+            JGSLog(@"%@", [storeDictionary jg_arrayForKey:@"Dictionary"]);
+        }
+            break;
+            
+        case 2: {
+            
+            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"NumberVale1"]);
+            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"NumberVale2"]);
+            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"StringVale"]);
+            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"ArrayValue"]);
+            JGSLog(@"%@", [storeDictionary jg_dictionaryForKey:@"Dictionary"]);
+        }
+            break;
+            
+        case 3: {
+            
+            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"NumberVale1"]);
+            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"NumberVale2"]);
+            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"StringVale"]);
+            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"ArrayValue"]);
+            JGSLog(@"%@", [storeDictionary jg_objectForKey:@"Dictionary"]);
+        }
+            break;
+            
+        default:
+            break;
+    }
+#endif
+}
+
+- (void)string2URL:(NSIndexPath *)indexPath {
+    
+#ifdef JGS_Category_NSURL
+#pragma mark - URL
+    NSString *urlStr = @"tpybxsit://m.baidu.com/s?from=1000539d&word=%E8%92%9C%E8%93%89%E8%99%BE%E7%9A%84%E5%81%9A%E6%B3%95";
+    NSURL *URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+    
+    urlStr = @"tpybxsit://m.baidu.com/s%3Ffrom=1000539d&word=蒜蓉虾的做法";
+    URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+#endif
+    
+#ifdef JGS_Category_NSString
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    NSInteger rowIndex = indexPath.row;
+    switch (rowIndex) {
+        case 0: {
+            
+            NSArray<NSString *> *oriStrs = @[@":", @"#", @"[", @"]", @"@", @"!", @"$", @"&", @"'", @"(", @")", @"*", @"+", @",", @";", @"="];
+            [oriStrs enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                JGSLog(@"Encode %@ -> %@", obj, obj.jg_URLEncodeString);
+            }];
+        }
+            break;
+            
+        case 1: {
+            
+            NSString *urlStr = @"https://www.baidu.com/search?key1=你好&key2=Key&key3= &key4=Key4&key1=&key1=好";
+            JGSLog(@"\n%@\n%@", urlStr, urlStr.jg_URLString);
+        }
+            break;
+            
+        case 2: {
+            
+            NSString *urlStr = @"https://www.baidu.com/search&key1=你好&key2=Key&key3= &key4=Key4&key1=&key1=好";
+            JGSLog(@"\n%@\n%@", urlStr, urlStr.jg_URLString);
+        }
+            break;
+            
+        case 3: {
+            
+            NSString *urlStr = @"https://www.baidu.com/search&key1=你好&key2=&key2=Key&key3= &key4=Key4&key1=&key1=好";
+            NSURL *URL = urlStr.jg_URL;
+            JGSLog(@"\n%@", urlStr.jg_URLString);
+            JGSLog(@"\n%@", [URL jg_queryParams]);
+            
+            urlStr = @"https://www.baidu.com/search?key1=%E4%BD%A0%E5%A5%BD";
+            URL = urlStr.jg_URL;
+            JGSLog(@"\n%@", urlStr.jg_URLString);
+            JGSLog(@"\n%@", [URL jg_queryParams]);
+        }
+            break;
+            
+        case 4: {
+            
+            NSString *urlStr = @"https://www.baidu.com/search?key1=你 Hello 好%5B中括号%5D";
+            NSURL *URL = urlStr.jg_URL;
+            JGSLog(@"\n%@", urlStr.jg_URLString);
+            JGSLog(@"\nkey1: %@", [URL jg_queryForKey:@"key1"]);
+        }
+            break;
+            
+        default:
+            break;
+    }
+#endif
+}
+
+- (void)object2JSONDictionary:(NSIndexPath *)indexPath {
+#ifdef JGS_Category_NSObject
+    static NSDictionary *storeDictionary = nil;
+    static NSString *storeString = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        storeDictionary = @{
+                            @"NumberVale1": @"655381234567890",
+                            @"NumberVale2": @(1989.55),
+                            @"StringVale": @"AB090BA",
+                            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
+                            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
+                            };
+        storeString = [storeDictionary jg_JSONString];
+    });
+    
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    NSInteger rowIndex = indexPath.row;
+    switch (rowIndex) {
+        case 0: {
+            
+            JGSLog(@"Model to JSON : %@", [storeDictionary jg_JSONString]);
+            id object = [storeDictionary jg_JSONObjectWithOptions:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:nil];
+            JGSLog(@"Model to Mutable : %@", object);
+        }
+            break;
+            
+        case 1: {
+            
+            JGSLog(@"Model to JSON : %@", [storeString jg_JSONObject]);
+        }
+            break;
+            
+        default:
+            break;
+    }
+#endif
 }
 
 #pragma mark - End

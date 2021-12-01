@@ -38,7 +38,10 @@ static NSPointerArray *jg_ShowingAlertControllers = nil;
         sysAlertWindow.windowLevel = UIWindowLevelAlert;
         
         UIViewController *vcT = [[UIViewController alloc] init];
-        vcT.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.18];
+        // 此处直接设置为透明，alert 展示时系统默认增加半透明背景色
+        // 如果手动设备自定义背景色，存在 alert 消失时自定义背景色仍旧存在情况
+        // 自定义背景色在状态更新动画结束才会消失，影响用户体验
+        vcT.view.backgroundColor = [UIColor clearColor];
         sysAlertWindow.rootViewController = vcT;
         objc_setAssociatedObject(app, &kJGSSysAlertControllerWindowKey, sysAlertWindow, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
@@ -174,23 +177,36 @@ static NSPointerArray *jg_ShowingAlertControllers = nil;
 
 + (void)refreshAlertWindowSatus {
     
-    // 直接执行因为刚刚关闭的Alert内存尚未释放，导致jg_ShowingAlertControllers中仍就存储有该对象，状态无法更新成功
-    // 所以此处进行一次线程切换之后来更新状态
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //    jg_SysAlertWindow.hidden = jg_ShowingAlertControllers.allObjects.count == 0;
-    //});
+    // 直接执行因为刚刚关闭的 alert 内存尚未释放，presentingViewController 仍旧被 alert 持有
+    // 导致 jg_ShowingAlertControllers.allObjects 中仍存储有该alert对象
+    // 无法根据 alert 的内存、presentingViewController 成功进行释放清理
+    // 此处进行一次线程切换以更新 laert的 内存、presentingViewController 状态
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self jg_SysAlertWindow].hidden = jg_ShowingAlertControllers.allObjects.count == 0;
+        
+        for (NSInteger i = jg_ShowingAlertControllers.count - 1; i >= 0; i--) {
+            // 对内存已释放、或 presentingViewController 为 nil 的 alert 进行清理
+            UIAlertController *alert = [jg_ShowingAlertControllers pointerAtIndex:i];
+            if (alert == nil || alert.presentingViewController == nil) {
+                // 因存在外部短时间调用多个 alert 展示
+                // alert 展示动画执行过程中调用 alert展示，存在不会实际展示出来的情况
+                // 如：存在短时内依次调用展示1、2、3三个 alert，但是存在仅1、3展示出来的情况
+                // 因此此处遍历需要遍历所有存储的 alert 对象，不能 break
+                [jg_ShowingAlertControllers removePointerAtIndex:i];
+            }
+        }
+        
+        if (jg_ShowingAlertControllers.allObjects.count == 0) {
+            
+            // 动画开始时 alert 已完全消失
+            // 动画结束前，透明窗仍旧存在，用户无法操作界面
+            // 如定义了根控制器视图的背景色，则动画过程有一个颜色渐变消失的动
+            [UIView animateWithDuration:0.02 animations:^{
+                [self jg_SysAlertWindow].alpha = 0.f;
+            } completion:^(BOOL finished) {
+                [self jg_SysAlertWindow].hidden = YES;
+            }];
+        }
     });
-    UIAlertController *lastAlert = jg_ShowingAlertControllers.allObjects.lastObject;
-    BOOL hide = (jg_ShowingAlertControllers.allObjects.count == 0 || (jg_ShowingAlertControllers.allObjects.count == 1 && lastAlert.presentingViewController == nil));
-    if (hide) {
-        [UIView animateWithDuration:0.02 animations:^{
-            [self jg_SysAlertWindow].alpha = 0.f;
-        } completion:^(BOOL finished) {
-            [self jg_SysAlertWindow].hidden = hide;
-        }];
-    }
 }
 
 #pragma mark - Private

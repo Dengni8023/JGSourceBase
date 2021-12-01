@@ -11,6 +11,8 @@
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase.h"
 #import <objc/runtime.h>
+//#import <ImageIO/ImageIO.h>
+#import <Accelerate/Accelerate.h>
 
 @interface UITextField (JGSSecurityKeyboard)
 
@@ -156,7 +158,7 @@
     if (!self.textField.isFirstResponder) {
         return;
     }
-
+    
     //JGSLog(@"%@: %@", noti.name, noti.userInfo);
 }
 
@@ -573,7 +575,7 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
                                               NSStringFromSelector(@selector(replaceRange:withText:)),
                                               NSStringFromSelector(@selector(setSecureTextEntry:)),
                                               NSStringFromSelector(@selector(canPerformAction:withSender:)),
-                                              ];
+        ];
         for (NSString *oriSelName in oriSelectors) {
             
             SEL originalSelector = NSSelectorFromString(oriSelName);
