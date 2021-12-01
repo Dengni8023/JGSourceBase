@@ -328,7 +328,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
         
         UIImage *newImage = [UIImage imageWithCGImage:self.CGImage scale:self.scale orientation:self.imageOrientation];
         if ([UIImageJPEGRepresentation(newImage, 1.f) length] <= kb * kbToB) {
-            JGSLog();
+            //JGSLog();
             return UIImageJPEGRepresentation(newImage, 1.f);
         }
         
@@ -350,7 +350,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
                 
                 CGFloat scale = minWh / MIN(newImage.size.width, newImage.size.height);
                 newImage = [self jg_imageWithScale:scale];
-                JGSLog(@"%f", scale);
+                //JGSLog(@"%f", scale);
             }
         }
         else {
@@ -361,7 +361,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
                 
                 CGFloat scale = maxWh / MAX(newImage.size.width, newImage.size.height);
                 newImage = [self jg_imageWithScale:scale];
-                JGSLog(@"%f", scale);
+                //JGSLog(@"%f", scale);
             }
         }
         
@@ -373,7 +373,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
             scale -= delta;
             newImage = [newImage jg_imageWithScale:scale];
             imageData = UIImageJPEGRepresentation(newImage, minQuality);
-            JGSLog(@"%f", scale);
+            //JGSLog(@"%f", scale);
         }
         
         //图片质量压缩，起始压缩比例
@@ -382,7 +382,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
         imageData = UIImageJPEGRepresentation(newImage, quality);
         while ([imageData length] > kb * kbToB) {
             
-            JGSLog(@"%f, %zd", quality, [imageData length]);
+            //JGSLog(@"%f, %zd", quality, [imageData length]);
             NSInteger dataLen = [imageData length];
             quality -= (delta + deltaIncrease);
             deltaIncrease = deltaIncrease * (1 + delta * 0.01);
@@ -394,7 +394,7 @@ CGFloat JGSDegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180.f; }
                 break;
             }
         }
-        JGSLog(@"%f, %zd", quality, [imageData length]);
+        //JGSLog(@"%f, %zd", quality, [imageData length]);
         
         return imageData;
     }

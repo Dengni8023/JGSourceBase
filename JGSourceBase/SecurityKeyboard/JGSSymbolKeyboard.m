@@ -8,24 +8,19 @@
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase.h"
 
-BOOL JGSKeyboardSymbolFullAngle = NO;
-FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
-    JGSKeyboardSymbolFullAngle = enable;
-}
-
 @interface JGSSymbolKeyboard ()
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showHalfNumSyms;
-@property (nonatomic, copy) NSArray<JGSKeyboardKey *> *showHalfNumKeys;
+@property (nonatomic, copy) NSArray<NSArray<JGSKeyboardKey *> *> *showHalfNumKeys;
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showHalfSymbols;
-@property (nonatomic, copy) NSArray<JGSKeyboardKey *> *showHalfSymKeys;
+@property (nonatomic, copy) NSArray<NSArray<JGSKeyboardKey *> *> *showHalfSymKeys;
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showFullNumSyms;
-@property (nonatomic, copy) NSArray<JGSKeyboardKey *> *showFullNumKeys;
+@property (nonatomic, copy) NSArray<NSArray<JGSKeyboardKey *> *> *showFullNumKeys;
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showFullSymbols;
-@property (nonatomic, copy) NSArray<JGSKeyboardKey *> *showFullSymKeys;
+@property (nonatomic, copy) NSArray<NSArray<JGSKeyboardKey *> *> *showFullSymKeys;
 
 @end
 
@@ -37,11 +32,6 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     self = [super initWithFrame:frame type:type returnKeyType:returnKeyType keyInput:keyInput];
     if (self) {
         
-        // 按钮
-        self.showHalfNumKeys = [self addShowKeys:self.showHalfNumSyms containNum:YES halfAngle:YES hidden:NO];
-        self.showHalfSymKeys = [self addShowKeys:self.showHalfSymbols containNum:NO halfAngle:YES hidden:YES];
-        self.showFullNumKeys = [self addShowKeys:self.showFullNumSyms containNum:YES halfAngle:NO hidden:YES];
-        self.showFullSymKeys = [self addShowKeys:self.showFullSymbols containNum:NO halfAngle:NO hidden:YES];
     }
     return self;
 }
@@ -49,24 +39,56 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
 - (void)enableHighlightedWhenTap:(BOOL)enable {
     [super enableHighlightedWhenTap:enable];
     
-    [self.showHalfNumKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enableHighlighted = enable;
+    [self.showHalfNumKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enableHighlighted = enable;
+        }];
     }];
     
-    [self.showHalfSymKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enableHighlighted = enable;
+    [self.showHalfSymKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enableHighlighted = enable;
+        }];
     }];
     
-    [self.showFullNumKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enableHighlighted = enable;
+    [self.showFullNumKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enableHighlighted = enable;
+        }];
     }];
     
-    [self.showFullSymKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enableHighlighted = enable;
+    [self.showFullSymKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enableHighlighted = enable;
+        }];
     }];
 }
 
 #pragma mark - View
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    
+    if (newSuperview != nil) {
+        // 按钮
+        if (self.showHalfNumKeys == nil) {
+            self.showHalfNumKeys = [self addShowKeys:self.showHalfNumSyms containNum:YES halfAngle:YES hidden:NO];
+        }
+        if (self.showHalfSymKeys == nil) {
+            self.showHalfSymKeys = [self addShowKeys:self.showHalfSymbols containNum:NO halfAngle:YES hidden:YES];
+        }
+        if (self.showFullAngle && self.showFullNumKeys == nil) {
+            self.showFullNumKeys = [self addShowKeys:self.showFullNumSyms containNum:YES halfAngle:NO hidden:YES];
+        }
+        if (self.showFullAngle && self.showFullSymKeys == nil) {
+            self.showFullSymKeys = [self addShowKeys:self.showFullSymbols containNum:NO halfAngle:NO hidden:YES];
+        }
+    }
+}
+
 - (NSArray<NSArray<NSString *> *> *)showHalfNumSyms {
     
     if (!_showHalfNumSyms) {
@@ -115,7 +137,155 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     return _showFullSymbols;
 }
 
-- (NSArray<JGSKeyboardKey *> *)addShowKeys:(NSArray<NSArray<NSString *> *> *)keyTitles containNum:(BOOL)containNum halfAngle:(BOOL)isHalf hidden:(BOOL)hidden  {
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (self.superview == nil) {
+        return;
+    }
+    
+    NSMutableArray<NSArray<NSArray<JGSKeyboardKey *> *> *> *showKeyboards = @[].mutableCopy;
+    NSMutableArray<NSArray<NSArray<NSString *> *> *> *keyboardLetters = @[].mutableCopy;
+    if (self.showHalfNumKeys.firstObject.firstObject.superview != nil) {
+        [showKeyboards addObject:self.showHalfNumKeys];
+        [keyboardLetters addObject:self.showHalfNumSyms];
+    }
+    if (self.showHalfSymKeys.firstObject.firstObject.superview != nil) {
+        [showKeyboards addObject:self.showHalfSymKeys];
+        [keyboardLetters addObject:self.showHalfSymbols];
+    }
+    if (self.showFullNumKeys.firstObject.firstObject.superview != nil) {
+        [showKeyboards addObject:self.showFullNumKeys];
+        [keyboardLetters addObject:self.showFullNumSyms];
+    }
+    if (self.showFullSymKeys.firstObject.firstObject.superview != nil) {
+        [showKeyboards addObject:self.showFullSymKeys];
+        [keyboardLetters addObject:self.showFullSymbols];
+    }
+    
+    CGFloat keyboardWidth = CGRectGetWidth(self.frame);
+    CGFloat keyboardHeight = CGRectGetHeight(self.frame);
+    NSInteger linesCnt = JGSKeyboardLinesNumber;
+    NSInteger maxItemsCnt = JGSKeyboardMaxItemsInLine;
+    CGFloat lineSpacing = JGSKeyboardKeyLineSpacing();
+    CGFloat itemSpacing = JGSKeyboardKeyInterSpacing();
+    
+    // 水平方向：边距 = 间隔 * 0.5
+    CGFloat itemWidth = floor(keyboardWidth / maxItemsCnt - itemSpacing);
+    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        // 边距 = 间隔
+        itemWidth = floor((keyboardWidth - itemSpacing) / maxItemsCnt - itemSpacing);
+    }
+    // 垂直方向：边距 = 间隔
+    CGFloat itemHeight = floor((keyboardHeight - lineSpacing) / linesCnt - lineSpacing);
+    
+    CGFloat itemsTotalH = (lineSpacing + itemHeight) * linesCnt - lineSpacing;
+    CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
+    CGFloat itemsMaxW = (itemSpacing + itemWidth) * maxItemsCnt - itemSpacing;
+    CGFloat minX = (keyboardWidth - itemsMaxW) * 0.5f;
+    
+    for (NSArray<NSArray<JGSKeyboardKey *> *> *showKeys in showKeyboards) {
+        
+        NSArray<NSArray<NSString *> *> *showLetters = [keyboardLetters objectAtIndex:[showKeyboards indexOfObject:showKeys]];
+        [showKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger lineIdx, BOOL * _Nonnull stop) {
+            
+            CGFloat itemsTotalW = (itemSpacing + itemWidth) * maxItemsCnt - itemSpacing;
+            if (lineIdx < 3) {
+                itemsTotalW = (itemSpacing + itemWidth) * showLetters[lineIdx].count - itemSpacing;
+            }
+            CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
+            CGFloat lineY = beginY + lineIdx * (itemHeight + lineSpacing);
+            CGFloat scale = 1.f;
+            if (lineIdx == 2) {
+                
+                // 第三行输入按键宽度调整
+                CGFloat deleteWidth = floor(MIN(beginX - minX - itemSpacing, itemWidth * 1.5 + itemSpacing));
+                beginX = minX + deleteWidth + itemSpacing;
+                CGFloat keysW = keyboardWidth - beginX * 2; // = ((itemWidth + itemSpacing) * line.count - itemSpacing) * scale
+                scale = keysW / ((itemWidth + itemSpacing) * showLetters[lineIdx].count - itemSpacing);
+            }
+            
+            [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                if (lineIdx < 2) {
+                    
+                    CGFloat btnX = beginX + idx * (itemWidth + itemSpacing) * scale;
+                    obj.frame = CGRectMake(btnX, lineY, itemWidth * scale, itemHeight);
+                }
+                else if (lineIdx == 2) {
+                    
+                    if (idx > 0 && idx < lineKeys.count - 1) {
+                        
+                        CGFloat btnX = beginX + (idx - 1) * (itemWidth + itemSpacing) * scale;
+                        obj.frame = CGRectMake(btnX, lineY, itemWidth * scale, itemHeight);
+                    }
+                    else {
+                        
+                        CGFloat deleteWidth = round(beginX - itemSpacing - minX);
+                        if (idx == 0) {
+                            obj.frame = CGRectMake(minX, lineY, deleteWidth, itemHeight);
+                        }
+                        else if (idx == lineKeys.count - 1) {
+                            obj.frame = CGRectMake(keyboardWidth - minX - deleteWidth, lineY, deleteWidth, itemHeight);
+                        }
+                    }
+                }
+                else if (lineIdx == 3) {
+                    
+                    // 不支持全角时，切换按钮宽度和字母键盘保持一致
+                    CGFloat switchWidth = round(itemWidth * 2 + itemSpacing);
+                    CGFloat returnWidth = switchWidth;
+                    CGFloat spaceX = minX + switchWidth + itemSpacing;
+                    if (lineKeys.count == 4) {
+                        
+                        switchWidth = floor((itemSpacing * 2 + itemWidth * 2.5) * 0.5);
+                        returnWidth = switchWidth * 2 + itemSpacing;
+                        spaceX = minX + (switchWidth + itemSpacing) * 2;
+                    }
+                    
+                    switch (idx) {
+                        case 0:
+                            obj.frame = CGRectMake(minX, lineY, switchWidth, itemHeight);
+                            break;
+
+                        case 1: {
+                            
+                            if (lineKeys.count == 4) {
+                                obj.frame = CGRectMake(minX + switchWidth + itemSpacing, lineY, switchWidth, itemHeight);
+                            }
+                            else {
+                                CGFloat spaceW = keyboardWidth - spaceX * 2;
+                                obj.frame = CGRectMake(spaceX, lineY, spaceW, itemHeight);
+                            }
+                        }
+                            break;
+
+                        case 2: {
+                            
+                            if (lineKeys.count == 4) {
+                                CGFloat spaceW = keyboardWidth - spaceX * 2;
+                                obj.frame = CGRectMake(spaceX, lineY, spaceW, itemHeight);
+                            }
+                            else {
+                                obj.frame = CGRectMake(keyboardWidth - minX - returnWidth, lineY, returnWidth, itemHeight);
+                            }
+                        }
+                            break;
+
+                        case 3:
+                            obj.frame = CGRectMake(keyboardWidth - minX - returnWidth, lineY, returnWidth, itemHeight);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }];
+        }];
+    }
+}
+
+- (NSArray<NSArray<JGSKeyboardKey *> *> *)addShowKeys:(NSArray<NSArray<NSString *> *> *)keyTitles containNum:(BOOL)containNum halfAngle:(BOOL)isHalf hidden:(BOOL)hidden  {
     
     if (keyTitles.count == 0) {
         return nil;
@@ -123,109 +293,138 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing() + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing();
+    NSInteger linesCnt = JGSKeyboardLinesNumber;
+    NSInteger maxItemsCnt = JGSKeyboardMaxItemsInLine;
+    CGFloat lineSpacing = JGSKeyboardKeyLineSpacing();
+    CGFloat itemSpacing = JGSKeyboardKeyInterSpacing();
+    
+    // 水平方向：边距 = 间隔 * 0.5
+    CGFloat itemWidth = floor(keyboardWidth / maxItemsCnt - itemSpacing);
+    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        // 边距 = 间隔
+        itemWidth = floor((keyboardWidth - itemSpacing) / maxItemsCnt - itemSpacing);
+    }
+    // 垂直方向：边距 = 间隔
+    CGFloat itemHeight = floor((keyboardHeight - lineSpacing) / linesCnt - lineSpacing);
+    
+    CGFloat itemsTotalH = (lineSpacing + itemHeight) * linesCnt - lineSpacing;
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
-    CGFloat itemsMaxW = (JGSKeyboardInteritemSpacing() + itemWidth) * JGSKeyboardMaxItemsInLine - JGSKeyboardInteritemSpacing();
+    CGFloat itemsMaxW = (itemSpacing + itemWidth) * maxItemsCnt - itemSpacing;
     CGFloat minX = (keyboardWidth - itemsMaxW) * 0.5f;
     
-    NSMutableArray<JGSKeyboardKey *> *tmpKeys = @[].mutableCopy;
+    NSMutableArray<NSArray<JGSKeyboardKey *> *> *tmpKeys = @[].mutableCopy;
     [keyTitles enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
-        CGFloat itemsTotalW = (JGSKeyboardInteritemSpacing() + itemWidth) * line.count - JGSKeyboardInteritemSpacing();
+        CGFloat itemsTotalW = (itemSpacing + itemWidth) * line.count - itemSpacing;
         CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
-        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing());
-        
-        [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            CGFloat btnX = beginX + idx * (itemWidth + JGSKeyboardInteritemSpacing());
-            CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
-            if (lineIdx == 2) {
-                
-                // 与键盘按键第三行功能键看度计算保持一致
-                CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing(), (itemWidth + JGSKeyboardInteritemSpacing()) * 1.5));
-                CGFloat btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing();
-                CGFloat scale = (keyboardWidth - btnBeginX * 2) / line.count / (itemWidth + JGSKeyboardInteritemSpacing());
-                btnBeginX = minX + funcItemWidth + JGSKeyboardInteritemSpacing() * scale;
-                CGFloat btnWidth = (keyboardWidth - btnBeginX * 2 + JGSKeyboardInteritemSpacing() * scale) / line.count - JGSKeyboardInteritemSpacing() * scale;
-                btnX = btnBeginX + idx * (btnWidth + JGSKeyboardInteritemSpacing() * scale);
-                btnFrame = CGRectMake(btnX, lineY, btnWidth, itemHeight);
-            }
-            
-            JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
-            [tmpKeys addObject:itemBtn];
-        }];
-        
+        CGFloat lineY = beginY + lineIdx * (itemHeight + lineSpacing);
+        CGFloat scale = 1.f;
         if (lineIdx == 2) {
             
-            // 与键盘按键第三行按钮宽度计算保持一致
-            CGFloat funcItemWidth = floor(MIN(beginX - minX - JGSKeyboardInteritemSpacing(), (itemWidth + JGSKeyboardInteritemSpacing()) * 1.5));
+            // 第三行输入按键宽度调整
+            CGFloat deleteWidth = floor(MIN(beginX - minX - itemSpacing, itemWidth * 1.5 + itemSpacing));
+            beginX = minX + deleteWidth + itemSpacing;
+            CGFloat keysW = keyboardWidth - beginX * 2; // = ((itemWidth + itemSpacing) * line.count - itemSpacing) * scale
+            scale = keysW / ((itemWidth + itemSpacing) * line.count - itemSpacing);
+        }
+        
+        NSMutableArray<JGSKeyboardKey *> *lineKeys = @[].mutableCopy;
+        [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            CGFloat btnX = beginX + idx * (itemWidth + itemSpacing) * scale;
+            CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth * scale, itemHeight);
+            
+            JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
+            [lineKeys addObject:itemBtn];
+        }];
+        
+        if (lineIdx < 2) {
+            [tmpKeys addObject:lineKeys];
+            return;
+        }
+    
+        // 第三行功能按键
+        // 与键盘按键第三行按钮宽度计算保持一致，第三行计算修改了beginX值，此处只需直接处理间隔
+        CGFloat deleteWidth = floor(beginX - itemSpacing - minX);
+        
+        // switch
+        JGSKeyboardKeyType numberSymbolType = containNum ? JGSKeyboardKeyTypeSymbolSwitch2Symbols : JGSKeyboardKeyTypeSymbolSwitch2Numbers;
+        NSString *numberSymbolTitle = numberSymbolType == JGSKeyboardKeyTypeSymbolSwitch2Symbols ? JGSKeyboardTitleSymbols : JGSKeyboardTitleNumbers;
+        JGSKeyboardKey *numberSymbol = [[JGSKeyboardKey alloc] initWithType:numberSymbolType text:numberSymbolTitle frame:CGRectMake(minX, lineY, deleteWidth, itemHeight)];
+        [lineKeys insertObject:numberSymbol atIndex:0];
+        
+        // delete
+        JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - deleteWidth, lineY, deleteWidth, itemHeight)];
+        [lineKeys addObject:deleteBtn];
+        
+        // 下一行继续使用 lineKeys，此处需要copy
+        [tmpKeys addObject:lineKeys.copy];
+        [lineKeys removeAllObjects];
+        
+        lineY += (itemHeight + lineSpacing);
+        CGFloat switchWidth = floor((itemSpacing * 2 + itemWidth * 2.5) * 0.5);
+        CGFloat returnWidth = switchWidth * 2 + itemSpacing;
+        CGFloat spaceX = minX + (switchWidth + itemSpacing) * 2;
+        
+        if (self.showFullAngle) {
             
             // switch
-            JGSKeyboardKeyType numberSymbolType = containNum ? JGSKeyboardKeyTypeSymbolSwitch2Symbols : JGSKeyboardKeyTypeSymbolSwitch2Numbers;
-            NSString *numberSymbolTitle = numberSymbolType == JGSKeyboardKeyTypeSymbolSwitch2Symbols ? JGSKeyboardTitleSymbols : JGSKeyboardTitleNumbers;
-            JGSKeyboardKey *numberSymbol = [[JGSKeyboardKey alloc] initWithType:numberSymbolType text:numberSymbolTitle frame:CGRectMake(minX, lineY, funcItemWidth, itemHeight)];
-            [tmpKeys addObject:numberSymbol];
+            JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
+            [lineKeys addObject:switchBtn];
             
-            // delete
-            JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - funcItemWidth, lineY, funcItemWidth, itemHeight)];
-            [tmpKeys addObject:deleteBtn];
-            
-            lineY += (itemHeight + JGSKeyboardKeyLineSpacing());
-            CGFloat switchWidth = MIN(floor((JGSKeyboardInteritemSpacing() + itemWidth) * 1.5), itemHeight);
-            funcItemWidth = switchWidth * 2 + JGSKeyboardInteritemSpacing();
-            CGFloat spaceX = minX + (switchWidth + JGSKeyboardInteritemSpacing()) * 2;
-            
-            if (JGSKeyboardSymbolFullAngle) {
-                // switch
-                JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
-                [tmpKeys addObject:switchBtn];
-                
-                // angle
-                CGFloat angleX = minX + switchWidth + JGSKeyboardInteritemSpacing();
-                JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
-                JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
-                [tmpKeys addObject:angleSwitch];
-            }
-            else {
-
-                switchWidth = switchWidth * 2;
-                funcItemWidth = switchWidth;
-                spaceX = minX + switchWidth + JGSKeyboardInteritemSpacing();
-
-                // switch
-                JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
-                [tmpKeys addObject:switchBtn];
-            }
-            
-            // space
-            CGFloat spaceW = keyboardWidth - minX - spaceX - funcItemWidth - JGSKeyboardInteritemSpacing();
-            JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@" " frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
-            [tmpKeys addObject:spaceBtn];
-            
-            // enter
-            JGSKeyboardKey *enterBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeEnter text:self.returnKeyTitle frame:CGRectMake(keyboardWidth - minX - funcItemWidth, lineY, funcItemWidth, itemHeight)];
-            [tmpKeys addObject:enterBtn];
+            // angle
+            CGFloat angleX = minX + switchWidth + itemSpacing;
+            JGSKeyboardKeyType angleType = isHalf ? JGSKeyboardKeyTypeSymbolSwitch2Full : JGSKeyboardKeyTypeSymbolSwitch2Half;
+            JGSKeyboardKey *angleSwitch = [[JGSKeyboardKey alloc] initWithType:angleType text:nil frame:CGRectMake(angleX, lineY, switchWidth, itemHeight)];
+            [lineKeys addObject:angleSwitch];
         }
+        else {
+            
+            // 不支持全角时，切换按钮宽度和字母键盘保持一致
+            switchWidth = round(itemWidth * 2 + itemSpacing);
+            returnWidth = switchWidth;
+            spaceX = minX + switchWidth + itemSpacing;
+
+            // switch
+            JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
+            [lineKeys addObject:switchBtn];
+        }
+        
+        // space
+        CGFloat spaceW = keyboardWidth - spaceX * 2;
+        JGSKeyboardKey *spaceBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:@" " frame:CGRectMake(spaceX, lineY, spaceW, itemHeight)];
+        [lineKeys addObject:spaceBtn];
+        
+        // enter
+        JGSKeyboardKey *enterBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeEnter text:self.returnKeyTitle frame:CGRectMake(spaceX + spaceW + itemSpacing, lineY, returnWidth, itemHeight)];
+        [lineKeys addObject:enterBtn];
+        
+        [tmpKeys addObject:lineKeys];
     }];
     
     JGSWeakSelf
-    [tmpKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [tmpKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
         
         JGSStrongSelf
-        obj.hidden = hidden;
-        [self addSubview:obj];
-        
         JGSWeakSelf
-        obj.action = ^(JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents event) {
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
             JGSStrongSelf
-            [self keyboardKeyAction:key event:event];
-        };
+            obj.hidden = hidden;
+            obj.enableHighlighted = self.enableHighlightedWhenTap;
+            [self addSubview:obj];
+            
+            JGSWeakSelf
+            obj.action = ^(JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents event) {
+                JGSStrongSelf
+                [self keyboardKeyAction:key event:event];
+            };
+        }];
     }];
     return tmpKeys;
 }
 
+#pragma mark - Action
 - (BOOL)keyboardKeyAction:(JGSKeyboardKey *)key event:(JGSKeyboardKeyEvents)event {
     
     if (![super keyboardKeyAction:key event:event]) {
@@ -237,7 +436,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     switch (key.type) {
         case JGSKeyboardKeyTypeSymbolSwitch2Symbols: {
             
-            if (!self.showHalfNumKeys.firstObject.isHidden) {
+            if (!self.showHalfNumKeys.firstObject.firstObject.isHidden) {
                 [self switchShowKeys:self.showHalfSymKeys hideKeys:self.showHalfNumKeys];
             }
             else {
@@ -248,7 +447,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
             
         case JGSKeyboardKeyTypeSymbolSwitch2Numbers: {
             
-            if (!self.showHalfSymKeys.firstObject.isHidden) {
+            if (!self.showHalfSymKeys.firstObject.firstObject.isHidden) {
                 [self switchShowKeys:self.showHalfNumKeys hideKeys:self.showHalfSymKeys];
             }
             else {
@@ -259,7 +458,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
             
         case JGSKeyboardKeyTypeSymbolSwitch2Half: {
             
-            if (!self.showFullNumKeys.firstObject.isHidden) {
+            if (!self.showFullNumKeys.firstObject.firstObject.isHidden) {
                 [self switchShowKeys:self.showHalfNumKeys hideKeys:self.showFullNumKeys];
             }
             else {
@@ -270,7 +469,7 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
             
         case JGSKeyboardKeyTypeSymbolSwitch2Full: {
             
-            if (!self.showHalfNumKeys.firstObject.isHidden) {
+            if (!self.showHalfNumKeys.firstObject.firstObject.isHidden) {
                 [self switchShowKeys:self.showFullNumKeys hideKeys:self.showHalfNumKeys];
             }
             else {
@@ -285,13 +484,18 @@ FOUNDATION_EXTERN void JGSKeyboardSymbolFullAngleEnable(BOOL enable) {
     return YES;
 }
 
-- (void)switchShowKeys:(NSArray<JGSKeyboardKey *> *)showKeys hideKeys:(NSArray<JGSKeyboardKey *> *)hideKeys {
+- (void)switchShowKeys:(NSArray<NSArray<JGSKeyboardKey *> *> *)showKeys hideKeys:(NSArray<NSArray<JGSKeyboardKey *> *> *)hideKeys {
     
-    [hideKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.hidden = YES;
+    [hideKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = YES;
+        }];
     }];
-    [showKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.hidden = NO;
+    
+    [showKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger keyIdx, BOOL * _Nonnull stop) {
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = NO;
+        }];
     }];
 }
 

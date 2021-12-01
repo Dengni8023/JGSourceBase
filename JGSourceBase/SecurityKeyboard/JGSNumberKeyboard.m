@@ -8,15 +8,10 @@
 #import "JGSNumberKeyboard.h"
 #import "JGSBase.h"
 
-BOOL JGSKeyboardNumberPadRandom = YES;
-FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
-    JGSKeyboardNumberPadRandom = enable;
-}
-
 @interface JGSNumberKeyboard ()
 
 @property (nonatomic, copy) NSArray<NSArray<NSString *> *> *showNumbers;
-@property (nonatomic, copy) NSArray<JGSKeyboardKey *> *showKeys;
+@property (nonatomic, copy) NSArray<NSArray<JGSKeyboardKey *> *> *showKeys;
 
 @end
 
@@ -28,8 +23,6 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     self = [super initWithFrame:frame type:type returnKeyType:returnKeyType keyInput:keyInput];
     if (self) {
         
-        // 按钮
-        self.showKeys = [self addShowKeys:self.showNumbers];
     }
     return self;
 }
@@ -37,18 +30,30 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
 - (void)enableHighlightedWhenTap:(BOOL)enable {
     [super enableHighlightedWhenTap:enable];
     
-    [self.showKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enableHighlighted = enable;
+    [self.showKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger lineIdx, BOOL * _Nonnull stop) {
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.enableHighlighted = enable;
+        }];
     }];
 }
 
 #pragma mark - View
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    
+    if (newSuperview != nil && self.showKeys == nil) {
+        // 按钮
+        self.showKeys = [self addShowKeys:self.showNumbers];
+    }
+}
+
 - (NSArray<NSArray<NSString *> *> *)showNumbers {
     
     if (!_showNumbers) {
         
         NSArray<NSString *> *numbers = [@"1,2,3,4,5,6,7,8,9,0" componentsSeparatedByString:@","];
-        if (JGSKeyboardNumberPadRandom) {
+        if (self.ramdomNum) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
                     return [obj1 compare:obj2 options:kNilOptions];
@@ -68,76 +73,118 @@ FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable) {
     return _showNumbers;
 }
 
-- (NSArray<JGSKeyboardKey *> *)addShowKeys:(NSArray<NSArray<NSString *> *> *)keyTitles {
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (self.superview == nil) {
+        return;
+    }
+    
+    CGFloat keyboardWidth = CGRectGetWidth(self.frame);
+    CGFloat keyboardHeight = CGRectGetHeight(self.frame);
+    NSInteger linesCnt = JGSKeyboardLinesNumber;
+    NSInteger itemsCnt = JGSKeyboardNumberItemsInLine;
+    CGFloat lineSpacing = JGSKeyboardKeyLineSpacing();
+    CGFloat itemSpacing = JGSKeyboardKeyInterSpacing() * 1.6;
+    
+    // 水平方向：边距 = 间隔
+    CGFloat itemWidth = floor((keyboardWidth - itemSpacing) / itemsCnt - itemSpacing);
+    // 垂直方向：边距 = 间隔
+    CGFloat itemHeight = floor((keyboardHeight - lineSpacing) / linesCnt - lineSpacing);
+    
+    CGFloat itemsTotalH = (lineSpacing + itemHeight) * linesCnt - lineSpacing;
+    CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
+    
+    // 数字键盘每行布局按键、大小一致，无需特殊处理
+    [self.showKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger lineIdx, BOOL * _Nonnull stop) {
+        
+        CGFloat itemsTotalW = (itemWidth + itemSpacing) * lineKeys.count - itemSpacing;
+        CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
+        CGFloat lineY = beginY + lineIdx * (itemHeight + lineSpacing);
+        
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            CGFloat btnX = beginX + idx * (itemWidth + itemSpacing);
+            obj.frame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
+        }];
+    }];
+}
+
+- (NSArray<NSArray<JGSKeyboardKey *> *> *)addShowKeys:(NSArray<NSArray<NSString *> *> *)keyTitles {
     
     if (keyTitles.count == 0) {
         return nil;
     }
     
-    CGFloat numberScale = 1.2;
     CGFloat keyboardWidth = CGRectGetWidth(self.frame);
     CGFloat keyboardHeight = CGRectGetHeight(self.frame);
-    CGFloat itemHeight = floor((keyboardHeight - JGSKeyboardKeyLineSpacing()) / JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing());
-    //CGFloat itemWidth = floor(itemHeight / JGSKeyboardKeyWidthHeightRatio());
-    CGFloat numberItemW = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
-    CGFloat numberSpacingX = floor(JGSKeyboardInteritemSpacing() * numberScale);
-    if (keyboardWidth > keyboardHeight) {
-        numberSpacingX *= 2;
-    }
-    while (ceil((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) < keyboardWidth &&
-           ceil(((numberItemW + numberSpacingX) * JGSKeyboardNumberItemsInLine + numberSpacingX) * numberScale) < keyboardWidth &&
-           YES) {
-        numberItemW *= numberScale;
-        numberSpacingX *= pow(numberScale, 4);
-    }
-    // 以上处理后，需重新计算按钮宽度，间隔以以上计算为准
-    numberItemW = floor((keyboardWidth - numberSpacingX * (JGSKeyboardNumberItemsInLine + 1)) / JGSKeyboardNumberItemsInLine);
+    NSInteger linesCnt = JGSKeyboardLinesNumber;
+    NSInteger itemsCnt = JGSKeyboardNumberItemsInLine;
+    CGFloat lineSpacing = JGSKeyboardKeyLineSpacing();
+    CGFloat itemSpacing = JGSKeyboardKeyInterSpacing() * 1.6;
     
-    CGFloat itemsTotalH = (JGSKeyboardKeyLineSpacing() + itemHeight) * JGSKeyboardLinesNumber - JGSKeyboardKeyLineSpacing();
+    // 水平方向：边距 = 间隔
+    CGFloat itemWidth = floor((keyboardWidth - itemSpacing) / itemsCnt - itemSpacing);
+    // 垂直方向：边距 = 间隔
+    CGFloat itemHeight = floor((keyboardHeight - lineSpacing) / linesCnt - lineSpacing);
+    
+    CGFloat itemsTotalH = (lineSpacing + itemHeight) * linesCnt - lineSpacing;
     CGFloat beginY = (keyboardHeight - itemsTotalH) * 0.5;
-    CGFloat numberMaxW = (numberSpacingX + numberItemW) * JGSKeyboardNumberItemsInLine - numberSpacingX;
-    CGFloat minX = (keyboardWidth - numberMaxW) * 0.5f;
-    
-    NSMutableArray<JGSKeyboardKey *> *tmpKeys = @[].mutableCopy;
-    [self.showNumbers enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
-        
-        CGFloat itemsTotalW = (numberSpacingX + numberItemW) * line.count - numberSpacingX;
-        CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
-        CGFloat lineY = beginY + lineIdx * (itemHeight + JGSKeyboardKeyLineSpacing());
-        
-        [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            CGFloat btnX = beginX + idx * (numberItemW + numberSpacingX);
-            CGRect btnFrame = CGRectMake(btnX, lineY, numberItemW, itemHeight);
-            
-            JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
-            [tmpKeys addObject:itemBtn];
-        }];
-        
-        if (lineIdx == 3) {
-            
-            // 小数点/身份证X
-            NSString *keyText = self.type == JGSKeyboardTypeIDCard ? @"X" : @".";
-            JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:keyText frame:CGRectMake(minX, lineY, numberItemW, itemHeight)];
-            [tmpKeys addObject:symbolBtn];
-            
-            // delete
-            JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - numberItemW, lineY, numberItemW, itemHeight)];
-            [tmpKeys addObject:deleteBtn];
-        }
-    }];
+    CGFloat itemsMaxW = (itemWidth + itemSpacing) * itemsCnt - itemSpacing;
+    CGFloat minX = (keyboardWidth - itemsMaxW) * 0.5f;
     
     JGSWeakSelf
-    [tmpKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableArray<NSArray<JGSKeyboardKey *> *> *tmpKeys = @[].mutableCopy;
+    [self.showNumbers enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
         JGSStrongSelf
-        [self addSubview:obj];
+        CGFloat itemsTotalW = (itemWidth + itemSpacing) * line.count - itemSpacing;
+        CGFloat beginX = (keyboardWidth - itemsTotalW) * 0.5f;
+        CGFloat lineY = beginY + lineIdx * (itemHeight + lineSpacing);
         
+        NSMutableArray<JGSKeyboardKey *> *lineKeys = @[].mutableCopy;
+        [line enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            CGFloat btnX = beginX + idx * (itemWidth + itemSpacing);
+            CGRect btnFrame = CGRectMake(btnX, lineY, itemWidth, itemHeight);
+            
+            JGSKeyboardKey *itemBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:obj frame:btnFrame];
+            [lineKeys addObject:itemBtn];
+        }];
+        
+        if (lineIdx < 3) {
+            [tmpKeys addObject:lineKeys];
+            return;
+        }
+        
+        // 小数点/身份证X
+        NSString *keyText = self.type == JGSKeyboardTypeIDCard ? @"X" : @".";
+        JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:keyText frame:CGRectMake(minX, lineY, itemWidth, itemHeight)];
+        [lineKeys insertObject:symbolBtn atIndex:0]; // 该行第一个位置
+        
+        // delete
+        JGSKeyboardKey *deleteBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeDelete text:nil frame:CGRectMake(keyboardWidth - minX - itemWidth, lineY, itemWidth, itemHeight)];
+        [lineKeys addObject:deleteBtn];
+        
+        [tmpKeys addObject:lineKeys];
+    }];
+    
+    [tmpKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger lineIdx, BOOL * _Nonnull stop) {
+        
+        JGSStrongSelf
         JGSWeakSelf
-        obj.action = ^(JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents event) {
+        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
             JGSStrongSelf
-            [self keyboardKeyAction:key event:event];
-        };
+            obj.enableHighlighted = self.enableHighlightedWhenTap;
+            [self addSubview:obj];
+            
+            JGSWeakSelf
+            obj.action = ^(JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents event) {
+                JGSStrongSelf
+                [self keyboardKeyAction:key event:event];
+            };
+        }];
     }];
     return tmpKeys;
 }

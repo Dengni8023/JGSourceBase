@@ -122,8 +122,8 @@
                 onceToken = 0;
             }
             
-            JGSLog(@"fakeUA: %@", fakeUserAgent);
-            JGSLog(@"sys UA: %@", sysUserAgent);
+            //JGSLog(@"fakeUA: %@", fakeUserAgent);
+            //JGSLog(@"sys UA: %@", sysUserAgent);
         }];
     });
     
@@ -262,7 +262,7 @@
     
     static NSString *deviceId = nil;
     if (deviceId.length > 0) {
-        JGSLog(@"getDeviceId DeviceId Cached: %@", deviceId);
+        //JGSLog(@"getDeviceId DeviceId Cached: %@", deviceId);
         return deviceId;
     }
     
@@ -277,19 +277,19 @@
     
     // 获取idfa，idfa获取失败则使用idfv，idfv也获取失败，则使用随机UUID
     deviceId = [self idfa];
-    JGSLog(@"getDeviceId DeviceId idfa: %@", deviceId);
+    //JGSLog(@"getDeviceId DeviceId idfa: %@", deviceId);
     
     if (deviceId.length == 0) {
         // idfv
         deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-        JGSLog(@"getDeviceId DeviceId idfv: %@", deviceId);
+        //JGSLog(@"getDeviceId DeviceId idfv: %@", deviceId);
     }
 
     if (deviceId.length == 0) {
 
         // 如果idfa、idfv均未取到，则使用随机UUID，随机UUID获取一次后存储KeyChain
         deviceId = [[NSUUID UUID] UUIDString];
-        JGSLog(@"getDeviceId DeviceId uuid: %@", deviceId);
+        //JGSLog(@"getDeviceId DeviceId uuid: %@", deviceId);
     }
     
     // 业务系统规则要求多样，此处不再存储
@@ -520,7 +520,7 @@
     fullIdentifier = [fullIdentifier stringByReplacingOccurrencesOfString:@"<string>" withString:@""];
     fullIdentifier = [fullIdentifier stringByReplacingOccurrencesOfString:@"</string>" withString:@""];
     
-    JGSLog(@"%@", fullIdentifier);
+    //JGSLog(@"%@", fullIdentifier);
     NSString *teamId = [fullIdentifier componentsSeparatedByString:@"."].firstObject;
     if (![teamIDs containsObject:teamId]) {
         return YES;

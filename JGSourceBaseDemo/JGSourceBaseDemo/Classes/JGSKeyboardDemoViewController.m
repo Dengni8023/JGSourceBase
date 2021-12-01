@@ -77,6 +77,7 @@
     
     // 键盘设置
     self.normalInput = fields[0];
+    self.normalInput.keyboardType = arc4random() % 5 == 0 ? UIKeyboardTypeNumberPad : UIKeyboardTypeDefault;
     
     // 安全键盘设置
     static NSInteger accountInputShow = 0;
@@ -122,7 +123,8 @@
         } else {
             make.top.mas_equalTo(self.view.mas_bottom).inset(20);
         }
-    }];}
+    }];
+}
 
 #pragma mark - Action
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

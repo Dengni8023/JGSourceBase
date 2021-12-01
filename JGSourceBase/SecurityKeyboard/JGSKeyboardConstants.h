@@ -38,9 +38,13 @@ FOUNDATION_EXTERN CGFloat const JGSKeyboardToolbarHeight; // 键盘顶部工具�
 FOUNDATION_EXTERN NSInteger const JGSKeyboardLinesNumber; // 键盘按键行数
 FOUNDATION_EXTERN NSInteger const JGSKeyboardMaxItemsInLine; // 键盘单行最多按键
 FOUNDATION_EXTERN NSInteger const JGSKeyboardNumberItemsInLine; // 数字键盘单行按键数
-FOUNDATION_EXTERN CGFloat const JGSKeyboardInteritemSpacing(void); // 键盘输入按钮水平间距
-FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyLineSpacing(void); // 键盘输入按钮行间距
-FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyWidthHeightRatio(void); // 键盘按键宽高比
+//FOUNDATION_EXTERN NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardInterItemSpacing(void); // 不同设备、展示方向键盘输入按钮水平间距
+//FOUNDATION_EXTERN NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardKeyWHRatio(void); // 不同设备、展示方向键盘按键宽高比
+//FOUNDATION_EXTERN NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardLineSpacing(void); // 不同设备、展示方向键盘输入按钮行间距
+FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyInterSpacing(void); // 当前展示状态键盘输入按钮水平间距
+FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyLineSpacing(void); // 当前展示状态键盘输入按钮行间距
+FOUNDATION_EXTERN CGFloat const JGSKeyboardKeyWidthHeightRatio(void); // 当前展示状态键盘按键宽高比
+FOUNDATION_EXTERN NSDictionary *JGSKeyboardSizeInfo(void); // 键盘整体布局
 
 typedef NS_ENUM(NSInteger, JGSKeyboardToolbarItemType) {
     JGSKeyboardToolbarItemTypeSwitch = 0, // 切换输入法

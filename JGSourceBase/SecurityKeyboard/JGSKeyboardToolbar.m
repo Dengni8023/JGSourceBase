@@ -63,7 +63,7 @@
 
 @interface JGSKeyboardTitleToolbarItem ()
 
-@property (nonatomic, strong, nullable) UIView *titleView;
+@property (nonatomic, strong, nullable) UILabel *titleLabel;
 @property (nonatomic, strong, nullable) UIButton *titleButton;
 
 @end
@@ -75,50 +75,31 @@
     self = [super initWithTitle:title type:JGSKeyboardToolbarItemTypeTitle target:nil action:nil];
     if (self) {
         
-        _titleView = [[UIView alloc] init];
-        _titleView.backgroundColor = [UIColor clearColor];
-        
-        _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _titleButton.backgroundColor = [UIColor clearColor];
-        _titleButton.enabled = NO;
-        _titleButton.titleLabel.font = JGSKeyboardToolBarTitleFont();
-        _titleButton.titleLabel.numberOfLines = 1;
-        _titleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_titleButton setTitleColor:JGSKeyboardToolBarTitleColor() forState:UIControlStateNormal];
-        [_titleButton setTitleColor:JGSKeyboardToolBarTitleColor() forState:UIControlStateDisabled];
-        [_titleButton setTitle:title forState:UIControlStateNormal];
-        [_titleView addSubview:_titleButton];
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textColor = JGSKeyboardToolBarTitleColor();
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = JGSKeyboardToolBarTitleFont();
+        _titleLabel.numberOfLines = 1;
+        _titleLabel.text = title;
         
         // 标题居中显示
         if (@available(iOS 11.0, *)) {
             
-            CGFloat layoutDefaultLowPriority = UILayoutPriorityDefaultLow-1;
-            CGFloat layoutDefaultHighPriority = UILayoutPriorityDefaultHigh-1;
+            CGFloat layoutDefaultLowPriority = UILayoutPriorityDefaultLow - 1;
+            CGFloat layoutDefaultHighPriority = UILayoutPriorityDefaultHigh - 1;
 
-            _titleView.translatesAutoresizingMaskIntoConstraints = NO;
-            [_titleView setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisVertical];
-            [_titleView setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisHorizontal];
-            [_titleView setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisVertical];
-            [_titleView setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisHorizontal];
-            
-            _titleButton.translatesAutoresizingMaskIntoConstraints = NO;
-            [_titleButton setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisVertical];
-            [_titleButton setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisHorizontal];
-            [_titleButton setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisVertical];
-            [_titleButton setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisHorizontal];
-
-            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_titleView attribute:NSLayoutAttributeTop multiplier:1 constant:0];
-            NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_titleButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_titleView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-            NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_titleButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_titleView attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
-            NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_titleButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_titleView attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
-            [_titleView addConstraints:@[top, bottom, leading, trailing]];
+            _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+            [_titleLabel setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisVertical];
+            [_titleLabel setContentHuggingPriority:layoutDefaultLowPriority forAxis:UILayoutConstraintAxisHorizontal];
+            [_titleLabel setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisVertical];
+            [_titleLabel setContentCompressionResistancePriority:layoutDefaultHighPriority forAxis:UILayoutConstraintAxisHorizontal];
         }
         else {
-            _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            _titleButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         }
         
-        self.customView = _titleView;
+        self.customView = _titleLabel;
     }
     return self;
 }
@@ -138,13 +119,18 @@
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title {
+- (instancetype)initWithTitle:(NSString *)title {
     
-    self = [super initWithFrame:frame];
+    // 初始化传入frame，避免自动布局警告
+    self = [super initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), JGSKeyboardToolbarHeight)];
     if (self) {
         
         self.title = title;
         self.barTintColor = JGSKeyboardToolBarColor();
+        
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:JGSKeyboardToolbarHeight];
+        [self addConstraints:@[height]];
     }
     return self;
 }

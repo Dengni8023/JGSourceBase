@@ -25,6 +25,9 @@
 
 @property (nonatomic, assign) JGSKeyboardOptions keyboardOptions;
 @property (nonatomic, assign) JGSKeyboardReturnType returnType;
+@property (nonatomic, assign) BOOL numberPadRandom; // 是否开启数字键盘随机顺序，默认开启
+@property (nonatomic, assign) BOOL symbolFullAngle; // 是否开启全角，默认关闭，支持全角时将支持全半角字符输入
+
 @property (nonatomic, assign) CGRect keyboardFrame;
 
 @property (nonatomic, strong) JGSKeyboardToolbar *keyboardTool;
@@ -74,16 +77,22 @@
         // clear、paste等处理
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
         
-        // 应用方向变化处理
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillChangeOrientation:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:nil];
+        // 应用方向变化等导致键盘大小变化处理
+        // 不考虑键盘展示时转屏界面切换的流畅性，此处监听可移除
+        // 转屏时 UIApplicationDidChangeStatusBarOrientationNotification 通知先于 UIKeyboardWillChangeFrameNotification
+        // 因此此处监听以提前更新键盘高度约束，转屏过程中键盘的布局切换更流畅
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+        // 以下三个通知执行顺序如下
+        // 1、UIKeyboardWillChangeFrameNotification
+        // 2、UIKeyboardWillShowNotification: 在键盘首次展示、屏幕旋转时都会执行，此是如果修改键盘高度约束，则会在本轮三个通知执行完之后再次执行一轮三个通知
+        // 3、UIKeyboardDidChangeFrameNotification
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
-        JGSKeyboardNumberPadRandomEnable(randomNum); // 数字键盘随机开关
-        JGSKeyboardSymbolFullAngleEnable(fullAngle); // 字符键盘支持全角
+        self.numberPadRandom = randomNum; // 数字键盘随机开关
+        self.symbolFullAngle = fullAngle; // 字符键盘支持全角
         
         _textField = textField;
         _title = title;//.length > 0 ? title : self.textField.placeholder;
@@ -98,22 +107,20 @@
             }
         }
         
-        CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-        CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-        CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-        CGFloat keyboardHeight = JGSKeyboardKeyLineSpacing() + (itemHeight + JGSKeyboardKeyLineSpacing()) * JGSKeyboardLinesNumber;
-        self.keyboardFrame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
-        if (self.title.length > 0) {
-            self.keyboardFrame = CGRectMake(0, JGSKeyboardToolbarHeight, keyboardWidth, keyboardHeight);
-            keyboardHeight += JGSKeyboardToolbarHeight;
-        }
-        if (@available(iOS 11.0, *)) {
-            UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
-            keyboardHeight += window.safeAreaInsets.bottom;
-        }
-        self.frame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
+        BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+        NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
+        NSString *sizeInfo = [JGSKeyboardSizeInfo() objectForKey:orientation];
+        CGSize keyboardSize = CGSizeFromString(sizeInfo);
         
-        [self addViewElements];
+        self.keyboardFrame = CGRectMake(0, self.title.length > 0 ? JGSKeyboardToolbarHeight : 0, keyboardSize.width, keyboardSize.height);
+        CGFloat keyboardHeight = keyboardSize.height + (self.title.length > 0 ? JGSKeyboardToolbarHeight : 0);
+        
+        // 此处做初步的键盘高度计算，精确高度待键盘展示时更新高度约束
+        // 在文本框第一次开始编辑收到通知 UITextFieldTextDidBeginEditingNotification 时，键盘高度约束尚未添加，此时无法执行高度更新
+        // 首次高度更新必须在收到通知 UIKeyboardWillShowNotification 时进行
+        self.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), keyboardHeight);
+        
+        //[self addViewElements];
     }
     return self;
 }
@@ -137,117 +144,101 @@
     }
 }
 
-//- (void)applicationWillChangeOrientation:(NSNotification *)noti {
-//    if (!self.textField.isFirstResponder) {
-//        return;
-//    }
-//
-//    self.textField.inputView = nil;
-//}
-//
-//- (void)applicationDidChangeOrientation:(NSNotification *)noti {
-//    if (!self.textField.isFirstResponder) {
-//        return;
-//    }
-//
-//    JGSLog(@"%@", NSStringFromCGRect(self.frame));
-//}
-//
-//- (void)keyboardWillChangeFrame:(NSNotification *)noti {
-//    if (!self.textField.isFirstResponder) {
-//        return;
-//    }
-//
-//    JGSLog(@"%@: %@", noti.name, noti.userInfo);
-//}
-//
-//- (void)keyboardDidChangeFrame:(NSNotification *)noti {
-//    if (!self.textField.isFirstResponder) {
-//        return;
-//    }
-//
-//    CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-//    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-//    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-//    CGFloat keyboardHeight = JGSKeyboardKeyLineSpacing() + (itemHeight + JGSKeyboardKeyLineSpacing()) * JGSKeyboardLinesNumber;
-//    self.keyboardFrame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
-//    if (self.title.length > 0) {
-//        self.keyboardFrame = CGRectMake(0, JGSKeyboardToolbarHeight, keyboardWidth, keyboardHeight);
-//        keyboardHeight += JGSKeyboardToolbarHeight;
-//    }
-//    if (@available(iOS 11.0, *)) {
-//        UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
-//        keyboardHeight += window.safeAreaInsets.bottom;
-//    }
-//    self.frame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
-////    self.textField.inputView = self;
-//
-//    JGSLog(@"%@: %@", noti.name, noti.userInfo);
-//}
-//
-//- (void)textFieldTextDidBeginEditing:(NSNotification *)noti {
-//    if (![noti.object isEqual:self.textField]) {
-//        return;
-//    }
-//
-//    CGFloat keyboardWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-//    CGFloat itemWidth = floor((keyboardWidth - JGSKeyboardInteritemSpacing() * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
-//    CGFloat itemHeight = floor(itemWidth / JGSKeyboardKeyWidthHeightRatio());
-//    CGFloat keyboardHeight = JGSKeyboardKeyLineSpacing() + (itemHeight + JGSKeyboardKeyLineSpacing()) * JGSKeyboardLinesNumber;
-//    self.keyboardFrame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
-//    if (self.title.length > 0) {
-//        self.keyboardFrame = CGRectMake(0, JGSKeyboardToolbarHeight, keyboardWidth, keyboardHeight);
-//        keyboardHeight += JGSKeyboardToolbarHeight;
-//    }
-//    if (@available(iOS 11.0, *)) {
-//        UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
-//        keyboardHeight += window.safeAreaInsets.bottom;
-//    }
-//    self.frame = CGRectMake(0, 0, keyboardWidth, keyboardHeight);
-//
-//    JGSLog(@"%@", NSStringFromCGRect(self.frame));
-//}
+- (void)applicationDidChangeStatusBarOrientation:(NSNotification *)noti {
+    if (!self.textField.isFirstResponder) {
+        return;
+    }
+    
+    [self updateHeightConstraints];
+}
+
+- (void)keyboardWillChangeFrame:(NSNotification *)noti {
+    if (!self.textField.isFirstResponder) {
+        return;
+    }
+
+    //JGSLog(@"%@: %@", noti.name, noti.userInfo);
+}
+
+- (void)keyboardWillShow:(NSNotification *)noti {
+    if (!self.textField.isFirstResponder) {
+        return;
+    }
+    
+    //JGSLog();
+    [self updateHeightConstraints];
+}
+
+- (void)keyboardDidChangeFrame:(NSNotification *)noti {
+    if (!self.textField.isFirstResponder) {
+        return;
+    }
+    
+    //JGSLog(@"%@: %@", noti.name, noti.userInfo);
+}
+
+- (void)updateHeightConstraints {
+    
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+    NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
+    NSString *sizeInfo = [JGSKeyboardSizeInfo() objectForKey:orientation];
+    CGSize keyboardSize = CGSizeFromString(sizeInfo);
+    
+    UIEdgeInsets safeAreaInsets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
+        safeAreaInsets = window.safeAreaInsets;
+    }
+    
+    CGFloat keyboardHeight = keyboardSize.height + safeAreaInsets.bottom;
+    if (self.title.length > 0) {
+        keyboardHeight += JGSKeyboardToolbarHeight;
+    }
+    
+    // JGSLog(@"%@, %@", NSStringFromCGRect(self.frame), @(keyboardHeight));
+    [self.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([obj.firstItem isEqual:self] && obj.firstAttribute == NSLayoutAttributeHeight && obj.secondItem == nil) {
+            // 在文本框第一次开始编辑收到通知 UITextFieldTextDidBeginEditingNotification 时，键盘高度约束尚未添加
+            // 此时无法执行高度更新，即使进行更新操作，也不会执行到此处，因此更新无效
+            // 首次高度更新必须在收到通知 UIKeyboardWillShowNotification 时进行
+            // JGSLog(@"Update Height");
+            obj.constant = keyboardHeight;
+            *stop = YES;
+        }
+    }];
+}
 
 #pragma mark - View
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    
-//    JGSLog(@"%@", NSStringFromCGRect(self.frame));
-//    
-//    // 键盘顶部工具条
-//    if (self.title.length > 0 && self.keyboardTool) {
-//        self.keyboardTool.frame = CGRectMake(0, 0, self.frame.size.width, JGSKeyboardToolbarHeight);
-//    }
-//    
-//    // 键盘
-//    JGSWeakSelf
-//    [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        JGSStrongSelf
-//        obj.frame = self.keyboardFrame;
-//    }];
-//}
-
-//- (void)willMoveToSuperview:(UIView *)newSuperview {
-//    [super willMoveToSuperview:newSuperview];
-//    if (newSuperview) {
-//        [self addViewElements];
-//    }
-//    else if (self.superview) {
-//        [self.keyboardTool removeFromSuperview];
-//        [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            [obj removeFromSuperview];
-//        }];
-//    }
-//}
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview != nil) {
+        [self addViewElements];
+    }
+    else if (self.superview) {
+        [self.keyboardTool removeFromSuperview];
+        [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+        }];
+    }
+}
 
 - (void)addViewElements {
     
     // 键盘顶部工具条
     if (self.title.length > 0 && self.keyboardTool) {
-        self.keyboardTool.frame = CGRectMake(0, 0, self.frame.size.width, JGSKeyboardToolbarHeight);
+        
+        if ([self.keyboardTool.superview isEqual:self]) {
+            return;
+        }
+        
+        //self.keyboardTool.frame = CGRectMake(0, 0, self.frame.size.width, JGSKeyboardToolbarHeight);
         [self addSubview:self.keyboardTool];
         
-        self.keyboardTool.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.keyboardTool attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.keyboardTool attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0];
+        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.keyboardTool attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
+        [self addConstraints:@[leading, top, trailing]];
     }
     
     // 键盘
@@ -255,15 +246,42 @@
     [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         JGSStrongSelf
-        obj.frame = self.keyboardFrame;
-        [self addSubview:obj];
         [obj enableHighlightedWhenTap:self.enableHighlightedWhenTap];
-        
-        obj.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         // 默认显示英文字母键盘
         BOOL isShow = idx == 0;
         obj.hidden = !isShow;
+        
+        if ([obj.superview isEqual:self]) {
+            return;
+        }
+        
+        //obj.frame = self.keyboardFrame;
+        [self addSubview:obj];
+        
+        obj.translatesAutoresizingMaskIntoConstraints = NO;
+        if (@available(iOS 11.0, *)) {
+            
+            NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.safeAreaLayoutGuide attribute:NSLayoutAttributeLeading multiplier:1.f constant:0];
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0];
+            if ([self.keyboardTool.superview isEqual:self]) {
+                top = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.keyboardTool attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
+            }
+            NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.safeAreaLayoutGuide attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
+            NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.safeAreaLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
+            [self addConstraints:@[leading, top, trailing, bottom]];
+        }
+        else {
+            
+            NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.f constant:0];
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.f constant:0];
+            if ([self.keyboardTool.superview isEqual:self]) {
+                top = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.keyboardTool attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
+            }
+            NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
+            NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
+            [self addConstraints:@[leading, top, trailing, bottom]];
+        }
     }];
     [self refreshKeyboardTool];
 }
@@ -305,7 +323,7 @@
         return _keyboardTool;
     }
     
-    _keyboardTool = [[JGSKeyboardToolbar alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, JGSKeyboardToolbarHeight) title:self.title];
+    _keyboardTool = [[JGSKeyboardToolbar alloc] initWithTitle:self.title];
     
     // 完成
     [self.keyboardTool.doneToolbarItem setTarget:self action:@selector(completeTextInput:)];
@@ -353,6 +371,7 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
+        _symbolKeyboard.showFullAngle = self.symbolFullAngle;
         _symbolKeyboard.hidden = YES;
     }
     return _symbolKeyboard;
@@ -366,6 +385,7 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
+        _numberKeyboard.ramdomNum = self.numberPadRandom;
         _numberKeyboard.hidden = YES;
     }
     return _numberKeyboard;
@@ -379,6 +399,7 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
+        _numberKeyboard.ramdomNum = self.numberPadRandom;
         _idCardKeyboard.hidden = YES;
     }
     return _idCardKeyboard;

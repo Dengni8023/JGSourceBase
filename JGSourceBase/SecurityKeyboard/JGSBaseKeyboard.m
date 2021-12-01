@@ -6,7 +6,7 @@
 //
 
 #import "JGSBaseKeyboard.h"
-//#import "JGSourceBase.h"
+#import "JGSourceBase.h"
 
 @interface JGSKeyboardKey () <UIGestureRecognizerDelegate>
 
@@ -293,7 +293,7 @@
             // 绘制切换全半角地球
             CGFloat centerX = CGRectGetWidth(rect) * 0.5;
             CGFloat centerY = CGRectGetHeight(rect) * 0.5;
-            CGFloat radius = CGRectGetWidth(rect) * 0.28;
+            CGFloat radius = MIN(CGRectGetWidth(rect) * 0.28, CGRectGetHeight(rect) * 0.4);
             
             CGContextRef ctx = UIGraphicsGetCurrentContext();
             CGContextSetLineWidth(ctx, 1.2f);
@@ -357,31 +357,15 @@
         _keyInput = keyInput;
         
         _keyboardWidth = CGRectGetWidth(frame);
+        
+        self.backgroundColor = [UIColor clearColor];
+        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }
 
 - (void)enableHighlightedWhenTap:(BOOL)enable {
     _enableHighlightedWhenTap = enable;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    // 键盘布局变化
-    if (ABS(self.keyboardWidth - CGRectGetWidth(self.frame)) >= 1.f) {
-        
-        CGFloat scale = CGRectGetWidth(self.frame) / self.keyboardWidth;
-        self.keyboardWidth = CGRectGetWidth(self.frame);
-        
-        // 更新键盘内按钮布局
-        [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            CGRect newKeyFrame = obj.frame;
-            newKeyFrame.origin.x *= scale;
-            newKeyFrame.size.width *= scale;
-            obj.frame = newKeyFrame;
-        }];
-    }
 }
 
 #pragma mark - Action

@@ -9,9 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXTERN void JGSKeyboardNumberPadRandomEnable(BOOL enable);
-
 @interface JGSNumberKeyboard : JGSBaseKeyboard
+
+@property (nonatomic, assign) BOOL ramdomNum; // 是否开启数字键盘随机顺序，默认开启
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

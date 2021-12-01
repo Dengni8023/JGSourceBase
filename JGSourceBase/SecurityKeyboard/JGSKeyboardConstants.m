@@ -63,9 +63,9 @@ NSInteger const JGSKeyboardLinesNumber = 4;
 NSInteger const JGSKeyboardMaxItemsInLine = 10;
 NSInteger const JGSKeyboardNumberItemsInLine = 3;
 
-CGFloat const JGSKeyboardInteritemSpacing() {
+NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardInterItemSpacing(void) {
     
-    static NSDictionary <NSString *, NSDictionary <NSString *, NSNumber *> *> *spacingInfo = nil;
+    static NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *spacingInfo = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         spacingInfo = @{
@@ -75,21 +75,17 @@ CGFloat const JGSKeyboardInteritemSpacing() {
             },
             @"iPhone": @{
                     @"Portrait": @(4.f),
-                    @"Landscape": @(4.f),
+                    @"Landscape": @(8.f),
             }
         };
     });
-    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
-    NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
-    NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
-    NSNumber *spacing = spacingInfo[device][orientation];
     
-    return [spacing floatValue];
+    return spacingInfo;
 };
 
-CGFloat const JGSKeyboardKeyLineSpacing() {
+NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardLineSpacing(void) {
     
-    static NSDictionary <NSString *, NSDictionary <NSString *, NSNumber *> *> *spacingInfo = nil;
+    static NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *spacingInfo = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         spacingInfo = @{
@@ -99,21 +95,17 @@ CGFloat const JGSKeyboardKeyLineSpacing() {
             },
             @"iPhone": @{
                     @"Portrait": @(8.f),
-                    @"Landscape": @(4.f),
+                    @"Landscape": @(6.f),
             }
         };
     });
-    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
-    NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
-    NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
-    NSNumber *spacing = spacingInfo[device][orientation];
     
-    return [spacing floatValue];
+    return spacingInfo;
 }
 
-CGFloat const JGSKeyboardKeyWidthHeightRatio() {
+NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardKeyWHRatio(void) {
     
-    static NSDictionary <NSString *, NSDictionary <NSString *, NSNumber *> *> *whRatioInfo = nil;
+    static NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *whRatioInfo = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         whRatioInfo = @{
@@ -123,16 +115,106 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio() {
             },
             @"iPhone": @{
                     @"Portrait": @(3.f / 4.f),
-                    @"Landscape": @(16.f / 9.f),
+                    @"Landscape": @(32.f / 15.f),
             }
         };
     });
+    
+    return whRatioInfo;
+}
+
+CGFloat const JGSKeyboardKeyInterSpacing() {
+    
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
     NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
+    
+    NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *spacingInfo = JGSKeyboardInterItemSpacing();
+    NSNumber *spacing = spacingInfo[device][orientation];
+    
+    return [spacing floatValue];
+};
+
+CGFloat const JGSKeyboardKeyLineSpacing() {
+    
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+    NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
+    NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
+    
+    NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *spacingInfo = JGSKeyboardLineSpacing();
+    NSNumber *spacing = spacingInfo[device][orientation];
+    
+    return [spacing floatValue];
+}
+
+CGFloat const JGSKeyboardKeyWidthHeightRatio() {
+    
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+    NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
+    NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
+    
+    NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *whRatioInfo = JGSKeyboardKeyWHRatio();
     NSNumber *ratio = whRatioInfo[device][orientation];
     
     return [ratio floatValue];
+}
+
+NSDictionary *JGSKeyboardSizeInfo() {
+    
+    static NSMutableDictionary<NSString *, NSString *> *sizeInfo = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        UIEdgeInsets safeAreaInsets = UIEdgeInsetsZero;
+        if (@available(iOS 11.0, *)) {
+            UIWindow *window = [UIApplication sharedApplication].keyWindow ?: [UIApplication sharedApplication].windows.firstObject;
+            safeAreaInsets = window.safeAreaInsets;
+        }
+        
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        UIInterfaceOrientation statusBarOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        NSString *device = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
+        NSDictionary *itemSpacingInfo = JGSKeyboardInterItemSpacing();
+        NSDictionary *lineSpacingInfo = JGSKeyboardLineSpacing();
+        NSDictionary *whRatioInfo = JGSKeyboardKeyWHRatio();
+        
+        CGFloat protraitWidth = MIN(screenSize.width, screenSize.height); // 竖屏左右不做处理
+        CGFloat landscapeWidth = MAX(screenSize.width, screenSize.height); // 竖屏左右安全区处理
+        if (UIInterfaceOrientationIsPortrait(statusBarOrientation)) {
+            landscapeWidth -= (safeAreaInsets.top + safeAreaInsets.bottom);
+        }
+        else {
+            landscapeWidth -= (safeAreaInsets.left + safeAreaInsets.right);
+        }
+        NSDictionary<NSString *, NSNumber *> *keyboardWidthInfo = @{
+            @"Portrait": @(protraitWidth),
+            @"Landscape": @(landscapeWidth)
+        };
+        
+        sizeInfo = @{}.mutableCopy;
+        [keyboardWidthInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSNumber * _Nonnull obj, BOOL * _Nonnull stop) {
+            
+            NSString *orientation = key;
+            CGFloat itemSpacing = [itemSpacingInfo[device][orientation] floatValue];
+            CGFloat lineSpacing = [lineSpacingInfo[device][orientation] floatValue];
+            CGFloat whRatio = [whRatioInfo[device][orientation] floatValue];
+            
+            CGFloat keyboardWidth = obj.floatValue;
+            CGFloat itemWidth = floor((keyboardWidth - itemSpacing * JGSKeyboardMaxItemsInLine) / JGSKeyboardMaxItemsInLine);
+            CGFloat itemHeight = floor(itemWidth / whRatio);
+            CGFloat keyboardHeight = lineSpacing + (itemHeight + lineSpacing) * JGSKeyboardLinesNumber;
+            //if ([orientation isEqualToString:@"Portrait"]) {
+            //    if (UIInterfaceOrientationIsPortrait(statusBarOrientation)) {
+            //        keyboardHeight += safeAreaInsets.bottom * 0.5;
+            //    }
+            //}
+            
+            CGSize size = CGSizeMake(keyboardWidth, ceil(keyboardHeight));
+            sizeInfo[orientation] = NSStringFromCGSize(size);
+        }];
+    });
+    
+    return sizeInfo;
 }
 
 NSString * const JGSKeyboardTitleLetters = @"Abc";
