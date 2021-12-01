@@ -48,9 +48,9 @@ Pod::Spec.new do |spec|
         #'AlertController', # Deprecated
         'Base',
         'Category',
-        'DataStorage',
+        # 'DataStorage',
         'Device',
-        'Encryption',
+        # 'Encryption',
         'Reachability',
         'SecurityKeyboard',
     ]
