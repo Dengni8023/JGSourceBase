@@ -37,6 +37,8 @@
 		D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */; };
 		D4B5F08525F8FEF400FDD780 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */; };
 		D4B5F08625F8FEF400FDD780 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */; };
+		D4B710B6275910B7007F6746 /* NSDate+JGSFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B710B4275910B7007F6746 /* NSDate+JGSFormat.h */; };
+		D4B710B7275910B7007F6746 /* NSDate+JGSFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B710B5275910B7007F6746 /* NSDate+JGSFormat.m */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DABF22F02B05002EF0F0 /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA8E22F02B04002EF0F0 /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DA8F22F02B04002EF0F0 /* JGSReachability.m */; };
@@ -135,6 +137,8 @@
 		D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4B5F08325F8FEF400FDD780 /* NSString+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSBase.h"; sourceTree = "<group>"; };
 		D4B5F08425F8FEF400FDD780 /* NSString+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSBase.m"; sourceTree = "<group>"; };
+		D4B710B4275910B7007F6746 /* NSDate+JGSFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSFormat.h"; sourceTree = "<group>"; };
+		D4B710B5275910B7007F6746 /* NSDate+JGSFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JGSFormat.m"; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 				D4ABE0002750840E00FA445C /* JGSCategory+NSDate.h */,
 				D4F3DAB922F02B05002EF0F0 /* NSDate+JGSBase.h */,
 				D4F3DAB422F02B05002EF0F0 /* NSDate+JGSBase.m */,
+				D4B710B4275910B7007F6746 /* NSDate+JGSFormat.h */,
+				D4B710B5275910B7007F6746 /* NSDate+JGSFormat.m */,
 			);
 			path = NSDate;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				D4F3DAD122F02B05002EF0F0 /* UIView+JGSLoadingHUD.h in Headers */,
 				D4F3DAC122F02B05002EF0F0 /* JGSBaseUtils.h in Headers */,
 				D4F3DADE22F02B05002EF0F0 /* NSDictionary+JGSBase.h in Headers */,
+				D4B710B6275910B7007F6746 /* NSDate+JGSFormat.h in Headers */,
 				D4F3DAC222F02B05002EF0F0 /* JGSWeakStrong.h in Headers */,
 				D4F3DACD22F02B05002EF0F0 /* JGSHUD.h in Headers */,
 				D457A9742604BF6000833143 /* UIApplication+JGSBase.h in Headers */,
@@ -621,6 +628,7 @@
 				D4F3DAC022F02B05002EF0F0 /* JGSReachability.m in Sources */,
 				D4F3DAE222F02B05002EF0F0 /* NSDictionary+JGSBase.m in Sources */,
 				D4F3DAD622F02B05002EF0F0 /* JGSBaseKeyboard.m in Sources */,
+				D4B710B7275910B7007F6746 /* NSDate+JGSFormat.m in Sources */,
 				D425C1322701E5A300F65909 /* JGSCommonEncryption.m in Sources */,
 				D4F3DAE122F02B05002EF0F0 /* UIColor+JGSBase.m in Sources */,
 				D49BD7D726F24E61005C3AED /* NSURL+JGSBase.m in Sources */,

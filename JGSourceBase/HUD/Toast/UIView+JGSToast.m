@@ -219,4 +219,6 @@ static NSPointerArray *JGSToastStack = nil;
     }];
 }
 
+#pragma mark - End
+
 @end

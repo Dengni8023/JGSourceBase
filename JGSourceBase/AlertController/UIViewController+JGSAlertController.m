@@ -59,4 +59,6 @@
     return [UIAlertController jg_hideCurrentAlert:animated];
 }
 
+#pragma mark - End
+
 @end

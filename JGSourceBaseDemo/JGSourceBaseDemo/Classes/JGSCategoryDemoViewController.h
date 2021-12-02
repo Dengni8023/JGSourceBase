@@ -6,11 +6,11 @@
 //  Copyright © 2019 MeiJigao. All rights reserved.
 //
 
-#import "JGSDemoTableViewController.h"
+#import "JGSDemoViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGSCategoryDemoViewController : JGSDemoTableViewController
+@interface JGSCategoryDemoViewController : JGSDemoViewController
 
 @end
 

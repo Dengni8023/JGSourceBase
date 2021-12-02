@@ -330,6 +330,8 @@
     }
 }
 
+#pragma mark - End
+
 @end
 
 @interface JGSBaseKeyboard ()
@@ -514,5 +516,7 @@
     }
     return YES;
 }
+
+#pragma mark - End
 
 @end

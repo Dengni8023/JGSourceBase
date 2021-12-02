@@ -20,7 +20,8 @@ platform :ios, 11.0
 target "JGSourceBaseDemo" do
   
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
-  pod 'SAMKeychain'
+  # pod 'SAMKeychain' # KeyChain 测试
+  # pod 'FLAnimatedImage'
   # Local
   # pod 'JGSourceBase', :path => "."
   # pod 'JGSourceBase/Category/UIAlertController', :path => "."

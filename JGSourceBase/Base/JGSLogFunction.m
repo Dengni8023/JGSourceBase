@@ -28,11 +28,16 @@ FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void) {
 
 FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
     
+    va_list varList;
+    va_start(varList, format);
+    JGSLogv(format, varList);
+    va_end(varList);
+}
+
+FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args) {
+    
     if (JGSConsoleWithNSLog) {
-        va_list varList;
-        va_start(varList, format);
-        NSLogv(format, varList);
-        va_end(varList);
+        NSLogv(format, args);
         return;
     }
     
@@ -40,10 +45,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
     // 如屏蔽调试控制台输出的系统提示信息，在
     // Edit Scheme -> Run -> Arguments -> Environment Variables 添加: OS_ACTIVITY_MODE: disable
     // 此时使用的NSLog日志也不会输出
-    va_list varList;
-    va_start(varList, format);
-    NSString *message = [[NSString alloc] initWithFormat:format arguments:varList];
-    va_end(varList);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
     
     // 处理类似NSLog输出的日志头
     // 2021-03-11 20:25:42.949957+0800 JGSourceBaseDemo[25823:826858]

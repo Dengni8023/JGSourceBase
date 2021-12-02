@@ -136,6 +136,8 @@
     }
 }
 
+#pragma mark - End
+
 @end
 
 
@@ -199,6 +201,6 @@
     return [data jg_sha256String:style];
 }
 
-@end
-
 #pragma mark - End
+
+@end

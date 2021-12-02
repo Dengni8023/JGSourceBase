@@ -61,6 +61,8 @@
     return [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:(kCCOptionPKCS7Padding)];
 }
 
+#pragma mark - End
+
 @end
 
 @implementation NSData (JGSAESEncryption)
@@ -126,6 +128,8 @@
     return [self jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:(kCCOptionPKCS7Padding)];
 }
 
+#pragma mark - End
+
 @end
 
 @implementation NSString (JGSAESEncryption)
@@ -182,5 +186,7 @@
 - (NSString *)jg_AESOperation:(CCOperation)operation keyLength:(size_t)keyLength key:(NSString *)key iv:(NSString *)iv {
     return [self jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:(kCCOptionPKCS7Padding)];
 }
+
+#pragma mark - End
 
 @end

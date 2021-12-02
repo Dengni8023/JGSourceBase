@@ -131,6 +131,8 @@ FOUNDATION_EXTERN UIColor *JGSRandomColor(void) {
     return nil;
 }
 
+#pragma mark - End
+
 @end
 
 @implementation NSString (JGSBase_Hex)
@@ -177,5 +179,7 @@ FOUNDATION_EXTERN UIColor *JGSRandomColor(void) {
     
     return rgbNum;
 }
+
+#pragma mark - End
 
 @end

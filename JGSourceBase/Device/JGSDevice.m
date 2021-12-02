@@ -673,4 +673,6 @@
     return JGSDeviceJailbrokenNone;
 }
 
+#pragma mark - End
+
 @end

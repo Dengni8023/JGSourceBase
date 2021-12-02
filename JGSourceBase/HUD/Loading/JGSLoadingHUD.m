@@ -91,4 +91,6 @@
     [inView jg_hideAllLoading];
 }
 
+#pragma mark - End
+
 @end

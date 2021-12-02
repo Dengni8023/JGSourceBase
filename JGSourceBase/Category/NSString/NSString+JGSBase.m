@@ -118,4 +118,6 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
     return [NSURL URLWithString:self.jg_URLString];
 }
 
+#pragma mark - End
+
 @end

@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "JGSDemoNavigationController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()

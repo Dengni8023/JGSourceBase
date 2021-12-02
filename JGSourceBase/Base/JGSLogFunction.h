@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, JGSLogLevel) {
 };
 
 #pragma mark - Log - Define
+FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args);
 FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
 #define JGSLogWithModeLevel(mode, level, fmt, ...) {\
     if (JGSEnableLogMode != JGSLogModeNone && mode != JGSLogModeNone && level >= JGSConsoleLogLevel) { \

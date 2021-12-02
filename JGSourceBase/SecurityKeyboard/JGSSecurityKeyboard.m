@@ -556,6 +556,8 @@
     [self.textField resignFirstResponder];
 }
 
+#pragma mark - End
+
 @end
 
 @implementation UITextField (JGSSecurityKeyboard)
@@ -674,5 +676,7 @@ static NSString *JGSSecurityKeyboardSecChar = @"•";
     }
     return text;
 }
+
+#pragma mark - End
 
 @end

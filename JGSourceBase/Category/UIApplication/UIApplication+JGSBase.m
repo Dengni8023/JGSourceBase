@@ -64,4 +64,6 @@ FOUNDATION_EXTERN UIViewController *JGSTopViewController(UIViewController *rootV
     return topCtr;
 }
 
+#pragma mark - End
+
 @end

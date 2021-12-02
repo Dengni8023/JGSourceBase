@@ -108,4 +108,6 @@
     [inView jg_hideAllToast];
 }
 
+#pragma mark - End
+
 @end

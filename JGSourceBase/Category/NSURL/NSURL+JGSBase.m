@@ -65,4 +65,6 @@
     return [self jg_queryForKey:key];
 }
 
+#pragma mark - End
+
 @end

@@ -10,4 +10,6 @@
 
 @implementation JGSUserDefaults
 
+#pragma mark - End
+
 @end

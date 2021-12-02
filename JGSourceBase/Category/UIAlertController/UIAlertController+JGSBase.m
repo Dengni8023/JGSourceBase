@@ -236,4 +236,6 @@ static NSPointerArray *jg_ShowingAlertControllers = nil;
     }];
 }
 
+#pragma mark - End
+
 @end

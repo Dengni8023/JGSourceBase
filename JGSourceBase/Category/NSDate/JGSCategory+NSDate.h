@@ -14,5 +14,6 @@
 #endif
 
 #import "NSDate+JGSBase.h"
+#import "NSDate+JGSFormat.h"
 
 #endif /* JGSCategory_NSDate_h */

@@ -59,16 +59,14 @@
         field.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
         field.layer.borderWidth = 1.f / [UIScreen mainScreen].scale;
         field.layer.cornerRadius = 4.f;
-        [self.view addSubview:field];
+        [self.scrollView addSubview:field];
         
         [field mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(36);
-            if (@available(iOS 11.0, *)) {
-                make.left.right.mas_equalTo(self.view.mas_safeAreaLayoutGuide).inset(28);
-                make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(32 + 60 * i);
-            } else {
-                make.left.right.mas_equalTo(self.view).inset(28);
-                make.top.mas_equalTo(self.view.mas_top).mas_offset(96 + 60 * i);
+            make.left.right.mas_equalTo(self.scrollView).inset(28);
+            make.top.mas_equalTo(self.scrollView).mas_offset(32 + 60 * i);
+            if (i == 5) {
+                make.bottom.mas_equalTo(self.scrollView.mas_bottom).inset(32);
             }
         }];
         
@@ -118,11 +116,7 @@
     [tips mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
         make.left.mas_equalTo(self.view).mas_offset(28);
-        if (@available(iOS 11.0, *)) {
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(12);
-        } else {
-            make.top.mas_equalTo(self.view.mas_bottom).inset(20);
-        }
+        make.bottom.mas_equalTo(self.view.mas_bottom).inset(20);
     }];
 }
 
@@ -178,5 +172,7 @@
 }
 
 #endif
+
+#pragma mark - End
 
 @end

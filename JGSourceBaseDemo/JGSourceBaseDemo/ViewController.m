@@ -55,6 +55,7 @@
     [super viewDidLoad];
     
     self.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    self.showTextView = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -136,7 +137,7 @@
 #pragma mark - DataStorage
 - (void)jumpToDataStorageDemo {
     
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
     vcT.title = @"Data Storage";
     vcT.tableSectionData = @[
         JGSDemoTableSectionMake(@" UserDefaults",
@@ -179,7 +180,7 @@
 #pragma mark - Encryption
 - (void)jumpToEncryptionDemo {
     
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
     vcT.title = @"Encryption";
     vcT.tableSectionData = @[
         JGSDemoTableSectionMake(nil,
@@ -224,7 +225,7 @@
 #pragma mark - Hud Loading & Toast
 - (void)jumpToHudDemo {
     
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
     vcT.title = @"Hud Loading & Toast";
     vcT.tableSectionData = @[
         // Section 全屏Loading
@@ -463,16 +464,13 @@
     };
     
 #ifdef JGS_Category_NSObject
-    NSString *netJSON = [netInfo jg_JSONStringWithOptions:kNilOptions error:nil];
+    NSString *netJSON = [netInfo jg_JSONStringWithOptions:NSJSONWritingPrettyPrinted error:nil];
 #else
-    NSData *data = [NSJSONSerialization dataWithJSONObject:netInfo options:kNilOptions error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:netInfo options:NSJSONWritingPrettyPrinted error:nil];
     NSString *netJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 #endif
     
-    JGSLog(@"Network info: %@", netJSON);
-#ifdef JGS_Category_UIAlertController
-    [UIAlertController jg_alertWithTitle:@"网络连接信息" message:netJSON cancel:@"确定"];
-#endif
+    [self showConsoleLog:@"%@", netJSON];
     
 #endif
 }
@@ -488,7 +486,7 @@
 #pragma mark - Category
 - (void)jumpToCategoryAlert {
     
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
     vcT.title = @"UIAlertController";
     vcT.tableSectionData = @[
         // Section Base
@@ -615,7 +613,7 @@
 #pragma mark - Category
 - (void)jumpToCategoryDemo {
     
-    JGSDemoTableViewController *vcT = [[JGSDemoTableViewController alloc] init];
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
     vcT.title = @"Category";
     vcT.tableSectionData = @[
         // Section 字典取值

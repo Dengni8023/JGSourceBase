@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3BF9A33CF7782F761596FC82 /* libPods-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F65894208A86508A1E8DB415 /* libPods-JGSourceBaseDemo.a */; };
 		D41F36B8274520F000B3A95E /* LoadingWithAlpha-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = D41F36B7274520F000B3A95E /* LoadingWithAlpha-5.gif */; };
-		D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */; };
-		D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */; };
 		D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49BD79626F20E28005C3AED /* JGSDemoViewController.m */; };
 		D4C21BA0274520980001E928 /* LoadingWithoutAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D4C21B9B274520980001E928 /* LoadingWithoutAlpha-1.gif */; };
 		D4C21BA1274520980001E928 /* LoadingWithAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D4C21B9C274520980001E928 /* LoadingWithAlpha-1.gif */; };
@@ -31,10 +29,6 @@
 		710D4D80C389569E98EAD95B /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		92F1F5230A6069958E6FE346 /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D41F36B7274520F000B3A95E /* LoadingWithAlpha-5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-5.gif"; sourceTree = "<group>"; };
-		D4211E6F26FF236C00E8E766 /* JGSDemoNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoNavigationController.h; sourceTree = "<group>"; };
-		D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoNavigationController.m; sourceTree = "<group>"; };
-		D49BD79226F2066D005C3AED /* JGSDemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoTableViewController.h; sourceTree = "<group>"; };
-		D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableViewController.m; sourceTree = "<group>"; };
 		D49BD79526F20E28005C3AED /* JGSDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDemoViewController.h; sourceTree = "<group>"; };
 		D49BD79626F20E28005C3AED /* JGSDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDemoViewController.m; sourceTree = "<group>"; };
 		D4AE4EDD26E614E4008174BE /* JGSourceBaseDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JGSourceBaseDemo.entitlements; sourceTree = "<group>"; };
@@ -165,12 +159,8 @@
 		D4F3DA8622F0292B002EF0F0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				D4211E6F26FF236C00E8E766 /* JGSDemoNavigationController.h */,
-				D4211E7026FF236C00E8E766 /* JGSDemoNavigationController.m */,
 				D4F3DA8822F0292B002EF0F0 /* JGSDemoTableData.h */,
 				D4F3DA8722F0292B002EF0F0 /* JGSDemoTableData.m */,
-				D49BD79226F2066D005C3AED /* JGSDemoTableViewController.h */,
-				D49BD79326F2066D005C3AED /* JGSDemoTableViewController.m */,
 				D49BD79526F20E28005C3AED /* JGSDemoViewController.h */,
 				D49BD79626F20E28005C3AED /* JGSDemoViewController.m */,
 			);
@@ -304,9 +294,7 @@
 				D4F3DA8C22F0292B002EF0F0 /* JGSDemoTableData.m in Sources */,
 				D4F3DA6C22F027E1002EF0F0 /* main.m in Sources */,
 				D49BD79726F20E28005C3AED /* JGSDemoViewController.m in Sources */,
-				D49BD79426F2066D005C3AED /* JGSDemoTableViewController.m in Sources */,
 				D4F3DA5E22F027E1002EF0F0 /* AppDelegate.m in Sources */,
-				D4211E7126FF236C00E8E766 /* JGSDemoNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

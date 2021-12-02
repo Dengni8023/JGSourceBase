@@ -249,4 +249,6 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardRetu
 
 @implementation JGSKeyboardConstants
 
+#pragma mark - End
+
 @end
