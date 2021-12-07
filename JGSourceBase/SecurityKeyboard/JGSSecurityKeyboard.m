@@ -11,8 +11,6 @@
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase.h"
 #import <objc/runtime.h>
-//#import <ImageIO/ImageIO.h>
-#import <Accelerate/Accelerate.h>
 
 @interface UITextField (JGSSecurityKeyboard)
 
@@ -79,18 +77,30 @@
         // clear、paste等处理
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
         
-        // 应用方向变化等导致键盘大小变化处理
-        // 不考虑键盘展示时转屏界面切换的流畅性，此处监听可移除
+        // 应用方向变化等导致键盘大小变化处理，考虑通知接收频率、及性能问题
+        // 仅监听 UIKeyboardWillChangeFrameNotification 即可实现修改键盘高度操作
+        // 通知执行顺序大概（键盘高度不实际更新是存在差异情况）如下：
+        // 1、UIApplicationDidChangeStatusBarOrientationNotification：应用转屏后执行一次，最先执行
+        // 2、UIKeyboardWillChangeFrameNotification：键盘弹出、应用转屏均会执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行一次
+        // 4、UIKeyboardDidChangeFrameNotification：与keyboardWillChangeFrame配对执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行两次
+        // 3、UIKeyboardWillShowNotification：键盘弹出、应用转屏均会执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行一次
+        
+        // 经测试：
+        // 1、在键盘高度不实际更新（调用更新方法，但是键盘实际高度不变）的情况下 UIKeyboardWillShowNotification 执行顺序在 UIKeyboardDidChangeFrameNotification 之后
+        // 2、其他情况 UIKeyboardWillShowNotification、UIKeyboardDidChangeFrameNotification 执行顺序和高度更新的时机存在关联，可自行测试
+        
+        // 收到 UIKeyboardWillChangeFrameNotification、UIKeyboardWillShowNotification、UIKeyboardDidChangeFrameNotification 时：
+        // 1、需要判断当前输入框是否有焦点，多个输入框同时存在时，系统通知可能多次发送
+        // 2、每个通知处理方法均可执行键盘高度更新，UIKeyboardDidChangeFrameNotification 更新则会重复更新键盘高度，不建议在此处更新
+        // 3、UIKeyboardWillShowNotification 通知中更新高度，则需要待转屏动画执行结束后键盘高度更新才会执行
+        // 综上，键盘高度更新在 UIKeyboardWillChangeFrameNotification 中进行最合适
+        
         // 转屏时 UIApplicationDidChangeStatusBarOrientationNotification 通知先于 UIKeyboardWillChangeFrameNotification
-        // 因此此处监听以提前更新键盘高度约束，转屏过程中键盘的布局切换更流畅
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-        // 以下三个通知执行顺序如下
-        // 1、UIKeyboardWillChangeFrameNotification
-        // 2、UIKeyboardWillShowNotification: 在键盘首次展示、屏幕旋转时都会执行，此是如果修改键盘高度约束，则会在本轮三个通知执行完之后再次执行一轮三个通知
-        // 3、UIKeyboardDidChangeFrameNotification
+        // 如在UIKeyboardWillShowNotification更新键盘高度，添加此处监听以提前更新键盘高度约束，转屏过程中键盘的布局切换更流畅
+        // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
         self.numberPadRandom = randomNum; // 数字键盘随机开关
@@ -118,8 +128,7 @@
         CGFloat keyboardHeight = keyboardSize.height + (self.title.length > 0 ? JGSKeyboardToolbarHeight : 0);
         
         // 此处做初步的键盘高度计算，精确高度待键盘展示时更新高度约束
-        // 在文本框第一次开始编辑收到通知 UITextFieldTextDidBeginEditingNotification 时，键盘高度约束尚未添加，此时无法执行高度更新
-        // 首次高度更新必须在收到通知 UIKeyboardWillShowNotification 时进行
+        // 此处高度必须非0，否则键盘不会展示，高度更新无效
         self.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), keyboardHeight);
         
         //[self addViewElements];
@@ -151,18 +160,11 @@
         return;
     }
     
-    [self updateHeightConstraints];
+    //JGSLog();
+    //[self updateHeightConstraints];
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)noti {
-    if (!self.textField.isFirstResponder) {
-        return;
-    }
-    
-    //JGSLog(@"%@: %@", noti.name, noti.userInfo);
-}
-
-- (void)keyboardWillShow:(NSNotification *)noti {
     if (!self.textField.isFirstResponder) {
         return;
     }
@@ -171,12 +173,22 @@
     [self updateHeightConstraints];
 }
 
+- (void)keyboardWillShow:(NSNotification *)noti {
+    if (!self.textField.isFirstResponder) {
+        return;
+    }
+    
+    //JGSLog();
+    //[self updateHeightConstraints];
+}
+
 - (void)keyboardDidChangeFrame:(NSNotification *)noti {
     if (!self.textField.isFirstResponder) {
         return;
     }
     
-    //JGSLog(@"%@: %@", noti.name, noti.userInfo);
+    //JGSLog();
+    //[self updateHeightConstraints];
 }
 
 - (void)updateHeightConstraints {

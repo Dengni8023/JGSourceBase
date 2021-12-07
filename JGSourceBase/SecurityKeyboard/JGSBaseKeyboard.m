@@ -360,7 +360,6 @@
         
         _keyboardWidth = CGRectGetWidth(frame);
         
-        self.clipsToBounds = YES;
         self.backgroundColor = [UIColor clearColor];
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
@@ -370,64 +369,6 @@
 - (void)enableHighlightedWhenTap:(BOOL)enable {
     _enableHighlightedWhenTap = enable;
 }
-
-//#pragma mark - View
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    
-//    [self setNeedsDisplay];
-//}
-//
-//- (UIImageView *)warterMaskImageView {
-//    
-//    static UIImageView *warterImgView = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        
-//        warterImgView = [[UIImageView alloc] init];
-//        warterImgView.layer.affineTransform = CGAffineTransformMakeRotation(-M_PI_4 / 3.f);
-//        [self insertSubview:warterImgView atIndex:0];
-//    });
-//    
-//    return warterImgView;
-//}
-//
-//- (void)drawRect:(CGRect)rect {
-//    [super drawRect:rect];
-//    
-//    // 键盘背景添加水印逻辑
-//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-//    style.lineHeightMultiple = 1.05;
-//    style.alignment = NSTextAlignmentCenter;
-//    NSDictionary *attributes = @{
-//        NSFontAttributeName: [UIFont systemFontOfSize:UIFont.systemFontSize],
-//        NSForegroundColorAttributeName: JGSKeyboardToolBarTitleColor(),
-//        NSKernAttributeName: @(1), // 字间距
-//        NSParagraphStyleAttributeName: style,
-//    };
-//    
-//    // 字符串的size
-//    NSString *watemarkText = @"M-JGSource\nJGSSecurityKeyboard";
-//    CGSize size = [watemarkText sizeWithAttributes:attributes];
-//    CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
-//    
-//    UIGraphicsBeginImageContextWithOptions(adjustedSize, NO, 0);
-//    [watemarkText drawInRect:CGRectMake(0, 0, adjustedSize.width, adjustedSize.height) withAttributes:attributes];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    // 重绘，增加边距
-//    CGFloat x = 12, y = 8;
-//    CGSize newSize = CGSizeMake(size.width + x * 2, size.height + y * 2);
-//    
-//    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-//    [image drawInRect:CGRectMake(x, y, size.width, size.height)];
-//    image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    self.warterMaskImageView.frame = rect;
-//    self.warterMaskImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
-//}
 
 #pragma mark - Action
 - (BOOL)keyboardKeyAction:(JGSKeyboardKey *)key event:(JGSKeyboardKeyEvents)event {
