@@ -210,8 +210,8 @@
         
         // 避免警告
         IMP imp = [object methodForSelector:rowData.selector];
-        id (*func)(id, SEL, NSIndexPath *) = (void *)imp;
-        func(object, rowData.selector, indexPath);
+        id (*func)(id, SEL, NSIndexPath *, JGSDemoViewController *) = (void *)imp;
+        func(object, rowData.selector, indexPath, self);
     }
 }
 

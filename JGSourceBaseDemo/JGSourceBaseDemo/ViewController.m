@@ -37,7 +37,7 @@
         // Section Category扩展
         JGSDemoTableSectionMake(@" Category",
                                 @[
-                                    JGSDemoTableRowMakeWithSelector(@"NSDate", @selector(jumpToCategoryDemo)),
+                                    JGSDemoTableRowMakeWithSelector(@"NSDate", @selector(jumpToCategoryDate)),
                                     JGSDemoTableRowMakeWithSelector(@"NSDictionary", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"NSObject", @selector(jumpToCategoryDemo)),
                                     JGSDemoTableRowMakeWithSelector(@"NSString", @selector(jumpToCategoryDemo)),
@@ -483,7 +483,38 @@
 }
 
 #pragma mark -
-#pragma mark - Category
+#pragma mark - Category - NSDate
+- (void)jumpToCategoryDate {
+    
+    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
+    vcT.title = @"NSDate";
+    vcT.showTextView = YES;
+    vcT.tableSectionData = @[
+        // Section Base
+        JGSDemoTableSectionMake(@" Base",
+                                @[
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide all", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide one", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & other", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & others", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive & others", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Action Sheet", self, @selector(categoryDateDemo:controller:)),
+                                ]),
+    ];
+    
+    [self.navigationController pushViewController:vcT animated:YES];
+}
+
+- (void)categoryDateDemo:(NSIndexPath *)indexPath controller:(JGSDemoViewController *)vcT {
+    
+#ifdef JGS_Category_UIAlertController
+    NSDate *now = [NSDate date];
+    [vcT showConsoleLog:@"%04d-%02d-%02d %02d:%02d:%02d-%09", now.jg_year, now.jg_month, now.jg_day, now.jg_hour, now.jg_minute, now.jg_second, now.jg_nanosecond];
+#endif
+}
+
+#pragma mark - Category - UIAlertController
 - (void)jumpToCategoryAlert {
     
     JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];

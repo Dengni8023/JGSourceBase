@@ -95,8 +95,8 @@
         // 3、UIKeyboardWillShowNotification 通知中更新高度，则需要待转屏动画执行结束后键盘高度更新才会执行
         // 综上，键盘高度更新在 UIKeyboardWillChangeFrameNotification 中进行最合适
         
-        // 转屏时 UIApplicationDidChangeStatusBarOrientationNotification 通知先于 UIKeyboardWillChangeFrameNotification
-        // 如在UIKeyboardWillShowNotification更新键盘高度，添加此处监听以提前更新键盘高度约束，转屏过程中键盘的布局切换更流畅
+        // 转屏时 UIKeyboardWillShowNotification 通知首次执行在 UIKeyboardDidChangeFrameNotification 通知之后
+        // 如仅在UIKeyboardWillShowNotification更新键盘高度，键盘转屏动画完成之后才会执行键盘高度更新操作，键盘高度变化不流畅
         // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];

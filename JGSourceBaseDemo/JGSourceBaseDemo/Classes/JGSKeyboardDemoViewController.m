@@ -97,7 +97,7 @@
     self.secPwdFullInput = fields[3];
     self.secPwdFullInput.placeholder = @"安全键盘加密输入-全角";
     self.secPwdFullInput.secureTextEntry = YES;
-    self.secPwdFullInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:nil randomNumPad:arc4random() % 2 == 0 enableFullAngle:YES];
+    self.secPwdFullInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:@"安全键盘加密输入-全角" randomNumPad:arc4random() % 2 == 0 enableFullAngle:YES];
     if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
     }
