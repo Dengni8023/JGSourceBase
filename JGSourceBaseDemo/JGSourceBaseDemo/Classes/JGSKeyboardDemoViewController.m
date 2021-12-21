@@ -33,9 +33,11 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
         UITextField *textField = (UITextField *)note.object;
-        JGSLog(@"%@", textField.text);
+        JGSLog(@"%@, %@", textField.text, textField.jg_securityOriginText);
     }];
 #endif
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"小眼睛" style:UIBarButtonItemStylePlain target:self action:@selector(switchTextfieldSecurityEntry:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,6 +99,7 @@
     self.secPwdFullInput = fields[3];
     self.secPwdFullInput.placeholder = @"安全键盘加密输入-全角";
     self.secPwdFullInput.secureTextEntry = YES;
+    self.secPwdFullInput.jg_aesEncryptInputCharByChar = YES;
     self.secPwdFullInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:@"安全键盘加密输入-全角" randomNumPad:arc4random() % 2 == 0 enableFullAngle:YES];
     if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
@@ -106,23 +109,12 @@
     fields[4].inputView = [JGSSecurityKeyboard numberKeyboardWithTextField:fields[4] title:@"数字键盘" randomNumPad:(accountInputShow % 2 == 0)];
     fields[5].placeholder = @"身份证键盘";
     fields[5].inputView = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘" randomNumPad:(accountInputShow % 2 == 0)];
-    
-    UILabel *tips = [[UILabel alloc] init];
-    tips.text = @"点击页面切换secureTextEntry属性值";
-    tips.textColor = [UIColor lightGrayColor];
-    tips.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:tips];
-    
-    [tips mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.left.mas_equalTo(self.view).mas_offset(28);
-        make.bottom.mas_equalTo(self.view.mas_bottom).inset(20);
-    }];
 }
 
 #pragma mark - Action
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)switchTextfieldSecurityEntry:(id)sender {
     
+    //JGSLog(@"%@", sender);
     self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
     self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
     self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;

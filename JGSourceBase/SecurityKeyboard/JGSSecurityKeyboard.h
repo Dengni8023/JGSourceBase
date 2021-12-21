@@ -67,4 +67,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UITextField (JGSSecurityKeyboard)
+
+/// 是否使用AES逐字符加密，输入内容逐字符进行 AES 加密后存入内存，默认 NO
+/// secureTextEntry 输入时，输入框使用"•"掩码展示，输入框 text 返回一串"•"掩码
+/// 需要使用 textField.jg_securityOriginText 获取原始内容
+@property (nonatomic, assign) BOOL jg_aesEncryptInputCharByChar;
+
+/// 对于使用 JGSSecurityKeyboard 安全键盘 secureTextEntry = YES 时，输入框展示一串"•"掩码
+/// textField.text = 一串"•"掩码
+/// textField.jg_securityOriginText = 原始内容
+@property (nonatomic, copy) NSString *jg_securityOriginText;
+
+@end
+
 NS_ASSUME_NONNULL_END
