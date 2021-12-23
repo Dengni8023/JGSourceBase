@@ -607,7 +607,8 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 - (void)setJg_securityOriginText:(NSString *)jg_securityOriginText {
     
     if (!self.jg_aesEncryptInputCharByChar) {
-        objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey, jg_securityOriginText, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        NSString *secText = [self jg_aesOperation:kCCEncrypt text:jg_securityOriginText];
+        objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey, secText, OBJC_ASSOCIATION_COPY_NONATOMIC);
         return;
     }
     
@@ -622,7 +623,9 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 - (NSString *)jg_securityOriginText {
     
     if (!self.jg_aesEncryptInputCharByChar) {
-        return objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey);
+        
+        NSString *secText = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey);
+        return [self jg_aesOperation:kCCDecrypt text:secText];
     }
     
     NSArray<NSString *> *secText = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldOriginKey);
