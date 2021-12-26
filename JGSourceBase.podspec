@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
     
     spec.name          = "JGSourceBase"
-    spec.version       = "1.2.2"
+    spec.version       = "1.2.2.1"
     
     spec.summary       = "JGSourceCode通用功能组件库。"
     spec.description   = <<-DESC
