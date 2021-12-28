@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 对于使用 JGSSecurityKeyboard 安全键盘 secureTextEntry = YES 时，输入框展示一串"•"掩码
 /// textField.text = 一串"•"掩码
 /// textField.jg_securityOriginText = 原始内容
-@property (nonatomic, copy) NSString *jg_securityOriginText;
+@property (nullable, nonatomic, copy) NSString *jg_securityOriginText;
 
 @end
 
