@@ -12,16 +12,49 @@
 
 - (NSArray<NSURLQueryItem *> *)jg_queryItems {
     
-    // iOS 8以后不需要使用正则表达式，系统提供方法获取query
+    // 标准 URL 系统API能够正确返回 query 参数
     NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
     return components.queryItems;
 }
 
+- (NSArray<NSURLQueryItem *> *)jg_fragmentQueryItems {
+    
+    // 标准 URL 系统API能够正确返回 query 参数
+    // Vue 等带 # 符号的链接，如：https://m.baidu.com/index.html#/serves/ascheduleForDetails&thirdMarkCode=10&isNav=false&isNav=false&empty=&=&redirect=https://baike.baidu.com/item/Query/3789545?fr=aladdin
+    // 识别参数应分别为：
+    // thirdMarkCode=10
+    // isNav=false
+    // redirect=https://baike.baidu.com/item/Query/3789545?fr=aladdin
+    // 但系统方法无法直接识别，需要对 fragment 获取参数
+    NSString *fragment = self.fragment;
+    if (fragment.length == 0 || [fragment rangeOfString:@"?"].location == NSNotFound) {
+        return nil;
+    }
+    
+    NSURL *fragmentURL = [NSURL URLWithString:fragment];
+    return fragmentURL.jg_queryItems;
+}
+
 - (NSDictionary<NSString *,NSString *> *)jg_queryParams {
     
-    // iOS 8以后不需要使用正则表达式，系统提供方法获取query
     NSMutableDictionary<NSString *, NSString *> *params = @{}.mutableCopy;
     for (NSURLQueryItem *queryItem in self.jg_queryItems) {
+        
+        NSString *name = queryItem.name;
+        NSString *value = queryItem.value ?: @"";
+        if ([params.allKeys containsObject:name]) {
+            value = [params[name] stringByAppendingFormat:@",%@", value];
+        }
+        [params setObject:value forKey:name];
+    }
+    
+    return params.count > 0 ? params.copy : nil;
+}
+
+- (NSDictionary<NSString *,NSString *> *)jg_fragmentQueryParams {
+    
+    NSMutableDictionary<NSString *, NSString *> *params = @{}.mutableCopy;
+    for (NSURLQueryItem *queryItem in self.jg_fragmentQueryItems) {
         
         NSString *name = queryItem.name;
         NSString *value = queryItem.value ?: @"";

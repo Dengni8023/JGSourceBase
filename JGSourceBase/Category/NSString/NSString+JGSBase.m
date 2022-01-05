@@ -58,6 +58,12 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
         URLString = [URLString stringByReplacingCharactersInRange:firstParamRange withString:@"?"];
     }
     
+    // 中文字符正则表达式
+    // 中文+中文符号：。 ； ， ： “ ”（ ） 、 ？ 《 》
+    NSError *error = nil;
+    NSString *regTags = @"[[\u4e00-\u9fa5][\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]]+";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regTags options:NSRegularExpressionCaseInsensitive error:&error];
+    
     NSMutableCharacterSet *mutSet = [NSCharacterSet URLHostAllowedCharacterSet].mutableCopy;
     [mutSet formUnionWithCharacterSet:[NSCharacterSet URLPathAllowedCharacterSet]];
     [mutSet formUnionWithCharacterSet:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -65,12 +71,6 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
     [mutSet formUnionWithCharacterSet:[NSCharacterSet URLUserAllowedCharacterSet]];
     [mutSet formUnionWithCharacterSet:[NSCharacterSet URLPasswordAllowedCharacterSet]];
     NSCharacterSet *urlCharSet = mutSet.copy;
-    
-    // 中文字符正则表达式
-    // 中文字 。 ； ， ： “ ”（ ） 、 ？ 《 》
-    NSError *error = nil;
-    NSString *regTags = @"[[\u4e00-\u9fa5][\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]]+";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regTags options:NSRegularExpressionCaseInsensitive error:&error];
     
     // 1、正则表达式匹配查找中文字符串
     // 2、中文字符串匹配编码
@@ -102,7 +102,7 @@ static NSString * const kJGSURL_AFCharactersSubDelimitersToEncode = @"!$&'()*+,;
         
         NSTextCheckingResult *match = [matches firstObject];
         NSString *zhStr = [URLString substringWithRange:match.range];
-        NSString *zhURLStr = [zhStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *zhURLStr = [zhStr stringByAddingPercentEncodingWithAllowedCharacters:mutSet];
         
         // 替换
         URLString = [URLString stringByReplacingCharactersInRange:match.range withString:zhURLStr];

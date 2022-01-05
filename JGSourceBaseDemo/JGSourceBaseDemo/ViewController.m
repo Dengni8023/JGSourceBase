@@ -133,7 +133,6 @@
 #endif
 }
 
-#pragma mark -
 #pragma mark - DataStorage
 - (void)jumpToDataStorageDemo {
     
@@ -152,7 +151,7 @@
 - (void)jumpToDeviceDemo {
     
 #ifdef JGS_Device
-    printf("0x%x\n", [JGSDevice isDeviceJailbroken]);
+    printf("设备越狱检测：%d\n", [JGSDevice isDeviceJailbroken] == JGSDeviceJailbrokenIsBroken);
     printf("%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
     printf("%d\n", [JGSDevice isSimulator]);
     
@@ -260,6 +259,7 @@
                                     JGSDemoTableRowMakeWithObjectSelector(@"Up样式", self, @selector(showToastHUD:)),
                                     JGSDemoTableRowMakeWithObjectSelector(@"Low样式", self, @selector(showToastHUD:)),
                                     JGSDemoTableRowMakeWithObjectSelector(@"Bottom样式", self, @selector(showToastHUD:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Default样式+completion", self, @selector(showToastHUD:)),
                                 ]),
     ];
     
@@ -433,6 +433,13 @@
         }
             break;
             
+        case 5: {
+            [JGSToast showToastWithIcon:[UIImage imageNamed:@"AppIcon"] message:@"加载中..." completion:^{
+                
+            }];
+        }
+            break;
+            
         default:
             break;
     }
@@ -491,15 +498,9 @@
     vcT.showTextView = YES;
     vcT.tableSectionData = @[
         // Section Base
-        JGSDemoTableSectionMake(@" Base",
+        JGSDemoTableSectionMake(nil,
                                 @[
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide all", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Show alerts，Last hide one", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & other", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & others", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Alert canle & destructive & others", self, @selector(categoryDateDemo:controller:)),
-                                    JGSDemoTableRowMakeWithObjectSelector(@"Action Sheet", self, @selector(categoryDateDemo:controller:)),
+                                    JGSDemoTableRowMakeWithObjectSelector(@"Date Demo", self, @selector(categoryDateDemo:controller:)),
                                 ]),
     ];
     
@@ -508,7 +509,7 @@
 
 - (void)categoryDateDemo:(NSIndexPath *)indexPath controller:(JGSDemoViewController *)vcT {
     
-#ifdef JGS_Category_UIAlertController
+#ifdef JGS_Category_NSDate
     NSDate *now = [NSDate date];
     [vcT showConsoleLog:@"%04d-%02d-%02d %02d:%02d:%02d-%09", now.jg_year, now.jg_month, now.jg_day, now.jg_hour, now.jg_minute, now.jg_second, now.jg_nanosecond];
 #endif
@@ -770,11 +771,21 @@
 #pragma mark - URL
     NSString *urlStr = @"tpybxsit://m.baidu.com/s?from=1000539d&word=%E8%92%9C%E8%93%89%E8%99%BE%E7%9A%84%E5%81%9A%E6%B3%95";
     NSURL *URL = urlStr.jg_URL;
-    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams.jg_JSONString);
     
     urlStr = @"tpybxsit://m.baidu.com/s%3Ffrom=1000539d&word=蒜蓉虾的做法";
     URL = urlStr.jg_URL;
-    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams);
+    //URL = [NSURL URLWithString:urlStr];
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams.jg_JSONString);
+    
+    urlStr = @"https://m.baidu.com/index.html#/serves/ascheduleForDetails&thirdMarkCode=10&isNav=false&isNav=true&empty=&=";
+    URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams.jg_JSONString);
+    
+    urlStr = @"https://m.baidu.com/index.html#/serves/ascheduleForDetails?thirdMarkCode=10&isNav=false&redirect=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FQuery%2F3789545%3Ffr%3Daladdin%26src%3D%E8%B6%85A";
+    URL = urlStr.jg_URL;
+    JGSLog(@"%@， %@", URL.jg_queryItems, URL.jg_queryParams.jg_JSONString);
+    JGSLog(@"%@， %@", URL.jg_fragmentQueryItems, URL.jg_fragmentQueryParams.jg_JSONString);
 #endif
     
 #ifdef JGS_Category_NSString
