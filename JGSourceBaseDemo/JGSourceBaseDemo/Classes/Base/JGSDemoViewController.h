@@ -3,7 +3,7 @@
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2021/9/15.
-//  Copyright © 2021 MeiJigao. All rights reserved.
+//  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 //@property (nonatomic, strong, readonly) UITextView *textView;
 
-// 是否显示Table底部调试输出的文本框，默认NO
+// 是否显示Table底部调试输出的文本框，默认YES
 @property (nonatomic, assign) BOOL showTextView;
 
 @property (nonatomic, copy) NSArray<JGSDemoTableSectionData *> *tableSectionData;

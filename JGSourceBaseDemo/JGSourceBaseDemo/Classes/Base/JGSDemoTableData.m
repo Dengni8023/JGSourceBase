@@ -3,7 +3,7 @@
 //  JGSourceBaseDemo
 //
 //  Created by Mei Jigao on 2018/3/16.
-//  Copyright © 2018年 MeiJigao. All rights reserved.
+//  Copyright © 2018年 MeiJiGao. All rights reserved.
 //
 
 #import "JGSDemoTableData.h"

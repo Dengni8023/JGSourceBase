@@ -3,7 +3,7 @@
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2019/5/29.
-//  Copyright © 2019 MeiJigao. All rights reserved.
+//  Copyright © 2019 MeiJiGao. All rights reserved.
 //
 
 #import "JGSKeyboardDemoViewController.h"
@@ -33,7 +33,7 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
         UITextField *textField = (UITextField *)note.object;
-        JGSLog(@"%@, %@", textField.text, textField.jg_securityOriginText);
+        [self showConsoleLog:@"%@, %@", textField.text, textField.jg_securityOriginText];
     }];
 #endif
     
@@ -131,8 +131,8 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        JGSLog(@"%@", textField.text);
-        JGSLog(@"%@ -> (%@)", NSStringFromRange(range), string);
+        [self showConsoleLog:@"%@", textField.text];
+        [self showConsoleLog:@"%@ -> (%@)", NSStringFromRange(range), string];
     }
     
     return YES;

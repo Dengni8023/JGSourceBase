@@ -3,7 +3,7 @@
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2019/5/29.
-//  Copyright © 2019 MeiJigao. All rights reserved.
+//  Copyright © 2019 MeiJiGao. All rights reserved.
 //
 
 #import "JGSCategoryDemoViewController.h"
@@ -17,7 +17,7 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
-#ifdef JGS_Category_NSDictionary
+#ifdef JGSCategory_NSDictionary
         // Section 字典取值
         JGSDemoTableSectionMake(@" 字典取值",
                                 @[
@@ -27,7 +27,7 @@
                                     JGSDemoTableRowMakeWithSelector(@"Get Object", @selector(dictionaryGetValue:)),
                                 ]),
 #endif
-#ifdef JGS_Category_NSString
+#ifdef JGSCategory_NSString
         // Section 字符串URL处理
         JGSDemoTableSectionMake(@" 字符串URL处理",
                                 @[
@@ -38,7 +38,7 @@
                                     JGSDemoTableRowMakeWithSelector(@"URL Query参数值", @selector(string2URL:)),
                                 ]),
 #endif
-#ifdef JGS_Category_NSObject
+#ifdef JGSCategory_NSObject
         // Section 对象转JSON、字典
         JGSDemoTableSectionMake(@" 对象转JSON、字典",
                                 @[
@@ -63,7 +63,7 @@
 
 #pragma mark - Action
 - (void)dictionaryGetValue:(NSIndexPath *)indexPath {
-#ifdef JGS_Category_NSDictionary
+#ifdef JGSCategory_NSDictionary
     static NSDictionary *storeDictionary = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -137,7 +137,7 @@
 }
 
 - (void)string2URL:(NSIndexPath *)indexPath {
-#ifdef JGS_Category_NSString
+#ifdef JGSCategory_NSString
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
@@ -195,7 +195,7 @@
 }
 
 - (void)object2JSONDictionary:(NSIndexPath *)indexPath {
-#ifdef JGS_Category_NSObject
+#ifdef JGSCategory_NSObject
     static NSDictionary *storeDictionary = nil;
     static NSString *storeString = nil;
     static dispatch_once_t onceToken;

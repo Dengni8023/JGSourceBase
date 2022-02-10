@@ -1,5 +1,14 @@
 PODS:
   - IQKeyboardManager (6.5.9)
+  - JGSourceBase (1.2.2.1):
+    - JGSourceBase/Base (= 1.2.2.1)
+    - JGSourceBase/Category (= 1.2.2.1)
+    - JGSourceBase/DataStorage (= 1.2.2.1)
+    - JGSourceBase/Device (= 1.2.2.1)
+    - JGSourceBase/Encryption (= 1.2.2.1)
+    - JGSourceBase/HUD (= 1.2.2.1)
+    - JGSourceBase/Reachability (= 1.2.2.1)
+    - JGSourceBase/SecurityKeyboard (= 1.2.2.1)
   - JGSourceBase/Base (1.2.2.1)
   - JGSourceBase/Category (1.2.2.1):
     - JGSourceBase/Base
@@ -30,19 +39,20 @@ PODS:
     - JGSourceBase/Base
   - JGSourceBase/Category/UIImage (1.2.2.1):
     - JGSourceBase/Base
+  - JGSourceBase/DataStorage (1.2.2.1):
+    - JGSourceBase/Base
   - JGSourceBase/Device (1.2.2.1):
     - JGSourceBase/Reachability
+  - JGSourceBase/Encryption (1.2.2.1):
+    - JGSourceBase/Base
   - JGSourceBase/HUD (1.2.2.1):
-    - JGSourceBase/Category/UIColor
     - JGSourceBase/HUD/Loading (= 1.2.2.1)
     - JGSourceBase/HUD/Toast (= 1.2.2.1)
-    - MBProgressHUD (>= 1.2.0)
   - JGSourceBase/HUD/Loading (1.2.2.1):
     - JGSourceBase/Category/UIColor
-    - MBProgressHUD (>= 1.2.0)
+    - MBProgressHUD
   - JGSourceBase/HUD/Toast (1.2.2.1):
-    - JGSourceBase/Category/UIColor
-    - MBProgressHUD (>= 1.2.0)
+    - MBProgressHUD
   - JGSourceBase/Reachability (1.2.2.1):
     - JGSourceBase/Base
   - JGSourceBase/SecurityKeyboard (1.2.2.1):
@@ -53,12 +63,7 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
-  - JGSourceBase/Category (from `.`)
-  - JGSourceBase/Category/UIImage (from `.`)
-  - JGSourceBase/Device (from `.`)
-  - JGSourceBase/HUD (from `.`)
-  - JGSourceBase/Reachability (from `.`)
-  - JGSourceBase/SecurityKeyboard (from `.`)
+  - JGSourceBase (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
@@ -80,10 +85,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 2c2dc71498ab0711a26843105af0aba471ca5cd9
+  JGSourceBase: d889b04fe16b31955c413f9775e1d47bcce0b1ad
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 82840ab27a57726c00785e56ed9ed6346008456f
+PODFILE CHECKSUM: 5f996a36d63e38b44cd762515ec228dae0bddc74
 
 COCOAPODS: 1.10.1

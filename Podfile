@@ -22,12 +22,14 @@ target "JGSourceBaseDemo" do
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
   # pod 'SAMKeychain' # KeyChain 测试
   # pod 'FLAnimatedImage'
+  pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'b8a73596fcc4c4094c29240eaa7727ff47c07e8c' #'~> 1.2.2'
+  # pod 'JGSourceBase', '~> 1.2.2'
   # Local
   # pod 'JGSourceBase', :path => "."
   # pod 'JGSourceBase/Category/UIAlertController', :path => "."
   # pod 'JGSourceBase/HUD', :path => "."
   # pod 'JGSourceBase/Reachability', :path => "."
-  pod 'JGSourceBase', :path => ".", :subspecs => [
+  # pod 'JGSourceBase', :path => ".", :subspecs => [
     # AlertController测试
     # 'AlertController',
     # 'Category/UIAlertController',
@@ -36,14 +38,14 @@ target "JGSourceBaseDemo" do
     # 'Base',
 
     # Category测试
-    'Category',
+    # 'Category',
     
     # Device测试
-    'Device',
+    # 'Device',
     
     # HUD测试
-    'HUD',
-    'Category/UIImage',
+    # 'HUD',
+    # 'Category/UIImage',
     
     # HUD-Loading测试
     # 'HUD/Loading',
@@ -53,11 +55,11 @@ target "JGSourceBaseDemo" do
     # 'HUD/Toast',
     
     # Reachability测试
-    'Reachability',
+    # 'Reachability',
 
     # SecurityKeyboard测试
-    'SecurityKeyboard',
-  ]
+    # 'SecurityKeyboard',
+  # ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
   pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git

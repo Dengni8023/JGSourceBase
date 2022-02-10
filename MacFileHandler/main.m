@@ -3,7 +3,7 @@
 //  MacFileHandler
 //
 //  Created by 梅继高 on 2021/1/12.
-//  Copyright © 2021 MeiJigao. All rights reserved.
+//  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

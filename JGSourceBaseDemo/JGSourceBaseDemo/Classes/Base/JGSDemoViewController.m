@@ -3,7 +3,7 @@
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2021/9/15.
-//  Copyright © 2021 MeiJigao. All rights reserved.
+//  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
 #import "JGSDemoViewController.h"
@@ -33,6 +33,7 @@
     
     self.title = self.title ?: NSStringFromClass([self class]);
     self.view.backgroundColor = [UIColor colorWithWhite:0.99 alpha:1.f];
+    self.showTextView = YES;
     
     // tableView
     [self.view addSubview:self.tableView];
@@ -60,7 +61,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
-#ifdef JGS_Category_UIColor
+#ifdef JGSCategory_UIColor
     switch (arc4random() % 5) {
         case 0:
             self.navigationController.navigationBar.barTintColor = JGSDemoNavigationBarColor;
@@ -82,6 +83,14 @@
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(self.showTextView ? (isPortrait ? 180 : 120) : 0);
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.showTextView && !self.navigationItem.rightBarButtonItem && self.navigationItem.rightBarButtonItems.count == 0) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清理日志" style:UIBarButtonItemStylePlain target:self action:@selector(clenDebugAreaText:)];
+    }
 }
 
 - (void)viewSafeAreaInsetsDidChange {
@@ -149,7 +158,7 @@
         _textView.editable = NO;
         _textView.font = [UIFont systemFontOfSize:16];
         
-        NSString *text = @"Debug Log Area \n\n内容可复制、不可编辑";
+        NSString *text = @"调试日志输出区域\n\n内容可复制、不可编辑";
         _textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
     }
     return _textView;
@@ -224,7 +233,12 @@
     NSString *message = [[NSString alloc] initWithFormat:format arguments:varList];
     va_end(varList);
     
-    self.textView.text = message;
+    self.textView.text = [self.textView.text stringByAppendingFormat:@"\n%s, Line: %@\n%@", __PRETTY_FUNCTION__, @(__LINE__), message];
+    [self.textView scrollRangeToVisible:NSMakeRange(self.textView.text.length, 1)];
+}
+
+- (void)clenDebugAreaText:(id)sender {
+    self.textView.text = nil;
 }
 
 #pragma mark - End
