@@ -150,9 +150,9 @@ Pod::Spec.new do |spec|
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
 
-  spec.xcconfig     = {
-    "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"'",
-  }
+  # spec.xcconfig     = {
+  #   "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"'",
+  # }
 
   # AlertController
   spec.subspec 'AlertController' do |sub|
@@ -168,7 +168,8 @@ Pod::Spec.new do |spec|
     sub.public_header_files = "JGSBase/**/*.h"
     
     sub.xcconfig = {
-        "OTHER_LDFLAGS" => '-ObjC'
+        "OTHER_LDFLAGS" => '-ObjC',
+        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"' JGSVersion='#{spec.version}'",
     }
   end
   
@@ -299,7 +300,7 @@ Pod::Spec.new do |spec|
       'DataStorage',
       'Device',
       'Encryption',
-      'HUD',
+      # 'HUD',
       'Reachability',
       'SecurityKeyboard',
   ]

@@ -16,26 +16,25 @@ workspace "JGSourceBase"
 # platform
 platform :ios, 11.0
 
+# JGSourceBase
+target "JGSourceBase" do
+  
+  # project
+  project "JGSourceBase.xcodeproj"
+end
+
 # JGSourceBaseDemo
 target "JGSourceBaseDemo" do
   
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
   # pod 'SAMKeychain' # KeyChain 测试
   # pod 'FLAnimatedImage'
-  pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'b8a73596fcc4c4094c29240eaa7727ff47c07e8c' #'~> 1.2.2'
+  # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => '164a8fbf2af3968af8940f5116bae388c3a3e088' #'~> 1.2.2'
   # pod 'JGSourceBase', '~> 1.2.2'
-  # Local
   # pod 'JGSourceBase', :path => "."
-  # pod 'JGSourceBase/Category/UIAlertController', :path => "."
-  # pod 'JGSourceBase/HUD', :path => "."
-  # pod 'JGSourceBase/Reachability', :path => "."
-  # pod 'JGSourceBase', :path => ".", :subspecs => [
-    # AlertController测试
-    # 'AlertController',
-    # 'Category/UIAlertController',
-
+   pod 'JGSourceBase', :path => ".", :subspecs => [
     # Base测试
-    # 'Base',
+     'Base',
 
     # Category测试
     # 'Category',
@@ -59,7 +58,7 @@ target "JGSourceBaseDemo" do
 
     # SecurityKeyboard测试
     # 'SecurityKeyboard',
-  # ]
+   ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
   pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
@@ -103,3 +102,80 @@ post_install do |installer|
   puts "##### post_install end #####"
   puts ""
 end
+
+#### 以下为构建子 framework 包所需的依赖 ####
+# 为避免影响 Demo 项目的子依赖功能测试，默认屏蔽构建子 framework 相关依赖安装
+# 不需要构建子 framework 时，保持以下内容为注释状态
+# 如需构建子 framework ，取消以下内容的注释状态
+
+# # JGSBase
+# target "JGSBase" do
+  
+#   # project
+#   project "JGSBase/JGSBase.xcodeproj"
+# end
+
+# # JGSCategory
+# target "JGSCategory" do
+  
+#   pod 'JGSourceBase/Base', :path => "."
+  
+#   # project
+#   project "JGSCategory/JGSCategory.xcodeproj"
+# end
+
+# # JGSDataStorage
+# target "JGSDataStorage" do
+  
+#   pod 'JGSourceBase/Base', :path => "."
+  
+#   # project
+#   project "JGSDataStorage/JGSDataStorage.xcodeproj"
+# end
+
+# # JGSDevice
+# target "JGSDevice" do
+  
+#   pod 'JGSourceBase/Reachability', :path => "."
+  
+#   # project
+#   project "JGSDevice/JGSDevice.xcodeproj"
+# end
+
+# # JGSEncryption
+# target "JGSEncryption" do
+  
+#   pod 'JGSourceBase/Base', :path => "."
+  
+#   # project
+#   project "JGSEncryption/JGSEncryption.xcodeproj"
+# end
+
+# # JGSHUD
+# target "JGSHUD" do
+  
+#   pod 'MBProgressHUD'
+#   pod 'JGSourceBase/Category/UIColor', :path => '.'
+  
+#   # project
+#   project "JGSHUD/JGSHUD.xcodeproj"
+# end
+
+# # JGSReachability
+# target "JGSReachability" do
+  
+#   pod 'JGSourceBase/Base', :path => "."
+  
+#   # project
+#   project "JGSReachability/JGSReachability.xcodeproj"
+# end
+
+# # JGSSecurityKeyboard
+# target "JGSSecurityKeyboard" do
+  
+#   pod 'JGSourceBase/Base', :path => "."
+#   pod 'JGSourceBase/Category/UIColor', :path => "."
+
+#   # project
+#   project "JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj"
+# end

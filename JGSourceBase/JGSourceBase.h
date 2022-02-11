@@ -51,7 +51,7 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 // AlertController
 #pragma mark - AlertController
 #if __has_include(<JGSourceBase/JGSAlertController.h>)
-#import <JGSourceBase/JGSAlertControllerh>
+#import <JGSourceBase/JGSAlertController.h>
 #elif __has_include("JGSAlertController.h")
 #import "JGSAlertController.h"
 #endif

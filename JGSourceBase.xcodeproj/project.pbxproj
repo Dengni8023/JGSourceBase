@@ -7,39 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D477DA4225AD779C00BE1F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D477DA4125AD779C00BE1F9B /* main.m */; };
-		D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */; };
+		7670893F5471032625212229 /* libPods-JGSourceBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */; };
+		D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
 		D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D477DA3D25AD779C00BE1F9B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		D416D9F52600E2CB0085C6AB /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
-		D477DA3F25AD779C00BE1F9B /* MacFileHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacFileHandler; sourceTree = BUILT_PRODUCTS_DIR; };
-		D477DA4125AD779C00BE1F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D49252CE2795A6F3007266EA /* JGSBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49252DB2795A919007266EA /* JGSSecurityKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSSecurityKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49252F52795A945007266EA /* JGSHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49253022795A95E007266EA /* JGSReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D492530F2795A987007266EA /* JGSEncryption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSEncryption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D492531C2795A995007266EA /* JGSDevice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSDevice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49253292795A9A4007266EA /* JGSDataStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSDataStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49253362795A9BA007266EA /* JGSCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49253432795A9DD007266EA /* JGSAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 		D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
 		D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,97 +25,45 @@
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
 		D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGSAlertController.h"; sourceTree = "<group>"; };
+		EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D477DA3C25AD779C00BE1F9B /* Frameworks */ = {
+		4B3EA7BF27729F175F83E047 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252CB2795A6F3007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252D82795A919007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252F22795A945007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252FF2795A95E007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492530C2795A987007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253192795A995007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253262795A9A4007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253332795A9BA007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253402795A9DD007266EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				7670893F5471032625212229 /* libPods-JGSourceBase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D477DA4025AD779C00BE1F9B /* MacFileHandler */ = {
+		0575C54C2F4D65FCDE931382 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D477DA4125AD779C00BE1F9B /* main.m */,
-				D416D9F52600E2CB0085C6AB /* Resources */,
+				EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */,
+				9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */,
 			);
-			path = MacFileHandler;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D4F3DA3B22F0279D002EF0F0 = {
 			isa = PBXGroup;
 			children = (
 				D4F3DA4722F0279D002EF0F0 /* JGSourceBase */,
-				D477DA4025AD779C00BE1F9B /* MacFileHandler */,
 				D4F3DA4622F0279D002EF0F0 /* Products */,
+				0575C54C2F4D65FCDE931382 /* Pods */,
+				8F5566C1186FFED2CCE63677 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,16 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */,
-				D477DA3F25AD779C00BE1F9B /* MacFileHandler */,
-				D49252CE2795A6F3007266EA /* JGSBase.framework */,
-				D49252DB2795A919007266EA /* JGSSecurityKeyboard.framework */,
-				D49252F52795A945007266EA /* JGSHUD.framework */,
-				D49253022795A95E007266EA /* JGSReachability.framework */,
-				D492530F2795A987007266EA /* JGSEncryption.framework */,
-				D492531C2795A995007266EA /* JGSDevice.framework */,
-				D49253292795A9A4007266EA /* JGSDataStorage.framework */,
-				D49253362795A9BA007266EA /* JGSCategory.framework */,
-				D49253432795A9DD007266EA /* JGSAlertController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,69 +99,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D49252C92795A6F3007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252D62795A919007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252F02795A945007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252FD2795A95E007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492530A2795A987007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253172795A995007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253242795A9A4007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253312795A9BA007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492533E2795A9DD007266EA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D4F3DA4022F0279D002EF0F0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,191 +112,15 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D477DA3E25AD779C00BE1F9B /* MacFileHandler */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D477DA4525AD779C00BE1F9B /* Build configuration list for PBXNativeTarget "MacFileHandler" */;
-			buildPhases = (
-				D477DA3B25AD779C00BE1F9B /* Sources */,
-				D477DA3C25AD779C00BE1F9B /* Frameworks */,
-				D477DA3D25AD779C00BE1F9B /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MacFileHandler;
-			productName = MacFileHandler;
-			productReference = D477DA3F25AD779C00BE1F9B /* MacFileHandler */;
-			productType = "com.apple.product-type.tool";
-		};
-		D49252CD2795A6F3007266EA /* JGSBase */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49252D32795A6F3007266EA /* Build configuration list for PBXNativeTarget "JGSBase" */;
-			buildPhases = (
-				D49252C92795A6F3007266EA /* Headers */,
-				D49252CA2795A6F3007266EA /* Sources */,
-				D49252CB2795A6F3007266EA /* Frameworks */,
-				D49252CC2795A6F3007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSBase;
-			productName = JGSBase;
-			productReference = D49252CE2795A6F3007266EA /* JGSBase.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49252DA2795A919007266EA /* JGSSecurityKeyboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49252E22795A919007266EA /* Build configuration list for PBXNativeTarget "JGSSecurityKeyboard" */;
-			buildPhases = (
-				D49252D62795A919007266EA /* Headers */,
-				D49252D72795A919007266EA /* Sources */,
-				D49252D82795A919007266EA /* Frameworks */,
-				D49252D92795A919007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSSecurityKeyboard;
-			productName = JGSSecurityKeyboard;
-			productReference = D49252DB2795A919007266EA /* JGSSecurityKeyboard.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49252F42795A945007266EA /* JGSHUD */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49252FA2795A945007266EA /* Build configuration list for PBXNativeTarget "JGSHUD" */;
-			buildPhases = (
-				D49252F02795A945007266EA /* Headers */,
-				D49252F12795A945007266EA /* Sources */,
-				D49252F22795A945007266EA /* Frameworks */,
-				D49252F32795A945007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSHUD;
-			productName = JGSHUD;
-			productReference = D49252F52795A945007266EA /* JGSHUD.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49253012795A95E007266EA /* JGSReachability */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49253072795A95E007266EA /* Build configuration list for PBXNativeTarget "JGSReachability" */;
-			buildPhases = (
-				D49252FD2795A95E007266EA /* Headers */,
-				D49252FE2795A95E007266EA /* Sources */,
-				D49252FF2795A95E007266EA /* Frameworks */,
-				D49253002795A95E007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSReachability;
-			productName = JGSReachability;
-			productReference = D49253022795A95E007266EA /* JGSReachability.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D492530E2795A987007266EA /* JGSEncryption */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49253142795A987007266EA /* Build configuration list for PBXNativeTarget "JGSEncryption" */;
-			buildPhases = (
-				D492530A2795A987007266EA /* Headers */,
-				D492530B2795A987007266EA /* Sources */,
-				D492530C2795A987007266EA /* Frameworks */,
-				D492530D2795A987007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSEncryption;
-			productName = JGSEncryption;
-			productReference = D492530F2795A987007266EA /* JGSEncryption.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D492531B2795A995007266EA /* JGSDevice */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49253212795A995007266EA /* Build configuration list for PBXNativeTarget "JGSDevice" */;
-			buildPhases = (
-				D49253172795A995007266EA /* Headers */,
-				D49253182795A995007266EA /* Sources */,
-				D49253192795A995007266EA /* Frameworks */,
-				D492531A2795A995007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSDevice;
-			productName = JGSDevice;
-			productReference = D492531C2795A995007266EA /* JGSDevice.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49253282795A9A4007266EA /* JGSDataStorage */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D492532E2795A9A4007266EA /* Build configuration list for PBXNativeTarget "JGSDataStorage" */;
-			buildPhases = (
-				D49253242795A9A4007266EA /* Headers */,
-				D49253252795A9A4007266EA /* Sources */,
-				D49253262795A9A4007266EA /* Frameworks */,
-				D49253272795A9A4007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSDataStorage;
-			productName = JGSDataStorage;
-			productReference = D49253292795A9A4007266EA /* JGSDataStorage.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49253352795A9BA007266EA /* JGSCategory */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D492533B2795A9BA007266EA /* Build configuration list for PBXNativeTarget "JGSCategory" */;
-			buildPhases = (
-				D49253312795A9BA007266EA /* Headers */,
-				D49253322795A9BA007266EA /* Sources */,
-				D49253332795A9BA007266EA /* Frameworks */,
-				D49253342795A9BA007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSCategory;
-			productName = JGSCategory;
-			productReference = D49253362795A9BA007266EA /* JGSCategory.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D49253422795A9DD007266EA /* JGSAlertController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D49253482795A9DD007266EA /* Build configuration list for PBXNativeTarget "JGSAlertController" */;
-			buildPhases = (
-				D492533E2795A9DD007266EA /* Headers */,
-				D492533F2795A9DD007266EA /* Sources */,
-				D49253402795A9DD007266EA /* Frameworks */,
-				D49253412795A9DD007266EA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JGSAlertController;
-			productName = JGSAlertController;
-			productReference = D49253432795A9DD007266EA /* JGSAlertController.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		D4F3DA4422F0279D002EF0F0 /* JGSourceBase */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
 			buildPhases = (
+				412F11AE3C180AC80D9A5A4F /* [CP] Check Pods Manifest.lock */,
 				D4F3DA4022F0279D002EF0F0 /* Headers */,
 				D4F3DA4122F0279D002EF0F0 /* Sources */,
+				4B3EA7BF27729F175F83E047 /* Frameworks */,
+				D47C3D0427B6321800521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -465,36 +142,6 @@
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = MeiJiGao;
 				TargetAttributes = {
-					D477DA3E25AD779C00BE1F9B = {
-						CreatedOnToolsVersion = 12.3;
-					};
-					D49252CD2795A6F3007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49252DA2795A919007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49252F42795A945007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49253012795A95E007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D492530E2795A987007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D492531B2795A995007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49253282795A9A4007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49253352795A9BA007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
-					D49253422795A9DD007266EA = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
 					D4F3DA4422F0279D002EF0F0 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -514,158 +161,53 @@
 			projectRoot = "";
 			targets = (
 				D4F3DA4422F0279D002EF0F0 /* JGSourceBase */,
-				D49253422795A9DD007266EA /* JGSAlertController */,
-				D49252CD2795A6F3007266EA /* JGSBase */,
-				D49253352795A9BA007266EA /* JGSCategory */,
-				D49253282795A9A4007266EA /* JGSDataStorage */,
-				D492531B2795A995007266EA /* JGSDevice */,
-				D492530E2795A987007266EA /* JGSEncryption */,
-				D49252F42795A945007266EA /* JGSHUD */,
-				D49253012795A95E007266EA /* JGSReachability */,
-				D49252DA2795A919007266EA /* JGSSecurityKeyboard */,
-				D477DA3E25AD779C00BE1F9B /* MacFileHandler */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		D49252CC2795A6F3007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		412F11AE3C180AC80D9A5A4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSourceBase-checkManifestLockResult.txt",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		D49252D92795A919007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+		D47C3D0427B6321800521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252F32795A945007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/JGSModifyVersion.sh # 执行sh\n";
 		};
-		D49253002795A95E007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492530D2795A987007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492531A2795A995007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253272795A9A4007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253342795A9BA007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253412795A9DD007266EA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D477DA3B25AD779C00BE1F9B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D477DA4225AD779C00BE1F9B /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252CA2795A6F3007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252D72795A919007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252F12795A945007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49252FE2795A95E007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492530B2795A987007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253182795A995007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253252795A9A4007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D49253322795A9BA007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D492533F2795A9DD007266EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D4F3DA4122F0279D002EF0F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -678,460 +220,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D477DA4325AD779C00BE1F9B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		D477DA4425AD779C00BE1F9B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		D49252D42795A6F3007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSBase/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSBase;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49252D52795A6F3007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSBase/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSBase;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49252E02795A919007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSSecurityKeyboard/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSSecurityKeyboard;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49252E12795A919007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSSecurityKeyboard/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSSecurityKeyboard;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49252FB2795A945007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSHUD/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSHUD;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49252FC2795A945007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSHUD/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSHUD;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49253082795A95E007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSReachability/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSReachability;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49253092795A95E007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSReachability/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSReachability;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49253152795A987007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSEncryption/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSEncryption;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49253162795A987007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSEncryption/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSEncryption;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49253222795A995007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSDevice/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSDevice;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49253232795A995007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSDevice/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSDevice;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D492532F2795A9A4007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSDataStorage/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSDataStorage;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D49253302795A9A4007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSDataStorage/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSDataStorage;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D492533C2795A9BA007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSCategory/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSCategory;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D492533D2795A9BA007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSCategory/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSCategory;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D49253492795A9DD007266EA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSAlertController/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSAlertController;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D492534A2795A9DD007266EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JGSAlertController/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSAlertController;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		D4F3DA4B22F0279D002EF0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1256,6 +344,7 @@
 		};
 		D4F3DA4E22F0279D002EF0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1283,6 +372,7 @@
 		};
 		D4F3DA4F22F0279D002EF0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1311,96 +401,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D477DA4525AD779C00BE1F9B /* Build configuration list for PBXNativeTarget "MacFileHandler" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D477DA4325AD779C00BE1F9B /* Debug */,
-				D477DA4425AD779C00BE1F9B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49252D32795A6F3007266EA /* Build configuration list for PBXNativeTarget "JGSBase" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49252D42795A6F3007266EA /* Debug */,
-				D49252D52795A6F3007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49252E22795A919007266EA /* Build configuration list for PBXNativeTarget "JGSSecurityKeyboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49252E02795A919007266EA /* Debug */,
-				D49252E12795A919007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49252FA2795A945007266EA /* Build configuration list for PBXNativeTarget "JGSHUD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49252FB2795A945007266EA /* Debug */,
-				D49252FC2795A945007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49253072795A95E007266EA /* Build configuration list for PBXNativeTarget "JGSReachability" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49253082795A95E007266EA /* Debug */,
-				D49253092795A95E007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49253142795A987007266EA /* Build configuration list for PBXNativeTarget "JGSEncryption" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49253152795A987007266EA /* Debug */,
-				D49253162795A987007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49253212795A995007266EA /* Build configuration list for PBXNativeTarget "JGSDevice" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49253222795A995007266EA /* Debug */,
-				D49253232795A995007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D492532E2795A9A4007266EA /* Build configuration list for PBXNativeTarget "JGSDataStorage" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D492532F2795A9A4007266EA /* Debug */,
-				D49253302795A9A4007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D492533B2795A9BA007266EA /* Build configuration list for PBXNativeTarget "JGSCategory" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D492533C2795A9BA007266EA /* Debug */,
-				D492533D2795A9BA007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D49253482795A9DD007266EA /* Build configuration list for PBXNativeTarget "JGSAlertController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D49253492795A9DD007266EA /* Debug */,
-				D492534A2795A9DD007266EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D4F3DA3F22F0279D002EF0F0 /* Build configuration list for PBXProject "JGSourceBase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

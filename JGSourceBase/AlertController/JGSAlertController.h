@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIAlertController+JGSBase.h"
+
+#ifdef JGSCategory_UIAlertController
+
+#if __has_include(<JGSourceBase/JGSAlertController.h>)
+#import <JGSourceBase/UIViewController+JGSAlertController.h>
+#else
+#import "UIViewController+JGSAlertController.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -129,3 +136,5 @@ DEPRECATED_MSG_ATTRIBUTE("Use UIAlertController directly.")
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

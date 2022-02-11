@@ -2,34 +2,34 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj">
+      location = "group:JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:JGSReachability/JGSReachability.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:JGSHUD/JGSHUD.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:JGSEncryption/JGSEncryption.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:JGSDevice/JGSDevice.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:JGSDataStorage/JGSDataStorage.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:JGSCategory/JGSCategory.xcodeproj">
+      location = "group:JGSourceBase.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:JGSBase/JGSBase.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj">
+      location = "group:JGSCategory/JGSCategory.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:JGSourceBase.xcodeproj">
+      location = "group:JGSDataStorage/JGSDataStorage.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSDevice/JGSDevice.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSEncryption/JGSEncryption.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSHUD/JGSHUD.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSReachability/JGSReachability.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

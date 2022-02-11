@@ -22,6 +22,7 @@
     JGSEnableLogWithMode(JGSLogModeFunc);
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+//    NSLog(@"%s", JGSBaseVersionString);
     NSLog(@"APP Window: %@", _window);
     
     ViewController *vcT = [[ViewController alloc] init];

@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38DF0601DA58C54A5F238ED3 /* libPods-JGSDataStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96996BF925F1017EEA7506BA /* libPods-JGSDataStorage.a */; };
 		D47C3BF127B4F8CA00521310 /* JGSDataStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3BEF27B4F8CA00521310 /* JGSDataStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CF327B5476700521310 /* JGSUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CEF27B5476700521310 /* JGSUserDefaults.m */; };
-		D47C3CF427B5476700521310 /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CF027B5476700521310 /* JGSUserDefaults.h */; };
-		D47C3CF527B5476700521310 /* JGSKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CF127B5476700521310 /* JGSKeychainUtils.h */; };
+		D47C3CF427B5476700521310 /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CF027B5476700521310 /* JGSUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CF527B5476700521310 /* JGSKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CF127B5476700521310 /* JGSKeychainUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CF627B5476700521310 /* JGSKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CF227B5476700521310 /* JGSKeychainUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B5DCFE6E1CD5E3B0AF037B8 /* Pods-JGSDataStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSDataStorage.release.xcconfig"; path = "Target Support Files/Pods-JGSDataStorage/Pods-JGSDataStorage.release.xcconfig"; sourceTree = "<group>"; };
+		96996BF925F1017EEA7506BA /* libPods-JGSDataStorage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSDataStorage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3BEC27B4F8CA00521310 /* JGSDataStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSDataStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3BEF27B4F8CA00521310 /* JGSDataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDataStorage.h; sourceTree = "<group>"; };
 		D47C3BF027B4F8CA00521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		D47C3CF027B5476700521310 /* JGSUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUserDefaults.h; sourceTree = "<group>"; };
 		D47C3CF127B5476700521310 /* JGSKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSKeychainUtils.h; sourceTree = "<group>"; };
 		D47C3CF227B5476700521310 /* JGSKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSKeychainUtils.m; sourceTree = "<group>"; };
+		DF7786AE50E0A8CD047651B1 /* Pods-JGSDataStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSDataStorage.debug.xcconfig"; path = "Target Support Files/Pods-JGSDataStorage/Pods-JGSDataStorage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DF0601DA58C54A5F238ED3 /* libPods-JGSDataStorage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		781A95BF7C22294E91E273CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96996BF925F1017EEA7506BA /* libPods-JGSDataStorage.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8667EC87321A1B1850A71ED4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF7786AE50E0A8CD047651B1 /* Pods-JGSDataStorage.debug.xcconfig */,
+				1B5DCFE6E1CD5E3B0AF037B8 /* Pods-JGSDataStorage.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		D47C3BE227B4F8CA00521310 = {
 			isa = PBXGroup;
 			children = (
 				D47C3BEE27B4F8CA00521310 /* JGSDataStorage */,
 				D47C3BED27B4F8CA00521310 /* Products */,
+				8667EC87321A1B1850A71ED4 /* Pods */,
+				781A95BF7C22294E91E273CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,10 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47C3BF427B4F8CA00521310 /* Build configuration list for PBXNativeTarget "JGSDataStorage" */;
 			buildPhases = (
+				CA3A46A27EA07BF72D3A5ACD /* [CP] Check Pods Manifest.lock */,
 				D47C3BE727B4F8CA00521310 /* Headers */,
 				D47C3BE827B4F8CA00521310 /* Sources */,
 				D47C3BE927B4F8CA00521310 /* Frameworks */,
 				D47C3BEA27B4F8CA00521310 /* Resources */,
+				D47C3CFE27B62C0500521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -141,6 +168,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CA3A46A27EA07BF72D3A5ACD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSDataStorage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D47C3CFE27B62C0500521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D47C3BE827B4F8CA00521310 /* Sources */ = {
@@ -207,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -263,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -275,6 +344,7 @@
 		};
 		D47C3BF527B4F8CA00521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF7786AE50E0A8CD047651B1 /* Pods-JGSDataStorage.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -298,6 +368,7 @@
 		};
 		D47C3BF627B4F8CA00521310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B5DCFE6E1CD5E3B0AF037B8 /* Pods-JGSDataStorage.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

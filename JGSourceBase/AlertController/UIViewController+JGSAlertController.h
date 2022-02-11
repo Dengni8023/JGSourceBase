@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIAlertController+JGSBase.h"
+
+#ifdef JGSCategory_UIAlertController
+
+#if __has_include(<JGSourceBase/JGSCategory+UIAlertController.h>)
+#import <JGSourceBase/JGSCategory+UIAlertController.h>
+#elif __has_include(<JGSCategory/JGSCategory+UIAlertController.h>)
+#import <JGSCategory/JGSCategory+UIAlertController.h>
+#elif __has_include("JGSCategory+UIAlertController.h")
+#import "JGSCategory+UIAlertController.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -128,3 +137,5 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

@@ -7,39 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B35E89C721246581C0088A6C /* libPods-JGSCategory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0D2F52DD7D20A3CEA374D0 /* libPods-JGSCategory.a */; };
 		D47C3BDC27B4F84200521310 /* JGSCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3BDA27B4F84200521310 /* JGSCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D47C3CA027B5048000521310 /* UIColor+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7B27B5048000521310 /* UIColor+JGSBase.h */; };
-		D47C3CA127B5048000521310 /* JGSCategory+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7C27B5048000521310 /* JGSCategory+UIColor.h */; };
+		D47C3CA027B5048000521310 /* UIColor+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7B27B5048000521310 /* UIColor+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CA127B5048000521310 /* JGSCategory+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7C27B5048000521310 /* JGSCategory+UIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CA227B5048000521310 /* UIColor+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C7D27B5048000521310 /* UIColor+JGSBase.m */; };
-		D47C3CA327B5048000521310 /* NSDictionary+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7F27B5048000521310 /* NSDictionary+JGSBase.h */; };
+		D47C3CA327B5048000521310 /* NSDictionary+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C7F27B5048000521310 /* NSDictionary+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CA427B5048000521310 /* NSDictionary+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C8027B5048000521310 /* NSDictionary+JGSBase.m */; };
-		D47C3CA527B5048000521310 /* JGSCategory+NSDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8127B5048000521310 /* JGSCategory+NSDictionary.h */; };
-		D47C3CA627B5048000521310 /* UIAlertController+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8327B5048000521310 /* UIAlertController+JGSBase.h */; };
-		D47C3CA727B5048000521310 /* JGSCategory+UIAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8427B5048000521310 /* JGSCategory+UIAlertController.h */; };
+		D47C3CA527B5048000521310 /* JGSCategory+NSDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8127B5048000521310 /* JGSCategory+NSDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CA627B5048000521310 /* UIAlertController+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8327B5048000521310 /* UIAlertController+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CA727B5048000521310 /* JGSCategory+UIAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8427B5048000521310 /* JGSCategory+UIAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CA827B5048000521310 /* UIAlertController+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C8527B5048000521310 /* UIAlertController+JGSBase.m */; };
-		D47C3CA927B5048000521310 /* NSDate+JGSFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8727B5048000521310 /* NSDate+JGSFormat.h */; };
+		D47C3CA927B5048000521310 /* NSDate+JGSFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8727B5048000521310 /* NSDate+JGSFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CAA27B5048000521310 /* NSDate+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C8827B5048000521310 /* NSDate+JGSBase.m */; };
 		D47C3CAB27B5048000521310 /* NSDate+JGSFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C8927B5048000521310 /* NSDate+JGSFormat.m */; };
-		D47C3CAC27B5048000521310 /* JGSCategory+NSDate.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8A27B5048000521310 /* JGSCategory+NSDate.h */; };
-		D47C3CAD27B5048000521310 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8B27B5048000521310 /* NSDate+JGSBase.h */; };
+		D47C3CAC27B5048000521310 /* JGSCategory+NSDate.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8A27B5048000521310 /* JGSCategory+NSDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CAD27B5048000521310 /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8B27B5048000521310 /* NSDate+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CAE27B5048000521310 /* NSString+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C8D27B5048000521310 /* NSString+JGSBase.m */; };
-		D47C3CAF27B5048000521310 /* JGSCategory+NSString.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8E27B5048000521310 /* JGSCategory+NSString.h */; };
-		D47C3CB027B5048000521310 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8F27B5048000521310 /* NSString+JGSBase.h */; };
+		D47C3CAF27B5048000521310 /* JGSCategory+NSString.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8E27B5048000521310 /* JGSCategory+NSString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CB027B5048000521310 /* NSString+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C8F27B5048000521310 /* NSString+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CB127B5048000521310 /* UIApplication+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C9127B5048000521310 /* UIApplication+JGSBase.m */; };
-		D47C3CB227B5048000521310 /* JGSCategory+UIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9227B5048000521310 /* JGSCategory+UIApplication.h */; };
-		D47C3CB327B5048000521310 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9327B5048000521310 /* UIApplication+JGSBase.h */; };
+		D47C3CB227B5048000521310 /* JGSCategory+UIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9227B5048000521310 /* JGSCategory+UIApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CB327B5048000521310 /* UIApplication+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9327B5048000521310 /* UIApplication+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CB427B5048000521310 /* UIImage+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C9527B5048000521310 /* UIImage+JGSBase.m */; };
-		D47C3CB527B5048000521310 /* JGSCategory+UIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9627B5048000521310 /* JGSCategory+UIImage.h */; };
-		D47C3CB627B5048000521310 /* UIImage+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9727B5048000521310 /* UIImage+JGSBase.h */; };
-		D47C3CB727B5048000521310 /* NSURL+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9927B5048000521310 /* NSURL+JGSBase.h */; };
+		D47C3CB527B5048000521310 /* JGSCategory+UIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9627B5048000521310 /* JGSCategory+UIImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CB627B5048000521310 /* UIImage+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9727B5048000521310 /* UIImage+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CB727B5048000521310 /* NSURL+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9927B5048000521310 /* NSURL+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CB827B5048000521310 /* NSURL+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C9A27B5048000521310 /* NSURL+JGSBase.m */; };
-		D47C3CB927B5048000521310 /* JGSCategory+NSURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9B27B5048000521310 /* JGSCategory+NSURL.h */; };
-		D47C3CBA27B5048000521310 /* JGSCategory+NSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9D27B5048000521310 /* JGSCategory+NSObject.h */; };
-		D47C3CBB27B5048000521310 /* NSObject+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9E27B5048000521310 /* NSObject+JGSBase.h */; };
+		D47C3CB927B5048000521310 /* JGSCategory+NSURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9B27B5048000521310 /* JGSCategory+NSURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CBA27B5048000521310 /* JGSCategory+NSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9D27B5048000521310 /* JGSCategory+NSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CBB27B5048000521310 /* NSObject+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9E27B5048000521310 /* NSObject+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CBC27B5048000521310 /* NSObject+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C9F27B5048000521310 /* NSObject+JGSBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0D2F52DD7D20A3CEA374D0 /* libPods-JGSCategory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSCategory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		744EC4541D50A0EE124B03FC /* Pods-JGSCategory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSCategory.debug.xcconfig"; path = "Target Support Files/Pods-JGSCategory/Pods-JGSCategory.debug.xcconfig"; sourceTree = "<group>"; };
 		D47C3BD727B4F84200521310 /* JGSCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3BDA27B4F84200521310 /* JGSCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSCategory.h; sourceTree = "<group>"; };
 		D47C3BDB27B4F84200521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		D47C3C9D27B5048000521310 /* JGSCategory+NSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSObject.h"; sourceTree = "<group>"; };
 		D47C3C9E27B5048000521310 /* NSObject+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSBase.h"; sourceTree = "<group>"; };
 		D47C3C9F27B5048000521310 /* NSObject+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGSBase.m"; sourceTree = "<group>"; };
+		FAE6191E445A2765B61E4E28 /* Pods-JGSCategory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSCategory.release.xcconfig"; path = "Target Support Files/Pods-JGSCategory/Pods-JGSCategory.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,17 +83,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35E89C721246581C0088A6C /* libPods-JGSCategory.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E252F8BCEAF023EEC98C3CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				744EC4541D50A0EE124B03FC /* Pods-JGSCategory.debug.xcconfig */,
+				FAE6191E445A2765B61E4E28 /* Pods-JGSCategory.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		C2DAECE95EAB563E878C2DD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E0D2F52DD7D20A3CEA374D0 /* libPods-JGSCategory.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D47C3BCD27B4F84200521310 = {
 			isa = PBXGroup;
 			children = (
 				D47C3BD927B4F84200521310 /* JGSCategory */,
 				D47C3BD827B4F84200521310 /* Products */,
+				4E252F8BCEAF023EEC98C3CC /* Pods */,
+				C2DAECE95EAB563E878C2DD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,10 +273,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47C3BDF27B4F84200521310 /* Build configuration list for PBXNativeTarget "JGSCategory" */;
 			buildPhases = (
+				E20587DA5C6832D6BB6FF1B3 /* [CP] Check Pods Manifest.lock */,
 				D47C3BD227B4F84200521310 /* Headers */,
 				D47C3BD327B4F84200521310 /* Sources */,
 				D47C3BD427B4F84200521310 /* Frameworks */,
 				D47C3BD527B4F84200521310 /* Resources */,
+				D47C3CFC27B6293500521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -305,6 +332,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D47C3CFC27B6293500521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
+		};
+		E20587DA5C6832D6BB6FF1B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSCategory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D47C3BD327B4F84200521310 /* Sources */ = {
@@ -379,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -447,6 +516,7 @@
 		};
 		D47C3BE027B4F84200521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 744EC4541D50A0EE124B03FC /* Pods-JGSCategory.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -470,6 +540,7 @@
 		};
 		D47C3BE127B4F84200521310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAE6191E445A2765B61E4E28 /* Pods-JGSCategory.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

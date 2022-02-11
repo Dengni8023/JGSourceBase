@@ -7,7 +7,8 @@
 //
 
 #import "JGSAlertController.h"
-#import "JGSourceBase.h"
+
+#ifdef JGSCategory_UIAlertController
 
 @implementation JGSAlertController
 
@@ -61,3 +62,5 @@
 #pragma mark - End
 
 @end
+
+#endif

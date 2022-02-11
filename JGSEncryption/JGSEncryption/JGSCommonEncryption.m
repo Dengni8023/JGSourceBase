@@ -8,6 +8,7 @@
 
 #import "JGSCommonEncryption.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import "JGSBase.h"
 
 @implementation JGSCommonEncryption
 

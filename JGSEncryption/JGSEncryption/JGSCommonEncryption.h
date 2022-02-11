@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#if __has_include(<JGSourceBase/JGSBase.h>)
+#import <JGSourceBase/JGSBase.h>
+#elif __has_include(<JGSBase/JGSBase.h>)
+#import <JGSBase/JGSBase.h>
+#elif __has_include("JGSBase.h")
 #import "JGSBase.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

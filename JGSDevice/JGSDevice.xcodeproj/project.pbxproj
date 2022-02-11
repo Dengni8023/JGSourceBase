@@ -11,6 +11,7 @@
 		D47C3CE027B53D8F00521310 /* JGSDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CDF27B53D8F00521310 /* JGSDevice.m */; };
 		D47C3CE227B53F5700521310 /* iOSDeviceList.json in Resources */ = {isa = PBXBuildFile; fileRef = D47C3CE127B53F5700521310 /* iOSDeviceList.json */; };
 		D47C3CEA27B5401C00521310 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CE927B5401C00521310 /* main.m */; };
+		D7B9E6F3E9CECB37ABB0616C /* libPods-JGSDevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F32259B30C9F9936C5FD319A /* libPods-JGSDevice.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AB4BADE161F363CC040200A4 /* Pods-JGSDevice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSDevice.debug.xcconfig"; path = "Target Support Files/Pods-JGSDevice/Pods-JGSDevice.debug.xcconfig"; sourceTree = "<group>"; };
 		D47C3C0127B4F90200521310 /* JGSDevice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSDevice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3C0427B4F90200521310 /* JGSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDevice.h; sourceTree = "<group>"; };
 		D47C3C0527B4F90200521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +36,8 @@
 		D47C3CE727B5401C00521310 /* JGSDeviceRes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JGSDeviceRes; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3CE927B5401C00521310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D47C3CEE27B5404900521310 /* iOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iOSDeviceList.json; sourceTree = "<group>"; };
+		E4A149BF1534C9B51376EDD9 /* Pods-JGSDevice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSDevice.release.xcconfig"; path = "Target Support Files/Pods-JGSDevice/Pods-JGSDevice.release.xcconfig"; sourceTree = "<group>"; };
+		F32259B30C9F9936C5FD319A /* libPods-JGSDevice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSDevice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B9E6F3E9CECB37ABB0616C /* libPods-JGSDevice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +59,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1157706CD3DBEA5DE5B8E416 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F32259B30C9F9936C5FD319A /* libPods-JGSDevice.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B39E183CFA84F7533643EF7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB4BADE161F363CC040200A4 /* Pods-JGSDevice.debug.xcconfig */,
+				E4A149BF1534C9B51376EDD9 /* Pods-JGSDevice.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		D47C3BF727B4F90200521310 = {
 			isa = PBXGroup;
 			children = (
 				D47C3C0327B4F90200521310 /* JGSDevice */,
 				D47C3CE827B5401C00521310 /* JGSDeviceRes */,
 				D47C3C0227B4F90200521310 /* Products */,
+				B39E183CFA84F7533643EF7A /* Pods */,
+				1157706CD3DBEA5DE5B8E416 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,10 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47C3C0927B4F90200521310 /* Build configuration list for PBXNativeTarget "JGSDevice" */;
 			buildPhases = (
+				FBEDDBA31F4278ACCADE2DE9 /* [CP] Check Pods Manifest.lock */,
 				D47C3BFC27B4F90200521310 /* Headers */,
 				D47C3BFD27B4F90200521310 /* Sources */,
 				D47C3BFE27B4F90200521310 /* Frameworks */,
 				D47C3BFF27B4F90200521310 /* Resources */,
+				D47C3CFF27B62C4300521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -190,6 +217,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D47C3CFF27B62C4300521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
+		};
+		FBEDDBA31F4278ACCADE2DE9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSDevice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D47C3BFD27B4F90200521310 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -262,7 +331,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -318,7 +388,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -330,6 +401,7 @@
 		};
 		D47C3C0A27B4F90200521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB4BADE161F363CC040200A4 /* Pods-JGSDevice.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -353,6 +425,7 @@
 		};
 		D47C3C0B27B4F90200521310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4A149BF1534C9B51376EDD9 /* Pods-JGSDevice.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -380,7 +453,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -392,7 +464,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};

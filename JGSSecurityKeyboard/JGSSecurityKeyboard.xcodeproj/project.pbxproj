@@ -21,9 +21,13 @@
 		D47C3C7727B4FC6400521310 /* JGSNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C6B27B4FC6400521310 /* JGSNumberKeyboard.m */; };
 		D47C3C7827B4FC6400521310 /* JGSSymbolKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C6C27B4FC6400521310 /* JGSSymbolKeyboard.m */; };
 		D47C3C7927B4FC6400521310 /* JGSBaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C6D27B4FC6400521310 /* JGSBaseKeyboard.m */; };
+		FF6761F497C07FDDDA994505 /* libPods-JGSSecurityKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E5FC3FB96647D906F1DE99 /* libPods-JGSSecurityKeyboard.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13E5FC3FB96647D906F1DE99 /* libPods-JGSSecurityKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSSecurityKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D44955CAE822A62167E16E /* Pods-JGSSecurityKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSSecurityKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-JGSSecurityKeyboard/Pods-JGSSecurityKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		79EA1695453CB79FC24A3EF1 /* Pods-JGSSecurityKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSSecurityKeyboard.release.xcconfig"; path = "Target Support Files/Pods-JGSSecurityKeyboard/Pods-JGSSecurityKeyboard.release.xcconfig"; sourceTree = "<group>"; };
 		D47C3C5527B4F96500521310 /* JGSSecurityKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSSecurityKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3C5827B4F96500521310 /* JGSSecurityKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSSecurityKeyboard.h; sourceTree = "<group>"; };
 		D47C3C5927B4F96500521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,17 +51,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6761F497C07FDDDA994505 /* libPods-JGSSecurityKeyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		494549288D276240D18F09CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59D44955CAE822A62167E16E /* Pods-JGSSecurityKeyboard.debug.xcconfig */,
+				79EA1695453CB79FC24A3EF1 /* Pods-JGSSecurityKeyboard.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		9D1F6C883A07C548D8ED449F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13E5FC3FB96647D906F1DE99 /* libPods-JGSSecurityKeyboard.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D47C3C4B27B4F96500521310 = {
 			isa = PBXGroup;
 			children = (
 				D47C3C5727B4F96500521310 /* JGSSecurityKeyboard */,
 				D47C3C5627B4F96500521310 /* Products */,
+				494549288D276240D18F09CA /* Pods */,
+				9D1F6C883A07C548D8ED449F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,10 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47C3C5D27B4F96500521310 /* Build configuration list for PBXNativeTarget "JGSSecurityKeyboard" */;
 			buildPhases = (
+				61E3D0C87AAD89CAD8DA0C0F /* [CP] Check Pods Manifest.lock */,
 				D47C3C5027B4F96500521310 /* Headers */,
 				D47C3C5127B4F96500521310 /* Sources */,
 				D47C3C5227B4F96500521310 /* Frameworks */,
 				D47C3C5327B4F96500521310 /* Resources */,
+				D47C3D0327B62CA300521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -172,6 +199,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61E3D0C87AAD89CAD8DA0C0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSSecurityKeyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D47C3D0327B62CA300521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D47C3C5127B4F96500521310 /* Sources */ = {
@@ -243,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -299,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -311,6 +380,7 @@
 		};
 		D47C3C5E27B4F96500521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59D44955CAE822A62167E16E /* Pods-JGSSecurityKeyboard.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -334,6 +404,7 @@
 		};
 		D47C3C5F27B4F96500521310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79EA1695453CB79FC24A3EF1 /* Pods-JGSSecurityKeyboard.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

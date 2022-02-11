@@ -10,15 +10,19 @@
 		D47C3C3027B4F92E00521310 /* JGSHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C2E27B4F92E00521310 /* JGSHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CC927B5386C00521310 /* JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CC027B5386C00521310 /* JGSToast.m */; };
 		D47C3CCA27B5386C00521310 /* UIView+JGSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CC127B5386C00521310 /* UIView+JGSToast.m */; };
-		D47C3CCB27B5386C00521310 /* JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC227B5386C00521310 /* JGSToast.h */; };
-		D47C3CCC27B5386C00521310 /* UIView+JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC327B5386C00521310 /* UIView+JGSToast.h */; };
-		D47C3CCD27B5386C00521310 /* JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC527B5386C00521310 /* JGSLoadingHUD.h */; };
+		D47C3CCB27B5386C00521310 /* JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC227B5386C00521310 /* JGSToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CCC27B5386C00521310 /* UIView+JGSToast.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC327B5386C00521310 /* UIView+JGSToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D47C3CCD27B5386C00521310 /* JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC527B5386C00521310 /* JGSLoadingHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CCE27B5386C00521310 /* UIView+JGSLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CC627B5386C00521310 /* UIView+JGSLoadingHUD.m */; };
 		D47C3CCF27B5386C00521310 /* JGSLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3CC727B5386C00521310 /* JGSLoadingHUD.m */; };
-		D47C3CD027B5386C00521310 /* UIView+JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC827B5386C00521310 /* UIView+JGSLoadingHUD.h */; };
+		D47C3CD027B5386C00521310 /* UIView+JGSLoadingHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3CC827B5386C00521310 /* UIView+JGSLoadingHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5CE439EE7F3624D9FCCE9BB /* libPods-JGSHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3676A0C178517BF6A95C5834 /* libPods-JGSHUD.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2619183E4A81F55C4F0C1E64 /* Pods-JGSHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSHUD.release.xcconfig"; path = "Target Support Files/Pods-JGSHUD/Pods-JGSHUD.release.xcconfig"; sourceTree = "<group>"; };
+		3676A0C178517BF6A95C5834 /* libPods-JGSHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9E9CEE269012EDD53A3110 /* Pods-JGSHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSHUD.debug.xcconfig"; path = "Target Support Files/Pods-JGSHUD/Pods-JGSHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		D47C3C2B27B4F92E00521310 /* JGSHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3C2E27B4F92E00521310 /* JGSHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSHUD.h; sourceTree = "<group>"; };
 		D47C3C2F27B4F92E00521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,17 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CE439EE7F3624D9FCCE9BB /* libPods-JGSHUD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80DD037C1B060822EE72A7CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3676A0C178517BF6A95C5834 /* libPods-JGSHUD.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2651BF58A0F7AF9A28679CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D9E9CEE269012EDD53A3110 /* Pods-JGSHUD.debug.xcconfig */,
+				2619183E4A81F55C4F0C1E64 /* Pods-JGSHUD.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		D47C3C2127B4F92E00521310 = {
 			isa = PBXGroup;
 			children = (
 				D47C3C2D27B4F92E00521310 /* JGSHUD */,
 				D47C3C2C27B4F92E00521310 /* Products */,
+				A2651BF58A0F7AF9A28679CD /* Pods */,
+				80DD037C1B060822EE72A7CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,10 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47C3C3327B4F92E00521310 /* Build configuration list for PBXNativeTarget "JGSHUD" */;
 			buildPhases = (
+				AD9FBD8EA374839BFA03B88F /* [CP] Check Pods Manifest.lock */,
 				D47C3C2627B4F92E00521310 /* Headers */,
 				D47C3C2727B4F92E00521310 /* Sources */,
 				D47C3C2827B4F92E00521310 /* Frameworks */,
 				D47C3C2927B4F92E00521310 /* Resources */,
+				D47C3D0127B62C7600521310 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -171,6 +198,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD9FBD8EA374839BFA03B88F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSHUD-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D47C3D0127B62C7600521310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D47C3C2727B4F92E00521310 /* Sources */ = {
@@ -239,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -295,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -307,6 +376,7 @@
 		};
 		D47C3C3427B4F92E00521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D9E9CEE269012EDD53A3110 /* Pods-JGSHUD.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -330,6 +400,7 @@
 		};
 		D47C3C3527B4F92E00521310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2619183E4A81F55C4F0C1E64 /* Pods-JGSHUD.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

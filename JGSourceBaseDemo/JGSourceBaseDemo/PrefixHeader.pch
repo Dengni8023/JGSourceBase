@@ -23,6 +23,96 @@
 #import <JGSourceBase/JGSourceBase.h>
 #elif __has_include("JGSourceBase.h")
 #import "JGSourceBase.h"
+#else
+
+// Base
+#pragma mark - Base
+#if __has_include(<JGSourceBase/JGSBase.h>)
+#import <JGSourceBase/JGSBase.h>
+#elif __has_include(<JGSBase/JGSBase.h>)
+#import <JGSBase/JGSBase.h>
+#elif __has_include("JGSBase.h")
+#import "JGSBase.h"
+#endif
+
+// Category
+#pragma mark - Category
+#if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/JGSCategory.h>
+#elif __has_include(<JGSCategory/JGSCategory.h>)
+#import <JGSCategory/JGSCategory.h>
+#elif __has_include("JGSCategory.h")
+#import "JGSCategory.h"
+#endif
+
+// AlertController
+#pragma mark - AlertController
+#if __has_include(<JGSourceBase/JGSAlertController.h>)
+#import <JGSourceBase/JGSAlertController.h>
+#elif __has_include("JGSAlertController.h")
+#import "JGSAlertController.h"
+#endif
+
+// DataStorage
+#pragma mark - DataStorage
+#if __has_include(<JGSourceBase/JGSDataStorage.h>)
+#import <JGSourceBase/JGSDataStorage.h>
+#elif __has_include(<JGSDataStorage/JGSDataStorage.h>)
+#import <JGSDataStorage/JGSDataStorage.h>
+#elif __has_include("JGSDataStorage.h")
+#import "JGSDataStorage.h"
+#endif
+
+// Device
+#pragma mark - Device
+#if __has_include(<JGSourceBase/JGSDevice.h>)
+#import <JGSourceBase/JGSDevice.h>
+#elif __has_include(<JGSDevice/JGSDevice.h>)
+#import <JGSDevice/JGSDevice.h>
+#elif __has_include("JGSDevice.h")
+#import "JGSDevice.h"
+#endif
+
+// Encryption
+#pragma mark - Encryption
+#if __has_include(<JGSourceBase/JGSEncryption.h>)
+#import <JGSourceBase/JGSEncryption.h>
+#elif __has_include(<JGSEncryption/JGSEncryption.h>)
+#import <JGSEncryption/JGSEncryption.h>
+#elif __has_include("JGSEncryption.h")
+#import "JGSEncryption.h"
+#endif
+
+// JGSHUD
+#pragma mark - JGSHUD
+#if __has_include(<JGSourceBase/JGSHUD.h>)
+#import <JGSourceBase/JGSHUD.h>
+#elif __has_include(<JGSHUD/JGSHUD.h>)
+#import <JGSHUD/JGSHUD.h>
+#elif __has_include("JGSHUD.h")
+#import "JGSHUD.h"
+#endif
+
+// JGSReachability
+#pragma mark - JGSReachability
+#if __has_include(<JGSourceBase/JGSReachability.h>)
+#import <JGSourceBase/JGSReachability.h>
+#elif __has_include(<JGSReachability/JGSReachability.h>)
+#import <JGSReachability/JGSReachability.h>
+#elif __has_include("JGSReachability.h")
+#import "JGSReachability.h"
+#endif
+
+// JGSSecurityKeyboard
+#pragma mark - JGSSecurityKeyboard
+#if __has_include(<JGSourceBase/JGSSecurityKeyboard.h>)
+#import <JGSourceBase/JGSSecurityKeyboard.h>
+#elif __has_include(<JGSSecurityKeyboard/JGSSecurityKeyboard.h>)
+#import <JGSSecurityKeyboard/JGSSecurityKeyboard.h>
+#elif __has_include("JGSSecurityKeyboard.h")
+#import "JGSSecurityKeyboard.h"
+#endif
+
 #endif
 
 #define JGSDemoNavigationBarColor JGSColorHexA(0x0B5CDA, 0.82)
