@@ -23,7 +23,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    JGSDemoShowConsoleLog(@"<%@: %p>", NSStringFromClass([self class]), self);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -186,6 +186,11 @@
     
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
     
+#ifdef JGSCategory_UIColor
+    cell.backgroundColor = JGSColorHex(arc4random() % 0x01000000);
+    cell.contentView.backgroundColor = JGSColorHex(0xffffff);
+#endif
+    
     return cell;
 }
 
@@ -212,9 +217,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    //JGSLog(@"Selected IndexPath: {%@, %@}", @(indexPath.section), @(indexPath.row));
+    //JGSDemoShowConsoleLog(@"Selected IndexPath: {%@, %@}", @(indexPath.section), @(indexPath.row));
     JGsDemoTableRowData *rowData = self.demoData[indexPath.section].rows[indexPath.row];
-    id object = rowData.object ?: self;
+    id object = rowData.target ?: self;
     if (rowData.selector && [object respondsToSelector:rowData.selector]) {
         
         // 避免警告
@@ -229,11 +234,10 @@
     
     va_list varList;
     va_start(varList, format);
-    JGSLogv(format, varList);
     NSString *message = [[NSString alloc] initWithFormat:format arguments:varList];
     va_end(varList);
     
-    self.textView.text = [self.textView.text stringByAppendingFormat:@"\n%s, Line: %@\n%@", __PRETTY_FUNCTION__, @(__LINE__), message];
+    self.textView.text = [self.textView.text stringByAppendingFormat:@"\n%@", message];
     [self.textView scrollRangeToVisible:NSMakeRange(self.textView.text.length, 1)];
 }
 

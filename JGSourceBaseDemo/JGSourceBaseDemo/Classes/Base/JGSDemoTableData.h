@@ -13,21 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JGsDemoTableRowData : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign, readonly, nullable) id object;
+@property (nonatomic, assign, readonly, nullable) id target;
 @property (nonatomic, assign, readonly, nullable) SEL selector;
 
 - (instancetype)init NS_UNAVAILABLE;
 
-/// 列表 Demo 页 cell 展示标题及点击响应
-/// @param title cell 展示标题
-/// @param selector 点击响应，该 selector 必须在 Demo 页独立实现，即调用方式为 [self selector...]
-- (instancetype)initWithTitle:(NSString *)title selector:(SEL)selector;
-
-/// 列表Demo页cell展示标题及点击响应
-/// @param title cell展示标题
-/// @param selector 点击响应，该 selector 无须在 Demo 页独立实现，调用方式为 [object selector...]
-/// object 为 nil 时同 initWithTitle: selector:
-- (instancetype)initWithTitle:(NSString *)title object:(nullable id)object selector:(SEL)selector;
+/// JGSDemo 列表 cell 数据
+/// @param title cell 左侧标题，不可为空
+/// @param target cell 点击响应方法所属 target，可为空，为空时则默认使用生成数据的当前对象
+/// @param selector cell 点击响应方法
+- (instancetype)initWithTitle:(NSString *)title target:(nullable id)target selector:(SEL)selector;
 
 @end
 
@@ -37,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSArray<JGsDemoTableRowData *> *rows;
 
 - (instancetype)init NS_UNAVAILABLE;
+
+/// JGSDemo 列表 section 数据
+/// @param title section 标题，可为空
+/// @param rows section 所有cell 数据清单
 - (instancetype)initWithTitle:(nullable NSString *)title rows:(NSArray<JGsDemoTableRowData *> *)rows;
 
 @end
@@ -45,8 +44,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-FOUNDATION_EXTERN JGsDemoTableRowData *JGSDemoTableRowMakeWithSelector(NSString *title, SEL _Nullable selector);
-FOUNDATION_EXTERN JGsDemoTableRowData *JGSDemoTableRowMakeWithObjectSelector(NSString *title, id _Nullable object, SEL _Nullable selector);
+/// 生成 JGSDemo 列表 cell 数据
+/// @param title cell 左侧标题，不可为空
+/// @param target cell 点击响应方法所属 target，可为空，为空时则默认使用生成数据的当前对象
+/// 形如：- (void)action:(NSIndexPath *)indexPath;
+/// @param selector cell 点击响应方法
+FOUNDATION_EXTERN JGsDemoTableRowData *JGSDemoTableRowMake(NSString *title, id _Nullable target, SEL _Nullable selector);
+
+/// 生成 JGSDemo 列表 section 数据
+/// @param title section 标题，可为空
+/// @param rows section 所有cell 数据清单
 FOUNDATION_EXTERN JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString * _Nullable title, NSArray<JGsDemoTableRowData *> *rows);
 
 NS_ASSUME_NONNULL_END

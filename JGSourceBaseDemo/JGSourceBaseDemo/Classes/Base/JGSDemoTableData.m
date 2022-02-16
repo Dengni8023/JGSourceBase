@@ -8,12 +8,8 @@
 
 #import "JGSDemoTableData.h"
 
-JGsDemoTableRowData *JGSDemoTableRowMakeWithSelector(NSString *title, SEL _Nullable selector) {
-    return [[JGsDemoTableRowData alloc] initWithTitle:title selector:selector];
-}
-
-JGsDemoTableRowData *JGSDemoTableRowMakeWithObjectSelector(NSString *title, id _Nullable object, SEL _Nullable selector) {
-    return [[JGsDemoTableRowData alloc] initWithTitle:title object:object selector:selector];
+JGsDemoTableRowData *JGSDemoTableRowMake(NSString *title, id _Nullable target, SEL _Nullable selector) {
+    return [[JGsDemoTableRowData alloc] initWithTitle:title target:target selector:selector];
 }
 
 JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDemoTableRowData *> *rows) {
@@ -27,22 +23,12 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithTitle:(NSString *)title selector:(SEL)selector {
+- (instancetype)initWithTitle:(NSString *)title target:(id)target selector:(SEL)selector {
     
     self = [super init];
     if (self) {
         _title = title;
-        _selector = selector;
-    }
-    return self;
-}
-
-- (instancetype)initWithTitle:(NSString *)title object:(nullable id)object selector:(nonnull SEL)selector {
-    
-    self = [super init];
-    if (self) {
-        _title = title;
-        _object = object;
+        _target = target;
         _selector = selector;
     }
     return self;

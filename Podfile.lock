@@ -1,16 +1,79 @@
 PODS:
   - IQKeyboardManager (6.5.9)
+  - JGSourceBase (1.2.2.1):
+    - JGSourceBase/Base (= 1.2.2.1)
+    - JGSourceBase/Category (= 1.2.2.1)
+    - JGSourceBase/DataStorage (= 1.2.2.1)
+    - JGSourceBase/Device (= 1.2.2.1)
+    - JGSourceBase/Encryption (= 1.2.2.1)
+    - JGSourceBase/Reachability (= 1.2.2.1)
+    - JGSourceBase/SecurityKeyboard (= 1.2.2.1)
   - JGSourceBase/Base (1.2.2.1)
+  - JGSourceBase/Category (1.2.2.1):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/NSDate (= 1.2.2.1)
+    - JGSourceBase/Category/NSDictionary (= 1.2.2.1)
+    - JGSourceBase/Category/NSObject (= 1.2.2.1)
+    - JGSourceBase/Category/NSString (= 1.2.2.1)
+    - JGSourceBase/Category/NSURL (= 1.2.2.1)
+    - JGSourceBase/Category/UIAlertController (= 1.2.2.1)
+    - JGSourceBase/Category/UIApplication (= 1.2.2.1)
+    - JGSourceBase/Category/UIColor (= 1.2.2.1)
+    - JGSourceBase/Category/UIImage (= 1.2.2.1)
+  - JGSourceBase/Category/NSDate (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSDictionary (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSObject (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSString (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSURL (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIAlertController (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIApplication (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIColor (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIImage (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/DataStorage (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/Device (1.2.2.1):
+    - JGSourceBase/Reachability
+  - JGSourceBase/Encryption (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/HUD (1.2.2.1):
+    - JGSourceBase/HUD/Loading (= 1.2.2.1)
+    - JGSourceBase/HUD/Toast (= 1.2.2.1)
+  - JGSourceBase/HUD/Loading (1.2.2.1):
+    - JGSourceBase/Category/UIColor
+    - MBProgressHUD
+  - JGSourceBase/HUD/Toast (1.2.2.1):
+    - MBProgressHUD
+  - JGSourceBase/Reachability (1.2.2.1):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.2.2.1):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
+  - JGSourceBase (from `.`)
   - JGSourceBase/Base (from `.`)
+  - JGSourceBase/Category/UIColor (from `.`)
+  - JGSourceBase/HUD (from `.`)
+  - JGSourceBase/Reachability (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+  - MBProgressHUD
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManager
+    - MBProgressHUD
 
 EXTERNAL SOURCES:
   JGSourceBase:
@@ -28,7 +91,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
   JGSourceBase: 4d69936579e531f308560fc968402f3de8777e40
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: f5876998b7f48a0911b8150a8a928bfa3b687e3d
+PODFILE CHECKSUM: a8649fbb15e867b62dd24cec0b8d9b6c94c156c0
 
 COCOAPODS: 1.10.1

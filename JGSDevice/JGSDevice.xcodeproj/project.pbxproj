@@ -450,6 +450,7 @@
 		D47C3CEC27B5401C00521310 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -461,6 +462,7 @@
 		D47C3CED27B5401C00521310 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;

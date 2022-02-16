@@ -31,34 +31,34 @@ target "JGSourceBaseDemo" do
   # pod 'FLAnimatedImage'
   # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => '164a8fbf2af3968af8940f5116bae388c3a3e088' #'~> 1.2.2'
   # pod 'JGSourceBase', '~> 1.2.2'
-  # pod 'JGSourceBase', :path => "."
-   pod 'JGSourceBase', :path => ".", :subspecs => [
-    # Base测试
-     'Base',
-
-    # Category测试
-    # 'Category',
-    
-    # Device测试
-    # 'Device',
-    
-    # HUD测试
-    # 'HUD',
-    # 'Category/UIImage',
-    
-    # HUD-Loading测试
-    # 'HUD/Loading',
-    # 'Category/UIImage',
-    
-    # HUD-Toast测试
-    # 'HUD/Toast',
-    
-    # Reachability测试
-    # 'Reachability',
-
-    # SecurityKeyboard测试
-    # 'SecurityKeyboard',
-   ]
+  pod 'JGSourceBase', :path => "."
+  pod 'JGSourceBase', :path => ".", :subspecs => [
+  # Base测试
+  'Base',
+  
+  # Category测试
+  # 'Category',
+  
+  # Device测试
+  # 'Device',
+  
+  # HUD测试
+  'HUD',
+  # 'Category/UIImage',
+  
+  # HUD-Loading测试
+  # 'HUD/Loading',
+  # 'Category/UIImage',
+  
+  # HUD-Toast测试
+  # 'HUD/Toast',
+  
+  # Reachability测试
+  # 'Reachability',
+  
+  # SecurityKeyboard测试
+  # 'SecurityKeyboard',
+  ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
   pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
@@ -108,74 +108,74 @@ end
 # 不需要构建子 framework 时，保持以下内容为注释状态
 # 如需构建子 framework ，取消以下内容的注释状态
 
-# # JGSBase
-# target "JGSBase" do
+# JGSBase
+target "JGSBase" do
   
-#   # project
-#   project "JGSBase/JGSBase.xcodeproj"
-# end
+  # project
+  project "JGSBase/JGSBase.xcodeproj"
+end
 
-# # JGSCategory
-# target "JGSCategory" do
+# JGSCategory
+target "JGSCategory" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSCategory/JGSCategory.xcodeproj"
-# end
+  # project
+  project "JGSCategory/JGSCategory.xcodeproj"
+end
 
-# # JGSDataStorage
-# target "JGSDataStorage" do
+# JGSDataStorage
+target "JGSDataStorage" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSDataStorage/JGSDataStorage.xcodeproj"
-# end
+  # project
+  project "JGSDataStorage/JGSDataStorage.xcodeproj"
+end
 
-# # JGSDevice
-# target "JGSDevice" do
+# JGSDevice
+target "JGSDevice" do
   
-#   pod 'JGSourceBase/Reachability', :path => "."
+  pod 'JGSourceBase/Reachability', :path => "."
   
-#   # project
-#   project "JGSDevice/JGSDevice.xcodeproj"
-# end
+  # project
+  project "JGSDevice/JGSDevice.xcodeproj"
+end
 
-# # JGSEncryption
-# target "JGSEncryption" do
+# JGSEncryption
+target "JGSEncryption" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSEncryption/JGSEncryption.xcodeproj"
-# end
+  # project
+  project "JGSEncryption/JGSEncryption.xcodeproj"
+end
 
-# # JGSHUD
-# target "JGSHUD" do
+# JGSHUD
+target "JGSHUD" do
   
-#   pod 'MBProgressHUD'
-#   pod 'JGSourceBase/Category/UIColor', :path => '.'
+  pod 'MBProgressHUD'
+  pod 'JGSourceBase/Category/UIColor', :path => '.'
   
-#   # project
-#   project "JGSHUD/JGSHUD.xcodeproj"
-# end
+  # project
+  project "JGSHUD/JGSHUD.xcodeproj"
+end
 
-# # JGSReachability
-# target "JGSReachability" do
+# JGSReachability
+target "JGSReachability" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSReachability/JGSReachability.xcodeproj"
-# end
+  # project
+  project "JGSReachability/JGSReachability.xcodeproj"
+end
 
-# # JGSSecurityKeyboard
-# target "JGSSecurityKeyboard" do
+# JGSSecurityKeyboard
+target "JGSSecurityKeyboard" do
   
-#   pod 'JGSourceBase/Base', :path => "."
-#   pod 'JGSourceBase/Category/UIColor', :path => "."
-
-#   # project
-#   project "JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj"
-# end
+  pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Category/UIColor', :path => "."
+  
+  # project
+  project "JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj"
+end

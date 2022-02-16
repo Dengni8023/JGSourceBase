@@ -33,7 +33,7 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
         UITextField *textField = (UITextField *)note.object;
-        [self showConsoleLog:@"%@, %@", textField.text, textField.jg_securityOriginText];
+        JGSDemoShowConsoleLog(@"%@, %@", textField.text, textField.jg_securityOriginText);
     }];
 #endif
     
@@ -114,7 +114,7 @@
 #pragma mark - Action
 - (void)switchTextfieldSecurityEntry:(id)sender {
     
-    //JGSLog(@"%@", sender);
+    //JGSDemoShowConsoleLog(@"%@", sender);
     self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
     self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
     self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;
@@ -131,8 +131,8 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        [self showConsoleLog:@"%@", textField.text];
-        [self showConsoleLog:@"%@ -> (%@)", NSStringFromRange(range), string];
+        JGSDemoShowConsoleLog(@"%@", textField.text);
+        JGSDemoShowConsoleLog(@"%@ -> (%@)", NSStringFromRange(range), string);
     }
     
     return YES;
