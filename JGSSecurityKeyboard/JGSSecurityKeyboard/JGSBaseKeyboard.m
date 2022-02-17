@@ -135,6 +135,8 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     if (self.type == JGSKeyboardKeyTypeShift) {
+        
+        // shift 点击状态变化
         self.shiftStatus = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? JGSKeyboardShiftKeySelected : JGSKeyboardShiftKeyDefault);
         self.backgroundColor = (self.shiftStatus == JGSKeyboardShiftKeyDefault ? self.normalBgColor : self.highlightedBgColor);
     }
@@ -144,6 +146,7 @@
     self.highlighted = YES;
     [self setNeedsDisplay];
     
+    // 非输入按钮、且非回车按钮响应按下事件
     if (self.type != JGSKeyboardKeyTypeInput &&
         self.type != JGSKeyboardKeyTypeEnter) {
         if (self.action) {
@@ -154,18 +157,21 @@
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    if (self.type == JGSKeyboardKeyTypeShift ||
-        CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
+    // shift 点击开始即响应点击事件，后续不需要继续响应
+    if (self.type == JGSKeyboardKeyTypeShift) {
         return;
     }
     
-    self.backgroundColor = self.normalBgColor;
-    self.highlighted = NO;
+    // 点击滑动事件判断当前点位置，更新按钮样式
+    BOOL inside = CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self]);
+    self.backgroundColor = inside ? self.highlightedBgColor : self.normalBgColor;
+    self.highlighted = inside;
     [self setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    // shift 点击开始即响应点击事件，后续不需要继续响应
     if (self.type == JGSKeyboardKeyTypeShift ||
         !CGRectContainsPoint(self.bounds, [touches.anyObject locationInView:self])) {
         return;
@@ -178,6 +184,20 @@
     if (self.action) {
         self.action(self, JGSKeyboardKeyEventTapEnded);
     }
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    // shift 点击开始即响应点击事件，后续不需要继续响应
+    if (self.type == JGSKeyboardKeyTypeShift) {
+        return;
+    }
+    
+    // 当我们正在触摸屏幕的时候，如果出现了低电量、有电话呼入等等这样的系统事件时候，低电量或者电话的窗口会置为前台，这个时候touchesCancelled方法就会被调用。
+    // 因为在软件运行过程中不可避免的会发生由iOS系统发出的一些事件，导致触摸事件的中断，所以一般建议要实现touchesCancelled这个方法，一般情况下直接调用touchesEnd即可。
+    self.backgroundColor = self.normalBgColor;
+    self.highlighted = NO;
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Draw

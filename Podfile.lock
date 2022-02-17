@@ -1,60 +1,60 @@
 PODS:
   - IQKeyboardManager (6.5.9)
-  - JGSourceBase (1.2.2.1):
-    - JGSourceBase/Base (= 1.2.2.1)
-    - JGSourceBase/Category (= 1.2.2.1)
-    - JGSourceBase/DataStorage (= 1.2.2.1)
-    - JGSourceBase/Device (= 1.2.2.1)
-    - JGSourceBase/Encryption (= 1.2.2.1)
-    - JGSourceBase/Reachability (= 1.2.2.1)
-    - JGSourceBase/SecurityKeyboard (= 1.2.2.1)
-  - JGSourceBase/Base (1.2.2.1)
-  - JGSourceBase/Category (1.2.2.1):
+  - JGSourceBase (1.2.3):
+    - JGSourceBase/Base (= 1.2.3)
+    - JGSourceBase/Category (= 1.2.3)
+    - JGSourceBase/DataStorage (= 1.2.3)
+    - JGSourceBase/Device (= 1.2.3)
+    - JGSourceBase/Encryption (= 1.2.3)
+    - JGSourceBase/Reachability (= 1.2.3)
+    - JGSourceBase/SecurityKeyboard (= 1.2.3)
+  - JGSourceBase/Base (1.2.3)
+  - JGSourceBase/Category (1.2.3):
     - JGSourceBase/Base
-    - JGSourceBase/Category/NSDate (= 1.2.2.1)
-    - JGSourceBase/Category/NSDictionary (= 1.2.2.1)
-    - JGSourceBase/Category/NSObject (= 1.2.2.1)
-    - JGSourceBase/Category/NSString (= 1.2.2.1)
-    - JGSourceBase/Category/NSURL (= 1.2.2.1)
-    - JGSourceBase/Category/UIAlertController (= 1.2.2.1)
-    - JGSourceBase/Category/UIApplication (= 1.2.2.1)
-    - JGSourceBase/Category/UIColor (= 1.2.2.1)
-    - JGSourceBase/Category/UIImage (= 1.2.2.1)
-  - JGSourceBase/Category/NSDate (1.2.2.1):
+    - JGSourceBase/Category/NSDate (= 1.2.3)
+    - JGSourceBase/Category/NSDictionary (= 1.2.3)
+    - JGSourceBase/Category/NSObject (= 1.2.3)
+    - JGSourceBase/Category/NSString (= 1.2.3)
+    - JGSourceBase/Category/NSURL (= 1.2.3)
+    - JGSourceBase/Category/UIAlertController (= 1.2.3)
+    - JGSourceBase/Category/UIApplication (= 1.2.3)
+    - JGSourceBase/Category/UIColor (= 1.2.3)
+    - JGSourceBase/Category/UIImage (= 1.2.3)
+  - JGSourceBase/Category/NSDate (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSDictionary (1.2.2.1):
+  - JGSourceBase/Category/NSDictionary (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSObject (1.2.2.1):
+  - JGSourceBase/Category/NSObject (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSString (1.2.2.1):
+  - JGSourceBase/Category/NSString (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSURL (1.2.2.1):
+  - JGSourceBase/Category/NSURL (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIAlertController (1.2.2.1):
+  - JGSourceBase/Category/UIAlertController (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIApplication (1.2.2.1):
+  - JGSourceBase/Category/UIApplication (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIColor (1.2.2.1):
+  - JGSourceBase/Category/UIColor (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIImage (1.2.2.1):
+  - JGSourceBase/Category/UIImage (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/DataStorage (1.2.2.1):
+  - JGSourceBase/DataStorage (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/Device (1.2.2.1):
+  - JGSourceBase/Device (1.2.3):
     - JGSourceBase/Reachability
-  - JGSourceBase/Encryption (1.2.2.1):
+  - JGSourceBase/Encryption (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/HUD (1.2.2.1):
-    - JGSourceBase/HUD/Loading (= 1.2.2.1)
-    - JGSourceBase/HUD/Toast (= 1.2.2.1)
-  - JGSourceBase/HUD/Loading (1.2.2.1):
+  - JGSourceBase/HUD (1.2.3):
+    - JGSourceBase/HUD/Loading (= 1.2.3)
+    - JGSourceBase/HUD/Toast (= 1.2.3)
+  - JGSourceBase/HUD/Loading (1.2.3):
     - JGSourceBase/Category/UIColor
     - MBProgressHUD
-  - JGSourceBase/HUD/Toast (1.2.2.1):
+  - JGSourceBase/HUD/Toast (1.2.3):
     - MBProgressHUD
-  - JGSourceBase/Reachability (1.2.2.1):
+  - JGSourceBase/Reachability (1.2.3):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.2.2.1):
+  - JGSourceBase/SecurityKeyboard (1.2.3):
     - JGSourceBase/Base
     - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
@@ -89,7 +89,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 38daa505bef73758278978c52ee304f3a5a24a79
+  JGSourceBase: f7692076e80f4ca1470e188590b856d1a240a960
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 

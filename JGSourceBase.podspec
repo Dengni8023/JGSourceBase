@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JGSourceBase"
-  spec.version      = "1.2.2.1"
+  spec.version      = "1.2.3"
   spec.summary      = "JGSourceBase functional component library."
 
   # This description is used to generate tags and improve search results.
