@@ -235,16 +235,21 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardTitleForType(JGSKeyboardType type)
     return titles.firstObject;
 }
 
-FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardReturnType type) {
+FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(UIReturnKeyType type) {
     
-    //JGSKeyboardReturnTypeDone = 0, // 完成
-    //JGSKeyboardReturnTypeNext, // 下一项
-    NSArray *titles = @[@"完成", @"下一项"];
-    NSInteger typeIdx = type - JGSKeyboardReturnTypeDone;
-    if (typeIdx >= 0 && typeIdx < titles.count) {
-        return titles[typeIdx];
+    switch (type) {
+        case UIReturnKeyDone:
+            return @"完成";
+            break;
+            
+        case UIReturnKeyNext:
+            return @"下一项";
+            break;
+            
+        default:
+            return @"完成";
+            break;
     }
-    return titles.firstObject;
 }
 
 @implementation JGSKeyboardConstants

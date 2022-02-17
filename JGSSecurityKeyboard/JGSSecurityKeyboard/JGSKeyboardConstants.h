@@ -99,11 +99,7 @@ FOUNDATION_EXTERN NSString * const JGSKeyboardTitleSymbols;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleNumbers;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleForType(JGSKeyboardType type);
 
-typedef NS_ENUM(NSInteger, JGSKeyboardReturnType) {
-    JGSKeyboardReturnTypeDone = 0, // 完成
-    JGSKeyboardReturnTypeNext, // 下一项
-};
-FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(JGSKeyboardReturnType type);
+FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(UIReturnKeyType type);
 
 @interface JGSKeyboardConstants : NSObject
 

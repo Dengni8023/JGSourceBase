@@ -20,24 +20,13 @@
 @implementation JGSLetterKeyboard
 
 #pragma mark - Life Cycle
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type returnKeyType:(JGSKeyboardReturnType)returnKeyType keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
-    self = [super initWithFrame:frame type:type returnKeyType:returnKeyType keyInput:keyInput];
+    self = [super initWithFrame:frame type:type textField:textField keyInput:keyInput];
     if (self) {
         
     }
     return self;
-}
-
-- (void)enableHighlightedWhenTap:(BOOL)enable {
-    [super enableHighlightedWhenTap:enable];
-    
-    [self.showKeys enumerateObjectsUsingBlock:^(NSArray<JGSKeyboardKey *> * _Nonnull lineKeys, NSUInteger lineIdx, BOOL * _Nonnull stop) {
-        
-        [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.enableHighlighted = enable;
-        }];
-    }];
 }
 
 #pragma mark - View
@@ -244,7 +233,6 @@
         [lineKeys enumerateObjectsUsingBlock:^(JGSKeyboardKey * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             JGSStrongSelf
-            obj.enableHighlighted = self.enableHighlightedWhenTap;
             [self addSubview:obj];
             
             JGSWeakSelf

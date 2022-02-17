@@ -19,13 +19,21 @@ FOUNDATION_EXPORT const unsigned char JGSSecurityKeyboardVersionString[];
 #ifndef JGS_SecurityKeyboard
 #define JGS_SecurityKeyboard
 
+#if __has_include(<JGSSecurityKeyboard/JGSSecurityKeyboard.h>)
+#import <JGSSecurityKeyboard/UITextField+JGSSecurityKeyboard.h>
+#else
+#import "UITextField+JGSSecurityKeyboard.h"
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSSecurityKeyboard : UIView
 
 @property (nonatomic, copy, nullable, readonly) NSString *title;
 @property (nonatomic, weak, readonly) UITextField *textField; // 输入框
-@property (nonatomic, assign) BOOL enableHighlightedWhenTap; // 点击高亮，默认允许点击高亮
+
+/// 点击高亮，从 textfield 设置 jg_enableHighlightedWhenTap
+@property (nonatomic, assign) BOOL enableHighlightedWhenTap DEPRECATED_MSG_ATTRIBUTE("❌ This property is unavailable. Please use jg_enableHighlightedWhenTap of UITextField instead !");
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
@@ -72,21 +80,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum;
-
-@end
-
-@interface UITextField (JGSSecurityKeyboard)
-
-/// 是否使用AES逐字符加密，输入内容逐字符进行 AES 加密后存入内存，默认 NO，此时内部对输入整体内容AES加密
-/// secureTextEntry 输入时，输入框使用"•"掩码展示，输入框 text 返回一串"•"掩码
-/// 需要使用 textField.jg_securityOriginText 获取原始内容
-/// 部分安全检测机构要求内存逐字符加密，检测方式：使用frida获取进程内存输出txt文件，搜索密码明文
-@property (nonatomic, assign) BOOL jg_aesEncryptInputCharByChar;
-
-/// 对于使用 JGSSecurityKeyboard 安全键盘 secureTextEntry = YES 时，输入框展示一串"•"掩码
-/// textField.text = 一串"•"掩码
-/// textField.jg_securityOriginText = 原始内容
-@property (nullable, nonatomic, copy) NSString *jg_securityOriginText;
 
 @end
 

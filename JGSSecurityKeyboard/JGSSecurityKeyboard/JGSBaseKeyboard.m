@@ -12,7 +12,7 @@
 @interface JGSKeyboardKey () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIColor *normalBgColor;
-@property (nonatomic, strong) UIColor *highlightedBgColor;
+@property (nonatomic, strong, readonly) UIColor *highlightedBgColor;
 
 @end
 
@@ -35,13 +35,11 @@
         
         _type = type;
         _normalBgColor = (type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputColor() : JGSKeyboardKeyFuncColor());
-        _highlightedBgColor = (type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyFuncColor() : JGSKeyboardKeyInputColor());
         _shiftStatus = JGSKeyboardShiftKeyDefault;
         
         self.backgroundColor = self.normalBgColor;
         self.font = (type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputTitleFont() : JGSKeyboardKeyFuncTitleFont());
         self.textColor = JGSKeyboardKeyTitleColor();
-        self.highlightedTextColor =  [self.textColor colorWithAlphaComponent:JGSKeyboardHighlightedColorAlpha];
         self.textAlignment = NSTextAlignmentCenter;
         self.text = text;
         self.layer.cornerRadius = 4.f;
@@ -65,17 +63,14 @@
     return self;
 }
 
-- (void)setEnableHighlighted:(BOOL)enableHighlighted {
+- (UIColor *)highlightedBgColor {
     
-    _enableHighlighted = enableHighlighted;
-    if (enableHighlighted) {
-        
-        self.highlightedBgColor = (self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyFuncColor() : JGSKeyboardKeyInputColor());
-        self.highlightedTextColor =  [self.textColor colorWithAlphaComponent:JGSKeyboardHighlightedColorAlpha];
+    JGSBaseKeyboard *keyboard = [self.superview isKindOfClass:[JGSBaseKeyboard class]] ? (JGSBaseKeyboard *)self.superview : nil;
+    if (keyboard.textField.jg_enableHighlightedWhenTap) {
+        return self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyFuncColor() : JGSKeyboardKeyInputColor();
     }
     else {
-        self.highlightedBgColor = (self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputColor() : JGSKeyboardKeyFuncColor());
-        self.highlightedTextColor =  self.textColor;
+        return self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputColor() : JGSKeyboardKeyFuncColor();
     }
 }
 
@@ -348,15 +343,15 @@
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type returnKeyType:(JGSKeyboardReturnType)returnKeyType keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
     self = [super initWithFrame:frame];
     if (self) {
         
+        _textField = textField;
         _type = type;
         _title = JGSKeyboardTitleForType(type);
-        _enableHighlightedWhenTap = YES;
-        _returnKeyTitle = JGSKeyboardReturnTitleForType(returnKeyType);
+        _returnKeyTitle = JGSKeyboardReturnTitleForType(textField.returnKeyType);
         _keyInput = keyInput;
         
         _keyboardWidth = CGRectGetWidth(frame);
@@ -365,10 +360,6 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
-}
-
-- (void)enableHighlightedWhenTap:(BOOL)enable {
-    _enableHighlightedWhenTap = enable;
 }
 
 #pragma mark - Action

@@ -286,7 +286,7 @@ Pod::Spec.new do |spec|
   # SecurityKeyboard
   spec.subspec 'SecurityKeyboard' do |sub|
     sub.source_files = "JGSSecurityKeyboard/**/*.{h,m}"
-    sub.public_header_files = "JGSSecurityKeyboard/**/JGSSecurityKeyboard.h"
+    sub.public_header_files = "JGSSecurityKeyboard/**/*JGSSecurityKeyboard.h"
 
     sub.dependency "JGSourceBase/Base"
     sub.dependency "JGSourceBase/Category/UIColor"

@@ -86,12 +86,13 @@
     self.accountInput.placeholder = @"安全键盘非加密输入";
     self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"自定义安全键盘"];
     self.accountInput.returnKeyType = (accountInputShow % 2 == 0 ? UIReturnKeyDone : UIReturnKeyNext);
+    self.accountInput.jg_enableHighlightedWhenTap = YES;
 
     self.secPwdInput = fields[2];
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
     self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil randomNumPad:arc4random() % 2 == 0];
-    [(JGSSecurityKeyboard *)self.secPwdInput.inputView setEnableHighlightedWhenTap:NO];
+    self.secPwdInput.jg_enableHighlightedWhenTap = NO;
     if (@available(iOS 11.0, *)) {
         self.secPwdInput.textContentType = UITextContentTypePassword;
     }
