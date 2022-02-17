@@ -22,7 +22,6 @@
 @interface JGSSecurityKeyboard ()
 
 @property (nonatomic, assign) JGSKeyboardOptions keyboardOptions;
-@property (nonatomic, assign) BOOL numberPadRandom; // 是否开启数字键盘随机顺序，默认开启
 @property (nonatomic, assign) BOOL symbolFullAngle; // 是否开启全角，默认关闭，支持全角时将支持全半角字符输入
 
 @property (nonatomic, assign) CGRect keyboardFrame;
@@ -100,7 +99,7 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
-        self.numberPadRandom = randomNum; // 数字键盘随机开关
+        textField.jg_randomNumPad = randomNum; // 数字键盘随机开关
         self.symbolFullAngle = fullAngle; // 字符键盘支持全角
         
         _textField = textField;
@@ -384,7 +383,6 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
-        _numberKeyboard.ramdomNum = self.numberPadRandom;
         _numberKeyboard.hidden = YES;
     }
     return _numberKeyboard;
@@ -398,7 +396,6 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
-        _numberKeyboard.ramdomNum = self.numberPadRandom;
         _idCardKeyboard.hidden = YES;
     }
     return _idCardKeyboard;

@@ -25,10 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启非数字键盘随机顺序，默认关闭
 //@property (nonatomic, assign) BOOL jg_randomPad;
-//
-///// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启数字键盘随机顺序，默认开启
-//@property (nonatomic, assign) BOOL jg_randomNumPad;
-//
+
+/// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启数字键盘随机顺序，默认开启
+@property (nonatomic, assign) BOOL jg_randomNumPad;
+
 ///// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启全角，默认关闭，支持全角时将支持全半角字符输入
 //@property (nonatomic, assign) BOOL jg_enableFullAngle;
 

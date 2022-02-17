@@ -43,7 +43,7 @@
     if (!_showNumbers) {
         
         NSArray<NSString *> *numbers = [@"1,2,3,4,5,6,7,8,9,0" componentsSeparatedByString:@","];
-        if (self.ramdomNum) {
+        if (self.textField.jg_randomNumPad) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
                     return [obj1 compare:obj2 options:kNilOptions];

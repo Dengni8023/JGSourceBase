@@ -109,7 +109,7 @@
     fields[4].placeholder = @"纯数字键盘";
     fields[4].inputView = [JGSSecurityKeyboard numberKeyboardWithTextField:fields[4] title:@"数字键盘" randomNumPad:(accountInputShow % 2 == 0)];
     fields[5].placeholder = @"身份证键盘";
-    fields[5].inputView = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘" randomNumPad:(accountInputShow % 2 == 0)];
+    fields[5].inputView = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘" randomNumPad:(accountInputShow % 2 == 1)];
 }
 
 #pragma mark - Action
