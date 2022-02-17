@@ -42,10 +42,27 @@
 - (NSArray<NSArray<NSString *> *> *)showLetters {
     
     if (!_showLetters) {
+        
+        NSArray<NSString *> *letters = @[
+            @"q", @"w", @"e", @"r", @"t", @"y", @"u", @"i", @"o", @"p",
+            @"a", @"s", @"d", @"f", @"g", @"h", @"j", @"k", @"l",
+            @"z", @"x", @"c", @"v", @"b", @"n", @"m",
+        ];
+        if (self.textField.jg_randomPad) {
+            
+            letters = [letters sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+        }
         _showLetters = @[
-            @[@"q", @"w", @"e", @"r", @"t", @"y", @"u", @"i", @"o", @"p"],
-            @[@"a", @"s", @"d", @"f", @"g", @"h", @"j", @"k", @"l"],
-            @[@"z", @"x", @"c", @"v", @"b", @"n", @"m"],
+            [letters subarrayWithRange:NSMakeRange(0, 10)],
+            [letters subarrayWithRange:NSMakeRange(10, 9)],
+            [letters subarrayWithRange:NSMakeRange(19, 7)],
         ];
     }
     return _showLetters;

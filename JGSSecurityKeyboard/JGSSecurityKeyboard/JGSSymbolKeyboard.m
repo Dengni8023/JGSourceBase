@@ -61,11 +61,39 @@
 - (NSArray<NSArray<NSString *> *> *)showHalfNumSyms {
     
     if (!_showHalfNumSyms) {
+        
+        NSArray<NSString *> *numbers = @[
+            @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0",
+        ];
+        NSArray<NSString *> *symbols = @[
+            @"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"“",
+            @".", @",", @"?", @"!", @"’",
+        ];
+        if (self.textField.jg_randomPad) {
+            
+            numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+            symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+        }
+        
         _showHalfNumSyms = @[
-                             @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"],
-                             @[@"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"“"],
-                             @[@".", @",", @"?", @"!", @"’"],
-                             ];
+            numbers,
+            [symbols subarrayWithRange:NSMakeRange(0, 10)],
+            [symbols subarrayWithRange:NSMakeRange(10, 5)],
+        ];
     }
     return _showHalfNumSyms;
 }
@@ -73,11 +101,29 @@
 - (NSArray<NSArray<NSString *> *> *)showHalfSymbols {
     
     if (!_showHalfSymbols) {
+        
+        NSArray<NSString *> *symbols = @[
+            @"[", @"]", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"=",
+            @"_", @"\\", @"|", @"~", @"<", @">", @"€", @"£", @"¥", @"•",
+            @".", @",", @"?", @"!", @"’",
+        ];
+        if (self.textField.jg_randomPad) {
+            
+            symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+        }
+        
         _showHalfSymbols = @[
-                             @[@"[", @"]", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"="],
-                             @[@"_", @"\\", @"|", @"~", @"<", @">", @"€", @"£", @"¥", @"•"],
-                             @[@".", @",", @"?", @"!", @"’"],
-                             ];
+            [symbols subarrayWithRange:NSMakeRange(0, 10)],
+            [symbols subarrayWithRange:NSMakeRange(10, 10)],
+            [symbols subarrayWithRange:NSMakeRange(20, 5)],
+        ];
     }
     return _showHalfSymbols;
 }
@@ -85,11 +131,39 @@
 - (NSArray<NSArray<NSString *> *> *)showFullNumSyms {
     
     if (!_showFullNumSyms) {
+        
+        NSArray<NSString *> *numbers = @[
+            @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0",
+        ];
+        NSArray<NSString *> *symbols = @[
+            @"-", @"/", @"：", @"；", @"（", @"）", @"¥", @"@", @"“", @"”",
+            @"。", @"，", @"、", @"？", @"！", @".",
+        ];
+        if (self.textField.jg_randomPad) {
+            
+            numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+            symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+        }
+        
         _showFullNumSyms = @[
-                             @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"],
-                             @[@"-", @"/", @"：", @"；", @"（", @"）", @"¥", @"@", @"“", @"”"],
-                             @[@"。", @"，", @"、", @"？", @"！", @"."],
-                             ];
+            numbers,
+            [symbols subarrayWithRange:NSMakeRange(0, 10)],
+            [symbols subarrayWithRange:NSMakeRange(10, 6)],
+        ];
     }
     return _showFullNumSyms;
 }
@@ -97,11 +171,29 @@
 - (NSArray<NSArray<NSString *> *> *)showFullSymbols {
     
     if (!_showFullSymbols) {
+        
+        NSArray<NSString *> *symbols = @[
+            @"【", @"】", @"｛", @"｝", @"#", @"%", @"^", @"*", @"+", @"=",
+            @"_", @"—", @"\\", @"｜", @"～", @"《", @"》", @"$", @"&", @"·",
+            @"…", @"，", @"^_^", @"？", @"！", @"’"
+        ];
+        if (self.textField.jg_randomPad) {
+            
+            symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                if (arc4random_uniform(2) == 1) {
+                    return [obj1 compare:obj2 options:kNilOptions];
+                }
+                else {
+                    return [obj2 compare:obj1 options:kNilOptions];
+                }
+            }];
+        }
+        
         _showFullSymbols = @[
-                             @[@"【", @"】", @"｛", @"｝", @"#", @"%", @"^", @"*", @"+", @"="],
-                             @[@"_", @"—", @"\\", @"｜", @"～", @"《", @"》", @"$", @"&", @"·"],
-                             @[@"…", @"，", @"^_^", @"？", @"！", @"’"],
-                             ];
+            [symbols subarrayWithRange:NSMakeRange(0, 10)],
+            [symbols subarrayWithRange:NSMakeRange(10, 10)],
+            [symbols subarrayWithRange:NSMakeRange(20, 6)],
+        ];
     }
     return _showFullSymbols;
 }

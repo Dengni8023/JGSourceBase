@@ -37,26 +37,41 @@
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title {
-    return [self keyboardWithTextField:textField title:title randomNumPad:YES];
+    return [[self alloc] initWithTextField:textField title:title options:kNilOptions];
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
-    return [self keyboardWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:NO];
+    textField.jg_randomNumPad = randomNum;
+    return [self keyboardWithTextField:textField title:title];
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle {
-    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:fullAngle options:kNilOptions];
+    textField.jg_randomNumPad = randomNum;
+    textField.jg_enableFullAngle = fullAngle;
+    return [self keyboardWithTextField:textField title:title];
+}
+
++ (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
+    return [[self alloc] initWithTextField:textField title:title options:JGSKeyboardOptionNumber];
 }
 
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
-    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:NO options:JGSKeyboardOptionNumber];
+    
+    textField.jg_randomNumPad = randomNum;
+    return [self numberKeyboardWithTextField:textField title:title];
+}
+
++ (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
+    return [[self alloc] initWithTextField:textField title:title options:JGSKeyboardOptionIDCard];
 }
 
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
-    return [[self alloc] initWithTextField:textField title:title randomNumPad:randomNum enableFullAngle:NO options:JGSKeyboardOptionIDCard];
+    
+    textField.jg_randomNumPad = randomNum;
+    return [self idCardKeyboardWithTextField:textField title:title];
 }
 
-- (instancetype)initWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle options:(JGSKeyboardOptions)options {
+- (instancetype)initWithTextField:(UITextField *)textField title:(NSString *)title options:(JGSKeyboardOptions)options {
     
     self = [super init];
     if (self) {
@@ -91,17 +106,13 @@
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
         
-        textField.jg_randomNumPad = randomNum; // 数字键盘随机开关
-        textField.jg_enableFullAngle = fullAngle; // 字符键盘支持全角
         _textField = textField;
-        
         _title = title;//.length > 0 ? title : self.textField.placeholder;
-        if (options != kNilOptions) {
-            _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
-        }
-        else {
+        _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
+        if (!_keyboardOptions) {
             _keyboardOptions = (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol);
             if (self.title.length > 0) {
+                // 有标题工具栏时，可从标题工具栏切换纯数字键盘
                 _keyboardOptions = (_keyboardOptions | JGSKeyboardOptionNumber);
             }
         }

@@ -23,8 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// textField.jg_securityOriginText = 原始内容
 @property (nullable, nonatomic, copy) NSString *jg_securityOriginText;
 
-///// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启非数字键盘随机顺序，默认关闭
-//@property (nonatomic, assign) BOOL jg_randomPad;
+/// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启非数字键盘随机顺序，默认关闭
+@property (nonatomic, assign) BOOL jg_randomPad;
 
 /// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启数字键盘随机顺序，默认开启
 @property (nonatomic, assign) BOOL jg_randomNumPad;
