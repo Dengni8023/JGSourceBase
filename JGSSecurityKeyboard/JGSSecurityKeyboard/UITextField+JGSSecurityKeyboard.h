@@ -29,13 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启数字键盘随机顺序，默认开启
 @property (nonatomic, assign) BOOL jg_randomNumPad;
 
-///// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启全角，默认关闭，支持全角时将支持全半角字符输入
-//@property (nonatomic, assign) BOOL jg_enableFullAngle;
+/// 对于使用 JGSSecurityKeyboard 安全键盘的输入框，是否开启全角，默认关闭，支持全角时将支持全半角字符输入
+@property (nonatomic, assign) BOOL jg_enableFullAngle;
 
 /// 键盘是否允许点击高亮，默认根据系统录屏状态判断，非录屏状态允许点击高亮，录屏状态不允许点击高亮
 /// 从安全角度考虑，系统录屏状态强制禁止点击高亮，此时忽略用户设置
 /// 非录屏状态下，外部设置优先
 @property (nonatomic, assign) BOOL jg_enableHighlightedWhenTap;
+
+// 右侧clear点击清空输入文本，不执行replace操作，需要检查记录的输入文本与文本框文本长度是否一致
+- (void)jg_checkClearInputChangeText;
 
 @end
 

@@ -12,18 +12,9 @@
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase.h"
 
-@interface UITextField (JGSSecurityKeyboard_Private)
-
-// 右侧clear点击清空输入文本，不执行replace操作，需要检查记录的输入文本与文本框文本长度是否一致
-- (void)jgsCheckClearInputChangeText;
-
-@end
-
 @interface JGSSecurityKeyboard ()
 
 @property (nonatomic, assign) JGSKeyboardOptions keyboardOptions;
-@property (nonatomic, assign) BOOL symbolFullAngle; // 是否开启全角，默认关闭，支持全角时将支持全半角字符输入
-
 @property (nonatomic, assign) CGRect keyboardFrame;
 
 @property (nonatomic, strong) JGSKeyboardToolbar *keyboardTool;
@@ -99,9 +90,9 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
-        textField.jg_randomNumPad = randomNum; // 数字键盘随机开关
-        self.symbolFullAngle = fullAngle; // 字符键盘支持全角
         
+        textField.jg_randomNumPad = randomNum; // 数字键盘随机开关
+        textField.jg_enableFullAngle = fullAngle; // 字符键盘支持全角
         _textField = textField;
         
         _title = title;//.length > 0 ? title : self.textField.placeholder;
@@ -136,7 +127,7 @@
 - (void)textFieldTextDidChange:(NSNotification *)noti {
     
     if ([noti.object isEqual:self.textField]) {
-        [self.textField jgsCheckClearInputChangeText];
+        [self.textField jg_checkClearInputChangeText];
     }
 }
 
@@ -369,7 +360,6 @@
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
-        _symbolKeyboard.showFullAngle = self.symbolFullAngle;
         _symbolKeyboard.hidden = YES;
     }
     return _symbolKeyboard;

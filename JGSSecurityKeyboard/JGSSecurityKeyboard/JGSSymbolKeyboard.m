@@ -49,10 +49,10 @@
         if (self.showHalfSymKeys == nil) {
             self.showHalfSymKeys = [self addShowKeys:self.showHalfSymbols containNum:NO halfAngle:YES hidden:YES];
         }
-        if (self.showFullAngle && self.showFullNumKeys == nil) {
+        if (self.textField.jg_enableFullAngle && self.showFullNumKeys == nil) {
             self.showFullNumKeys = [self addShowKeys:self.showFullNumSyms containNum:YES halfAngle:NO hidden:YES];
         }
-        if (self.showFullAngle && self.showFullSymKeys == nil) {
+        if (self.textField.jg_enableFullAngle && self.showFullSymKeys == nil) {
             self.showFullSymKeys = [self addShowKeys:self.showFullSymbols containNum:NO halfAngle:NO hidden:YES];
         }
     }
@@ -335,7 +335,7 @@
         CGFloat returnWidth = switchWidth * 2 + itemSpacing;
         CGFloat spaceX = minX + (switchWidth + itemSpacing) * 2;
         
-        if (self.showFullAngle) {
+        if (self.textField.jg_enableFullAngle) {
             
             // switch
             JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];

@@ -82,7 +82,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     return jg_securityOriginText.copy;
 }
 
-- (void)jgsCheckClearInputChangeText {
+- (void)jg_checkClearInputChangeText {
     
     // 点击clear、paste输入时发送UITextFieldTextDidChangeNotification通知，无其他回调
     // 因安全键盘输入时禁止选择、全选、复制、剪切，仅空白状态时允许粘贴

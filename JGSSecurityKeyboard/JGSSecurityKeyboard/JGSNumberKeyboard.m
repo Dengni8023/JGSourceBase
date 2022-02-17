@@ -125,7 +125,7 @@
     
     JGSWeakSelf
     NSMutableArray<NSArray<JGSKeyboardKey *> *> *tmpKeys = @[].mutableCopy;
-    [self.showNumbers enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
+    [keyTitles enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull line, NSUInteger lineIdx, BOOL * _Nonnull lineStop) {
         
         JGSStrongSelf
         CGFloat itemsTotalW = (itemWidth + itemSpacing) * line.count - itemSpacing;
