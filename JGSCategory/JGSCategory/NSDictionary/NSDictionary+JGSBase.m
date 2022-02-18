@@ -7,7 +7,7 @@
 //
 
 #import "NSDictionary+JGSBase.h"
-#import "JGSourceBase.h"
+#import "JGSBase.h"
 
 @implementation NSDictionary (JGSBase)
 

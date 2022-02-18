@@ -110,7 +110,7 @@ Pod::Spec.new do |spec|
   # spec.public_header_files = "Classes/**/*.h"
 
   spec.source_files = "#{spec.name}/*.{h,m}"
-  spec.public_header_files = "#{spec.name}*.h"
+  spec.public_header_files = "#{spec.name}/*.h"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -149,10 +149,6 @@ Pod::Spec.new do |spec|
   
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-
-  # spec.xcconfig     = {
-  #   "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"'",
-  # }
 
   # AlertController
   spec.subspec 'AlertController' do |sub|
@@ -236,10 +232,10 @@ Pod::Spec.new do |spec|
   
   # Device
   spec.subspec 'Device' do |sub|
-    sub.source_files = "JGSDevice/**/*.{h,m}"
-    sub.public_header_files = "JGSDevice/**/*.h"
+    sub.source_files = "JGSDevice/JGSDevice/*.{h,m}"
+    sub.public_header_files = "JGSDevice/JGSDevice/*.h"
 
-    sub.resources = "JGSDevice/**/*.json"
+    sub.resources = "JGSDevice/JGSDevice/*.json"
     
     sub.dependency "JGSourceBase/Reachability"
   end
@@ -286,7 +282,10 @@ Pod::Spec.new do |spec|
   # SecurityKeyboard
   spec.subspec 'SecurityKeyboard' do |sub|
     sub.source_files = "JGSSecurityKeyboard/**/*.{h,m}"
-    sub.public_header_files = "JGSSecurityKeyboard/**/*JGSSecurityKeyboard.h"
+    sub.public_header_files = [
+      "JGSSecurityKeyboard/**/**JGSSecurityKeyboard.h",
+      # "JGSSecurityKeyboard/**/UITextField+JGSSecurityKeyboard.h",
+    ]
 
     sub.dependency "JGSourceBase/Base"
     sub.dependency "JGSourceBase/Category/UIColor"
