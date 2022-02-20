@@ -104,78 +104,78 @@ post_install do |installer|
 end
 
 #### 以下为构建子 framework 包所需的依赖 ####
-# 为避免影响 Demo 项目的子依赖功能测试，默认屏蔽构建子 framework 相关依赖安装
 # 不需要构建子 framework 时，保持以下内容为注释状态
 # 如需构建子 framework ，取消以下内容的注释状态
+# 为避免影响 Demo 项目的子依赖功能测试，子功能测试请屏蔽构建子 framework 相关依赖安装
 
-# # JGSBase
-# target "JGSBase" do
+# JGSBase
+target "JGSBase" do
   
-#   # project
-#   project "JGSBase/JGSBase.xcodeproj"
-# end
+  # project
+  project "JGSBase/JGSBase.xcodeproj"
+end
 
-# # JGSCategory
-# target "JGSCategory" do
+# JGSCategory
+target "JGSCategory" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSCategory/JGSCategory.xcodeproj"
-# end
+  # project
+  project "JGSCategory/JGSCategory.xcodeproj"
+end
 
-# # JGSDataStorage
-# target "JGSDataStorage" do
+# JGSDataStorage
+target "JGSDataStorage" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSDataStorage/JGSDataStorage.xcodeproj"
-# end
+  # project
+  project "JGSDataStorage/JGSDataStorage.xcodeproj"
+end
 
-# # JGSDevice
-# target "JGSDevice" do
+# JGSDevice
+target "JGSDevice" do
   
-#   pod 'JGSourceBase/Reachability', :path => "."
+  pod 'JGSourceBase/Reachability', :path => "."
   
-#   # project
-#   project "JGSDevice/JGSDevice.xcodeproj"
-# end
+  # project
+  project "JGSDevice/JGSDevice.xcodeproj"
+end
 
-# # JGSEncryption
-# target "JGSEncryption" do
+# JGSEncryption
+target "JGSEncryption" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSEncryption/JGSEncryption.xcodeproj"
-# end
+  # project
+  project "JGSEncryption/JGSEncryption.xcodeproj"
+end
 
-# # JGSHUD
-# target "JGSHUD" do
+# JGSHUD
+target "JGSHUD" do
   
-#   pod 'MBProgressHUD'
-#   pod 'JGSourceBase/Category/UIColor', :path => '.'
+  pod 'MBProgressHUD'
+  pod 'JGSourceBase/Category/UIColor', :path => '.'
   
-#   # project
-#   project "JGSHUD/JGSHUD.xcodeproj"
-# end
+  # project
+  project "JGSHUD/JGSHUD.xcodeproj"
+end
 
-# # JGSReachability
-# target "JGSReachability" do
+# JGSReachability
+target "JGSReachability" do
   
-#   pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
   
-#   # project
-#   project "JGSReachability/JGSReachability.xcodeproj"
-# end
+  # project
+  project "JGSReachability/JGSReachability.xcodeproj"
+end
 
-# # JGSSecurityKeyboard
-# target "JGSSecurityKeyboard" do
+# JGSSecurityKeyboard
+target "JGSSecurityKeyboard" do
   
-#   pod 'JGSourceBase/Base', :path => "."
-#   pod 'JGSourceBase/Category/UIColor', :path => "."
+  pod 'JGSourceBase/Base', :path => "."
+  pod 'JGSourceBase/Category/UIColor', :path => "."
   
-#   # project
-#   project "JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj"
-# end
+  # project
+  project "JGSSecurityKeyboard/JGSSecurityKeyboard.xcodeproj"
+end

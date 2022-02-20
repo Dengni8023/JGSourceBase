@@ -11,6 +11,7 @@
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase.h"
+#import <objc/runtime.h>
 
 @interface JGSSecurityKeyboard ()
 
@@ -36,19 +37,37 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
++ (instancetype)keyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
+    return [[self alloc] initWithTextField:inputView title:title options:kNilOptions];
+}
+
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title {
     return [[self alloc] initWithTextField:textField title:title options:kNilOptions];
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
-    textField.jg_randomNumPad = randomNum;
-    return [self keyboardWithTextField:textField title:title];
+    
+    JGSSecurityKeyboard *instance = [self keyboardWithTextField:textField title:title];
+    if (instance) {
+        
+        instance.randomNumPad = randomNum;
+    }
+    return instance;
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle {
-    textField.jg_randomNumPad = randomNum;
-    textField.jg_enableFullAngle = fullAngle;
-    return [self keyboardWithTextField:textField title:title];
+    
+    JGSSecurityKeyboard *instance = [self keyboardWithTextField:textField title:title];
+    if (instance) {
+        
+        instance.randomNumPad = randomNum;
+        instance.enableFullAngle = fullAngle;
+    }
+    return instance;
+}
+
++ (instancetype)numberKeyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
+    return [[self alloc] initWithTextField:inputView title:title options:JGSKeyboardOptionNumber];
 }
 
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
@@ -57,8 +76,16 @@
 
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
     
-    textField.jg_randomNumPad = randomNum;
-    return [self numberKeyboardWithTextField:textField title:title];
+    JGSSecurityKeyboard *instance = [self numberKeyboardWithTextField:textField title:title];
+    if (instance) {
+        
+        instance.randomNumPad = randomNum;
+    }
+    return instance;
+}
+
++ (instancetype)idCardKeyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
+    return [[self alloc] initWithTextField:inputView title:title options:JGSKeyboardOptionIDCard];
 }
 
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
@@ -67,14 +94,26 @@
 
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
     
-    textField.jg_randomNumPad = randomNum;
-    return [self idCardKeyboardWithTextField:textField title:title];
+    JGSSecurityKeyboard *instance = [self idCardKeyboardWithTextField:textField title:title];
+    if (instance) {
+        
+        instance.randomNumPad = randomNum;
+    }
+    return instance;
 }
 
-- (instancetype)initWithTextField:(UITextField *)textField title:(NSString *)title options:(JGSKeyboardOptions)options {
+- (instancetype)initWithTextField:(id<UITextInput>)inputView title:(NSString *)title options:(JGSKeyboardOptions)options {
     
     self = [super init];
     if (self) {
+        
+        self.backgroundColor = JGSKeyboardBackgroundColor();
+        
+        _aesEncryptInputCharByChar = NO;
+        _randomPad = NO;
+        _randomNumPad = YES;
+        _enableFullAngle = NO;
+        _enableHighlightedWhenTap = YES;
         
         // clear、paste等处理
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
@@ -104,10 +143,11 @@
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
-        self.backgroundColor = JGSKeyboardBackgroundColor();
-        
-        _textField = textField;
         _title = title;//.length > 0 ? title : self.textField.placeholder;
+        if ([inputView isKindOfClass:[UITextField class]]) {
+            _textField = inputView;
+        }
+        
         _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
         if (!_keyboardOptions) {
             _keyboardOptions = (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol);
@@ -355,7 +395,7 @@
     
     if (!_letterKeyboard) {
         JGSWeakSelf
-        _letterKeyboard = [[JGSLetterKeyboard alloc] initWithFrame:self.keyboardFrame type:(JGSKeyboardTypeLetter) textField:self.textField keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
+        _letterKeyboard = [[JGSLetterKeyboard alloc] initWithFrame:self.keyboardFrame type:(JGSKeyboardTypeLetter) securityKeyboard:self keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
@@ -367,7 +407,7 @@
     
     if (!_symbolKeyboard) {
         JGSWeakSelf
-        _symbolKeyboard = [[JGSSymbolKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeSymbol textField:self.textField keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
+        _symbolKeyboard = [[JGSSymbolKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeSymbol securityKeyboard:self keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
@@ -380,7 +420,7 @@
     
     if (!_numberKeyboard) {
         JGSWeakSelf
-        _numberKeyboard = [[JGSNumberKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeNumber textField:self.textField keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
+        _numberKeyboard = [[JGSNumberKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeNumber securityKeyboard:self keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
@@ -393,7 +433,7 @@
     
     if (!_idCardKeyboard) {
         JGSWeakSelf
-        _idCardKeyboard = [[JGSNumberKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeIDCard textField:self.textField keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
+        _idCardKeyboard = [[JGSNumberKeyboard alloc] initWithFrame:self.keyboardFrame type:JGSKeyboardTypeIDCard securityKeyboard:self keyInput:^(JGSBaseKeyboard * _Nonnull kyboard, JGSKeyboardKey * _Nonnull key, JGSKeyboardKeyEvents keyEvent) {
             JGSStrongSelf
             [self keyboardKeyAction:kyboard key:key keyEvent:keyEvent];
         }];
@@ -555,6 +595,147 @@
     [self.textField resignFirstResponder];
 }
 
+#pragma mark - Property
+- (BOOL)enableHighlightedWhenTap {
+    
+    if ([[UIScreen mainScreen] isCaptured]) {
+        return NO;
+    }
+    
+    return _enableHighlightedWhenTap;
+}
+
 #pragma mark - End
+
+@end
+
+@implementation JGSSecurityKeyboard (UITextInput)
+
+static char kJGSSecurityKeyboardTextFieldAESIVKey; // AES 逐字符加密 iv
+static char kJGSSecurityKeyboardTextFieldAESKeyKey; // AES 逐字符加密 key
+static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
+
+#pragma mark - AES
+- (NSString *)aesBase64EncodeString:(NSString *)string {
+    
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
+    return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+
+- (NSString *)aesOperationIv {
+    
+    NSString *aesIv = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESIVKey);
+    if (aesIv.length > 0) {
+        return aesIv;
+    }
+    
+    NSInteger ivSize = kCCBlockSizeAES128;
+    NSString *originStr = [NSString stringWithFormat:@"%p-%@-%@", self, NSStringFromClass([self class]), [NSProcessInfo processInfo].processName];
+    // 最少两次Base64
+    NSString *base64 = [self aesBase64EncodeString:originStr];
+    do {
+        base64 = [self aesBase64EncodeString:base64];
+    } while (base64.length < ivSize);
+    
+    // sub(两次base64, 0, 16)
+    base64 = [base64 substringToIndex:ivSize];
+    aesIv = base64.copy;
+    
+    objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESIVKey, aesIv, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    //JGSLog(@"\nOri:\t%@\nIv:\t%@", originStr, aesIv);
+    return aesIv;
+}
+
+- (NSString *)aesOperationKey {
+    
+    NSString *aesKey = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESKeyKey);
+    if (aesKey.length > 0) {
+        return aesKey;
+    }
+    
+    NSInteger keySize = JGSSecurityKeyboardAESKeySize;
+    NSString *originStr = [NSString stringWithFormat:@"%p-%@-%@", self, NSStringFromClass([self class]), [NSProcessInfo processInfo].processName];
+    // 最少两次Base64
+    NSString *base64 = [self aesBase64EncodeString:originStr];
+    do {
+        base64 = [self aesBase64EncodeString:base64];
+    } while (base64.length < keySize);
+    
+    // reverse(sub(两次base64, 0, 16))
+    base64 = [base64 substringToIndex:keySize];
+    NSMutableString *key = [NSMutableString stringWithCapacity:base64.length];
+    for (NSInteger i = 0; i < base64.length; i++) {
+        [key insertString:[base64 substringWithRange:NSMakeRange(i, 1)] atIndex:0];
+    }
+    
+    aesKey = key.copy;
+    objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESKeyKey, aesKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    //JGSLog(@"\nOri:\t%@\nKey:\t%@", originStr, aesKey);
+    return aesKey;
+}
+
+- (NSString *)aesOperation:(CCOperation)operation text:(NSString *)text {
+    
+    if (text.length == 0) {
+        return nil;
+    }
+    
+    NSData *data = operation == kCCEncrypt ? [text dataUsingEncoding:NSUTF8StringEncoding] : [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    if (data.length == 0) {
+        return nil;
+    }
+    
+    NSString *key = [self aesOperationKey];
+    NSString *iv = [self aesOperationIv];
+    NSUInteger dataLength = data.length;
+    void const *contentBytes = data.bytes;
+    void const *keyBytes = [key dataUsingEncoding:NSUTF8StringEncoding].bytes;
+    
+    // 初始偏移向量，默认全置零，避免iv长度不符合规范情况导致无法解析
+    // 便宜向量长度为块大小 BlockSize
+    char ivBytes[kCCBlockSizeAES128 + 1];
+    memset(ivBytes, 0, sizeof(ivBytes));
+    [iv getCString:ivBytes maxLength:sizeof(ivBytes) encoding:NSUTF8StringEncoding];
+    
+    size_t operationSize = dataLength + kCCBlockSizeAES128; // 密文长度 <= 明文长度 + BlockSize
+    void *operationBytes = malloc(operationSize);
+    if (operationBytes == NULL) {
+        return nil;
+    }
+    
+    size_t actualOutSize = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(operation, kCCAlgorithmAES, kCCOptionPKCS7Padding, keyBytes, JGSSecurityKeyboardAESKeySize, ivBytes, contentBytes, dataLength, operationBytes, operationSize, &actualOutSize);
+    if (cryptStatus != kCCSuccess) {
+        
+        free(operationBytes); operationBytes = NULL;
+        return nil;
+    }
+    
+    // operationBytes 自动释放
+    NSData *aesData = [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+    if (aesData.length == 0) {
+        return nil;
+    }
+    
+    switch (operation) {
+        case kCCEncrypt: {
+            
+            // 加密Data不能直接转UTF8字符串，需使用base64编码
+            // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
+            return [aesData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        }
+            break;
+            
+        case kCCDecrypt: {
+            
+            // 解密Data不能直接转UTF8字符串，需使用base64解码
+            return [[NSString alloc] initWithData:aesData encoding:NSUTF8StringEncoding];
+        }
+            break;
+    }
+    
+    return nil;
+}
 
 @end

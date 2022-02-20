@@ -10,12 +10,14 @@
 #import <Masonry/Masonry.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
-@interface JGSKeyboardDemoViewController () <UITextFieldDelegate>
+@interface JGSKeyboardDemoViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITextField *normalInput;
 @property (nonatomic, strong) UITextField *accountInput;
 @property (nonatomic, strong) UITextField *secPwdInput;
 @property (nonatomic, strong) UITextField *secPwdFullInput;
+
+@property (nonatomic, strong) UITextView *secTextView;
 
 @end
 
@@ -49,6 +51,8 @@
 #pragma mark - View
 - (void)addViewElements {
     
+    static NSInteger accountInputShow = 0;
+    
     NSMutableArray<UITextField *> *fields = @[].mutableCopy;
     for (NSInteger i = 0; i < 6; i++) {
         
@@ -67,36 +71,61 @@
             make.height.mas_equalTo(36);
             make.left.right.mas_equalTo(self.scrollView).inset(28);
             make.top.mas_equalTo(self.scrollView).mas_offset(32 + 60 * i);
-            if (i == 5) {
-                make.bottom.mas_equalTo(self.scrollView.mas_bottom).inset(32);
-            }
+            //if (i == 5) {
+            //    make.bottom.mas_equalTo(self.scrollView.mas_bottom).inset(32);
+            //}
         }];
         
         [fields addObject:field];
     }
+    
+    _secTextView = [[UITextView alloc] init];
+    _secTextView.returnKeyType = (accountInputShow == 2 ? UIReturnKeyDone : UIReturnKeyNext);
+    _secTextView.keyboardType = UIKeyboardTypeDefault;
+    _secTextView.delegate = self;
+    _secTextView.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
+    _secTextView.layer.borderWidth = 1.f / [UIScreen mainScreen].scale;
+    _secTextView.layer.cornerRadius = 4.f;
+    [self.scrollView addSubview:_secTextView];
+    
+    //_secTextView.placeholder = @"安全键盘加密输入";
+    _secTextView.secureTextEntry = YES;
+    JGSSecurityKeyboard *secTextViewInputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil];
+    secTextViewInputView.randomPad = (accountInputShow % 2 == 1);
+    secTextViewInputView.randomNumPad = (accountInputShow % 2 == 0);
+    secTextViewInputView.enableHighlightedWhenTap = NO;
+    _secTextView.inputView = secTextViewInputView;
+    
+    [_secTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(60);
+        make.left.right.mas_equalTo(self.scrollView).inset(28);
+        make.top.mas_equalTo(self.scrollView).mas_offset(32 + 60 * 6);
+        make.bottom.mas_equalTo(self.scrollView.mas_bottom).inset(32);
+    }];
     
     // 键盘设置
     self.normalInput = fields[0];
     self.normalInput.keyboardType = arc4random() % 5 == 0 ? UIKeyboardTypeNumberPad : UIKeyboardTypeDefault;
     
     // 安全键盘设置
-    static NSInteger accountInputShow = 0;
     accountInputShow += 1;
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
-    self.accountInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"自定义安全键盘"];
     self.accountInput.returnKeyType = (accountInputShow % 2 == 0 ? UIReturnKeyDone : UIReturnKeyNext);
-    self.accountInput.jg_randomPad = (accountInputShow % 2 == 0);
-    self.accountInput.jg_randomNumPad = (accountInputShow % 2 == 1);
-    self.accountInput.jg_enableHighlightedWhenTap = YES;
+    JGSSecurityKeyboard *accountInputView = [JGSSecurityKeyboard keyboardWithTextField:self.accountInput title:@"自定义安全键盘"];
+    accountInputView.randomPad = (accountInputShow % 2 == 0);
+    accountInputView.randomNumPad = (accountInputShow % 2 == 1);
+    accountInputView.enableHighlightedWhenTap = YES;
+    self.accountInput.inputView = accountInputView;
     
     self.secPwdInput = fields[2];
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
-    self.secPwdInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil];
-    self.secPwdInput.jg_randomPad = (accountInputShow % 2 == 1);
-    self.secPwdInput.jg_randomNumPad = (accountInputShow % 2 == 0);
-    self.secPwdInput.jg_enableHighlightedWhenTap = NO;
+    JGSSecurityKeyboard *secPwdInputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil];
+    secPwdInputView.randomPad = (accountInputShow % 2 == 1);
+    secPwdInputView.randomNumPad = (accountInputShow % 2 == 0);
+    secPwdInputView.enableHighlightedWhenTap = NO;
+    self.secPwdInput.inputView = secPwdInputView;
     if (@available(iOS 11.0, *)) {
         self.secPwdInput.textContentType = UITextContentTypePassword;
     }
@@ -104,21 +133,25 @@
     self.secPwdFullInput = fields[3];
     self.secPwdFullInput.placeholder = @"安全键盘加密输入-全角";
     self.secPwdFullInput.secureTextEntry = YES;
-    self.secPwdFullInput.jg_aesEncryptInputCharByChar = YES;
-    self.secPwdFullInput.inputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:@"安全键盘加密输入-全角"];
-    self.secPwdFullInput.jg_randomPad = (accountInputShow % 2 == 0);
-    self.secPwdFullInput.jg_randomNumPad = (accountInputShow % 2 == 1);
-    self.secPwdFullInput.jg_enableFullAngle = YES;
+    JGSSecurityKeyboard *secPwdFullInputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdFullInput title:@"安全键盘加密输入-全角"];
+    secPwdFullInputView.aesEncryptInputCharByChar = YES;
+    secPwdFullInputView.randomPad = (accountInputShow % 2 == 0);
+    secPwdFullInputView.randomNumPad = (accountInputShow % 2 == 1);
+    secPwdFullInputView.enableFullAngle = YES;
+    self.secPwdFullInput.inputView = secPwdFullInputView;
     if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
     }
 
     fields[4].placeholder = @"纯数字键盘";
-    fields[4].inputView = [JGSSecurityKeyboard numberKeyboardWithTextField:fields[4] title:@"数字键盘"];
-    fields[4].jg_randomNumPad = (accountInputShow % 2 == 0);
+    JGSSecurityKeyboard *inputView4 = [JGSSecurityKeyboard numberKeyboardWithTextField:fields[4] title:@"数字键盘"];
+    inputView4.randomNumPad = (accountInputShow % 2 == 0);
+    fields[4].inputView = inputView4;
+    
     fields[5].placeholder = @"身份证键盘";
-    fields[5].inputView = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘"];
-    fields[5].jg_randomNumPad = (accountInputShow % 2 == 1);
+    JGSSecurityKeyboard *inputView5 = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘"];
+    inputView5.randomNumPad = (accountInputShow % 2 == 1);
+    fields[5].inputView = inputView5;
 }
 
 #pragma mark - Action
@@ -128,6 +161,7 @@
     self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
     self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
     self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;
+    self.secTextView.secureTextEntry = !self.secTextView.secureTextEntry;
 }
 
 #pragma mark - UITextFieldDelegate

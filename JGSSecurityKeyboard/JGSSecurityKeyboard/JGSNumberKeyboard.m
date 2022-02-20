@@ -19,9 +19,9 @@
 @implementation JGSNumberKeyboard
 
 #pragma mark - Life Cycle
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
-    self = [super initWithFrame:frame type:type textField:textField keyInput:keyInput];
+    self = [super initWithFrame:frame type:type securityKeyboard:securityKeyboard keyInput:keyInput];
     if (self) {
         
     }
@@ -43,7 +43,7 @@
     if (!_showNumbers) {
         
         NSArray<NSString *> *numbers = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"];
-        if (self.textField.jg_randomNumPad) {
+        if (self.securityKeyboard.randomNumPad) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
                     return [obj1 compare:obj2 options:kNilOptions];

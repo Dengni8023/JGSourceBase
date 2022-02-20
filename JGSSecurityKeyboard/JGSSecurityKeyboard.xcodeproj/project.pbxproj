@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D442508427BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D442508227BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D442508527BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D442508327BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.m */; };
+		D42509CA27C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D42509C827C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D42509CB27C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D42509C927C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.m */; };
 		D47C3C5A27B4F96500521310 /* JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C5827B4F96500521310 /* JGSSecurityKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3C6127B4FBC600521310 /* JGSSecurityKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C6027B4FBC600521310 /* JGSSecurityKeyboard.m */; };
 		D47C3C6E27B4FC6400521310 /* JGSBaseKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C6227B4FC6400521310 /* JGSBaseKeyboard.h */; };
@@ -30,8 +30,8 @@
 		13E5FC3FB96647D906F1DE99 /* libPods-JGSSecurityKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSSecurityKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D44955CAE822A62167E16E /* Pods-JGSSecurityKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSSecurityKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-JGSSecurityKeyboard/Pods-JGSSecurityKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		79EA1695453CB79FC24A3EF1 /* Pods-JGSSecurityKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSSecurityKeyboard.release.xcconfig"; path = "Target Support Files/Pods-JGSSecurityKeyboard/Pods-JGSSecurityKeyboard.release.xcconfig"; sourceTree = "<group>"; };
-		D442508227BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+JGSSecurityKeyboard.h"; sourceTree = "<group>"; };
-		D442508327BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JGSSecurityKeyboard.m"; sourceTree = "<group>"; };
+		D42509C827C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextInput+JGSSecurityKeyboard.h"; sourceTree = "<group>"; };
+		D42509C927C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextInput+JGSSecurityKeyboard.m"; sourceTree = "<group>"; };
 		D47C3C5527B4F96500521310 /* JGSSecurityKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSSecurityKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47C3C5827B4F96500521310 /* JGSSecurityKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSSecurityKeyboard.h; sourceTree = "<group>"; };
 		D47C3C5927B4F96500521310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 				D47C3C6027B4FBC600521310 /* JGSSecurityKeyboard.m */,
 				D47C3C6327B4FC6400521310 /* JGSSymbolKeyboard.h */,
 				D47C3C6C27B4FC6400521310 /* JGSSymbolKeyboard.m */,
-				D442508227BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.h */,
-				D442508327BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.m */,
+				D42509C827C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.h */,
+				D42509C927C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.m */,
 			);
 			path = JGSSecurityKeyboard;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			files = (
 				D47C3C6F27B4FC6400521310 /* JGSSymbolKeyboard.h in Headers */,
 				D47C3C7627B4FC6400521310 /* JGSKeyboardToolbar.h in Headers */,
-				D442508427BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.h in Headers */,
+				D42509CA27C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.h in Headers */,
 				D47C3C5A27B4F96500521310 /* JGSSecurityKeyboard.h in Headers */,
 				D47C3C7127B4FC6400521310 /* JGSKeyboardConstants.h in Headers */,
 				D47C3C7227B4FC6400521310 /* JGSLetterKeyboard.h in Headers */,
@@ -255,13 +255,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D47C3C6127B4FBC600521310 /* JGSSecurityKeyboard.m in Sources */,
-				D442508527BDEEEA00DD5B9F /* UITextField+JGSSecurityKeyboard.m in Sources */,
 				D47C3C7027B4FC6400521310 /* JGSKeyboardToolbar.m in Sources */,
 				D47C3C7327B4FC6400521310 /* JGSKeyboardConstants.m in Sources */,
 				D47C3C7827B4FC6400521310 /* JGSSymbolKeyboard.m in Sources */,
 				D47C3C7927B4FC6400521310 /* JGSBaseKeyboard.m in Sources */,
 				D47C3C7727B4FC6400521310 /* JGSNumberKeyboard.m in Sources */,
 				D47C3C7427B4FC6400521310 /* JGSLetterKeyboard.m in Sources */,
+				D42509CB27C292E200BCB62F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

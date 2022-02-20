@@ -20,9 +20,9 @@
 @implementation JGSLetterKeyboard
 
 #pragma mark - Life Cycle
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
-    self = [super initWithFrame:frame type:type textField:textField keyInput:keyInput];
+    self = [super initWithFrame:frame type:type securityKeyboard:securityKeyboard keyInput:keyInput];
     if (self) {
         
     }
@@ -48,7 +48,7 @@
             @"a", @"s", @"d", @"f", @"g", @"h", @"j", @"k", @"l",
             @"z", @"x", @"c", @"v", @"b", @"n", @"m",
         ];
-        if (self.textField.jg_randomPad) {
+        if (self.securityKeyboard.randomPad) {
             
             letters = [letters sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {

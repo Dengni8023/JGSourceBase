@@ -66,7 +66,7 @@
 - (UIColor *)highlightedBgColor {
     
     JGSBaseKeyboard *keyboard = [self.superview isKindOfClass:[JGSBaseKeyboard class]] ? (JGSBaseKeyboard *)self.superview : nil;
-    if (keyboard.textField.jg_enableHighlightedWhenTap) {
+    if (keyboard.securityKeyboard.enableHighlightedWhenTap) {
         return self.type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyFuncColor() : JGSKeyboardKeyInputColor();
     }
     else {
@@ -363,15 +363,15 @@
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
     self = [super initWithFrame:frame];
     if (self) {
         
-        _textField = textField;
+        _securityKeyboard = securityKeyboard;
         _type = type;
         _title = JGSKeyboardTitleForType(type);
-        _returnKeyTitle = JGSKeyboardReturnTitleForType(textField.returnKeyType);
+        _returnKeyTitle = JGSKeyboardReturnTitleForType(securityKeyboard.textField.returnKeyType);
         _keyInput = keyInput;
         
         _keyboardWidth = CGRectGetWidth(frame);

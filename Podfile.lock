@@ -50,15 +50,21 @@ PODS:
     - JGSourceBase/Base
     - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.6)
   - JGSourceBase (from `.`)
+  - JGSourceBase/Base (from `.`)
+  - JGSourceBase/Category/UIColor (from `.`)
+  - JGSourceBase/Reachability (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+  - MBProgressHUD
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManager
+    - MBProgressHUD
 
 EXTERNAL SOURCES:
   JGSourceBase:
@@ -76,7 +82,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
   JGSourceBase: 14ad9fecfd40fa150c9cdc0c760495c56d167c5c
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 8418b1d73e489ffde8767cb261a69db8538197e2
+PODFILE CHECKSUM: 165aa6cc5f2e5bbdbc8e1a6489fd323964f58c9b
 
 COCOAPODS: 1.10.1

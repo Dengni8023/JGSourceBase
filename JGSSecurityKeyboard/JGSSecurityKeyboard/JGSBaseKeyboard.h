@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JGSKeyboardToolbar.h"
-#import "UITextField+JGSSecurityKeyboard.h"
+#import "JGSSecurityKeyboard.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSBaseKeyboard : UIView
 
-@property (nonatomic, weak, readonly) UITextField *textField; // 输入框
+@property (nonatomic, weak, readonly) JGSSecurityKeyboard *securityKeyboard; // 输入框
 
 @property (nonatomic, assign, readonly) JGSKeyboardType type;
 @property (nonatomic, copy, readonly) NSString *title;
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent))keyInput;
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard *kyboard, JGSKeyboardKey *key, JGSKeyboardKeyEvents keyEvent))keyInput;
 
 /**
  回调通过调用super在父类中处理

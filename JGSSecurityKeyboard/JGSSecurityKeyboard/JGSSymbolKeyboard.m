@@ -28,9 +28,9 @@
 @implementation JGSSymbolKeyboard
 
 #pragma mark - Life Cycle
-- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type textField:(UITextField *)textField keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
+- (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {
     
-    self = [super initWithFrame:frame type:type textField:textField keyInput:keyInput];
+    self = [super initWithFrame:frame type:type securityKeyboard:securityKeyboard keyInput:keyInput];
     if (self) {
         
     }
@@ -49,10 +49,10 @@
         if (self.showHalfSymKeys == nil) {
             self.showHalfSymKeys = [self addShowKeys:self.showHalfSymbols containNum:NO halfAngle:YES hidden:YES];
         }
-        if (self.textField.jg_enableFullAngle && self.showFullNumKeys == nil) {
+        if (self.securityKeyboard.enableFullAngle && self.showFullNumKeys == nil) {
             self.showFullNumKeys = [self addShowKeys:self.showFullNumSyms containNum:YES halfAngle:NO hidden:YES];
         }
-        if (self.textField.jg_enableFullAngle && self.showFullSymKeys == nil) {
+        if (self.securityKeyboard.enableFullAngle && self.showFullSymKeys == nil) {
             self.showFullSymKeys = [self addShowKeys:self.showFullSymbols containNum:NO halfAngle:NO hidden:YES];
         }
     }
@@ -69,7 +69,7 @@
             @"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"“",
             @".", @",", @"?", @"!", @"’",
         ];
-        if (self.textField.jg_randomPad) {
+        if (self.securityKeyboard.randomPad) {
             
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
@@ -107,7 +107,7 @@
             @"_", @"\\", @"|", @"~", @"<", @">", @"€", @"£", @"¥", @"•",
             @".", @",", @"?", @"!", @"’",
         ];
-        if (self.textField.jg_randomPad) {
+        if (self.securityKeyboard.randomPad) {
             
             symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
@@ -139,7 +139,7 @@
             @"-", @"/", @"：", @"；", @"（", @"）", @"¥", @"@", @"“", @"”",
             @"。", @"，", @"、", @"？", @"！", @".",
         ];
-        if (self.textField.jg_randomPad) {
+        if (self.securityKeyboard.randomPad) {
             
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
@@ -177,7 +177,7 @@
             @"_", @"—", @"\\", @"｜", @"～", @"《", @"》", @"$", @"&", @"·",
             @"…", @"，", @"^_^", @"？", @"！", @"’"
         ];
-        if (self.textField.jg_randomPad) {
+        if (self.securityKeyboard.randomPad) {
             
             symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
@@ -427,7 +427,7 @@
         CGFloat returnWidth = switchWidth * 2 + itemSpacing;
         CGFloat spaceX = minX + (switchWidth + itemSpacing) * 2;
         
-        if (self.textField.jg_enableFullAngle) {
+        if (self.securityKeyboard.enableFullAngle) {
             
             // switch
             JGSKeyboardKey *switchBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeSwitch2Letter text:JGSKeyboardTitleLetters frame:CGRectMake(minX, lineY, switchWidth, itemHeight)];
