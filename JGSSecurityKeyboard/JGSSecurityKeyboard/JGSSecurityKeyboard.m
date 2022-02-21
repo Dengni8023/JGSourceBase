@@ -37,17 +37,26 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-+ (instancetype)keyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
-    return [[self alloc] initWithTextField:inputView title:title options:kNilOptions];
++ (instancetype)keyboardWithTextInput:(id<JGSSecurityKeyboardTextInput>)textInput title:(NSString *)title {
+    return [[self alloc] initWithTextInput:textInput title:title options:kNilOptions];
 }
 
++ (instancetype)numberKeyboardWithTextInput:(id<JGSSecurityKeyboardTextInput>)textInput title:(NSString *)title {
+    return [[self alloc] initWithTextInput:textInput title:title options:JGSKeyboardOptionNumber];
+}
+
++ (instancetype)idCardKeyboardWithTextInput:(id<JGSSecurityKeyboardTextInput>)textInput title:(NSString *)title {
+    return [[self alloc] initWithTextInput:textInput title:title options:JGSKeyboardOptionIDCard];
+}
+
+#pragma mark - Deprecated
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title {
-    return [[self alloc] initWithTextField:textField title:title options:kNilOptions];
+    return [self keyboardWithTextInput:textField title:title];
 }
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
     
-    JGSSecurityKeyboard *instance = [self keyboardWithTextField:textField title:title];
+    JGSSecurityKeyboard *instance = [self keyboardWithTextInput:textField title:title];
     if (instance) {
         
         instance.randomNumPad = randomNum;
@@ -57,7 +66,7 @@
 
 + (instancetype)keyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle {
     
-    JGSSecurityKeyboard *instance = [self keyboardWithTextField:textField title:title];
+    JGSSecurityKeyboard *instance = [self keyboardWithTextInput:textField title:title];
     if (instance) {
         
         instance.randomNumPad = randomNum;
@@ -66,12 +75,8 @@
     return instance;
 }
 
-+ (instancetype)numberKeyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
-    return [[self alloc] initWithTextField:inputView title:title options:JGSKeyboardOptionNumber];
-}
-
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
-    return [[self alloc] initWithTextField:textField title:title options:JGSKeyboardOptionNumber];
+    return [self numberKeyboardWithTextInput:textField title:title];
 }
 
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
@@ -84,17 +89,13 @@
     return instance;
 }
 
-+ (instancetype)idCardKeyboardWithInputView:(id<UITextInput>)inputView title:(NSString *)title {
-    return [[self alloc] initWithTextField:inputView title:title options:JGSKeyboardOptionIDCard];
-}
-
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title {
-    return [[self alloc] initWithTextField:textField title:title options:JGSKeyboardOptionIDCard];
+    return [self idCardKeyboardWithTextInput:textField title:title];
 }
 
 + (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(NSString *)title randomNumPad:(BOOL)randomNum {
     
-    JGSSecurityKeyboard *instance = [self idCardKeyboardWithTextField:textField title:title];
+    JGSSecurityKeyboard *instance = [self idCardKeyboardWithTextInput:textField title:title];
     if (instance) {
         
         instance.randomNumPad = randomNum;
@@ -102,7 +103,8 @@
     return instance;
 }
 
-- (instancetype)initWithTextField:(id<UITextInput>)inputView title:(NSString *)title options:(JGSKeyboardOptions)options {
+#pragma mark - init
+- (instancetype)initWithTextInput:(id<JGSSecurityKeyboardTextInput>)textInput title:(NSString *)title options:(JGSKeyboardOptions)options {
     
     self = [super init];
     if (self) {
@@ -115,38 +117,22 @@
         _enableFullAngle = NO;
         _enableHighlightedWhenTap = YES;
         
-        // clear、paste等处理
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+        // UITextField: clear、paste等处理
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+        // UITextView: clear、paste等处理
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputTextDidChange:) name:UITextViewTextDidChangeNotification object:nil];
         
         // 应用方向变化等导致键盘大小变化处理，考虑通知接收频率、及性能问题
         // 仅监听 UIKeyboardWillChangeFrameNotification 即可实现修改键盘高度操作
-        // 通知执行顺序大概（键盘高度不实际更新是存在差异情况）如下：
+        // 通知执行顺序大概（键盘高度不实际更新是存在差异情况）如下，如在收到通知后更新键盘高度，部分通知会重复执行：
         // 1、UIApplicationDidChangeStatusBarOrientationNotification：应用转屏后执行一次，最先执行
         // 2、UIKeyboardWillChangeFrameNotification：键盘弹出、应用转屏均会执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行一次
         // 3、UIKeyboardDidChangeFrameNotification：与keyboardWillChangeFrame配对执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行两次
         // 4、UIKeyboardWillShowNotification：键盘弹出、应用转屏均会执行，如果收到通知不进行键盘高度更新，则仅执行一次，每更新一次则会重复执行一次
-        
-        // 经测试：
-        // 1、在键盘高度不实际更新（调用更新方法，但是键盘实际高度不变）的情况下 UIKeyboardWillShowNotification 执行顺序在 UIKeyboardDidChangeFrameNotification 之后
-        // 2、其他情况 UIKeyboardWillShowNotification、UIKeyboardDidChangeFrameNotification 执行顺序和高度更新的时机存在关联，可自行测试
-        
-        // 收到 UIKeyboardWillChangeFrameNotification、UIKeyboardWillShowNotification、UIKeyboardDidChangeFrameNotification 时：
-        // 1、需要判断当前输入框是否有焦点，多个输入框同时存在时，系统通知可能多次发送
-        // 2、每个通知处理方法均可执行键盘高度更新，UIKeyboardDidChangeFrameNotification 更新则会重复更新键盘高度，不建议在此处更新
-        // 3、UIKeyboardWillShowNotification 通知中更新高度，则需要待转屏动画执行结束后键盘高度更新才会执行
-        // 综上，键盘高度更新在 UIKeyboardWillChangeFrameNotification 中进行最合适
-        
-        // 转屏时 UIKeyboardWillShowNotification 通知首次执行在 UIKeyboardDidChangeFrameNotification 通知之后
-        // 如仅在UIKeyboardWillShowNotification更新键盘高度，键盘转屏动画完成之后才会执行键盘高度更新操作，键盘高度变化不流畅
-        // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
         
         _title = title;//.length > 0 ? title : self.textField.placeholder;
-        if ([inputView isKindOfClass:[UITextField class]]) {
-            _textField = inputView;
-        }
+        _textInput = textInput;
         
         _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
         if (!_keyboardOptions) {
@@ -175,50 +161,17 @@
 }
 
 #pragma mark - Notification
-- (void)textFieldTextDidChange:(NSNotification *)noti {
+- (void)textInputTextDidChange:(NSNotification *)noti {
     
-    if ([noti.object isEqual:self.textField]) {
-        [self.textField jg_checkClearInputChangeText];
+    if ([noti.object isEqual:self.textInput]) {
+        [self.textInput jg_textInputTextDidChange];
     }
-}
-
-- (void)applicationDidChangeStatusBarOrientation:(NSNotification *)noti {
-    if (!self.textField.isFirstResponder) {
-        return;
-    }
-    
-    //JGSLog();
-    //[self updateHeightConstraints];
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)noti {
-    if (!self.textField.isFirstResponder) {
+    if (!self.textInput.isFirstResponder && self.textInput) {
         return;
     }
-    
-    //JGSLog();
-    [self updateHeightConstraints];
-}
-
-- (void)keyboardWillShow:(NSNotification *)noti {
-    if (!self.textField.isFirstResponder) {
-        return;
-    }
-    
-    //JGSLog();
-    //[self updateHeightConstraints];
-}
-
-- (void)keyboardDidChangeFrame:(NSNotification *)noti {
-    if (!self.textField.isFirstResponder) {
-        return;
-    }
-    
-    //JGSLog();
-    //[self updateHeightConstraints];
-}
-
-- (void)updateHeightConstraints {
     
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
@@ -240,9 +193,6 @@
     [self.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         if ([obj.firstItem isEqual:self] && obj.firstAttribute == NSLayoutAttributeHeight && obj.secondItem == nil) {
-            // 在文本框第一次开始编辑收到通知 UITextFieldTextDidBeginEditingNotification 时，键盘高度约束尚未添加
-            // 此时无法执行高度更新，即使进行更新操作，也不会执行到此处，因此更新无效
-            // 首次高度更新必须在收到通知 UIKeyboardWillShowNotification 时进行
             // JGSLog(@"Update Height");
             obj.constant = keyboardHeight;
             *stop = YES;
@@ -537,49 +487,11 @@
 
 - (void)keyboardInputText:(NSString *)text {
     
-    text = text ?: @"";
-    if (text.length == 0 && self.textField.text.length == 0) {
-        return;
-    }
-    
-    UITextRange *selectedRange = self.textField.selectedTextRange;
-    if (!selectedRange) {
-        return;
-    }
-    
-    NSRange editRange = NSMakeRange(self.textField.text.length, 0);
-    UITextPosition *position = [self.textField positionFromPosition:selectedRange.start offset:0];
-    UITextPosition *beginPos = [self.textField beginningOfDocument];
-    editRange.location = [self.textField offsetFromPosition:beginPos toPosition:position];
-    editRange.length = [self.textField offsetFromPosition:selectedRange.start toPosition:selectedRange.end];
-    
-    if ([self.textField.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] &&
-        ![self.textField.delegate textField:self.textField shouldChangeCharactersInRange:editRange replacementString:text]) {
-        return;
-    }
-    
-    if (editRange.length > 0 || text.length > 0) {
-        [self.textField replaceRange:selectedRange withText:text];
-    }
-    else {
-        UITextPosition *delStart = [self.textField positionFromPosition:selectedRange.start offset:-1];
-        UITextRange *delTextRange = [self.textField textRangeFromPosition:delStart toPosition:selectedRange.start];
-        [self.textField replaceRange:delTextRange withText:text];
-    }
+    [self.textInput jg_keyboardInputText:text];
 }
 
 - (void)keyboardInputEnter:(JGSKeyboardKey *)sender {
-    
-    if (self.textField.returnKeyType != UIReturnKeyNext) {
-        [self.textField resignFirstResponder];
-    }
-    
-    if ([self.textField.delegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
-        [self.textField.delegate textFieldShouldReturn:self.textField];
-    }
-    else {
-        [self.textField resignFirstResponder];
-    }
+    [self.textInput jg_keyboardDidInputReturnKey];
 }
 
 - (void)switchKeyboardType:(JGSKeyboardToolbarItem *)sender {
@@ -592,7 +504,7 @@
 }
 
 - (void)completeTextInput:(JGSKeyboardToolbarItem *)sender {
-    [self.textField resignFirstResponder];
+    [self.textInput resignFirstResponder];
 }
 
 #pragma mark - Property
@@ -603,6 +515,10 @@
     }
     
     return _enableHighlightedWhenTap;
+}
+
+- (UITextField *)textField  {
+    return [self.textInput isKindOfClass:[UITextField class]] ? (UITextField *)self.textInput : nil;
 }
 
 #pragma mark - End

@@ -37,6 +37,13 @@
         UITextField *textField = (UITextField *)note.object;
         JGSDemoShowConsoleLog(@"%@, %@", textField.text, textField.jg_securityOriginText);
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextViewTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        
+        UITextView *textView = (UITextView *)note.object;
+        JGSDemoShowConsoleLog(@"%@", textView.text);
+        JGSDemoShowConsoleLog(@"%@, %@", textView.text, textView.jg_securityOriginText);
+    }];
 #endif
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"小眼睛" style:UIBarButtonItemStylePlain target:self action:@selector(switchTextfieldSecurityEntry:)];
@@ -80,7 +87,9 @@
     }
     
     _secTextView = [[UITextView alloc] init];
-    _secTextView.returnKeyType = (accountInputShow == 2 ? UIReturnKeyDone : UIReturnKeyNext);
+    _secTextView.font = fields.firstObject.font;
+    _secTextView.returnKeyType = (accountInputShow % 2 == 1 ? UIReturnKeyDone : UIReturnKeyNext);
+    _secTextView.clearsOnInsertion = accountInputShow % 2 == 1;
     _secTextView.keyboardType = UIKeyboardTypeDefault;
     _secTextView.delegate = self;
     _secTextView.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
@@ -90,7 +99,7 @@
     
     //_secTextView.placeholder = @"安全键盘加密输入";
     _secTextView.secureTextEntry = YES;
-    JGSSecurityKeyboard *secTextViewInputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil];
+    JGSSecurityKeyboard *secTextViewInputView = [JGSSecurityKeyboard keyboardWithTextInput:self.secTextView title:nil];
     secTextViewInputView.randomPad = (accountInputShow % 2 == 1);
     secTextViewInputView.randomNumPad = (accountInputShow % 2 == 0);
     secTextViewInputView.enableHighlightedWhenTap = NO;
@@ -204,6 +213,33 @@
     else {
         [textField resignFirstResponder];
     }
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    if ([textView.inputView isKindOfClass:[JGSSecurityKeyboard class]] && [(JGSSecurityKeyboard *)textView.inputView title].length > 0) {
+        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if ([textView.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        JGSDemoShowConsoleLog(@"%@", textView.text);
+        JGSDemoShowConsoleLog(@"%@ -> (%@)", NSStringFromRange(range), text);
+    }
+    
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    
+    if ([textView.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+    }
+    
     return YES;
 }
 

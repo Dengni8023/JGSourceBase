@@ -371,7 +371,7 @@
         _securityKeyboard = securityKeyboard;
         _type = type;
         _title = JGSKeyboardTitleForType(type);
-        _returnKeyTitle = JGSKeyboardReturnTitleForType(securityKeyboard.textField.returnKeyType);
+        _returnKeyTitle = JGSKeyboardReturnTitleForType(securityKeyboard.textInput.returnKeyType);
         _keyInput = keyInput;
         
         _keyboardWidth = CGRectGetWidth(frame);
