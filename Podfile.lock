@@ -1,52 +1,52 @@
 PODS:
   - IQKeyboardManager (6.5.9)
-  - JGSourceBase (1.2.3):
-    - JGSourceBase/Base (= 1.2.3)
-    - JGSourceBase/Category (= 1.2.3)
-    - JGSourceBase/DataStorage (= 1.2.3)
-    - JGSourceBase/Device (= 1.2.3)
-    - JGSourceBase/Encryption (= 1.2.3)
-    - JGSourceBase/Reachability (= 1.2.3)
-    - JGSourceBase/SecurityKeyboard (= 1.2.3)
-  - JGSourceBase/Base (1.2.3)
-  - JGSourceBase/Category (1.2.3):
+  - JGSourceBase (1.3.0):
+    - JGSourceBase/Base (= 1.3.0)
+    - JGSourceBase/Category (= 1.3.0)
+    - JGSourceBase/DataStorage (= 1.3.0)
+    - JGSourceBase/Device (= 1.3.0)
+    - JGSourceBase/Encryption (= 1.3.0)
+    - JGSourceBase/Reachability (= 1.3.0)
+    - JGSourceBase/SecurityKeyboard (= 1.3.0)
+  - JGSourceBase/Base (1.3.0)
+  - JGSourceBase/Category (1.3.0):
     - JGSourceBase/Base
-    - JGSourceBase/Category/NSDate (= 1.2.3)
-    - JGSourceBase/Category/NSDictionary (= 1.2.3)
-    - JGSourceBase/Category/NSObject (= 1.2.3)
-    - JGSourceBase/Category/NSString (= 1.2.3)
-    - JGSourceBase/Category/NSURL (= 1.2.3)
-    - JGSourceBase/Category/UIAlertController (= 1.2.3)
-    - JGSourceBase/Category/UIApplication (= 1.2.3)
-    - JGSourceBase/Category/UIColor (= 1.2.3)
-    - JGSourceBase/Category/UIImage (= 1.2.3)
-  - JGSourceBase/Category/NSDate (1.2.3):
+    - JGSourceBase/Category/NSDate (= 1.3.0)
+    - JGSourceBase/Category/NSDictionary (= 1.3.0)
+    - JGSourceBase/Category/NSObject (= 1.3.0)
+    - JGSourceBase/Category/NSString (= 1.3.0)
+    - JGSourceBase/Category/NSURL (= 1.3.0)
+    - JGSourceBase/Category/UIAlertController (= 1.3.0)
+    - JGSourceBase/Category/UIApplication (= 1.3.0)
+    - JGSourceBase/Category/UIColor (= 1.3.0)
+    - JGSourceBase/Category/UIImage (= 1.3.0)
+  - JGSourceBase/Category/NSDate (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSDictionary (1.2.3):
+  - JGSourceBase/Category/NSDictionary (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSObject (1.2.3):
+  - JGSourceBase/Category/NSObject (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSString (1.2.3):
+  - JGSourceBase/Category/NSString (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSURL (1.2.3):
+  - JGSourceBase/Category/NSURL (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIAlertController (1.2.3):
+  - JGSourceBase/Category/UIAlertController (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIApplication (1.2.3):
+  - JGSourceBase/Category/UIApplication (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIColor (1.2.3):
+  - JGSourceBase/Category/UIColor (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Category/UIImage (1.2.3):
+  - JGSourceBase/Category/UIImage (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/DataStorage (1.2.3):
+  - JGSourceBase/DataStorage (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Device (1.2.3):
+  - JGSourceBase/Device (1.3.0):
     - JGSourceBase/Reachability
-  - JGSourceBase/Encryption (1.2.3):
+  - JGSourceBase/Encryption (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/Reachability (1.2.3):
+  - JGSourceBase/Reachability (1.3.0):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.2.3):
+  - JGSourceBase/SecurityKeyboard (1.3.0):
     - JGSourceBase/Base
     - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
@@ -80,10 +80,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 14ad9fecfd40fa150c9cdc0c760495c56d167c5c
+  JGSourceBase: 4a14c8607cfb94626f76c8e0c687f43bea763ea2
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 165aa6cc5f2e5bbdbc8e1a6489fd323964f58c9b
+PODFILE CHECKSUM: 4ca22281921700755fbab9e9bb00d881e26e16b6
 
 COCOAPODS: 1.10.1

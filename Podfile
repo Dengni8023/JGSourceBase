@@ -29,8 +29,8 @@ target "JGSourceBaseDemo" do
   pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
   # pod 'SAMKeychain' # KeyChain 测试
   # pod 'FLAnimatedImage'
-  # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'c83913f20094143689e3219907c3f4fbf557087b' #'~> 1.2.2'
-  # pod 'JGSourceBase', '~> 1.2.2'
+  # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'fcadf737e6ed5cfb1e7daccf0a2e17611568c604' #'~> 1.3.0'
+  # pod 'JGSourceBase', '~> 1.3.0'
   pod 'JGSourceBase', :path => "."
   # pod 'JGSourceBase', :path => ".", :subspecs => [
   # Base测试
