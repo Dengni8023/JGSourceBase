@@ -42,7 +42,7 @@
 
 #pragma mark - HASH
 - (NSString *)jg_md5String {
-    return [self jg_md5String:JGSStringRandom];
+    return [self jg_md5String:JGSStringUppercase];
 }
 
 - (NSString *)jg_md5String:(JGSStringUpperLowerStyle)style {
@@ -74,7 +74,7 @@
 }
 
 - (NSString *)jg_sha128String {
-    return [self jg_sha128String:YES];
+    return [self jg_sha128String:JGSStringUppercase];
 }
 
 - (NSString *)jg_sha128String:(JGSStringUpperLowerStyle)style {
@@ -106,7 +106,7 @@
 }
 
 - (NSString *)jg_sha256String {
-    return [self jg_sha256String:YES];
+    return [self jg_sha256String:JGSStringUppercase];
 }
 
 - (NSString *)jg_sha256String:(JGSStringUpperLowerStyle)style {
@@ -173,7 +173,7 @@
 
 #pragma mark - HASH
 - (NSString *)jg_md5String {
-    return [self jg_md5String:JGSStringRandom];
+    return [self jg_md5String:JGSStringUppercase];
 }
 
 - (NSString *)jg_md5String:(JGSStringUpperLowerStyle)style {
@@ -183,7 +183,7 @@
 }
 
 - (NSString *)jg_sha128String {
-    return [self jg_sha128String:YES];
+    return [self jg_sha128String:JGSStringUppercase];
 }
 
 - (NSString *)jg_sha128String:(JGSStringUpperLowerStyle)style {
@@ -193,7 +193,7 @@
 }
 
 - (NSString *)jg_sha256String {
-    return [self jg_sha256String:YES];
+    return [self jg_sha256String:JGSStringUppercase];
 }
 
 - (NSString *)jg_sha256String:(JGSStringUpperLowerStyle)style {
