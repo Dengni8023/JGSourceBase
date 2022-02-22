@@ -97,14 +97,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @param fullAngle 是否开启全角，默认关闭，支持全角时将支持全半角字符输入
 /// @return instancetype
-+ (instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - jg_randomNumPad and - jg_enableFullAngle instead!");
++ (instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - randomNumPad and - enableFullAngle instead!");
 
 /// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
-+ (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + numberKeyboardWithTextInput:title: and - jg_randomNumPad instead!");
++ (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + numberKeyboardWithTextInput:title: and - randomNumPad instead!");
 
 /// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
@@ -123,7 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
-+ (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + idCardKeyboardWithTextInput:title: and - jg_randomNumPad instead!");
++ (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + idCardKeyboardWithTextInput:title: and - randomNumPad instead!");
 
 /// 自定义身份证键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
