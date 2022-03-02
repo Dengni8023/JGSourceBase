@@ -8,6 +8,7 @@
 
 #import "JGSDataStorageDemoViewController.h"
 
+#ifdef JGS_DataStorage
 @interface JGSDataStorageDemoViewController ()
 
 @end
@@ -46,3 +47,4 @@
 */
 
 @end
+#endif

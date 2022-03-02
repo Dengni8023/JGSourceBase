@@ -33,31 +33,31 @@ target "JGSourceBaseDemo" do
   # pod 'JGSourceBase', '~> 1.3.0'
   pod 'JGSourceBase', :path => "."
   # pod 'JGSourceBase', :path => ".", :subspecs => [
-  # Base测试
-  # 'Base',
-  
-  # Category测试
-  # 'Category',
-  
-  # Device测试
-  # 'Device',
-  
-  # HUD测试
-  # 'HUD',
-  # 'Category/UIImage',
-  
-  # HUD-Loading测试
-  # 'HUD/Loading',
-  # 'Category/UIImage',
-  
-  # HUD-Toast测试
-  # 'HUD/Toast',
-  
-  # Reachability测试
-  # 'Reachability',
-  
-  # SecurityKeyboard测试
-  # 'SecurityKeyboard',
+  #   # Base测试
+  #   # 'Base',
+    
+  #   # Category测试
+  #   # 'Category',
+    
+  #   # Device测试
+  #   # 'Device',
+    
+  #   # HUD测试
+  #   # 'HUD',
+  #   # 'Category/UIImage',
+    
+  #   # HUD-Loading测试
+  #   # 'HUD/Loading',
+  #   # 'Category/UIImage',
+    
+  #   # HUD-Toast测试
+  #   # 'HUD/Toast',
+    
+  #   # Reachability测试
+  #   # 'Reachability',
+    
+  #   # SecurityKeyboard测试
+  #   'SecurityKeyboard',
   # ]
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃

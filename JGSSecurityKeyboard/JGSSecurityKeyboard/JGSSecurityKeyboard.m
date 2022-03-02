@@ -15,8 +15,8 @@
 
 @interface JGSSecurityKeyboard ()
 
-@property (nonatomic, assign) JGSKeyboardOptions keyboardOptions;
-@property (nonatomic, assign) CGRect keyboardFrame;
+@property (nonatomic, assign, readonly) JGSKeyboardOptions keyboardOptions;
+@property (nonatomic, assign, readonly) CGRect keyboardFrame;
 
 @property (nonatomic, strong) JGSKeyboardToolbar *keyboardTool;
 @property (nonatomic, strong) JGSLetterKeyboard *letterKeyboard;
@@ -111,11 +111,10 @@
         
         self.backgroundColor = JGSKeyboardBackgroundColor();
         
-        _aesEncryptInputCharByChar = NO;
-        _randomPad = NO;
-        _randomNumPad = YES;
-        _enableFullAngle = NO;
-        _enableHighlightedWhenTap = YES;
+        self.aesEncryptInputCharByChar = NO;
+        self.randomNumPad = YES;
+        self.enableFullAngle = NO;
+        self.enableHighlightedWhenTap = YES;
         
         // UITextField: clear、paste等处理
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputTextDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
@@ -148,7 +147,7 @@
         NSString *sizeInfo = [JGSKeyboardSizeInfo() objectForKey:orientation];
         CGSize keyboardSize = CGSizeFromString(sizeInfo);
         
-        self.keyboardFrame = CGRectMake(0, self.title.length > 0 ? JGSKeyboardToolbarHeight : 0, keyboardSize.width, keyboardSize.height);
+        _keyboardFrame = CGRectMake(0, self.title.length > 0 ? JGSKeyboardToolbarHeight : 0, keyboardSize.width, keyboardSize.height);
         CGFloat keyboardHeight = keyboardSize.height + (self.title.length > 0 ? JGSKeyboardToolbarHeight : 0);
         
         // 此处做初步的键盘高度计算，精确高度待键盘展示时更新高度约束
@@ -211,6 +210,26 @@
         [self.keyboards enumerateObjectsUsingBlock:^(JGSBaseKeyboard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj removeFromSuperview];
         }];
+    }
+}
+
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    
+    if (!self.superview && (self.randomPad || self.randomNumPad)) {
+        
+        // 键盘随机布局时每次键盘重新展示需要重新乱序
+        // 因此在键盘隐藏时释放已显示键盘
+        // 下次展示时子键盘重新初始化
+        _keyboards = nil;
+        if (self.randomPad) {
+            _letterKeyboard = nil;
+            _symbolKeyboard = nil;
+        }
+        if (self.randomNumPad) {
+            _numberKeyboard = nil;
+            _idCardKeyboard = nil;
+        }
     }
 }
 

@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
+#ifdef JGS_SecurityKeyboard
 @interface JGSKeyboardDemoViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITextField *normalInput;
@@ -29,7 +30,6 @@
     
     self.title = @"SecurityKeyboard";
     
-#ifdef JGS_SecurityKeyboard
     [self addViewElements];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
@@ -44,7 +44,6 @@
         JGSDemoShowConsoleLog(@"%@", textView.text);
         JGSDemoShowConsoleLog(@"%@, %@", textView.text, textView.jg_securityOriginText);
     }];
-#endif
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"小眼睛" style:UIBarButtonItemStylePlain target:self action:@selector(switchTextfieldSecurityEntry:)];
 }
@@ -54,7 +53,6 @@
     
 }
 
-#ifdef JGS_SecurityKeyboard
 #pragma mark - View
 - (void)addViewElements {
     
@@ -243,8 +241,7 @@
     return YES;
 }
 
-#endif
-
 #pragma mark - End
 
 @end
+#endif

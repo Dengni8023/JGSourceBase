@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#ifdef JGS_SecurityKeyboard
 @interface JGSKeyboardDemoViewController : JGSDemoViewController
 
 @end
+#endif
 
 NS_ASSUME_NONNULL_END

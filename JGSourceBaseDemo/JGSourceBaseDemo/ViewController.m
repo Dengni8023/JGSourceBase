@@ -122,31 +122,38 @@
 }
 
 - (void)jumpToCategoryDemo:(NSIndexPath *)indexPath {
-    
+#ifdef JGS_Category
     JGSCategoryDemoViewController *vcT = [[JGSCategoryDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+#endif
 }
 
 - (void)jumpToDataStorageDemo:(NSIndexPath *)indexPath {
-    
-    JGSDemoViewController *vcT = [[JGSDemoViewController alloc] init];
+
+#ifdef JGS_DataStorage
+    JGSDataStorageDemoViewController *vcT = [[JGSDataStorageDemoViewController alloc] init];
     vcT.title = @"Data Storage";
     vcT.tableSectionData = @[
         JGSDemoTableSectionMake(@" UserDefaults",
                                 @[
                                 ]),
     ];
-    
+
     [self.navigationController pushViewController:vcT animated:YES];
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+#endif
 }
 
 - (void)jumpToDeviceDemo:(NSIndexPath *)indexPath {
-    
+
 #ifdef JGS_Device
     JGSDemoShowConsoleLog(@"设备越狱检测：%d\n", [JGSDevice isDeviceJailbroken] == JGSDeviceJailbrokenIsBroken);
     JGSDemoShowConsoleLog(@"%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
     JGSDemoShowConsoleLog(@"%d\n", [JGSDevice isSimulator]);
-    
+
     JGSDemoShowConsoleLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
     JGSDemoShowConsoleLog(@"%@", [JGSDevice appInfo]);
     //JGSDemoShowConsoleLog(@"%@", [JGSDevice deviceInfo]);
@@ -157,7 +164,7 @@
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     JGSDemoShowConsoleLog(@"%@", [JGSDevice idfa]);
     //});
-    
+
     // iOS 15不弹窗问题，位置修改到此处
     //dispatch_async(dispatch_get_main_queue(), ^{
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -165,32 +172,38 @@
     JGSDemoShowConsoleLog(@"deviceId: %@", [JGSDevice deviceId]);
     //    JGSDemoShowConsoleLog(@"%@", [JGSDevice idfa]);
     //});
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToEncryptionDemo:(NSIndexPath *)indexPath {
-    
+
+#ifdef JGS_Encryption
     JGSEncryptionDemoViewController *vcT = [[JGSEncryptionDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+#endif
 }
 
 - (void)jumpToHudDemo:(NSIndexPath *)indexPath {
-    
+
     JGSHUDDemoViewController *vcT = [[JGSHUDDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
 
 - (void)jumpToReachabilityDemo:(NSIndexPath *)indexPath {
-    
+
 #ifdef JGS_Reachability
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+
         [[JGSReachability sharedInstance] startMonitor];
-        
+
         JGSWeakSelf
         [[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
-            
+
             JGSStrongSelf
             NSString *statusString = [[JGSReachability sharedInstance] reachabilityStatusString];
             JGSDemoShowConsoleLog(@"Network status: %@", statusString);
@@ -199,30 +212,36 @@
 #endif
         }];
     });
-    
+
     NSDictionary *netInfo = @{
         @"Reachable": [[JGSReachability sharedInstance] reachable] ? @"YES": @"NO",
         @"WiFi": [[JGSReachability sharedInstance] reachableViaWiFi] ? @"YES": @"NO",
         @"WWAN": [[JGSReachability sharedInstance] reachableViaWWAN] ? @"YES": @"NO",
         @"Network Type": [[JGSReachability sharedInstance] reachabilityStatusString],
     };
-    
+
 #ifdef JGSCategory_NSObject
     NSString *netJSON = [netInfo jg_JSONStringWithOptions:NSJSONWritingPrettyPrinted error:nil];
 #else
     NSData *data = [NSJSONSerialization dataWithJSONObject:netInfo options:NSJSONWritingPrettyPrinted error:nil];
     NSString *netJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 #endif
-    
+
     JGSDemoShowConsoleLog(@"%@", netJSON);
     
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToKeyboardDemo:(NSIndexPath *)indexPath {
-    
+
+#ifdef JGS_SecurityKeyboard
     JGSKeyboardDemoViewController *vcT = [[JGSKeyboardDemoViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
+#else
+    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+#endif
 }
 
 #pragma mark - End

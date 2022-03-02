@@ -8,6 +8,7 @@
 
 #import "JGSEncryptionDemoViewController.h"
 
+#ifdef JGS_Encryption
 @interface JGSEncryptionDemoViewController ()
 
 @end
@@ -75,3 +76,4 @@
 */
 
 @end
+#endif

@@ -8,6 +8,7 @@
 
 #import "JGSCategoryDemoViewController.h"
 
+#ifdef JGS_Category
 @interface JGSCategoryDemoViewController ()
 
 @end
@@ -389,3 +390,4 @@
 #pragma mark - End
 
 @end
+#endif

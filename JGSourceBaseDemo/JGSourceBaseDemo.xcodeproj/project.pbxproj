@@ -194,7 +194,7 @@
 				D4F3DA5622F027E1002EF0F0 /* Frameworks */,
 				D4F3DA5722F027E1002EF0F0 /* Resources */,
 				D47C3CFA27B6101A00521310 /* ShellScript */,
-				48F78CBDAE8CD720E3689B8B /* [CP] Copy Pods Resources */,
+				B3F72C8117BBE9CEA9ECEB04 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,23 +259,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48F78CBDAE8CD720E3689B8B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4DE411687EC10914F45A7751 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +279,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F72C8117BBE9CEA9ECEB04 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D47C3CFA27B6101A00521310 /* ShellScript */ = {

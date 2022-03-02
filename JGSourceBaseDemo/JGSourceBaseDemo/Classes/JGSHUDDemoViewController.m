@@ -17,6 +17,7 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
     return @[
+#ifdef JGSHUD_Loading
         // Section 全屏Loading
         JGSDemoTableSectionMake(@" 全屏Loading",
                                 @[
@@ -41,6 +42,8 @@
                                     JGSDemoTableRowMake(@"Indicator 无边框", self, @selector(showLoadingHUD:)),
                                     JGSDemoTableRowMake(@"Custom Icon 无边框", self, @selector(showLoadingHUD:)),
                                 ]),
+#endif
+#ifdef JGSHUD_Toast
         // Section 全屏Toast
         JGSDemoTableSectionMake(@" 全屏Toast",
                                 @[
@@ -51,6 +54,7 @@
                                     JGSDemoTableRowMake(@"Bottom样式", self, @selector(showToastHUD:)),
                                     JGSDemoTableRowMake(@"Default样式+completion", self, @selector(showToastHUD:)),
                                 ]),
+#endif
     ];
 }
 
@@ -64,10 +68,10 @@
 }
 
 #pragma mark - Action
+#ifdef JGSHUD_Loading
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog();
-#ifdef JGSHUD_Loading
     JGSEnableLogWithMode(JGSLogModeFunc);
     switch (indexPath.section) {
         case 0: {
@@ -196,13 +200,13 @@
         JGSStrongSelf
         [self.view jg_hideLoading];
     });
-#endif
 }
+#endif
 
+#ifdef JGSHUD_Toast
 - (void)showToastHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog();
-#ifdef JGSHUD_Toast
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
@@ -241,9 +245,8 @@
         default:
             break;
     }
-#endif
 }
-
+#endif
 
 /*
 #pragma mark - Navigation

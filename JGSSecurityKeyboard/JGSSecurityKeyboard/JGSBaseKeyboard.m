@@ -11,7 +11,7 @@
 
 @interface JGSKeyboardKey () <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UIColor *normalBgColor;
+@property (nonatomic, strong, readonly) UIColor *normalBgColor;
 @property (nonatomic, strong, readonly) UIColor *highlightedBgColor;
 
 @end
@@ -35,7 +35,7 @@
         
         _type = type;
         _normalBgColor = (type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputColor() : JGSKeyboardKeyFuncColor());
-        _shiftStatus = JGSKeyboardShiftKeyDefault;
+        self.shiftStatus = JGSKeyboardShiftKeyDefault;
         
         self.backgroundColor = self.normalBgColor;
         self.font = (type == JGSKeyboardKeyTypeInput ? JGSKeyboardKeyInputTitleFont() : JGSKeyboardKeyFuncTitleFont());
@@ -352,7 +352,7 @@
 
 @interface JGSBaseKeyboard ()
 
-@property (nonatomic, assign) CGFloat keyboardWidth;
+@property (nonatomic, assign, readonly) CGFloat keyboardWidth;
 
 @end
 

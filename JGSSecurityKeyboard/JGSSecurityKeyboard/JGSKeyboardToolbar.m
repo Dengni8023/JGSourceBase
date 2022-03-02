@@ -63,7 +63,7 @@
 
 @interface JGSKeyboardTitleToolbarItem ()
 
-@property (nonatomic, strong, nullable) UILabel *titleLabel;
+@property (nonatomic, strong, readonly) UILabel *titleLabel;
 @property (nonatomic, strong, nullable) UIButton *titleButton;
 
 @end

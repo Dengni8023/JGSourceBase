@@ -292,16 +292,16 @@ Pod::Spec.new do |spec|
   end
   
   # subspec，不指定时默认安装所有subspec，用户可自行指定
-  spec.default_subspecs = [
-      # 'AlertController', # Deprecated
-      'Base',
-      'Category',
-      'DataStorage',
-      'Device',
-      'Encryption',
-      # 'HUD',
-      'Reachability',
-      'SecurityKeyboard',
-  ]
+  # spec.default_subspecs = [
+  #     # 'AlertController', # Deprecated
+  #     'Base',
+  #     'Category',
+  #     'DataStorage',
+  #     'Device',
+  #     'Encryption',
+  #     # 'HUD',
+  #     'Reachability',
+  #     'SecurityKeyboard',
+  # ]
   
 end
