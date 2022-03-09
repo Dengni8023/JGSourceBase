@@ -216,7 +216,7 @@
         return [obj boolValue];
     }
     
-    return YES;
+    return defaultValue;
 }
 
 #pragma mark - CGFloat
