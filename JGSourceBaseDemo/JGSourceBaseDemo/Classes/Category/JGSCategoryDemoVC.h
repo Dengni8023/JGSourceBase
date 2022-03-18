@@ -1,5 +1,5 @@
 //
-//  JGSCategoryDemoViewController.h
+//  JGSCategoryDemoVC.h
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2019/5/29.
@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #ifdef JGS_Category
-@interface JGSCategoryDemoViewController : JGSDemoViewController
+@interface JGSCategoryDemoVC : JGSDemoViewController
 
 @end
 #endif

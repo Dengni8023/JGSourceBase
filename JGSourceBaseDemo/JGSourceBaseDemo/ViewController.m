@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "JGSCategoryDemoViewController.h"
-#import "JGSDataStorageDemoViewController.h"
-#import "JGSEncryptionDemoViewController.h"
-#import "JGSHUDDemoViewController.h"
-#import "JGSKeyboardDemoViewController.h"
+#import "JGSCategoryDemoVC.h"
+#import "JGSDataStorageDemoVC.h"
+#import "JGSEncryptionDemoVC.h"
+#import "JGSHUDDemoVC.h"
+#import "JGSKeyboardDemoVC.h"
 #import <AdSupport/ASIdentifierManager.h>
 
 @interface ViewController ()
@@ -79,7 +79,7 @@
 #pragma mark - Action
 - (void)showLogModeList:(NSIndexPath *)indexPath {
     
-    JGSDemoShowConsoleLog();
+    JGSDemoShowConsoleLog(self, @"");
 #ifdef JGSCategory_UIAlertController
     JGSWeakSelf
     NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
@@ -98,23 +98,23 @@
         [UIAlertController jg_alertWithTitle:@"日志输出设置" message:types[selIdx] cancel:@"确定" action:^(UIAlertController * _Nonnull _alert, NSInteger _idx) {
             
             JGSStrongSelf
-            JGSDemoShowConsoleLog(@"<%@: %p> %@", NSStringFromClass([_alert class]), _alert, @(_idx));
+            JGSDemoShowConsoleLog(self, @"<%@: %p> %@", NSStringFromClass([_alert class]), _alert, @(_idx));
             
 #ifdef JGSCategory_UIApplication
-            JGSDemoShowConsoleLog(@"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
-            JGSDemoShowConsoleLog(@"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
+            JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
 #endif
         }];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             JGSStrongSelf
-            JGSDemoShowConsoleLog(@"key: %p", [UIApplication sharedApplication].keyWindow);
-            JGSDemoShowConsoleLog(@"window: %p", [UIApplication sharedApplication].delegate.window);
+            JGSDemoShowConsoleLog(self, @"key: %p", [UIApplication sharedApplication].keyWindow);
+            JGSDemoShowConsoleLog(self, @"window: %p", [UIApplication sharedApplication].delegate.window);
             
 #ifdef JGSCategory_UIApplication
-            JGSDemoShowConsoleLog(@"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
-            JGSDemoShowConsoleLog(@"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
+            JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
 #endif
         });
     }];
@@ -123,17 +123,17 @@
 
 - (void)jumpToCategoryDemo:(NSIndexPath *)indexPath {
 #ifdef JGS_Category
-    JGSCategoryDemoViewController *vcT = [[JGSCategoryDemoViewController alloc] init];
+    JGSCategoryDemoVC *vcT = [[JGSCategoryDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToDataStorageDemo:(NSIndexPath *)indexPath {
 
 #ifdef JGS_DataStorage
-    JGSDataStorageDemoViewController *vcT = [[JGSDataStorageDemoViewController alloc] init];
+    JGSDataStorageDemoVC *vcT = [[JGSDataStorageDemoVC alloc] init];
     vcT.title = @"Data Storage";
     vcT.tableSectionData = @[
         JGSDemoTableSectionMake(@" UserDefaults",
@@ -143,53 +143,53 @@
 
     [self.navigationController pushViewController:vcT animated:YES];
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToDeviceDemo:(NSIndexPath *)indexPath {
 
 #ifdef JGS_Device
-    JGSDemoShowConsoleLog(@"设备越狱检测：%d\n", [JGSDevice isDeviceJailbroken] == JGSDeviceJailbrokenIsBroken);
-    JGSDemoShowConsoleLog(@"%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
-    JGSDemoShowConsoleLog(@"%d\n", [JGSDevice isSimulator]);
+    JGSDemoShowConsoleLog(self, @"设备越狱检测：%d\n", [JGSDevice isDeviceJailbroken] == JGSDeviceJailbrokenIsBroken);
+    JGSDemoShowConsoleLog(self, @"%d\n", [JGSDevice isAPPResigned:@[@"Z28L6TKG58"]]);
+    JGSDemoShowConsoleLog(self, @"%d\n", [JGSDevice isSimulator]);
 
-    JGSDemoShowConsoleLog(@"sysUserAgent: %@", [JGSDevice sysUserAgent]);
-    JGSDemoShowConsoleLog(@"%@", [JGSDevice appInfo]);
-    //JGSDemoShowConsoleLog(@"%@", [JGSDevice deviceInfo]);
-    JGSDemoShowConsoleLog(@"%@", [JGSDevice deviceMachine]);
-    JGSDemoShowConsoleLog(@"%@", [JGSDevice deviceModel]);
-    JGSDemoShowConsoleLog(@"%@", [JGSDevice appUserAgent]);
+    JGSDemoShowConsoleLog(self, @"sysUserAgent: %@", [JGSDevice sysUserAgent]);
+    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice appInfo]);
+    //JGSDemoShowConsoleLog(self, @"%@", [JGSDevice deviceInfo]);
+    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice deviceMachine]);
+    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice deviceModel]);
+    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice appUserAgent]);
     //dispatch_async(dispatch_get_main_queue(), ^{
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    JGSDemoShowConsoleLog(@"%@", [JGSDevice idfa]);
+    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice idfa]);
     //});
 
     // iOS 15不弹窗问题，位置修改到此处
     //dispatch_async(dispatch_get_main_queue(), ^{
     //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    JGSDemoShowConsoleLog(@"idfa: %@", [JGSDevice idfa]);
-    JGSDemoShowConsoleLog(@"deviceId: %@", [JGSDevice deviceId]);
-    //    JGSDemoShowConsoleLog(@"%@", [JGSDevice idfa]);
+    JGSDemoShowConsoleLog(self, @"idfa: %@", [JGSDevice idfa]);
+    JGSDemoShowConsoleLog(self, @"deviceId: %@", [JGSDevice deviceId]);
+    //    JGSDemoShowConsoleLog(self, @"%@", [JGSDevice idfa]);
     //});
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToEncryptionDemo:(NSIndexPath *)indexPath {
 
 #ifdef JGS_Encryption
-    JGSEncryptionDemoViewController *vcT = [[JGSEncryptionDemoViewController alloc] init];
+    JGSEncryptionDemoVC *vcT = [[JGSEncryptionDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToHudDemo:(NSIndexPath *)indexPath {
 
-    JGSHUDDemoViewController *vcT = [[JGSHUDDemoViewController alloc] init];
+    JGSHUDDemoVC *vcT = [[JGSHUDDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
 
@@ -206,7 +206,7 @@
 
             JGSStrongSelf
             NSString *statusString = [[JGSReachability sharedInstance] reachabilityStatusString];
-            JGSDemoShowConsoleLog(@"Network status: %@", statusString);
+            JGSDemoShowConsoleLog(self, @"Network status: %@", statusString);
 #ifdef JGSCategory_UIAlertController
             [UIAlertController jg_alertWithTitle:@"网络变了" message:statusString cancel:@"确定"];
 #endif
@@ -227,20 +227,20 @@
     NSString *netJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 #endif
 
-    JGSDemoShowConsoleLog(@"%@", netJSON);
+    JGSDemoShowConsoleLog(self, @"%@", netJSON);
     
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 
 - (void)jumpToKeyboardDemo:(NSIndexPath *)indexPath {
 
 #ifdef JGS_SecurityKeyboard
-    JGSKeyboardDemoViewController *vcT = [[JGSKeyboardDemoViewController alloc] init];
+    JGSKeyboardDemoVC *vcT = [[JGSKeyboardDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 #else
-    JGSDemoShowConsoleLog(@"Unimplemented or dependencies not founded !");
+    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
 #endif
 }
 

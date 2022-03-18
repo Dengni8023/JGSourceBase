@@ -6,12 +6,12 @@
 //  Copyright © 2019 MeiJiGao. All rights reserved.
 //
 
-#import "JGSKeyboardDemoViewController.h"
+#import "JGSKeyboardDemoVC.h"
 #import <Masonry/Masonry.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 #ifdef JGS_SecurityKeyboard
-@interface JGSKeyboardDemoViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface JGSKeyboardDemoVC () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITextField *normalInput;
 @property (nonatomic, strong) UITextField *accountInput;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation JGSKeyboardDemoViewController
+@implementation JGSKeyboardDemoVC
 
 #pragma mark - Controller
 - (void)viewDidLoad {
@@ -32,17 +32,20 @@
     
     [self addViewElements];
     
+    JGSWeakSelf
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
+        JGSStrongSelf
         UITextField *textField = (UITextField *)note.object;
-        JGSDemoShowConsoleLog(@"%@, %@", textField.text, textField.jg_securityOriginText);
+        JGSDemoShowConsoleLog(self, @"%@, %@", textField.text, textField.jg_securityOriginText);
     }];
-    
+
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextViewTextDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
+        JGSStrongSelf
         UITextView *textView = (UITextView *)note.object;
-        JGSDemoShowConsoleLog(@"%@", textView.text);
-        JGSDemoShowConsoleLog(@"%@, %@", textView.text, textView.jg_securityOriginText);
+        JGSDemoShowConsoleLog(self, @"%@", textView.text);
+        JGSDemoShowConsoleLog(self, @"%@, %@", textView.text, textView.jg_securityOriginText);
     }];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"小眼睛" style:UIBarButtonItemStylePlain target:self action:@selector(switchTextfieldSecurityEntry:)];
@@ -87,7 +90,6 @@
     _secTextView = [[UITextView alloc] init];
     _secTextView.font = fields.firstObject.font;
     _secTextView.returnKeyType = (accountInputShow % 2 == 1 ? UIReturnKeyDone : UIReturnKeyNext);
-    _secTextView.clearsOnInsertion = accountInputShow % 2 == 1;
     _secTextView.keyboardType = UIKeyboardTypeDefault;
     _secTextView.delegate = self;
     _secTextView.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1.0].CGColor;
@@ -97,7 +99,7 @@
     
     //_secTextView.placeholder = @"安全键盘加密输入";
     _secTextView.secureTextEntry = YES;
-    JGSSecurityKeyboard *secTextViewInputView = [JGSSecurityKeyboard keyboardWithTextInput:self.secTextView title:nil];
+    JGSSecurityKeyboard *secTextViewInputView = [JGSSecurityKeyboard keyboardWithTextInput:self.secTextView title:@"文本框安全键盘"];
     secTextViewInputView.randomPad = (accountInputShow % 2 == 1);
     secTextViewInputView.randomNumPad = (accountInputShow % 2 == 0);
     secTextViewInputView.enableHighlightedWhenTap = NO;
@@ -106,7 +108,7 @@
     [_secTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(60);
         make.left.right.mas_equalTo(self.scrollView).inset(28);
-        make.top.mas_equalTo(self.scrollView).mas_offset(32 + 60 * 6);
+        make.top.mas_equalTo(self.scrollView).mas_offset(132 + 60 * 6);
         make.bottom.mas_equalTo(self.scrollView.mas_bottom).inset(32);
     }];
     
@@ -164,7 +166,7 @@
 #pragma mark - Action
 - (void)switchTextfieldSecurityEntry:(id)sender {
     
-    //JGSDemoShowConsoleLog(@"%@", sender);
+    //JGSDemoShowConsoleLog(self, @"%@", sender);
     self.accountInput.secureTextEntry = !self.accountInput.secureTextEntry;
     self.secPwdInput.secureTextEntry = !self.secPwdInput.secureTextEntry;
     self.secPwdFullInput.secureTextEntry = !self.secPwdFullInput.secureTextEntry;
@@ -182,8 +184,8 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        JGSDemoShowConsoleLog(@"%@", textField.text);
-        JGSDemoShowConsoleLog(@"%@ -> (%@)", NSStringFromRange(range), string);
+        JGSDemoShowConsoleLog(self, @"%@", textField.text);
+        JGSDemoShowConsoleLog(self, @"%@ -> (%@)", NSStringFromRange(range), string);
     }
     
     return YES;
@@ -215,6 +217,10 @@
 }
 
 #pragma mark - UITextViewDelegate
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    return YES;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     
     if ([textView.inputView isKindOfClass:[JGSSecurityKeyboard class]] && [(JGSSecurityKeyboard *)textView.inputView title].length > 0) {
@@ -225,8 +231,8 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
     if ([textView.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        JGSDemoShowConsoleLog(@"%@", textView.text);
-        JGSDemoShowConsoleLog(@"%@ -> (%@)", NSStringFromRange(range), text);
+        JGSDemoShowConsoleLog(self, @"%@", textView.text);
+        JGSDemoShowConsoleLog(self, @"%@ -> (%@)", NSStringFromRange(range), text);
     }
     
     return YES;

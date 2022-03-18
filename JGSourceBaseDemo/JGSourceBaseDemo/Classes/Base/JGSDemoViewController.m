@@ -23,7 +23,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    JGSDemoShowConsoleLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    JGSDemoShowConsoleLog(self, @"<%@: %p>", NSStringFromClass([self class]), self);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -217,8 +217,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    //JGSDemoShowConsoleLog(@"Selected IndexPath: {%@, %@}", @(indexPath.section), @(indexPath.row));
-    JGsDemoTableRowData *rowData = self.demoData[indexPath.section].rows[indexPath.row];
+    //JGSDemoShowConsoleLog(self, @"Selected IndexPath: {%@, %@}", @(indexPath.section), @(indexPath.row));
+    JGSDemoTableRowData *rowData = self.demoData[indexPath.section].rows[indexPath.row];
     id object = rowData.target ?: self;
     if (rowData.selector && [object respondsToSelector:rowData.selector]) {
         

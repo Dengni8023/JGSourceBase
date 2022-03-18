@@ -38,6 +38,8 @@
 		D47C3CBA27B5048000521310 /* JGSCategory+NSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9D27B5048000521310 /* JGSCategory+NSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CBB27B5048000521310 /* NSObject+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3C9E27B5048000521310 /* NSObject+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3CBC27B5048000521310 /* NSObject+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3C9F27B5048000521310 /* NSObject+JGSBase.m */; };
+		D4EF93BA27E31F86006A8710 /* NSString+JGSURL.h in Headers */ = {isa = PBXBuildFile; fileRef = D4EF93B827E31F86006A8710 /* NSString+JGSURL.h */; };
+		D4EF93BB27E31F86006A8710 /* NSString+JGSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EF93B927E31F86006A8710 /* NSString+JGSURL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		D47C3C9D27B5048000521310 /* JGSCategory+NSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSObject.h"; sourceTree = "<group>"; };
 		D47C3C9E27B5048000521310 /* NSObject+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JGSBase.h"; sourceTree = "<group>"; };
 		D47C3C9F27B5048000521310 /* NSObject+JGSBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JGSBase.m"; sourceTree = "<group>"; };
+		D4EF93B827E31F86006A8710 /* NSString+JGSURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSURL.h"; sourceTree = "<group>"; };
+		D4EF93B927E31F86006A8710 /* NSString+JGSURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSURL.m"; sourceTree = "<group>"; };
 		FAE6191E445A2765B61E4E28 /* Pods-JGSCategory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSCategory.release.xcconfig"; path = "Target Support Files/Pods-JGSCategory/Pods-JGSCategory.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +196,8 @@
 				D47C3C8E27B5048000521310 /* JGSCategory+NSString.h */,
 				D47C3C8F27B5048000521310 /* NSString+JGSBase.h */,
 				D47C3C8D27B5048000521310 /* NSString+JGSBase.m */,
+				D4EF93B827E31F86006A8710 /* NSString+JGSURL.h */,
+				D4EF93B927E31F86006A8710 /* NSString+JGSURL.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 			files = (
 				D47C3CA727B5048000521310 /* JGSCategory+UIAlertController.h in Headers */,
 				D47C3CA027B5048000521310 /* UIColor+JGSBase.h in Headers */,
+				D4EF93BA27E31F86006A8710 /* NSString+JGSURL.h in Headers */,
 				D47C3CB727B5048000521310 /* NSURL+JGSBase.h in Headers */,
 				D47C3CB627B5048000521310 /* UIImage+JGSBase.h in Headers */,
 				D47C3CB227B5048000521310 /* JGSCategory+UIApplication.h in Headers */,
@@ -384,6 +391,7 @@
 				D47C3CBC27B5048000521310 /* NSObject+JGSBase.m in Sources */,
 				D47C3CA827B5048000521310 /* UIAlertController+JGSBase.m in Sources */,
 				D47C3CB827B5048000521310 /* NSURL+JGSBase.m in Sources */,
+				D4EF93BB27E31F86006A8710 /* NSString+JGSURL.m in Sources */,
 				D47C3CA427B5048000521310 /* NSDictionary+JGSBase.m in Sources */,
 				D47C3CAB27B5048000521310 /* NSDate+JGSFormat.m in Sources */,
 				D47C3CA227B5048000521310 /* UIColor+JGSBase.m in Sources */,

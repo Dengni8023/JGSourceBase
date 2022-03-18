@@ -11,8 +11,10 @@
 
 #if __has_include(<JGSCategory/JGSCategory+NSString.h>)
 #import <JGSCategory/NSString+JGSBase.h>
+#import <JGSCategory/NSString+JGSURL.h>
 #else
 #import "NSString+JGSBase.h"
+#import "NSString+JGSURL.h"
 #endif
 
 #endif

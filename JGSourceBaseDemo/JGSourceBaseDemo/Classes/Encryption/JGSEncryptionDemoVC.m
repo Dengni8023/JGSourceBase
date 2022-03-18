@@ -1,19 +1,19 @@
 //
-//  JGSEncryptionDemoViewController.m
+//  JGSEncryptionDemoVC.m
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2022/2/16.
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import "JGSEncryptionDemoViewController.h"
+#import "JGSEncryptionDemoVC.h"
 
 #ifdef JGS_Encryption
-@interface JGSEncryptionDemoViewController ()
+@interface JGSEncryptionDemoVC ()
 
 @end
 
-@implementation JGSEncryptionDemoViewController
+@implementation JGSEncryptionDemoVC
 
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
@@ -44,24 +44,24 @@
 
     NSString *origin = @"origin string: - (void)aesDemo:(NSIndexPath *)indexPath {";
     NSString *encrypt = [origin jg_AES128EncryptWithKey:aes128Key iv:nil];
-    JGSDemoShowConsoleLog(@"128 encrypt: %@", encrypt);
-    JGSDemoShowConsoleLog(@"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:nil]);
+    JGSDemoShowConsoleLog(self, @"128 encrypt: %@", encrypt);
+    JGSDemoShowConsoleLog(self, @"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:nil]);
 
     encrypt = [origin jg_AES128EncryptWithKey:aes128Key iv:aes128Key];
-    JGSDemoShowConsoleLog(@"128 encrypt: %@", encrypt);
-    JGSDemoShowConsoleLog(@"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:aes128Key]);
+    JGSDemoShowConsoleLog(self, @"128 encrypt: %@", encrypt);
+    JGSDemoShowConsoleLog(self, @"128 decrypt: %@", [encrypt jg_AES128DecryptWithKey:aes128Key iv:aes128Key]);
 
     encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:nil];
-    JGSDemoShowConsoleLog(@"256 encrypt: %@", encrypt);
-    JGSDemoShowConsoleLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:nil]);
+    JGSDemoShowConsoleLog(self, @"256 encrypt: %@", encrypt);
+    JGSDemoShowConsoleLog(self, @"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:nil]);
 
     encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:@"12345"];
-    JGSDemoShowConsoleLog(@"256 encrypt: %@", encrypt);
-    JGSDemoShowConsoleLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:@"12345"]);
+    JGSDemoShowConsoleLog(self, @"256 encrypt: %@", encrypt);
+    JGSDemoShowConsoleLog(self, @"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:@"12345"]);
 
     encrypt = [origin jg_AES256EncryptWithKey:aes256Key iv:aes256Key];
-    JGSDemoShowConsoleLog(@"256 encrypt: %@", encrypt);
-    JGSDemoShowConsoleLog(@"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:aes256Key]);
+    JGSDemoShowConsoleLog(self, @"256 encrypt: %@", encrypt);
+    JGSDemoShowConsoleLog(self, @"256 decrypt: %@", [encrypt jg_AES256DecryptWithKey:aes256Key iv:aes256Key]);
 #endif
 }
 

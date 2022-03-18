@@ -6,13 +6,13 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import "JGSHUDDemoViewController.h"
+#import "JGSHUDDemoVC.h"
 
-@interface JGSHUDDemoViewController ()
+@interface JGSHUDDemoVC ()
 
 @end
 
-@implementation JGSHUDDemoViewController
+@implementation JGSHUDDemoVC
 
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
@@ -71,7 +71,7 @@
 #ifdef JGSHUD_Loading
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
-    JGSDemoShowConsoleLog();
+    JGSDemoShowConsoleLog(self, @"");
     JGSEnableLogWithMode(JGSLogModeFunc);
     switch (indexPath.section) {
         case 0: {
@@ -206,7 +206,7 @@
 #ifdef JGSHUD_Toast
 - (void)showToastHUD:(NSIndexPath *)indexPath {
     
-    JGSDemoShowConsoleLog();
+    JGSDemoShowConsoleLog(self, @"");
     JGSEnableLogWithMode(JGSLogModeFunc);
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {

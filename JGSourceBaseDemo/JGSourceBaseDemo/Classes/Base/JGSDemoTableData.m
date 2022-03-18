@@ -8,15 +8,15 @@
 
 #import "JGSDemoTableData.h"
 
-JGsDemoTableRowData *JGSDemoTableRowMake(NSString *title, id _Nullable target, SEL _Nullable selector) {
-    return [[JGsDemoTableRowData alloc] initWithTitle:title target:target selector:selector];
+JGSDemoTableRowData *JGSDemoTableRowMake(NSString *title, id _Nullable target, SEL _Nullable selector) {
+    return [[JGSDemoTableRowData alloc] initWithTitle:title target:target selector:selector];
 }
 
-JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDemoTableRowData *> *rows) {
+JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGSDemoTableRowData *> *rows) {
     return [[JGSDemoTableSectionData alloc] initWithTitle:title rows:rows];
 }
 
-@implementation JGsDemoTableRowData
+@implementation JGSDemoTableRowData
 
 #pragma mark - init & dealloc
 - (void)dealloc {
@@ -45,7 +45,7 @@ JGSDemoTableSectionData *JGSDemoTableSectionMake(NSString *title, NSArray<JGsDem
     //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
-- (instancetype)initWithTitle:(NSString *)title rows:(NSArray<JGsDemoTableRowData *> *)rows {
+- (instancetype)initWithTitle:(NSString *)title rows:(NSArray<JGSDemoTableRowData *> *)rows {
     
     self = [super init];
     if (self) {

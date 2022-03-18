@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define JGSDemoShowConsoleLog(fmt, ...) { \
+#define JGSDemoShowConsoleLog(vcT, fmt, ...) { \
     JGSLog(fmt, ##__VA_ARGS__); \
-    if ([self respondsToSelector:@selector(showConsoleLog:)]) { \
-        [self showConsoleLog:(@"%s Line: %@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__]; \
+    if ([vcT respondsToSelector:@selector(showConsoleLog:)]) { \
+        [vcT showConsoleLog:(@"%s Line: %@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__]; \
     } \
 }
 

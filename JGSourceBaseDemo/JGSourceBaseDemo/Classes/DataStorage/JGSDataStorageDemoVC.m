@@ -1,19 +1,19 @@
 //
-//  JGSDataStorageDemoViewController.m
+//  JGSDataStorageDemoVC.m
 //  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2022/2/16.
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import "JGSDataStorageDemoViewController.h"
+#import "JGSDataStorageDemoVC.h"
 
 #ifdef JGS_DataStorage
-@interface JGSDataStorageDemoViewController ()
+@interface JGSDataStorageDemoVC ()
 
 @end
 
-@implementation JGSDataStorageDemoViewController
+@implementation JGSDataStorageDemoVC
 
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     

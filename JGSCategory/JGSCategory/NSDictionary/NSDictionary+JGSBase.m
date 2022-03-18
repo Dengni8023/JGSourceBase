@@ -212,11 +212,13 @@
     if (obj == nil) {
         return defaultValue;
     }
+    
     if ([obj respondsToSelector:@selector(boolValue)]) {
         return [obj boolValue];
     }
     
-    return defaultValue;
+    // 与OC语法保持一致，非空对象判断 bool 为 YES
+    return YES;
 }
 
 #pragma mark - CGFloat
