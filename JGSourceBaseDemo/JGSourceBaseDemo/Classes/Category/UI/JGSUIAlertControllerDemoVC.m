@@ -29,11 +29,11 @@
                                 ]),
         JGSDemoTableSectionMake(@" ActionSheet",
                                 @[
-                                    JGSDemoTableRowMake(@"ActionSheet no title", self, @selector(categoryActionSheetDemo:)),
-                                    JGSDemoTableRowMake(@"ActionSheet title", self, @selector(categoryActionSheetDemo:)),
-                                    JGSDemoTableRowMake(@"ActionSheet title & message", self, @selector(categoryActionSheetDemo:)),
-                                    JGSDemoTableRowMake(@"ActionSheet title & message & cancel", self, @selector(categoryActionSheetDemo:)),
-                                    JGSDemoTableRowMake(@"ActionSheet title & message & cancel & destructive", self, @selector(categoryActionSheetDemo:)),
+                                    JGSDemoTableRowMake(@"No title & no message", self, @selector(categoryActionSheetDemo:)),
+                                    JGSDemoTableRowMake(@"With title", self, @selector(categoryActionSheetDemo:)),
+                                    JGSDemoTableRowMake(@"With title & message", self, @selector(categoryActionSheetDemo:)),
+                                    JGSDemoTableRowMake(@"With title & message & cancel", self, @selector(categoryActionSheetDemo:)),
+                                    JGSDemoTableRowMake(@"With title & message & cancel & destructive", self, @selector(categoryActionSheetDemo:)),
                                 ])
     ];
 }
@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"NSURL";
+    self.title = @"UIAlertController";
 }
 
 - (void)viewWillAppear:(BOOL)animated {

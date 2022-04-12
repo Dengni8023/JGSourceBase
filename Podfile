@@ -8,7 +8,7 @@ install!'cocoapods', :deterministic_uuids => false
 
 # 源码测试请屏蔽此选项，否则源码库内部调用出现的警告将不会提示
 #inhibit_all_warnings!
-#use_frameworks!
+# use_frameworks!
 
 # workspace
 workspace "JGSourceBase"
@@ -16,49 +16,27 @@ workspace "JGSourceBase"
 # platform
 platform :ios, 11.0
 
-# JGSourceBase
-target "JGSourceBase" do
-  
-  # project
-  project "JGSourceBase.xcodeproj"
-end
-
 # JGSourceBaseDemo
 target "JGSourceBaseDemo" do
   
-  pod 'IQKeyboardManager', '~> 6.5.6' #  https://github.com/hackiftekhar/IQKeyboardManager.git
+  pod 'IQKeyboardManager', '~> 6.5.9' #  https://github.com/hackiftekhar/IQKeyboardManager.git
   # pod 'SAMKeychain' # KeyChain 测试
   # pod 'FLAnimatedImage'
   # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'fcadf737e6ed5cfb1e7daccf0a2e17611568c604' #'~> 1.3.0'
   # pod 'JGSourceBase', '~> 1.3.0'
   pod 'JGSourceBase', :path => "."
-  # pod 'JGSourceBase', :path => ".", :subspecs => [
-  #   # Base测试
-  #   # 'Base',
-    
-  #   # Category测试
-  #   # 'Category',
-    
-  #   # Device测试
-  #   # 'Device',
-    
-  #   # HUD测试
-  #   # 'HUD',
-  #   # 'Category/UIImage',
-    
-  #   # HUD-Loading测试
-  #   # 'HUD/Loading',
-  #   # 'Category/UIImage',
-    
-  #   # HUD-Toast测试
-  #   # 'HUD/Toast',
-    
-  #   # Reachability测试
-  #   # 'Reachability',
-    
-  #   # SecurityKeyboard测试
-  #   'SecurityKeyboard',
-  # ]
+  pod 'JGSourceBase/Base', :path => "." # Base测试
+  pod 'JGSourceBase/Category', :path => "." # Category测试
+  pod 'JGSourceBase/Device', :path => "." # Device测试
+  pod 'JGSourceBase/Reachability', :path => "." # Reachability测试
+  pod 'JGSourceBase/SecurityKeyboard', :path => "." # SecurityKeyboard测试
+  
+  # HUD
+  pod 'JGSourceBase/HUD', :path => "." # HUD测试
+  # 'Category/UIImage', :path => "."
+  # pod 'JGSourceBase/HUD/Loading', :path => "." # HUD-Loading测试
+  # 'Category/UIImage', :path => "."
+  # pod 'JGSourceBase/HUD/Toast', :path => "." # HUD-Toast测试
   
   #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
   pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
@@ -107,13 +85,6 @@ end
 # 不需要构建子 framework 时，保持以下内容为注释状态
 # 如需构建子 framework ，取消以下内容的注释状态
 # 为避免影响 Demo 项目的子依赖功能测试，子功能测试请屏蔽构建子 framework 相关依赖安装
-
-# JGSBase
-target "JGSBase" do
-  
-  # project
-  project "JGSBase/JGSBase.xcodeproj"
-end
 
 # JGSCategory
 target "JGSCategory" do

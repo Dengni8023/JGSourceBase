@@ -83,6 +83,28 @@
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(self.showTextView ? (isPortrait ? 180 : 120) : 0);
     }];
+	
+	if (@available(iOS 15.0, *)) {
+		// UITableView
+		[UITableView appearance].sectionHeaderTopPadding = 0;
+	}
+	
+	if (@available(iOS 15.0, *)) {
+		// NavigationBar
+		UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
+#ifdef JGSCategory_UIColor
+		navBarAppearance.backgroundColor = self.navigationController.navigationBar.barTintColor ?: JGSDemoNavigationBarColor;
+#else
+		navBarAppearance.backgroundColor = self.navigationController.navigationBar.barTintColor ?: [UIColor whiteColor];
+#endif
+		navBarAppearance.titleTextAttributes = self.navigationController.navigationBar.titleTextAttributes;
+		navBarAppearance.backgroundEffect = nil;
+		navBarAppearance.shadowColor = [UIColor clearColor];
+		navBarAppearance.shadowImage = self.navigationController.navigationBar.shadowImage;
+		
+		self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
+		self.navigationController.navigationBar.standardAppearance = navBarAppearance;
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {

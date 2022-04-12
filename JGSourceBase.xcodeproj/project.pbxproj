@@ -7,25 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7670893F5471032625212229 /* libPods-JGSourceBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */; };
-		D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */; };
-		D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
-		D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSAlertController.h; sourceTree = "<group>"; };
-		D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAlertController.m; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGSAlertController.m"; sourceTree = "<group>"; };
-		D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGSAlertController.h"; sourceTree = "<group>"; };
-		EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,26 +21,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7670893F5471032625212229 /* libPods-JGSourceBase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0575C54C2F4D65FCDE931382 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */,
-				9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A3816BDECC60FB14F593A66 /* libPods-JGSourceBase.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -62,7 +39,6 @@
 			children = (
 				D4F3DA4722F0279D002EF0F0 /* JGSourceBase */,
 				D4F3DA4622F0279D002EF0F0 /* Products */,
-				0575C54C2F4D65FCDE931382 /* Pods */,
 				8F5566C1186FFED2CCE63677 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -79,21 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
-				D4F3DABA22F02B05002EF0F0 /* AlertController */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
 			);
 			path = JGSourceBase;
-			sourceTree = "<group>";
-		};
-		D4F3DABA22F02B05002EF0F0 /* AlertController */ = {
-			isa = PBXGroup;
-			children = (
-				D4AD24DD26F0AF160008AA3A /* JGSAlertController.h */,
-				D4AD24DE26F0AF160008AA3A /* JGSAlertController.m */,
-				D4F3DABD22F02B05002EF0F0 /* UIViewController+JGSAlertController.h */,
-				D4F3DABB22F02B05002EF0F0 /* UIViewController+JGSAlertController.m */,
-			);
-			path = AlertController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,9 +67,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F3DAE722F02B05002EF0F0 /* UIViewController+JGSAlertController.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
-				D4AD24DF26F0AF160008AA3A /* JGSAlertController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +78,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
 			buildPhases = (
-				412F11AE3C180AC80D9A5A4F /* [CP] Check Pods Manifest.lock */,
 				D4F3DA4022F0279D002EF0F0 /* Headers */,
 				D4F3DA4122F0279D002EF0F0 /* Sources */,
 				4B3EA7BF27729F175F83E047 /* Frameworks */,
@@ -166,28 +127,6 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		412F11AE3C180AC80D9A5A4F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JGSourceBase-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D47C3D0427B6321800521310 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,8 +151,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F3DAE522F02B05002EF0F0 /* UIViewController+JGSAlertController.m in Sources */,
-				D4AD24E026F0AF160008AA3A /* JGSAlertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +281,6 @@
 		};
 		D4F3DA4E22F0279D002EF0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC97946C9CDCEB2F0847C530 /* Pods-JGSourceBase.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -372,7 +308,6 @@
 		};
 		D4F3DA4F22F0279D002EF0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6F9566A144E13F18A5BB33 /* Pods-JGSourceBase.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

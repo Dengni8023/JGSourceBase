@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JGSourceBase"
-  spec.version      = "1.3.0"
+  spec.version      = "1.4.0"
   spec.summary      = "JGSourceBase functional component library."
 
   # This description is used to generate tags and improve search results.
@@ -28,14 +28,13 @@ Pod::Spec.new do |spec|
   JGSourceBase 通用功能组件库。
   功能包括：
   1. Base - 通用定义、功能模块、iOS项目常用功能
-  2. AlertController - 系统UIAlertController便捷方法封装
-  3. Category - 通用扩展方法定义
-  4. DataStorage - 通用数据持久化功能
-  5. Device - iOS设备相关方法
-  6. Encryption - 常用加解密方法
-  7. HUD - Loading-HUD、Toast-HUD显示
-  8. Reachability - 网络状态监听，支持多观察着/监听者
-  9. SecurityKeyboard - 自定义安全键盘
+  2. Category - 通用扩展方法定义
+  3. DataStorage - 通用数据持久化功能
+  4. Device - iOS设备相关方法
+  5. Encryption - 常用加解密方法
+  6. HUD - Loading-HUD、Toast-HUD显示
+  7. Reachability - 网络状态监听，支持多观察着/监听者
+  8. SecurityKeyboard - 自定义安全键盘
                    DESC
 
   spec.homepage     = "https://github.com/dengni8023/JGSourceBase"
@@ -109,8 +108,8 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
-  spec.source_files = "#{spec.name}/*.{h,m}"
-  spec.public_header_files = "#{spec.name}/*.h"
+  spec.source_files = "#{spec.name}/**/*.{h,m}"
+  spec.public_header_files = "#{spec.name}/**/*.h"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -145,18 +144,22 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
+  spec.static_framework = false
   spec.requires_arc = true
+  
+  # modify info.plist
+  # Only work for framework
+  spec.info_plist = {
+    'CFBundleShortVersionString' => "#{spec.version}",
+    'CFBundleVersion' => '`$(date "+%Y%m%d")`'
+  }
+
+  spec.pod_target_xcconfig = {
+    'PRODUCT_BUNDLE_IDENTIFIER'=> "com.meijigao.#{spec.name}",
+  }
   
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-
-  # AlertController
-  spec.subspec 'AlertController' do |sub|
-    sub.source_files = "JGSourceBase/AlertController/*.{h,m}"
-    sub.public_header_files = "JGSourceBase/AlertController/*.h"
-    
-    sub.dependency "JGSourceBase/Category/UIAlertController"
-  end
   
   # Base
   spec.subspec 'Base' do |sub|
@@ -292,16 +295,15 @@ Pod::Spec.new do |spec|
   end
   
   # subspec，不指定时默认安装所有subspec，用户可自行指定
-  # spec.default_subspecs = [
-  #     # 'AlertController', # Deprecated
-  #     'Base',
-  #     'Category',
-  #     'DataStorage',
-  #     'Device',
-  #     'Encryption',
-  #     # 'HUD',
-  #     'Reachability',
-  #     'SecurityKeyboard',
-  # ]
+  spec.default_subspecs = [
+      'Base',
+      'Category',
+      'DataStorage',
+      'Device',
+      'Encryption',
+      # 'HUD',
+      'Reachability',
+      'SecurityKeyboard',
+  ]
   
 end

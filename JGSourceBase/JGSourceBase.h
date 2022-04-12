@@ -48,14 +48,6 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import "JGSCategory.h"
 #endif
 
-// AlertController
-#pragma mark - AlertController
-#if __has_include(<JGSourceBase/JGSAlertController.h>)
-#import <JGSourceBase/JGSAlertController.h>
-#elif __has_include("JGSAlertController.h")
-#import "JGSAlertController.h"
-#endif
-
 // DataStorage
 #pragma mark - DataStorage
 #if __has_include(<JGSourceBase/JGSDataStorage.h>)

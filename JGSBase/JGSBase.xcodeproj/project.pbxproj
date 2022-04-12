@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C5079B12AA0D09072685BB0 /* libPods-JGSBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E44524FE59C7DABBEBE8CF /* libPods-JGSBase.a */; };
 		D47C3BC627B4F63600521310 /* JGSBaseUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3BC427B4F63600521310 /* JGSBaseUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47C3BC727B4F63600521310 /* JGSBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D47C3BC527B4F63600521310 /* JGSBaseUtils.m */; };
 		D47C3BCA27B4F67B00521310 /* JGSLogFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = D47C3BC827B4F67B00521310 /* JGSLogFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,8 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29E44524FE59C7DABBEBE8CF /* libPods-JGSBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1EFA2C006C1B59114A84A2B /* Pods-JGSBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase.release.xcconfig"; path = "Target Support Files/Pods-JGSBase/Pods-JGSBase.release.xcconfig"; sourceTree = "<group>"; };
 		D47C3BC427B4F63600521310 /* JGSBaseUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSBaseUtils.h; sourceTree = "<group>"; };
 		D47C3BC527B4F63600521310 /* JGSBaseUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSBaseUtils.m; sourceTree = "<group>"; };
 		D47C3BC827B4F67B00521310 /* JGSLogFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSLogFunction.h; sourceTree = "<group>"; };
@@ -27,7 +24,6 @@
 		D49253982795B44B007266EA /* JGSBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D492539B2795B44B007266EA /* JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
 		D492539C2795B44B007266EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E17477638C27BF2DF91C7091 /* Pods-JGSBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase/Pods-JGSBase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C5079B12AA0D09072685BB0 /* libPods-JGSBase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,19 +40,8 @@
 		3109F55FFBFBE7D46BBA13E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29E44524FE59C7DABBEBE8CF /* libPods-JGSBase.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7559AB7CA1A6F552A2204E5E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E17477638C27BF2DF91C7091 /* Pods-JGSBase.debug.xcconfig */,
-				D1EFA2C006C1B59114A84A2B /* Pods-JGSBase.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
 			sourceTree = "<group>";
 		};
 		D492538E2795B44B007266EA = {
@@ -65,7 +49,6 @@
 			children = (
 				D492539A2795B44B007266EA /* JGSBase */,
 				D49253992795B44B007266EA /* Products */,
-				7559AB7CA1A6F552A2204E5E /* Pods */,
 				3109F55FFBFBE7D46BBA13E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -113,7 +96,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D49253A02795B44B007266EA /* Build configuration list for PBXNativeTarget "JGSBase" */;
 			buildPhases = (
-				EED5F1A96874FCBCE5CB612B /* [CP] Check Pods Manifest.lock */,
 				D49253932795B44B007266EA /* Headers */,
 				D49253942795B44B007266EA /* Sources */,
 				D49253952795B44B007266EA /* Frameworks */,
@@ -190,28 +172,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/../JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/../JGSModifyVersion.sh # 执行sh\n";
-		};
-		EED5F1A96874FCBCE5CB612B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JGSBase-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -348,7 +308,6 @@
 		};
 		D49253A12795B44B007266EA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E17477638C27BF2DF91C7091 /* Pods-JGSBase.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -372,7 +331,6 @@
 		};
 		D49253A22795B44B007266EA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1EFA2C006C1B59114A84A2B /* Pods-JGSBase.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
