@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  JGSourceBase
+
+  Created by 梅继高 on 2022/4/13.
+  Copyright © 2022 MeiJiGao. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "PodsDemo";
+"CFBundleName" = "PodsDemo";

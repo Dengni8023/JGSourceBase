@@ -144,7 +144,9 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  spec.static_framework = false
+  # 是否使用静态库。如果 Podfile 指明了 use_frameworks! 命令，但是pod仓库需要使用静态库则需要设置
+  # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃
+  # spec.static_framework = true
   spec.requires_arc = true
   
   # modify info.plist
@@ -163,8 +165,8 @@ Pod::Spec.new do |spec|
   
   # Base
   spec.subspec 'Base' do |sub|
-    sub.source_files = "JGSBase/**/*.{h,m}"
-    sub.public_header_files = "JGSBase/**/*.h"
+    sub.source_files = "JGSBase/*.{h,m}"
+    sub.public_header_files = "JGSBase/*.h"
     
     sub.xcconfig = {
         "OTHER_LDFLAGS" => '-ObjC',
@@ -174,92 +176,92 @@ Pod::Spec.new do |spec|
   
   # Category
   spec.subspec 'Category' do |sub|
-    sub.source_files =  "JGSCategory/JGSCategory/*.{h,m}"
-    sub.public_header_files = "JGSCategory/JGSCategory/*.h"
+    sub.source_files =  "JGSCategory/*.{h,m}"
+    sub.public_header_files = "JGSCategory/*.h"
     
     sub.dependency "JGSourceBase/Base"
     
     sub.subspec 'NSDate' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/NSDate/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/NSDate/*.h"
+      subsub.source_files = "JGSCategory/NSDate/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSDate/*.h"
     end
     
     sub.subspec 'NSDictionary' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/NSDictionary/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/NSDictionary/*.h"
+      subsub.source_files = "JGSCategory/NSDictionary/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSDictionary/*.h"
     end
     
     sub.subspec 'NSObject' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/NSObject/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/NSObject/*.h"
+      subsub.source_files = "JGSCategory/NSObject/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSObject/*.h"
     end
     
     sub.subspec 'NSString' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/NSString/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/NSString/*.h"
+      subsub.source_files = "JGSCategory/NSString/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSString/*.h"
     end
     
     sub.subspec 'NSURL' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/NSURL/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/NSURL/*.h"
+      subsub.source_files = "JGSCategory/NSURL/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSURL/*.h"
     end
     
     sub.subspec 'UIAlertController' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/UIAlertController/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/UIAlertController/*.h"
+      subsub.source_files = "JGSCategory/UIAlertController/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/UIAlertController/*.h"
     end
     
     sub.subspec 'UIApplication' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/UIApplication/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/UIApplication/*.h"
+      subsub.source_files = "JGSCategory/UIApplication/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/UIApplication/*.h"
     end
     
     sub.subspec 'UIColor' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/UIColor/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/UIColor/*.h"
+      subsub.source_files = "JGSCategory/UIColor/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/UIColor/*.h"
     end
     
     sub.subspec 'UIImage' do |subsub|
-      subsub.source_files = "JGSCategory/JGSCategory/UIImage/*.{h,m}"
-      subsub.public_header_files = "JGSCategory/JGSCategory/UIImage/*.h"
+      subsub.source_files = "JGSCategory/UIImage/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/UIImage/*.h"
     end
   end
   
   # DataStorage
   spec.subspec 'DataStorage' do |sub|
-    sub.source_files = "JGSDataStorage/**/*.{h,m}"
-    sub.public_header_files = "JGSDataStorage/**/*.h"
+    sub.source_files = "JGSDataStorage/*.{h,m}"
+    sub.public_header_files = "JGSDataStorage/*.h"
     
     sub.dependency "JGSourceBase/Base"
   end
   
   # Device
   spec.subspec 'Device' do |sub|
-    sub.source_files = "JGSDevice/JGSDevice/*.{h,m}"
-    sub.public_header_files = "JGSDevice/JGSDevice/*.h"
+    sub.source_files = "JGSDevice/*.{h,m}"
+    sub.public_header_files = "JGSDevice/*.h"
 
-    sub.resources = "JGSDevice/JGSDevice/*.json"
+    sub.resources = "JGSDevice/**/iOSDeviceList.json"
     
     sub.dependency "JGSourceBase/Reachability"
   end
   
   # Encryption
   spec.subspec 'Encryption' do |sub|
-    sub.source_files = "JGSEncryption/**/*.{h,m}"
-    sub.public_header_files = "JGSEncryption/**/*.h"
+    sub.source_files = "JGSEncryption/*.{h,m}"
+    sub.public_header_files = "JGSEncryption/*.h"
     
     sub.dependency "JGSourceBase/Base"
   end
   
   # HUD
   spec.subspec 'HUD' do |sub|
-    sub.source_files = "JGSHUD/JGSHUD/*.{h,m}"
-    sub.public_header_files = "JGSHUD/JGSHUD/*.h"
+    sub.source_files = "JGSHUD/*.{h,m}"
+    sub.public_header_files = "JGSHUD/*.h"
     
     # Loading
     sub.subspec 'Loading' do |subsub|
-      subsub.source_files = "JGSHUD/JGSHUD/Loading/*.{h,m}"
-      subsub.public_header_files = "JGSHUD/JGSHUD/Loading/*.h"
+      subsub.source_files = "JGSHUD/Loading/*.{h,m}"
+      subsub.public_header_files = "JGSHUD/Loading/*.h"
       
       subsub.dependency 'MBProgressHUD'
       subsub.dependency "JGSourceBase/Category/UIColor"
@@ -267,8 +269,8 @@ Pod::Spec.new do |spec|
     
     # Toast
     sub.subspec 'Toast' do |subsub|
-      subsub.source_files = "JGSHUD/JGSHUD/Toast/*.{h,m}"
-      subsub.public_header_files = "JGSHUD/JGSHUD/Toast/*.h"
+      subsub.source_files = "JGSHUD/Toast/*.{h,m}"
+      subsub.public_header_files = "JGSHUD/Toast/*.h"
 
       subsub.dependency 'MBProgressHUD'
     end
@@ -276,18 +278,18 @@ Pod::Spec.new do |spec|
   
   # Reachability
   spec.subspec 'Reachability' do |sub|
-    sub.source_files = "JGSReachability/**/*.{h,m}"
-    sub.public_header_files = "JGSReachability/**/*.h"
+    sub.source_files = "JGSReachability/*.{h,m}"
+    sub.public_header_files = "JGSReachability/*.h"
     
     sub.dependency "JGSourceBase/Base"
   end
   
   # SecurityKeyboard
   spec.subspec 'SecurityKeyboard' do |sub|
-    sub.source_files = "JGSSecurityKeyboard/**/*.{h,m}"
+    sub.source_files = "JGSSecurityKeyboard/*.{h,m}"
     sub.public_header_files = [
-      "JGSSecurityKeyboard/**/**JGSSecurityKeyboard.h",
-      # "JGSSecurityKeyboard/**/UITextField+JGSSecurityKeyboard.h",
+      "JGSSecurityKeyboard/**JGSSecurityKeyboard.h",
+      # "JGSSecurityKeyboard/UITextField+JGSSecurityKeyboard.h",
     ]
 
     sub.dependency "JGSourceBase/Base"

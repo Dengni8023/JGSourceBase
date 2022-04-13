@@ -1,0 +1,416 @@
+{
+    "devices": {
+        "iPad": [
+            {
+                "Generation": "iPad",
+                "Identifier": ["iPad1,1"],
+                "Scale": "1x",
+                "SizePT": "768x1024",
+                "SizePX": "768x1024"
+            }, {
+                "Generation": "iPad 2",
+                "Identifier": ["iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4"],
+                "Scale": "1x",
+                "SizePT": "768x1024",
+                "SizePX": "768x1024"
+            }, {
+                "Generation": "iPad (3rd generation)",
+                "Identifier": ["iPad3,1", "iPad3,2", "iPad3,3"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad (4th generation)",
+                "Identifier": ["iPad3,4", "iPad3,5", "iPad3,6"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad (5th generation)",
+                "Identifier": ["iPad6,11", "iPad6,12"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad (6th generation)",
+                "Identifier": ["iPad7,5", "iPad7,6"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad (7th generation)",
+                "Identifier": ["iPad7,11", "iPad7,12"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad (8th generation)",
+                "Identifier": ["iPad11,6", "iPad11,7"],
+                "Scale": "2x",
+                "SizePT": "810x1080",
+                "SizePX": "1620x2160"
+            }, {
+                "Generation": "iPad (9th generation)",
+                "Identifier": ["iPad12,1", "iPad12,2"],
+                "Scale": "2x",
+                "SizePT": "810x1080",
+                "SizePX": "1620x2160"
+            }],
+        "iPad Air": [
+            {
+                "Generation": "iPad Air",
+                "Identifier": ["iPad4,1", "iPad4,2", "iPad4,3"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad Air 2",
+                "Identifier": ["iPad5,3", "iPad5,4"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad Air (3rd generation)",
+                "Identifier": ["iPad11,3", "iPad11,4"],
+                "Scale": "2x",
+                "SizePT": "834x1112",
+                "SizePX": "1668x2224"
+            }, {
+                "Generation": "iPad Air (4th generation)",
+                "Identifier": ["iPad13,1", "iPad13,2"],
+                "Scale": "2x",
+                "SizePT": "820x1180",
+                "SizePX": "1640x2360"
+            }],
+        "iPad Pro": [
+            {
+                "Generation": "iPad Pro (12.9-inch)",
+                "Identifier": ["iPad6,7", "iPad6,8"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
+            }, {
+                "Generation": "iPad Pro (9.7-inch)",
+                "Identifier": ["iPad6,3", "iPad6,4"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad Pro (12.9-inch) (2nd generation)",
+                "Identifier": ["iPad7,1", "iPad7,2"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
+            }, {
+                "Generation": "iPad Pro (10.5-inch)",
+                "Identifier": ["iPad7,3", "iPad7,4"],
+                "Scale": "2x",
+                "SizePT": "834x1112",
+                "SizePX": "1668x2224"
+            }, {
+                "Generation": "iPad Pro (11-inch)",
+                "Identifier": ["iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4"],
+                "Scale": "2x",
+                "SizePT": "834x1194",
+                "SizePX": "1668x2388"
+            }, {
+                "Generation": "iPad Pro (12.9-inch) (3rd generation)",
+                "Identifier": ["iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
+            }, {
+                "Generation": "iPad Pro (11-inch) (2nd generation)",
+                "Identifier": ["iPad8,9", "iPad8,10"],
+                "Scale": "2x",
+                "SizePT": "834x1194",
+                "SizePX": "1668x2388"
+            }, {
+                "Generation": "iPad Pro (12.9-inch) (4th generation)",
+                "Identifier": ["iPad8,11", "iPad8,12"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
+            }, {
+                "Generation": "iPad Pro (11-inch) (3rd generation)",
+                "Identifier": ["iPad13,4", "iPad13,5", "iPad13,6", "iPad13,7"],
+                "Scale": "2x",
+                "SizePT": "834x1194",
+                "SizePX": "1668x2388"
+            }, {
+                "Generation": "iPad Pro (12.9-inch) (5th generation)",
+                "Identifier": ["iPad13,8", "iPad13,9", "iPad13,10", "iPad13,11"],
+                "Scale": "2x",
+                "SizePT": "1024x1366",
+                "SizePX": "2048x2732"
+            }],
+        "iPad mini": [
+            {
+                "Generation": "iPad mini",
+                "Identifier": ["iPad2,5", "iPad2,6", "iPad2,7"],
+                "Scale": "1x",
+                "SizePT": "768x1024",
+                "SizePX": "768x1024"
+            }, {
+                "Generation": "iPad mini 2",
+                "Identifier": ["iPad4,4", "iPad4,5", "iPad4,6"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad mini 3",
+                "Identifier": ["iPad4,7", "iPad4,8", "iPad4,9"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad mini 4",
+                "Identifier": ["iPad5,2", "iPad5,2"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad mini (5th generation)",
+                "Identifier": ["iPad11,1", "iPad11,2"],
+                "Scale": "2x",
+                "SizePT": "768x1024",
+                "SizePX": "1536x2048"
+            }, {
+                "Generation": "iPad mini (6th generation)",
+                "Identifier": ["iPad14,1", "iPad14,2"],
+                "Scale": "2x",
+                "SizePT": "744x1133",
+                "SizePX": "1488x2266"
+            }],
+        "iPhone": [
+            {
+                "Generation": "iPhone 4",
+                "Identifier": ["iPhone3,1", "iPhone3,2", "iPhone3,3"],
+                "Scale": "2x",
+                "SizePT": "320x480",
+                "SizePX": "640x960"
+            }, {
+                "Generation": "iPhone 4S",
+                "Identifier": ["iPhone4,1"],
+                "Scale": "2x",
+                "SizePT": "320x480",
+                "SizePX": "640x960"
+            }, {
+                "Generation": "iPhone 5",
+                "Identifier": ["iPhone5,1", "iPhone5,2"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPhone 5c",
+                "Identifier": ["iPhone5,3", "iPhone5,4"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPhone 5s",
+                "Identifier": ["iPhone6,1", "iPhone6,2"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPhone 6",
+                "Identifier": ["iPhone7,2"],
+                "Scale": "2x",
+                "SizePT": "375x667",
+                "SizePX": "750x1334"
+            }, {
+                "Generation": "iPhone 6 Plus",
+                "Identifier": ["iPhone7,1"],
+                "Scale": "3x",
+                "SizePT": "414x736",
+                "SizePX": "1080x1920"
+            }, {
+                "Generation": "iPhone 6s",
+                "Identifier": ["iPhone8,1"],
+                "Scale": "2x",
+                "SizePT": "375x667",
+                "SizePX": "750x1334"
+            }, {
+                "Generation": "iPhone 6s Plus",
+                "Identifier": ["iPhone8,2"],
+                "Scale": "3x",
+                "SizePT": "414x736",
+                "SizePX": "1080x1920"
+            }, {
+                "Generation": "iPhone SE (1st generation)",
+                "Identifier": ["iPhone8,4"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPhone 7",
+                "Identifier": ["iPhone9,1", "iPhone9,3"],
+                "Scale": "2x",
+                "SizePT": "375x667",
+                "SizePX": "750x1334"
+            }, {
+                "Generation": "iPhone 7 Plus",
+                "Identifier": ["iPhone9,2", "iPhone9,4"],
+                "Scale": "3x",
+                "SizePT": "414x736",
+                "SizePX": "1080x1920"
+            }, {
+                "Generation": "iPhone 8",
+                "Identifier": ["iPhone10,1", "iPhone10,4"],
+                "Scale": "2x",
+                "SizePT": "375x667",
+                "SizePX": "750x1334"
+            }, {
+                "Generation": "iPhone 8 Plus",
+                "Identifier": ["iPhone10,2", "iPhone10,5"],
+                "Scale": "3x",
+                "SizePT": "414x736",
+                "SizePX": "1080x1920"
+            }, {
+                "Generation": "iPhone X",
+                "Identifier": ["iPhone10,3", "iPhone10,6"],
+                "Scale": "3x",
+                "SizePT": "375x812",
+                "SizePX": "1125x2436"
+            }, {
+                "Generation": "iPhone XR",
+                "Identifier": ["iPhone11,8"],
+                "Scale": "2x",
+                "SizePT": "414x896",
+                "SizePX": "828x1792"
+            }, {
+                "Generation": "iPhone XS",
+                "Identifier": ["iPhone11,2"],
+                "Scale": "3x",
+                "SizePT": "375x812",
+                "SizePX": "1125x2436"
+            }, {
+                "Generation": "iPhone XS Max",
+                "Identifier": ["iPhone11,4", "iPhone11,6"],
+                "Scale": "3x",
+                "SizePT": "414x896",
+                "SizePX": "1242x2688"
+            }, {
+                "Generation": "iPhone 11",
+                "Identifier": ["iPhone12,1"],
+                "Scale": "2x",
+                "SizePT": "414x896",
+                "SizePX": "828x1792"
+            }, {
+                "Generation": "iPhone 11 Pro",
+                "Identifier": ["iPhone12,3"],
+                "Scale": "3x",
+                "SizePT": "375x812",
+                "SizePX": "1125x2436"
+            }, {
+                "Generation": "iPhone 11 Pro Max",
+                "Identifier": ["iPhone12,5"],
+                "Scale": "3x",
+                "SizePT": "414x896",
+                "SizePX": "1242x2688"
+            }, {
+                "Generation": "iPhone SE (2nd generation)",
+                "Identifier": ["iPhone12,8"],
+                "Scale": "2x",
+                "SizePT": "375x667",
+                "SizePX": "750x1334"
+            }, {
+                "Generation": "iPhone 12 mini",
+                "Identifier": ["iPhone13,1"],
+                "Scale": "3x",
+                "SizePT": "375x812",
+                "SizePX": "1125x2436"
+            }, {
+                "Generation": "iPhone 12",
+                "Identifier": ["iPhone13,2"],
+                "Scale": "3x",
+                "SizePT": "390x844",
+                "SizePX": "1170x2532"
+            }, {
+                "Generation": "iPhone 12 Pro",
+                "Identifier": ["iPhone13,3"],
+                "Scale": "3x",
+                "SizePT": "390x844",
+                "SizePX": "1170x2532"
+            }, {
+                "Generation": "iPhone 12 Pro Max",
+                "Identifier": ["iPhone13,4"],
+                "Scale": "3x",
+                "SizePT": "428x926",
+                "SizePX": "1284x2778"
+            }, {
+                "Generation": "iPhone 13 mini",
+                "Identifier": ["iPhone14,4"],
+                "Scale": "3x",
+                "SizePT": "360x780",
+                "SizePX": "1080x2340"
+            }, {
+                "Generation": "iPhone 13",
+                "Identifier": ["iPhone14,5"],
+                "Scale": "3x",
+                "SizePT": "390x844",
+                "SizePX": "1170x2532"
+            }, {
+                "Generation": "iPhone 13 Pro",
+                "Identifier": ["iPhone14,2"],
+                "Scale": "3x",
+                "SizePT": "390x844",
+                "SizePX": "1170x2532"
+            }, {
+                "Generation": "iPhone 13 Pro Max",
+                "Identifier": ["iPhone14,3"],
+                "Scale": "3x",
+                "SizePT": "428x926",
+                "SizePX": "1284x2778"
+            }],
+        "iPod touch": [
+            {
+                "Generation": "iPod touch",
+                "Identifier": ["iPod1,1"],
+                "Scale": "1x",
+                "SizePT": "320x480",
+                "SizePX": "320x480"
+            }, {
+                "Generation": "iPod touch (2nd generation)",
+                "Identifier": ["iPod2,1"],
+                "Scale": "1x",
+                "SizePT": "320x480",
+                "SizePX": "320x480"
+            }, {
+                "Generation": "iPod touch (3rd generation)",
+                "Identifier": ["iPod3,1"],
+                "Scale": "1x",
+                "SizePT": "320x480",
+                "SizePX": "320x480"
+            }, {
+                "Generation": "iPod touch (4th generation)",
+                "Identifier": ["iPod4,1"],
+                "Scale": "2x",
+                "SizePT": "320x480",
+                "SizePX": "640x960"
+            }, {
+                "Generation": "iPod touch (5th generation)",
+                "Identifier": ["iPod5,1"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPod touch (6th generation)",
+                "Identifier": ["iPod7,1"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }, {
+                "Generation": "iPod touch (7th generation)",
+                "Identifier": ["iPod9,1"],
+                "Scale": "2x",
+                "SizePT": "320x568",
+                "SizePX": "640x1136"
+            }]
+    },
+    "info": {
+        "description": "iOS 设备清单",
+        "source": "https://www.theiphonewiki.com/wiki/Models"
+    }
+}

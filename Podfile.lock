@@ -65,7 +65,6 @@ DEPENDENCIES:
   - JGSourceBase (from `.`)
   - JGSourceBase/Base (from `.`)
   - JGSourceBase/Category (from `.`)
-  - JGSourceBase/Category/UIColor (from `.`)
   - JGSourceBase/Device (from `.`)
   - JGSourceBase/HUD (from `.`)
   - JGSourceBase/Reachability (from `.`)
@@ -92,10 +91,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: a53757e24541124536d05d4ab86adaf9ecec0cea
+  JGSourceBase: 8cdf6f48930dd7d7b0ff460c6eb7f3d1a330c271
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 2e4d16db3e90f6a97fa34d1dcd5304c6a9d6e6cc
+PODFILE CHECKSUM: f1715ff0f7584683afa2a4a371d1fcb5df32c98e
 
 COCOAPODS: 1.10.1
