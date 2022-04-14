@@ -114,10 +114,9 @@
     
     // 键盘设置
     self.normalInput = fields[0];
-    self.normalInput.keyboardType = arc4random() % 5 == 0 ? UIKeyboardTypeNumberPad : UIKeyboardTypeDefault;
+	self.normalInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeDefault + accountInputShow % 12; //12;
     
     // 安全键盘设置
-    accountInputShow += 1;
     self.accountInput = fields[1];
     self.accountInput.placeholder = @"安全键盘非加密输入";
     self.accountInput.returnKeyType = (accountInputShow % 2 == 0 ? UIReturnKeyDone : UIReturnKeyNext);
@@ -161,6 +160,8 @@
     JGSSecurityKeyboard *inputView5 = [JGSSecurityKeyboard idCardKeyboardWithTextField:fields[5] title:@"身份证键盘"];
     inputView5.randomNumPad = (accountInputShow % 2 == 1);
     fields[5].inputView = inputView5;
+	
+	accountInputShow += 1;
 }
 
 #pragma mark - Action
