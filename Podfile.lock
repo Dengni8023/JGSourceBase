@@ -41,6 +41,7 @@ PODS:
   - JGSourceBase/DataStorage (1.4.0):
     - JGSourceBase/Base
   - JGSourceBase/Device (1.4.0):
+    - JGSourceBase/Encryption
     - JGSourceBase/Reachability
   - JGSourceBase/Encryption (1.4.0):
     - JGSourceBase/Base
@@ -91,7 +92,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 8cdf6f48930dd7d7b0ff460c6eb7f3d1a330c271
+  JGSourceBase: 2fc76dbdcf2d22e8580963d44320cf27bb88dd57
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 

@@ -8,7 +8,7 @@
 
 #import "JGSDevice.h"
 #import "JGSBase.h"
-//#import "JGSKeychainUtils.h"
+#import "JGSAESEncryption.h"
 #import <WebKit/WebKit.h>
 #import <AdSupport/ASIdentifierManager.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
@@ -348,13 +348,31 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"iOSDeviceList.json" ofType:nil];
+		NSString *fileName = @"iOSDeviceList.json.sec";
+        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
         if (path.length == 0) {
-            path = [[NSBundle bundleForClass:[self class]] pathForResource:@"iOSDeviceList.json" ofType:nil];
+            path = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:nil];
         }
         
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
         NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+		if (deviceNamesByCode.count == 0) {
+			
+			// AES 256 解密, 解密方式, key, iv 与 JGSResourceHandler/main.m 文件 aesEncryptData 保持一致
+			size_t keyLen = kCCKeySizeAES256;
+			size_t blockSize = kCCBlockSizeAES128;
+			
+			NSString *key = fileName;
+			while (key.length < keyLen) {
+				key = [key stringByAppendingString:key];
+			}
+			
+			NSString *iv = [key substringFromIndex:key.length - blockSize];
+			key = [key substringToIndex:keyLen];
+			
+			jsonData = [jsonData jg_AES256DecryptWithKey:key iv:iv];
+			deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+		}
         
         NSString *machine = [self deviceMachine];
         NSDictionary *deviceInfo = [deviceNamesByCode objectForKey:machine];

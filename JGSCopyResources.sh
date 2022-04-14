@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-13 21:29:56
- # @LastEditTime: 2022-04-13 21:35:53
+ # @LastEditTime: 2022-04-14 14:02:33
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSCopyResources.sh
@@ -26,7 +26,7 @@ fi
 
 # 本脚本用于 JGSourceBase.framework 向framework 包拷贝资源文件
 # 拷贝 JGSDevice 资源文件
-JGSDeviceRes=${PROJECT_DIR}/JGSDevice/Resources/iOSDeviceList.json
+JGSDeviceRes=${PROJECT_DIR}/JGSDevice/Resources/iOSDeviceList.json.sec
 cp -f ${JGSDeviceRes} ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework
 
 # 此处不完整语句 Xcode 调试时会输出错误日志

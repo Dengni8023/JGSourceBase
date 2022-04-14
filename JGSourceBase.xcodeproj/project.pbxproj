@@ -115,6 +115,7 @@
 		D4D698282806E16F00CE1F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D698272806E16F00CE1F9F /* main.m */; };
 		D4D9FDD42807214C0028AD6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D9FDD22807214C0028AD6D /* InfoPlist.strings */; };
 		D4D9FDE6280727860028AD6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4D9FDE4280727850028AD6D /* InfoPlist.strings */; };
+		D4D9FDE92807E40F0028AD6D /* JGSAESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697882806E0F900CE1F9F /* JGSAESEncryption.m */; };
 		D4E5B0C5280709930066C448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E5B0C4280709930066C448 /* Assets.xcassets */; };
 		D4E5B0C8280709930066C448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4E5B0C6280709930066C448 /* LaunchScreen.storyboard */; };
 		D4E5B0CB280709930066C448 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5B0CA280709930066C448 /* main.m */; };
@@ -242,7 +243,7 @@
 		D4D6977F2806E0F900CE1F9F /* JGSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSToast.h; sourceTree = "<group>"; };
 		D4D697802806E0F900CE1F9F /* UIView+JGSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JGSToast.h"; sourceTree = "<group>"; };
 		D4D697832806E0F900CE1F9F /* iOSDeviceList-Origin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "iOSDeviceList-Origin.json"; sourceTree = "<group>"; };
-		D4D697842806E0F900CE1F9F /* iOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iOSDeviceList.json; sourceTree = "<group>"; };
+		D4D697842806E0F900CE1F9F /* iOSDeviceList.json.sec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSDeviceList.json.sec; sourceTree = "<group>"; };
 		D4D697852806E0F900CE1F9F /* JGSDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSDevice.h; sourceTree = "<group>"; };
 		D4D697862806E0F900CE1F9F /* JGSDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDevice.m; sourceTree = "<group>"; };
 		D4D697882806E0F900CE1F9F /* JGSAESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSAESEncryption.m; sourceTree = "<group>"; };
@@ -594,7 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D697832806E0F900CE1F9F /* iOSDeviceList-Origin.json */,
-				D4D697842806E0F900CE1F9F /* iOSDeviceList.json */,
+				D4D697842806E0F900CE1F9F /* iOSDeviceList.json.sec */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1174,6 +1175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D698282806E16F00CE1F9F /* main.m in Sources */,
+				D4D9FDE92807E40F0028AD6D /* JGSAESEncryption.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

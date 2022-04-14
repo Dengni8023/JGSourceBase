@@ -7,15 +7,45 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JGSAESEncryption.h"
 
-static NSString *JGSSourceOriginDir = @"Resources";
+NSData * _Nullable aesEncryptData(NSData *fileData, NSString *fileName) {
+	
+	if (fileData.length == 0 || fileName.length == 0) {
+		return nil;
+	}
+	
+	size_t keyLen = kCCKeySizeAES256;
+	size_t blockSize = kCCBlockSizeAES128;
+	
+	NSString *key = fileName;
+	while (key.length < keyLen) {
+		key = [key stringByAppendingString:key];
+	}
+	
+	NSString *iv = [key substringFromIndex:key.length - blockSize];
+	key = [key substringToIndex:keyLen];
+	
+	return [fileData jg_AES256EncryptWithKey:key iv:iv];
+}
+
+NSData * _Nullable aesEncryptFile(NSString *filePath) {
+	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+		return nil;
+	}
+	
+	NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+	NSString *fileName = filePath.lastPathComponent;
+	fileData = aesEncryptData(fileData, fileName);
+	return fileData;
+}
 
 // JGSDevice 资源文件处理
-static NSString *JGSDeviceSourceDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/JGSDevice";
+static NSString *JGSDeviceSourceDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/JGSDevice/Resources";
 void handleDevicesInfo(void) {
 	
-	NSString *fileDir = [JGSDeviceSourceDir stringByAppendingPathComponent:JGSSourceOriginDir];
-	NSString *filePath = [fileDir stringByAppendingPathComponent:@"iOSDeviceList-Origin.json"];
+	NSString *filePath = [JGSDeviceSourceDir stringByAppendingPathComponent:@"iOSDeviceList-Origin.json"];
 	NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
 	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
 	NSDictionary<NSString *, NSArray<NSDictionary *> *> *devices = [dict objectForKey:@"devices"];
@@ -34,9 +64,13 @@ void handleDevicesInfo(void) {
 		}];
 	}];
 	
-	NSData *newJson = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
-	NSString *newPath = [fileDir stringByAppendingPathComponent:@"iOSDeviceList.json"];
-	[newJson writeToFile:newPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
+	NSString *destFileName = @"iOSDeviceList.json.sec";
+	NSString *newPath = [JGSDeviceSourceDir stringByAppendingPathComponent:destFileName];
+	
+	NSData *sortedData = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
+	sortedData = aesEncryptData(sortedData, destFileName) ?: [NSData data];
+	
+	[sortedData writeToFile:newPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
 }
 
 int main(int argc, const char * argv[]) {

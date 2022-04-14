@@ -240,9 +240,10 @@ Pod::Spec.new do |spec|
     sub.source_files = "JGSDevice/*.{h,m}"
     sub.public_header_files = "JGSDevice/*.h"
 
-    sub.resources = "JGSDevice/**/iOSDeviceList.json"
+    sub.resources = "JGSDevice/**/iOSDeviceList.json.sec"
     
     sub.dependency "JGSourceBase/Reachability"
+    sub.dependency "JGSourceBase/Encryption"
   end
   
   # Encryption
