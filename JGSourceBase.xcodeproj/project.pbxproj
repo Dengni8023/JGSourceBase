@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29479A5ECD8C25AAD0E5E54E /* libPods-JGSourceDemo-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B6907312CF6EF00EA9244D /* libPods-JGSourceDemo-JGSourceBaseDemo.a */; };
-		734ADC433E6FD3F1C4B4E6AB /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1162BF2C16FF8C33E2639B1 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */; };
+		284CD8A3724C3BB814B72D58 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */; };
+		73D26D89735AD9B88916114E /* Pods_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */; };
+		92750850ADCA0616C4B4DD3E /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */; };
 		D4852C892806F33D002B14AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852C882806F33D002B14AB /* AppDelegate.m */; };
 		D4852C8F2806F33D002B14AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852C8E2806F33D002B14AB /* ViewController.m */; };
 		D4852C942806F33D002B14AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4852C932806F33D002B14AB /* Assets.xcassets */; };
@@ -143,7 +144,6 @@
 		D4E5B0F428071E680066C448 /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4E5B0F528071E680066C448 /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ECB3BC7C3A81AB5937148D6E /* libPods-JGSourceBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22D4CDD519C64F470B17075 /* libPods-JGSourceBase.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,8 +181,8 @@
 
 /* Begin PBXFileReference section */
 		107A9FC308229C0BDBF03A70 /* Pods-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
-		39B6907312CF6EF00EA9244D /* libPods-JGSourceDemo-JGSourceBaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceDemo-JGSourceBaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E616C8CEDB65D8766D45A3B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceFrameworkDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		734A5EDF9C9832B90AC65C2A /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		738AFC73F543B967A87B6C47 /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D4852C852806F33D002B14AB /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,9 +326,9 @@
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E22D4CDD519C64F470B17075 /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC751DA87FAA3E681595D275 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		F1162BF2C16FF8C33E2639B1 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceDemo-JGSourceFrameworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99DC0AD5FACB05C87C51CF1 /* Pods-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,7 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECB3BC7C3A81AB5937148D6E /* libPods-JGSourceBase.a in Frameworks */,
+				73D26D89735AD9B88916114E /* Pods_JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29479A5ECD8C25AAD0E5E54E /* libPods-JGSourceDemo-JGSourceBaseDemo.a in Frameworks */,
+				284CD8A3724C3BB814B72D58 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,8 +360,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				734ADC433E6FD3F1C4B4E6AB /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a in Frameworks */,
 				D4E5B0F428071E680066C448 /* JGSourceBase.framework in Frameworks */,
+				92750850ADCA0616C4B4DD3E /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,9 +384,9 @@
 		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39B6907312CF6EF00EA9244D /* libPods-JGSourceDemo-JGSourceBaseDemo.a */,
-				F1162BF2C16FF8C33E2639B1 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */,
-				E22D4CDD519C64F470B17075 /* libPods-JGSourceBase.a */,
+				F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */,
+				DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */,
+				5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -892,10 +892,12 @@
 			buildConfigurationList = D4852C9D2806F33D002B14AB /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
 			buildPhases = (
 				CEACB40BEA597A401F0366EE /* [CP] Check Pods Manifest.lock */,
+				D474954828093C0200D5D877 /* ShellScript */,
 				D4852C812806F33D002B14AB /* Sources */,
 				D4852C822806F33D002B14AB /* Frameworks */,
 				D4852C832806F33D002B14AB /* Resources */,
-				4F140506BD1E46D51C91693A /* [CP] Copy Pods Resources */,
+				AD0F7A44617F7B12BF6FAB65 /* [CP] Embed Pods Frameworks */,
+				D4D7A3E628087CF900C65AFB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -928,10 +930,13 @@
 			buildConfigurationList = D4E5B0CC280709930066C448 /* Build configuration list for PBXNativeTarget "JGSourceFrameworkDemo" */;
 			buildPhases = (
 				30273DE7799F66AA1192E6C1 /* [CP] Check Pods Manifest.lock */,
+				D474954628093BCA00D5D877 /* ShellScript */,
 				D4E5B0B2280709930066C448 /* Sources */,
 				D4E5B0B3280709930066C448 /* Frameworks */,
 				D4E5B0B4280709930066C448 /* Resources */,
 				D4E5B0F628071E690066C448 /* Embed Frameworks */,
+				86663E67E89F58C76FD19EEC /* [CP] Embed Pods Frameworks */,
+				D474954528087D3F00D5D877 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -948,10 +953,11 @@
 			buildConfigurationList = D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
 			buildPhases = (
 				F3954126DA7F835697348A18 /* [CP] Check Pods Manifest.lock */,
+				D474954728093BF800D5D877 /* ShellScript */,
 				D4F3DA4022F0279D002EF0F0 /* Headers */,
 				D4F3DA4122F0279D002EF0F0 /* Sources */,
 				4B3EA7BF27729F175F83E047 /* Frameworks */,
-				D47C3D0427B6321800521310 /* ShellScript */,
+				D47C3D0427B6321800521310 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1066,21 +1072,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F140506BD1E46D51C91693A /* [CP] Copy Pods Resources */ = {
+		86663E67E89F58C76FD19EEC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD0F7A44617F7B12BF6FAB65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CEACB40BEA597A401F0366EE /* [CP] Check Pods Manifest.lock */ = {
@@ -1105,7 +1128,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D47C3D0427B6321800521310 /* ShellScript */ = {
+		D474954528087D3F00D5D877 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1120,7 +1143,93 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本\"\nchmod +x ${PROJECT_DIR}/JGSModifyVersion.sh # sh执行权限\n${PROJECT_DIR}/JGSModifyVersion.sh # 执行sh\n\nchmod +x ${PROJECT_DIR}/JGSCopyResources.sh # sh执行权限\n${PROJECT_DIR}/JGSCopyResources.sh # 执行sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改输出物 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh \"app\" # 执行sh\n";
+		};
+		D474954628093BCA00D5D877 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+		};
+		D474954728093BF800D5D877 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+		};
+		D474954828093C0200D5D877 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+		};
+		D47C3D0427B6321800521310 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改输出物 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh \"framework\" # 执行sh\n\necho \"执行自定义脚本拷贝资源文件\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSCopyResources2Framework.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSCopyResources2Framework.sh # 执行sh\n";
+		};
+		D4D7A3E628087CF900C65AFB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改输出物 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyBuildVersionAfterCompile.sh \"app\" # 执行sh\n";
 		};
 		F3954126DA7F835697348A18 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1302,7 +1411,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1317,7 +1425,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1337,7 +1445,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1352,7 +1459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1400,7 +1507,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1415,7 +1521,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1435,7 +1541,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1450,7 +1555,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1601,6 +1706,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1630,6 +1736,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -11,7 +11,7 @@ install! 'cocoapods', :deterministic_uuids => false
 # use_frameworks! 要求生成的是 .framework 而不是静态库 .a
 # JGSourceFrameworkDemo 测试时建议指定 use_frameworks!，否则启动会有重复定义警告，例：
 # Class MBProgressHUD is implemented in both /.../JGSourceBase (0x...) and /.../JGSourceFrameworkDemo (0x...). One of the two will be used. Which one is undefined.
-# use_frameworks!
+use_frameworks!
 
 # JGSourceBaseDemo 测试时建议不指定 use_frameworks!，否则编译会有重复依赖警告，例：
 # Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBase')
@@ -35,16 +35,17 @@ abstract_target "JGSourceDemo" do
 	# JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
 	target "JGSourceBaseDemo" do
 		
-		# pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'fcadf737e6ed5cfb1e7daccf0a2e17611568c604' #'~> 1.3.0'
+		# pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'f3762f53e327691819981238b993b562bbfb9eb0' #'~> 1.3.0'
 		# pod 'JGSourceBase', '~> 1.3.0'
 		pod 'JGSourceBase', :path => "."
-		pod 'JGSourceBase/Base', :path => "." # Base测试
-		pod 'JGSourceBase/Category', :path => "." # Category测试
-		pod 'JGSourceBase/Device', :path => "." # Device测试
-		pod 'JGSourceBase/Reachability', :path => "." # Reachability测试
-		pod 'JGSourceBase/SecurityKeyboard', :path => "." # SecurityKeyboard测试
+		# pod 'JGSourceBase/Base', :path => "." # Base测试
+		# pod 'JGSourceBase/Category', :path => "." # Category测试
+		# pod 'JGSourceBase/Device', :path => "." # Device测试
+		# pod 'JGSourceBase/Reachability', :path => "." # Reachability测试
+		# pod 'JGSourceBase/SecurityKeyboard', :path => "." # SecurityKeyboard测试
 		
 		# HUD
+		# pod 'JGSourceBase/HUD', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'f3762f53e327691819981238b993b562bbfb9eb0'
 		pod 'JGSourceBase/HUD', :path => "." # HUD测试
 		# 'Category/UIImage', :path => "."
 		# pod 'JGSourceBase/HUD/Loading', :path => "." # HUD-Loading测试

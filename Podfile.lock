@@ -64,12 +64,7 @@ PODS:
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.9)
   - JGSourceBase (from `.`)
-  - JGSourceBase/Base (from `.`)
-  - JGSourceBase/Category (from `.`)
-  - JGSourceBase/Device (from `.`)
   - JGSourceBase/HUD (from `.`)
-  - JGSourceBase/Reachability (from `.`)
-  - JGSourceBase/SecurityKeyboard (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
   - MBProgressHUD
 
@@ -92,10 +87,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 2fc76dbdcf2d22e8580963d44320cf27bb88dd57
+  JGSourceBase: 476cde6b0d6d26587b341467563f719a00c6ab15
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: f1715ff0f7584683afa2a4a371d1fcb5df32c98e
+PODFILE CHECKSUM: 4050533f10bdc89d5da38f41db4f8baa2bfe3689
 
 COCOAPODS: 1.10.1

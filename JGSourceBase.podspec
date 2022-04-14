@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint JGSourceBase.podspec' to ensure this is a
+#  Be sure to run 'pod spec lint JGSourceBase.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
@@ -153,11 +153,38 @@ Pod::Spec.new do |spec|
   # Only work for framework
   spec.info_plist = {
     'CFBundleShortVersionString' => "#{spec.version}",
-    'CFBundleVersion' => '`$(date "+%Y%m%d")`'
+    'CFBundleVersion' => "#{spec.version}",
+  }
+  
+  spec.pod_target_xcconfig = {
+    'PRODUCT_BUNDLE_IDENTIFIER' => "com.meijigao.#{spec.name}",
+    'CURRENT_PROJECT_VERSION' => "#{spec.version}",
   }
 
-  spec.pod_target_xcconfig = {
-    'PRODUCT_BUNDLE_IDENTIFIER'=> "com.meijigao.#{spec.name}",
+  # 修改构建产出物 framework 中 Info.plist 内容
+  spec.script_phase = {
+    :name => "Modify Info.plist",
+    :script => '
+      Build=$(date "+%Y%m%d%H%M") # 构建时间
+      InfoPlist="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework/Info.plist"
+      PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
+      HasBundleVersion=false
+      for PLIST_ITEMS in $PlistLINES; do
+          if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
+              echo "CFBundleVersion: ${PLIST_ITEMS}"
+              HasBundleVersion=true
+              break
+          fi
+      done
+      
+      if [[ HasBundleVersion ]]; then
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${Build}" ${InfoPlist}
+      else
+          /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${Build}" ${InfoPlist}
+      fi
+    ',
+    # :execution_position => :before_compile,
+    :execution_position => :after_compile,
   }
   
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }

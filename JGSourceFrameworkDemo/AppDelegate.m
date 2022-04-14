@@ -30,7 +30,7 @@
     ViewController *vcT = [[ViewController alloc] init];
     JGSDemoNavigationController *nav = [[JGSDemoNavigationController alloc] initWithRootViewController:vcT];
     _window.rootViewController = nav;
-    
+	
     [_window makeKeyAndVisible];
     
     // IQKeyboardManager设置
