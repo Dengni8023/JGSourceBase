@@ -6,6 +6,7 @@ PODS:
     - JGSourceBase/DataStorage (= 1.4.0)
     - JGSourceBase/Device (= 1.4.0)
     - JGSourceBase/Encryption (= 1.4.0)
+    - JGSourceBase/IntegrityCheck (= 1.4.0)
     - JGSourceBase/Reachability (= 1.4.0)
     - JGSourceBase/SecurityKeyboard (= 1.4.0)
   - JGSourceBase/Base (1.4.0)
@@ -53,6 +54,8 @@ PODS:
     - MBProgressHUD
   - JGSourceBase/HUD/Toast (1.4.0):
     - MBProgressHUD
+  - JGSourceBase/IntegrityCheck (1.4.0):
+    - JGSourceBase/Base
   - JGSourceBase/Reachability (1.4.0):
     - JGSourceBase/Base
   - JGSourceBase/SecurityKeyboard (1.4.0):
@@ -87,10 +90,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 476cde6b0d6d26587b341467563f719a00c6ab15
+  JGSourceBase: 8bcf02294a735c01df284f5ba8dd6baa9ba0ed8c
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 4050533f10bdc89d5da38f41db4f8baa2bfe3689
+PODFILE CHECKSUM: 94b54326325d5cfa069fa338c215ba392c490434
 
 COCOAPODS: 1.10.1

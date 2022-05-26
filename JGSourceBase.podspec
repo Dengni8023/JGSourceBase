@@ -151,53 +151,61 @@ Pod::Spec.new do |spec|
   
   # modify info.plist
   # Only work for framework
-  spec.info_plist = {
-    'CFBundleShortVersionString' => "#{spec.version}",
-    'CFBundleVersion' => "#{spec.version}",
-  }
+  # spec.info_plist = {
+  #   "CFBundleShortVersionString" => "#{spec.version}",
+  #   "CFBundleVersion" => "#{spec.version}",
+  # }
   
   spec.pod_target_xcconfig = {
-    'PRODUCT_BUNDLE_IDENTIFIER' => "com.meijigao.#{spec.name}",
-    'CURRENT_PROJECT_VERSION' => "#{spec.version}",
+    "PRODUCT_BUNDLE_IDENTIFIER" => "com.meijigao.#{spec.name}",
+    "MARKETING_VERSION" => "#{spec.version}",
+    "CURRENT_PROJECT_VERSION" => "#{spec.version}",
   }
 
-  # 修改构建产出物 framework 中 Info.plist 内容
-  spec.script_phase = {
-    :name => "Modify Info.plist",
-    :script => '
-      Build=$(date "+%Y%m%d%H%M") # 构建时间
-      InfoPlist="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework/Info.plist"
-      PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
-      HasBundleVersion=false
-      for PLIST_ITEMS in $PlistLINES; do
-          if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
-              echo "CFBundleVersion: ${PLIST_ITEMS}"
-              HasBundleVersion=true
-              break
-          fi
-      done
-      
-      if [[ HasBundleVersion ]]; then
-          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${Build}" ${InfoPlist}
-      else
-          /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${Build}" ${InfoPlist}
-      fi
-    ',
-    # :execution_position => :before_compile,
-    :execution_position => :after_compile,
-  }
+  # # 修改构建产出物 framework 中 Info.plist 内容
+  # modifyPodTargetInfoPlistScriptAfterCompile = <<-CMD
+  #   # echo "自定义脚本修改构建产出物 framework 中 Info.plist 内容"
+  #   Build=$(date "+%Y%m%d%H%M") # 构建时间
+  #   InfoPlist="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework/Info.plist"
+  #   PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
+  #   HasBundleVersion=false
+  #   for PLIST_ITEMS in $PlistLINES; do
+  #       if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
+  #           echo "CFBundleVersion: ${PLIST_ITEMS}"
+  #           HasBundleVersion=true
+  #           break
+  #       fi
+  #   done
+    
+  #   if [[ HasBundleVersion ]]; then
+  #       /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${Build}" ${InfoPlist}
+  #   else
+  #       /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${Build}" ${InfoPlist}
+  #   fi
+  # CMD
+  # # spec.script_phase 只支持Pod Target执行脚本
+  # spec.script_phase = {
+  #   :name => "Modify Pod Target‘s Info.plist After Compile",
+  #   :script => modifyPodTargetInfoPlistScriptAfterCompile,
+  #   # :execution_position => :before_compile,
+  #   :execution_position => :after_compile,
+  # }
   
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
   
   # Base
-  spec.subspec 'Base' do |sub|
+  spec.subspec "Base" do |sub|
     sub.source_files = "JGSBase/*.{h,m}"
     sub.public_header_files = "JGSBase/*.h"
     
     sub.xcconfig = {
-        "OTHER_LDFLAGS" => '-ObjC',
-        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/#{spec.version}\"' JGSVersion='#{spec.version}'",
+        "OTHER_LDFLAGS" => '-ObjC'
+    }
+
+    sub.pod_target_xcconfig = {
+        "JGSVersion" => "#{spec.version}",
+        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/${JGSVersion}\"' JGSVersion='\"${JGSVersion}\"'",
     }
   end
   
@@ -304,6 +312,24 @@ Pod::Spec.new do |spec|
     end
   end
   
+  # IntegrityCheck
+  spec.subspec 'IntegrityCheck' do |sub|
+    sub.source_files = "JGSIntegrityCheck/*.{h,m}"
+    sub.public_header_files = "JGSIntegrityCheck/*.h"
+    
+    # 脚本及说明文档不需要被Target编译、作为资源文件引用
+    # 但又不能被清理，要保证使用这能够访问到文件
+    # 只能配置文件夹路径，不能为文件路径
+    sub.preserve_paths = "JGSIntegrityCheck"
+    
+    sub.pod_target_xcconfig = {
+      "GCC_PREPROCESSOR_DEFINITIONS" => "JGSResourcesCheckFileHashSecuritySalt='\"JGSIntegrityCheck\"' JGSApplicationIntegrityCheckFileHashFile='\"JGSApplicationIntegrityCheckFileHashFile\"'",
+    }
+    
+    sub.dependency "JGSourceBase/Base"
+    
+  end
+
   # Reachability
   spec.subspec 'Reachability' do |sub|
     sub.source_files = "JGSReachability/*.{h,m}"
@@ -326,14 +352,15 @@ Pod::Spec.new do |spec|
   
   # subspec，不指定时默认安装所有subspec，用户可自行指定
   spec.default_subspecs = [
-      'Base',
-      'Category',
-      'DataStorage',
-      'Device',
-      'Encryption',
-      # 'HUD',
-      'Reachability',
-      'SecurityKeyboard',
+      "Base",
+      "Category",
+      "DataStorage",
+      "Device",
+      "Encryption",
+      # "HUD",
+      "IntegrityCheck",
+      "Reachability",
+      "SecurityKeyboard",
   ]
   
 end

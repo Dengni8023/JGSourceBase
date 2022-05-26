@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-13 21:29:56
- # @LastEditTime: 2022-04-15 22:46:37
+ # @LastEditTime: 2022-05-18 18:17:35
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSCopyResources2Framework.sh
@@ -29,8 +29,15 @@ fi
 
 # 本脚本用于 JGSourceBase.framework 向framework 包拷贝资源文件
 # 拷贝 JGSDevice 资源文件
-JGSDeviceRes=${PROJECT_DIR}/JGSDevice/Resources/iOSDeviceList.json.sec
-cp -f ${JGSDeviceRes} ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework
+JGSSourceRes=${PROJECT_DIR}/JGSDevice/Resources/iOSDeviceList.json.sec
+cp -f ${JGSSourceRes} ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework
+
+# 拷贝 JGSIntegrityCheck 资源文件
+JGSSourceRes=${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheck.md
+cp -f ${JGSSourceRes} ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework
+
+JGSSourceRes=${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh
+cp -f ${JGSSourceRes} ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本

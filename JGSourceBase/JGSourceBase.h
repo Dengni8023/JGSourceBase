@@ -64,6 +64,12 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import <JGSourceBase/JGSHUD.h>
 #endif
 
+// JGSIntegrityCheck.h
+#pragma mark - JGSIntegrityCheck
+#if __has_include(<JGSourceBase/JGSIntegrityCheck.h>)
+#import <JGSourceBase/JGSIntegrityCheck.h>
+#endif
+
 // JGSReachability
 #pragma mark - JGSReachability
 #if __has_include(<JGSourceBase/JGSReachability.h>)

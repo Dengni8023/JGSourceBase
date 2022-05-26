@@ -1,0 +1,767 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/meijigao/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="file:////Users/meijigao/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="center%E5%BA%94%E7%94%A8%E5%AE%8C%E6%95%B4%E6%80%A7%E6%A0%A1%E9%AA%8C%E4%B9%8B%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%A3%80%E9%AA%8Ccenter"><center>&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;&#x4E4B;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x68C0;&#x9A8C;</center></h1>
+
+<center><font style="color: gray">JGSIntegrityCheck&#x4F7F;&#x7528;&#x624B;&#x518C;&#x53CA;&#x65B9;&#x6848;&#x4ECB;&#x7ECD;</font></center>
+<ul>
+<li><a href="#center%E5%BA%94%E7%94%A8%E5%AE%8C%E6%95%B4%E6%80%A7%E6%A0%A1%E9%AA%8C%E4%B9%8B%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%A3%80%E9%AA%8Ccenter">&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;&#x4E4B;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x68C0;&#x9A8C;</a>
+<ul>
+<li><a href="#1-%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%A1%88">1. &#x6821;&#x9A8C;&#x65B9;&#x6848;</a></li>
+<li><a href="#2-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">2. &#x4F7F;&#x7528;&#x65B9;&#x6CD5;</a>
+<ul>
+<li><a href="#21-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8">2.1 &#x6253;&#x5305;&#x811A;&#x672C;&#x4F7F;&#x7528;</a>
+<ul>
+<li><a href="#211-pod%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F">2.1.1 Pod&#x5F15;&#x5165;&#x65B9;&#x5F0F;</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80podfile%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC">&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;<code>Podfile</code>&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%E4%B8%BBtarget%E6%B7%BB%E5%8A%A0runscript%E8%84%9A%E6%9C%AC">&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4E3B;<code>Target</code>&#x6DFB;&#x52A0;<code>RunScript</code>&#x811A;&#x672C;</a></li>
+</ul>
+</li>
+<li><a href="#212-%E6%BA%90%E7%A0%81%E6%88%96framewok%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F">2.1.2 &#x6E90;&#x7801;&#x6216;<code>framewok</code>&#x6253;&#x5305;&#x5F15;&#x5165;&#x65B9;&#x5F0F;</a></li>
+</ul>
+</li>
+<li><a href="#22-%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E6%A0%A1%E9%AA%8C%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6">2.2 &#x5E94;&#x7528;&#x542F;&#x52A8;&#x540E;&#x6821;&#x9A8C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;</a></li>
+</ul>
+</li>
+<li><a href="#3-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E5%8F%8A%E6%A0%A1%E9%AA%8C%E8%BF%87%E7%A8%8B">3. &#x6253;&#x5305;&#x811A;&#x672C;&#x53CA;&#x6821;&#x9A8C;&#x8FC7;&#x7A0B;</a>
+<ul>
+<li><a href="#31-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E9%80%BB%E8%BE%91">3.1 &#x6253;&#x5305;&#x811A;&#x672C;&#x903B;&#x8F91;</a>
+<ul>
+<li><a href="#311-infoplist%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E8%AE%B0%E5%BD%95">3.1.1 <code>Info.plist</code>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8BB0;&#x5F55;</a></li>
+<li><a href="#312-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6hash%E8%AE%B0%E5%BD%95">3.1.2 &#x8D44;&#x6E90;&#x6587;&#x4EF6;<code>Hash</code>&#x8BB0;&#x5F55;</a></li>
+<li><a href="#313-%E7%94%9F%E6%88%90%E6%A0%A1%E9%AA%8C%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9">3.1.3 &#x751F;&#x6210;&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</a></li>
+</ul>
+</li>
+<li><a href="#32-%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%A0%A1%E9%AA%8C%E9%80%BB%E8%BE%91">3.2 &#x5E94;&#x7528;&#x542F;&#x52A8;&#x6821;&#x9A8C;&#x903B;&#x8F91;</a>
+<ul>
+<li><a href="#321-%E6%A0%A1%E9%AA%8C%E9%85%8D%E7%BD%AE">3.2.1 &#x6821;&#x9A8C;&#x914D;&#x7F6E;</a></li>
+<li><a href="#322-%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95">3.2.2 &#x6821;&#x9A8C;&#x65B9;&#x6CD5;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="1-%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%A1%88">1. &#x6821;&#x9A8C;&#x65B9;&#x6848;</h2>
+
+<ul>
+<li>&#x6821;&#x9A8C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x751F;&#x6210;&#x6D41;&#x7A0B;</li>
+</ul>
+<div class="mermaid">flowchart TB
+
+	subgraph PackageShell[&#x6253;&#x5305;&#x811A;&#x672C;]
+		start(&#x6E90;&#x7801;&#x7F16;&#x8BD1;) -.app&#x5305;.-&gt; executeSH[&#x6267;&#x884C;&#x811A;&#x672C;&#x8BB0;&#x5F55;&lt;br/&gt;.app&#x5305;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&lt;br/&gt;Hash&#x53CA;Info.plist&#x5185;&#x5BB9;] --&gt; output[&#x6587;&#x4EF6;Hash&#x53CA;Info.plist&lt;br/&gt;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x6821;&#x9A8C;&#x6587;&#x4EF6;] -.-&gt; stop(&#x6253;&#x5305;&#x5B8C;&#x6210;&lt;br/&gt;&#x751F;&#x6210;.ipa&#x5305;)
+	end
+</div><ul>
+<li>&#x5E94;&#x7528;&#x542F;&#x52A8;&#x65F6;&#x6839;&#x636E;&#x6821;&#x9A8C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x6821;&#x9A8C;&#x5E94;&#x7528;&#x8D44;&#x6E90;&#x6587;&#x4EF6;</li>
+</ul>
+<div class="mermaid">flowchart LR
+
+	subgraph APPStart[&#x5E94;&#x7528;&#x542F;&#x52A8;&#x5904;&#x7406;]
+    start([&#x5E94;&#x7528;&#x542F;&#x52A8;]) -.-&gt; startHandle[&#x542F;&#x52A8;&#x5904;&#x7406;:&lt;br/&gt;&#x540C;&#x610F;&#x9690;&#x79C1;&#x6761;&#x6B3E;&#x7B49;] -.-&gt; setting[&#x914D;&#x7F6E;&#x6821;&#x9A8C;&lt;br/&gt;&#x9ED1;&#x767D;&#x540D;&#x5355;] --&gt; startCheck[&#x542F;&#x52A8;&#x6821;&#x9A8C;]
+	end
+
+	subgraph IntegrityCheck[&#x8D44;&#x6E90;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;]
+		checkStart([&#x5F00;&#x59CB;&#x6821;&#x9A8C;]) -.&#x5F02;&#x6B65;&#x5B50;&#x7EBF;&#x7A0B;.-&gt; readRecord[&#x8BFB;&#x53D6;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;] -.-&gt; parse[&#x8BB0;&#x5F55;&#x6587;&#x4EF6;&lt;br/&gt;&#x89E3;&#x5BC6;&#x89E3;&#x6790;] -.-&gt; recordFile[/&#x8BB0;&#x5F55;&#x5185;&#x5BB9;/] --&gt; checkFile[&#x6587;&#x4EF6;Hash&#x6BD4;&#x5BF9;] --&gt; checkEnd[&#x6BD4;&#x5BF9;&#x5B8C;&#x6210;] -.&#x5F02;&#x6B65;&#x4E3B;&#x7EBF;&#x7A0B;.-&gt; output[/&#x6821;&#x9A8C;&#x7ED3;&#x679C;/] --&gt; stop([&#x6821;&#x9A8C;&#x5B8C;&#x6210;])
+		recordFile --&gt; checkPlist[Info.plist&#x5185;&#x5BB9;&#x6BD4;&#x5BF9;] --&gt; checkEnd
+	end
+
+	subgraph BusinessHandle[&#x4E1A;&#x52A1;&#x5C42;&#x5904;&#x7406;]
+		bStart([&#x4E1A;&#x52A1;&#x5904;&#x7406;]) -.-&gt; binput[/&#x6821;&#x9A8C;&#x7ED3;&#x679C;/] --&gt; bcheck{&#x662F;&#x5426;&#x6709;&#x6821;&#x9A8C;&#x4E0D;&#x901A;&#x8FC7;&#x6587;&#x4EF6;} --YES--&gt; balert[/&#x5E94;&#x7528;&lt;br/&gt;&#x635F;&#x574F;&#x63D0;&#x793A;/] -.&#x7528;&#x6237;&#x64CD;&#x4F5C;.-&gt; bstop([&#x5B8C;&#x6210;])
+		bcheck --NO--&gt; bstop
+	end
+
+	APPStart --&gt; IntegrityCheck --&gt; BusinessHandle	
+</div><p>&#x5E94;&#x7528;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x6253;&#x5305;&#x7ED3;&#x675F;&#x524D;&#x6267;&#x884C;&#x6253;&#x5305;&#x811A;&#x672C;&#xFF0C;&#x8FDB;&#x884C;<code>.app</code>&#x5305;&#x4E2D;&#x6587;&#x4EF6;Hash&#x8BB0;&#x5F55;&#xFF0C;&#x8BB0;&#x5F55;&#x5185;&#x5BB9;&#x5B58;&#x5165;<code>JGSApplicationIntegrityCheckFileHashFile</code>&#x6587;&#x4EF6;</p>
+<ul>
+<li>
+<p>&#x6839;&#x76EE;&#x5F55;<code>Info.plist</code>&#x6587;&#x4EF6;&#x56E0;&#x4E0A;&#x4F20;&#x5546;&#x5E97;&#x65F6;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x7AEF;&#x589E;&#x3001;&#x5220;&#x3001;&#x6539;&#x5904;&#x7406;&#xFF0C;&#x9488;&#x5BF9;&#x8BE5;&#x6587;&#x4EF6;&#x4E0D;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;<code>Hash</code>&#xFF0C;&#x56E0;&#x8BE5;&#x6587;&#x4EF6;&#x518D;&#x9879;&#x76EE;&#x4E2D;&#x4F5C;&#x4E3A;<code>Dictionary</code>&#x5F62;&#x5F0F;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528;<code>JSON</code>&#x683C;&#x5F0F;&#x8BB0;&#x5F55;&#x8BE5;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</p>
+</li>
+<li>
+<p>&#x6587;&#x4EF6;<code>Hash</code>&#x8BB0;&#x5F55;&#x9ED8;&#x8BA4;&#x5FFD;&#x5F8B;&#x4EE5;&#x4E0B;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x533A;&#x5206;&#x6839;&#x76EE;&#x5F55;&#x3001;&#x5B50;&#x76EE;&#x5F55;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>&quot;${PRODUCT_NAME}&quot; # Target&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;
+&quot;${ResourcesHashFileNameWithExt}&quot; # &#x6821;&#x9A8C;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;
+&quot;_CodeSignature&quot; # &#x901A;&#x7528;&#x7B7E;&#x540D;&#x6587;&#x4EF6;
+&quot;Assets.car&quot; # Assets&#x6587;&#x4EF6;&#xFF0C;&#x5E94;&#x7528;&#x5546;&#x5E97;&#x4E0B;&#x8F7D;&#x65F6;&#x5546;&#x5E97;&#x5BF9;&#x6539;&#x6587;&#x4EF6;&#x505A;&#x5220;&#x51CF;&#x3001;&#x4F18;&#x5316;
+&quot;Frameworks&quot; # &#x4F9D;&#x8D56;Frameworks&#x5305;&#x6587;&#x4EF6;
+&quot;PlugIns&quot; # &#x6269;&#x5C55;&#x63D2;&#x4EF6;
+&quot;embedded.mobileprovision&quot; # &#x6253;&#x5305;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;&#x4E0A;&#x4F20;&#x5546;&#x5E97;&#x5546;&#x5E97;&#x4F1A;&#x91CD;&#x7B7E;&#x540D;&#x6253;&#x5305;&#x5BFC;&#x81F4;&#x6587;&#x4EF6;&#x53D8;&#x5316;
+&quot;Info.plist&quot; # &#x6839;&#x76EE;&#x5F55;Info.plist&#x5546;&#x5E97;&#x5305;&#x4E0A;&#x4F20;&#x4F1A;&#x589E;&#x5220;&#x6539;&#xFF0C;&#x72EC;&#x7ACB;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5B50;&#x76EE;&#x5F55;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x8BB0;&#x5F55;&#x5904;&#x7406;
+</code></pre></li>
+<li>
+<p>&#x5E94;&#x7528;&#x542F;&#x52A8;&#x65F6;&#x67E5;&#x627E;&#x662F;&#x5426;&#x5B58;&#x5728;<code>JGSApplicationIntegrityCheckFileHashFile</code>&#x6587;&#x4EF6;&#xFF0C;&#x5B58;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;<code>Hash</code>&#x6821;&#x9A8C;&#xFF0C;&#x4EE5;&#x53CA;<code>Info.list</code>&#x5185;&#x5BB9;&#x6821;&#x9A8C;</p>
+</li>
+<li>
+<p>&#x8003;&#x8651;&#x6821;&#x9A8C;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x8BB0;&#x5F55;&#x811A;&#x672C;&#x9664;&#x4E0A;&#x8FF0;&#x5FFD;&#x7565;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4ED6;&#x6839;&#x76EE;&#x5F55;&#x3001;&#x5B50;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x5747;&#x8FDB;&#x884C;&#x6587;&#x4EF6;<code>Hash</code>&#x8BB0;&#x5F55;&#x6216;<code>Info.plist</code>&#x5168;&#x5185;&#x5BB9;&#x8BB0;&#x5F55;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x6267;&#x884C;&#x68C0;&#x67E5;&#x65F6;&#x652F;&#x6301;&#x68C0;&#x9A8C;&#x9ED1;&#x767D;&#x540D;&#x5355;&#x914D;&#x7F6E;&#x4EE5;&#x5FFD;&#x7565;&#x90E8;&#x5206;&#x6587;&#x4EF6;&#x4EE5;&#x53CA;&#x90E8;&#x5206;<code>Info.plist</code>&#x5185;&#x5BB9;&#x7684;&#x6821;&#x9A8C;&#x3002;&#x5373;&#x811A;&#x672C;&#x8BB0;&#x5F55;&#x6821;&#x9A8C;&#x4FE1;&#x606F;&#xFF0C;&#x5B9E;&#x9645;&#x6821;&#x9A8C;&#x65F6;&#x53EF;&#x4E0D;&#x6821;&#x9A8C;&#x9ED1;&#x540D;&#x5355;&#x914D;&#x7F6E;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+</ul>
+<strong style="color: red">
+<p>&#x26A0;&#xFE0F; &#x6821;&#x9A8C;&#x53EA;&#x9488;&#x5BF9;&#x4FEE;&#x6539;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5BF9;&#x589E;&#x5220;<code>Info.plist</code>&#x5B57;&#x6BB5;&#x3001;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x4E0D;&#x505A;&#x5904;&#x7406;</p>
+</strong>
+<h2 class="mume-header" id="2-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">2. &#x4F7F;&#x7528;&#x65B9;&#x6CD5;</h2>
+
+<div class="mermaid">flowchart TB
+
+	subgraph IntegrityCheck[&#x8C03;&#x7528;&#x6821;&#x9A8C;]
+		checkSetting[&#x8BBE;&#x7F6E;&#x6821;&#x9A8C;&#x53C2;&#x6570;] --&gt; callCheck[&#x8C03;&#x7528;&#x6821;&#x9A8C;&#x65B9;&#x6CD5;]
+	end
+
+	subgraph IntegrityShell[&#x6DFB;&#x52A0;&#x6267;&#x884C;&#x811A;&#x672C;]
+		addRunScript[&#x6DFB;&#x52A0;RunScript]
+	end
+
+	subgraph UsingIntegrityCheck[&#x4F7F;&#x7528;&#x6B65;&#x9AA4;]
+		start(&#x5F00;&#x59CB;) -.-&gt; IntegrityShell -.-&gt; IntegrityCheck -.-&gt; stop(&#x5B8C;&#x6210;)
+	end
+</div><h3 class="mume-header" id="21-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8">2.1 &#x6253;&#x5305;&#x811A;&#x672C;&#x4F7F;&#x7528;</h3>
+
+<h4 class="mume-header" id="211-pod%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F">2.1.1 Pod&#x5F15;&#x5165;&#x65B9;&#x5F0F;</h4>
+
+<h5 class="mume-header" id="%E6%96%B9%E5%BC%8F%E4%B8%80podfile%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%9A%E6%9C%AC">&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;<code>Podfile</code>&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;</h5>
+
+<p><code>Podfile</code>&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;<code>script_phase</code>&#xFF0C;&#x6267;&#x884C;<code>pod install</code>&#x540E;&#xFF0C;&#x4E3B;<code>Target</code>&#x5C06;&#x6DFB;&#x52A0;<code>RunScript</code>&#xFF0C;&#x4EE5;&#x6267;&#x884C;<code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;</p>
+<ul>
+<li>&#x9700;&#x8981;&#x5728;&#x7F16;&#x8BD1;&#x7ED3;&#x675F;&#x65F6;&#x6267;&#x884C;<code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;&#xFF0C;&#x56E0;&#x6B64;<code>script_phase</code>&#x9700;&#x8981;&#x6307;&#x5B9A;<code>:execution_position =&gt; :after_compile</code></li>
+</ul>
+<p><code>Podfile</code>&#x5185;&#x811A;&#x672C;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>target &quot;TARGET_NAME&quot; do
+
+	...
+	pod &apos;JGSourceBase&apos;
+	JGSApplicationIntegrityCheckScript = &lt;&lt;-CMD
+	
+		echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
+		# &#x7F51;&#x7EDC;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+		ShellPath=&quot;${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+		if [[ ! -f &quot;${ShellPath}&quot; ]]; then
+			# &#x672C;&#x5730;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+			ShellPath=&quot;${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+		fi
+		
+		# echo &quot;${ShellPath}&quot;
+		if [[ -f &quot;${ShellPath}&quot; ]]; then
+			chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
+			${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
+		fi
+	CMD
+	script_phase :name =&gt; &quot;JGSIntegrityCheck&quot;, :script =&gt; JGSApplicationIntegrityCheckScript, :execution_position =&gt; :after_compile
+	...
+	
+	# project
+	project &quot;PROJECT_NAME.xcodeproj&quot;
+end
+</code></pre><h5 class="mume-header" id="%E6%96%B9%E5%BC%8F%E4%BA%8C%E4%B8%BBtarget%E6%B7%BB%E5%8A%A0runscript%E8%84%9A%E6%9C%AC">&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x4E3B;<code>Target</code>&#x6DFB;&#x52A0;<code>RunScript</code>&#x811A;&#x672C;</h5>
+
+<p>&#x6DFB;&#x52A0;<code>RunScript</code>&#x6267;&#x884C;<code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;</p>
+<ul>
+<li>&#x9700;&#x8981;&#x5728;&#x7F16;&#x8BD1;&#x7ED3;&#x675F;&#x65F6;&#x6267;&#x884C;<code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;&#xFF0C;&#x56E0;&#x6B64;<code>RunScript</code>&#x9700;&#x8981;&#x653E;&#x5230;<code>Build Phases</code>&#x7684;<font style="color: red">&#x6700;&#x5E95;&#x90E8;</font></li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
+# &#x7F51;&#x7EDC;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+ShellPath=&quot;${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+if [[ ! -f &quot;${ShellPath}&quot; ]]; then
+	# &#x672C;&#x5730;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+	ShellPath=&quot;${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+fi
+	
+# echo &quot;${ShellPath}&quot;
+if [[ -f &quot;${ShellPath}&quot; ]]; then
+	chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
+	${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
+fi
+</code></pre><font style="color: red">
+<ul>
+<li>&#x4EE5;&#x4E0A;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x3001;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;<code>pod install</code>&#x80FD;&#x4FDD;&#x8BC1;&#x5C06;&#x6DFB;&#x52A0;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;&#x59CB;&#x7EC8;&#x4FDD;&#x6301;&#x5728;<code>Build Phases</code>&#x6700;&#x5E95;&#x90E8;&#xFF0C;&#x63A8;&#x8350;&#x5728;<code>Podfile</code>&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;</li>
+</ul>
+</font>
+<h4 class="mume-header" id="212-%E6%BA%90%E7%A0%81%E6%88%96framewok%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F">2.1.2 &#x6E90;&#x7801;&#x6216;<code>framewok</code>&#x6253;&#x5305;&#x5F15;&#x5165;&#x65B9;&#x5F0F;</h4>
+
+<p>&#x4E3B;<code>Target</code>&#x6DFB;&#x52A0;<code>RunScript</code>&#x6267;&#x884C;<code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;&#xFF0C;&#x6267;&#x884C;<code>RunScript</code>&#x9700;&#x8981;&#x653E;&#x5230;&#x7F16;&#x8BD1;&#x7ED3;&#x675F;&#xFF0C;&#x5373;&#x5728;<code>Xcode-&gt;Target-&gt;Build Phases</code>&#x5BFC;&#x822A;&#x4E2D;&#xFF0C;&#x6267;&#x884C;&#x811A;&#x672C;&#x7684;<code>RunScript</code>&#x9700;&#x8981;&#x5728;&#x6700;&#x5E95;&#x90E8;&#x4F4D;&#x7F6E;&#xFF0C;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
+
+# &#x81EA;&#x52A9;framework&#x6253;&#x5305;&#x5F15;&#x5165;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+ShellPath=&quot;${BUILT_PRODUCTS_DIR}/JGSourceBase.framework/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+
+# echo &quot;${ShellPath}&quot;
+if [[ -f &quot;${ShellPath}&quot; ]]; then
+	chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
+	${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
+fi
+</code></pre><strong style="color: red">
+<p>&#x26A0;&#xFE0F; &#x811A;&#x672C;&#x5185;&#x5BB9;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x4FEE;&#x6539;&#x4E3A;&#x6267;&#x884C;&#x81EA;&#x5B9A;&#x811A;&#x672C;&#x5373;&#x53EF;</p>
+<p>&#x26A0;&#xFE0F; &#x53C2;&#x8003;&#x4E0A;&#x8FF0;&#x811A;&#x672C;&#x5185;&#x5BB9;&#xFF0C;<code>Pod</code>&#x5F15;&#x5165;&#x3001;&#x6E90;&#x7801;&#x5F15;&#x5165;&#x3001;<code>framework</code>&#x5F15;&#x5165;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x914D;&#x7F6E;&#x811A;&#x672C;<code>ShellPath</code>&#x5373;&#x53EF;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x6253;&#x5305;&#x811A;&#x672C;&#x8BB0;&#x5F55;&#x6821;&#x9A8C;&#x4FE1;&#x606F;</p>
+</strong>
+<h3 class="mume-header" id="22-%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E6%A0%A1%E9%AA%8C%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6">2.2 &#x5E94;&#x7528;&#x542F;&#x52A8;&#x540E;&#x6821;&#x9A8C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;</h3>
+
+<p>&#x56E0;&#x76D1;&#x7BA1;&#x7B49;&#x8981;&#x6C42;&#xFF0C;&#x5E94;&#x7528;&#x542F;&#x52A8;&#x4F18;&#x5148;&#x5C55;&#x793A;&#x9690;&#x79C1;&#x534F;&#x8BAE;&#x7B49;&#x5185;&#x5BB9;&#xFF0C;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x9690;&#x79C1;&#x534F;&#x8BAE;&#x7B49;&#x5C55;&#x793A;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x4E0D;&#x4E00;&#xFF0C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x6821;&#x9A8C;&#x4E0D;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#xFF0C;&#x9700;&#x8981;&#x5E94;&#x7528;&#x7CFB;&#x7EDF;&#x81EA;&#x884C;&#x9009;&#x62E9;&#x5408;&#x7406;&#x65F6;&#x673A;&#x89E6;&#x53D1;&#x3002;&#x89E6;&#x53D1;&#x524D;&#x6839;&#x636E;<code>JGSIntegrityCheckResourcesHash</code>&#x8BF4;&#x660E;&#x5408;&#x7406;&#x914D;&#x7F6E;&#x9ED1;&#x3001;&#x767D;&#x540D;&#x5355;&#xFF0C;&#x4E4B;&#x540E;&#x89E6;&#x53D1;<code>checkAPPResourcesHash:</code>&#x68C0;&#x6D4B;&#x903B;&#x8F91;&#xFF0C;&#x5E76;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>[[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[
+	@&quot;MinimumOSVersion&quot;,
+	@&quot;CFBundleURLTypes.CFBundleURLName&quot;,
+	@&quot;NSAppTransportSecurity.NSAllowsArbitraryLoads&quot;
+]];
+[[JGSIntegrityCheckResourcesHash shareInstance] checkAPPResourcesHash:^(NSArray&lt;NSString *&gt; * _Nullable unpassFiles, NSDictionary * _Nullable unpassPlistInfo) {
+	JGSLog(@&quot;%@, %@&quot;, unpassFiles, unpassPlistInfo);
+	...
+	alert(&quot;&#x60A8;&#x5B89;&#x88C5;&#x7684;&#x5E94;&#x7528;&#x5DF2;&#x635F;&#x574F;&#xFF0C;&#x5B58;&#x5728;&#x5B89;&#x5168;&#x9690;&#x60A3;&#xFF0C;&#x8BF7;&#x9000;&#x51FA;&#x5E94;&#x7528;&#xFF0C;&#x5E76;&#x4ECE;&#x5B98;&#x65B9;&#x6E20;&#x9053;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x540E;&#x4F7F;&#x7528;&#xFF01;&quot;)
+	...
+}];
+</code></pre><h2 class="mume-header" id="3-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E5%8F%8A%E6%A0%A1%E9%AA%8C%E8%BF%87%E7%A8%8B">3. &#x6253;&#x5305;&#x811A;&#x672C;&#x53CA;&#x6821;&#x9A8C;&#x8FC7;&#x7A0B;</h2>
+
+<h3 class="mume-header" id="31-%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC%E9%80%BB%E8%BE%91">3.1 &#x6253;&#x5305;&#x811A;&#x672C;&#x903B;&#x8F91;</h3>
+
+<p><code>JGSIntegrityCheckRecordResourcesHash.sh</code>&#x811A;&#x672C;&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;<code>Hash</code>&#x53CA;<code>Info.plist</code>&#x6587;&#x4EF6;&#x5185;&#x5BB9;</p>
+<h4 class="mume-header" id="311-infoplist%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E8%AE%B0%E5%BD%95">3.1.1 <code>Info.plist</code>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8BB0;&#x5F55;</h4>
+
+<div class="mermaid">flowchart LR
+	subgraph RecordInfoPlist[Info.plist&#x5185;&#x5BB9;&#x9884;&#x5904;&#x7406;]
+
+	subgraph FilePrepare[&#x6587;&#x4EF6;&#x51C6;&#x5907;]
+		coverFile[&#x5199;&#x7A7A;&#x4E34;&#x65F6;&#x6587;&#x4EF6;]
+	end
+
+	subgraph SedDeletePlist[&#x5220;&#x9664;plist&#x6807;&#x8BC6;&#x5185;&#x5BB9;]
+		delete1[&#x5220;&#x9664;plist&#x6587;&#x4EF6;&#x5934;]
+		delete2[&#x5220;&#x9664;plist&#x5BB9;&#x5668;&#x6807;&#x7B7E;]
+	end
+	
+	subgraph SedReplaceContainer[&#x66FF;&#x6362;&#x5BB9;&#x5668;&#x6807;&#x7B7E;]
+		replaceLD[&#x66FF;&#x6362;&#x5DE6;&#x6807;&#x7B7E;]
+		replaceRD[&#x66FF;&#x6362;&#x6839;&#x8282;&#x70B9;&#x53F3;&#x6807;&#x7B7E;]
+		replaceCD[&#x66FF;&#x6362;&#x5B50;&#x8282;&#x70B9;&#x53F3;&#x6807;&#x7B7E;]
+	end
+
+	subgraph SedPrePlist[Sed&#x547D;&#x4EE4;&#x5904;&#x7406;]
+		deletePlist[&#x5220;&#x9664;plist&#x6807;&#x8BC6;&#x5185;&#x5BB9;] --&gt; SedDeletePlist
+		replaceDict[&#x66FF;&#x6362;dict&#x5BB9;&#x5668;&#x6807;&#x7B7E;] --&gt; SedReplaceContainer
+		replaceArray[&#x66FF;&#x6362;array&#x5BB9;&#x5668;&#x6807;&#x7B7E;] --&gt; SedReplaceContainer
+	end
+
+	subgraph PreHandlePlist[Info.plist&#x9884;&#x5904;&#x7406;]
+		readXML[&#x8BFB;&#x53D6;XML&#x5185;&#x5BB9;] --&gt; SedPrePlist
+	end
+
+	subgraph HandleLineByLine[&#x9010;&#x884C;&#x5FAA;&#x73AF;&#x8BFB;&#x53D6;&#x5904;&#x7406;]
+		plistLineContent[/&#x884C;&#x5185;&#x5BB9;/] --&gt; lineContainJSON{&#x662F;&#x5426;&#x5305;&#x542B;json&#x5BB9;&#x5668;&#x5B57;&#x7B26;} --YES--&gt; appendTmpFile[&#x8FFD;&#x52A0;&#x5199;&#x5165;&#x4E34;&#x65F6;&#x6587;&#x4EF6;] --&gt; handleNextLineByLine[&#x5FAA;&#x73AF;&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x884C;&#x5185;&#x5BB9;] --&gt; plistLineContent
+		
+		lineContainJSON --NO--&gt; HandlePlistContent[[plist&#x884C;key-value&#x5185;&#x5BB9;&#x5904;&#x7406;]] --&gt; appendTmpFile
+		HandlePlistContent
+	end
+	
+	subgraph DeleteLastItemSpe[Sed&#x5220;&#x9664;&#x4E34;&#x65F6;JSON&#x6587;&#x4EF6;&#x5BB9;&#x5668;&#x7ED3;&#x675F;&#x5143;&#x7D20;&#x540E;&#x7684;&apos;,&apos;]
+		deleteArrayLastItem[&#x5220;&#x9664;Dict&#x7ED3;&#x675F;&#x5143;&#x7D20;&#x540E;&#x7684;&apos;,&apos;]
+		deleteDictLastItem[&#x5220;&#x9664;Array&#x7ED3;&#x675F;&#x5143;&#x7D20;&#x540E;&#x7684;&apos;,&apos;]
+	end
+	
+	start([Info.plist&#x5904;&#x7406;&#x5F00;&#x59CB;]) --&gt; FilePrepare --&gt; input[/Info.plist/] --&gt; PreHandlePlist ---&gt; SedPreResult[/&#x9884;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x5185;&#x5BB9;/] --&gt; HandleLineByLine --&gt; DeleteLastItemSpe --&gt; ReadTmpPlistJsonFile[&#x8BFB;&#x53D6;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;] --&gt; deleteTmpPlistJsonFile[&#x5220;&#x9664;&#x4E34;&#x65F6;&#x6587;&#x4EF6;] --&gt; stop([Info.plist&#x5904;&#x7406;&#x5B8C;&#x6210;])
+	
+	end
+	
+</div><div class="mermaid">flowchart LR
+	subgraph HandlePlistContent[plist&#x884C;key-value&#x5185;&#x5BB9;&#x5904;&#x7406;]
+
+	subgraph CleanTmpLineAndAppendToTmpFile[&#x6E05;&#x7A7A;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x884C;&#x6570;&#x636E;&#x5E76;&#x8FFD;&#x52A0;&#x5199;&#x4E34;&#x65F6;&#x6587;&#x4EF6;]
+		cleanPlistTagLineTmp[&#x6E05;&#x7A7A;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x7684;&#x8282;&#x70B9;&#x6570;&#x636E;] --&gt; splitPairTagLine[&#x5B8C;&#x6574;&#x8282;&#x70B9;&#x6570;&#x636E;&#x62FC;&#x63A5;JSON-key&#x5185;&#x5BB9;&lt;br/&gt;&#x5305;&#x542B;:&lt;br/&gt;1.&#x5DE6;&#x53F3;&#x53CC;&#x5F15;&#x53F7;&lt;br/&gt;2.key&#x6807;&#x7B7E;&#x9700;&#x540E;&#x63A5;&#x5192;&#x53F7;] --&gt; appendTmpFileLine[/&#x5199;&#x5165;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x672C;&#x5185;&#x5BB9;/]
+	end
+	
+	subgraph HandleLineContentWithPairTag[&#x53CC;&#x6807;&#x7B7E;&#x884C;&#x5185;&#x5BB9;&#x5904;&#x7406;]
+		plistPairTagContainPair[&#x662F;&#x5426;&#x540C;&#x65F6;&#x5305;&#x542B;&#x5DE6;&#x53F3;&#x6807;&#x7B7E;] --YES--&gt; deletePairTagsAndBase64[1.&#x5220;&#x9664;&#x6807;&#x7B7E;&lt;br/&gt;2.Base64] --&gt; cleanPlistTagLineTmp
+		plistPairTagContainPair --NO--&gt; plistPairTagContainRight[&#x662F;&#x5426;&#x5305;&#x542B;&#x53F3;&#x6807;&#x7B7E;] --YES--&gt; deletePairRightTagAndBase64[1.&#x4E34;&#x65F6;&#x8BB0;&#x5F55;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x62FC;&#x63A5;&apos;&#x6362;&#x884C;&apos;&#x53CA;&apos;&#x8BFB;&#x53D6;&#x884C;&apos;&#x5185;&#x5BB9;&lt;br/&gt;2.&#x5220;&#x9664;&#x53F3;&#x6807;&#x7B7E;&lt;br/&gt;3.Base64&lt;br/&gt;* integer&#x6807;&#x7B7E;&#x4E0D;&#x62FC;&#x63A5;&apos;&#x6362;&#x884C;&apos;] --&gt; cleanPlistTagLineTmp
+		plistPairTagContainRight --NO--&gt; deletePairLeftTagAndTmp[&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x5220;&#x9664;&#x5DE6;&#x6807;&#x7B7E;&#x540E;&#x7684;&apos;&#x8BFB;&#x53D6;&#x884C;&apos;&#x5185;&#x5BB9;]
+	end
+	
+	subgraph HandleLineContentWithoutTag[&#x65E0;&#x6807;&#x7B7E;&#x884C;&#x5185;&#x5BB9;&#x5904;&#x7406;]
+		tmpLineValeAppendNewLineAndContent[&#x672A;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x8282;&#x70B9;&#x5185;&#x5BB9;&#x8FFD;&#x52A0;&apos;&#x6362;&#x884C;&apos;&#x53CA;&apos;&#x8BFB;&#x53D6;&#x884C;&apos;&#x5185;&#x5BB9;]
+	end
+
+	lineIsEmpty{&#x662F;&#x5426;&#x4E3A;&#x7A7A;} --YES--&gt; tmpLineValeAppendNewLine[&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x884C;&#x6570;&#x636E;&#x5185;&#x5BB9;&#x8FFD;&#x52A0;&apos;&#x6362;&#x884C;&apos;]
+
+	lineIsEmpty --NO--&gt; lineContainKey{&#x884C;&#x662F;&#x5426;&#x5305;&#x542B;&apos;key&gt;&apos;} --YES--&gt; HandleLineContentWithKey[[key&#x6807;&#x7B7E;&#x6570;&#x636E;&#x5904;&#x7406;]] --&gt; plistPairTagContainPair
+
+	lineContainKey --NO--&gt; lineContainString{&#x884C;&#x662F;&#x5426;&#x5305;&#x542B;&apos;string&gt;&apos;} --YES--&gt; HandleLineContentWithString[[string&#x6807;&#x7B7E;&#x884C;&#x5185;&#x5BB9;&#x5904;&#x7406;]] --&gt; plistPairTagContainPair
+
+	lineContainString --NO--&gt; lineContainInteger{&#x884C;&#x662F;&#x5426;&#x5305;&#x542B;&apos;integer&gt;&apos;} --YES--&gt; HandleLineContentWithInteger[[integer&#x6807;&#x7B7E;&#x884C;&#x5185;&#x5BB9;&#x5904;&#x7406;]] --&gt; plistPairTagContainPair
+
+	lineContainInteger --NO--&gt; lineContainBool{&#x884C;&#x662F;&#x5426;&#x5305;&#x542B;&apos;true/false&apos;} --YES--&gt; handleLineContentWithBool[1.true/false&#x6807;&#x7B7E;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#x4E3A;1/0&lt;br/&gt;2.Base64] --&gt; cleanPlistTagLineTmp
+
+	lineContainBool ---NO--&gt; HandleLineContentWithoutTag
+
+	end
+</div><pre data-role="codeBlock" data-info class="language-"><code>function recordInfoPlistJSON() { ... }
+</code></pre><p>&#x6839;&#x636E;<code>plist</code>&#x6587;&#x4EF6;&#x7279;&#x6027;&#xFF0C;&#x79FB;&#x9664;&#x975E;&#x5FC5;&#x8981;&#x6807;&#x7B7E;&#x3001;&#x66FF;&#x6362;XML&#x6587;&#x4EF6;&#x6807;&#x7B7E;&#x4E3A;<code>JSON</code>&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x6784;&#x6210;&#x6807;&#x51C6;<code>JSON</code></p>
+<p>&#x26A0;&#xFE0F; &#x8003;&#x8651;<code>key</code>&#x3001;<code>value</code>&#x4E2D;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x82F1;&#x6587;&#x5F15;&#x53F7;&#x60C5;&#x51B5;&#xFF0C;&#x9488;&#x5BF9;<code>key</code>&#x3001;<code>value</code>&#x5747;&#x91C7;&#x7528;<code>Base64</code>&#x52A0;&#x5BC6;&#x5904;&#x7406;</p>
+<p>&#x26A0;&#xFE0F; &#x8003;&#x8651;&#x4E0D;&#x89C4;&#x8303;&#x60C5;&#x51B5;&#x4E0B;<code>key</code>&#x3001;<code>value</code>&#x4E2D;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x6362;&#x884C;&#x60C5;&#x51B5;&#xFF0C;&#x9488;&#x5BF9;<code>key</code>&#x3001;<code>value</code>&#x5904;&#x7406;&#x5206;&#x522B;&#x5339;&#x914D;<code>XML</code>&#x4E2D;&#x7684;&#x5DE6;&#x53F3;&#x6807;&#x7B7E;</p>
+<p>&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>
+<p>&#x8BFB;&#x53D6;<code>Info.plist</code>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;</p>
+</li>
+<li>
+<p>&#x5B57;&#x7B26;&#x4E32;&#x53BB;&#x9664;<code>plist</code>&#x6587;&#x4EF6;&#x5934; <code>?xml</code>, <code>!DOCTYPE</code>, &#x53CA; <code>&lt;plist&gt;</code>, <code>&lt;/plist&gt;</code> &#x6807;&#x7B7E;</p>
+</li>
+<li>
+<p>&#x66FF;&#x6362;<code>Dict</code>&#x3001;<code>Array</code>&#x5DE6;&#x53F3;&#x6807;&#x7B7E;</p>
+<blockquote>
+<p>3.1. &#x5DE6;&#x6807;&#x7B7E;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#x4E3A; &quot;{&quot; &#x6216; &quot;[&quot;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5176;&#x4ED6;&#x5206;&#x9694;&#x7B26;&#x53F7;</p>
+<p>3.2. &#x6839;&#x8282;&#x70B9;&#x7684;&#x53F3;&#x6807;&#x7B7E;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5176;&#x4ED6;&#x5206;&#x9694;&#x7B26;&#x53F7;</p>
+<p>3.3. &#x5B50;&#x8282;&#x70B9;&#x53F3;&#x6807;&#x7B7E;&#x66FF;&#x6362;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x9017;&#x53F7;&quot;,&quot;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x5BF9;&#x4E8E;&#x5BB9;&#x5668;&#x7ED3;&#x675F;&#x5143;&#x7D20;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5206;&#x9694;&#x7B26;&#x591A;&#x4F59;&#x60C5;&#x51B5;&#xFF0C;&#x66FF;&#x6362;&#x5B8C;&#x6210;&#x540E;&#x7EDF;&#x4E00;&#x5904;&#x7406;</p>
+</blockquote>
+</li>
+<li>
+<p>&#x4EE5;&#x4E0A;&#x5B8C;&#x6210;&#x5BB9;&#x5668;&#x5DE6;&#x53F3;&#x6807;&#x7B7E;&#x66FF;&#x6362;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x8FDB;&#x884C;<code>key</code>&#x3001;<code>value</code>&#x7684;&#x66FF;&#x6362;</p>
+</li>
+<li>
+<p><strong style="color:red">&#x9010;&#x884C;&#x904D;&#x5386;</strong>&#x7ECF;&#x8FC7;&#x4E0A;&#x8FF0;&#x6B65;&#x9AA4;&#x5904;&#x7406;&#x540E;&#x7684;&#x6587;&#x672C;&#x5185;&#x5BB9;&#xFF0C;&#x4F7F;&#x7528;<code>sed</code>&#x547D;&#x4EE4;&#x5904;&#x7406;&#x6BCF;&#x884C;&#x5185;&#x5BB9;&#xFF0C;&#x6BCF;&#x5904;&#x7406;&#x4E00;&#x6BB5;&#x5B8C;&#x6574;&#x5185;&#x5BB9;&#x5C31;&#x8FFD;&#x52A0;&#x5199;&#x5165;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#xFF0C;<code>Info.plist</code>&#x5185;&#x5BB9;&#x5305;&#x542B;&#x5982;&#x4E0B;&#x6807;&#x7B7E;&#xFF0C;&#x9700;&#x5206;&#x522B;&#x5904;&#x7406;</p>
+<blockquote>
+<p>5.1 &lt;key&gt;...&lt;/key&gt;</p>
+<p>5.2 &lt;string&gt;...&lt;/string&gt;</p>
+<p>5.3 &lt;integer&gt;...&lt;/integer&gt;</p>
+<p>5.4 &lt;true/&gt;, &lt;false/&gt;</p>
+</blockquote>
+<p>&#x26A0;&#xFE0F; &#x9996;&#x6B21;&#x5199;&#x5165;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x524D;&#x4E3A;&#x907F;&#x514D;&#x6587;&#x4EF6;&#x6B8B;&#x7559;&#xFF0C;&#x8FFD;&#x52A0;&#x5199;&#x5165;&#x5185;&#x5BB9;&#x524D;&#x5148;&#x8986;&#x76D6;&#x5199;&#x7A7A;&#x5185;&#x5BB9;</p>
+<p>&#x26A0;&#xFE0F; &#x66FF;&#x6362;&#x8FC7;&#x7A0B;&#x5982;&#x679C;&#x5DE6;&#x53F3;&#x6807;&#x7B7E;&#x5728;&#x4E00;&#x884C;&#x6587;&#x672C;&#x4E2D;&#xFF0C;&#x5219;&#x76F4;&#x63A5;<code>Base64</code>&#x5904;&#x7406;</p>
+<p>&#x26A0;&#xFE0F; &#x5982;&#x5DE6;&#x53F3;&#x6807;&#x7B7E;&#x4E2D;&#x95F4;&#x5185;&#x5BB9;&#x5B58;&#x5728;&#x6362;&#x884C;&#x3001;&#x7A7A;&#x884C;&#x60C5;&#x51B5;&#xFF0C;&#x5219;&#x8BC6;&#x522B;&#x5230;&#x5DE6;&#x6807;&#x7B7E;&#x65F6;&#x5F00;&#x59CB;&#x8BB0;&#x5F55;&#x5185;&#x5BB9;</p>
+<p>&#x26A0;&#xFE0F; &#x4E2D;&#x95F4;&#x672A;&#x8BC6;&#x522B;&#x53F3;&#x6807;&#x7B7E;&#xFF0C;&#x5219;&#x9010;&#x884C;&#x8FFD;&#x52A0;&#x5185;&#x5BB9;&#x3002;<code>Integer</code>&#x6807;&#x7B7E;&#x6B63;&#x5E38;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x6362;&#x884C;&#x60C5;&#x51B5;&#xFF0C;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0D;&#x6DFB;&#x52A0;&#x6362;&#x884C;&#x7B26;&#xFF0C;&#x5404;&#x884C;&#x76F4;&#x63A5;&#x62FC;&#x63A5;&#xFF1B;&#x5176;&#x4ED6;&#x6807;&#x7B7E;&#x9010;&#x884C;&#x8FFD;&#x52A0;&#x65F6;&#x6DFB;&#x52A0;&#x6362;&#x884C;&#x7B26;&#xFF0C;&#x4FDD;&#x6301;&#x6587;&#x672C;&#x4E00;&#x81F4;&#x6027;</p>
+<p>&#x26A0;&#xFE0F; &#x8BC6;&#x522B;&#x5230;&#x53F3;&#x6807;&#x7B7E;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x6807;&#x7B7E;&#x5185;&#x5BB9;&#x8BB0;&#x5F55;&#xFF0C;&#x8FDB;&#x884C;<code>Base64</code>&#x5904;&#x7406;</p>
+<p><code>Base64</code>&#x5904;&#x7406;&#x811A;&#x672C;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info class="language-"><code># &lt;key&gt;...&lt;/key&gt; Base64 &#x5904;&#x7406;&#x811A;&#x672C;
+local keyLine=$(
+    printf &quot;${readLine}&quot; |
+    sed &quot;s/^&lt;key&gt;\(.*\)&lt;\/key&gt;$/\1/g&quot; |
+    base64
+)
+</code></pre></li>
+<li>
+<p>&#x7ECF;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#x5904;&#x7406;&#x4E4B;&#x540E;&#xFF0C;&#x57FA;&#x672C;&#x5F62;&#x6210;&#x5B8C;&#x6210;&#x7684;<code>JSON</code>&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x9488;&#x5BF9;&#x5BB9;&#x5668;&#x7ED3;&#x5C3E;&#x5143;&#x7D20;&#x5B58;&#x5728;&#x591A;&#x4F59;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7B26;&quot;,&quot;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8FDB;&#x884C;&#x66FF;&#x6362;</p>
+<blockquote>
+<p>6.1 &#x66FF;&#x6362; &quot;,]&quot; &#x4E3A; &quot;]&quot;</p>
+<p>6.2 &#x66FF;&#x6362; &quot;,}&quot; &#x4E3A; &quot;}&quot;</p>
+</blockquote>
+</li>
+<li>
+<p>&#x5B8C;&#x6210;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#x540E;&#xFF0C;<code>Info.plist</code>&#x6587;&#x4EF6;&#x5904;&#x7406;&#x5B8C;&#x6210;&#xFF0C;&#x9700;&#x8981;&#x8BFB;&#x53D6;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x4E4B;&#x540E;&#x5220;&#x9664;&#x4E34;&#x65F6;&#x6587;&#x4EF6;</p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x8BFB;&#x53D6;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x5220;&#x9664;&#x4E34;&#x65F6;&#x6587;&#x4EF6;
+printf &quot;$(cat ${tmpPlistJson})&quot;
+rm -f &quot;${tmpPlistJson}&quot;
+</code></pre></li>
+</ol>
+<h4 class="mume-header" id="312-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6hash%E8%AE%B0%E5%BD%95">3.1.2 &#x8D44;&#x6E90;&#x6587;&#x4EF6;<code>Hash</code>&#x8BB0;&#x5F55;</h4>
+
+<div class="mermaid">flowchart TB
+	subgraph RecordFilesHash[&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash]
+
+	subgraph RecordFileInDir[&#x6587;&#x4EF6;&#x5939;&#x6587;&#x4EF6;&#x904D;&#x5386;]
+		forEachFileInDir[&#x904D;&#x5386;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;] --&gt; eachItemInDir[/&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;&#x540D;/] --&gt; isBlackFile{&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x811A;&#x672C;&#x9ED8;&#x8BA4;&#x5B9A;&#x4E49;&lt;br/&gt;&#x7684;&#x9ED1;&#x540D;&#x5355;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;} --YES--&gt; forEachNextFileInDir[&#x5FAA;&#x73AF;&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;] --&gt; eachItemInDir
+		isBlackFile --NO--&gt; fileIsDirectory{&#x662F;&#x5426;&#x4E3A;&#x6587;&#x4EF6;&#x5939;} --YES--&gt; forEachFileInDir
+		fileIsDirectory --NO--&gt; getFileSHA256[&#x83B7;&#x53D6;&#x6587;&#x4EF6;SHA256] --&gt; getFilePathBase64[&#x6587;&#x4EF6;&#x540D;&#x53CA;&#x76F8;&#x5BF9;.app&lt;br/&gt;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;Base64] --&gt; returnFileHashLine[&#x62FC;&#x63A5;JSON&lt;br/&gt;Base64FileName:Hash&lt;br/&gt;&#x5305;&#x542B;Key,Value&#x5DE6;&#x53F3;&#x53CC;&#x5F15;&#x53F7;,&#x5192;&#x53F7;&lt;br/&gt;&#x53CA;&#x8BB0;&#x5F55;&#x7ED3;&#x5C3E;&#x7684;&apos;,&apos;] --&gt; forEachNextFileInDir
+	end
+	
+	start([&#x6587;&#x4EF6;Hash&#x5904;&#x7406;&#x5F00;&#x59CB;]) --&gt; RecordFileInDir --&gt; stop[/&#x6587;&#x4EF6;Hash&#x8BB0;&#x5F55;/]
+	
+	end
+	
+</div><pre data-role="codeBlock" data-info class="language-"><code>function recordResourceFilesHashInDir() { ... }
+</code></pre><p>&#x8BFB;&#x53D6;&#x672C;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x975E;&#x6587;&#x4EF6;&#x5939;&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;<code>SHA256</code>&#xFF0C;&#x6587;&#x4EF6;&#x5939;&#x5219;&#x9012;&#x5F52;&#x5904;&#x7406;&#x5B50;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x6587;&#x4EF6;<code>Hash</code>&#x8BB0;&#x5F55;&#x4F7F;&#x7528;<code>Key-Value</code>&#x5F62;&#x5F0F;&#x8BB0;&#x5F55;&#x5230;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#xFF1A;</p>
+<blockquote>
+<p>Key&#xFF1A;&#x6587;&#x4EF6;&#x76F8;&#x5BF9; .app &#x76EE;&#x5F55;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x4E3A;&#x907F;&#x514D;&#x6587;&#x4EF6;&#x540D;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x7B49;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x7528; Base64 &#x7F16;&#x7801;</p>
+<p>Value&#xFF1A;&#x6587;&#x4EF6; SHA256 &#x7801;</p>
+</blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<p>&#x26A0;&#xFE0F; &#x811A;&#x672C;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x7684;&#x9ED1;&#x540D;&#x5355;&#x6587;&#x4EF6;&#x4E0D;&#x8BB0;&#x5F55;<code>Hash</code></p>
+<p>&#x26A0;&#xFE0F; &#x9ED1;&#x540D;&#x5355;&#x672A;&#x533A;&#x5206;&#x5B50;&#x76EE;&#x5F55;&#xFF0C;&#x4EC5;&#x6309;&#x7167;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;&#x540D;&#x79F0;&#x5339;&#x914D;</p>
+<p>&#x26A0;&#xFE0F; &#x4E3A;&#x4FBF;&#x4E8E;&#x540E;&#x7EED;&#x62FC;&#x63A5;<code>JSON</code>&#xFF0C;&#x6BCF;&#x884C;<code>Key-Value</code>&#x7ED3;&#x675F;&#x5305;&#x542B;&#x9017;&#x53F7;&quot;,&quot;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;&#xFF1A;<code>&quot;Key&quot;:&quot;Value&quot;,</code></p>
+<h4 class="mume-header" id="313-%E7%94%9F%E6%88%90%E6%A0%A1%E9%AA%8C%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9">3.1.3 &#x751F;&#x6210;&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</h4>
+
+<div class="mermaid">flowchart LR
+	subgraph RecordFilesContent[&#x751F;&#x6210;&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;]
+
+	subgraph RecordInfoPlist[InfoPlist&#x8BB0;&#x5F55;]
+		plistHandle[[Plist&#x5904;&#x7406;]] --&gt; plistHandleResult[/Info.plist&#x5904;&#x7406;&#x540E;&#x5185;&#x5BB9;/] --&gt; plistBase64[Base64&#x7F16;&#x7801;] --&gt; plistBase64Reversed[&#x5B57;&#x7B26;&#x4E32;&#x7FFB;&#x8F6C;] --&gt; splitPlistKeyVale[&#x62FC;&#x63A5;Plist-JSON:key-content&#x5185;&#x5BB9;]
+	end
+	
+	subgraph RecordContentSaltEnc[&#x68C0;&#x9A8C;&#x6587;&#x4EF6;&#x6DF7;&#x6DC6;&#x5185;&#x5BB9;Base64]
+		base64SaltBase64[&#x6DF7;&#x6DC6;&#x5B57;&#x7B26;&#x4E32;] --&gt; splitSaltToBase64Content[base64&#x5185;&#x5BB9;&#x9996;&#x5C3E;&#x62FC;&#x63A5;Base64&#x7F16;&#x7801;&#x540E;&#x7684;&#x6DF7;&#x6DC6;&#x5B57;&#x7B26;&#x4E32;]
+	end
+	
+	subgraph RecordContentEnc[Base64&#x52A0;&#x5BC6;&#x6DF7;&#x6DC6;&#x5904;&#x7406;]
+		originContentBase64[&#x539F;&#x59CB;&#x5185;&#x5BB9;Base64&#x7F16;&#x7801;] --&gt; base64Reversed[Base64&#x5185;&#x5BB9;&#x7FFB;&#x8F6C;] --&gt; RecordContentSaltEnc --&gt; contentWithSaltBase64[&#x6DF7;&#x6DC6;&#x540E;&#x5185;&#x5BB9;Base64]
+	end
+	
+	start([&#x5F00;&#x59CB;]) --&gt; RecordInfoPlist --&gt; recordFileHashContent[[&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x5185;&#x5BB9;&#x8BB0;&#x5F55;]] --&gt; splitOriginContent[&#x62FC;&#x63A5;&#x539F;&#x59CB;JSON&#x5185;&#x5BB9;] --&gt; RecordContentEnc --&gt; writeRecordFile[/&#x6821;&#x9A8C;&#x6587;&#x4EF6;/] --&gt; stop([&#x5B8C;&#x6210;])
+	
+	end
+	
+</div><pre data-role="codeBlock" data-info class="language-"><code># &#x6587;&#x4EF6; Hash &#x8BB0;&#x5F55;&#x811A;&#x672C;&#x5165;&#x53E3;&#x65B9;&#x6CD5;
+function recordAPPResourceHashToCheckFile() { ... }
+</code></pre><ol>
+<li>
+<p><code>Info.plist</code>&#x5904;&#x7406;&#xFF0C;&#x8C03;&#x7528;<code>recordInfoPlistJSON</code>&#xFF0C;&#x8BB0;&#x5F55;<code>Info.plist</code>&#x5185;&#x5BB9;<code>JSON</code>&#xFF0C;&#x5E76;&#x8FDB;&#x884C;<code>Base64</code>&#x7F16;&#x7801;&#xFF0C;&#x751F;&#x6210;<code>Info.plist</code>&#x5728;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;&#x539F;&#x59CB;<code>JSON</code>&#x4E2D;&#x7684;&#x884C;&#x5185;&#x5BB9;</p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x6839;&#x76EE;&#x5F55;Info.plist&#x6587;&#x4EF6;&#x5185;&#x5BB9;
+local plistName=&quot;Info.plist&quot;
+local plistPath=&quot;${ProductDir}/${plistName}&quot;
+local plistContent=$(printf &quot;$(recordInfoPlistJSON &quot;${plistPath}&quot;)&quot; | base64)
+local plistKey=$(printf &quot;${plistName}&quot; | base64)
+local plistLine=&quot;\&quot;${plistKey}\&quot;:\&quot;${plistContent}\&quot;&quot;
+</code></pre></li>
+<li>
+<p>&#x751F;&#x6210;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8D44;&#x6E90;<code>Hash</code>&#x8BB0;&#x5F55;&#x5185;&#x5BB9;&#xFF0C;&#x8C03;&#x7528;<code>recordResourceFilesHashInDir</code></p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x5176;&#x4ED6;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x8BB0;&#x5F55;&#xFF0C;&#x4EC5;&#x5305;&#x542B;&#x591A;&#x884C; Key-Value &#x5185;&#x5BB9;&#x53CA;&#x884C;&#x672B;&#x9017;&#x53F7;&quot;,&quot;
+local allResContent=$(recordResourceFilesHashInDir &quot;.&quot;)
+</code></pre></li>
+<li>
+<p>&#x62FC;&#x63A5;&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x539F;&#x59CB;<code>JSON</code>&#xFF0C;&#x5E76;<code>Base64</code>&#x7F16;&#x7801;&#x540E;&#x7FFB;&#x8F6C;</p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x62FC;&#x63A5;&#x539F;&#x59CB;JSON&#xFF0C;&#x5E76;Base64&#x7F16;&#x7801;&#x540E;&#x7FFB;&#x8F6C;
+local JSONContent=&quot;{${allResContent}${plistLine}}&quot;
+local JSONBase64=$(printf &quot;${JSONContent}&quot; | base64 | rev)
+</code></pre></li>
+<li>
+<p>&#x6821;&#x9A8C;&#x5185;&#x5BB9;&#x6536;&#x5C3E;&#x52A0;&#x76D0;&#x540E;<code>Base64</code>&#x7F16;&#x7801;</p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x6821;&#x9A8C;&#x5185;&#x5BB9;&#x6536;&#x5C3E;&#x52A0;&#x76D0;&#x540E;Base64&#x7F16;&#x7801;
+local saltBase64=$(printf &quot;${ResourcesHashBase64Salt}&quot; | base64)
+local checkContent=$(printf &quot;${saltBase64}${JSONBase64}${saltBase64}&quot; | base64)
+</code></pre></li>
+<li>
+<p>&#x6821;&#x9A8C;&#x5185;&#x5BB9;&#x8986;&#x76D6;&#x5199;&#x5165;&#x6821;&#x9A8C;&#x6587;&#x4EF6;<code>JGSApplicationIntegrityCheckFileHashFile</code></p>
+<pre data-role="codeBlock" data-info class="language-"><code># &#x8986;&#x76D6;&#x5199;&#x5165;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;
+local recordFilePath=&quot;${ProductDir}/${ResourcesHashFileName}&quot;
+coverContent2File &quot;${checkContent}&quot; &quot;${recordFilePath}&quot; # &#x8986;&#x76D6;&#x6570;&#x636E;&#xFF0C;&#x907F;&#x514D;&#x5F02;&#x5E38;&#x8FC7;&#x7A0B;&#x6B8B;&#x7559;&#x6587;&#x4EF6;&#x5185;&#x5BB9;
+</code></pre></li>
+</ol>
+<h3 class="mume-header" id="32-%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%A0%A1%E9%AA%8C%E9%80%BB%E8%BE%91">3.2 &#x5E94;&#x7528;&#x542F;&#x52A8;&#x6821;&#x9A8C;&#x903B;&#x8F91;</h3>
+
+<p><code>JGSIntegrityCheckResourcesHash</code>&#x7C7B;&#x5B50;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x8D44;&#x6E90;&#x6587;&#x4EF6;<code>Hash</code>&#x53CA;<code>Info.plist</code>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x6BD4;&#x5BF9;&#xFF0C;&#x5F02;&#x6B65;&#x8FD4;&#x56DE;&#x6BD4;&#x5BF9;&#x7ED3;&#x679C;&#xFF0C;&#x5305;&#x62EC;&#x6BD4;&#x5BF9;&#x4E0D;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x4EE5;&#x53CA;<code>Info.plist</code>&#x6821;&#x9A8C;&#x4E0D;&#x901A;&#x8FC7;<code>key</code>&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x4FE1;&#x606F;</p>
+<h4 class="mume-header" id="321-%E6%A0%A1%E9%AA%8C%E9%85%8D%E7%BD%AE">3.2.1 &#x6821;&#x9A8C;&#x914D;&#x7F6E;</h4>
+
+<pre data-role="codeBlock" data-info class="language-"><code>/// Info.plist&#x6587;&#x4EF6;key&#x9ED1;&#x540D;&#x5355;&#xFF0C;&#x591A;&#x5C42;&#x7EA7;&#x5BF9;&#x8C61;&#x9ED1;&#x540D;&#x5355;&#x5C42;&#x7EA7;&#x95F4;&#x4F7F;&#x7528;&quot;.&quot;&#x5206;&#x9694;&#xFF0C;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x9ED1;&#x540D;&#x5355;&#x9488;&#x5BF9;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;
+/// &#x5982;&#xFF1A;{key: [{key1: value1, key2: value2}]} &#x8BBE;&#x7F6E;&#xFF1A;key.key1&#xFF0C;&#x5BF9;&#x6570;&#x7EC4;&#x5185;&#x5143;&#x7D20;key1&#x503C;&#x5C06;&#x4E0D;&#x8FDB;&#x884C;&#x6821;&#x9A8C;
+@property (nonatomic, copy) NSArray&lt;NSString *&gt; *checkInfoPlistKeyBlacklist;
+
+/// &#x9700;&#x8981;&#x68C0;&#x9A8C;&#x7684;&#x5B50;&#x76EE;&#x5F55;&#x767D;&#x540D;&#x5355;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E0D;&#x4E3A;&#x7A7A;&#x65F6;&#xFF0C;&#x975E;&#x767D;&#x540D;&#x5355;&#x5B50;&#x76EE;&#x5F55;&#x5747;&#x4E0D;&#x505A;&#x6821;&#x9A8C;&#xFF1B;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x5168;&#x5339;&#x914D;&#xFF0C;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#xFF1B;&#x652F;&#x6301;&#x591A;&#x5C42;&#x76EE;&#x5F55;&#xFF0C;&#x8DEF;&#x5F84;&#x9700;&#x4ECE;&#x8D77;&#x59CB;&#x76EE;&#x5F55;&#x5F00;&#x59CB;
+@property (nonatomic, copy) NSArray&lt;NSString *&gt; *checkFileSubDirectoryWhitelist;
+
+/// &#x6587;&#x4EF6;Hash&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x540D;&#x9ED1;&#x540D;&#x5355;&#xFF0C;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x5168;&#x5339;&#x914D;&#xFF0C;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;
+@property (nonatomic, copy) NSArray&lt;NSString *&gt; *checkFileNameBlacklist;
+
+/// &#x6587;&#x4EF6;Hash&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x5939;&#x9ED1;&#x540D;&#x5355;&#xFF0C;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x5168;&#x5339;&#x914D;&#xFF0C;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#xFF1B;&#x652F;&#x6301;&#x591A;&#x5C42;&#x76EE;&#x5F55;&#xFF0C;&#x8DEF;&#x5F84;&#x9700;&#x4ECE;&#x8D77;&#x59CB;&#x76EE;&#x5F55;&#x5F00;&#x59CB;
+@property (nonatomic, copy) NSArray&lt;NSString *&gt; *checkFileDirectoryBlacklist;
+
+/// &#x6587;&#x4EF6;Hash&#x6821;&#x9A8C;&#x6587;&#x4EF6;&#x6269;&#x5C55;&#x540D;&#x9ED1;&#x540D;&#x5355;&#xFF0C;&#x6269;&#x5C55;&#x540D;&#x914D;&#x7F6E;&#x4E0D;&#x9700;&#x8981;&#x5305;&#x62EC;&quot;.&quot;&#xFF0C;&#x652F;&#x6301;&#x914D;&#x7F6E;&#x591A;&#x7EA7;&#x6269;&#x5C55;&#xFF0C;&#x5982;&#xFF1A;&#x201C;a.b&#x201D; &#x8868;&#x793A;&#x5F62;&#x5982; name.a.b &#x7684;&#x6587;&#x4EF6;
+@property (nonatomic, copy) NSArray&lt;NSString *&gt; *checkFileExtesionBlacklist;
+
+</code></pre><h4 class="mume-header" id="322-%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95">3.2.2 &#x6821;&#x9A8C;&#x65B9;&#x6CD5;</h4>
+
+<pre data-role="codeBlock" data-info class="language-"><code>/// &#x68C0;&#x6D4B;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x3001;Info.plist&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x68C0;&#x6D4B;&#x4EC5;&#x9488;&#x5BF9;&#x6587;&#x4EF6;&#x3001;Info.plist&#x6587;&#x4EF6;Key&#x5BF9;&#x5E94;Value&#x5185;&#x5BB9;&#x53D8;&#x5316;&#xFF0C;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x589E;&#x5220;&#x3001;Info.plist&#x6587;&#x4EF6;Key&#x589E;&#x5220;
+/// @param completion &#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x54CD;&#x5E94;
+/// unpassFiles &#x68C0;&#x6D4B;&#x672A;&#x901A;&#x8FC7;&#x7684;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5305;&#x542B;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;
+/// unpassPlistInfo Info.plist&#x6587;&#x4EF6;&#x68C0;&#x6D4B;&#x672A;&#x901A;&#x8FC7;&#x5185;&#x5BB9;&#x7684;Key&#x4FE1;&#x606F;
+- (void)checkAPPResourcesHash:(nullable void (^)(NSArray&lt;NSString *&gt; * _Nullable unpassFiles, NSDictionary * _Nullable unpassPlistInfo))completion;
+</code></pre><p>&#x8003;&#x8651;&#x6821;&#x9A8C;&#x6587;&#x4EF6;Hash&#x3001;&#x5185;&#x5BB9;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6587;&#x4EF6;&#x8BFB;&#x5199;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#xFF0C;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x5F02;&#x6B65;&#x8FD4;&#x56DE;&#x3002;</p>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>

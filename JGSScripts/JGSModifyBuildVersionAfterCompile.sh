@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-15 13:20:30
- # @LastEditTime: 2022-04-15 22:48:24
+ # @LastEditTime: 2022-05-18 18:11:11
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyBuildVersionAfterCompile.sh
@@ -44,7 +44,7 @@ if [[ ! -f ${InfoPlist} ]]; then
 fi
 
 # Build=$(date "+%Y%m%d%H%M") # 构建时间
-Build=$(date "+%Y%m%d%H%M") # 构建时间
+Build=$(date "+%Y%m%d") # 构建时间
 
 git=$(which git)
 if [[ ${git}'' == '' ]]; then
@@ -60,7 +60,7 @@ if [[ ${git}'' != '' ]]; then
     if [[ ${latestHash}'' != '' ]]; then
         latestHash="${latestHash:0:8}"
         echo "latestHash: ${latestHash}"
-        Build="${Build}_Res_${latestHash}"
+        Build="${Build}.${latestHash}"
     fi
 fi
 

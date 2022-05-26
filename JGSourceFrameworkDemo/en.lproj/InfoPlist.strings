@@ -6,5 +6,5 @@
   Copyright © 2022 MeiJiGao. All rights reserved.
 */
 
-"CFBundleDisplayName" = "FrameworkDemo";
-"CFBundleName" = "FrameworkDemo";
+"CFBundleDisplayName" = "JGSFramework";
+"CFBundleName" = "JGSFramework";

@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		284CD8A3724C3BB814B72D58 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */; };
-		73D26D89735AD9B88916114E /* Pods_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */; };
-		92750850ADCA0616C4B4DD3E /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */; };
+		4ED58F433D1D6536F2A78522 /* libPods-JGSourceBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E768894400D6C76837A9C17F /* libPods-JGSourceBase.a */; };
+		641591C936BA7A17A156755F /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABC454E41EB8B63A7950C6 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */; };
+		AD00D52BFA7B2B7D166EEF9A /* libPods-JGSourceDemo-JGSourceBaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 067F446D8A4974B1FDEF43EB /* libPods-JGSourceDemo-JGSourceBaseDemo.a */; };
+		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
+		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4852C892806F33D002B14AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852C882806F33D002B14AB /* AppDelegate.m */; };
 		D4852C8F2806F33D002B14AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852C8E2806F33D002B14AB /* ViewController.m */; };
 		D4852C942806F33D002B14AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4852C932806F33D002B14AB /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		D4852CD92806F42B002B14AB /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CC22806F42A002B14AB /* JGSDemoViewController.m */; };
 		D4852CDA2806F42B002B14AB /* JGSKeyboardDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CC42806F42A002B14AB /* JGSKeyboardDemoVC.m */; };
 		D4852CDB2806F42B002B14AB /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CC82806F42A002B14AB /* JGSHUDDemoVC.m */; };
+		D4B5FD5F283FE64200D7C68E /* JGSApplicationIntegrityCheckFileHashFile in Resources */ = {isa = PBXBuildFile; fileRef = D4B5FD5C283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile */; };
+		D4B5FD60283FE64400D7C68E /* JGSApplicationIntegrityCheckFileHashFile in Resources */ = {isa = PBXBuildFile; fileRef = D4B5FD5C283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile */; };
+		D4B7DF37283504C900BFAE79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852C882806F33D002B14AB /* AppDelegate.m */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6976E2806E0F900CE1F9F /* JGSReachability.m */; };
 		D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,7 +146,6 @@
 		D4E5B0EB28071CE40066C448 /* JGSNSStringDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CB72806F42A002B14AB /* JGSNSStringDemoVC.m */; };
 		D4E5B0EC28071CE40066C448 /* JGSEncryptionDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CA82806F42A002B14AB /* JGSEncryptionDemoVC.m */; };
 		D4E5B0ED28071CE40066C448 /* JGSDataStorageDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4852CBD2806F42A002B14AB /* JGSDataStorageDemoVC.m */; };
-		D4E5B0F328071DAA0066C448 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5B0F228071DAA0066C448 /* AppDelegate.m */; };
 		D4E5B0F428071E680066C448 /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4E5B0F528071E680066C448 /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -180,11 +185,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		067F446D8A4974B1FDEF43EB /* libPods-JGSourceDemo-JGSourceBaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceDemo-JGSourceBaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		107A9FC308229C0BDBF03A70 /* Pods-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
 		4E616C8CEDB65D8766D45A3B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; sourceTree = "<group>"; };
-		5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceFrameworkDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		734A5EDF9C9832B90AC65C2A /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		738AFC73F543B967A87B6C47 /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7AD9BDF6F5F1B5FD1535C498 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
+		D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSIntegrityCheckResourcesHash.m; sourceTree = "<group>"; };
+		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D45AAAA528337DEE004EE48C /* JGSCopyResources2Framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSCopyResources2Framework.sh; sourceTree = "<group>"; };
+		D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyVersionBeforeCompile.sh; sourceTree = "<group>"; };
+		D45AAAA728337DEE004EE48C /* JGSModifyBuildVersionAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyBuildVersionAfterCompile.sh; sourceTree = "<group>"; };
+		D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheck.h; sourceTree = "<group>"; };
 		D4852C852806F33D002B14AB /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4852C872806F33D002B14AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4852C882806F33D002B14AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -226,6 +238,17 @@
 		D4852CC52806F42A002B14AB /* JGSKeyboardDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardDemoVC.h; sourceTree = "<group>"; };
 		D4852CC72806F42A002B14AB /* JGSHUDDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSHUDDemoVC.h; sourceTree = "<group>"; };
 		D4852CC82806F42A002B14AB /* JGSHUDDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSHUDDemoVC.m; sourceTree = "<group>"; };
+		D49C332D283739A50008819A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D49C332E283739AC0008819A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D49C332F283739CB0008819A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D49C3330283739CB0008819A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D4B5FD5B283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JGSApplicationIntegrityCheckFileHashFile.Info.plist.json; sourceTree = "<group>"; };
+		D4B5FD5C283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = JGSApplicationIntegrityCheckFileHashFile; sourceTree = "<group>"; };
+		D4B5FD5D283FE35900D7C68E /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json"; sourceTree = "<group>"; };
+		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
+		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
+		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
+		D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckRecordResourcesHash.sh; sourceTree = "<group>"; };
 		D4D6976D2806E0F900CE1F9F /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
 		D4D6976E2806E0F900CE1F9F /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
 		D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUserDefaults.h; sourceTree = "<group>"; };
@@ -311,24 +334,19 @@
 		D4D698252806E16F00CE1F9F /* JGSResourceHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JGSResourceHandler; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D698272806E16F00CE1F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4D9FDD32807214C0028AD6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4D9FDDA280725900028AD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4D9FDE5280727850028AD6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4D9FDE72807278A0028AD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4E5B0B6280709930066C448 /* JGSourceFrameworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceFrameworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E5B0C4280709930066C448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4E5B0C7280709930066C448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4E5B0C9280709930066C448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E5B0CA280709930066C448 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4E5B0EE28071D380066C448 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		D4E5B0F028071DAA0066C448 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		D4E5B0F128071DAA0066C448 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D4E5B0F228071DAA0066C448 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC751DA87FAA3E681595D275 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7ABC454E41EB8B63A7950C6 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceDemo-JGSourceFrameworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF32F2345F0A94B8E572FE84 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E768894400D6C76837A9C17F /* libPods-JGSourceBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JGSourceBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99DC0AD5FACB05C87C51CF1 /* Pods-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,7 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D26D89735AD9B88916114E /* Pods_JGSourceBase.framework in Frameworks */,
+				4ED58F433D1D6536F2A78522 /* libPods-JGSourceBase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				284CD8A3724C3BB814B72D58 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */,
+				AD00D52BFA7B2B7D166EEF9A /* libPods-JGSourceDemo-JGSourceBaseDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4E5B0F428071E680066C448 /* JGSourceBase.framework in Frameworks */,
-				92750850ADCA0616C4B4DD3E /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */,
+				641591C936BA7A17A156755F /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,12 +389,12 @@
 		78C41E8D2B02C0871B492760 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EC751DA87FAA3E681595D275 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */,
-				734A5EDF9C9832B90AC65C2A /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */,
 				738AFC73F543B967A87B6C47 /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */,
 				4E616C8CEDB65D8766D45A3B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */,
 				107A9FC308229C0BDBF03A70 /* Pods-JGSourceBase.debug.xcconfig */,
 				F99DC0AD5FACB05C87C51CF1 /* Pods-JGSourceBase.release.xcconfig */,
+				DF32F2345F0A94B8E572FE84 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */,
+				7AD9BDF6F5F1B5FD1535C498 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -384,11 +402,21 @@
 		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F328508F00FD0BA051AF6A75 /* Pods_JGSourceBase.framework */,
-				DA60C92418179A745A520F0A /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */,
-				5557D84E731DD9925B5715DB /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */,
+				E768894400D6C76837A9C17F /* libPods-JGSourceBase.a */,
+				067F446D8A4974B1FDEF43EB /* libPods-JGSourceDemo-JGSourceBaseDemo.a */,
+				D7ABC454E41EB8B63A7950C6 /* libPods-JGSourceDemo-JGSourceFrameworkDemo.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D45AAAA428337DEE004EE48C /* JGSScripts */ = {
+			isa = PBXGroup;
+			children = (
+				D45AAAA528337DEE004EE48C /* JGSCopyResources2Framework.sh */,
+				D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */,
+				D45AAAA728337DEE004EE48C /* JGSModifyBuildVersionAfterCompile.sh */,
+			);
+			path = JGSScripts;
 			sourceTree = "<group>";
 		};
 		D4852C862806F33D002B14AB /* JGSourceBaseDemo */ = {
@@ -413,6 +441,7 @@
 		D4852C9E2806F42A002B14AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4B5FD5A283FE02F00D7C68E /* IntegrityCheck */,
 				D4852C9F2806F42A002B14AB /* Loading */,
 			);
 			path = Resources;
@@ -526,6 +555,39 @@
 				D4852CC82806F42A002B14AB /* JGSHUDDemoVC.m */,
 			);
 			path = HUD;
+			sourceTree = "<group>";
+		};
+		D4B5FD5A283FE02F00D7C68E /* IntegrityCheck */ = {
+			isa = PBXGroup;
+			children = (
+				D4B5FD5C283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile */,
+				D4B5FD5D283FE35900D7C68E /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
+				D4B5FD5B283FE2B100D7C68E /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
+			);
+			path = IntegrityCheck;
+			sourceTree = "<group>";
+		};
+		D4B7DF352834EBC400BFAE79 /* JGSourceBase.xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */,
+				D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */,
+				D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */,
+			);
+			name = JGSourceBase.xcconfig;
+			sourceTree = "<group>";
+		};
+		D4C3ED98282B7F2700C5C1F8 /* JGSIntegrityCheck */ = {
+			isa = PBXGroup;
+			children = (
+				D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */,
+				D45AAAA328337DC7004EE48C /* README.md */,
+				D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */,
+				D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */,
+				D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */,
+			);
+			name = JGSIntegrityCheck;
+			path = ../JGSIntegrityCheck;
 			sourceTree = "<group>";
 		};
 		D4D6976C2806E0F900CE1F9F /* JGSReachability */ = {
@@ -773,9 +835,6 @@
 		D4E5B0B7280709930066C448 /* JGSourceFrameworkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D4E5B0F128071DAA0066C448 /* AppDelegate.h */,
-				D4E5B0F228071DAA0066C448 /* AppDelegate.m */,
-				D4E5B0F028071DAA0066C448 /* PrefixHeader.pch */,
 				D4E5B0C4280709930066C448 /* Assets.xcassets */,
 				D4E5B0C6280709930066C448 /* LaunchScreen.storyboard */,
 				D4D9FDD22807214C0028AD6D /* InfoPlist.strings */,
@@ -791,6 +850,7 @@
 				D4F3DA4722F0279D002EF0F0 /* JGSourceBase */,
 				D4D698262806E16F00CE1F9F /* JGSResourceHandler */,
 				D4852C862806F33D002B14AB /* JGSourceBaseDemo */,
+				D45AAAA428337DEE004EE48C /* JGSScripts */,
 				D4E5B0B7280709930066C448 /* JGSourceFrameworkDemo */,
 				D4F3DA4622F0279D002EF0F0 /* Products */,
 				8F5566C1186FFED2CCE63677 /* Frameworks */,
@@ -819,9 +879,11 @@
 				D4D697812806E0F900CE1F9F /* JGSDevice */,
 				D4D697872806E0F900CE1F9F /* JGSEncryption */,
 				D4D697752806E0F900CE1F9F /* JGSHUD */,
+				D4C3ED98282B7F2700C5C1F8 /* JGSIntegrityCheck */,
 				D4D6976C2806E0F900CE1F9F /* JGSReachability */,
 				D4D697962806E0F900CE1F9F /* JGSSecurityKeyboard */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
+				D4B7DF352834EBC400BFAE79 /* JGSourceBase.xcconfig */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -863,6 +925,7 @@
 				D4D697D92806E0F900CE1F9F /* JGSLoadingHUD.h in Headers */,
 				D4D697FC2806E0F900CE1F9F /* JGSSymbolKeyboard.h in Headers */,
 				D4D697D62806E0F900CE1F9F /* JGSKeychainUtils.h in Headers */,
+				D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */,
 				D4D698182806E0F900CE1F9F /* NSString+JGSBase.h in Headers */,
 				D4D697E82806E0F900CE1F9F /* JGSAESEncryption.h in Headers */,
 				D4D697FF2806E0F900CE1F9F /* JGSKeyboardConstants.h in Headers */,
@@ -880,6 +943,7 @@
 				D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */,
 				D4D697EF2806E0F900CE1F9F /* JGSBase.h in Headers */,
 				D4D697E02806E0F900CE1F9F /* JGSToast.h in Headers */,
+				D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */,
 				D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -891,13 +955,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4852C9D2806F33D002B14AB /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
 			buildPhases = (
-				CEACB40BEA597A401F0366EE /* [CP] Check Pods Manifest.lock */,
+				5E53463DACEB2546D369D215 /* [CP] Check Pods Manifest.lock */,
 				D474954828093C0200D5D877 /* ShellScript */,
 				D4852C812806F33D002B14AB /* Sources */,
 				D4852C822806F33D002B14AB /* Frameworks */,
 				D4852C832806F33D002B14AB /* Resources */,
-				AD0F7A44617F7B12BF6FAB65 /* [CP] Embed Pods Frameworks */,
 				D4D7A3E628087CF900C65AFB /* ShellScript */,
+				98460BF9029E32AA55D93956 /* [CP-User] JGSIntegrityCheck */,
+				96599646747303D420BA2B53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -935,8 +1000,8 @@
 				D4E5B0B3280709930066C448 /* Frameworks */,
 				D4E5B0B4280709930066C448 /* Resources */,
 				D4E5B0F628071E690066C448 /* Embed Frameworks */,
-				86663E67E89F58C76FD19EEC /* [CP] Embed Pods Frameworks */,
 				D474954528087D3F00D5D877 /* ShellScript */,
+				46628BF7F1338AC7B8F97709 /* [CP-User] JGSIntegrityCheck */,
 			);
 			buildRules = (
 			);
@@ -1000,6 +1065,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = D4F3DA3B22F0279D002EF0F0;
 			productRefGroup = D4F3DA4622F0279D002EF0F0 /* Products */;
@@ -1026,6 +1092,7 @@
 				D4852CCA2806F42B002B14AB /* LoadingWithAlpha-4.gif in Resources */,
 				D4852C942806F33D002B14AB /* Assets.xcassets in Resources */,
 				D4852CCC2806F42B002B14AB /* LoadingWithAlpha-2.gif in Resources */,
+				D4B5FD5F283FE64200D7C68E /* JGSApplicationIntegrityCheckFileHashFile in Resources */,
 				D4D9FDE6280727860028AD6D /* InfoPlist.strings in Resources */,
 				D4852CC92806F42B002B14AB /* LoadingWithoutAlpha-1.gif in Resources */,
 			);
@@ -1042,6 +1109,7 @@
 				D4E5B0DF28071CC10066C448 /* LoadingWithAlpha-3.gif in Resources */,
 				D4E5B0DE28071CC10066C448 /* LoadingWithAlpha-2.gif in Resources */,
 				D4E5B0C5280709930066C448 /* Assets.xcassets in Resources */,
+				D4B5FD60283FE64400D7C68E /* JGSApplicationIntegrityCheckFileHashFile in Resources */,
 				D4D9FDD42807214C0028AD6D /* InfoPlist.strings in Resources */,
 				D4E5B0DD28071CC10066C448 /* LoadingWithoutAlpha-1.gif in Resources */,
 			);
@@ -1072,41 +1140,17 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		86663E67E89F58C76FD19EEC /* [CP] Embed Pods Frameworks */ = {
+		46628BF7F1338AC7B8F97709 /* [CP-User] JGSIntegrityCheck */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
+			name = "[CP-User] JGSIntegrityCheck";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\t\t\techo \"AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本\"\n\n\t\t\t# 自助framework打包引入脚本文件路径\n\t\t\tShellPath=\"${BUILT_PRODUCTS_DIR}/JGSourceBase.framework/JGSIntegrityCheckRecordResourcesHash.sh\"\n\n\t\t\t# echo \"${ShellPath}\"\n\t\t\tif [[ -f \"${ShellPath}\" ]]; then\n\t\t\t\tchmod +x ${ShellPath} # 脚本执行权限\n\t\t\t\t${ShellPath} # 执行脚本\n\t\t\tfi\n";
 		};
-		AD0F7A44617F7B12BF6FAB65 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEACB40BEA597A401F0366EE /* [CP] Check Pods Manifest.lock */ = {
+		5E53463DACEB2546D369D215 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1127,6 +1171,33 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		96599646747303D420BA2B53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98460BF9029E32AA55D93956 /* [CP-User] JGSIntegrityCheck */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] JGSIntegrityCheck";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\t\t\techo \"AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本\"\n\n\t\t\t# 网络引用方式依赖脚本文件路径\n\t\t\tShellPath=\"${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh\"\n\t\t\tif [[ ! -f \"${ShellPath}\" ]]; then\n\t\t\t\t# 本地引用方式依赖脚本文件路径\n\t\t\t\tShellPath=\"${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh\"\n\t\t\tfi\n\n\t\t\t# echo \"${ShellPath}\"\n\t\t\tif [[ -f \"${ShellPath}\" ]]; then\n\t\t\t\tchmod +x ${ShellPath} # 脚本执行权限\n\t\t\t\t${ShellPath} # 执行脚本\n\t\t\tfi\n";
 		};
 		D474954528087D3F00D5D877 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1194,7 +1265,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
 		};
 		D47C3D0427B6321800521310 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1305,7 +1376,7 @@
 				D4E5B0CB280709930066C448 /* main.m in Sources */,
 				D4E5B0E828071CE40066C448 /* JGSDemoViewController.m in Sources */,
 				D4E5B0DA28071C8B0066C448 /* ViewController.m in Sources */,
-				D4E5B0F328071DAA0066C448 /* AppDelegate.m in Sources */,
+				D4B7DF37283504C900BFAE79 /* AppDelegate.m in Sources */,
 				D4E5B0E728071CE40066C448 /* JGSNSObjectDemoVC.m in Sources */,
 				D4E5B0E328071CE40066C448 /* JGSKeyboardDemoVC.m in Sources */,
 			);
@@ -1346,6 +1417,7 @@
 				D4D6981D2806E0F900CE1F9F /* NSDate+JGSBase.m in Sources */,
 				D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */,
 				D4D697FD2806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
+				D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */,
 				D4D698012806E0F900CE1F9F /* UIImage+JGSBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1374,7 +1446,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D4D9FDD32807214C0028AD6D /* Base */,
-				D4D9FDDA280725900028AD6D /* en */,
+				D49C332D283739A50008819A /* en */,
+				D49C3330283739CB0008819A /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1383,7 +1456,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D4D9FDE5280727850028AD6D /* Base */,
-				D4D9FDE72807278A0028AD6D /* en */,
+				D49C332E283739AC0008819A /* en */,
+				D49C332F283739CB0008819A /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1401,7 +1475,7 @@
 /* Begin XCBuildConfiguration section */
 		D4852C9B2806F33D002B14AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC751DA87FAA3E681595D275 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */;
+			baseConfigurationReference = DF32F2345F0A94B8E572FE84 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1426,6 +1500,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1435,7 +1510,7 @@
 		};
 		D4852C9C2806F33D002B14AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 734A5EDF9C9832B90AC65C2A /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */;
+			baseConfigurationReference = 7AD9BDF6F5F1B5FD1535C498 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1460,6 +1535,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1506,7 +1582,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/JGSourceBaseDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1522,6 +1598,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1540,7 +1617,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "${PROJECT_DIR}/${TARGET_NAME}/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "${PROJECT_DIR}/JGSourceBaseDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
@@ -1556,6 +1633,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1567,6 +1645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1631,6 +1710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1687,7 +1767,7 @@
 		};
 		D4F3DA4E22F0279D002EF0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 107A9FC308229C0BDBF03A70 /* Pods-JGSourceBase.debug.xcconfig */;
+			baseConfigurationReference = D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1707,6 +1787,7 @@
 				);
 				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1717,7 +1798,7 @@
 		};
 		D4F3DA4F22F0279D002EF0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F99DC0AD5FACB05C87C51CF1 /* Pods-JGSourceBase.release.xcconfig */;
+			baseConfigurationReference = D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1737,6 +1818,7 @@
 				);
 				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -76,6 +76,29 @@
     static NSInteger times = 0;
     JGSConsoleLogWithNSLog(times++ % 3 == 2);
     JGSEnableLogWithMode(JGSLogModeFunc);
+	
+	[[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[
+		@"MinimumOSVersion",
+		@"CFBundleURLTypes.CFBundleURLName",
+		@"NSAppTransportSecurity.NSAllowsArbitraryLoads"
+	]];
+	[[JGSIntegrityCheckResourcesHash shareInstance] checkAPPResourcesHash:^(NSArray<NSString *> * _Nullable unpassFiles, NSDictionary * _Nullable unpassPlistInfo) {
+		
+		JGSLog(@"%@, %@", unpassFiles, unpassPlistInfo);
+		if (unpassFiles) {
+			
+			NSString *extraMsg = nil;
+#ifdef DEBUG
+			extraMsg = [NSString stringWithFormat:@"unpassFiles: %@", unpassFiles];
+			if (unpassPlistInfo.count > 0) {
+				extraMsg = [extraMsg stringByAppendingFormat:@"\nunpassPlistInfo: %@", unpassPlistInfo];
+			}
+#endif
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				[UIAlertController jg_alertWithTitle:@"您安装的应用已损坏，存在安全隐患，请退出应用，并从官方渠道下载安装后使用！" message:extraMsg];
+			});
+		}
+	}];
 }
 
 
