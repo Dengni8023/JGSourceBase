@@ -6,20 +6,16 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSDataStorage_h
+#define JGSDataStorage_h
+
 #import <Foundation/Foundation.h>
-
-//! Project version number for JGSDataStorage.
-FOUNDATION_EXPORT double JGSDataStorageVersionNumber;
-
-//! Project version string for JGSDataStorage.
-FOUNDATION_EXPORT const unsigned char JGSDataStorageVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSDataStorage/PublicHeader.h>
-
-#ifndef JGS_DataStorage
-#define JGS_DataStorage
-
+#if __has_include(<JGSourceBase/JGSDataStorage.h>)
 #import <JGSourceBase/JGSKeychainUtils.h>
 #import <JGSourceBase/JGSUserDefaults.h>
-
+#else
+#import "JGSKeychainUtils.h"
+#import "JGSUserDefaults.h"
 #endif
+
+#endif /* JGSDataStorage_h */

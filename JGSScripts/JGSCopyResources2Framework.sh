@@ -2,12 +2,12 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-13 21:29:56
- # @LastEditTime: 2022-05-18 18:17:35
+ # @LastEditTime: 2022-05-31 14:41:43
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSCopyResources2Framework.sh
  # Copyright © 2021 MeiJiGao. All rights reserved.
-### 
+###
 
 # 拷贝资源文件到 JGSourceBase.framework 根目录
 

@@ -7,8 +7,8 @@
 //
 
 #import "JGSDevice.h"
-#import "JGSBase.h"
-#import "JGSAESEncryption.h"
+#import "JGSBase+JGSPrivate.h"
+#import "NSData+JGSAES.h"
 #import <WebKit/WebKit.h>
 #import <AdSupport/ASIdentifierManager.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
@@ -105,10 +105,10 @@
         // 去除多空格
         fakeUserAgent = [fakeUserAgent stringByReplacingOccurrencesOfString:@"  " withString:@" "];
         
-        //JGSLog(@"默认 UserAgent Load");
+        JGSPrivateLog(@"默认 UserAgent Load");
         instance = instance ?: [[WKWebView alloc] init];
         [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
-            //JGSLog(@"默认 UserAgent: %@, %@", result, error);
+            JGSPrivateLog(@"默认 UserAgent: %@, %@", result, error);
             if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
                 sysUserAgent = (NSString *)result;
                 
@@ -122,8 +122,8 @@
                 onceToken = 0;
             }
             
-            //JGSLog(@"fakeUA: %@", fakeUserAgent);
-            //JGSLog(@"sys UA: %@", sysUserAgent);
+            JGSPrivateLog(@"fakeUA: %@", fakeUserAgent);
+            JGSPrivateLog(@"sys UA: %@", sysUserAgent);
         }];
     });
     
@@ -154,9 +154,8 @@
         NSString *org = bids.count > 1 ? bids[1] : bids.firstObject;
         NSString *processName = [NSProcessInfo processInfo].processName;
         appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@)", org.uppercaseString, processName, [self appVersion], [self buildNumber]];
-#ifdef JGSUserAgent
 		appUA = [NSString stringWithFormat:@"%@ %s", appUA, JGSUserAgent];
-#endif
+		
         // 去除开头结尾的空格、换行
         appUA = [appUA stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         // 去除多空格
@@ -265,7 +264,7 @@
     
     static NSString *deviceId = nil;
     if (deviceId.length > 0) {
-        //JGSLog(@"getDeviceId DeviceId Cached: %@", deviceId);
+        JGSPrivateLog(@"getDeviceId DeviceId Cached: %@", deviceId);
         return deviceId;
     }
     
@@ -274,25 +273,25 @@
     //NSString *keychainDeviceIdKey = @"JGSourceBaseDeviceId";
     //deviceId = [JGSKeychainUtils readFromKeychain:keychainDeviceIdKey];
     //if (deviceId.length > 0) {
-    //    JGSLog(@"getDeviceId DeviceId Stored: %@", deviceId);
+    //    JGSPrivateLog(@"getDeviceId DeviceId Stored: %@", deviceId);
     //    return deviceId;
     //}
     
     // 获取idfa，idfa获取失败则使用idfv，idfv也获取失败，则使用随机UUID
     deviceId = [self idfa];
-    //JGSLog(@"getDeviceId DeviceId idfa: %@", deviceId);
+    JGSPrivateLog(@"getDeviceId DeviceId idfa: %@", deviceId);
     
     if (deviceId.length == 0) {
         // idfv
         deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-        //JGSLog(@"getDeviceId DeviceId idfv: %@", deviceId);
+        JGSPrivateLog(@"getDeviceId DeviceId idfv: %@", deviceId);
     }
 
     if (deviceId.length == 0) {
 
         // 如果idfa、idfv均未取到，则使用随机UUID，随机UUID获取一次后存储KeyChain
         deviceId = [[NSUUID UUID] UUIDString];
-        //JGSLog(@"getDeviceId DeviceId uuid: %@", deviceId);
+        JGSPrivateLog(@"getDeviceId DeviceId uuid: %@", deviceId);
     }
     
     // 业务系统规则要求多样，此处不再存储
@@ -541,7 +540,7 @@
     fullIdentifier = [fullIdentifier stringByReplacingOccurrencesOfString:@"<string>" withString:@""];
     fullIdentifier = [fullIdentifier stringByReplacingOccurrencesOfString:@"</string>" withString:@""];
     
-    //JGSLog(@"%@", fullIdentifier);
+    JGSPrivateLog(@"%@", fullIdentifier);
     NSString *teamId = [fullIdentifier componentsSeparatedByString:@"."].firstObject;
     if (![teamIDs containsObject:teamId]) {
         return YES;
@@ -592,7 +591,7 @@
         }
     }
     @catch (NSException *exception) {
-        JGSLog(@"%@", exception);
+        JGSPrivateLogE(@"%@", exception);
     }
     
     // 检测plist文件
@@ -645,7 +644,7 @@
                 return JGSDeviceJailbrokenIsBroken;
             }
         } @catch (NSException *exception) {
-            JGSLog(@"%@", exception);
+            JGSPrivateLogE(@"%@", exception);
         }
     }
     
@@ -659,7 +658,7 @@
         }
     }
     @catch (NSException *exception) {
-        JGSLog(@"%@", exception);
+        JGSPrivateLogE(@"%@", exception);
     }
     
     // 看看stat是不是出自系统库，有没有被攻击者换掉
@@ -674,7 +673,7 @@
             }
         }
     } @catch (NSException *exception) {
-        JGSLog(@"%@", exception);
+        JGSPrivateLogE(@"%@", exception);
     }
     
     // 检测当前程序运行的环境变量

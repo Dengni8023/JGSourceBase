@@ -8,7 +8,7 @@
 
 #import "UIApplication+JGSBase.h"
 #import <objc/message.h>
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 
 FOUNDATION_EXTERN UIViewController *JGSTopViewController(UIViewController *rootViewController) {
     
@@ -59,7 +59,7 @@ FOUNDATION_EXTERN UIViewController *JGSTopViewController(UIViewController *rootV
     UIViewController *vcT = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topCtr = JGSTopViewController(vcT);
     
-    //JGSLog(@"keyWindow: %p", [UIApplication sharedApplication].keyWindow);
+    //JGSPrivateLog(@"keyWindow: %p", [UIApplication sharedApplication].keyWindow);
     
     return topCtr;
 }

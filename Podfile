@@ -1,6 +1,6 @@
-# source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 # source 'https://github.com/cocoapods/specs.git'
-source 'https://cdn.cocoapods.org/'
+# source 'https://cdn.cocoapods.org/'
 
 # 私有库B依赖了模块A，同时在主工程里 添加A到 development pod，cocoapods 重复生成相同库的uuid
 # pod install 警告信息 [!] [Xcodeproj] Generated duplicate UUIDs
@@ -10,12 +10,12 @@ install! 'cocoapods', :deterministic_uuids => false
 # inhibit_all_warnings!
 
 # use_frameworks! 要求生成的是 .framework 而不是静态库 .a
-# JGSourceFrameworkDemo 测试时建议指定 use_frameworks!，否则启动会有重复定义警告，例：
-# Class MBProgressHUD is implemented in both /.../JGSourceBase (0x...) and /.../JGSourceFrameworkDemo (0x...). One of the two will be used. Which one is undefined.
-# use_frameworks! # JGSourceFrameworkDemo 测试时建议指定，即开启本行
+# JGSourceFrameworkDemo 测试时必须指定 use_frameworks!，否则运行报错，例：
+# Include of non-modular header inside framework module 'JGSourceBase': '.../Pods/Headers/Public/JGSourceBase/JGSBase.h'
+use_frameworks! # JGSourceFrameworkDemo 测试时必须指定，即开启本行
 
 # JGSourceBaseDemo 测试时建议不指定 use_frameworks!，否则编译会有重复依赖警告，例：
-# Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBase')
+# Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBaseDemo')
 # use_frameworks! # JGSourceBaseDemo 测试时建议不指定，即注释此行
 
 # workspace
@@ -39,61 +39,55 @@ abstract_target "JGSourceDemo" do
 		# pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'd620ee8f5c1e782364804da8b5c541d2de38f55c' #'~> 1.4.0'
 		# pod 'JGSourceBase', '~> 1.3.0'
 		pod 'JGSourceBase', :path => "."
-		# pod 'JGSourceBase/Base', :path => "." # Base测试
-		# pod 'JGSourceBase/Category', :path => "." # Category测试
-		# pod 'JGSourceBase/Device', :path => "." # Device测试
-		# pod 'JGSourceBase/Reachability', :path => "." # Reachability测试
-		# pod 'JGSourceBase/SecurityKeyboard', :path => "." # SecurityKeyboard测试
+		# pod 'JGSourceBase/Base', :path => "."
+		# pod 'JGSourceBase/Category', :path => "."
+		# pod 'JGSourceBase/Category/NSData', :path => "."
+		# pod 'JGSourceBase/Category/NSDate', :path => "."
+		# pod 'JGSourceBase/Category/NSDictionary', :path => "."
+		# pod 'JGSourceBase/Category/NSObject', :path => "."
+		# pod 'JGSourceBase/Category/NSString', :path => "."
+		# pod 'JGSourceBase/Category/NSURL', :path => "."
+		# pod 'JGSourceBase/Category/UIAlertController', :path => "."
+		# pod 'JGSourceBase/Category/UIApplication', :path => "."
+		# pod 'JGSourceBase/Category/UIColor', :path => "."
+		# pod 'JGSourceBase/Category/UIImage', :path => "."
+		# pod 'JGSourceBase/DataStorage', :path => "."
+		# pod 'JGSourceBase/Device', :path => "."
+		# pod 'JGSourceBase/Encryption', :path => "."
+		# pod 'JGSourceBase/IntegrityCheck', :path => "."
+		# pod 'JGSourceBase/Reachability', :path => "."
+		# pod 'JGSourceBase/SecurityKeyboard', :path => "."
 		
 		# HUD
 		# pod 'JGSourceBase/HUD', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'd620ee8f5c1e782364804da8b5c541d2de38f55c'
-		pod 'JGSourceBase/HUD', :path => "." # HUD测试
-		# 'Category/UIImage', :path => "."
-		# pod 'JGSourceBase/HUD/Loading', :path => "." # HUD-Loading测试
-		# 'Category/UIImage', :path => "."
-		# pod 'JGSourceBase/HUD/Toast', :path => "." # HUD-Toast测试
+		pod 'JGSourceBase/HUD', :path => "."
+		# pod 'JGSourceBase/HUD/Loading', :path => "."
+		# pod 'JGSourceBase/HUD/Toast', :path => "."
 		
 		JGSApplicationIntegrityCheckScriptPods = <<-CMD
-			echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
-
-			# 网络引用方式依赖脚本文件路径
-			ShellPath="${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-			if [[ ! -f "${ShellPath}" ]]; then
-				# 本地引用方式依赖脚本文件路径
-				ShellPath="${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-			fi
-
-			# echo "${ShellPath}"
-			if [[ -f "${ShellPath}" ]]; then
-				chmod +x ${ShellPath} # 脚本执行权限
-				${ShellPath} # 执行脚本
-			fi
+			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限
+			${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh
 		CMD
 		script_phase :name => "JGSIntegrityCheck", :script => JGSApplicationIntegrityCheckScriptPods, :execution_position => :after_compile
 
 		# project
-		project "JGSourceBase.xcodeproj"
+		project "JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj"
 	end
 	
 	# JGSourceFrameworkDemo 测试引用 JGSourceBase.framework
 	target "JGSourceFrameworkDemo" do
 		
+		# JGSHUD
+		pod 'MBProgressHUD'
+		
 		JGSApplicationIntegrityCheckScriptFramework = <<-CMD
-			echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
-
-			# 自助framework打包引入脚本文件路径
-			ShellPath="${BUILT_PRODUCTS_DIR}/JGSourceBase.framework/JGSIntegrityCheckRecordResourcesHash.sh"
-
-			# echo "${ShellPath}"
-			if [[ -f "${ShellPath}" ]]; then
-				chmod +x ${ShellPath} # 脚本执行权限
-				${ShellPath} # 执行脚本
-			fi
+			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限
+			${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh
 		CMD
 		script_phase :name => "JGSIntegrityCheck", :script => JGSApplicationIntegrityCheckScriptFramework, :execution_position => :after_compile
 
 		# project
-		project "JGSourceBase.xcodeproj"
+		project "JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj"
 	end
 	
 end

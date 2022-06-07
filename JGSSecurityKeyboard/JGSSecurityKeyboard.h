@@ -6,20 +6,11 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSSecurityKeyboard_h
+#define JGSSecurityKeyboard_h
+
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCryptor.h>
-
-//! Project version number for JGSSecurityKeyboard.
-FOUNDATION_EXPORT double JGSSecurityKeyboardVersionNumber;
-
-//! Project version string for JGSSecurityKeyboard.
-FOUNDATION_EXPORT const unsigned char JGSSecurityKeyboardVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSSecurityKeyboard/PublicHeader.h>
-
-#ifndef JGS_SecurityKeyboard
-#define JGS_SecurityKeyboard
-
 #import <JGSourceBase/UITextInput+JGSSecurityKeyboard.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -143,4 +134,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif
+#endif /* JGSSecurityKeyboard_h */

@@ -6,20 +6,15 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSDevice_h
+#define JGSDevice_h
+
 #import <UIKit/UIKit.h>
-
-//! Project version number for JGSDevice.
-FOUNDATION_EXPORT double JGSDeviceVersionNumber;
-
-//! Project version string for JGSDevice.
-FOUNDATION_EXPORT const unsigned char JGSDeviceVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSDevice/PublicHeader.h>
-
-#ifndef JGS_Device
-#define JGS_Device
-
+#if __has_include(<JGSourceBase/JGSReachability.h>)
 #import <JGSourceBase/JGSReachability.h>
+#else
+#import "JGSReachability.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -121,4 +116,4 @@ typedef NS_ENUM(uint, JGSDeviceJailbroken) {
 
 NS_ASSUME_NONNULL_END
 
-#endif
+#endif /* JGSDevice_h */

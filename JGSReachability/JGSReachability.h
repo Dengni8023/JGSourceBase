@@ -6,18 +6,10 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSReachability_h
+#define JGSReachability_h
+
 #import <Foundation/Foundation.h>
-
-//! Project version number for JGSReachability.
-FOUNDATION_EXPORT double JGSReachabilityVersionNumber;
-
-//! Project version string for JGSReachability.
-FOUNDATION_EXPORT const unsigned char JGSReachabilityVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSReachability/PublicHeader.h>
-
-#ifndef JGS_Reachability
-#define JGS_Reachability
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -114,4 +106,4 @@ FOUNDATION_EXTERN JGSReachabilityNotificationKey const JGSReachabilityNotificati
 
 NS_ASSUME_NONNULL_END
 
-#endif
+#endif /* JGSReachability_h */

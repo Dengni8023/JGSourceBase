@@ -28,56 +28,29 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 // 本文件作为公有header，外部使用时可直接import本文件而不需要引入其他头文件即可使用所有引入的subspec功能
 // 因此各subspec头文件的引入均使用的头文件能否引用的判断
 
-// Base
-#pragma mark - Base
-#if __has_include(<JGSourceBase/JGSBase.h>)
-#import <JGSourceBase/JGSBase.h>
+#if __has_include(<JGSourceBase/JGSourceBase.h>)
+#import <JGSourceBase/JGSBase.h> // Base
+#import <JGSourceBase/JGSCategory.h> // Category
+#import <JGSourceBase/JGSDataStorage.h> // DataStorage
+#import <JGSourceBase/JGSDevice.h> // Device
+#import <JGSourceBase/JGSEncryption.h> // Encryption
+#import <JGSourceBase/JGSIntegrityCheck.h> // IntegrityCheck
+#import <JGSourceBase/JGSReachability.h> // Reachability
+#import <JGSourceBase/JGSSecurityKeyboard.h> // SecurityKeyboard
+#else
+#import "JGSBase.h" // Base
+#import "JGSCategory.h" // Category
+#import "JGSDataStorage.h" // DataStorage
+#import "JGSDevice.h" // Device
+#import "JGSEncryption.h" // Encryption
+#import "JGSIntegrityCheck.h" // IntegrityCheck
+#import "JGSReachability.h" // Reachability
+#import "JGSSecurityKeyboard.h" // SecurityKeyboard
 #endif
 
-// Category
-#pragma mark - Category
-#if __has_include(<JGSourceBase/JGSCategory.h>)
-#import <JGSourceBase/JGSCategory.h>
-#endif
-
-// DataStorage
-#pragma mark - DataStorage
-#if __has_include(<JGSourceBase/JGSDataStorage.h>)
-#import <JGSourceBase/JGSDataStorage.h>
-#endif
-
-// Device
-#pragma mark - Device
-#if __has_include(<JGSourceBase/JGSDevice.h>)
-#import <JGSourceBase/JGSDevice.h>
-#endif
-
-// Encryption
-#pragma mark - Encryption
-#if __has_include(<JGSourceBase/JGSEncryption.h>)
-#import <JGSourceBase/JGSEncryption.h>
-#endif
-
-// JGSHUD
-#pragma mark - JGSHUD
+// HUD
 #if __has_include(<JGSourceBase/JGSHUD.h>)
 #import <JGSourceBase/JGSHUD.h>
-#endif
-
-// JGSIntegrityCheck.h
-#pragma mark - JGSIntegrityCheck
-#if __has_include(<JGSourceBase/JGSIntegrityCheck.h>)
-#import <JGSourceBase/JGSIntegrityCheck.h>
-#endif
-
-// JGSReachability
-#pragma mark - JGSReachability
-#if __has_include(<JGSourceBase/JGSReachability.h>)
-#import <JGSourceBase/JGSReachability.h>
-#endif
-
-// JGSSecurityKeyboard
-#pragma mark - JGSSecurityKeyboard
-#if __has_include(<JGSourceBase/JGSSecurityKeyboard.h>)
-#import <JGSourceBase/JGSSecurityKeyboard.h>
+#elif __has_include("JGSHUD.h")
+#import "JGSHUD.h"
 #endif

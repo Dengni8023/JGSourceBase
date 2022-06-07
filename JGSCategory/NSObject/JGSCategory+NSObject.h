@@ -6,9 +6,13 @@
 //  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
-#ifndef JGSCategory_NSObject
-#define JGSCategory_NSObject
+#ifndef JGSCategory_NSObject_h
+#define JGSCategory_NSObject_h
 
+#if __has_include(<JGSourceBase/JGSCategory+NSObject.h>)
 #import <JGSourceBase/NSObject+JGSBase.h>
-
+#else
+#import "NSObject+JGSBase.h"
 #endif
+
+#endif /* JGSCategory_NSObject_h */

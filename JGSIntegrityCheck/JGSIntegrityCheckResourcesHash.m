@@ -7,7 +7,7 @@
 //
 
 #import "JGSIntegrityCheckResourcesHash.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 #import <CommonCrypto/CommonCrypto.h>
 
 @implementation JGSIntegrityCheckResourcesHash
@@ -50,12 +50,12 @@
 			checkResult = [[(NSNumber *)usingObject stringValue].lowercaseString isEqualToString:recordValue.lowercaseString];
 		}
 		else {
-			JGSLog(@"校验未进行 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
+			JGSPrivateLog(@"校验未进行 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
 			return nil;
 		}
 		
 		if (!checkResult) {
-			JGSLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
+			JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
 		}
 		
 		return checkResult ? nil : usingObject;
@@ -65,7 +65,7 @@
 		NSArray *usingArray = (NSArray *)usingObject;
 		NSArray *recordArray = (NSArray *)recordObject;
 		if (recordArray.count != usingArray.count) {
-			JGSLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordObject);
+			JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordObject);
 			return usingObject;
 		}
 		
@@ -105,7 +105,7 @@
 			
 			// 黑名单key不做校验
 			if ([blackKeys containsObject:recordKey]) {
-				JGSLog(@"Check Plist Black Key: \t%@", recordKey);
+				JGSPrivateLog(@"Check Plist Black Key: \t%@", recordKey);
 				return;
 			}
 			
@@ -143,13 +143,6 @@
 
 - (void)checkAPPResourcesHash:(void (^)(NSArray<NSString *> * _Nullable, NSDictionary * _Nullable))completion {
 	
-#ifndef JGSApplicationIntegrityCheckFileHashFile
-	dispatch_async(dispatch_get_main_queue(), ^{
-		completion(nil, nil);
-	});
-	return;
-#else
-	
 	// 内部存在文件读取等耗时操作，所以需要使用异步逻辑处理
 	// 文件校验参考 JGSIntegrityCheckRecordResourcesHash.sh 脚本生成校验内容规则进行处理
 	
@@ -168,7 +161,7 @@
 			return;
 		}
 		
-		JGSLog(@"应用完整性校验-资源文件校验");
+		JGSPrivateLog(@"应用完整性校验-资源文件校验");
 		
 		// 获取校验文件Base64字符串内容
 		NSString *chechFileContentBase64 = [NSString stringWithContentsOfFile:hashFilePath encoding:NSUTF8StringEncoding error:nil];
@@ -199,10 +192,7 @@
 		
 		// 校验文件移除混淆头，后进行翻转获取校验文件真实内容
 		// 该步骤请与 JGSIntegrityCheckRecordResourcesHash.sh 保持逆过程的一致性
-		NSString *hashSalt = nil;
-#ifdef JGSResourcesCheckFileHashSecuritySalt
-		hashSalt = [NSString stringWithUTF8String:JGSResourcesCheckFileHashSecuritySalt];
-#endif
+		NSString *hashSalt = [NSString stringWithUTF8String:JGSResourcesCheckFileHashSecuritySalt];
 		NSInteger hashSaltLen = [[hashSalt dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length;
 		NSInteger realCheckContentLength = chechFileContent.length - hashSaltLen * 2;
 		if (realCheckContentLength <= 0) {
@@ -263,7 +253,7 @@
 			// Info.plist单独处理
 			if ([recordFileName.lowercaseString isEqualToString:@"Info.plist".lowercaseString]) {
 				
-				JGSLog(@"应用完整性校验-Info.plist文件内容校验");
+				JGSPrivateLog(@"应用完整性校验-Info.plist文件内容校验");
 				
 				// Plist记录Base64内容解密
 				NSData *recordPlistData = [[NSData alloc] initWithBase64EncodedString:recordFileHash options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -283,7 +273,7 @@
 				if ([plistResult isKindOfClass:[NSDictionary class]] && plistResult.count > 0) {
 					[unpassFiles addObject:recordFileName];
 					[unpassPlistInfo setDictionary:plistResult];
-					JGSLog(@"校验不通过：%@ =>\n%@)", recordFileName, [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:unpassPlistInfo options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+					JGSPrivateLog(@"校验不通过：%@ =>\n%@)", recordFileName, [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:unpassPlistInfo options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
 				}
 				
 				return;
@@ -340,13 +330,12 @@
 			
 			// 文件Hash校验不通过
 			[unpassFiles addObject:recordFileName];
-			JGSLog(@"校验不通过：%@ =>\nUsing:\t<%@>\nRecord:\t<%@>", recordFileName, usingHash, recordFileHash);
+			JGSPrivateLog(@"校验不通过：%@ =>\nUsing:\t<%@>\nRecord:\t<%@>", recordFileName, usingHash, recordFileHash);
 		}];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			completion(unpassFiles.count > 0 ? unpassFiles.copy : nil, unpassPlistInfo.count > 0 ? unpassPlistInfo.copy : nil);
 		});
 	});
-#endif
 }
 
 - (NSString *)fileHashWithPath:(NSString *)path {

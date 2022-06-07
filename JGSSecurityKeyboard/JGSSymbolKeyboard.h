@@ -6,7 +6,11 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#if __has_include(<JGSourceBase/JGSBaseKeyboard.h>)
 #import <JGSourceBase/JGSBaseKeyboard.h>
+#else
+#import "JGSBaseKeyboard.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

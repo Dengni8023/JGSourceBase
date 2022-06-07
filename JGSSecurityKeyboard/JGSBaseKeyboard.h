@@ -6,9 +6,13 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#if __has_include(<JGSourceBase/JGSBaseKeyboard.h>)
 #import <JGSourceBase/JGSKeyboardToolbar.h>
 #import <JGSourceBase/JGSSecurityKeyboard.h>
+#else
+#import "JGSKeyboardToolbar.h"
+#import "JGSSecurityKeyboard.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

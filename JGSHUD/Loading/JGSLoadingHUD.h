@@ -6,12 +6,15 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSLoadingHUD_h
+#define JGSLoadingHUD_h
+
 #import <Foundation/Foundation.h>
-
-#ifndef JGSHUD_Loading
-#define JGSHUD_Loading
-
+#if  __has_include(<JGSourceBase/JGSLoadingHUD.h>)
 #import <JGSourceBase/UIView+JGSLoadingHUD.h>
+#else
+#import "UIView+JGSLoadingHUD.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -6,9 +6,13 @@
 //  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
-#ifndef JGSCategory_UIApplication
-#define JGSCategory_UIApplication
+#ifndef JGSCategory_UIApplication_h
+#define JGSCategory_UIApplication_h
 
+#if __has_include(<JGSourceBase/JGSCategory+UIApplication.h>)
 #import <JGSourceBase/UIApplication+JGSBase.h>
-
+#else
+#import "UIApplication+JGSBase.h"
 #endif
+
+#endif /* JGSCategory_UIApplication_h */

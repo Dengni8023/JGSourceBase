@@ -57,7 +57,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
     } \
 }
 
-#define JGSLog(fmt, ...)        JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
+#define JGSLog(fmt, ...)        JGSLogD(fmt, ##__VA_ARGS__)
 #define JGSLogD(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
 #define JGSLogI(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelInfo, fmt, ##__VA_ARGS__)
 #define JGSLogW(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelWarn, fmt, ##__VA_ARGS__)
@@ -94,6 +94,9 @@ FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog);
 FOUNDATION_EXTERN BOOL JGSConsoleWithNSLog;
 
 @interface JGSLogFunction : NSObject
+
+/// 是否开启内部调试日志
++ (void)enableLog:(BOOL)enable;
 
 @end
 

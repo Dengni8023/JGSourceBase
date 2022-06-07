@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertController+JGSBase.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 #import <objc/runtime.h>
 
 @implementation UIAlertController (JGSBase)
@@ -110,7 +110,7 @@ static NSPointerArray *jg_ShowingAlertControllers = nil;
             @"destructive": destructive ?: @"nil",
             @"others": others ? (others.count > 0 ? others : @"0 action") : @"nil"
         };
-        JGSLog(@"UIAlertController must have a title, a message or an action to display. Display elements : %@", elements);
+        JGSPrivateLog(@"UIAlertController must have a title, a message or an action to display. Display elements : %@", elements);
         return nil;
     }
     

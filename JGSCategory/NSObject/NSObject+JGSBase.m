@@ -10,7 +10,7 @@
 
 @implementation NSObject (JGSBase)
 
-#pragma mark - Parser
+#pragma mark - JSONParser
 - (id)jg_JSONObject {
     return [self jg_JSONObject:NULL];
 }
@@ -60,7 +60,7 @@
     return [NSJSONSerialization JSONObjectWithData:encodeData options:options error:error];
 }
 
-#pragma mark - Encode
+#pragma mark - JSONEncode
 - (NSData *)jg_JSONData {
     return [self jg_JSONData:NULL];
 }

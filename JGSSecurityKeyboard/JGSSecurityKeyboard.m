@@ -10,7 +10,7 @@
 #import "JGSLetterKeyboard.h"
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 #import <objc/runtime.h>
 
 @interface JGSSecurityKeyboard ()
@@ -33,7 +33,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    //JGSPrivateLog(@"<%@: %p>", NSStringFromClass([self class]), self);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -188,11 +188,11 @@
         keyboardHeight += JGSKeyboardToolbarHeight;
     }
     
-    // JGSLog(@"%@, %@", NSStringFromCGRect(self.frame), @(keyboardHeight));
+    // JGSPrivateLog(@"%@, %@", NSStringFromCGRect(self.frame), @(keyboardHeight));
     [self.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         if ([obj.firstItem isEqual:self] && obj.firstAttribute == NSLayoutAttributeHeight && obj.secondItem == nil) {
-            // JGSLog(@"Update Height");
+            // JGSPrivateLog(@"Update Height");
             obj.constant = keyboardHeight;
             *stop = YES;
         }
@@ -578,7 +578,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     aesIv = base64.copy;
     
     objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESIVKey, aesIv, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    //JGSLog(@"\nOri:\t%@\nIv:\t%@", originStr, aesIv);
+    //JGSPrivateLog(@"\nOri:\t%@\nIv:\t%@", originStr, aesIv);
     return aesIv;
 }
 
@@ -606,7 +606,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     
     aesKey = key.copy;
     objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESKeyKey, aesKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    //JGSLog(@"\nOri:\t%@\nKey:\t%@", originStr, aesKey);
+    //JGSPrivateLog(@"\nOri:\t%@\nKey:\t%@", originStr, aesKey);
     return aesKey;
 }
 

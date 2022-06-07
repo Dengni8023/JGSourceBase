@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (JGSBase)
 
-#pragma mark - Parser
+#pragma mark - JSONParser
 /**
  JSON解析，NSString、NSData获取合法的JSON对象（NSArray、NSDictionary）
  NSData必须为UTF8编码的JSON，若已是合法JSON对象则根据options判断是否处理容器、叶子结点为可变类型
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly, nullable) id jg_JSONObject;
 
-#pragma mark - Encode
+#pragma mark - JSONEncode
 /**
  JSON构建NSData，NSData直接返回，合法JSON对象则返回根据options构建的JSON对应的NSData，其他则返回nil
  

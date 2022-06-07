@@ -6,19 +6,13 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSCategory_h
+#define JGSCategory_h
+
 #import <Foundation/Foundation.h>
 
-//! Project version number for JGSCategory.
-FOUNDATION_EXPORT double JGSCategoryVersionNumber;
-
-//! Project version string for JGSCategory.
-FOUNDATION_EXPORT const unsigned char JGSCategoryVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSourceBase/PublicHeader.h>
-
-#ifndef JGS_Category
-#define JGS_Category
-
+#if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/JGSCategory+NSData.h> // NSData
 #import <JGSourceBase/JGSCategory+NSDate.h> // NSDate
 #import <JGSourceBase/JGSCategory+NSDictionary.h> // NSDictionary
 #import <JGSourceBase/JGSCategory+NSObject.h> // NSObject
@@ -28,5 +22,17 @@ FOUNDATION_EXPORT const unsigned char JGSCategoryVersionString[];
 #import <JGSourceBase/JGSCategory+UIApplication.h> // UIApplication
 #import <JGSourceBase/JGSCategory+UIColor.h> // UIColor
 #import <JGSourceBase/JGSCategory+UIImage.h> // UIImage
-
+#else
+#import "JGSCategory+NSData.h" // NSData
+#import "JGSCategory+NSDate.h" // NSDate
+#import "JGSCategory+NSDictionary.h" // NSDictionary
+#import "JGSCategory+NSObject.h" // NSObject
+#import "JGSCategory+NSString.h" // NSString
+#import "JGSCategory+NSURL.h" // NSURL
+#import "JGSCategory+UIAlertController.h" // UIAlertController
+#import "JGSCategory+UIApplication.h" // UIApplication
+#import "JGSCategory+UIColor.h" // UIColor
+#import "JGSCategory+UIImage.h" // UIImage
 #endif
+
+#endif /* JGSCategory_h */

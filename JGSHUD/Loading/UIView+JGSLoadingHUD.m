@@ -7,8 +7,12 @@
 //
 
 #import "UIView+JGSLoadingHUD.h"
-#import "MBProgressHUD.h"
 #import "UIColor+JGSBase.h"
+#if  __has_include(<MBProgressHUD/MBProgressHUD.h>)
+#import <MBProgressHUD/MBProgressHUD.h>
+#else
+#import "MBProgressHUD.h"
+#endif
 
 @implementation JGSLoadingHUDStyle
 

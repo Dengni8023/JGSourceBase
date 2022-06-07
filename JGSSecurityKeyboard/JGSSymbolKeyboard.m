@@ -7,7 +7,7 @@
 //
 
 #import "JGSSymbolKeyboard.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 
 @interface JGSSymbolKeyboard ()
 

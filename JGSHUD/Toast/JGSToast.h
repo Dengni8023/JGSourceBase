@@ -6,12 +6,15 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
+#ifndef JGSToast_h
+#define JGSToast_h
+
 #import <Foundation/Foundation.h>
-
-#ifndef JGSHUD_Toast
-#define JGSHUD_Toast
-
+#if  __has_include(<JGSourceBase/JGSToast.h>)
 #import <JGSourceBase/UIView+JGSToast.h>
+#else
+#import "UIView+JGSToast.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

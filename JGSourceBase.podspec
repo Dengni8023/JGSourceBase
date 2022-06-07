@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JGSourceBase"
-  spec.version      = "1.4.0"
+  spec.version      = "1.3.1"
   spec.summary      = "JGSourceBase functional component library."
 
   # This description is used to generate tags and improve search results.
@@ -198,6 +198,7 @@ Pod::Spec.new do |spec|
   spec.subspec "Base" do |sub|
     sub.source_files = "JGSBase/*.{h,m}"
     sub.public_header_files = "JGSBase/*.h"
+    sub.project_header_files = "JGSBase/*Private.h"
     
     sub.xcconfig = {
         "OTHER_LDFLAGS" => '-ObjC'
@@ -214,41 +215,57 @@ Pod::Spec.new do |spec|
     sub.source_files =  "JGSCategory/*.{h,m}"
     sub.public_header_files = "JGSCategory/*.h"
     
-    sub.dependency "JGSourceBase/Base"
+    sub.subspec 'NSData' do |subsub|
+      subsub.source_files = "JGSCategory/NSData/*.{h,m}"
+      subsub.public_header_files = "JGSCategory/NSData/*.h"
+      
+      subsub.dependency "JGSourceBase/Base"
+    end
     
     sub.subspec 'NSDate' do |subsub|
       subsub.source_files = "JGSCategory/NSDate/*.{h,m}"
       subsub.public_header_files = "JGSCategory/NSDate/*.h"
-    end
+  end
     
     sub.subspec 'NSDictionary' do |subsub|
       subsub.source_files = "JGSCategory/NSDictionary/*.{h,m}"
       subsub.public_header_files = "JGSCategory/NSDictionary/*.h"
-    end
+
+      subsub.dependency "JGSourceBase/Base"
+  end
     
     sub.subspec 'NSObject' do |subsub|
       subsub.source_files = "JGSCategory/NSObject/*.{h,m}"
       subsub.public_header_files = "JGSCategory/NSObject/*.h"
+      
+      subsub.dependency "JGSourceBase/Category/NSData"
+      subsub.dependency "JGSourceBase/Category/NSString"
     end
     
     sub.subspec 'NSString' do |subsub|
       subsub.source_files = "JGSCategory/NSString/*.{h,m}"
       subsub.public_header_files = "JGSCategory/NSString/*.h"
+      
+      subsub.dependency "JGSourceBase/Category/NSData"
     end
     
     sub.subspec 'NSURL' do |subsub|
       subsub.source_files = "JGSCategory/NSURL/*.{h,m}"
       subsub.public_header_files = "JGSCategory/NSURL/*.h"
-    end
+  end
     
     sub.subspec 'UIAlertController' do |subsub|
       subsub.source_files = "JGSCategory/UIAlertController/*.{h,m}"
       subsub.public_header_files = "JGSCategory/UIAlertController/*.h"
+      
+      subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'UIApplication' do |subsub|
       subsub.source_files = "JGSCategory/UIApplication/*.{h,m}"
       subsub.public_header_files = "JGSCategory/UIApplication/*.h"
+      
+      subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'UIColor' do |subsub|
@@ -259,6 +276,8 @@ Pod::Spec.new do |spec|
     sub.subspec 'UIImage' do |subsub|
       subsub.source_files = "JGSCategory/UIImage/*.{h,m}"
       subsub.public_header_files = "JGSCategory/UIImage/*.h"
+      
+      subsub.dependency "JGSourceBase/Base"
     end
   end
   
@@ -274,11 +293,10 @@ Pod::Spec.new do |spec|
   spec.subspec 'Device' do |sub|
     sub.source_files = "JGSDevice/*.{h,m}"
     sub.public_header_files = "JGSDevice/*.h"
-
     sub.resources = "JGSDevice/**/iOSDeviceList.json.sec"
     
     sub.dependency "JGSourceBase/Reachability"
-    sub.dependency "JGSourceBase/Encryption"
+    sub.dependency "JGSourceBase/Category/NSData"
   end
   
   # Encryption
@@ -286,7 +304,8 @@ Pod::Spec.new do |spec|
     sub.source_files = "JGSEncryption/*.{h,m}"
     sub.public_header_files = "JGSEncryption/*.h"
     
-    sub.dependency "JGSourceBase/Base"
+    sub.dependency "JGSourceBase/Category/NSData"
+    sub.dependency "JGSourceBase/Category/NSString"
   end
   
   # HUD
@@ -300,6 +319,7 @@ Pod::Spec.new do |spec|
       subsub.public_header_files = "JGSHUD/Loading/*.h"
       
       subsub.dependency 'MBProgressHUD'
+      subsub.dependency "JGSourceBase/Base"
       subsub.dependency "JGSourceBase/Category/UIColor"
     end
     
@@ -307,8 +327,9 @@ Pod::Spec.new do |spec|
     sub.subspec 'Toast' do |subsub|
       subsub.source_files = "JGSHUD/Toast/*.{h,m}"
       subsub.public_header_files = "JGSHUD/Toast/*.h"
-
+      
       subsub.dependency 'MBProgressHUD'
+      subsub.dependency "JGSourceBase/Base"
     end
   end
   
@@ -343,9 +364,8 @@ Pod::Spec.new do |spec|
     sub.source_files = "JGSSecurityKeyboard/*.{h,m}"
     sub.public_header_files = [
       "JGSSecurityKeyboard/**JGSSecurityKeyboard.h",
-      # "JGSSecurityKeyboard/UITextField+JGSSecurityKeyboard.h",
     ]
-
+    
     sub.dependency "JGSourceBase/Base"
     sub.dependency "JGSourceBase/Category/UIColor"
   end

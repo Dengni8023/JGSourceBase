@@ -45,9 +45,10 @@ FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, S
 
 /// 字符串大小写风格
 typedef NS_ENUM(NSInteger, JGSStringUpperLowerStyle) {
-    JGSStringRandom = 0, // 随机，字符串中随机存在大小写，默认风格
-    JGSStringLowercase, // 字母小写
+    JGSStringLowercase = 0, // 字母小写，默认风格
     JGSStringUppercase, // 字母大写风格
+	JGSStringRandomCase, // 随机，字符串中随机存在大小写
+	JGSStringCaseDefault = JGSStringLowercase,
 };
 
 @interface JGSBaseUtils : NSObject

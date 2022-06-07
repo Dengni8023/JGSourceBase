@@ -2,12 +2,12 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-15 13:20:34
- # @LastEditTime: 2022-04-15 22:46:48
+ # @LastEditTime: 2022-05-31 14:41:54
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyVersionBeforeCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
-### 
+###
 
 # 修改 Info.plist 中 Version 版本信息，会改变工程源码
 
@@ -26,6 +26,9 @@ if [ "$?" -ne 0 ]; then
     echo "command failed"
     exit 1
 fi
+
+# 清除
+xcodebuild -alltargets clean
 
 # 根据 JGSourceBase.podspec 文件中 spec.version 的值设置工程 Version
 SpecFile=${PROJECT_DIR}/${PROJECT_NAME}.podspec

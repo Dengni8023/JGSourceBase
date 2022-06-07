@@ -7,7 +7,11 @@
 //
 
 #import "UIView+JGSToast.h"
+#if  __has_include(<MBProgressHUD/MBProgressHUD.h>)
+#import <MBProgressHUD/MBProgressHUD.h>
+#else
 #import "MBProgressHUD.h"
+#endif
 
 @implementation JGSToastStyle
 

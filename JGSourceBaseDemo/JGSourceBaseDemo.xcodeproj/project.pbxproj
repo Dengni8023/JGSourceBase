@@ -1,0 +1,1077 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14527E92CD64D85E57715932 /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75F6CB2D1244689EA34E9EF /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */; };
+		4E89CA7E7E4C57ABA2D98FBC /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273AD16AC570BE0054B00871 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */; };
+		D4085BDF2846201700810026 /* JGSReachabilityDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF939F284609FC002323F9 /* JGSReachabilityDemoVC.m */; };
+		D4085BE02846202000810026 /* JGSDeviceDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF93A32846100F002323F9 /* JGSDeviceDemoVC.m */; };
+		D40A89AC2845276D00B6BB34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89AB2845276D00B6BB34 /* AppDelegate.m */; };
+		D40A89B22845276D00B6BB34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89B12845276D00B6BB34 /* ViewController.m */; };
+		D40A89B72845276E00B6BB34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40A89B62845276E00B6BB34 /* Assets.xcassets */; };
+		D40A89BA2845276E00B6BB34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40A89B82845276E00B6BB34 /* LaunchScreen.storyboard */; };
+		D40A89BD2845276E00B6BB34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89BC2845276E00B6BB34 /* main.m */; };
+		D40A89D62845278C00B6BB34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40A89D52845278C00B6BB34 /* Assets.xcassets */; };
+		D40A89D92845278C00B6BB34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40A89D72845278C00B6BB34 /* LaunchScreen.storyboard */; };
+		D40A89DC2845278C00B6BB34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89DB2845278C00B6BB34 /* main.m */; };
+		D40A8A0F2845AC2B00B6BB34 /* JGSEncryptionDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89E22845AC2B00B6BB34 /* JGSEncryptionDemoVC.m */; };
+		D40A8A102845AC2B00B6BB34 /* JGSEncryptionDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89E22845AC2B00B6BB34 /* JGSEncryptionDemoVC.m */; };
+		D40A8A112845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89E72845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m */; };
+		D40A8A122845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89E72845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m */; };
+		D40A8A132845AC2B00B6BB34 /* JGSNSObjectDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EA2845AC2B00B6BB34 /* JGSNSObjectDemoVC.m */; };
+		D40A8A142845AC2B00B6BB34 /* JGSNSObjectDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EA2845AC2B00B6BB34 /* JGSNSObjectDemoVC.m */; };
+		D40A8A152845AC2B00B6BB34 /* JGSNSDateDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EC2845AC2B00B6BB34 /* JGSNSDateDemoVC.m */; };
+		D40A8A162845AC2B00B6BB34 /* JGSNSDateDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EC2845AC2B00B6BB34 /* JGSNSDateDemoVC.m */; };
+		D40A8A172845AC2B00B6BB34 /* JGSNSURLDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EE2845AC2B00B6BB34 /* JGSNSURLDemoVC.m */; };
+		D40A8A182845AC2B00B6BB34 /* JGSNSURLDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89EE2845AC2B00B6BB34 /* JGSNSURLDemoVC.m */; };
+		D40A8A192845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F02845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m */; };
+		D40A8A1A2845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F02845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m */; };
+		D40A8A1B2845AC2B00B6BB34 /* JGSNSStringDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F12845AC2B00B6BB34 /* JGSNSStringDemoVC.m */; };
+		D40A8A1C2845AC2B00B6BB34 /* JGSNSStringDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F12845AC2B00B6BB34 /* JGSNSStringDemoVC.m */; };
+		D40A8A1D2845AC2B00B6BB34 /* JGSCategoryDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F32845AC2B00B6BB34 /* JGSCategoryDemoVC.m */; };
+		D40A8A1E2845AC2B00B6BB34 /* JGSCategoryDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F32845AC2B00B6BB34 /* JGSCategoryDemoVC.m */; };
+		D40A8A1F2845AC2B00B6BB34 /* JGSDataStorageDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F72845AC2B00B6BB34 /* JGSDataStorageDemoVC.m */; };
+		D40A8A202845AC2B00B6BB34 /* JGSDataStorageDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89F72845AC2B00B6BB34 /* JGSDataStorageDemoVC.m */; };
+		D40A8A212845AC2B00B6BB34 /* JGSDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FB2845AC2B00B6BB34 /* JGSDemoTableData.m */; };
+		D40A8A222845AC2B00B6BB34 /* JGSDemoTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FB2845AC2B00B6BB34 /* JGSDemoTableData.m */; };
+		D40A8A232845AC2B00B6BB34 /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FC2845AC2B00B6BB34 /* JGSDemoViewController.m */; };
+		D40A8A242845AC2B00B6BB34 /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FC2845AC2B00B6BB34 /* JGSDemoViewController.m */; };
+		D40A8A252845AC2B00B6BB34 /* JGSKeyboardDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FE2845AC2B00B6BB34 /* JGSKeyboardDemoVC.m */; };
+		D40A8A262845AC2B00B6BB34 /* JGSKeyboardDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89FE2845AC2B00B6BB34 /* JGSKeyboardDemoVC.m */; };
+		D40A8A272845AC2B00B6BB34 /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A8A022845AC2B00B6BB34 /* JGSHUDDemoVC.m */; };
+		D40A8A282845AC2B00B6BB34 /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A8A022845AC2B00B6BB34 /* JGSHUDDemoVC.m */; };
+		D40A8A292845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A052845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif */; };
+		D40A8A2A2845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A052845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif */; };
+		D40A8A2B2845AC2B00B6BB34 /* LoadingWithAlpha-4.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A062845AC2B00B6BB34 /* LoadingWithAlpha-4.gif */; };
+		D40A8A2C2845AC2B00B6BB34 /* LoadingWithAlpha-4.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A062845AC2B00B6BB34 /* LoadingWithAlpha-4.gif */; };
+		D40A8A2D2845AC2B00B6BB34 /* LoadingWithAlpha-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A072845AC2B00B6BB34 /* LoadingWithAlpha-5.gif */; };
+		D40A8A2E2845AC2B00B6BB34 /* LoadingWithAlpha-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A072845AC2B00B6BB34 /* LoadingWithAlpha-5.gif */; };
+		D40A8A2F2845AC2B00B6BB34 /* LoadingWithAlpha-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A082845AC2B00B6BB34 /* LoadingWithAlpha-2.gif */; };
+		D40A8A302845AC2B00B6BB34 /* LoadingWithAlpha-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A082845AC2B00B6BB34 /* LoadingWithAlpha-2.gif */; };
+		D40A8A312845AC2B00B6BB34 /* LoadingWithAlpha-3.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A092845AC2B00B6BB34 /* LoadingWithAlpha-3.gif */; };
+		D40A8A322845AC2B00B6BB34 /* LoadingWithAlpha-3.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A092845AC2B00B6BB34 /* LoadingWithAlpha-3.gif */; };
+		D40A8A332845AC2B00B6BB34 /* LoadingWithAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A0A2845AC2B00B6BB34 /* LoadingWithAlpha-1.gif */; };
+		D40A8A342845AC2B00B6BB34 /* LoadingWithAlpha-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D40A8A0A2845AC2B00B6BB34 /* LoadingWithAlpha-1.gif */; };
+		D40A8A3B2845AC3900B6BB34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89AB2845276D00B6BB34 /* AppDelegate.m */; };
+		D40A8A3C2845AC3900B6BB34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A89B12845276D00B6BB34 /* ViewController.m */; };
+		D414F52F2845ADBC000A0C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D414F52D2845ADBC000A0C02 /* InfoPlist.strings */; };
+		D414F5342845AE6C000A0C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D414F5322845AE6C000A0C02 /* InfoPlist.strings */; };
+		D420AF10284F3DB1007BF075 /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D414F53E2845C131000A0C02 /* JGSourceBase.framework */; };
+		D420AF11284F3DB1007BF075 /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D414F53E2845C131000A0C02 /* JGSourceBase.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4FF93A0284609FC002323F9 /* JGSReachabilityDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF939F284609FC002323F9 /* JGSReachabilityDemoVC.m */; };
+		D4FF93A428461010002323F9 /* JGSDeviceDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF93A32846100F002323F9 /* JGSDeviceDemoVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D420AF12284F3DB1007BF075 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D420AF11284F3DB1007BF075 /* JGSourceBase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		273AD16AC570BE0054B00871 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3832C62FECBF7DEF215F371B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5B4ED0877FE9CC4B49ABEF79 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C75F6CB2D1244689EA34E9EF /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceDemo_JGSourceFrameworkDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40A89A72845276D00B6BB34 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40A89AA2845276D00B6BB34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D40A89AB2845276D00B6BB34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D40A89B02845276D00B6BB34 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D40A89B12845276D00B6BB34 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D40A89B62845276E00B6BB34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D40A89B92845276E00B6BB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D40A89BB2845276E00B6BB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40A89BC2845276E00B6BB34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D40A89C72845278B00B6BB34 /* JGSourceFrameworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceFrameworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40A89D52845278C00B6BB34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D40A89D82845278C00B6BB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D40A89DA2845278C00B6BB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40A89DB2845278C00B6BB34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D40A89E22845AC2B00B6BB34 /* JGSEncryptionDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSEncryptionDemoVC.m; sourceTree = "<group>"; };
+		D40A89E32845AC2B00B6BB34 /* JGSEncryptionDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSEncryptionDemoVC.h; sourceTree = "<group>"; };
+		D40A89E62845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUIAlertControllerDemoVC.h; sourceTree = "<group>"; };
+		D40A89E72845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSUIAlertControllerDemoVC.m; sourceTree = "<group>"; };
+		D40A89E92845AC2B00B6BB34 /* JGSNSStringDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSStringDemoVC.h; sourceTree = "<group>"; };
+		D40A89EA2845AC2B00B6BB34 /* JGSNSObjectDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSObjectDemoVC.m; sourceTree = "<group>"; };
+		D40A89EB2845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSDictionaryDemoVC.h; sourceTree = "<group>"; };
+		D40A89EC2845AC2B00B6BB34 /* JGSNSDateDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSDateDemoVC.m; sourceTree = "<group>"; };
+		D40A89ED2845AC2B00B6BB34 /* JGSNSURLDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSURLDemoVC.h; sourceTree = "<group>"; };
+		D40A89EE2845AC2B00B6BB34 /* JGSNSURLDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSURLDemoVC.m; sourceTree = "<group>"; };
+		D40A89EF2845AC2B00B6BB34 /* JGSNSDateDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSDateDemoVC.h; sourceTree = "<group>"; };
+		D40A89F02845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSDictionaryDemoVC.m; sourceTree = "<group>"; };
+		D40A89F12845AC2B00B6BB34 /* JGSNSStringDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSStringDemoVC.m; sourceTree = "<group>"; };
+		D40A89F22845AC2B00B6BB34 /* JGSNSObjectDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSObjectDemoVC.h; sourceTree = "<group>"; };
+		D40A89F32845AC2B00B6BB34 /* JGSCategoryDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSCategoryDemoVC.m; sourceTree = "<group>"; };
+		D40A89F42845AC2B00B6BB34 /* JGSCategoryDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSCategoryDemoVC.h; sourceTree = "<group>"; };
+		D40A89F62845AC2B00B6BB34 /* JGSDataStorageDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSDataStorageDemoVC.h; sourceTree = "<group>"; };
+		D40A89F72845AC2B00B6BB34 /* JGSDataStorageDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDataStorageDemoVC.m; sourceTree = "<group>"; };
+		D40A89F92845AC2B00B6BB34 /* JGSDemoTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSDemoTableData.h; sourceTree = "<group>"; };
+		D40A89FA2845AC2B00B6BB34 /* JGSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSDemoViewController.h; sourceTree = "<group>"; };
+		D40A89FB2845AC2B00B6BB34 /* JGSDemoTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDemoTableData.m; sourceTree = "<group>"; };
+		D40A89FC2845AC2B00B6BB34 /* JGSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSDemoViewController.m; sourceTree = "<group>"; };
+		D40A89FE2845AC2B00B6BB34 /* JGSKeyboardDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSKeyboardDemoVC.m; sourceTree = "<group>"; };
+		D40A89FF2845AC2B00B6BB34 /* JGSKeyboardDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSKeyboardDemoVC.h; sourceTree = "<group>"; };
+		D40A8A012845AC2B00B6BB34 /* JGSHUDDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSHUDDemoVC.h; sourceTree = "<group>"; };
+		D40A8A022845AC2B00B6BB34 /* JGSHUDDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSHUDDemoVC.m; sourceTree = "<group>"; };
+		D40A8A052845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithoutAlpha-1.gif"; sourceTree = "<group>"; };
+		D40A8A062845AC2B00B6BB34 /* LoadingWithAlpha-4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-4.gif"; sourceTree = "<group>"; };
+		D40A8A072845AC2B00B6BB34 /* LoadingWithAlpha-5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-5.gif"; sourceTree = "<group>"; };
+		D40A8A082845AC2B00B6BB34 /* LoadingWithAlpha-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-2.gif"; sourceTree = "<group>"; };
+		D40A8A092845AC2B00B6BB34 /* LoadingWithAlpha-3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-3.gif"; sourceTree = "<group>"; };
+		D40A8A0A2845AC2B00B6BB34 /* LoadingWithAlpha-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-1.gif"; sourceTree = "<group>"; };
+		D40A8A0C2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSApplicationIntegrityCheckFileHashFile.Info.plist.json; sourceTree = "<group>"; };
+		D40A8A0D2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json"; sourceTree = "<group>"; };
+		D40A8A0E2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JGSApplicationIntegrityCheckFileHashFile; sourceTree = "<group>"; };
+		D414F52C2845ADAA000A0C02 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D414F52E2845ADBC000A0C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D414F5302845AE33000A0C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D414F5312845AE55000A0C02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D414F5332845AE6C000A0C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D414F5352845AE6F000A0C02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D414F5362845AE70000A0C02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D414F53A2845BEFB000A0C02 /* JGSModifyVersionBeforeCompile.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = JGSModifyVersionBeforeCompile.sh; sourceTree = "<group>"; };
+		D414F53B2845BEFB000A0C02 /* JGSModifyBuildAfterCompile.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = JGSModifyBuildAfterCompile.sh; sourceTree = "<group>"; };
+		D414F53E2845C131000A0C02 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D414F5502845E30E000A0C02 /* JGSIntegrityCheckAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckAfterCompile.sh; sourceTree = "<group>"; };
+		D4FF939E284609FC002323F9 /* JGSReachabilityDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSReachabilityDemoVC.h; sourceTree = "<group>"; };
+		D4FF939F284609FC002323F9 /* JGSReachabilityDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSReachabilityDemoVC.m; sourceTree = "<group>"; };
+		D4FF93A22846100F002323F9 /* JGSDeviceDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSDeviceDemoVC.h; sourceTree = "<group>"; };
+		D4FF93A32846100F002323F9 /* JGSDeviceDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSDeviceDemoVC.m; sourceTree = "<group>"; };
+		D91657629F6268851AB3A6D9 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		EDEA32D1ED7DCC67F74BE88E /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D40A89A42845276D00B6BB34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E89CA7E7E4C57ABA2D98FBC /* Pods_JGSourceDemo_JGSourceBaseDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40A89C42845278B00B6BB34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D420AF10284F3DB1007BF075 /* JGSourceBase.framework in Frameworks */,
+				14527E92CD64D85E57715932 /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06EA98ECFCDAA32A2FDB5EC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA32D1ED7DCC67F74BE88E /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */,
+				3832C62FECBF7DEF215F371B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */,
+				5B4ED0877FE9CC4B49ABEF79 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */,
+				D91657629F6268851AB3A6D9 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		346D45B91593CFA03A38F53B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D414F53E2845C131000A0C02 /* JGSourceBase.framework */,
+				273AD16AC570BE0054B00871 /* Pods_JGSourceDemo_JGSourceBaseDemo.framework */,
+				C75F6CB2D1244689EA34E9EF /* Pods_JGSourceDemo_JGSourceFrameworkDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D40A899E2845276D00B6BB34 = {
+			isa = PBXGroup;
+			children = (
+				D414F5392845BD7A000A0C02 /* JGSDemoScripts */,
+				D40A89A92845276D00B6BB34 /* JGSourceBaseDemo */,
+				D40A89C82845278B00B6BB34 /* JGSourceFrameworkDemo */,
+				D40A89A82845276D00B6BB34 /* Products */,
+				06EA98ECFCDAA32A2FDB5EC6 /* Pods */,
+				346D45B91593CFA03A38F53B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D40A89A82845276D00B6BB34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89A72845276D00B6BB34 /* JGSourceBaseDemo.app */,
+				D40A89C72845278B00B6BB34 /* JGSourceFrameworkDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D40A89A92845276D00B6BB34 /* JGSourceBaseDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89E02845AC2B00B6BB34 /* Classes */,
+				D40A8A032845AC2B00B6BB34 /* Resources */,
+				D40A89AA2845276D00B6BB34 /* AppDelegate.h */,
+				D40A89AB2845276D00B6BB34 /* AppDelegate.m */,
+				D40A89B02845276D00B6BB34 /* ViewController.h */,
+				D40A89B12845276D00B6BB34 /* ViewController.m */,
+				D414F52C2845ADAA000A0C02 /* PrefixHeader.pch */,
+				D40A89B62845276E00B6BB34 /* Assets.xcassets */,
+				D40A89BB2845276E00B6BB34 /* Info.plist */,
+				D414F52D2845ADBC000A0C02 /* InfoPlist.strings */,
+				D40A89B82845276E00B6BB34 /* LaunchScreen.storyboard */,
+				D40A89BC2845276E00B6BB34 /* main.m */,
+			);
+			path = JGSourceBaseDemo;
+			sourceTree = "<group>";
+		};
+		D40A89C82845278B00B6BB34 /* JGSourceFrameworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89D52845278C00B6BB34 /* Assets.xcassets */,
+				D40A89DA2845278C00B6BB34 /* Info.plist */,
+				D414F5322845AE6C000A0C02 /* InfoPlist.strings */,
+				D40A89D72845278C00B6BB34 /* LaunchScreen.storyboard */,
+				D40A89DB2845278C00B6BB34 /* main.m */,
+			);
+			path = JGSourceFrameworkDemo;
+			sourceTree = "<group>";
+		};
+		D40A89E02845AC2B00B6BB34 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89F82845AC2B00B6BB34 /* Base */,
+				D40A89E42845AC2B00B6BB34 /* Category */,
+				D40A89F52845AC2B00B6BB34 /* DataStorage */,
+				D4FF93A128460FE8002323F9 /* Device */,
+				D40A89E12845AC2B00B6BB34 /* Encryption */,
+				D40A8A002845AC2B00B6BB34 /* HUD */,
+				D40A89FD2845AC2B00B6BB34 /* Keyboard */,
+				D4FF939D284609DA002323F9 /* Reachability */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D40A89E12845AC2B00B6BB34 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89E32845AC2B00B6BB34 /* JGSEncryptionDemoVC.h */,
+				D40A89E22845AC2B00B6BB34 /* JGSEncryptionDemoVC.m */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		D40A89E42845AC2B00B6BB34 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89F42845AC2B00B6BB34 /* JGSCategoryDemoVC.h */,
+				D40A89F32845AC2B00B6BB34 /* JGSCategoryDemoVC.m */,
+				D40A89E82845AC2B00B6BB34 /* NS */,
+				D40A89E52845AC2B00B6BB34 /* UI */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D40A89E52845AC2B00B6BB34 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89E62845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.h */,
+				D40A89E72845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D40A89E82845AC2B00B6BB34 /* NS */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89EF2845AC2B00B6BB34 /* JGSNSDateDemoVC.h */,
+				D40A89EC2845AC2B00B6BB34 /* JGSNSDateDemoVC.m */,
+				D40A89EB2845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.h */,
+				D40A89F02845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m */,
+				D40A89F22845AC2B00B6BB34 /* JGSNSObjectDemoVC.h */,
+				D40A89EA2845AC2B00B6BB34 /* JGSNSObjectDemoVC.m */,
+				D40A89E92845AC2B00B6BB34 /* JGSNSStringDemoVC.h */,
+				D40A89F12845AC2B00B6BB34 /* JGSNSStringDemoVC.m */,
+				D40A89ED2845AC2B00B6BB34 /* JGSNSURLDemoVC.h */,
+				D40A89EE2845AC2B00B6BB34 /* JGSNSURLDemoVC.m */,
+			);
+			path = NS;
+			sourceTree = "<group>";
+		};
+		D40A89F52845AC2B00B6BB34 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89F62845AC2B00B6BB34 /* JGSDataStorageDemoVC.h */,
+				D40A89F72845AC2B00B6BB34 /* JGSDataStorageDemoVC.m */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		D40A89F82845AC2B00B6BB34 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89F92845AC2B00B6BB34 /* JGSDemoTableData.h */,
+				D40A89FB2845AC2B00B6BB34 /* JGSDemoTableData.m */,
+				D40A89FA2845AC2B00B6BB34 /* JGSDemoViewController.h */,
+				D40A89FC2845AC2B00B6BB34 /* JGSDemoViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D40A89FD2845AC2B00B6BB34 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D40A89FF2845AC2B00B6BB34 /* JGSKeyboardDemoVC.h */,
+				D40A89FE2845AC2B00B6BB34 /* JGSKeyboardDemoVC.m */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		D40A8A002845AC2B00B6BB34 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8A012845AC2B00B6BB34 /* JGSHUDDemoVC.h */,
+				D40A8A022845AC2B00B6BB34 /* JGSHUDDemoVC.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		D40A8A032845AC2B00B6BB34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8A0B2845AC2B00B6BB34 /* IntegrityCheck */,
+				D40A8A042845AC2B00B6BB34 /* Loading */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D40A8A042845AC2B00B6BB34 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8A0A2845AC2B00B6BB34 /* LoadingWithAlpha-1.gif */,
+				D40A8A082845AC2B00B6BB34 /* LoadingWithAlpha-2.gif */,
+				D40A8A092845AC2B00B6BB34 /* LoadingWithAlpha-3.gif */,
+				D40A8A062845AC2B00B6BB34 /* LoadingWithAlpha-4.gif */,
+				D40A8A072845AC2B00B6BB34 /* LoadingWithAlpha-5.gif */,
+				D40A8A052845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		D40A8A0B2845AC2B00B6BB34 /* IntegrityCheck */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8A0E2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile */,
+				D40A8A0D2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
+				D40A8A0C2845AC2B00B6BB34 /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
+			);
+			path = IntegrityCheck;
+			sourceTree = "<group>";
+		};
+		D414F5392845BD7A000A0C02 /* JGSDemoScripts */ = {
+			isa = PBXGroup;
+			children = (
+				D414F53B2845BEFB000A0C02 /* JGSModifyBuildAfterCompile.sh */,
+				D414F53A2845BEFB000A0C02 /* JGSModifyVersionBeforeCompile.sh */,
+				D414F5502845E30E000A0C02 /* JGSIntegrityCheckAfterCompile.sh */,
+			);
+			path = JGSDemoScripts;
+			sourceTree = "<group>";
+		};
+		D4FF939D284609DA002323F9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D4FF939E284609FC002323F9 /* JGSReachabilityDemoVC.h */,
+				D4FF939F284609FC002323F9 /* JGSReachabilityDemoVC.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		D4FF93A128460FE8002323F9 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				D4FF93A22846100F002323F9 /* JGSDeviceDemoVC.h */,
+				D4FF93A32846100F002323F9 /* JGSDeviceDemoVC.m */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D40A89A62845276D00B6BB34 /* JGSourceBaseDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D40A89C02845276E00B6BB34 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
+			buildPhases = (
+				4CC2A872F4F6762E326A5862 /* [CP] Check Pods Manifest.lock */,
+				D414F5372845BA36000A0C02 /* ShellScript */,
+				D40A89A32845276D00B6BB34 /* Sources */,
+				D40A89A42845276D00B6BB34 /* Frameworks */,
+				D40A89A52845276D00B6BB34 /* Resources */,
+				D414F5522845E599000A0C02 /* ShellScript */,
+				B896B57320C44B82FBBD9D06 /* [CP-User] JGSIntegrityCheck */,
+				A19B1748E13AC6F5A654414C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JGSourceBaseDemo;
+			productName = JGSourceBaseDemo;
+			productReference = D40A89A72845276D00B6BB34 /* JGSourceBaseDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D40A89C62845278B00B6BB34 /* JGSourceFrameworkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D40A89DD2845278C00B6BB34 /* Build configuration list for PBXNativeTarget "JGSourceFrameworkDemo" */;
+			buildPhases = (
+				C27029E17FEBB9015BC87136 /* [CP] Check Pods Manifest.lock */,
+				D414F5382845BA59000A0C02 /* ShellScript */,
+				D40A89C32845278B00B6BB34 /* Sources */,
+				D40A89C42845278B00B6BB34 /* Frameworks */,
+				D40A89C52845278B00B6BB34 /* Resources */,
+				D414F5532845E59E000A0C02 /* ShellScript */,
+				250B04883C59E8F92026B911 /* [CP-User] JGSIntegrityCheck */,
+				D420AF12284F3DB1007BF075 /* Embed Frameworks */,
+				EBD0B5829B0026CE25D0207E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JGSourceFrameworkDemo;
+			productName = JGSourceFrameworkDemo;
+			productReference = D40A89C72845278B00B6BB34 /* JGSourceFrameworkDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D40A899F2845276D00B6BB34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = JGS;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastUpgradeCheck = 1340;
+				ORGANIZATIONNAME = MeiJiGao;
+				TargetAttributes = {
+					D40A89A62845276D00B6BB34 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					D40A89C62845278B00B6BB34 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = D40A89A22845276D00B6BB34 /* Build configuration list for PBXProject "JGSourceBaseDemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = D40A899E2845276D00B6BB34;
+			productRefGroup = D40A89A82845276D00B6BB34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D40A89A62845276D00B6BB34 /* JGSourceBaseDemo */,
+				D40A89C62845278B00B6BB34 /* JGSourceFrameworkDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D40A89A52845276D00B6BB34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40A8A2D2845AC2B00B6BB34 /* LoadingWithAlpha-5.gif in Resources */,
+				D414F52F2845ADBC000A0C02 /* InfoPlist.strings in Resources */,
+				D40A8A332845AC2B00B6BB34 /* LoadingWithAlpha-1.gif in Resources */,
+				D40A89BA2845276E00B6BB34 /* LaunchScreen.storyboard in Resources */,
+				D40A8A312845AC2B00B6BB34 /* LoadingWithAlpha-3.gif in Resources */,
+				D40A8A2B2845AC2B00B6BB34 /* LoadingWithAlpha-4.gif in Resources */,
+				D40A89B72845276E00B6BB34 /* Assets.xcassets in Resources */,
+				D40A8A2F2845AC2B00B6BB34 /* LoadingWithAlpha-2.gif in Resources */,
+				D40A8A292845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40A89C52845278B00B6BB34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40A8A342845AC2B00B6BB34 /* LoadingWithAlpha-1.gif in Resources */,
+				D414F5342845AE6C000A0C02 /* InfoPlist.strings in Resources */,
+				D40A8A2A2845AC2B00B6BB34 /* LoadingWithoutAlpha-1.gif in Resources */,
+				D40A8A2E2845AC2B00B6BB34 /* LoadingWithAlpha-5.gif in Resources */,
+				D40A89D92845278C00B6BB34 /* LaunchScreen.storyboard in Resources */,
+				D40A8A322845AC2B00B6BB34 /* LoadingWithAlpha-3.gif in Resources */,
+				D40A8A302845AC2B00B6BB34 /* LoadingWithAlpha-2.gif in Resources */,
+				D40A89D62845278C00B6BB34 /* Assets.xcassets in Resources */,
+				D40A8A2C2845AC2B00B6BB34 /* LoadingWithAlpha-4.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		250B04883C59E8F92026B911 /* [CP-User] JGSIntegrityCheck */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] JGSIntegrityCheck";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\t\t\tchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限\n\t\t\t${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh\n";
+		};
+		4CC2A872F4F6762E326A5862 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSourceDemo-JGSourceBaseDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A19B1748E13AC6F5A654414C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceBaseDemo/Pods-JGSourceDemo-JGSourceBaseDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B896B57320C44B82FBBD9D06 /* [CP-User] JGSIntegrityCheck */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] JGSIntegrityCheck";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\t\t\tchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限\n\t\t\t${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh\n";
+		};
+		C27029E17FEBB9015BC87136 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSourceDemo-JGSourceFrameworkDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D414F5372845BA36000A0C02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSDemoScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+		};
+		D414F5382845BA59000A0C02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSDemoScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+		};
+		D414F5522845E599000A0C02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改输出物 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSModifyBuildAfterCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSDemoScripts/JGSModifyBuildAfterCompile.sh \"app\" # 执行sh\n";
+		};
+		D414F5532845E59E000A0C02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改输出物 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSModifyBuildAfterCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSDemoScripts/JGSModifyBuildAfterCompile.sh \"app\" # 执行sh\n";
+		};
+		EBD0B5829B0026CE25D0207E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceDemo-JGSourceFrameworkDemo/Pods-JGSourceDemo-JGSourceFrameworkDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D40A89A32845276D00B6BB34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40A8A1D2845AC2B00B6BB34 /* JGSCategoryDemoVC.m in Sources */,
+				D40A8A112845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m in Sources */,
+				D4FF93A0284609FC002323F9 /* JGSReachabilityDemoVC.m in Sources */,
+				D40A8A232845AC2B00B6BB34 /* JGSDemoViewController.m in Sources */,
+				D40A8A1F2845AC2B00B6BB34 /* JGSDataStorageDemoVC.m in Sources */,
+				D40A8A192845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m in Sources */,
+				D40A8A172845AC2B00B6BB34 /* JGSNSURLDemoVC.m in Sources */,
+				D40A89B22845276D00B6BB34 /* ViewController.m in Sources */,
+				D4FF93A428461010002323F9 /* JGSDeviceDemoVC.m in Sources */,
+				D40A8A152845AC2B00B6BB34 /* JGSNSDateDemoVC.m in Sources */,
+				D40A8A252845AC2B00B6BB34 /* JGSKeyboardDemoVC.m in Sources */,
+				D40A8A132845AC2B00B6BB34 /* JGSNSObjectDemoVC.m in Sources */,
+				D40A8A0F2845AC2B00B6BB34 /* JGSEncryptionDemoVC.m in Sources */,
+				D40A8A212845AC2B00B6BB34 /* JGSDemoTableData.m in Sources */,
+				D40A8A272845AC2B00B6BB34 /* JGSHUDDemoVC.m in Sources */,
+				D40A89AC2845276D00B6BB34 /* AppDelegate.m in Sources */,
+				D40A8A1B2845AC2B00B6BB34 /* JGSNSStringDemoVC.m in Sources */,
+				D40A89BD2845276E00B6BB34 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40A89C32845278B00B6BB34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40A8A1C2845AC2B00B6BB34 /* JGSNSStringDemoVC.m in Sources */,
+				D40A8A1A2845AC2B00B6BB34 /* JGSNSDictionaryDemoVC.m in Sources */,
+				D40A8A1E2845AC2B00B6BB34 /* JGSCategoryDemoVC.m in Sources */,
+				D40A8A262845AC2B00B6BB34 /* JGSKeyboardDemoVC.m in Sources */,
+				D40A8A142845AC2B00B6BB34 /* JGSNSObjectDemoVC.m in Sources */,
+				D40A8A222845AC2B00B6BB34 /* JGSDemoTableData.m in Sources */,
+				D40A8A282845AC2B00B6BB34 /* JGSHUDDemoVC.m in Sources */,
+				D40A89DC2845278C00B6BB34 /* main.m in Sources */,
+				D4085BE02846202000810026 /* JGSDeviceDemoVC.m in Sources */,
+				D4085BDF2846201700810026 /* JGSReachabilityDemoVC.m in Sources */,
+				D40A8A242845AC2B00B6BB34 /* JGSDemoViewController.m in Sources */,
+				D40A8A102845AC2B00B6BB34 /* JGSEncryptionDemoVC.m in Sources */,
+				D40A8A3C2845AC3900B6BB34 /* ViewController.m in Sources */,
+				D40A8A202845AC2B00B6BB34 /* JGSDataStorageDemoVC.m in Sources */,
+				D40A8A182845AC2B00B6BB34 /* JGSNSURLDemoVC.m in Sources */,
+				D40A8A122845AC2B00B6BB34 /* JGSUIAlertControllerDemoVC.m in Sources */,
+				D40A8A162845AC2B00B6BB34 /* JGSNSDateDemoVC.m in Sources */,
+				D40A8A3B2845AC3900B6BB34 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D40A89B82845276E00B6BB34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D40A89B92845276E00B6BB34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D40A89D72845278C00B6BB34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D40A89D82845278C00B6BB34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D414F52D2845ADBC000A0C02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D414F52E2845ADBC000A0C02 /* Base */,
+				D414F5302845AE33000A0C02 /* zh-Hans */,
+				D414F5312845AE55000A0C02 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D414F5322845AE6C000A0C02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D414F5332845AE6C000A0C02 /* Base */,
+				D414F5352845AE6F000A0C02 /* en */,
+				D414F5362845AE70000A0C02 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D40A89BE2845276E00B6BB34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D40A89BF2845276E00B6BB34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D40A89C12845276E00B6BB34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B4ED0877FE9CC4B49ABEF79 /* Pods-JGSourceDemo-JGSourceBaseDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/JGSourceBaseDemo/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JGSourceBaseDemo;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D40A89C22845276E00B6BB34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D91657629F6268851AB3A6D9 /* Pods-JGSourceDemo-JGSourceBaseDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/JGSourceBaseDemo/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JGSourceBaseDemo;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D40A89DE2845278C00B6BB34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEA32D1ED7DCC67F74BE88E /* Pods-JGSourceDemo-JGSourceFrameworkDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/JGSourceBaseDemo/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JGSourceFrameworkDemo;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D40A89DF2845278C00B6BB34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3832C62FECBF7DEF215F371B /* Pods-JGSourceDemo-JGSourceFrameworkDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/JGSourceBaseDemo/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JGSourceFrameworkDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JGSourceFrameworkDemo;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceFrameworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D40A89A22845276D00B6BB34 /* Build configuration list for PBXProject "JGSourceBaseDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D40A89BE2845276E00B6BB34 /* Debug */,
+				D40A89BF2845276E00B6BB34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D40A89C02845276E00B6BB34 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D40A89C12845276E00B6BB34 /* Debug */,
+				D40A89C22845276E00B6BB34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D40A89DD2845278C00B6BB34 /* Build configuration list for PBXNativeTarget "JGSourceFrameworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D40A89DE2845278C00B6BB34 /* Debug */,
+				D40A89DF2845278C00B6BB34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D40A899F2845276D00B6BB34 /* Project object */;
+}

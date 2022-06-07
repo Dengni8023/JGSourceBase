@@ -9,6 +9,7 @@
 #import "JGSLogFunction.h"
 #import <sys/time.h>
 #import <sys/uio.h>
+#import "JGSBase+JGSPrivate.h"
 
 FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void) {
     
@@ -101,5 +102,9 @@ FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog) {
 }
 
 @implementation JGSLogFunction
+
++ (void)enableLog:(BOOL)enable {
+	JGSPrivateLogEnable = enable;
+}
 
 @end

@@ -6,20 +6,15 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef JGSHUD_h
+#define JGSHUD_h
 
-//! Project version number for JGSHUD.
-FOUNDATION_EXPORT double JGSHUDVersionNumber;
-
-//! Project version string for JGSHUD.
-FOUNDATION_EXPORT const unsigned char JGSHUDVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JGSHUD/PublicHeader.h>
-
-#ifndef JGS_HUD
-#define JGS_HUD
-
+#if __has_include(<JGSourceBase/JGSHUD.h>)
 #import <JGSourceBase/JGSLoadingHUD.h>
 #import <JGSourceBase/JGSToast.h>
-
+#else
+#import "JGSLoadingHUD.h"
+#import "JGSToast.h"
 #endif
+
+#endif /* JGSHUD_h */

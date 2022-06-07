@@ -8,7 +8,7 @@
 
 #import "JGSKeychainUtils.h"
 #import <Security/Security.h>
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 
 @implementation JGSKeychainUtils
 
@@ -51,7 +51,7 @@
         @try {
             ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
         } @catch (NSException *e) {
-            JGSLog(@"Unarchive of %@ failed: %@", key, e);
+            JGSPrivateLog(@"Unarchive of %@ failed: %@", key, e);
         } @finally {
         }
     }

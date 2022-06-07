@@ -6,9 +6,13 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#ifndef JGS_IntegrityCheck
-#define JGS_IntegrityCheck
+#ifndef JGSIntegrityCheck_h
+#define JGSIntegrityCheck_h
 
+#if __has_include(<JGSourceBase/JGSIntegrityCheck.h>)
 #import <JGSourceBase/JGSIntegrityCheckResourcesHash.h>
+#else
+#import "JGSIntegrityCheckResourcesHash.h"
+#endif
 
-#endif /* JGS_IntegrityCheck */
+#endif /* JGSIntegrityCheck_h */

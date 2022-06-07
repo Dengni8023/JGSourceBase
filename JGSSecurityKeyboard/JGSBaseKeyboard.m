@@ -7,7 +7,7 @@
 //
 
 #import "JGSBaseKeyboard.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 
 @interface JGSKeyboardKey () <UIGestureRecognizerDelegate>
 
@@ -20,7 +20,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    //JGSPrivateLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
 - (instancetype)initWithType:(JGSKeyboardKeyType)type text:(NSString *)text frame:(CGRect)frame {
@@ -360,7 +360,7 @@
 
 #pragma mark - Life Cycle
 - (void)dealloc {
-    //JGSLog(@"<%@: %p>", NSStringFromClass([self class]), self);
+    //JGSPrivateLog(@"<%@: %p>", NSStringFromClass([self class]), self);
 }
 
 - (instancetype)initWithFrame:(CGRect)frame type:(JGSKeyboardType)type securityKeyboard:(JGSSecurityKeyboard *)securityKeyboard keyInput:(void (^)(JGSBaseKeyboard * _Nonnull, JGSKeyboardKey * _Nonnull, JGSKeyboardKeyEvents))keyInput {

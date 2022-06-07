@@ -7,7 +7,7 @@
 //
 
 #import "JGSNumberKeyboard.h"
-#import "JGSBase.h"
+#import "JGSBase+JGSPrivate.h"
 
 @interface JGSNumberKeyboard ()
 
