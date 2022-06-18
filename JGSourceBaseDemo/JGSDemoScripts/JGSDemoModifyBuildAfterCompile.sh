@@ -2,10 +2,10 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-04-15 13:20:30
- # @LastEditTime: 2022-05-31 14:41:50
+ # @LastEditTime: 2022-06-08 18:13:02
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase/JGSScripts/JGSModifyBuildAfterCompile.sh
+ # @FilePath: /JGSourceBase/JGSourceBaseDemo/JGSDemoScripts/JGSDemoModifyBuildAfterCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
 ###
 
@@ -29,7 +29,7 @@ if [ "$?" -ne 0 ]; then
 fi
 
 ProductExt=$1
-SupportExt=(app framework)
+SupportExt=(app appex framework bundle)
 if [[ ${SupportExt[@]/${ProductExt}/} != ${SupportExt[@]} ]]; then
     ProductExt=$1
 else
@@ -38,7 +38,7 @@ else
 fi
 
 # Info.plist路径
-InfoPlist="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.${ProductExt}/Info.plist"
+InfoPlist="${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.${ProductExt}/Info.plist"
 if [[ ! -f ${InfoPlist} ]]; then
     exit
 fi
@@ -65,16 +65,16 @@ if [[ ${git}'' != '' ]]; then
 fi
 
 PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
-HasBundleVersion=false
+HasField=false
 for PLIST_ITEMS in $PlistLINES; do
     if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
         echo "CFBundleVersion: ${PLIST_ITEMS}"
-        HasBundleVersion=true
+        HasField=true
         break
     fi
 done
 
-if [[ HasBundleVersion ]]; then
+if [[ "${HasField}" == true ]]; then
     /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${Build}" ${InfoPlist}
 else
     /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${Build}" ${InfoPlist}

@@ -1,14 +1,5 @@
 PODS:
-  - IQKeyboardManager (6.5.9)
-  - JGSourceBase (1.3.1):
-    - JGSourceBase/Base (= 1.3.1)
-    - JGSourceBase/Category (= 1.3.1)
-    - JGSourceBase/DataStorage (= 1.3.1)
-    - JGSourceBase/Device (= 1.3.1)
-    - JGSourceBase/Encryption (= 1.3.1)
-    - JGSourceBase/IntegrityCheck (= 1.3.1)
-    - JGSourceBase/Reachability (= 1.3.1)
-    - JGSourceBase/SecurityKeyboard (= 1.3.1)
+  - IQKeyboardManager (6.5.10)
   - JGSourceBase/Base (1.3.1)
   - JGSourceBase/Category (1.3.1):
     - JGSourceBase/Category/NSData (= 1.3.1)
@@ -47,16 +38,6 @@ PODS:
   - JGSourceBase/Encryption (1.3.1):
     - JGSourceBase/Category/NSData
     - JGSourceBase/Category/NSString
-  - JGSourceBase/HUD (1.3.1):
-    - JGSourceBase/HUD/Loading (= 1.3.1)
-    - JGSourceBase/HUD/Toast (= 1.3.1)
-  - JGSourceBase/HUD/Loading (1.3.1):
-    - JGSourceBase/Base
-    - JGSourceBase/Category/UIColor
-    - MBProgressHUD
-  - JGSourceBase/HUD/Toast (1.3.1):
-    - JGSourceBase/Base
-    - MBProgressHUD
   - JGSourceBase/IntegrityCheck (1.3.1):
     - JGSourceBase/Base
   - JGSourceBase/Reachability (1.3.1):
@@ -69,8 +50,14 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.9)
-  - JGSourceBase (from `.`)
-  - JGSourceBase/HUD (from `.`)
+  - JGSourceBase/Base (from `.`)
+  - JGSourceBase/Category (from `.`)
+  - JGSourceBase/DataStorage (from `.`)
+  - JGSourceBase/Device (from `.`)
+  - JGSourceBase/Encryption (from `.`)
+  - JGSourceBase/IntegrityCheck (from `.`)
+  - JGSourceBase/Reachability (from `.`)
+  - JGSourceBase/SecurityKeyboard (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
   - MBProgressHUD
 
@@ -92,11 +79,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
-  JGSourceBase: 78807fc6075a801ff9f802631c8fb7fca0c31388
+  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
+  JGSourceBase: 38d7429ab12a1bf8e65ac4cf5c4814179f61ecfe
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 58864dc24a485cd91848e85b8e0947ff165aa8cc
+PODFILE CHECKSUM: 5494c4c26baffa27ff69f1dc05c0d08bc1adee61
 
 COCOAPODS: 1.11.2

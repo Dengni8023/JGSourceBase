@@ -6,7 +6,7 @@
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -51,7 +51,42 @@ typedef NS_ENUM(NSInteger, JGSStringUpperLowerStyle) {
 	JGSStringCaseDefault = JGSStringLowercase,
 };
 
+/// JGSourceBase framework bundle
+#define JGSourceBaseFrameworkBundleName  @"JGSourceBase.framework"
+
+/// JGSourceBase resource bundle
+/// TODO: ⚠️ 注意与 podspec 文件中 resource_bundles 名称保持一致
+#define JGSourceBaseResourceBundleName  @"JGSourceBase.bundle"
+
 @interface JGSBaseUtils : NSObject
+
+/// 类所在 bundle
+/// 1、源文件引用以及 .a 包 (Pod) 引用：主 Target 的 mainBundle
+/// 2、framework 引用：framework
++ (NSBundle *)classBundle;
+
+/// 资源文件 bundle
+/// 一、源文件使用，bundle 为 nil
+/// 二、使用 famework + bundle，存在资源 bundle
+/// 三、Pod 方式使用，根据 podspec 定义的资源文件使用方式存在差异
+/// 1、使用 resource_bundles 方式则存在资源 bundle；
+/// 2、使用 resources 则不存在 bundle
+/// 3、此处 podspec 使用的 resource_bundles 方式，存在bundle
++ (nullable NSBundle *)resourceBundle;
+
+/// 资源文件 bundle
+/// 一、源文件使用，bundle 为 nil
+/// 二、使用 famework + bundle，存在资源 bundle
+/// 三、Pod 方式使用，根据 podspec 定义的资源文件使用方式存在差异
+/// 1、使用 resource_bundles 方式则存在资源 bundle；
+/// 2、使用 resources 则不存在 bundle
+/// 3、此处 podspec 使用的 resource_bundles 方式，存在bundle
++ (NSString *)fileInResourceBundle:(NSString *)resourceFile;
+
++ (nullable UIImage *)imageInResourceBundle:(NSString *)name;
+
+/// 组件版本
++ (NSString *)version;
 
 @end
 

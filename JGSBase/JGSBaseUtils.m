@@ -8,6 +8,7 @@
 
 #import "JGSBaseUtils.h"
 #import <objc/runtime.h>
+#import "JGSBase+JGSPrivate.h"
 
 FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
     
@@ -30,5 +31,82 @@ FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, S
 }
 
 @implementation JGSBaseUtils
+
++ (NSBundle *)classBundle {
+    
+    static NSBundle *bundle = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        bundle = [NSBundle bundleForClass:[self class]] ?: [NSBundle mainBundle];
+    });
+    return bundle;
+}
+
++ (NSBundle *)resourceBundle {
+    
+    static NSBundle *bundle = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        NSString *path = [[self classBundle].resourcePath stringByAppendingPathComponent:JGSourceBaseResourceBundleName];
+        bundle = [NSBundle bundleWithPath:path];
+        if (bundle) {
+            return;
+        }
+        
+        path = [[NSBundle mainBundle] pathForResource:JGSourceBaseResourceBundleName ofType:nil];
+        bundle = path.length > 0 ? [NSBundle bundleWithPath:path] : nil;
+    });
+    return bundle;
+}
+
++ (NSString *)fileInResourceBundle:(NSString *)resourceFile {
+    
+    static NSString *bundleDir = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //
+        //
+        bundleDir = JGSourceBaseResourceBundleName;
+        if ([[NSBundle mainBundle] pathForResource:bundleDir ofType:nil].length > 0) {
+            JGSPrivateLog(@"%@ exist in main bundle", JGSourceBaseResourceBundleName);
+            return;
+        }
+        
+        bundleDir = [JGSourceBaseFrameworkBundleName stringByAppendingPathComponent:JGSourceBaseResourceBundleName];
+        if ([[self classBundle] pathForResource:JGSourceBaseResourceBundleName ofType:nil].length > 0) {
+            JGSPrivateLog(@"%@ exist in %@", JGSourceBaseResourceBundleName, JGSourceBaseFrameworkBundleName);
+            return;
+        }
+        
+        JGSPrivateLog(@"%@ not exist", JGSourceBaseResourceBundleName);
+        bundleDir = nil;
+    });
+    
+    NSString *name = bundleDir ? [bundleDir stringByAppendingPathComponent:resourceFile] : resourceFile;
+    return name;
+}
+
++ (UIImage *)imageInResourceBundle:(NSString *)name {
+    
+    UIImage *image = [UIImage imageNamed:[self fileInResourceBundle:name]];
+    if (!image) {
+        image = [UIImage imageNamed:name inBundle:[self resourceBundle] compatibleWithTraitCollection:nil];
+    }
+    
+    // tint color 渲染图片，可能导致图片未按照原图展示
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    return image;
+}
+
++ (NSString *)version {
+    
+    NSString *version = [NSString stringWithUTF8String:JGSVersion] ?: @"1.0.0";
+    NSString *build = [NSString stringWithUTF8String:JGSBuild] ?: @"1";
+    NSString *sourceVersion = [NSString stringWithFormat:@"JGSourceBase_V%@.%@", version, build];
+    
+    return sourceVersion;
+}
 
 @end

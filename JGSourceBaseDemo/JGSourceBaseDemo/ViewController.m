@@ -31,14 +31,23 @@
 	NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 	NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
 	self.subTitle = [NSString stringWithFormat:@"%@ (%@)", version, build];
+    
+    if (@available(iOS 14.0, *)) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] menu:nil];
+        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] menu:nil];
+    } else {
+        // Fallback on earlier versions
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] style:UIBarButtonItemStylePlain target:self action:nil];
+        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] style:UIBarButtonItemStylePlain target:self action:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    static BOOL enableJGSLog = NO;
-    enableJGSLog = !enableJGSLog;
-    [JGSLogFunction enableLog:enableJGSLog];
+    //static BOOL enableJGSLog = NO;
+    //enableJGSLog = !enableJGSLog;
+    //[JGSLogFunction enableLog:enableJGSLog];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

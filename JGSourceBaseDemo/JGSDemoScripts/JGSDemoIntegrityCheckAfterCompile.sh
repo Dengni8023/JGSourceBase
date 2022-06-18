@@ -2,10 +2,10 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-05-31 13:45:50
- # @LastEditTime: 2022-05-31 14:41:34
+ # @LastEditTime: 2022-06-17 14:25:56
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase/JGSourceBaseDemo/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh
+ # @FilePath: /JGSourceBase/JGSourceBaseDemo/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
 ###
 
@@ -29,13 +29,12 @@ fi
 
 echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
 
-# 网络引用方式依赖脚本文件路径
-ShellPath="${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-if [[ ! -f "${ShellPath}" ]]; then
-    # 本地引用方式依赖脚本文件路径
-    ShellPath="${PROJECT_DIR}/../JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
+# bundle中shell脚本文件路径
+JGSBundleDir="${BUILT_PRODUCTS_DIR}"
+if [[ "${TARGET_NAME}" == "JGSourceBaseDemo" ]]; then
+    JGSBundleDir="${BUILT_PRODUCTS_DIR}/JGSourceBase"
 fi
-
+ShellPath="${JGSBundleDir}/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
 # echo "${ShellPath}"
 if [[ -f "${ShellPath}" ]]; then
     chmod +x ${ShellPath} # 脚本执行权限

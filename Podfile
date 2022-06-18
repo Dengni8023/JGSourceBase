@@ -10,13 +10,19 @@ install! 'cocoapods', :deterministic_uuids => false
 # inhibit_all_warnings!
 
 # use_frameworks! 要求生成的是 .framework 而不是静态库 .a
-# JGSourceFrameworkDemo 测试时必须指定 use_frameworks!，否则运行报错，例：
-# Include of non-modular header inside framework module 'JGSourceBase': '.../Pods/Headers/Public/JGSourceBase/JGSBase.h'
-use_frameworks! # JGSourceFrameworkDemo 测试时必须指定，即开启本行
+# :linkage 指定使用动态(dynamic)/静态链接(static)，始终以podspec中设置的static_framework优先
+# podspec中未设置static_framework，且不指定linkage，默认动态链接
 
-# JGSourceBaseDemo 测试时建议不指定 use_frameworks!，否则编译会有重复依赖警告，例：
+# 调试 JGSourceFrameworkDemo: 
+# Multiple targets match implicit dependency for product reference 'JGSourceBase.framework'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceFrameworkDemo' from project 'JGSourceBaseDemo')
+
+# 调试 JGSourceBaseDemo: 
 # Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBaseDemo')
-# use_frameworks! # JGSourceBaseDemo 测试时建议不指定，即注释此行
+
+# use_frameworks! # 使用默认，动态链接
+# use_frameworks! :linkage => :dynamic # 使用动态链接
+# 为便于查看header头文件，使用use_frameworks!且指定使用静态链接，以上调试警告可忽略
+use_frameworks! :linkage => :static # 使用静态链接
 
 # workspace
 workspace "JGSourceBase"
@@ -38,35 +44,36 @@ abstract_target "JGSourceDemo" do
 		
 		# pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'd620ee8f5c1e782364804da8b5c541d2de38f55c' #'~> 1.4.0'
 		# pod 'JGSourceBase', '~> 1.3.0'
-		pod 'JGSourceBase', :path => "."
-		# pod 'JGSourceBase/Base', :path => "."
-		# pod 'JGSourceBase/Category', :path => "."
-		# pod 'JGSourceBase/Category/NSData', :path => "."
-		# pod 'JGSourceBase/Category/NSDate', :path => "."
-		# pod 'JGSourceBase/Category/NSDictionary', :path => "."
-		# pod 'JGSourceBase/Category/NSObject', :path => "."
-		# pod 'JGSourceBase/Category/NSString', :path => "."
-		# pod 'JGSourceBase/Category/NSURL', :path => "."
-		# pod 'JGSourceBase/Category/UIAlertController', :path => "."
-		# pod 'JGSourceBase/Category/UIApplication', :path => "."
-		# pod 'JGSourceBase/Category/UIColor', :path => "."
-		# pod 'JGSourceBase/Category/UIImage', :path => "."
-		# pod 'JGSourceBase/DataStorage', :path => "."
-		# pod 'JGSourceBase/Device', :path => "."
-		# pod 'JGSourceBase/Encryption', :path => "."
-		# pod 'JGSourceBase/IntegrityCheck', :path => "."
-		# pod 'JGSourceBase/Reachability', :path => "."
-		# pod 'JGSourceBase/SecurityKeyboard', :path => "."
-		
-		# HUD
-		# pod 'JGSourceBase/HUD', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'd620ee8f5c1e782364804da8b5c541d2de38f55c'
-		pod 'JGSourceBase/HUD', :path => "."
-		# pod 'JGSourceBase/HUD/Loading', :path => "."
-		# pod 'JGSourceBase/HUD/Toast', :path => "."
+		# pod 'JGSourceBase', :path => "."
+		pod 'JGSourceBase', :path => ".", :subspecs => [
+			'Base',
+			'Category',
+			# 'Category/NSData',
+			# 'Category/NSDate',
+			# 'Category/NSDictionary',
+			# 'Category/NSObject',
+			# 'Category/NSString',
+			# 'Category/NSURL',
+			# 'Category/UIAlertController',
+			# 'Category/UIApplication',
+			# 'Category/UIColor',
+			# 'Category/UIImage',
+			'DataStorage',
+			'Device',
+			'Encryption',
+			'IntegrityCheck',
+			'Reachability',
+			'SecurityKeyboard',
+			
+			# HUD
+			# 'HUD',
+			# 'HUD/Loading',
+			# 'HUD/Toast',
+		]
 		
 		JGSApplicationIntegrityCheckScriptPods = <<-CMD
-			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限
-			${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh
+			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
+			${PROJECT_DIR}/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
 		CMD
 		script_phase :name => "JGSIntegrityCheck", :script => JGSApplicationIntegrityCheckScriptPods, :execution_position => :after_compile
 
@@ -77,12 +84,9 @@ abstract_target "JGSourceDemo" do
 	# JGSourceFrameworkDemo 测试引用 JGSourceBase.framework
 	target "JGSourceFrameworkDemo" do
 		
-		# JGSHUD
-		pod 'MBProgressHUD'
-		
 		JGSApplicationIntegrityCheckScriptFramework = <<-CMD
-			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # sh执行权限
-			${PROJECT_DIR}/JGSDemoScripts/JGSIntegrityCheckAfterCompile.sh # 执行sh
+			chmod +x ${PROJECT_DIR}/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
+			${PROJECT_DIR}/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
 		CMD
 		script_phase :name => "JGSIntegrityCheck", :script => JGSApplicationIntegrityCheckScriptFramework, :execution_position => :after_compile
 

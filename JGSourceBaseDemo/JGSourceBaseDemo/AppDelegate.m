@@ -19,7 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, [JGSBaseUtils version]);
     JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogFunction enableLog:YES];
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     //NSLog(@"%@", @(JGSBaseVersionNumber));

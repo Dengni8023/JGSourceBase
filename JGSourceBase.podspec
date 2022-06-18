@@ -145,8 +145,10 @@ Pod::Spec.new do |spec|
   #  you can include multiple dependencies to ensure it works.
 
   # 是否使用静态库。如果 Podfile 指明了 use_frameworks! 命令，但是pod仓库需要使用静态库则需要设置
-  # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃
-  # spec.static_framework = true
+  # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃，经测试，崩溃原因可能为：
+  # 源码JGSourceBase.framework target 设置 Mach-O Type 为动态库 Dynamic Library，设置为 Static Library则不会崩溃
+  # 设置为 true，在Podfile指定 use_frameworks!时，打包静态framework
+  spec.static_framework = true
   spec.requires_arc = true
   
   # modify info.plist
@@ -166,18 +168,18 @@ Pod::Spec.new do |spec|
   # modifyPodTargetInfoPlistScriptAfterCompile = <<-CMD
   #   # echo "自定义脚本修改构建产出物 framework 中 Info.plist 内容"
   #   Build=$(date "+%Y%m%d%H%M") # 构建时间
-  #   InfoPlist="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.framework/Info.plist"
+  #   InfoPlist="${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Info.plist"
   #   PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
-  #   HasBundleVersion=false
+  #   HasField=false
   #   for PLIST_ITEMS in $PlistLINES; do
   #       if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
   #           echo "CFBundleVersion: ${PLIST_ITEMS}"
-  #           HasBundleVersion=true
+  #           HasField=true
   #           break
   #       fi
   #   done
     
-  #   if [[ HasBundleVersion ]]; then
+  #   if [[ "${HasField}" == true ]]; then
   #       /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${Build}" ${InfoPlist}
   #   else
   #       /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${Build}" ${InfoPlist}
@@ -199,6 +201,19 @@ Pod::Spec.new do |spec|
     sub.source_files = "JGSBase/*.{h,m}"
     sub.public_header_files = "JGSBase/*.h"
     sub.project_header_files = "JGSBase/*Private.h"
+
+    # resources形式资源文件引用到主Target，存在同名冲突情况，因此使用bundle方式
+    # sub.resources = "JGSDevice/**/JGSiOSDeviceList.json.sec"
+    sub.resource_bundles = {
+      "#{spec.name}" => [
+        # resource_bundles 只能指定一次，所以subspec资源统一在此处打包进bundle
+        # 远程未安装subspec时，对应资源将不会打包
+        # 本地Demo将打包所有subspec资源
+        "JGSBase/**/*.{xcassets,png,jpg,gif}",
+        "JGSDevice/**/JGSiOSDeviceList.json.sec",
+        "JGSIntegrityCheck/**/JGSIntegrityCheckRecordResourcesHash.sh",
+      ]
+    }
     
     sub.xcconfig = {
         "OTHER_LDFLAGS" => '-ObjC'
@@ -206,8 +221,39 @@ Pod::Spec.new do |spec|
 
     sub.pod_target_xcconfig = {
         "JGSVersion" => "#{spec.version}",
-        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"JGSourceBase/${JGSVersion}\"' JGSVersion='\"${JGSVersion}\"'",
+        "JGSBuild" => "20220608",
+        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"#{spec.name}/${JGSVersion}\"' JGSVersion='\"${JGSVersion}\"' JGSBuild='\"${JGSBuild}\"'",
     }
+    
+    # 由于 subspec 可能未安装，对应 resource_bundles 中资源需要清理
+    # 移除构建产出物 bundle 中 不需要的资源文件
+    # 仅对远程安装形式生效
+    RemoveUnInstalledJGSResource = <<-CMD
+      # echo "移除构建产出物 #{spec.name}.bundle 中未安装 subspec 的资源文件"
+      ProductDir="${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle"
+      echo "#{spec.name}.bundle: ${ProductDir}"
+      function RemoveUninstalledSubspecResource() {
+        FileInBundle="${ProductDir}/$1"
+        rm -fr "${FileInBundle}"
+      }
+      # JGSDevice 资源清理
+      if [[ ''${JGSDeviceInstalled} == '' ]]; then
+        RemoveUninstalledSubspecResource "JGSiOSDeviceList.json.sec"
+      fi
+      # JGSIntegrityCheck 资源清理
+      if [[ ''${JGSIntegrityCheckInstalled} == '' ]]; then
+        RemoveUninstalledSubspecResource "JGSIntegrityCheckRecordResourcesHash.sh"
+      fi
+    CMD
+
+    # spec.script_phase 只支持Pod Target执行脚本
+    sub.script_phase = {
+      :name => "RemoveUnInstalledJGSResource",
+      :script => RemoveUnInstalledJGSResource,
+      # :execution_position => :before_compile,
+      :execution_position => :after_compile,
+    }
+  
   end
   
   # Category
@@ -293,7 +339,11 @@ Pod::Spec.new do |spec|
   spec.subspec 'Device' do |sub|
     sub.source_files = "JGSDevice/*.{h,m}"
     sub.public_header_files = "JGSDevice/*.h"
-    sub.resources = "JGSDevice/**/iOSDeviceList.json.sec"
+    
+    sub.pod_target_xcconfig = {
+        "JGSDeviceInstalled" => "YES",
+        "GCC_PREPROCESSOR_DEFINITIONS" => "JGSDeviceInstalled='\"${JGSDeviceInstalled}\"'",
+    }
     
     sub.dependency "JGSourceBase/Reachability"
     sub.dependency "JGSourceBase/Category/NSData"
@@ -341,10 +391,11 @@ Pod::Spec.new do |spec|
     # 脚本及说明文档不需要被Target编译、作为资源文件引用
     # 但又不能被清理，要保证使用这能够访问到文件
     # 只能配置文件夹路径，不能为文件路径
-    sub.preserve_paths = "JGSIntegrityCheck"
+    # sub.preserve_paths = "JGSIntegrityCheck"
     
     sub.pod_target_xcconfig = {
-      "GCC_PREPROCESSOR_DEFINITIONS" => "JGSResourcesCheckFileHashSecuritySalt='\"JGSIntegrityCheck\"' JGSApplicationIntegrityCheckFileHashFile='\"JGSApplicationIntegrityCheckFileHashFile\"'",
+      "JGSIntegrityCheckInstalled" => "YES",
+      "GCC_PREPROCESSOR_DEFINITIONS" => "JGSIntegrityCheckInstalled='\"${JGSIntegrityCheckInstalled}\"' JGSResourcesCheckFileHashSecuritySalt='\"JGSIntegrityCheck\"' JGSApplicationIntegrityCheckFileHashFile='\"JGSApplicationIntegrityCheckFileHashFile\"'",
     }
     
     sub.dependency "JGSourceBase/Base"

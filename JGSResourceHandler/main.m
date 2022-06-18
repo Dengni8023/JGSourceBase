@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JGSAESEncryption.h"
+#import "NSData+JGSAES.h"
 
 NSData * _Nullable aesEncryptData(NSData *fileData, NSString *fileName) {
 	
@@ -45,7 +45,7 @@ NSData * _Nullable aesEncryptFile(NSString *filePath) {
 static NSString *JGSDeviceSourceDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/JGSDevice/Resources";
 void handleDevicesInfo(void) {
 	
-	NSString *filePath = [JGSDeviceSourceDir stringByAppendingPathComponent:@"iOSDeviceList-Origin.json"];
+	NSString *filePath = [JGSDeviceSourceDir stringByAppendingPathComponent:@"JGSiOSDeviceList-Origin.json"];
 	NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
 	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
 	NSDictionary<NSString *, NSArray<NSDictionary *> *> *devices = [dict objectForKey:@"devices"];
@@ -64,7 +64,7 @@ void handleDevicesInfo(void) {
 		}];
 	}];
 	
-	NSString *destFileName = @"iOSDeviceList.json.sec";
+	NSString *destFileName = @"JGSiOSDeviceList.json.sec";
 	NSString *newPath = [JGSDeviceSourceDir stringByAppendingPathComponent:destFileName];
 	
 	NSData *sortedData = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];

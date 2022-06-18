@@ -1,15 +1,15 @@
 #!/bin/sh
 ###
  # @Author: 梅继高
- # @Date: 2022-04-15 13:20:34
- # @LastEditTime: 2022-06-08 18:18:48
+ # @Date: 2022-06-08 18:16:38
+ # @LastEditTime: 2022-06-08 18:33:24
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase/JGSScripts/JGSModifyVersionBeforeCompile.sh
+ # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
-###
+### 
 
-# 修改 Info.plist 中 Version/Build 版本信息，会改变工程源码
+# 修改 JGSourceBase.xcconfig 中 Version/Build 版本信息，会改变工程源码
 
 # 如果任何语句的执行结果不是true则退出，后续脚本不继续执行
 # 退出可能无提示，如执行不存在的命令导致异常退出
@@ -51,47 +51,15 @@ SpecBuild=$(sed -n '/^[ ]*\"JGSBuild\"[ ]*=>[ ]*[\"].*\",$/p' ${SpecFile})
 JGSBuild=$(echo ${SpecBuild} | sed 's/^[ ]*\"JGSBuild\"[ ]*=>[ ]*\"\(.*\)\",$/\1/')
 echo "JGSBuild: <${SpecBuild}> -> <${JGSBuild}>"
 
-# Info.plist路径
-InfoPlist="${PROJECT_DIR}/${TARGET_NAME}/Info.plist"
-if [[ ! -f ${InfoPlist} ]]; then
+# JGSourceBase.xcconfig 路径
+ConfigFile="${PROJECT_DIR}/${TARGET_NAME}/JGSourceBase.xcconfig"
+if [[ ! -f ${ConfigFile} ]]; then
     exit
 fi
 
-PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
-HasField=false
-for PLIST_ITEMS in $PlistLINES; do
-    if [[ ${PLIST_ITEMS} =~ ^(CFBundleShortVersionString=)(.*)$ ]]; then
-        echo "CFBundleShortVersionString: ${PLIST_ITEMS}"
-        HasField=true
-        break
-    fi
-done
-
-echo "Modify Info.plist Version: ${Version}"
-if [[ "${HasField}" == true ]]; then
-    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${JGSVersion}" ${InfoPlist}
-else
-    /usr/libexec/PlistBuddy -c "Add :CFBundleShortVersionString string ${JGSVersion}" ${InfoPlist}
-fi
-
-PlistLINES=$(/usr/libexec/PlistBuddy ${InfoPlist} -c print | grep = | tr -d ' ')
-HasField=false
-for PLIST_ITEMS in $PlistLINES; do
-    if [[ ${PLIST_ITEMS} =~ ^(CFBundleVersion=)(.*)$ ]]; then
-        echo "CFBundleVersion: ${PLIST_ITEMS}"
-        HasField=true
-        break
-    fi
-done
-
-echo "Modify Info.plist Build: ${JGSBuild}"
-if [[ "${HasField}" == true ]]; then
-    /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${JGSBuild}" ${InfoPlist}
-else
-    /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${JGSBuild}" ${InfoPlist}
-fi
-
 echo "Modify JGSourceBase.xcconfig"
+sed -i '' 's/^\(JGSVersion = \).*/\1'"${JGSVersion}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSBuild = \).*/\1'"${JGSBuild}"'/'  "${ConfigFile}"
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本

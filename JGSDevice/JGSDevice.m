@@ -347,11 +347,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-		NSString *fileName = @"iOSDeviceList.json.sec";
-        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
-        if (path.length == 0) {
-            path = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:nil];
-        }
+		NSString *fileName = @"JGSiOSDeviceList.json.sec";
+        NSString *path = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
         
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
         NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
