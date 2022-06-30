@@ -273,8 +273,9 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        
+#ifdef JGSBase_h
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JGSReuseIdentifier(UITableViewCell)];
+#endif
     }
     return _tableView;
 }
@@ -307,7 +308,9 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         _textView.editable = NO;
         _textView.font = [UIFont systemFontOfSize:16];
 		_textView.layer.borderColor = [UIColor grayColor].CGColor;
+#ifdef JGSBase_h
 		_textView.layer.borderWidth = JGSMinimumPoint;
+#endif
         
         NSString *text = @"调试日志输出区域\n\n内容可复制、不可编辑";
         _textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
@@ -332,6 +335,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+#ifdef JGSBase_h
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -343,8 +347,15 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 #endif
     
     return cell;
+#else
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.contentView.backgroundColor = [UIColor colorWithRed:(arc4random() % 255) / 255.f green:(arc4random() % 255) / 255.f blue:(arc4random() % 255) / 255.f alpha:1.f];
+    
+    return cell;
+#endif
 }
 
+#ifdef JGSBase_h
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return self.demoData[section].title.length > 0 ? 32 : CGFLOAT_MIN;
@@ -379,6 +390,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         func(object, rowData.selector, indexPath, self);
     }
 }
+#endif
 
 #pragma mark - Console
 - (void)showConsoleLog:(NSString *)format, ... {

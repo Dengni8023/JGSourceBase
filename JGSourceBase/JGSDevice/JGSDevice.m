@@ -105,6 +105,12 @@
         // 去除多空格
         fakeUserAgent = [fakeUserAgent stringByReplacingOccurrencesOfString:@"  " withString:@" "];
         
+        // 三种方式系统采用的优先级：customUserAgent > UserDefault > applicationNameForUserAgent
+        // 左侧优先级高于右侧
+        // 如果设置了customUserAgent或UserDefaults方法，则applicationNameForUserAgent将被忽略。
+        // applicationNameForUserAgent仅添加到了webview具有的默认UserAgent中。
+        // https://www.jianshu.com/p/50246a8aaddb
+        
         JGSPrivateLog(@"默认 UserAgent Load");
         instance = instance ?: [[WKWebView alloc] init];
         [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {

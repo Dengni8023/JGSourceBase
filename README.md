@@ -1,10 +1,10 @@
 <!--
  * @Author: 梅继高
  * @Date: 2021-01-12 21:25:08
- * @LastEditTime: 2022-06-13 22:58:55
+ * @LastEditTime: 2022-06-22 20:00:57
  * @LastEditors: 梅继高
  * @Description: README.md
- * @FilePath: /JGSourceBase/README.md
+ * @FilePath: /JGSourceBase的副本/README.md
 -->
 # JGSourceBase
 
@@ -73,15 +73,9 @@ JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Rea
 ## Podfile引入subpec注意事项
 
 	# 以下两种方式因直接使用 subspec ，未引入 JGSourceBase ，JGSourceBase.h文件不会引入
-	pod 'JGSourceBase', :path => ".", :subspecs => ['HUD/LoadingHUD']
-	pod 'JGSourceBase/HUD/LoadingHUD', :path => "."
+	pod 'JGSourceBase', :subspecs => ['HUD/LoadingHUD']
+	pod 'JGSourceBase/HUD/LoadingHUD'
 	
 	# 一般方式
-	pod 'JGSourceBase', :path => "."
-	pod 'JGSourceBase/HUD/LoadingHUD', :path => "."
-
-## Demo错误处理
-
-如修改Podfile切换本地path、远程git、指定远程版本形式，切换之后请执行 
-
-	rm -fr Pods &&  pod install
+	pod 'JGSourceBase' # 默认安装基础subspec
+	pod 'JGSourceBase/HUD/LoadingHUD'

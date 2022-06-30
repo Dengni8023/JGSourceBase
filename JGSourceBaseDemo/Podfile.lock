@@ -1,0 +1,98 @@
+PODS:
+  - IQKeyboardManager (6.5.10)
+  - JGSourceBase/Base (1.3.2)
+  - JGSourceBase/Category (1.3.2):
+    - JGSourceBase/Category/NSData (= 1.3.2)
+    - JGSourceBase/Category/NSDate (= 1.3.2)
+    - JGSourceBase/Category/NSDictionary (= 1.3.2)
+    - JGSourceBase/Category/NSObject (= 1.3.2)
+    - JGSourceBase/Category/NSString (= 1.3.2)
+    - JGSourceBase/Category/NSURL (= 1.3.2)
+    - JGSourceBase/Category/UIAlertController (= 1.3.2)
+    - JGSourceBase/Category/UIApplication (= 1.3.2)
+    - JGSourceBase/Category/UIColor (= 1.3.2)
+    - JGSourceBase/Category/UIImage (= 1.3.2)
+  - JGSourceBase/Category/NSData (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSDate (1.3.2)
+  - JGSourceBase/Category/NSDictionary (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/NSObject (1.3.2):
+    - JGSourceBase/Category/NSData
+    - JGSourceBase/Category/NSString
+  - JGSourceBase/Category/NSString (1.3.2):
+    - JGSourceBase/Category/NSData
+  - JGSourceBase/Category/NSURL (1.3.2)
+  - JGSourceBase/Category/UIAlertController (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIApplication (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Category/UIColor (1.3.2)
+  - JGSourceBase/Category/UIImage (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/DataStorage (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Device (1.3.2):
+    - JGSourceBase/Category/NSData
+    - JGSourceBase/Reachability
+  - JGSourceBase/Encryption (1.3.2):
+    - JGSourceBase/Category/NSData
+    - JGSourceBase/Category/NSString
+  - JGSourceBase/HUD (1.3.2):
+    - JGSourceBase/HUD/Loading (= 1.3.2)
+    - JGSourceBase/HUD/Toast (= 1.3.2)
+  - JGSourceBase/HUD/Loading (1.3.2):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/UIColor
+    - MBProgressHUD
+  - JGSourceBase/HUD/Toast (1.3.2):
+    - JGSourceBase/Base
+    - MBProgressHUD
+  - JGSourceBase/IntegrityCheck (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/Reachability (1.3.2):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.3.2):
+    - JGSourceBase/Base
+    - JGSourceBase/Category/UIColor
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager (~> 6.5.9)
+  - JGSourceBase/Category (from `./..`)
+  - JGSourceBase/DataStorage (from `./..`)
+  - JGSourceBase/Device (from `./..`)
+  - JGSourceBase/Encryption (from `./..`)
+  - JGSourceBase/HUD (from `./..`)
+  - JGSourceBase/IntegrityCheck (from `./..`)
+  - JGSourceBase/Reachability (from `./..`)
+  - JGSourceBase/SecurityKeyboard (from `./..`)
+  - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - IQKeyboardManager
+    - MBProgressHUD
+
+EXTERNAL SOURCES:
+  JGSourceBase:
+    :path: "./.."
+  Masonry:
+    :commit: 8bd77ea92bbe995e14c454f821200b222e5a8804
+    :git: https://github.com/SnapKit/Masonry.git
+
+CHECKOUT OPTIONS:
+  Masonry:
+    :commit: 8bd77ea92bbe995e14c454f821200b222e5a8804
+    :git: https://github.com/SnapKit/Masonry.git
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
+  JGSourceBase: c5c94c7f9ca89c68d93cc6a418b772ea1eea7bfe
+  Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+
+PODFILE CHECKSUM: b3fb675c3cc4b469bdab1e818011dc7860469d81
+
+COCOAPODS: 1.11.2

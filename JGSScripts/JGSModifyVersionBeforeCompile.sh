@@ -28,7 +28,7 @@ if [ "$?" -ne 0 ]; then
 fi
 
 # 清除
-xcodebuild -alltargets clean
+# xcodebuild -alltargets clean
 
 SHELL_ROOT=$(cd "$(dirname "$0")"; pwd) # 脚本所在目录
 echo "脚本所在目录: $SHELL_ROOT"
@@ -90,8 +90,6 @@ if [[ "${HasField}" == true ]]; then
 else
     /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string ${JGSBuild}" ${InfoPlist}
 fi
-
-echo "Modify JGSourceBase.xcconfig"
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本

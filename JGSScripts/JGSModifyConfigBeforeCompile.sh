@@ -2,10 +2,10 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-06-08 18:33:24
+ # @LastEditTime: 2022-06-22 18:51:08
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
+ # @FilePath: /JGSourceBase的副本/JGSScripts/JGSModifyConfigBeforeCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
 ### 
 
@@ -28,7 +28,7 @@ if [ "$?" -ne 0 ]; then
 fi
 
 # 清除
-xcodebuild -alltargets clean
+# xcodebuild -alltargets clean
 
 SHELL_ROOT=$(cd "$(dirname "$0")"; pwd) # 脚本所在目录
 echo "脚本所在目录: $SHELL_ROOT"

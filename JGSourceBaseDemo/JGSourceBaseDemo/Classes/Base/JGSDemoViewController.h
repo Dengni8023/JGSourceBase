@@ -12,12 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#ifdef JGSBase_h
 #define JGSDemoShowConsoleLog(vcT, fmt, ...) { \
     JGSLog(fmt, ##__VA_ARGS__); \
     if ([vcT respondsToSelector:@selector(showConsoleLog:)]) { \
         [vcT showConsoleLog:(@"%s Line: %@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__]; \
     } \
 }
+#else
+#define JGSDemoShowConsoleLog(vcT, fmt, ...) JGSLog(@"%s Line: %@\n" fmt "", __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__);
+#define JGSLog(fmt, ...) NSLog(@"%s Line: %@\n" fmt "", __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__)
+#endif
 
 @interface JGSDemoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -32,6 +32,7 @@
 	NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
 	self.subTitle = [NSString stringWithFormat:@"%@ (%@)", version, build];
     
+#ifdef JGSBase_h
     if (@available(iOS 14.0, *)) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] menu:nil];
         //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] menu:nil];
@@ -40,6 +41,7 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] style:UIBarButtonItemStylePlain target:self action:nil];
         //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] style:UIBarButtonItemStylePlain target:self action:nil];
     }
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,9 +62,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+#ifdef JGSBase_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
-	
+    
 	return @[
 		// 基础组件
 		JGSDemoTableSectionMake(@" 基础组件",
@@ -199,6 +202,7 @@
     JGSKeyboardDemoVC *vcT = [[JGSKeyboardDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
+#endif
 
 #pragma mark - End
 
