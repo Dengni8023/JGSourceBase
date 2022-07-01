@@ -40,6 +40,7 @@
 		D4075BC12863315D00E4BFEA /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075BA92863315D00E4BFEA /* JGSHUDDemoVC.m */; };
 		D4075BC62863334300E4BFEA /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4075BCE286334DE00E4BFEA /* JGSourceBase.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D403B1322850335200F4F304 /* JGSourceBase.bundle */; };
+		D4358B3C286E93E9008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B3B286E93E9008A0A11 /* rsa_message.txt */; };
 		D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7692844974A002C27D9 /* NSData+JGSAES.m */; };
 		D436C7712844974A002C27D9 /* NSData+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C76A2844974A002C27D9 /* NSData+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D436C7732844974A002C27D9 /* JGSCategory+NSData.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C76C2844974A002C27D9 /* JGSCategory+NSData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +52,14 @@
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
 		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
+		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
+		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
+		D4BDE1C7286D8BEF006FDCA5 /* rsa_private_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C5286D8BEF006FDCA5 /* rsa_private_1024.pem */; };
+		D4BDE1CC286DD6CC006FDCA5 /* rsa_public_2048.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C8286DD6CC006FDCA5 /* rsa_public_2048.der */; };
+		D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */; };
+		D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */; };
+		D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6976E2806E0F900CE1F9F /* JGSReachability.m */; };
 		D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +241,7 @@
 		D4075BCB2863339600E4BFEA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = JGSourceBaseDemo/PrefixHeader.pch; sourceTree = "<group>"; };
 		D4075BD12863368900E4BFEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D4075BD22863368B00E4BFEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4358B3B286E93E9008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
 		D436C7692844974A002C27D9 /* NSData+JGSAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JGSAES.m"; sourceTree = "<group>"; };
 		D436C76A2844974A002C27D9 /* NSData+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JGSBase.h"; sourceTree = "<group>"; };
 		D436C76C2844974A002C27D9 /* JGSCategory+NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSData.h"; sourceTree = "<group>"; };
@@ -248,6 +258,14 @@
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
 		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
+		D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_1024.p12; sourceTree = "<group>"; };
+		D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_1024.der; sourceTree = "<group>"; };
+		D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_1024.pem; sourceTree = "<group>"; };
+		D4BDE1C5286D8BEF006FDCA5 /* rsa_private_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem; sourceTree = "<group>"; };
+		D4BDE1C8286DD6CC006FDCA5 /* rsa_public_2048.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_2048.der; sourceTree = "<group>"; };
+		D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem; sourceTree = "<group>"; };
+		D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_2048.p12; sourceTree = "<group>"; };
+		D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_2048.pem; sourceTree = "<group>"; };
 		D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckRecordResourcesHash.sh; sourceTree = "<group>"; };
 		D4D6976D2806E0F900CE1F9F /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
 		D4D6976E2806E0F900CE1F9F /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
@@ -421,8 +439,9 @@
 		D4075B752863315D00E4BFEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B762863315D00E4BFEA /* Loading */,
 				D4075B7D2863315D00E4BFEA /* IntegrityCheck */,
+				D4075B762863315D00E4BFEA /* Loading */,
+				D4BDE1B9286D6C3E006FDCA5 /* RSA */,
 			);
 			name = Resources;
 			path = JGSourceBaseDemo/Resources;
@@ -431,12 +450,12 @@
 		D4075B762863315D00E4BFEA /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B772863315D00E4BFEA /* LoadingWithoutAlpha-1.gif */,
-				D4075B782863315D00E4BFEA /* LoadingWithAlpha-4.gif */,
-				D4075B792863315D00E4BFEA /* LoadingWithAlpha-5.gif */,
+				D4075B7C2863315D00E4BFEA /* LoadingWithAlpha-1.gif */,
 				D4075B7A2863315D00E4BFEA /* LoadingWithAlpha-2.gif */,
 				D4075B7B2863315D00E4BFEA /* LoadingWithAlpha-3.gif */,
-				D4075B7C2863315D00E4BFEA /* LoadingWithAlpha-1.gif */,
+				D4075B782863315D00E4BFEA /* LoadingWithAlpha-4.gif */,
+				D4075B792863315D00E4BFEA /* LoadingWithAlpha-5.gif */,
+				D4075B772863315D00E4BFEA /* LoadingWithoutAlpha-1.gif */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -444,9 +463,9 @@
 		D4075B7D2863315D00E4BFEA /* IntegrityCheck */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B7E2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
-				D4075B7F2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
 				D4075B802863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile */,
+				D4075B7F2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
+				D4075B7E2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
 			);
 			path = IntegrityCheck;
 			sourceTree = "<group>";
@@ -454,14 +473,14 @@
 		D4075B812863315D00E4BFEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B822863315D00E4BFEA /* Encryption */,
-				D4075B852863315D00E4BFEA /* Category */,
-				D4075B962863315D00E4BFEA /* Reachability */,
-				D4075B992863315D00E4BFEA /* Device */,
-				D4075B9C2863315D00E4BFEA /* DataStorage */,
 				D4075B9F2863315D00E4BFEA /* Base */,
-				D4075BA42863315D00E4BFEA /* Keyboard */,
+				D4075B852863315D00E4BFEA /* Category */,
+				D4075B9C2863315D00E4BFEA /* DataStorage */,
+				D4075B992863315D00E4BFEA /* Device */,
+				D4075B822863315D00E4BFEA /* Encryption */,
 				D4075BA72863315D00E4BFEA /* HUD */,
+				D4075BA42863315D00E4BFEA /* Keyboard */,
+				D4075B962863315D00E4BFEA /* Reachability */,
 			);
 			name = Classes;
 			path = JGSourceBaseDemo/Classes;
@@ -470,8 +489,8 @@
 		D4075B822863315D00E4BFEA /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B832863315D00E4BFEA /* JGSEncryptionDemoVC.m */,
 				D4075B842863315D00E4BFEA /* JGSEncryptionDemoVC.h */,
+				D4075B832863315D00E4BFEA /* JGSEncryptionDemoVC.m */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -479,10 +498,10 @@
 		D4075B852863315D00E4BFEA /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B862863315D00E4BFEA /* UI */,
-				D4075B892863315D00E4BFEA /* NS */,
-				D4075B942863315D00E4BFEA /* JGSCategoryDemoVC.m */,
 				D4075B952863315D00E4BFEA /* JGSCategoryDemoVC.h */,
+				D4075B942863315D00E4BFEA /* JGSCategoryDemoVC.m */,
+				D4075B892863315D00E4BFEA /* NS */,
+				D4075B862863315D00E4BFEA /* UI */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -499,16 +518,16 @@
 		D4075B892863315D00E4BFEA /* NS */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B8A2863315D00E4BFEA /* JGSNSStringDemoVC.h */,
-				D4075B8B2863315D00E4BFEA /* JGSNSObjectDemoVC.m */,
-				D4075B8C2863315D00E4BFEA /* JGSNSDictionaryDemoVC.h */,
+				D4075B902863315D00E4BFEA /* JGSNSDateDemoVC.h */,
 				D4075B8D2863315D00E4BFEA /* JGSNSDateDemoVC.m */,
+				D4075B8C2863315D00E4BFEA /* JGSNSDictionaryDemoVC.h */,
+				D4075B912863315D00E4BFEA /* JGSNSDictionaryDemoVC.m */,
+				D4075B932863315D00E4BFEA /* JGSNSObjectDemoVC.h */,
+				D4075B8B2863315D00E4BFEA /* JGSNSObjectDemoVC.m */,
+				D4075B8A2863315D00E4BFEA /* JGSNSStringDemoVC.h */,
+				D4075B922863315D00E4BFEA /* JGSNSStringDemoVC.m */,
 				D4075B8E2863315D00E4BFEA /* JGSNSURLDemoVC.h */,
 				D4075B8F2863315D00E4BFEA /* JGSNSURLDemoVC.m */,
-				D4075B902863315D00E4BFEA /* JGSNSDateDemoVC.h */,
-				D4075B912863315D00E4BFEA /* JGSNSDictionaryDemoVC.m */,
-				D4075B922863315D00E4BFEA /* JGSNSStringDemoVC.m */,
-				D4075B932863315D00E4BFEA /* JGSNSObjectDemoVC.h */,
 			);
 			path = NS;
 			sourceTree = "<group>";
@@ -516,8 +535,8 @@
 		D4075B962863315D00E4BFEA /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B972863315D00E4BFEA /* JGSReachabilityDemoVC.m */,
 				D4075B982863315D00E4BFEA /* JGSReachabilityDemoVC.h */,
+				D4075B972863315D00E4BFEA /* JGSReachabilityDemoVC.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -544,8 +563,8 @@
 			isa = PBXGroup;
 			children = (
 				D4075BA02863315D00E4BFEA /* JGSDemoTableData.h */,
-				D4075BA12863315D00E4BFEA /* JGSDemoViewController.h */,
 				D4075BA22863315D00E4BFEA /* JGSDemoTableData.m */,
+				D4075BA12863315D00E4BFEA /* JGSDemoViewController.h */,
 				D4075BA32863315D00E4BFEA /* JGSDemoViewController.m */,
 			);
 			path = Base;
@@ -554,8 +573,8 @@
 		D4075BA42863315D00E4BFEA /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				D4075BA52863315D00E4BFEA /* JGSKeyboardDemoVC.m */,
 				D4075BA62863315D00E4BFEA /* JGSKeyboardDemoVC.h */,
+				D4075BA52863315D00E4BFEA /* JGSKeyboardDemoVC.m */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -605,6 +624,22 @@
 				D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */,
 			);
 			name = JGSourceBase.xcconfig;
+			sourceTree = "<group>";
+		};
+		D4BDE1B9286D6C3E006FDCA5 /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				D4358B3B286E93E9008A0A11 /* rsa_message.txt */,
+				D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */,
+				D4BDE1C5286D8BEF006FDCA5 /* rsa_private_1024.pem */,
+				D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */,
+				D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */,
+				D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */,
+				D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */,
+				D4BDE1C8286DD6CC006FDCA5 /* rsa_public_2048.der */,
+				D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */,
+			);
+			path = RSA;
 			sourceTree = "<group>";
 		};
 		D4C3ED98282B7F2700C5C1F8 /* JGSIntegrityCheck */ = {
@@ -1132,12 +1167,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4075BCE286334DE00E4BFEA /* JGSourceBase.bundle in Resources */,
+				D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */,
+				D4BDE1C7286D8BEF006FDCA5 /* rsa_private_1024.pem in Resources */,
 				D4075BAC2863315D00E4BFEA /* LoadingWithAlpha-5.gif in Resources */,
+				D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */,
 				D4075BAF2863315D00E4BFEA /* LoadingWithAlpha-1.gif in Resources */,
 				D4075AF02863123300E4BFEA /* LaunchScreen.storyboard in Resources */,
+				D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */,
 				D4075BAE2863315D00E4BFEA /* LoadingWithAlpha-3.gif in Resources */,
+				D4BDE1CC286DD6CC006FDCA5 /* rsa_public_2048.der in Resources */,
 				D4075BAB2863315D00E4BFEA /* LoadingWithAlpha-4.gif in Resources */,
+				D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */,
+				D4358B3C286E93E9008A0A11 /* rsa_message.txt in Resources */,
 				D4075B742863313400E4BFEA /* InfoPlist.strings in Resources */,
+				D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */,
+				D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */,
 				D4075BAD2863315D00E4BFEA /* LoadingWithAlpha-2.gif in Resources */,
 				D4075AED2863123300E4BFEA /* Assets.xcassets in Resources */,
 				D4075BAA2863315D00E4BFEA /* LoadingWithoutAlpha-1.gif in Resources */,

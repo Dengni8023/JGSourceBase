@@ -50,10 +50,13 @@ PODS:
     - MBProgressHUD
   - JGSourceBase/IntegrityCheck (1.3.2):
     - JGSourceBase/Base
+    - JGSourceBase/Encryption
   - JGSourceBase/Reachability (1.3.2):
     - JGSourceBase/Base
   - JGSourceBase/SecurityKeyboard (1.3.2):
     - JGSourceBase/Base
+    - JGSourceBase/Category/NSData
+    - JGSourceBase/Category/NSString
     - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -89,7 +92,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: c5c94c7f9ca89c68d93cc6a418b772ea1eea7bfe
+  JGSourceBase: 4511ead2fec18ea61a9874d71462f262efb8c842
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 

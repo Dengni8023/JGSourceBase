@@ -66,7 +66,7 @@ FOUNDATION_EXTERN UIColor *JGSColorHexStringA(NSString *hex, float alpha) {
     }
     
     unsigned int rgbNum;
-    [[NSScanner scannerWithString:real] scanHexInt:&rgbNum];
+    [[NSScanner scannerWithString:rgb] scanHexInt:&rgbNum];
     
     return JGSColorHexA(rgbNum, alpha);
 }
@@ -175,7 +175,7 @@ FOUNDATION_EXTERN UIColor *JGSRandomColor(void) {
     }
     
     unsigned int rgbNum;
-    [[NSScanner scannerWithString:real] scanHexInt:&rgbNum];
+    [[NSScanner scannerWithString:rgb] scanHexInt:&rgbNum];
     
     return rgbNum;
 }

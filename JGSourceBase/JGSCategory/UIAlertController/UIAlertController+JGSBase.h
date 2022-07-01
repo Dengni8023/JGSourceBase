@@ -25,7 +25,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param message 提示内容，默认nil
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
 
 /**
  Alert 单个按钮，无点击响应
@@ -35,7 +35,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param cancel 取消按钮标题
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel;
 
 /**
  Alert 单个按钮，有点击响应
@@ -46,7 +46,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel action:(nullable JGSAlertControllerAction)action;
 
 /**
  * Alert 双按钮
@@ -58,7 +58,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel other:(nullable NSString *)other action:(nullable JGSAlertControllerAction)action;
 
 /**
  * Alert 双按钮，红色警告destructive按钮
@@ -70,7 +70,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive action:(nullable JGSAlertControllerAction)action;
 
 /**
  Alert 多按钮
@@ -82,7 +82,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 /**
  Alert 多按钮，红色警告destructive按钮
@@ -95,7 +95,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return instancetype
  */
-+ (instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 #pragma mark - ActionSheet
 /**
@@ -107,7 +107,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-+ (instancetype)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_actionSheetWithTitle:(nullable NSString *)title cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 /**
  Actionsheet
  
@@ -117,7 +117,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-+ (instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 /**
  Actionsheet
@@ -129,7 +129,7 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-+ (instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 /**
  Actionsheet，红色警告destructive按钮
@@ -142,10 +142,10 @@ typedef void(^JGSAlertControllerAction)(UIAlertController * __nonnull alert, NSI
  @param action 点击响应block
  @return UIActionSheet / UIAlertController
  */
-+ (instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
++ (nullable instancetype)jg_actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(nullable JGSAlertControllerAction)action;
 
 #pragma mark - Alert & ActionSheet
-+ (instancetype)jg_showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message style:(UIAlertControllerStyle)style cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(JGSAlertControllerAction)action;
++ (nullable instancetype)jg_showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message style:(UIAlertControllerStyle)style cancel:(nullable NSString *)cancel destructive:(nullable NSString *)destructive others:(nullable NSArray<NSString *> *)others action:(JGSAlertControllerAction)action;
 
 #pragma mark - Hide
 /**

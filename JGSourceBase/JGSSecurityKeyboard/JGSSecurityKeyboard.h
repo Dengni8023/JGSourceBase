@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///     显示toolbar时，toolbar支持对应键盘快捷切换，支持切换纯数字键盘输入，身份证输入特定键盘不支持从此入口设置
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
-+ (instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - jg_randomNumPad instead!");
++ (nullable instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - jg_randomNumPad instead!");
 
 /// 自定义安全键盘，默认仅支持字母、符号（数字/符号混合）键盘切换，title为非空字符串时，顶部显示键盘切换快捷toolbar菜单、title、完成按钮，快捷菜单支持切换纯数字键盘，不支持切换身份证键盘
 /// @param textField 键盘对应的输入框
@@ -84,14 +84,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @param fullAngle 是否开启全角，默认关闭，支持全角时将支持全半角字符输入
 /// @return instancetype
-+ (instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - randomNumPad and - enableFullAngle instead!");
++ (nullable instancetype)keyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum enableFullAngle:(BOOL)fullAngle DEPRECATED_MSG_ATTRIBUTE("Use + keyboardWithTextInput:title: and - randomNumPad and - enableFullAngle instead!");
 
 /// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
-+ (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + numberKeyboardWithTextInput:title: and - randomNumPad instead!");
++ (nullable instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + numberKeyboardWithTextInput:title: and - randomNumPad instead!");
 
 /// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @param randomNum 是否开启数字键盘随机顺序，默认开启
 /// @return instancetype
-+ (instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + idCardKeyboardWithTextInput:title: and - randomNumPad instead!");
++ (nullable instancetype)idCardKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + idCardKeyboardWithTextInput:title: and - randomNumPad instead!");
 
 /// 自定义身份证键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框

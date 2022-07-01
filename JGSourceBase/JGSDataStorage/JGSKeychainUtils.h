@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JGSKeychainUtils : NSObject
 
 + (void)saveToKeychain:(id _Nullable )data forKey:(NSString *)key;
-+ (id)readFromKeychain:(NSString *)key;
++ (nullable id)readFromKeychain:(NSString *)key;
 + (void)removeFromKeychain:(NSString *)key;
 
 @end

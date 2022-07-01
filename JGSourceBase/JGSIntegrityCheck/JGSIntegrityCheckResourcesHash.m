@@ -9,6 +9,9 @@
 #import "JGSIntegrityCheckResourcesHash.h"
 #import "JGSBase+JGSPrivate.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import "NSString+JGSBase.h"
+#import "NSData+JGSBase.h"
+#import "JGSEncryption.h"
 
 @implementation JGSIntegrityCheckResourcesHash
 
@@ -125,9 +128,9 @@
 				}
 			}
 			
-			//SAPPLog("Check Plist Key: \t\(recordKey)")
+			//JGSPrivateLog("Check Plist Key: \t\(recordKey)")
 			id mapItemResult = [self checkInfoPlistNode:usingValue record:recordVlue blackKeys:nextBlackKeys.copy];
-			//SAPPLog("Check Plist Key: \t\(recordKey)\nCheck Plist Result:\t\(mapItemResult ?? "pass")")
+			//JGSPrivateLog("Check Plist Key: \t\(recordKey)\nCheck Plist Result:\t\(mapItemResult ?? "pass")")
 			if (!mapItemResult) {
 				return;
 			}
@@ -193,7 +196,7 @@
 		// 校验文件移除混淆头，后进行翻转获取校验文件真实内容
 		// 该步骤请与 JGSIntegrityCheckRecordResourcesHash.sh 保持逆过程的一致性
 		NSString *hashSalt = [NSString stringWithUTF8String:JGSResourcesCheckFileHashSecuritySalt];
-		NSInteger hashSaltLen = [[hashSalt dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length;
+		NSInteger hashSaltLen = [hashSalt jg_base64EncodeString].length;
 		NSInteger realCheckContentLength = chechFileContent.length - hashSaltLen * 2;
 		if (realCheckContentLength <= 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -323,7 +326,7 @@
 				return;
 			}
 			
-			NSString *usingHash = [self fileHashWithPath:resPath].lowercaseString;
+			NSString *usingHash = [JGSEncryption sha256WithFile:resPath].lowercaseString;
 			if ([usingHash.lowercaseString isEqualToString:recordFileHash.lowercaseString]) {
 				return;
 			}
@@ -336,23 +339,6 @@
 			completion(unpassFiles.count > 0 ? unpassFiles.copy : nil, unpassPlistInfo.count > 0 ? unpassPlistInfo.copy : nil);
 		});
 	});
-}
-
-- (NSString *)fileHashWithPath:(NSString *)path {
-	
-	if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-		return nil;
-	}
-	
-	NSData *data = [NSData dataWithContentsOfFile:path];
-	uint8_t digest[CC_SHA256_DIGEST_LENGTH];
-	CC_SHA256(data.bytes, (CC_LONG)data.length, digest);
-	NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
-	for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
-		[output appendFormat:@"%02x", digest[i]];
-	}
-	
-	return output;
 }
 
 @end

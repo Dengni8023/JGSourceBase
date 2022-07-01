@@ -11,6 +11,8 @@
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
 #import "JGSBase+JGSPrivate.h"
+#import "JGSCategory+NSData.h"
+#import "JGSCategory+NSString.h"
 #import <objc/runtime.h>
 
 @interface JGSSecurityKeyboard ()
@@ -552,10 +554,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 
 #pragma mark - AES
 - (NSString *)aesBase64EncodeString:(NSString *)string {
-    
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
-    return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    return [string jg_base64EncodeString];
 }
 
 - (NSString *)aesOperationIv {
@@ -616,61 +615,9 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
         return nil;
     }
     
-    NSData *data = operation == kCCEncrypt ? [text dataUsingEncoding:NSUTF8StringEncoding] : [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    if (data.length == 0) {
-        return nil;
-    }
-    
     NSString *key = [self aesOperationKey];
     NSString *iv = [self aesOperationIv];
-    NSUInteger dataLength = data.length;
-    void const *contentBytes = data.bytes;
-    void const *keyBytes = [key dataUsingEncoding:NSUTF8StringEncoding].bytes;
-    
-    // 初始偏移向量，默认全置零，避免iv长度不符合规范情况导致无法解析
-    // 便宜向量长度为块大小 BlockSize
-    char ivBytes[kCCBlockSizeAES128 + 1];
-    memset(ivBytes, 0, sizeof(ivBytes));
-    [iv getCString:ivBytes maxLength:sizeof(ivBytes) encoding:NSUTF8StringEncoding];
-    
-    size_t operationSize = dataLength + kCCBlockSizeAES128; // 密文长度 <= 明文长度 + BlockSize
-    void *operationBytes = malloc(operationSize);
-    if (operationBytes == NULL) {
-        return nil;
-    }
-    
-    size_t actualOutSize = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(operation, kCCAlgorithmAES, kCCOptionPKCS7Padding, keyBytes, JGSSecurityKeyboardAESKeySize, ivBytes, contentBytes, dataLength, operationBytes, operationSize, &actualOutSize);
-    if (cryptStatus != kCCSuccess) {
-        
-        free(operationBytes); operationBytes = NULL;
-        return nil;
-    }
-    
-    // operationBytes 自动释放
-    NSData *aesData = [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
-    if (aesData.length == 0) {
-        return nil;
-    }
-    
-    switch (operation) {
-        case kCCEncrypt: {
-            
-            // 加密Data不能直接转UTF8字符串，需使用base64编码
-            // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
-            return [aesData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-        }
-            break;
-            
-        case kCCDecrypt: {
-            
-            // 解密Data不能直接转UTF8字符串，需使用base64解码
-            return [[NSString alloc] initWithData:aesData encoding:NSUTF8StringEncoding];
-        }
-            break;
-    }
-    
-    return nil;
+    return [text jg_AESOperation:operation keyLength:JGSSecurityKeyboardAESKeySize key:key iv:iv];
 }
 
 @end

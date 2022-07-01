@@ -35,6 +35,15 @@
 		D4075B6728632D3500E4BFEA /* JGSKeyboardDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B4C28632D3500E4BFEA /* JGSKeyboardDemoVC.m */; };
 		D4075B6828632D3500E4BFEA /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B5028632D3500E4BFEA /* JGSHUDDemoVC.m */; };
 		D4075B7128632EE100E4BFEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4075B6F28632EE100E4BFEA /* InfoPlist.strings */; };
+		D4358B4F286EA9F6008A0A11 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4358B3E286EA9F6008A0A11 /* rsa_public_1024.der */; };
+		D4358B50286EA9F6008A0A11 /* rsa_public_2048.der in Resources */ = {isa = PBXBuildFile; fileRef = D4358B3F286EA9F6008A0A11 /* rsa_public_2048.der */; };
+		D4358B51286EA9F6008A0A11 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4358B40286EA9F6008A0A11 /* rsa_private_1024.p12 */; };
+		D4358B52286EA9F6008A0A11 /* rsa_private_2048.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4358B41286EA9F6008A0A11 /* rsa_private_2048.p12 */; };
+		D4358B53286EA9F6008A0A11 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B42286EA9F6008A0A11 /* rsa_public_2048.pem */; };
+		D4358B54286EA9F6008A0A11 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B43286EA9F6008A0A11 /* rsa_public_1024.pem */; };
+		D4358B59286EA9F6008A0A11 /* rsa_private_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B48286EA9F6008A0A11 /* rsa_private_1024.pem */; };
+		D4358B5A286EA9F6008A0A11 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B49286EA9F6008A0A11 /* rsa_private_2048.pem */; };
+		D4358B5E286EA9F6008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B4D286EA9F6008A0A11 /* rsa_message.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +102,15 @@
 		D4075B7028632EE100E4BFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4075BCF2863354400E4BFEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D4075BD02863354E00E4BFEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4358B3E286EA9F6008A0A11 /* rsa_public_1024.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_1024.der; sourceTree = "<group>"; };
+		D4358B3F286EA9F6008A0A11 /* rsa_public_2048.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_2048.der; sourceTree = "<group>"; };
+		D4358B40286EA9F6008A0A11 /* rsa_private_1024.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_1024.p12; sourceTree = "<group>"; };
+		D4358B41286EA9F6008A0A11 /* rsa_private_2048.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_2048.p12; sourceTree = "<group>"; };
+		D4358B42286EA9F6008A0A11 /* rsa_public_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_2048.pem; sourceTree = "<group>"; };
+		D4358B43286EA9F6008A0A11 /* rsa_public_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_1024.pem; sourceTree = "<group>"; };
+		D4358B48286EA9F6008A0A11 /* rsa_private_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem; sourceTree = "<group>"; };
+		D4358B49286EA9F6008A0A11 /* rsa_private_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem; sourceTree = "<group>"; };
+		D4358B4D286EA9F6008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +182,9 @@
 		D4075B1C28632D3500E4BFEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B1D28632D3500E4BFEA /* Loading */,
 				D4075B2428632D3500E4BFEA /* IntegrityCheck */,
+				D4075B1D28632D3500E4BFEA /* Loading */,
+				D4358B3D286EA9F6008A0A11 /* RSA */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -173,12 +192,12 @@
 		D4075B1D28632D3500E4BFEA /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B1E28632D3500E4BFEA /* LoadingWithoutAlpha-1.gif */,
-				D4075B1F28632D3500E4BFEA /* LoadingWithAlpha-4.gif */,
-				D4075B2028632D3500E4BFEA /* LoadingWithAlpha-5.gif */,
+				D4075B2328632D3500E4BFEA /* LoadingWithAlpha-1.gif */,
 				D4075B2128632D3500E4BFEA /* LoadingWithAlpha-2.gif */,
 				D4075B2228632D3500E4BFEA /* LoadingWithAlpha-3.gif */,
-				D4075B2328632D3500E4BFEA /* LoadingWithAlpha-1.gif */,
+				D4075B1F28632D3500E4BFEA /* LoadingWithAlpha-4.gif */,
+				D4075B2028632D3500E4BFEA /* LoadingWithAlpha-5.gif */,
+				D4075B1E28632D3500E4BFEA /* LoadingWithoutAlpha-1.gif */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -186,9 +205,9 @@
 		D4075B2428632D3500E4BFEA /* IntegrityCheck */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B2528632D3500E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
-				D4075B2628632D3500E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
 				D4075B2728632D3500E4BFEA /* JGSApplicationIntegrityCheckFileHashFile */,
+				D4075B2628632D3500E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
+				D4075B2528632D3500E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
 			);
 			path = IntegrityCheck;
 			sourceTree = "<group>";
@@ -196,14 +215,14 @@
 		D4075B2828632D3500E4BFEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B2928632D3500E4BFEA /* Encryption */,
-				D4075B2C28632D3500E4BFEA /* Category */,
-				D4075B3D28632D3500E4BFEA /* Reachability */,
-				D4075B4028632D3500E4BFEA /* Device */,
-				D4075B4328632D3500E4BFEA /* DataStorage */,
 				D4075B4628632D3500E4BFEA /* Base */,
-				D4075B4B28632D3500E4BFEA /* Keyboard */,
+				D4075B2C28632D3500E4BFEA /* Category */,
+				D4075B4328632D3500E4BFEA /* DataStorage */,
+				D4075B4028632D3500E4BFEA /* Device */,
+				D4075B2928632D3500E4BFEA /* Encryption */,
 				D4075B4E28632D3500E4BFEA /* HUD */,
+				D4075B4B28632D3500E4BFEA /* Keyboard */,
+				D4075B3D28632D3500E4BFEA /* Reachability */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -211,8 +230,8 @@
 		D4075B2928632D3500E4BFEA /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B2A28632D3500E4BFEA /* JGSEncryptionDemoVC.m */,
 				D4075B2B28632D3500E4BFEA /* JGSEncryptionDemoVC.h */,
+				D4075B2A28632D3500E4BFEA /* JGSEncryptionDemoVC.m */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -220,10 +239,10 @@
 		D4075B2C28632D3500E4BFEA /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B2D28632D3500E4BFEA /* UI */,
-				D4075B3028632D3500E4BFEA /* NS */,
-				D4075B3B28632D3500E4BFEA /* JGSCategoryDemoVC.m */,
 				D4075B3C28632D3500E4BFEA /* JGSCategoryDemoVC.h */,
+				D4075B3B28632D3500E4BFEA /* JGSCategoryDemoVC.m */,
+				D4075B3028632D3500E4BFEA /* NS */,
+				D4075B2D28632D3500E4BFEA /* UI */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -240,16 +259,16 @@
 		D4075B3028632D3500E4BFEA /* NS */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B3128632D3500E4BFEA /* JGSNSStringDemoVC.h */,
-				D4075B3228632D3500E4BFEA /* JGSNSObjectDemoVC.m */,
-				D4075B3328632D3500E4BFEA /* JGSNSDictionaryDemoVC.h */,
+				D4075B3728632D3500E4BFEA /* JGSNSDateDemoVC.h */,
 				D4075B3428632D3500E4BFEA /* JGSNSDateDemoVC.m */,
+				D4075B3328632D3500E4BFEA /* JGSNSDictionaryDemoVC.h */,
+				D4075B3828632D3500E4BFEA /* JGSNSDictionaryDemoVC.m */,
+				D4075B3A28632D3500E4BFEA /* JGSNSObjectDemoVC.h */,
+				D4075B3228632D3500E4BFEA /* JGSNSObjectDemoVC.m */,
+				D4075B3128632D3500E4BFEA /* JGSNSStringDemoVC.h */,
+				D4075B3928632D3500E4BFEA /* JGSNSStringDemoVC.m */,
 				D4075B3528632D3500E4BFEA /* JGSNSURLDemoVC.h */,
 				D4075B3628632D3500E4BFEA /* JGSNSURLDemoVC.m */,
-				D4075B3728632D3500E4BFEA /* JGSNSDateDemoVC.h */,
-				D4075B3828632D3500E4BFEA /* JGSNSDictionaryDemoVC.m */,
-				D4075B3928632D3500E4BFEA /* JGSNSStringDemoVC.m */,
-				D4075B3A28632D3500E4BFEA /* JGSNSObjectDemoVC.h */,
 			);
 			path = NS;
 			sourceTree = "<group>";
@@ -257,8 +276,8 @@
 		D4075B3D28632D3500E4BFEA /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B3E28632D3500E4BFEA /* JGSReachabilityDemoVC.m */,
 				D4075B3F28632D3500E4BFEA /* JGSReachabilityDemoVC.h */,
+				D4075B3E28632D3500E4BFEA /* JGSReachabilityDemoVC.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -285,8 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				D4075B4728632D3500E4BFEA /* JGSDemoTableData.h */,
-				D4075B4828632D3500E4BFEA /* JGSDemoViewController.h */,
 				D4075B4928632D3500E4BFEA /* JGSDemoTableData.m */,
+				D4075B4828632D3500E4BFEA /* JGSDemoViewController.h */,
 				D4075B4A28632D3500E4BFEA /* JGSDemoViewController.m */,
 			);
 			path = Base;
@@ -295,8 +314,8 @@
 		D4075B4B28632D3500E4BFEA /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B4C28632D3500E4BFEA /* JGSKeyboardDemoVC.m */,
 				D4075B4D28632D3500E4BFEA /* JGSKeyboardDemoVC.h */,
+				D4075B4C28632D3500E4BFEA /* JGSKeyboardDemoVC.m */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -308,6 +327,22 @@
 				D4075B5028632D3500E4BFEA /* JGSHUDDemoVC.m */,
 			);
 			path = HUD;
+			sourceTree = "<group>";
+		};
+		D4358B3D286EA9F6008A0A11 /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				D4358B4D286EA9F6008A0A11 /* rsa_message.txt */,
+				D4358B40286EA9F6008A0A11 /* rsa_private_1024.p12 */,
+				D4358B48286EA9F6008A0A11 /* rsa_private_1024.pem */,
+				D4358B41286EA9F6008A0A11 /* rsa_private_2048.p12 */,
+				D4358B49286EA9F6008A0A11 /* rsa_private_2048.pem */,
+				D4358B3E286EA9F6008A0A11 /* rsa_public_1024.der */,
+				D4358B43286EA9F6008A0A11 /* rsa_public_1024.pem */,
+				D4358B3F286EA9F6008A0A11 /* rsa_public_2048.der */,
+				D4358B42286EA9F6008A0A11 /* rsa_public_2048.pem */,
+			);
+			path = RSA;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,12 +411,21 @@
 				D4075B5328632D3500E4BFEA /* LoadingWithAlpha-5.gif in Resources */,
 				D4075B5628632D3500E4BFEA /* LoadingWithAlpha-1.gif in Resources */,
 				D4075B132863176900E4BFEA /* LaunchScreen.storyboard in Resources */,
+				D4358B52286EA9F6008A0A11 /* rsa_private_2048.p12 in Resources */,
+				D4358B51286EA9F6008A0A11 /* rsa_private_1024.p12 in Resources */,
+				D4358B50286EA9F6008A0A11 /* rsa_public_2048.der in Resources */,
 				D4075B5528632D3500E4BFEA /* LoadingWithAlpha-3.gif in Resources */,
+				D4358B4F286EA9F6008A0A11 /* rsa_public_1024.der in Resources */,
+				D4358B53286EA9F6008A0A11 /* rsa_public_2048.pem in Resources */,
 				D4075B5228632D3500E4BFEA /* LoadingWithAlpha-4.gif in Resources */,
 				D4075B102863176900E4BFEA /* Assets.xcassets in Resources */,
+				D4358B54286EA9F6008A0A11 /* rsa_public_1024.pem in Resources */,
+				D4358B59286EA9F6008A0A11 /* rsa_private_1024.pem in Resources */,
 				D4075B5428632D3500E4BFEA /* LoadingWithAlpha-2.gif in Resources */,
 				D4075B7128632EE100E4BFEA /* InfoPlist.strings in Resources */,
 				D4075B5128632D3500E4BFEA /* LoadingWithoutAlpha-1.gif in Resources */,
+				D4358B5E286EA9F6008A0A11 /* rsa_message.txt in Resources */,
+				D4358B5A286EA9F6008A0A11 /* rsa_private_2048.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

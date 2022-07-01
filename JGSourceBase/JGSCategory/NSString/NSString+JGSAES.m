@@ -7,7 +7,8 @@
 //
 
 #import "NSString+JGSAES.h"
-#import "NSData+JGSAES.h"
+#import "JGSCategory+NSData.h"
+#import "JGSCategory+NSData.h"
 
 @implementation NSString (JGSAES)
 
@@ -42,8 +43,7 @@
 		NSData *encryptData = [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:options];
 		
 		// 加密Data不能直接转UTF8字符串，需使用base64编码
-		// 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
-		NSString *string = encryptData ? [encryptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed] : nil;
+		NSString *string = encryptData ? [encryptData jg_base64EncodeString] : nil;
 		
 		return string;
 	}

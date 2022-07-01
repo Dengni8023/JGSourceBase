@@ -40,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取SHA256散列字符串，小写
 @property (nonatomic, copy, readonly, nullable) NSString *jg_sha256String;
 
+/// 获取SHA384散列字符串，小写
+@property (nonatomic, copy, readonly, nullable) NSString *jg_sha384String;
+
+/// 获取SHA512散列字符串，小写
+@property (nonatomic, copy, readonly, nullable) NSString *jg_sha512String;
+
 /// 获取MD5散列字符串
 /// @param style 字符串大小写风格
 - (nullable NSString *)jg_md5String:(JGSStringUpperLowerStyle)style;
@@ -51,6 +57,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取SHA256散列字符串
 /// @param style 字符串大小写风格
 - (nullable NSString *)jg_sha256String:(JGSStringUpperLowerStyle)style;
+
+/// 获取SHA384散列字符串
+/// @param style 字符串大小写风格
+- (nullable NSString *)jg_sha384String:(JGSStringUpperLowerStyle)style;
+
+/// 获取SHA512散列字符串
+/// @param style 字符串大小写风格
+- (nullable NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style;
 
 @end
 

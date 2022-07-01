@@ -7,6 +7,8 @@
 //
 
 #import "NSObject+JGSBase.h"
+#import "NSData+JGSBase.h"
+#import "NSString+JGSBase.h"
 
 @implementation NSObject (JGSBase)
 
@@ -169,33 +171,23 @@
 #pragma mark - Base64
 - (NSData *)jg_base64EncodeData {
     
-    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
     if ([self isKindOfClass:[NSData class]]) {
-        
-        return [(NSData *)self base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-        
-    } else if ([self isKindOfClass:[NSString class]]) {
-        
-        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        return [(NSData *)self jg_base64EncodeData];
     }
-    
+    else if ([self isKindOfClass:[NSString class]]) {
+        return [(NSString *)self jg_base64EncodeData];
+    }
     return nil;
 }
 
 - (NSString *)jg_base64EncodeString {
     
-    // 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
     if ([self isKindOfClass:[NSData class]]) {
-        
-        return [(NSData *)self base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-        
-    } else if ([self isKindOfClass:[NSString class]]) {
-        
-        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        return [(NSData *)self jg_base64EncodeString];
     }
-    
+    else if ([self isKindOfClass:[NSString class]]) {
+        return [(NSString *)self jg_base64EncodeString];
+    }
     return nil;
 }
 

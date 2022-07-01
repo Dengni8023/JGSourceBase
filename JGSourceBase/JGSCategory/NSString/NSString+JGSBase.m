@@ -7,7 +7,7 @@
 //
 
 #import "NSString+JGSBase.h"
-#import "NSData+JGSBase.h"
+#import "JGSCategory+NSData.h"
 #import "JGSBase+JGSPrivate.h"
 
 @implementation NSString (JGSBase)
@@ -15,27 +15,25 @@
 #pragma mark - Base64
 - (NSData *)jg_base64EncodeData {
 	
-	// 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
-	NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-	return [data base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+	return [data jg_base64EncodeData];
 }
 
 - (NSString *)jg_base64EncodeString {
 	
-	// 选择NSDataBase64EncodingEndLineWithLineFeed保持Android、ios、后台统一
-	NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-	return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+	return [data jg_base64EncodeString];
 }
 
 - (NSData *)jg_base64DecodeData {
 	
-	NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
 	return data ? [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters] : nil;
 }
 
 - (NSString *)jg_base64DecodeString {
 	
-	NSData *data = [[NSData alloc] initWithBase64EncodedString:(NSString *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+	NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
 	return data ? [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] : nil;
 }
 
@@ -68,6 +66,26 @@
 	
 	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
 	return [data jg_sha256String:style];
+}
+
+- (NSString *)jg_sha384String {
+    return [self jg_sha384String:JGSStringCaseDefault];
+}
+
+- (NSString *)jg_sha384String:(JGSStringUpperLowerStyle)style {
+    
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [data jg_sha384String:style];
+}
+
+- (NSString *)jg_sha512String {
+    return [self jg_sha512String:JGSStringCaseDefault];
+}
+
+- (NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style {
+    
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [data jg_sha512String:style];
 }
 
 #pragma mark - End

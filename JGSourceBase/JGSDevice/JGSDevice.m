@@ -8,7 +8,7 @@
 
 #import "JGSDevice.h"
 #import "JGSBase+JGSPrivate.h"
-#import "NSData+JGSAES.h"
+#import "JGSCategory+NSData.h"
 #import <WebKit/WebKit.h>
 #import <AdSupport/ASIdentifierManager.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
@@ -428,7 +428,7 @@
         }];
     }];
     
-    //SAPPLog(@"addresses: %@", addressesInfo);
+    //JGSPrivateLog(@"addresses: %@", addressesInfo);
     
     NSString *ipAddress = nil;
     for (NSString *key in searchArray) {

@@ -44,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)jg_tileImage;
 
 /// 图片大小修改
-- (instancetype)jg_imageScaleAspectFit:(CGSize)targetSize;
-- (instancetype)jg_imageScaleAspectFill:(CGSize)targetSize;
-- (instancetype)jg_imageScaleWithCropping:(BOOL)cropping size:(CGSize)targetSize;
+- (nullable instancetype)jg_imageScaleAspectFit:(CGSize)targetSize;
+- (nullable instancetype)jg_imageScaleAspectFill:(CGSize)targetSize;
+- (nullable instancetype)jg_imageScaleWithCropping:(BOOL)cropping size:(CGSize)targetSize;
 
 /// 图片方向修正
 - (instancetype)jg_imageCorrectedOrientation;

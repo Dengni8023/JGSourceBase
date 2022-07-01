@@ -399,6 +399,7 @@ Pod::Spec.new do |spec|
     }
     
     sub.dependency "JGSourceBase/Base"
+    sub.dependency "JGSourceBase/Encryption"
     
   end
 
@@ -418,6 +419,8 @@ Pod::Spec.new do |spec|
     ]
     
     sub.dependency "JGSourceBase/Base"
+    sub.dependency "JGSourceBase/Category/NSData"
+    sub.dependency "JGSourceBase/Category/NSString"
     sub.dependency "JGSourceBase/Category/UIColor"
   end
   

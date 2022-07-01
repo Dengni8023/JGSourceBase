@@ -7,7 +7,7 @@
 //
 
 #import "JGSKeyboardConstants.h"
-#import "UIColor+JGSBase.h"
+#import "JGSCategory+UIColor.h"
 
 FOUNDATION_EXTERN UIColor * const JGSKeyboardToolBarColor(void) {
     return JGSColorRGB(253, 253, 253); // 系统键盘截图取色
