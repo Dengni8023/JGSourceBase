@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Reuse
 #define JGSReuseIdentifier(Class)  [NSStringFromClass([self class]) stringByAppendingFormat:@"_%@", NSStringFromClass([Class class])]
 
-// nil null empty
-#pragma mark - nil null empty
+// Common
+#pragma mark - Common
 #define JGSEmptyString2Nil(object) (object.length > 0 ? object : nil)
 #define JGSNil2EmptyString(object) (!object ? @"" : object)
 #define JGSNull2Nil(object)        ([object isKindOfClass:[NSNull class]] ? nil : object)

@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    self.title = @"Encryption Encryption Encryption Encryption";
+    self.title = @"Encryption";
 }
 
 #ifdef JGSEncryption_h

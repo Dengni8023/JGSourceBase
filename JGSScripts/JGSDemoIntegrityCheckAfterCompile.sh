@@ -2,10 +2,10 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-05-31 13:45:50
- # @LastEditTime: 2022-06-17 14:25:56
+ # @LastEditTime: 2022-07-05 15:30:39
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase/JGSourceBaseDemo/JGSDemoScripts/JGSDemoIntegrityCheckAfterCompile.sh
+ # @FilePath: /JGSourceBase/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
 ###
 
@@ -30,16 +30,15 @@ fi
 echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
 
 # bundle中shell脚本文件路径
-JGSBundleDir="${BUILT_PRODUCTS_DIR}"
-if [[ "${TARGET_NAME}" == "JGSourceBaseDemo" ]]; then
-    JGSBundleDir="${BUILT_PRODUCTS_DIR}/JGSourceBase"
-fi
-ShellPath="${JGSBundleDir}/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
-# echo "${ShellPath}"
+ShellPath="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
+echo "${ShellPath}"
 if [[ -f "${ShellPath}" ]]; then
     chmod +x ${ShellPath} # 脚本执行权限
     ${ShellPath} # 执行脚本
 fi
+
+echo "为避免脚本泄漏，脚本之行完成后，删除脚本"
+rm -fr "${ShellPath}"
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本

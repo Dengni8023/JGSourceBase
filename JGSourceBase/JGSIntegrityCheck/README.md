@@ -1,10 +1,10 @@
 <!--
  * @Author: 梅继高
  * @Date: 2022-05-17 13:53:31
- * @LastEditTime: 2022-05-27 00:11:01
+ * @LastEditTime: 2022-07-05 15:32:18
  * @LastEditors: 梅继高
  * @Description: 
- * @FilePath: /undefined/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/JGSIntegrityCheck/README.md
+ * @FilePath: /JGSourceBase/JGSourceBase/JGSIntegrityCheck/README.md
  * Copyright © 2022 MeiJiGao. All rights reserved.
 -->
 #  <center>应用完整性校验之资源文件检验</center>
@@ -113,17 +113,15 @@ target "TARGET_NAME" do
 	
 		echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
 		# 网络引用方式依赖脚本文件路径
-		ShellPath="${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-		if [[ ! -f "${ShellPath}" ]]; then
-			# 本地引用方式依赖脚本文件路径
-			ShellPath="${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-		fi
-		
-		# echo "${ShellPath}"
+		ShellPath="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
+		echo "${ShellPath}"
 		if [[ -f "${ShellPath}" ]]; then
 			chmod +x ${ShellPath} # 脚本执行权限
 			${ShellPath} # 执行脚本
 		fi
+
+		echo "为避免脚本泄漏，脚本之行完成后，删除脚本"
+		rm -fr "${ShellPath}"
 	CMD
 	script_phase :name => "JGSIntegrityCheck", :script => JGSApplicationIntegrityCheckScript, :execution_position => :after_compile
 	...
@@ -142,17 +140,15 @@ end
 ```
 echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
 # 网络引用方式依赖脚本文件路径
-ShellPath="${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-if [[ ! -f "${ShellPath}" ]]; then
-	# 本地引用方式依赖脚本文件路径
-	ShellPath="${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh"
-fi
-	
-# echo "${ShellPath}"
+ShellPath="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
+echo "${ShellPath}"
 if [[ -f "${ShellPath}" ]]; then
 	chmod +x ${ShellPath} # 脚本执行权限
 	${ShellPath} # 执行脚本
 fi
+
+echo "为避免脚本泄漏，脚本之行完成后，删除脚本"
+rm -fr "${ShellPath}"
 ```
 
 <font style='color: red'>
@@ -169,13 +165,15 @@ fi
 echo "AfterCompile: 执行应用完整性校验-记录资源文件Hash脚本"
 
 # 自助framework打包引入脚本文件路径
-ShellPath="${BUILT_PRODUCTS_DIR}/JGSourceBase.framework/JGSIntegrityCheckRecordResourcesHash.sh"
-
-# echo "${ShellPath}"
+ShellPath="${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh"
+echo "${ShellPath}"
 if [[ -f "${ShellPath}" ]]; then
 	chmod +x ${ShellPath} # 脚本执行权限
 	${ShellPath} # 执行脚本
 fi
+
+echo "为避免脚本泄漏，脚本之行完成后，删除脚本"
+rm -fr "${ShellPath}"
 ```
 
 <strong style='color: red'>

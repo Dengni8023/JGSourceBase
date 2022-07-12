@@ -394,17 +394,15 @@ pre[data-line] .line-highlight[data-end]:after {
 	
 		echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
 		# &#x7F51;&#x7EDC;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
-		ShellPath=&quot;${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
-		if [[ ! -f &quot;${ShellPath}&quot; ]]; then
-			# &#x672C;&#x5730;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
-			ShellPath=&quot;${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
-		fi
-		
-		# echo &quot;${ShellPath}&quot;
+		ShellPath=&quot;${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+		echo &quot;${ShellPath}&quot;
 		if [[ -f &quot;${ShellPath}&quot; ]]; then
 			chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
 			${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
 		fi
+
+		echo &quot;&#x4E3A;&#x907F;&#x514D;&#x811A;&#x672C;&#x6CC4;&#x6F0F;&#xFF0C;&#x811A;&#x672C;&#x4E4B;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5220;&#x9664;&#x811A;&#x672C;&quot;
+		rm -fr &quot;${ShellPath}&quot;
 	CMD
 	script_phase :name =&gt; &quot;JGSIntegrityCheck&quot;, :script =&gt; JGSApplicationIntegrityCheckScript, :execution_position =&gt; :after_compile
 	...
@@ -420,17 +418,15 @@ end
 </ul>
 <pre data-role="codeBlock" data-info class="language-"><code>echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
 # &#x7F51;&#x7EDC;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
-ShellPath=&quot;${PODS_ROOT}/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
-if [[ ! -f &quot;${ShellPath}&quot; ]]; then
-	# &#x672C;&#x5730;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F9D;&#x8D56;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
-	ShellPath=&quot;${PROJECT_DIR}/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh&quot;
-fi
-	
-# echo &quot;${ShellPath}&quot;
+ShellPath=&quot;${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+echo &quot;${ShellPath}&quot;
 if [[ -f &quot;${ShellPath}&quot; ]]; then
 	chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
 	${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
 fi
+
+echo &quot;&#x4E3A;&#x907F;&#x514D;&#x811A;&#x672C;&#x6CC4;&#x6F0F;&#xFF0C;&#x811A;&#x672C;&#x4E4B;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5220;&#x9664;&#x811A;&#x672C;&quot;
+rm -fr &quot;${ShellPath}&quot;
 </code></pre><font style="color: red">
 <ul>
 <li>&#x4EE5;&#x4E0A;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x3001;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;<code>pod install</code>&#x80FD;&#x4FDD;&#x8BC1;&#x5C06;&#x6DFB;&#x52A0;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;&#x59CB;&#x7EC8;&#x4FDD;&#x6301;&#x5728;<code>Build Phases</code>&#x6700;&#x5E95;&#x90E8;&#xFF0C;&#x63A8;&#x8350;&#x5728;<code>Podfile</code>&#x4E2D;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;</li>
@@ -442,13 +438,15 @@ fi
 <pre data-role="codeBlock" data-info class="language-"><code>echo &quot;AfterCompile: &#x6267;&#x884C;&#x5E94;&#x7528;&#x5B8C;&#x6574;&#x6027;&#x6821;&#x9A8C;-&#x8BB0;&#x5F55;&#x8D44;&#x6E90;&#x6587;&#x4EF6;Hash&#x811A;&#x672C;&quot;
 
 # &#x81EA;&#x52A9;framework&#x6253;&#x5305;&#x5F15;&#x5165;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
-ShellPath=&quot;${BUILT_PRODUCTS_DIR}/JGSourceBase.framework/JGSIntegrityCheckRecordResourcesHash.sh&quot;
-
-# echo &quot;${ShellPath}&quot;
+ShellPath=&quot;${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/JGSourceBase.bundle/JGSIntegrityCheckRecordResourcesHash.sh&quot;
+echo &quot;${ShellPath}&quot;
 if [[ -f &quot;${ShellPath}&quot; ]]; then
 	chmod +x ${ShellPath} # &#x811A;&#x672C;&#x6267;&#x884C;&#x6743;&#x9650;
 	${ShellPath} # &#x6267;&#x884C;&#x811A;&#x672C;
 fi
+
+echo &quot;&#x4E3A;&#x907F;&#x514D;&#x811A;&#x672C;&#x6CC4;&#x6F0F;&#xFF0C;&#x811A;&#x672C;&#x4E4B;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5220;&#x9664;&#x811A;&#x672C;&quot;
+rm -fr &quot;${ShellPath}&quot;
 </code></pre><strong style="color: red">
 <p>&#x26A0;&#xFE0F; &#x811A;&#x672C;&#x5185;&#x5BB9;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x4FEE;&#x6539;&#x4E3A;&#x6267;&#x884C;&#x81EA;&#x5B9A;&#x811A;&#x672C;&#x5373;&#x53EF;</p>
 <p>&#x26A0;&#xFE0F; &#x53C2;&#x8003;&#x4E0A;&#x8FF0;&#x811A;&#x672C;&#x5185;&#x5BB9;&#xFF0C;<code>Pod</code>&#x5F15;&#x5165;&#x3001;&#x6E90;&#x7801;&#x5F15;&#x5165;&#x3001;<code>framework</code>&#x5F15;&#x5165;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x914D;&#x7F6E;&#x811A;&#x672C;<code>ShellPath</code>&#x5373;&#x53EF;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x6253;&#x5305;&#x811A;&#x672C;&#x8BB0;&#x5F55;&#x6821;&#x9A8C;&#x4FE1;&#x606F;</p>

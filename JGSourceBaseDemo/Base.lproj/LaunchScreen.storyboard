@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2022年 MeiJiGao. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="12" y="841.5" width="390" height="20.5"/>
+                                <rect key="frame" x="12" y="829.5" width="390" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                             <constraint firstItem="e7M-sd-gT4" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="DtK-v5-d11"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="12" id="SfN-ll-jLj"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" id="Y44-ml-fuU"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="12" id="Y44-ml-fuU"/>
                             <constraint firstAttribute="trailing" secondItem="e7M-sd-gT4" secondAttribute="trailing" id="m5f-Og-q5B"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
                             <constraint firstAttribute="bottom" secondItem="e7M-sd-gT4" secondAttribute="bottom" id="u67-Qq-FWt"/>

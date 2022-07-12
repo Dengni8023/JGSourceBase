@@ -30,77 +30,78 @@ workspace "JGSourceBase"
 # platform
 platform :ios, 11.0
 
-# JGSourceBase
-target "JGSourceBase" do
+abstract_target "JGSBase" do
   
   # JGSHUD
   pod 'MBProgressHUD'
   
-  JGSPodsScriptBeforeCompile = <<-CMD
+  # JGSourceBase
+  target "JGSourceBase" do
+    
+    JGSPodsScriptBeforeCompile = <<-CMD
 
-  echo "****** 编译开始前，执行Podfile自定义脚本 ******"
-  
-  echo "执行自定义脚本修改源码 Info.Plist"
-  chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限
-  ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh
-  
-  echo "****** 编译前Podfile自定义脚本执行完成 ******"
-  
-  CMD
+    echo "****** 编译开始前，执行Podfile自定义脚本 ******"
+    
+    echo "执行自定义脚本修改源码 Info.Plist"
+    chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限
+    ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh
+    
+    echo "****** 编译前Podfile自定义脚本执行完成 ******"
+    
+    CMD
 
-  script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+    
+    # project
+    project "JGSourceBase.xcodeproj"
+  end
   
-  # project
-  project "JGSourceBase.xcodeproj"
-end
+  # JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
+  target "JGSourceBaseDemo" do
+    
+    pod 'IQKeyboardManager', '~> 6.5.9' #  https://github.com/hackiftekhar/IQKeyboardManager.git
+    # pod 'SAMKeychain' # KeyChain 测试
+    # pod 'FLAnimatedImage'
+    
+    #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
+    pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
+    
+    JGSPodsScriptBeforeCompileDemo = <<-CMD
 
-# JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
-target "JGSourceBaseDemo" do
-  
-  pod 'IQKeyboardManager', '~> 6.5.9' #  https://github.com/hackiftekhar/IQKeyboardManager.git
-  # pod 'SAMKeychain' # KeyChain 测试
-  # pod 'FLAnimatedImage'
-  
-  #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
-  pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
-  
-  # JGSHUD
-  pod 'MBProgressHUD'
-  
-  JGSPodsScriptBeforeCompileDemo = <<-CMD
+    echo "****** 编译开始前，执行Podfile自定义脚本 ******"
+    
+    echo "执行自定义脚本修改源码 Info.Plist"
+    chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限
+    ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh
+    
+    echo "****** 编译前Podfile自定义脚本执行完成 ******"
+    
+    CMD
 
-  echo "****** 编译开始前，执行Podfile自定义脚本 ******"
-  
-  echo "执行自定义脚本修改源码 Info.Plist"
-  chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限
-  ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh
-  
-  echo "****** 编译前Podfile自定义脚本执行完成 ******"
-  
-  CMD
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompileDemo, :execution_position => :before_compile
+    
+    JGSPodsScriptAfterCompile = <<-CMD
 
-  script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompileDemo, :execution_position => :before_compile
-  
-  JGSPodsScriptAfterCompile = <<-CMD
+    echo "****** 编译结束后，执行Podfile自定义脚本 ******"
+    
+    echo "执行自定义脚本修改构建物 Info.Plist"
+    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh # sh执行权限
+    ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh "app" # 执行sh
+    
+    echo "执行应用完整性校验资源文件Hash记录脚本"
+    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
+    ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
+    
+    echo "****** 编译后Podfile自定义脚本执行完成 ******"
+    
+    CMD
 
-  echo "****** 编译结束后，执行Podfile自定义脚本 ******"
-  
-  echo "执行自定义脚本修改构建物 Info.Plist"
-  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh # sh执行权限
-  ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh "app" # 执行sh
-  
-  echo "执行应用完整性校验资源文件Hash记录脚本"
-  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
-  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
-  
-  echo "****** 编译后Podfile自定义脚本执行完成 ******"
-  
-  CMD
+    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
+    
+    # project
+    project "JGSourceBase.xcodeproj"
+  end
 
-  script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
-  
-  # project
-  project "JGSourceBase.xcodeproj"
 end
 
 # Hooks: pre_install 在Pods被下载后但是还未安装前对Pods做一些改变

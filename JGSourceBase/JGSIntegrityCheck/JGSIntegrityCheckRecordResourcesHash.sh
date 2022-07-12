@@ -1,12 +1,12 @@
 #!/bin/sh
 ###
-# @Author: 梅继高
-# @Date: 2022-05-11 13:24:28
- # @LastEditTime: 2022-05-27 00:52:00
+ # @Author: 梅继高
+ # @Date: 2022-05-11 13:24:28
+ # @LastEditTime: 2022-07-05 13:54:57
  # @LastEditors: 梅继高
-# @Description:
- # @FilePath: /JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh
-# Copyright © 2022 MeiJiGao. All rights reserved.
+ # @Description:
+ # @FilePath: /JGSourceBase/JGSourceBase/JGSIntegrityCheck/JGSIntegrityCheckRecordResourcesHash.sh
+ # Copyright © 2022 MeiJiGao. All rights reserved.
 ###
 
 #  JGSIntegrityResourcesHashRecord.sh

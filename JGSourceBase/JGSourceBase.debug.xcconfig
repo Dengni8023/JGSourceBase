@@ -9,6 +9,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "../Pods/Target Support Files/Pods-JGSourceBase/Pods-JGSourceBase.debug.xcconfig"
+#include "../Pods/Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.debug.xcconfig"
 
 #include "./JGSourceBase.xcconfig"
