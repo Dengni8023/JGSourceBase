@@ -24,10 +24,18 @@
             //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
             //NSStringFromSelector(@selector(valueForKey:))
         ];
-        //Class class = NSClassFromString(@"__NSPlaceholderDictionary");
-        //NSArray<NSString *> *originalArray = @[
-        //    NSStringFromSelector(@selector(initWithObjects:forKeys:count:)),
-        //];
+        
+        [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            SEL originalSelector = NSSelectorFromString(obj);
+            SEL swizzledSelector = NSSelectorFromString([@"JGSBase_" stringByAppendingString:obj]);
+            JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
+        }];
+        
+        class = NSClassFromString(@"__NSPlaceholderDictionary");
+        originalArray = @[
+            NSStringFromSelector(@selector(initWithObjects:forKeys:count:)),
+        ];
         
         [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -36,6 +44,26 @@
             JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
         }];
     });
+}
+
+- (instancetype)JGSBase_initWithObjects:(id  _Nonnull const[])objects forKeys:(id<NSCopying>  _Nonnull const[])keys count:(NSUInteger)cnt {
+    
+    NSInteger index = 0;
+    id newObjects[cnt];
+    id<NSCopying> newKeys[cnt];
+    
+    for (int i = 0; i < cnt; i++) {
+        id object = objects[i];
+        id<NSCopying> key = keys[i];
+        if (object) {
+            newObjects[index] = object;
+            newKeys[index] = key;
+            index++;
+        }
+    }
+    cnt = index;
+    
+    return [self JGSBase_initWithObjects:newObjects forKeys:newKeys count:cnt];
 }
 
 - (id)JGSBase_objectForKey:(id)aKey {
@@ -288,8 +316,26 @@
 
 - (NSDictionary *)jg_dictionaryForKey:(const id)key defaultValue:(NSDictionary *)defaultValue {
     
-    id obj = [self jg_objectForKey:key withClass:[NSDictionary class] defaultValue:defaultValue];
-    return obj;
+    //id obj = [self jg_objectForKey:key withClass:[NSDictionary class] defaultValue:defaultValue];
+    id obj = [self jg_objectForKey:key withClass:[NSDictionary class]];
+    if (obj == nil) {
+        
+        NSData *jsonData = [self jg_objectForKey:key withClass:[NSData class]];
+        if (jsonData.length == 0) {
+            NSString *json = [self jg_stringForKey:key];
+            if (json.length > 0) {
+                jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+            }
+        }
+        
+        if (jsonData.length > 0) {
+            id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+            if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+                obj = jsonObject;
+            }
+        }
+    }
+    return obj ?: defaultValue;
 }
 
 #pragma mark - Array
@@ -299,8 +345,26 @@
 
 - (NSArray *)jg_arrayForKey:(const id)key defaultValue:(NSArray *)defaultValue {
     
-    id obj = [self jg_objectForKey:key withClass:[NSArray class] defaultValue:defaultValue];
-    return obj;
+    //id obj = [self jg_objectForKey:key withClass:[NSArray class] defaultValue:defaultValue];
+    id obj = [self jg_objectForKey:key withClass:[NSArray class]];
+    if (obj == nil) {
+        
+        NSData *jsonData = [self jg_objectForKey:key withClass:[NSData class]];
+        if (jsonData.length == 0) {
+            NSString *json = [self jg_stringForKey:key];
+            if (json.length > 0) {
+                jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+            }
+        }
+        
+        if (jsonData.length > 0) {
+            id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+            if ([jsonObject isKindOfClass:[NSArray class]]) {
+                obj = jsonObject;
+            }
+        }
+    }
+    return obj ?: defaultValue;
 }
 
 #pragma mark - End

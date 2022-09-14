@@ -1,8 +1,8 @@
 //
-//  JGSNSObjectDemoVC.h
+//  JGSNSDataDemoVC.h
 //  JGSourceBaseDemo
 //
-//  Created by 梅继高 on 2022/3/17.
+//  Created by 梅继高 on 2022/7/18.
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGSNSObjectDemoVC : JGSDemoViewController
+@interface JGSNSDataDemoVC : JGSDemoViewController
 
 @end
 

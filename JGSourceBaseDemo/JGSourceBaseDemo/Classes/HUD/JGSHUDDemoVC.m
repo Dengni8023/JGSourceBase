@@ -128,7 +128,7 @@
                 case 3: {
                     
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage
+#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
 #endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
@@ -138,7 +138,7 @@
                     
                 case 4: {
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage
+#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
 #endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
@@ -175,7 +175,7 @@
                 case 2: {
                     static BOOL show = NO; show = !show;
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage
+#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
 #endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];

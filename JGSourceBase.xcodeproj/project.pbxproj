@@ -40,6 +40,7 @@
 		D4075BC12863315D00E4BFEA /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075BA92863315D00E4BFEA /* JGSHUDDemoVC.m */; };
 		D4075BC62863334300E4BFEA /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4075BCE286334DE00E4BFEA /* JGSourceBase.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D403B1322850335200F4F304 /* JGSourceBase.bundle */; };
+		D40A3CCC28854048006DE6DD /* JGSNSArrayDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */; };
 		D4358B3C286E93E9008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B3B286E93E9008A0A11 /* rsa_message.txt */; };
 		D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7692844974A002C27D9 /* NSData+JGSAES.m */; };
 		D436C7712844974A002C27D9 /* NSData+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C76A2844974A002C27D9 /* NSData+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,9 +50,12 @@
 		D436C77B2844975C002C27D9 /* NSString+JGSAES.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C7772844975C002C27D9 /* NSString+JGSAES.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D436C77D2844975C002C27D9 /* NSString+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7792844975C002C27D9 /* NSString+JGSAES.m */; };
 		D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C77F28449F4C002C27D9 /* JGSEncryption.m */; };
+		D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
 		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317F288A880D001D4119 /* NSArray+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3180288A880D001D4119 /* NSArray+JGSBase.m */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
 		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
@@ -60,6 +64,7 @@
 		D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */; };
 		D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */; };
 		D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */; };
+		D4D0369E2885071200BA8FAE /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6976E2806E0F900CE1F9F /* JGSReachability.m */; };
 		D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -238,6 +243,8 @@
 		D4075BCB2863339600E4BFEA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = JGSourceBaseDemo/PrefixHeader.pch; sourceTree = "<group>"; };
 		D4075BD12863368900E4BFEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D4075BD22863368B00E4BFEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D40A3CCA28854048006DE6DD /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
+		D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSArrayDemoVC.m; sourceTree = "<group>"; };
 		D4358B3B286E93E9008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
 		D436C7692844974A002C27D9 /* NSData+JGSAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JGSAES.m"; sourceTree = "<group>"; };
 		D436C76A2844974A002C27D9 /* NSData+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JGSBase.h"; sourceTree = "<group>"; };
@@ -252,6 +259,10 @@
 		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyVersionBeforeCompile.sh; sourceTree = "<group>"; };
 		D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheck.h; sourceTree = "<group>"; };
+		D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSArray.h"; sourceTree = "<group>"; };
+		D45E317F288A880D001D4119 /* NSArray+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JGSBase.h"; sourceTree = "<group>"; };
+		D45E3180288A880D001D4119 /* NSArray+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JGSBase.m"; sourceTree = "<group>"; };
+		D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSiOSDeviceList.json; sourceTree = "<group>"; };
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
 		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
@@ -264,6 +275,8 @@
 		D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_2048.p12; sourceTree = "<group>"; };
 		D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_2048.pem; sourceTree = "<group>"; };
 		D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckRecordResourcesHash.sh; sourceTree = "<group>"; };
+		D4D0369C2885071200BA8FAE /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
+		D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
 		D4D6976D2806E0F900CE1F9F /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
 		D4D6976E2806E0F900CE1F9F /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
 		D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUserDefaults.h; sourceTree = "<group>"; };
@@ -517,6 +530,10 @@
 		D4075B892863315D00E4BFEA /* NS */ = {
 			isa = PBXGroup;
 			children = (
+				D40A3CCA28854048006DE6DD /* JGSNSArrayDemoVC.h */,
+				D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */,
+				D4D0369C2885071200BA8FAE /* JGSNSDataDemoVC.h */,
+				D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */,
 				D4075B902863315D00E4BFEA /* JGSNSDateDemoVC.h */,
 				D4075B8D2863315D00E4BFEA /* JGSNSDateDemoVC.m */,
 				D4075B8C2863315D00E4BFEA /* JGSNSDictionaryDemoVC.h */,
@@ -616,6 +633,16 @@
 				D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */,
 			);
 			path = JGSScripts;
+			sourceTree = "<group>";
+		};
+		D45E317D288A877E001D4119 /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */,
+				D45E317F288A880D001D4119 /* NSArray+JGSBase.h */,
+				D45E3180288A880D001D4119 /* NSArray+JGSBase.m */,
+			);
+			path = NSArray;
 			sourceTree = "<group>";
 		};
 		D4B7DF352834EBC400BFAE79 /* JGSourceBase.xcconfig */ = {
@@ -723,6 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D697832806E0F900CE1F9F /* JGSiOSDeviceList-Origin.json */,
+				D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */,
 				D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */,
 			);
 			path = Resources;
@@ -786,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D697B12806E0F900CE1F9F /* JGSCategory.h */,
+				D45E317D288A877E001D4119 /* NSArray */,
 				D436C7682844974A002C27D9 /* NSData */,
 				D4D697CC2806E0F900CE1F9F /* NSDate */,
 				D4D697AD2806E0F900CE1F9F /* NSDictionary */,
@@ -982,6 +1011,7 @@
 				D4D697F32806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.h in Headers */,
 				D4D697FE2806E0F900CE1F9F /* JGSKeyboardToolbar.h in Headers */,
 				D4D698192806E0F900CE1F9F /* JGSCategory+NSObject.h in Headers */,
+				D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */,
 				D4D698202806E0F900CE1F9F /* NSDate+JGSBase.h in Headers */,
 				D4D697EB2806E0F900CE1F9F /* JGSBaseUtils.h in Headers */,
 				D4D6981C2806E0F900CE1F9F /* NSDate+JGSFormat.h in Headers */,
@@ -1012,6 +1042,7 @@
 				D4D697EC2806E0F900CE1F9F /* JGSWeakStrong.h in Headers */,
 				D4D697E22806E0F900CE1F9F /* JGSDevice.h in Headers */,
 				D4D698032806E0F900CE1F9F /* UIImage+JGSBase.h in Headers */,
+				D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */,
 				D4D697ED2806E0F900CE1F9F /* JGSLogFunction.h in Headers */,
 				D4D698002806E0F900CE1F9F /* JGSBaseKeyboard.h in Headers */,
 				D436C77B2844975C002C27D9 /* NSString+JGSAES.h in Headers */,
@@ -1325,10 +1356,12 @@
 				D4075AE82863123300E4BFEA /* ViewController.m in Sources */,
 				D4075BBD2863315D00E4BFEA /* JGSDataStorageDemoVC.m in Sources */,
 				D4075BB62863315D00E4BFEA /* JGSNSDateDemoVC.m in Sources */,
+				D4D0369E2885071200BA8FAE /* JGSNSDataDemoVC.m in Sources */,
 				D4075BB52863315D00E4BFEA /* JGSNSObjectDemoVC.m in Sources */,
 				D4075BBF2863315D00E4BFEA /* JGSDemoViewController.m in Sources */,
 				D4075BC12863315D00E4BFEA /* JGSHUDDemoVC.m in Sources */,
 				D4075BBC2863315D00E4BFEA /* JGSDeviceDemoVC.m in Sources */,
+				D40A3CCC28854048006DE6DD /* JGSNSArrayDemoVC.m in Sources */,
 				D4075BB32863315D00E4BFEA /* JGSEncryptionDemoVC.m in Sources */,
 				D4075AE22863123300E4BFEA /* AppDelegate.m in Sources */,
 				D4075BB92863315D00E4BFEA /* JGSNSStringDemoVC.m in Sources */,
@@ -1355,6 +1388,7 @@
 				D4D697DA2806E0F900CE1F9F /* UIView+JGSLoadingHUD.m in Sources */,
 				D4D697DF2806E0F900CE1F9F /* UIView+JGSToast.m in Sources */,
 				D4D6981E2806E0F900CE1F9F /* NSDate+JGSFormat.m in Sources */,
+				D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */,
 				D4D697FB2806E0F900CE1F9F /* JGSLetterKeyboard.m in Sources */,
 				D4D697F62806E0F900CE1F9F /* JGSKeyboardConstants.m in Sources */,
 				D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */,

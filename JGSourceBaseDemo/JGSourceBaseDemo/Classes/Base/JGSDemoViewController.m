@@ -313,7 +313,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 #endif
         
         NSString *text = @"调试日志输出区域\n\n内容可复制、不可编辑";
-        _textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+        _textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     }
     return _textView;
 }

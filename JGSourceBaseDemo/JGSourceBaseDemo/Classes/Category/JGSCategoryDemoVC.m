@@ -8,13 +8,29 @@
 
 #import "JGSCategoryDemoVC.h"
 // NS
-#import "JGSNSDictionaryDemoVC.h"
+#import "JGSNSArrayDemoVC.h"
+#import "JGSNSDataDemoVC.h"
 #import "JGSNSDateDemoVC.h"
+#import "JGSNSDictionaryDemoVC.h"
 #import "JGSNSObjectDemoVC.h"
 #import "JGSNSStringDemoVC.h"
 #import "JGSNSURLDemoVC.h"
 // UI
 #import "JGSUIAlertControllerDemoVC.h"
+
+typedef NS_ENUM(NSInteger, JGSNSCategoryRow) {
+    JGSNSCategoryRowArray = 0,
+    JGSNSCategoryRowData,
+    JGSNSCategoryRowDate,
+    JGSNSCategoryRowDict,
+    JGSNSCategoryRowObject,
+    JGSNSCategoryRowString,
+    JGSNSCategoryRowURL,
+};
+
+typedef NS_ENUM(NSInteger, JGSUICategoryRow) {
+    JGSUICategoryRowAlertController = 0,
+};
 
 @interface JGSCategoryDemoVC ()
 
@@ -40,90 +56,86 @@
 	return @[
 		JGSDemoTableSectionMake(@" NS",
 		@[
-			JGSDemoTableRowMake(@"NSDate", nil, @selector(jumpToDateDemo:)),
-			JGSDemoTableRowMake(@"NSDictionary", nil, @selector(jumpToDictionaryDemo:)),
-			JGSDemoTableRowMake(@"NSObject", nil, @selector(jumpToObjectDemo:)),
-			JGSDemoTableRowMake(@"NSString", nil, @selector(jumpToStringDemo:)),
-			JGSDemoTableRowMake(@"NSURL", nil, @selector(jumpToURLDemo:)),
+            JGSDemoTableRowMake(@"NSArray", nil, @selector(jumpToNSCategoryDemo:)),
+            JGSDemoTableRowMake(@"NSData", nil, @selector(jumpToNSCategoryDemo:)),
+			JGSDemoTableRowMake(@"NSDate", nil, @selector(jumpToNSCategoryDemo:)),
+			JGSDemoTableRowMake(@"NSDictionary", nil, @selector(jumpToNSCategoryDemo:)),
+			JGSDemoTableRowMake(@"NSObject", nil, @selector(jumpToNSCategoryDemo:)),
+			JGSDemoTableRowMake(@"NSString", nil, @selector(jumpToNSCategoryDemo:)),
+			JGSDemoTableRowMake(@"NSURL", nil, @selector(jumpToNSCategoryDemo:)),
 		]),
 		JGSDemoTableSectionMake(@" UI",
 		@[
-			JGSDemoTableRowMake(@"UIAlertController", nil, @selector(jumpToCategoryAlert:)),
+			JGSDemoTableRowMake(@"UIAlertController", nil, @selector(jumpToUICategoryDemo:)),
 		]),
 	];
 }
 
 #pragma mark - Action - NS
-- (void)jumpToDateDemo:(NSIndexPath *)indexPath {
+- (void)jumpToNSCategoryDemo:(NSIndexPath *)indexPath {
     
-#ifdef JGSCategory_NSDictionary
-    JGSNSDateDemoVC *vcT = [[JGSNSDateDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
+    switch ((JGSNSCategoryRow)indexPath.row) {
+        case JGSNSCategoryRowArray: {
+            
+            JGSNSArrayDemoVC *vcT = [[JGSNSArrayDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowData: {
+            
+            JGSNSDataDemoVC *vcT = [[JGSNSDataDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowDate: {
+            
+            JGSNSDateDemoVC *vcT = [[JGSNSDateDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowDict: {
+            
+            JGSNSDictionaryDemoVC *vcT = [[JGSNSDictionaryDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowObject: {
+            
+            JGSNSObjectDemoVC *vcT = [[JGSNSObjectDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowString: {
+            
+            JGSNSStringDemoVC *vcT = [[JGSNSStringDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+            
+        case JGSNSCategoryRowURL: {
+            
+            JGSNSURLDemoVC *vcT = [[JGSNSURLDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+    }
 }
 
-- (void)jumpToDictionaryDemo:(NSIndexPath *)indexPath {
+- (void)jumpToUICategoryDemo:(NSIndexPath *)indexPath {
     
-#ifdef JGSCategory_NSDictionary
-    JGSNSDictionaryDemoVC *vcT = [[JGSNSDictionaryDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
-}
-
-- (void)jumpToObjectDemo:(NSIndexPath *)indexPath {
-    
-#ifdef JGSCategory_NSDictionary
-    JGSNSObjectDemoVC *vcT = [[JGSNSObjectDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
-}
-
-- (void)jumpToStringDemo:(NSIndexPath *)indexPath {
-    
-#ifdef JGSCategory_NSDictionary
-    JGSNSStringDemoVC *vcT = [[JGSNSStringDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
-}
-
-- (void)jumpToURLDemo:(NSIndexPath *)indexPath {
-    
-#ifdef JGSCategory_NSDictionary
-    JGSNSURLDemoVC *vcT = [[JGSNSURLDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
-}
-
-#pragma mark - Action - UI
-- (void)jumpToCategoryAlert:(NSIndexPath *)indexPath {
-    
-#ifdef JGSCategory_UIAlertController_h
-    JGSUIAlertControllerDemoVC *vcT = [[JGSUIAlertControllerDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
-}
-
-#pragma mark - Category - NSDate
-- (void)jumpToCategoryDate {
-    
-#ifdef JGSCategory_UIAlertController_h
-    JGSNSDateDemoVC *vcT = [[JGSNSDateDemoVC alloc] init];
-    [self.navigationController pushViewController:vcT animated:YES];
-#else
-    JGSDemoShowConsoleLog(self, @"Unimplemented or dependencies not founded !");
-#endif
+    switch ((JGSUICategoryRow)indexPath.row) {
+        case JGSUICategoryRowAlertController: {
+            
+            JGSUIAlertControllerDemoVC *vcT = [[JGSUIAlertControllerDemoVC alloc] init];
+            [self.navigationController pushViewController:vcT animated:YES];
+        }
+            break;
+    }
 }
 
 #pragma mark - End

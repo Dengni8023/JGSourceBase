@@ -1,20 +1,11 @@
 PODS:
   - IQKeyboardManager (6.5.10)
   - JGSourceBase/Base (1.3.2)
-  - JGSourceBase/Category (1.3.2):
-    - JGSourceBase/Category/NSData (= 1.3.2)
-    - JGSourceBase/Category/NSDate (= 1.3.2)
-    - JGSourceBase/Category/NSDictionary (= 1.3.2)
-    - JGSourceBase/Category/NSObject (= 1.3.2)
-    - JGSourceBase/Category/NSString (= 1.3.2)
-    - JGSourceBase/Category/NSURL (= 1.3.2)
-    - JGSourceBase/Category/UIAlertController (= 1.3.2)
-    - JGSourceBase/Category/UIApplication (= 1.3.2)
-    - JGSourceBase/Category/UIColor (= 1.3.2)
-    - JGSourceBase/Category/UIImage (= 1.3.2)
+  - JGSourceBase/Category/NSArray (1.3.2):
+    - JGSourceBase/Category/NSDictionary
+    - JGSourceBase/Category/NSObject
   - JGSourceBase/Category/NSData (1.3.2):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSDate (1.3.2)
   - JGSourceBase/Category/NSDictionary (1.3.2):
     - JGSourceBase/Base
   - JGSourceBase/Category/NSObject (1.3.2):
@@ -22,14 +13,7 @@ PODS:
     - JGSourceBase/Category/NSString
   - JGSourceBase/Category/NSString (1.3.2):
     - JGSourceBase/Category/NSData
-  - JGSourceBase/Category/NSURL (1.3.2)
-  - JGSourceBase/Category/UIAlertController (1.3.2):
-    - JGSourceBase/Base
-  - JGSourceBase/Category/UIApplication (1.3.2):
-    - JGSourceBase/Base
   - JGSourceBase/Category/UIColor (1.3.2)
-  - JGSourceBase/Category/UIImage (1.3.2):
-    - JGSourceBase/Base
   - JGSourceBase/DataStorage (1.3.2):
     - JGSourceBase/Base
   - JGSourceBase/Device (1.3.2):
@@ -63,7 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.9)
-  - JGSourceBase/Category (from `./..`)
+  - JGSourceBase/Category/NSArray (from `./..`)
   - JGSourceBase/DataStorage (from `./..`)
   - JGSourceBase/Device (from `./..`)
   - JGSourceBase/Encryption (from `./..`)
@@ -92,10 +76,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: 4511ead2fec18ea61a9874d71462f262efb8c842
+  JGSourceBase: 31299db693c13b97e8b74d4b67c5c01712c20f16
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: b3fb675c3cc4b469bdab1e818011dc7860469d81
+PODFILE CHECKSUM: 34e5fa1d6c715b9d46d185b3541e3a29a62f6a22
 
 COCOAPODS: 1.11.2

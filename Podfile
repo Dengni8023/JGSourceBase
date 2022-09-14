@@ -133,6 +133,10 @@ post_install do |installer|
       # 解决最新Mac系统编模拟器译报错：
       # building for iOS Simulator-x86_64 but attempting to link with file built for iOS Simulator-arm64
       config.build_settings['ONLY_ACTIVE_ARCH'] = false
+      # Xcode 14适配
+      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+      config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+      config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
     end
   end
   

@@ -354,7 +354,26 @@
     dispatch_once(&onceToken, ^{
         
 		NSString *fileName = @"JGSiOSDeviceList.json.sec";
-        NSString *path = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
+        NSString *savedPath = [JGSPermanentFileSavedDirectory() stringByAppendingPathComponent:fileName];
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
+        NSString *path = [[NSFileManager defaultManager] fileExistsAtPath:savedPath] ? savedPath : bundlePath;
+        
+        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            // 因版本问题，版本内置资源不一定为最新，读取网络仓库最新资源并存本地
+            NSString *urlStr = JGSLatestGlobalConfiguration()[@"iOSDeviceListFilePath"];
+            if (![urlStr isKindOfClass:NSString.class] || urlStr.length == 0) {
+                return;
+            }
+            
+            [JGSBaseUtils requestGitRepositoryFileContent:urlStr retryTimes:0 completion:^(NSData * _Nullable fileData) {
+                
+                if (fileData.length > 0) {
+                    // 网络文件存储本地
+                    [fileData writeToFile:savedPath atomically:YES];
+                }
+            }];
+        });
         
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
         NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
@@ -429,7 +448,6 @@
     }];
     
     //JGSPrivateLog(@"addresses: %@", addressesInfo);
-    
     NSString *ipAddress = nil;
     for (NSString *key in searchArray) {
         ipAddress = addressesInfo[key];

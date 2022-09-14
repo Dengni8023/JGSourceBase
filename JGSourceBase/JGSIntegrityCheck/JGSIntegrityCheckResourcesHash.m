@@ -223,7 +223,7 @@
 		}
 		
 		// 检验文件JSON解析
-		NSDictionary<NSString *, NSString *> *realCheckFileMap = [NSJSONSerialization JSONObjectWithData:realCheckFileJSONData options:NSJSONReadingFragmentsAllowed error:nil];
+		NSDictionary<NSString *, NSString *> *realCheckFileMap = [NSJSONSerialization JSONObjectWithData:realCheckFileJSONData options:kNilOptions error:nil];
 		if (realCheckFileMap.count == 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, nil);
@@ -265,7 +265,7 @@
 				}
 				
 				// Plist记录内容解析为Dictionary
-				NSDictionary *recordPlistMap = [NSJSONSerialization JSONObjectWithData:recordPlistData options:NSJSONReadingFragmentsAllowed error:nil];
+				NSDictionary *recordPlistMap = [NSJSONSerialization JSONObjectWithData:recordPlistData options:kNilOptions error:nil];
 				if (![recordPlistMap isKindOfClass:[NSDictionary class]] || recordPlistMap.count == 0) {
 					return;
 				}
@@ -276,7 +276,7 @@
 				if ([plistResult isKindOfClass:[NSDictionary class]] && plistResult.count > 0) {
 					[unpassFiles addObject:recordFileName];
 					[unpassPlistInfo setDictionary:plistResult];
-					JGSPrivateLog(@"校验不通过：%@ =>\n%@)", recordFileName, [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:unpassPlistInfo options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+					JGSPrivateLog(@"校验不通过：%@ =>\n%@)", recordFileName, [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:unpassPlistInfo options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil] encoding:NSUTF8StringEncoding]);
 				}
 				
 				return;

@@ -8,7 +8,6 @@
 
 #import "JGSNSURLDemoVC.h"
 
-#ifdef JGSCategory_NSURL
 @interface JGSNSURLDemoVC ()
 
 @end
@@ -27,6 +26,7 @@
     
 }
 
+#ifdef JGSCategory_NSURL_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
@@ -70,5 +70,6 @@
     }
 }
 
-@end
 #endif
+
+@end

@@ -371,10 +371,34 @@
                 "SizePX": "2778x1284"
             }, {
                 "Generation": "iPhone SE (3rd generation)",
-                "Identifier": ["iPhone14,3"],
+                "Identifier": ["iPhone14,6"],
                 "Scale": "2x",
                 "SizePT": "667x375",
                 "SizePX": "1334x750"
+            }, {
+                "Generation": "iPhone 14",
+                "Identifier": ["iPhone14,7"],
+                "Scale": "3x",
+                "SizePT": "844x390",
+                "SizePX": "2532x1170"
+            }, {
+                "Generation": "iPhone 14 Plus",
+                "Identifier": ["iPhone14,8"],
+                "Scale": "3x",
+                "SizePT": "926x428",
+                "SizePX": "2778x1284"
+            }, {
+                "Generation": "iPhone 14 Pro",
+                "Identifier": ["iPhone15,2"],
+                "Scale": "3x",
+                "SizePT": "852x393",
+                "SizePX": "2556x1179"
+            }, {
+                "Generation": "iPhone 14 Pro Max",
+                "Identifier": ["iPhone15,3"],
+                "Scale": "3x",
+                "SizePT": "932x430",
+                "SizePX": "2796x1290"
             }],
         "iPod touch": [
             {

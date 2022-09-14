@@ -8,7 +8,6 @@
 
 #import "JGSUIAlertControllerDemoVC.h"
 
-#ifdef JGSCategory_UIAlertController_h
 @interface JGSUIAlertControllerDemoVC ()
 
 @end
@@ -27,6 +26,7 @@
     
 }
 
+#ifdef JGSCategory_UIAlertController_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
@@ -189,5 +189,6 @@
     }
 }
 
-@end
 #endif
+
+@end

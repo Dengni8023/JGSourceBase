@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef JGSCategory_UIAlertController_h
 @interface JGSUIAlertControllerDemoVC : JGSDemoViewController
 
 @end
-#endif
 
 NS_ASSUME_NONNULL_END

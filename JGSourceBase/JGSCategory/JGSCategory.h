@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 #if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/JGSCategory+NSArray.h> // NSArray
 #import <JGSourceBase/JGSCategory+NSData.h> // NSData
 #import <JGSourceBase/JGSCategory+NSDate.h> // NSDate
 #import <JGSourceBase/JGSCategory+NSDictionary.h> // NSDictionary
@@ -23,6 +24,7 @@
 #import <JGSourceBase/JGSCategory+UIColor.h> // UIColor
 #import <JGSourceBase/JGSCategory+UIImage.h> // UIImage
 #else
+#import "JGSCategory+NSArray.h" // NSArray
 #import "JGSCategory+NSData.h" // NSData
 #import "JGSCategory+NSDate.h" // NSDate
 #import "JGSCategory+NSDictionary.h" // NSDictionary

@@ -59,7 +59,8 @@
 	CCCryptorStatus cryptStatus = CCCrypt(operation, kCCAlgorithmAES, options, keyBytes, keyLength, ivBytes, contentBytes, dataLength, operationBytes, operationSize, &actualOutSize);
 	if (cryptStatus == kCCSuccess) {
 		// operationBytes 自动释放
-		return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+		NSData *cryptData = [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
+        return cryptData;
 	}
 	
 	free(operationBytes); operationBytes = NULL;

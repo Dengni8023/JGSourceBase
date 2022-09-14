@@ -37,7 +37,6 @@ static NSString * _Nullable getMIMEType(NSString * _Nonnull path) {
 /// @param path 文件全路径
 static void sortPlistFileContent(NSString * _Nonnull path, void (^completion)(BOOL result, NSError * _Nullable error)) {
     
-    NSLog(@"%@", path);
     if (path.length == 0 || ![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         completion ? completion(NO, nil) : nil;
         return;
@@ -145,14 +144,72 @@ void handleDevicesInfo(void) {
 			}];
 		}];
 	}];
-	
-	NSString *destFileName = @"JGSiOSDeviceList.json.sec";
-	NSString *newPath = [JGSDeviceSourceDir stringByAppendingPathComponent:destFileName];
-	
-	NSData *sortedData = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
-	sortedData = aesEncryptData(sortedData, destFileName) ?: [NSData data];
-	
-	[sortedData writeToFile:newPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
+    
+    NSData *sortedData = [NSJSONSerialization dataWithJSONObject:models options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
+    
+    // 整理后源JSON文件
+    NSString *destFileName = @"JGSiOSDeviceList.json";
+    NSString *jsonPath = [JGSDeviceSourceDir stringByAppendingPathComponent:destFileName];
+    [sortedData writeToFile:jsonPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
+    
+    // 加密-整理后源JSON文件
+    NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
+	sortedData = aesEncryptData(sortedData, secFileName) ?: [NSData data];
+    NSString *secPath = [JGSDeviceSourceDir stringByAppendingPathComponent:secFileName];
+	[sortedData writeToFile:secPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
+}
+
+// JGSDevice 资源文件处理
+static NSString *JGSLatestGlobalConfigurationFileDir = @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase";
+void handleLatestGlobalConfiguration(void) {
+    
+    NSString *fileName = @"LatestGlobalConfiguration.json";
+    NSString *filePath = [JGSLatestGlobalConfigurationFileDir stringByAppendingPathComponent:fileName];
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:filePath];
+    
+    // 配置文件Base64加密
+    // Baes64替换规则：同时从首尾遍历，每xx位字符串块首尾替换
+    NSMutableString *base64String = [jsonData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].mutableCopy;
+    //NSLog(@"\n%@", base64String);
+    NSInteger stringLen = base64String.length;
+    NSInteger blockSize = 5;
+    for (NSInteger i = 0; i < (stringLen / blockSize) * 0.5; i++) {
+        NSRange headrange = NSMakeRange(i * blockSize, blockSize);
+        NSString *headStr = [base64String substringWithRange:headrange];
+        NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);
+        NSString *tailStr = [base64String substringWithRange:tailRange];
+        [base64String replaceCharactersInRange:headrange withString:tailStr];
+        [base64String replaceCharactersInRange:tailRange withString:headStr];
+    }
+    //NSLog(@"\n%@", base64String);
+    NSString *secPath = [filePath stringByAppendingPathExtension:@"sec"];
+    [base64String writeToFile:secPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+void testLatestGlobalConfiguration(void) {
+    
+    NSString *path = [JGSLatestGlobalConfigurationFileDir stringByAppendingPathComponent:@"LatestGlobalConfiguration.json.sec"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+    if (jsonData.length == 0) {
+        return;
+    }
+    
+    // 配置文件Base64解密
+    // Baes64替换规则：同时从首尾遍历，每xx位字符串块首尾替换
+    NSMutableString *base64String = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding].mutableCopy;
+    NSInteger stringLen = base64String.length;
+    NSInteger blockSize = 5;
+    for (NSInteger i = 0; i < (stringLen / blockSize) * 0.5; i++) {
+        NSRange headrange = NSMakeRange(i * blockSize, blockSize);
+        NSString *headStr = [base64String substringWithRange:headrange];
+        NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);
+        NSString *tailStr = [base64String substringWithRange:tailRange];
+        [base64String replaceCharactersInRange:headrange withString:tailStr];
+        [base64String replaceCharactersInRange:tailRange withString:headStr];
+    }
+    
+    NSData *originData = [[NSData alloc] initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSLog(@"\n%@", [[NSString alloc] initWithData:originData encoding:NSUTF8StringEncoding]);
 }
 
 int main(int argc, const char * argv[]) {
@@ -167,14 +224,30 @@ int main(int argc, const char * argv[]) {
         ];
         [plistFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             sortPlistFileContent(obj, ^(BOOL result, NSError * _Nullable error) {
-                NSLog(@"Sort %@, %@", obj, result ? @"success" : @"fail");
+                NSLog(@"Sort %@, %@", obj, result ? @"success" : [NSString stringWithFormat:@"fail: %@", error]);
             });
         }];
-        NSLog(@"Sort plist file >>>>");
+        NSLog(@"");
+        
+        NSLog(@"Sort json file >>>>");
+        NSArray<NSString *> *jsonFiles = @[
+            @"/Users/meijigao/Desktop/Git•GitHub/Dengni8023/JGSourceBase/LatestGlobalConfiguration.json",
+        ];
+        [jsonFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            sortJsonFileContent(obj, ^(BOOL result, NSError * _Nullable error) {
+                NSLog(@"Sort %@, %@", obj, result ? @"success" : [NSString stringWithFormat:@"fail: %@", error]);
+            });
+        }];
+        NSLog(@"");
         
 		NSLog(@"Handle Devices Info Begin >>>>");
 		handleDevicesInfo();
-		NSLog(@"Handle Devices Info End >>>>");
+        NSLog(@"");
+        
+        NSLog(@"Handle Latest Global Config Begin >>>>");
+        handleLatestGlobalConfiguration();
+        testLatestGlobalConfiguration();
+        NSLog(@"");
 	}
 	return 0;
 }

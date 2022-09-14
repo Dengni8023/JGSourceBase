@@ -23,6 +23,8 @@
 
 - (id)jg_JSONObjectWithOptions:(NSJSONReadingOptions)options error:(NSError * _Nullable __autoreleasing *)error {
     
+    // NSJSONReadingAllowFragments 允许JSON字符串最外层既不是NSArray也不是NSDictionary，但必须是有效的JSON Fragment
+    // 使用这个选项可以解析 @“123” 这样的字符串
     if (([self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSNull class]]) && (options & NSJSONReadingAllowFragments)) {
         return self;
     }
@@ -31,7 +33,7 @@
     if ([NSJSONSerialization isValidJSONObject:self]) {
         
         // 已经是合法的JSON对象，判断处理options
-        if (options & (NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers | NSJSONReadingAllowFragments)) {
+        if (options != kNilOptions) {
             
             encodeData = [NSJSONSerialization dataWithJSONObject:self options:kNilOptions error:error];
             if (!encodeData || (error != NULL && *error)) {
@@ -41,12 +43,12 @@
             return self;
         }
     }
-    
-    // 非JSON对象转NSData
-    if ([self isKindOfClass:[NSData class]]) {
+    else if ([self isKindOfClass:[NSData class]]) {
+        // 非JSON对象转NSData
         encodeData = (NSData *)self;
     }
     else if ([self isKindOfClass:[NSString class]]) {
+        // 非JSON对象转NSData
         encodeData = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
     }
     

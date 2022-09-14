@@ -25,12 +25,15 @@
     [JGSLogFunction enableLog:YES];
 #endif
     
-    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    CGRect screenBounds = [UIScreen mainScreen].bounds;
+    CGSize screenSize = screenBounds.size;
+    _window = [[UIWindow alloc] initWithFrame:screenBounds];
     
     //NSLog(@"%@", @(JGSBaseVersionNumber));
     //NSLog(@"%s", JGSBaseVersionString);
     //NSLog(@"%@", [JGSourceBase sourceVersion]);
-    NSLog(@"APP Window: %@", _window);
+    JGSLog(@"Screen Size: %@x%@@%@x, @%@x", @(screenSize.height), @(screenSize.width), @([UIScreen mainScreen].scale), @([UIScreen mainScreen].nativeScale));
+    JGSLog(@"APP Window: %@", _window);
     
     ViewController *vcT = [[ViewController alloc] init];
     JGSDemoNavigationController *nav = [[JGSDemoNavigationController alloc] initWithRootViewController:vcT];
@@ -122,6 +125,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 @end

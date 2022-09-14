@@ -8,7 +8,6 @@
 
 #import "JGSNSDictionaryDemoVC.h"
 
-#ifdef JGSCategory_NSDictionary
 @interface JGSNSDictionaryDemoVC ()
 
 @end
@@ -27,6 +26,7 @@
     
 }
 
+#ifdef JGSCategory_NSDictionary_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
@@ -154,5 +154,6 @@
     }
 }
 
-@end
 #endif
+
+@end

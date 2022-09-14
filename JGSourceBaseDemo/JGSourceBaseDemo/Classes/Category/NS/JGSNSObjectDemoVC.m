@@ -8,7 +8,6 @@
 
 #import "JGSNSObjectDemoVC.h"
 
-#ifdef JGSCategory_NSObject
 @interface JGSNSObjectDemoVC ()
 
 @end
@@ -27,6 +26,7 @@
     
 }
 
+#ifdef JGSCategory_NSObject_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
@@ -42,7 +42,7 @@
 
 #pragma mark - Action
 - (void)object2JSONDictionary:(NSIndexPath *)indexPath {
-#ifdef JGSCategory_NSObject
+    
     static NSDictionary *storeDictionary = nil;
     static NSString *storeString = nil;
     static dispatch_once_t onceToken;
@@ -83,8 +83,8 @@
         default:
             break;
     }
-#endif
 }
 
-@end
 #endif
+
+@end

@@ -261,6 +261,14 @@ Pod::Spec.new do |spec|
     sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSCategory/*.h"
     
+    sub.subspec 'NSArray' do |subsub|
+      subsub.source_files = "#{spec.name}/JGSCategory/NSArray/*.{h,m}"
+      subsub.public_header_files = "#{spec.name}/JGSCategory/NSArray/*.h"
+      
+      subsub.dependency "JGSourceBase/Category/NSDictionary"
+      subsub.dependency "JGSourceBase/Category/NSObject"
+    end
+    
     sub.subspec 'NSData' do |subsub|
       subsub.source_files = "#{spec.name}/JGSCategory/NSData/*.{h,m}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSData/*.h"

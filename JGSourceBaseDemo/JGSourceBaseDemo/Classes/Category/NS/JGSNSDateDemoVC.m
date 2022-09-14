@@ -21,12 +21,12 @@
     self.title = @"NSDate";
 }
 
-#ifdef JGSCategory_NSDate_h
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
 }
 
+#ifdef JGSCategory_NSDate_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	

@@ -44,6 +44,8 @@
 		D4358B59286EA9F6008A0A11 /* rsa_private_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B48286EA9F6008A0A11 /* rsa_private_1024.pem */; };
 		D4358B5A286EA9F6008A0A11 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4358B49286EA9F6008A0A11 /* rsa_private_2048.pem */; };
 		D4358B5E286EA9F6008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B4D286EA9F6008A0A11 /* rsa_message.txt */; };
+		D45E317B288A7808001D4119 /* JGSNSArrayDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3177288A7808001D4119 /* JGSNSArrayDemoVC.m */; };
+		D45E317C288A7808001D4119 /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +113,10 @@
 		D4358B48286EA9F6008A0A11 /* rsa_private_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem; sourceTree = "<group>"; };
 		D4358B49286EA9F6008A0A11 /* rsa_private_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem; sourceTree = "<group>"; };
 		D4358B4D286EA9F6008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
+		D45E3177288A7808001D4119 /* JGSNSArrayDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSArrayDemoVC.m; sourceTree = "<group>"; };
+		D45E3178288A7808001D4119 /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
+		D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
+		D45E317A288A7808001D4119 /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +265,10 @@
 		D4075B3028632D3500E4BFEA /* NS */ = {
 			isa = PBXGroup;
 			children = (
+				D45E317A288A7808001D4119 /* JGSNSArrayDemoVC.h */,
+				D45E3177288A7808001D4119 /* JGSNSArrayDemoVC.m */,
+				D45E3178288A7808001D4119 /* JGSNSDataDemoVC.h */,
+				D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */,
 				D4075B3728632D3500E4BFEA /* JGSNSDateDemoVC.h */,
 				D4075B3428632D3500E4BFEA /* JGSNSDateDemoVC.m */,
 				D4075B3328632D3500E4BFEA /* JGSNSDictionaryDemoVC.h */,
@@ -507,12 +517,14 @@
 				D4075B6728632D3500E4BFEA /* JGSKeyboardDemoVC.m in Sources */,
 				D4075B0B2863176800E4BFEA /* ViewController.m in Sources */,
 				D4075B6428632D3500E4BFEA /* JGSDataStorageDemoVC.m in Sources */,
+				D45E317C288A7808001D4119 /* JGSNSDataDemoVC.m in Sources */,
 				D4075B5D28632D3500E4BFEA /* JGSNSDateDemoVC.m in Sources */,
 				D4075B5C28632D3500E4BFEA /* JGSNSObjectDemoVC.m in Sources */,
 				D4075B6628632D3500E4BFEA /* JGSDemoViewController.m in Sources */,
 				D4075B6828632D3500E4BFEA /* JGSHUDDemoVC.m in Sources */,
 				D4075B6328632D3500E4BFEA /* JGSDeviceDemoVC.m in Sources */,
 				D4075B5A28632D3500E4BFEA /* JGSEncryptionDemoVC.m in Sources */,
+				D45E317B288A7808001D4119 /* JGSNSArrayDemoVC.m in Sources */,
 				D4075B052863176800E4BFEA /* AppDelegate.m in Sources */,
 				D4075B6028632D3500E4BFEA /* JGSNSStringDemoVC.m in Sources */,
 				D4075B162863176900E4BFEA /* main.m in Sources */,

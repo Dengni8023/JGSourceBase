@@ -9,6 +9,8 @@
 
 @interface JGSReachabilityDemoVC ()
 
+@property (nonatomic, weak) UILabel *infoLabel;
+
 @end
 
 @implementation JGSReachabilityDemoVC
@@ -21,6 +23,21 @@
 	self.title = @"Reachability";
 	
 #ifdef JGSReachability_h
+    
+    UILabel *infoLabel = [[UILabel alloc] init];
+    self.infoLabel = infoLabel;
+    infoLabel.numberOfLines = 0;
+    infoLabel.textColor = [UIColor darkTextColor];
+    infoLabel.textAlignment = NSTextAlignmentLeft;
+    infoLabel.font = [UIFont systemFontOfSize:16];
+    [self.view addSubview:infoLabel];
+    
+    [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.tableView);
+        make.left.right.mas_equalTo(self.view).inset(16);
+        make.top.mas_greaterThanOrEqualTo(self.tableView).offset(0);
+    }];
+    
 	JGSWeakSelf
 	[[JGSReachability sharedInstance] addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
 		
@@ -41,21 +58,23 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	NSDictionary *netInfo = @{
+	NSDictionary *infoDict = @{
 		@"Reachable": [[JGSReachability sharedInstance] reachable] ? @"YES": @"NO",
 		@"WiFi": [[JGSReachability sharedInstance] reachableViaWiFi] ? @"YES": @"NO",
 		@"WWAN": [[JGSReachability sharedInstance] reachableViaWWAN] ? @"YES": @"NO",
 		@"Network Type": [[JGSReachability sharedInstance] reachabilityStatusString],
 	};
 	
-#ifdef JGSCategory_NSObject
-	NSString *netJSON = [netInfo jg_JSONStringWithOptions:NSJSONWritingPrettyPrinted error:nil];
+#ifdef JGSCategory_NSObject_h
+	NSString *infoJSON = [infoDict jg_JSONStringWithOptions:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
 #else
-	NSData *data = [NSJSONSerialization dataWithJSONObject:netInfo options:NSJSONWritingPrettyPrinted error:nil];
-	NSString *netJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:infoDict options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil];
+	NSString *infoJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 #endif
 	
-	JGSDemoShowConsoleLog(self, @"%@", netJSON);
+    //self.infoLabel.text = [NSString stringWithFormat:@"网络是否连接： %@\n网络类型: %@", [netInfo jg_stringForKey:@"Reachable"], [netInfo jg_stringForKey:@"Network Type"]];
+    self.infoLabel.text = infoJSON;
+	JGSDemoShowConsoleLog(self, @"%@", infoJSON);
 }
 
 /*

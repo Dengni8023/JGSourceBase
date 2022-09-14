@@ -8,7 +8,6 @@
 
 #import "JGSNSStringDemoVC.h"
 
-#ifdef JGSCategory_NSString
 @interface JGSNSStringDemoVC ()
 
 @end
@@ -27,6 +26,7 @@
     
 }
 
+#ifdef JGSCategory_NSString_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
@@ -72,5 +72,6 @@
     }
 }
 
-@end
 #endif
+
+@end

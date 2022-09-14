@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef JGSCategory_NSDictionary
 @interface JGSNSDictionaryDemoVC : JGSDemoViewController
 
 @end
-#endif
 
 NS_ASSUME_NONNULL_END
