@@ -110,6 +110,26 @@ NSData * _Nullable aesEncryptData(NSData *fileData, NSString *fileName) {
 	return [fileData jg_AES256EncryptWithKey:key iv:iv];
 }
 
+NSData * _Nullable aesDecryptData(NSData *fileData, NSString *fileName) {
+    
+    if (fileData.length == 0 || fileName.length == 0) {
+        return nil;
+    }
+    
+    size_t keyLen = kCCKeySizeAES256;
+    size_t blockSize = kCCBlockSizeAES128;
+    
+    NSString *key = fileName;
+    while (key.length < keyLen) {
+        key = [key stringByAppendingString:key];
+    }
+    
+    NSString *iv = [key substringFromIndex:key.length - blockSize];
+    key = [key substringToIndex:keyLen];
+    
+    return [fileData jg_AES256DecryptWithKey:key iv:iv];
+}
+
 NSData * _Nullable aesEncryptFile(NSString *filePath) {
 	
 	if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
@@ -155,6 +175,7 @@ void handleDevicesInfo(void) {
     // 加密-整理后源JSON文件
     NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
 	sortedData = aesEncryptData(sortedData, secFileName) ?: [NSData data];
+    //NSLog(@"%@", [[NSString alloc] initWithData:aesDecryptData(sortedData, secFileName) encoding:NSUTF8StringEncoding]);
     NSString *secPath = [JGSDeviceSourceDir stringByAppendingPathComponent:secFileName];
 	[sortedData writeToFile:secPath options:(NSDataWritingAtomic) error:nil] ? NSLog(@"写入成功") : NSLog(@"写入失败");
 }

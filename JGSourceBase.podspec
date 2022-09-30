@@ -200,7 +200,7 @@ Pod::Spec.new do |spec|
   spec.subspec "Base" do |sub|
     sub.source_files = "#{spec.name}/JGSBase/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSBase/*.h"
-    sub.project_header_files = "#{spec.name}/JGSBase/*Private.h"
+    sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
 
     # resources形式资源文件引用到主Target，存在同名冲突情况，因此使用bundle方式
     # sub.resources = "JGSDevice/**/JGSiOSDeviceList.json.sec"
@@ -433,16 +433,16 @@ Pod::Spec.new do |spec|
   end
   
   # subspec，不指定时默认安装所有subspec，用户可自行指定
-  spec.default_subspecs = [
-      "Base",
-      "Category",
-      "DataStorage",
-      "Device",
-      "Encryption",
-      # "HUD",
-      "IntegrityCheck",
-      "Reachability",
-      "SecurityKeyboard",
-  ]
+  # spec.default_subspecs = [
+  #     "Base",
+  #     "Category",
+  #     "DataStorage",
+  #     "Device",
+  #     "Encryption",
+  #     "HUD",
+  #     "IntegrityCheck",
+  #     "Reachability",
+  #     "SecurityKeyboard",
+  # ]
   
 end

@@ -1,10 +1,10 @@
 <!--
  * @Author: 梅继高
  * @Date: 2021-01-12 21:25:08
- * @LastEditTime: 2022-06-22 20:00:57
+ * @LastEditTime: 2022-09-30 12:18:00
  * @LastEditors: 梅继高
  * @Description: README.md
- * @FilePath: /JGSourceBase的副本/README.md
+ * @FilePath: /JGSourceBase/README.md
 -->
 # JGSourceBase
 
@@ -79,3 +79,7 @@ JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Rea
 	# 一般方式
 	pod 'JGSourceBase' # 默认安装基础subspec
 	pod 'JGSourceBase/HUD/LoadingHUD'
+
+# 仓库开源地址
+GitHub: [https://github.com/dengni8023/JGSourceBase](https://github.com/dengni8023/JGSourceBase)
+OSChina: [https://gitee.com/dengni8023/JGSourceBase](https://gitee.com/dengni8023/JGSourceBase)
