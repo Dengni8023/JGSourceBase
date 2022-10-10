@@ -72,8 +72,12 @@
         }
         
         switch (error.code) {
-            case NSURLErrorBadURL:
+            case NSURLErrorBadURL: {
+                if (completion) {
+                    completion(nil);
+                }
                 return;
+            }
                 break;
                 
             default:
