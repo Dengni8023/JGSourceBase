@@ -16,6 +16,21 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JGSourceBase"
+  def self.smart_host
+    # 网络防火墙问题，优先使用 Gitee
+    # "github.com"
+    "gitee.com"
+  end
+  # def self.smart_version
+  #   # tag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
+  #   tag = `git describe --abbrev=0 --tags`
+  #   if $?.success? then tag else "0.0.1" end
+  # end
+  # def self.version_date
+  #   date = `git log -1 --pretty=format:%ad --date=format:%Y%m%d #{smart_version}`
+  #   date
+  # end
+  # spec.version      = smart_version
   spec.version      = "1.3.2"
   spec.summary      = "JGSourceBase functional component library."
 
@@ -33,11 +48,12 @@ Pod::Spec.new do |spec|
   4. Device - iOS设备相关方法
   5. Encryption - 常用加解密方法
   6. HUD - Loading-HUD、Toast-HUD显示
-  7. Reachability - 网络状态监听，支持多观察着/监听者
-  8. SecurityKeyboard - 自定义安全键盘
+  7. IntegrityCheck - iOS应用完整性校验
+  8. Reachability - 网络状态监听，支持多观察着/监听者
+  9. SecurityKeyboard - 自定义安全键盘
                    DESC
-
-  spec.homepage     = "https://github.com/dengni8023/JGSourceBase"
+  
+  spec.homepage     =  "https://#{smart_host}/dengni8023/JGSourceBase"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -91,10 +107,8 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-
-  spec.source       = { :git => "https://github.com/dengni8023/JGSourceBase.git", :tag => "#{spec.version}" }
-
-
+  spec.source = { :git => "https://#{smart_host}/dengni8023/JGSourceBase.git", :tag => "#{spec.version}" }
+  
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
@@ -221,7 +235,7 @@ Pod::Spec.new do |spec|
 
     sub.pod_target_xcconfig = {
         "JGSVersion" => "#{spec.version}",
-        "JGSBuild" => "20220622",
+        "JGSBuild" => "20221010",
         "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"#{spec.name}/${JGSVersion}\"' JGSVersion='\"${JGSVersion}\"' JGSBuild='\"${JGSBuild}\"'",
     }
     
@@ -376,7 +390,7 @@ Pod::Spec.new do |spec|
       subsub.source_files = "#{spec.name}/JGSHUD/Loading/*.{h,m}"
       subsub.public_header_files = "#{spec.name}/JGSHUD/Loading/*.h"
       
-      subsub.dependency 'MBProgressHUD'
+      subsub.dependency "MBProgressHUD"
       subsub.dependency "JGSourceBase/Base"
       subsub.dependency "JGSourceBase/Category/UIColor"
     end
@@ -386,7 +400,7 @@ Pod::Spec.new do |spec|
       subsub.source_files = "#{spec.name}/JGSHUD/Toast/*.{h,m}"
       subsub.public_header_files = "#{spec.name}/JGSHUD/Toast/*.h"
       
-      subsub.dependency 'MBProgressHUD'
+      subsub.dependency "MBProgressHUD"
       subsub.dependency "JGSourceBase/Base"
     end
   end

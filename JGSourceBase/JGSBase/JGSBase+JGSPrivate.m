@@ -26,14 +26,44 @@
     
     // https://raw.githubusercontent.com/用户名/仓库名/分支名/文件路径
     // DOC: https://www.cnblogs.com/chen-xing/p/14058096.html
+    
+    NSMutableCharacterSet *mutSet = [NSCharacterSet URLPathAllowedCharacterSet].mutableCopy;
+    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    filePath = [filePath stringByAddingPercentEncodingWithAllowedCharacters:mutSet];
+    
+    /**
+     // https://api.github.com/repos/Dengni8023/JGSourceBase/contents 获取仓库内容
+     {
+         "name": "LatestGlobalConfiguration.json.sec",
+         "path": "LatestGlobalConfiguration.json.sec",
+         "sha": "8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+         "size": 124,
+         "url": "https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
+         "html_url": "https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
+         "git_url": "https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+         "download_url": "https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master/LatestGlobalConfiguration.json.sec",
+         "type": "file",
+         "_links": {
+           "self": "https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
+           "git": "https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+           "html": "https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec"
+         }
+       }
+     */
+    // 以下地址受限于网络，可能存在请求不到数据情况
+    // 同一地址可能4G请求报错，WiFi则正常
     NSString *fileContentAPI = @"https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master";
     NSString *fileURL = [fileContentAPI stringByAppendingPathComponent:filePath];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fileURL]];
+    request.HTTPMethod = @"GET";
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     request.timeoutInterval = 10;
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
+        JGSPrivateLog(@"statusCode: %@, data length: %@, error: %@", @(httpResp.statusCode), @(data.length), error);
         if (httpResp.statusCode == 200 || httpResp.statusCode == 404) {
             if (completion) {
                 completion(httpResp.statusCode == 200 && data.length > 0 ? data : nil);
@@ -41,9 +71,21 @@
             return;
         }
         
+        switch (error.code) {
+            case NSURLErrorBadURL:
+                return;
+                break;
+                
+            default:
+                break;
+        }
+        
         NSInteger retry = [retryTimesInfo[filePath] integerValue] + 1;
-        if (retryTimes > 0 && retry > retryTimes) {
+        NSInteger maxRetryTimes = MAX(retryTimes, 5); // 为避免网络阻塞，无限重试限制次数
+        if (retry > maxRetryTimes) {
             
+            // 避免下次无法重试问题
+            [retryTimesInfo removeObjectForKey:filePath];
             if (completion) {
                 completion(nil);
             }
@@ -51,7 +93,7 @@
         }
         
         retryTimesInfo[filePath] = @(retry);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * (1 + log10(retry)) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * (1 + log2(retry)) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [JGSBaseUtils requestGitRepositoryFileContent:filePath retryTimes:retryTimes completion:completion];
         });
         
