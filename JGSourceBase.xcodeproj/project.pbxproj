@@ -50,6 +50,8 @@
 		D436C77B2844975C002C27D9 /* NSString+JGSAES.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C7772844975C002C27D9 /* NSString+JGSAES.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D436C77D2844975C002C27D9 /* NSString+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7792844975C002C27D9 /* NSString+JGSAES.m */; };
 		D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C77F28449F4C002C27D9 /* JGSEncryption.m */; };
+		D43A0F8A2907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */; };
+		D43A0F8B2907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */; };
 		D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
@@ -254,6 +256,8 @@
 		D436C7772844975C002C27D9 /* NSString+JGSAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JGSAES.h"; sourceTree = "<group>"; };
 		D436C7792844975C002C27D9 /* NSString+JGSAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JGSAES.m"; sourceTree = "<group>"; };
 		D436C77F28449F4C002C27D9 /* JGSEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSEncryption.m; sourceTree = "<group>"; };
+		D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem_pkcs8; sourceTree = "<group>"; };
+		D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem_pkcs8; sourceTree = "<group>"; };
 		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
 		D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSIntegrityCheckResourcesHash.m; sourceTree = "<group>"; };
 		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -661,8 +665,10 @@
 				D4358B3B286E93E9008A0A11 /* rsa_message.txt */,
 				D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */,
 				D4BDE1C5286D8BEF006FDCA5 /* rsa_private_1024.pem */,
+				D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */,
 				D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */,
 				D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */,
+				D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */,
 				D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */,
 				D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */,
 				D4BDE1C8286DD6CC006FDCA5 /* rsa_public_2048.der */,
@@ -1199,6 +1205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43A0F8A2907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 in Resources */,
 				D4075BCE286334DE00E4BFEA /* JGSourceBase.bundle in Resources */,
 				D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */,
 				D4BDE1C7286D8BEF006FDCA5 /* rsa_private_1024.pem in Resources */,
@@ -1215,6 +1222,7 @@
 				D4075B742863313400E4BFEA /* InfoPlist.strings in Resources */,
 				D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */,
 				D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */,
+				D43A0F8B2907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 in Resources */,
 				D4075BAD2863315D00E4BFEA /* LoadingWithAlpha-2.gif in Resources */,
 				D4075AED2863123300E4BFEA /* Assets.xcassets in Resources */,
 				D4075BAA2863315D00E4BFEA /* LoadingWithoutAlpha-1.gif in Resources */,

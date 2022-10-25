@@ -26,14 +26,12 @@
 }
 
 - (NSData *)jg_base64DecodeData {
-	
-	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-	return data ? [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters] : nil;
+	return [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
 }
 
 - (NSString *)jg_base64DecodeString {
 	
-	NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+	NSData *data = [self jg_base64DecodeData];
 	return data ? [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] : nil;
 }
 

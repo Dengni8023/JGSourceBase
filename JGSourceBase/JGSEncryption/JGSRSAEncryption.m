@@ -29,6 +29,10 @@ SecKeyRef jg_rsaPrivateKeyRefWithContentsOfFile(NSString *p12Path, NSString *pas
 /// @param privateContent pem私钥文件内容
 SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
 
+/// RSA私钥证书内容格式转换，不包含文件起始、结束行
+/// @param privateContent pem私钥文件内容，支持pkcs1、pkcs8，内部判断转换为pkcs1内容
+NSString *jg_rsaPkcs1PrivateKeyCreateWithContents(NSString *privateContent);
+
 @implementation JGSRSAEncryption
 
 #pragma mark - 加解密 - 公钥加密 & 私钥解密
@@ -76,7 +80,7 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
         return @"";
     }
     
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *data = [string jg_base64DecodeData];
     if (data.length == 0) {
         return @"";
     }
@@ -98,7 +102,7 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
         return @"";
     }
     
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *data = [string jg_base64DecodeData];
     if (data.length == 0) {
         return @"";
     }
@@ -160,7 +164,7 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
         return NO;
     }
     
-    NSData *sigData = [[NSData alloc] initWithBase64EncodedString:signature options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *sigData = [signature jg_base64DecodeData];
     if (sigData == nil) {
         return NO;
     }
@@ -187,7 +191,7 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
         return NO;
     }
     
-    NSData *sigData = [[NSData alloc] initWithBase64EncodedString:signature options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *sigData = [signature jg_base64DecodeData];
     if (sigData == nil) {
         return NO;
     }
@@ -206,6 +210,11 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent);
     CFRelease(keyRef);
     
     return verified;
+}
+
+#pragma mark - 私钥格式转换
++ (NSString *)pkcs1PrivateKeyWithPrivateContent:(NSString *)privateContent {
+    return jg_rsaPkcs1PrivateKeyCreateWithContents(privateContent);
 }
 
 #pragma mark - Private
@@ -374,7 +383,7 @@ SecKeyRef jg_rsaPublicKeyRefCreateWithContents(NSString *publicContent) {
         return NULL;
     }
     
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:publicContent options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *data = [publicContent jg_base64DecodeData];
     if (data.length == 0) {
         return NULL;
     }
@@ -430,28 +439,12 @@ SecKeyRef jg_rsaPrivateKeyRefWithContentsOfFile(NSString *p12Path, NSString *pas
 
 SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent) {
     
+    privateContent = jg_rsaPkcs1PrivateKeyCreateWithContents(privateContent);
     if (privateContent.length == 0) {
         return NULL;
     }
     
-    NSRange startPos = [privateContent rangeOfString:@"-----BEGIN RSA PRIVATE KEY-----"];
-    if (startPos.location != NSNotFound) {
-        privateContent = [privateContent substringFromIndex:startPos.length];
-    }
-    
-    NSRange endPos = [privateContent rangeOfString:@"-----END RSA PRIVATE KEY-----"];
-    if (endPos.location != NSNotFound) {
-        privateContent = [privateContent substringToIndex:endPos.location];
-    }
-    
-    NSMutableCharacterSet *charSet = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-    [charSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
-    privateContent = [privateContent stringByTrimmingCharactersInSet:charSet];
-    if (privateContent.length == 0) {
-        return NULL;
-    }
-    
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:privateContent options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData *data = [privateContent jg_base64DecodeData];
     if (data.length == 0) {
         return NULL;
     }
@@ -472,4 +465,71 @@ SecKeyRef jg_rsaPrivateKeyRefCreateWithContents(NSString *privateContent) {
     }
     
     return keyRef;
+}
+
+NSString *jg_rsaPkcs1PrivateKeyCreateWithContents(NSString *privateContent) {
+    
+    if (privateContent.length == 0) {
+        return @"";
+    }
+    
+    /*
+     iOS仅支持pkcs1私钥，针对传入私钥需要判断pkcs1还是pkcs8
+     RSA私钥pkcs1、pkcs8区别：https://www.jianshu.com/p/a428e183e72e
+     iOS RSA加签 验签 与Java同步 pkcs8 pkcs1：https://www.jianshu.com/p/2b3545336d3d
+     */
+    
+    // pkcs1 - begin
+    NSRange startPos = [privateContent rangeOfString:@"-----BEGIN RSA PRIVATE KEY-----"];
+    if (startPos.location != NSNotFound) {
+        privateContent = [privateContent substringFromIndex:startPos.length];
+    }
+    
+    // pkcs8 - begin
+    startPos = [privateContent rangeOfString:@"-----BEGIN PRIVATE KEY-----"]; // pkcs1
+    if (startPos.location != NSNotFound) {
+        privateContent = [privateContent substringFromIndex:startPos.length];
+    }
+    
+    // pkcs1 - end
+    NSRange endPos = [privateContent rangeOfString:@"-----END RSA PRIVATE KEY-----"];
+    if (endPos.location != NSNotFound) {
+        privateContent = [privateContent substringToIndex:endPos.location];
+    }
+    
+    // pkcs8 - end
+    endPos = [privateContent rangeOfString:@"-----END PRIVATE KEY-----"];
+    if (endPos.location != NSNotFound) {
+        privateContent = [privateContent substringToIndex:endPos.location];
+    }
+    
+    NSMutableCharacterSet *charSet = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+    [charSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
+    privateContent = [privateContent stringByTrimmingCharactersInSet:charSet];
+    if (privateContent.length == 0) {
+        return @"";
+    }
+    
+    // 编码格式及长度 -> 64位字符一行字符串长度 -> 单行字符串长度 -> 单行字符串Data长度
+    // pkcs1-1024 -> 824 -> 812（单行字符串） -> 609
+    // pkcs8-1024 -> 861 -> 848 -> 635
+    // pkcs1-2048 -> 1616 -> 1592 -> 1192
+    // pkcs8-2048 -> 1649 -> 1624 -> 1218
+    NSData *data = [privateContent jg_base64DecodeData];
+    if (data.length == 0) {
+        return @"";
+    }
+    
+    if (privateContent.length == 812 || privateContent.length == 1592) {
+        // pkcs1
+        return [data jg_base64EncodeString];
+    }
+    else if (privateContent.length == 848 || privateContent.length == 1624) {
+        // pkcs8
+        // Data长度：pkcs8 比 pkcs1 长 26
+        NSRange pkcs1Range = NSMakeRange(26, MAX(0, data.length - 26));
+        return [[data subdataWithRange:pkcs1Range] jg_base64EncodeString];
+    }
+    
+    return @"";
 }
