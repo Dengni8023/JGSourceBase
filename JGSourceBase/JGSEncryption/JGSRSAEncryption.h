@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  RSA证书、密钥生成，参考链接：https://www.jianshu.com/p/e8cd42e6af95
- iOS仅支持pkcs1私钥，针对传入私钥需要判断pkcs1还是pkcs8
+ iOS仅支持pkcs1私钥，针对传入私钥需要判断pkcs1还是pkcs8，公钥pkcs1、pkcs8无区别
  RSA私钥pkcs1、pkcs8区别：https://www.jianshu.com/p/a428e183e72e
  iOS RSA加签 验签 与Java同步 pkcs8 pkcs1：https://www.jianshu.com/p/2b3545336d3d
  
@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, JGSRSASignatureDigest) {
 
 /// RSA私钥解密方法，填充方式为 kSecKeyAlgorithmRSAEncryptionPKCS1，iOS仅支持该方式
 /// @param string 需要解密的字符串
-/// @param privateKey 私钥字符串
+/// @param privateKey 私钥字符串，支持pkcs1、pkcs8
 + (NSString *)decryptString:(NSString *)string privateKey:(NSString *)privateKey;
 
 #pragma mark - 签名验证 - 私钥签名 & 公钥验证
@@ -122,7 +122,7 @@ typedef NS_ENUM(NSInteger, JGSRSASignatureDigest) {
 
 /// RSA私钥签名方法
 /// @param string 需要加密的字符串
-/// @param privateKey 私钥字符串
+/// @param privateKey 私钥字符串，支持pkcs1、pkcs8
 /// @param algorithm RSA签名数据源，是否对原数据进行相应处理，对处理结果进行签名、验证
 + (NSString *)signatureString:(NSString *)string privateKey:(NSString *)privateKey digest:(JGSRSASignatureDigest)digest algorithm:(SecKeyAlgorithm)algorithm;
 
@@ -139,6 +139,8 @@ typedef NS_ENUM(NSInteger, JGSRSASignatureDigest) {
 + (BOOL)verifySignature:(NSString *)signature originString:(NSString *)string publicKey:(NSString *)publicKey digest:(JGSRSASignatureDigest)digest algorithm:(SecKeyAlgorithm)algorithm;
 
 #pragma mark - 私钥格式转换
+/// RSA私钥证书内容格式转换，返回单行密钥，不包含文件起始、结束行内容
+/// @param privateContent pem私钥文件内容，支持pkcs1、pkcs8，内部判断转换为pkcs1内容
 + (NSString *)pkcs1PrivateKeyWithPrivateContent:(NSString *)privateContent;
 
 @end

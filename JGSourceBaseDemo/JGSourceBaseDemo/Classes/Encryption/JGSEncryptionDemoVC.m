@@ -241,12 +241,20 @@
 
 - (void)showRSAPrivateKeySwap:(NSIndexPath *)indexPath {
     
-    NSArray<NSString *> *files = @[@"rsa_private_1024.pem",
-                                   @"rsa_private_1024.pem_pkcs8",
-                                   @"rsa_private_2048.pem",
-                                   @"rsa_private_2048.pem_pkcs8"];
+    NSArray<NSString *> *files = @[
+        @"rsa_private_1024.pem",
+        @"rsa_private_1024.pem_pkcs8",
+        @"rsa_private_2048.pem",
+        @"rsa_private_2048.pem_pkcs8",
+    ];
+    
+    if (indexPath.row >= files.count) {
+        return;
+    }
+    
     [files enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
+        //NSString *obj = files[indexPath.row];
+        //NSString *obj = @"rsa_private_1024.pem";
         NSString *path = [[NSBundle mainBundle] pathForResource:obj ofType:nil];
         NSError *error = nil;
         NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
