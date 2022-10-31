@@ -1,43 +1,43 @@
 PODS:
   - IQKeyboardManager (6.5.10)
-  - JGSourceBase/Base (1.3.2)
-  - JGSourceBase/Category/NSArray (1.3.2):
+  - JGSourceBase/Base (1.3.1)
+  - JGSourceBase/Category/NSArray (1.3.1):
     - JGSourceBase/Category/NSDictionary
     - JGSourceBase/Category/NSObject
-  - JGSourceBase/Category/NSData (1.3.2):
+  - JGSourceBase/Category/NSData (1.3.1):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSDictionary (1.3.2):
+  - JGSourceBase/Category/NSDictionary (1.3.1):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSObject (1.3.2):
+  - JGSourceBase/Category/NSObject (1.3.1):
     - JGSourceBase/Category/NSData
     - JGSourceBase/Category/NSString
-  - JGSourceBase/Category/NSString (1.3.2):
+  - JGSourceBase/Category/NSString (1.3.1):
     - JGSourceBase/Category/NSData
-  - JGSourceBase/Category/UIColor (1.3.2)
-  - JGSourceBase/DataStorage (1.3.2):
+  - JGSourceBase/Category/UIColor (1.3.1)
+  - JGSourceBase/DataStorage (1.3.1):
     - JGSourceBase/Base
-  - JGSourceBase/Device (1.3.2):
+  - JGSourceBase/Device (1.3.1):
     - JGSourceBase/Category/NSData
     - JGSourceBase/Reachability
-  - JGSourceBase/Encryption (1.3.2):
+  - JGSourceBase/Encryption (1.3.1):
     - JGSourceBase/Category/NSData
     - JGSourceBase/Category/NSString
-  - JGSourceBase/HUD (1.3.2):
-    - JGSourceBase/HUD/Loading (= 1.3.2)
-    - JGSourceBase/HUD/Toast (= 1.3.2)
-  - JGSourceBase/HUD/Loading (1.3.2):
+  - JGSourceBase/HUD (1.3.1):
+    - JGSourceBase/HUD/Loading (= 1.3.1)
+    - JGSourceBase/HUD/Toast (= 1.3.1)
+  - JGSourceBase/HUD/Loading (1.3.1):
     - JGSourceBase/Base
     - JGSourceBase/Category/UIColor
     - MBProgressHUD
-  - JGSourceBase/HUD/Toast (1.3.2):
+  - JGSourceBase/HUD/Toast (1.3.1):
     - JGSourceBase/Base
     - MBProgressHUD
-  - JGSourceBase/IntegrityCheck (1.3.2):
+  - JGSourceBase/IntegrityCheck (1.3.1):
     - JGSourceBase/Base
     - JGSourceBase/Encryption
-  - JGSourceBase/Reachability (1.3.2):
+  - JGSourceBase/Reachability (1.3.1):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.3.2):
+  - JGSourceBase/SecurityKeyboard (1.3.1):
     - JGSourceBase/Base
     - JGSourceBase/Category/NSData
     - JGSourceBase/Category/NSString
@@ -76,10 +76,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: 89cf12720764e3c3f89e616a171c47cca4cc7bce
+  JGSourceBase: c1d66cf2597f20e5cfc3b2c8a1b9d2fe78e45f3c
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 34e5fa1d6c715b9d46d185b3541e3a29a62f6a22
+PODFILE CHECKSUM: a77f98782a46f5f7b360b09378210a0b685cc55d
 
 COCOAPODS: 1.10.1

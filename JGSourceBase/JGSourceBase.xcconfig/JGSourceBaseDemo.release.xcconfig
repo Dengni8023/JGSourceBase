@@ -1,0 +1,14 @@
+//
+//  JGSourceBase.release.xcconfig
+//  JGSourceBase
+//
+//  Created by 梅继高 on 2022/5/18.
+//  Copyright © 2022 MeiJiGao. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../../Pods/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"
+
+#include "./JGSourceBase.xcconfig"

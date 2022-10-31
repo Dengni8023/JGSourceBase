@@ -160,8 +160,8 @@
         NSString *org = bids.count > 1 ? bids[1] : bids.firstObject;
         NSString *processName = [NSProcessInfo processInfo].processName;
         appUA = [NSString stringWithFormat:@"%@/%@ (Version %@; Build %@)", org.uppercaseString, processName, [self appVersion], [self buildNumber]];
-		appUA = [NSString stringWithFormat:@"%@ %s", appUA, JGSUserAgent];
-		
+        appUA = [NSString stringWithFormat:@"%@ %s", appUA, JGSUserAgent];
+        
         // 去除开头结尾的空格、换行
         appUA = [appUA stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         // 去除多空格
@@ -180,17 +180,17 @@
         UIEdgeInsets insets = [self safeAreaInsets];
         deviceInfo = @{
             @"device": @{
-                    @"id": [self deviceId],
+                @"id": [self deviceId],
             },
             @"edgeInsets": @{
-                    @"top": @(isFullScreen ? MAX(MAX(insets.top, insets.bottom), MAX(insets.left, insets.right)) : 20),
-                    @"left": @(0),
-                    @"bottom": @(isFullScreen ? 34 : 0),
-                    @"right": @(0),
+                @"top": @(isFullScreen ? MAX(MAX(insets.top, insets.bottom), MAX(insets.left, insets.right)) : 20),
+                @"left": @(0),
+                @"bottom": @(isFullScreen ? 34 : 0),
+                @"right": @(0),
             },
             @"constant": @{
-                    @"navigationBarHeight": @(44),
-                    @"tabBarHeight": @(49),
+                @"navigationBarHeight": @(44),
+                @"tabBarHeight": @(49),
             },
         };
     });
@@ -292,9 +292,9 @@
         deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         JGSPrivateLog(@"getDeviceId DeviceId idfv: %@", deviceId);
     }
-
+    
     if (deviceId.length == 0) {
-
+        
         // 如果idfa、idfv均未取到，则使用随机UUID，随机UUID获取一次后存储KeyChain
         deviceId = [[NSUUID UUID] UUIDString];
         JGSPrivateLog(@"getDeviceId DeviceId uuid: %@", deviceId);
@@ -353,7 +353,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-		NSString *fileName = @"JGSiOSDeviceList.json.sec";
+        NSString *fileName = @"JGSiOSDeviceList.json.sec";
         NSString *savedPath = [JGSPermanentFileSavedDirectory() stringByAppendingPathComponent:fileName];
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
         NSString *path = [[NSFileManager defaultManager] fileExistsAtPath:savedPath] ? savedPath : bundlePath;
@@ -372,28 +372,31 @@
                     // 网络文件存储本地
                     [fileData writeToFile:savedPath atomically:YES];
                 }
+                else {
+                    onceToken = 0;
+                }
             }];
         });
         
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
         NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-		if (deviceNamesByCode.count == 0) {
-			
-			// AES 256 解密, 解密方式, key, iv 与 JGSResourceHandler/main.m 文件 aesEncryptData 保持一致
-			size_t keyLen = kCCKeySizeAES256;
-			size_t blockSize = kCCBlockSizeAES128;
-			
-			NSString *key = fileName;
-			while (key.length < keyLen) {
-				key = [key stringByAppendingString:key];
-			}
-			
-			NSString *iv = [key substringFromIndex:key.length - blockSize];
-			key = [key substringToIndex:keyLen];
-			
-			jsonData = [jsonData jg_AES256DecryptWithKey:key iv:iv];
-			deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-		}
+        if (deviceNamesByCode.count == 0) {
+            
+            // AES 256 解密, 解密方式, key, iv 与 JGSResourceHandler/main.m 文件 aesEncryptData 保持一致
+            size_t keyLen = kCCKeySizeAES256;
+            size_t blockSize = kCCBlockSizeAES128;
+            
+            NSString *key = fileName;
+            while (key.length < keyLen) {
+                key = [key stringByAppendingString:key];
+            }
+            
+            NSString *iv = [key substringFromIndex:key.length - blockSize];
+            key = [key substringToIndex:keyLen];
+            
+            jsonData = [jsonData jg_AES256DecryptWithKey:key iv:iv];
+            deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+        }
         
         NSString *machine = [self deviceMachine];
         NSDictionary *deviceInfo = [deviceNamesByCode objectForKey:machine];

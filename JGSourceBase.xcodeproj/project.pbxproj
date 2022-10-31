@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202BEB27775D0B66D090C222 /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */; };
 		7844BE53F12C088D332D1C79 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
-		BC82283FABE628784945BDEC /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CED786AF69E75D7769B75C /* Pods_JGSBase_JGSourceBase.framework */; };
 		D403B1382850344800F4F304 /* JGSiOSDeviceList.json.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */; };
 		D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */ = {isa = PBXBuildFile; fileRef = D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */; };
 		D4075AE22863123300E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE12863123300E4BFEA /* AppDelegate.m */; };
@@ -187,10 +187,10 @@
 /* Begin PBXFileReference section */
 		02E3D4D91AD940B3E013614E /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2FC616F3137645F9C2752BA6 /* Pods-JGSBase-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
+		394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		424BFF1D41EB0263CE31DA19 /* Pods_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F47704EE52548EB1D2C86A /* Pods-JGSBase-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 		4AEB5C4410B3DA7C0E2E65A8 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
-		70CED786AF69E75D7769B75C /* Pods_JGSBase_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D403B1322850335200F4F304 /* JGSourceBase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D403B13A2850356900F4F304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,11 +261,12 @@
 		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
 		D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSIntegrityCheckResourcesHash.m; sourceTree = "<group>"; };
 		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyVersionBeforeCompile.sh; sourceTree = "<group>"; };
 		D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheck.h; sourceTree = "<group>"; };
 		D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSArray.h"; sourceTree = "<group>"; };
 		D45E317F288A880D001D4119 /* NSArray+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JGSBase.h"; sourceTree = "<group>"; };
 		D45E3180288A880D001D4119 /* NSArray+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JGSBase.m"; sourceTree = "<group>"; };
+		D4767708290BB46F007119FC /* JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.release.xcconfig; sourceTree = "<group>"; };
+		D4767709290BB46F007119FC /* JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.debug.xcconfig; sourceTree = "<group>"; };
 		D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSiOSDeviceList.json; sourceTree = "<group>"; };
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
@@ -383,7 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC82283FABE628784945BDEC /* Pods_JGSBase_JGSourceBase.framework in Frameworks */,
+				202BEB27775D0B66D090C222 /* Pods_JGSBase_JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,8 +428,8 @@
 		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				70CED786AF69E75D7769B75C /* Pods_JGSBase_JGSourceBase.framework */,
 				F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */,
+				394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -634,7 +635,6 @@
 				D4DEB22A28740A22000CFB67 /* JGSDemoIntegrityCheckAfterCompile.sh */,
 				D4DEB22B28740A22000CFB67 /* JGSDemoModifyBuildAfterCompile.sh */,
 				D4DEB22C28740A22000CFB67 /* JGSModifyConfigBeforeCompile.sh */,
-				D45AAAA628337DEE004EE48C /* JGSModifyVersionBeforeCompile.sh */,
 			);
 			path = JGSScripts;
 			sourceTree = "<group>";
@@ -655,8 +655,10 @@
 				D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */,
 				D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */,
 				D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */,
+				D4767709290BB46F007119FC /* JGSourceBaseDemo.debug.xcconfig */,
+				D4767708290BB46F007119FC /* JGSourceBaseDemo.release.xcconfig */,
 			);
-			name = JGSourceBase.xcconfig;
+			path = JGSourceBase.xcconfig;
 			sourceTree = "<group>";
 		};
 		D4BDE1B9286D6C3E006FDCA5 /* RSA */ = {
@@ -1067,7 +1069,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D403B1332850335200F4F304 /* Build configuration list for PBXNativeTarget "JGSourceBase.bundle" */;
 			buildPhases = (
-				D4F4EE1828503FC800ACB934 /* ShellScript */,
+				D44F3843290BAD5A00654EE3 /* ShellScript */,
 				D403B12E2850335200F4F304 /* Sources */,
 				D403B12F2850335200F4F304 /* Frameworks */,
 				D403B1302850335200F4F304 /* Resources */,
@@ -1086,7 +1088,6 @@
 			buildConfigurationList = D4075AF42863123300E4BFEA /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
 			buildPhases = (
 				4001C6BE16E3CF5D6204E03A /* [CP] Check Pods Manifest.lock */,
-				1BA0A719F6411E8B321E1137 /* [CP-User] JGSPodsScriptBeforeCompile */,
 				D4075ADA2863123300E4BFEA /* Sources */,
 				D4075ADB2863123300E4BFEA /* Frameworks */,
 				D4075ADC2863123300E4BFEA /* Resources */,
@@ -1123,10 +1124,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F3DA4D22F0279D002EF0F0 /* Build configuration list for PBXNativeTarget "JGSourceBase" */;
 			buildPhases = (
-				A09237A5F9A1222BEA564125 /* [CP] Check Pods Manifest.lock */,
-				D474954728093BF800D5D877 /* ShellScript */,
+				3D5321CBEE5F6BE248A8EA91 /* [CP] Check Pods Manifest.lock */,
 				D4F3DA4022F0279D002EF0F0 /* Headers */,
-				B5BDFBDC600D9B399456055A /* [CP-User] JGSPodsScriptBeforeCompile */,
 				D4F3DA4122F0279D002EF0F0 /* Sources */,
 				4B3EA7BF27729F175F83E047 /* Frameworks */,
 			);
@@ -1148,7 +1147,7 @@
 			attributes = {
 				CLASSPREFIX = JGS;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = MeiJiGao;
 				TargetAttributes = {
 					D403B1312850335200F4F304 = {
@@ -1232,15 +1231,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BA0A719F6411E8B321E1137 /* [CP-User] JGSPodsScriptBeforeCompile */ = {
+		3D5321CBEE5F6BE248A8EA91 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "[CP-User] JGSPodsScriptBeforeCompile";
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JGSBase-JGSourceBase-checkManifestLockResult.txt",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n    echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n    \n    echo \"执行自定义脚本修改源码 Info.Plist\"\n    chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n    ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n    \n    echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n    \n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4001C6BE16E3CF5D6204E03A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1272,41 +1283,9 @@
 			name = "[CP-User] JGSPodsScriptAfterCompile";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n    echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n    \n    echo \"执行自定义脚本修改构建物 Info.Plist\"\n    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh # sh执行权限\n    ${PROJECT_DIR}/JGSScripts/JGSDemoModifyBuildAfterCompile.sh \"app\" # 执行sh\n    \n    echo \"执行应用完整性校验资源文件Hash记录脚本\"\n    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n    ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n    \n    echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n    \n";
+			shellScript = "\n    echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n    \n    echo \"执行应用完整性校验资源文件Hash记录脚本\"\n    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n    ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n    \n    echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n    \n";
 		};
-		A09237A5F9A1222BEA564125 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JGSBase-JGSourceBase-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5BDFBDC600D9B399456055A /* [CP-User] JGSPodsScriptBeforeCompile */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] JGSPodsScriptBeforeCompile";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\n    echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n    \n    echo \"执行自定义脚本修改源码 Info.Plist\"\n    chmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n    ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n    \n    echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n    \n";
-		};
-		D474954728093BF800D5D877 /* ShellScript */ = {
+		D44F3843290BAD5A00654EE3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1321,24 +1300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n\necho \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n";
-		};
-		D4F4EE1828503FC800ACB934 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 Info.Plist\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1471,11 +1433,12 @@
 /* Begin XCBuildConfiguration section */
 		D403B1342850335200F4F304 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1484,7 +1447,7 @@
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.JGSourceBase-bundle";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -1498,12 +1461,13 @@
 		};
 		D403B1352850335200F4F304 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = NO;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1512,7 +1476,7 @@
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.JGSourceBase-bundle";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -1526,13 +1490,13 @@
 		};
 		D4075AF52863123300E4BFEA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02E3D4D91AD940B3E013614E /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */;
+			baseConfigurationReference = D4767709290BB46F007119FC /* JGSourceBaseDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1551,7 +1515,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1561,13 +1525,13 @@
 		};
 		D4075AF62863123300E4BFEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AEB5C4410B3DA7C0E2E65A8 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */;
+			baseConfigurationReference = D4767708290BB46F007119FC /* JGSourceBaseDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1586,7 +1550,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1596,16 +1560,18 @@
 		};
 		D4D6982A2806E16F00CE1F9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.3.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSResourceHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1614,16 +1580,18 @@
 		};
 		D4D6982B2806E16F00CE1F9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.3.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSResourceHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1760,7 +1728,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1776,7 +1744,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(JGSVersion)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1792,7 +1760,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1808,7 +1776,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(JGSVersion)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

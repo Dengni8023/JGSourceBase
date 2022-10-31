@@ -117,6 +117,9 @@
 		D45E3178288A7808001D4119 /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
 		D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
 		D45E317A288A7808001D4119 /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
+		D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
+		D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
+		D476770D290BB587007119FC /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 		D4075B022863176800E4BFEA /* JGSourceBaseDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D476770A290BB587007119FC /* JGSourceBase.xcconfig */,
 				D4075B2828632D3500E4BFEA /* Classes */,
 				D4075B1C28632D3500E4BFEA /* Resources */,
 				D4075B032863176800E4BFEA /* AppDelegate.h */,
@@ -355,6 +359,16 @@
 			path = RSA;
 			sourceTree = "<group>";
 		};
+		D476770A290BB587007119FC /* JGSourceBase.xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */,
+				D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */,
+				D476770D290BB587007119FC /* JGSourceBase.xcconfig */,
+			);
+			path = JGSourceBase.xcconfig;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,7 +377,7 @@
 			buildConfigurationList = D4075B192863176900E4BFEA /* Build configuration list for PBXNativeTarget "JGSourceBaseDemo" */;
 			buildPhases = (
 				FC5A3BEB5ABD881F86FAD75C /* [CP] Check Pods Manifest.lock */,
-				89D214EC759AA65531D11EC6 /* [CP-User] JGSPodsScriptBeforeCompile */,
+				B4A93FBBFF12F560A00FD106 /* [CP-User] JGSPodsScriptBeforeCompile */,
 				D4075AFC2863176800E4BFEA /* Sources */,
 				D4075AFD2863176800E4BFEA /* Frameworks */,
 				D4075AFE2863176800E4BFEA /* Resources */,
@@ -459,16 +473,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		89D214EC759AA65531D11EC6 /* [CP-User] JGSPodsScriptBeforeCompile */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] JGSPodsScriptBeforeCompile";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\n  echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改源码 Info.Plist\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh\n  \n  echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n  \n";
-		};
 		90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,7 +481,17 @@
 			name = "[CP-User] JGSPodsScriptAfterCompile";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改构建物 Info.Plist\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSDemoModifyBuildAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSDemoModifyBuildAfterCompile.sh \"app\" # 执行sh\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
+			shellScript = "\n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
+		};
+		B4A93FBBFF12F560A00FD106 /* [CP-User] JGSPodsScriptBeforeCompile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] JGSPodsScriptBeforeCompile";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n  echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n  \n  echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n  \n";
 		};
 		FC5A3BEB5ABD881F86FAD75C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -669,12 +683,12 @@
 		};
 		D4075B1A2863176900E4BFEA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47F1BD874F7175D4E7D5774F /* Pods-JGSourceBaseDemo.debug.xcconfig */;
+			baseConfigurationReference = D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "${JGSBuild}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = JGSourceBaseDemo/PrefixHeader.pch;
@@ -689,7 +703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "${JGSVersion}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -699,12 +713,12 @@
 		};
 		D4075B1B2863176900E4BFEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83EA00E55E40026190C4BDDE /* Pods-JGSourceBaseDemo.release.xcconfig */;
+			baseConfigurationReference = D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "${JGSBuild}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = JGSourceBaseDemo/PrefixHeader.pch;
@@ -719,7 +733,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "${JGSVersion}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

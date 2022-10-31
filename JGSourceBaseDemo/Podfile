@@ -78,9 +78,9 @@ target "JGSourceBaseDemo" do
 
   echo "****** 编译开始前，执行Podfile自定义脚本 ******"
   
-  echo "执行自定义脚本修改源码 Info.Plist"
-  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyVersionBeforeCompile.sh # sh执行权限
-  ${PROJECT_DIR}/../JGSScripts/JGSModifyVersionBeforeCompile.sh # 执行sh
+  echo "执行自定义脚本修改源码 JGSourceBase.xcconfig"
+  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限
+  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh
   
   echo "****** 编译前Podfile自定义脚本执行完成 ******"
   
@@ -91,10 +91,6 @@ target "JGSourceBaseDemo" do
   JGSPodsScriptAfterCompile = <<-CMD
 
   echo "****** 编译结束后，执行Podfile自定义脚本 ******"
-  
-  echo "执行自定义脚本修改构建物 Info.Plist"
-  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSDemoModifyBuildAfterCompile.sh # sh执行权限
-  ${PROJECT_DIR}/../JGSScripts/JGSDemoModifyBuildAfterCompile.sh "app" # 执行sh
   
   echo "执行应用完整性校验资源文件Hash记录脚本"
   chmod +x ${PROJECT_DIR}/../JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限

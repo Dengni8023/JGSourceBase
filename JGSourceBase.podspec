@@ -15,23 +15,29 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "JGSourceBase"
+  def self.ios_version
+    "11.0" # iOS最低支持版本
+  end
+  def self.osx_version
+    "11.0" # osx最低支持版本
+  end
   def self.smart_host
     # 网络防火墙问题，优先使用 Gitee
     # "github.com"
     "gitee.com"
   end
-  # def self.smart_version
-  #   # tag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
-  #   tag = `git describe --abbrev=0 --tags`
-  #   if $?.success? then tag else "0.0.1" end
-  # end
-  # def self.version_date
-  #   date = `git log -1 --pretty=format:%ad --date=format:%Y%m%d #{smart_version}`
-  #   date
-  # end
-  # spec.version      = smart_version
-  spec.version      = "1.3.2"
+  def self.smart_version
+    # tag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
+    tag = `git describe --abbrev=0 --tags`
+    if $?.success? then tag else "0.0.1" end
+  end
+  def self.version_date
+    date = `git log -1 --pretty=format:%ad --date=format:%Y%m%d #{smart_version}`
+    date
+  end
+  
+  spec.name         = "JGSourceBase"
+  spec.version      = smart_version
   spec.summary      = "JGSourceBase functional component library."
 
   # This description is used to generate tags and improve search results.
@@ -93,7 +99,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "11.0"
+  spec.platform     = :ios, "#{ios_version}"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -212,6 +218,9 @@ Pod::Spec.new do |spec|
   
   # Base
   spec.subspec "Base" do |sub|
+    sub.ios.deployment_target = "#{ios_version}"
+    sub.osx.deployment_target = "#{osx_version}"
+
     sub.source_files = "#{spec.name}/JGSBase/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSBase/*.h"
     sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
@@ -235,7 +244,7 @@ Pod::Spec.new do |spec|
 
     sub.pod_target_xcconfig = {
         "JGSVersion" => "#{spec.version}",
-        "JGSBuild" => "20221010",
+        "JGSBuild" => "#{version_date}",
         "GCC_PREPROCESSOR_DEFINITIONS" => "JGSUserAgent='\"#{spec.name}/${JGSVersion}\"' JGSVersion='\"${JGSVersion}\"' JGSBuild='\"${JGSBuild}\"'",
     }
     
@@ -272,6 +281,9 @@ Pod::Spec.new do |spec|
   
   # Category
   spec.subspec 'Category' do |sub|
+    sub.ios.deployment_target = "#{ios_version}"
+    sub.osx.deployment_target = "#{osx_version}"
+
     sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSCategory/*.h"
     
@@ -351,6 +363,9 @@ Pod::Spec.new do |spec|
   
   # DataStorage
   spec.subspec 'DataStorage' do |sub|
+    sub.ios.deployment_target = "#{ios_version}"
+    sub.osx.deployment_target = "#{osx_version}"
+    
     sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSDataStorage/*.h"
     
@@ -373,6 +388,9 @@ Pod::Spec.new do |spec|
   
   # Encryption
   spec.subspec 'Encryption' do |sub|
+    sub.ios.deployment_target = "#{ios_version}"
+    sub.osx.deployment_target = "#{osx_version}"
+
     sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSEncryption/*.h"
     
@@ -427,6 +445,9 @@ Pod::Spec.new do |spec|
 
   # Reachability
   spec.subspec 'Reachability' do |sub|
+    sub.ios.deployment_target = "#{ios_version}"
+    sub.osx.deployment_target = "#{osx_version}"
+    
     sub.source_files = "#{spec.name}/JGSReachability/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSReachability/*.h"
     

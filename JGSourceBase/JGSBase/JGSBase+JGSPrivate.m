@@ -12,6 +12,10 @@
 
 + (void)requestGitRepositoryFileContent:(NSString *)filePath retryTimes:(NSInteger)retryTimes completion:(void (^)(NSData * _Nullable))completion {
     
+    NSMutableCharacterSet *mutSet = [NSCharacterSet URLPathAllowedCharacterSet].mutableCopy;
+    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    filePath = [filePath stringByAddingPercentEncodingWithAllowedCharacters:mutSet];
     if (filePath.length == 0) {
         if (completion) {
             completion(nil);
@@ -24,84 +28,205 @@
         retryTimesInfo = @{}.mutableCopy;
     }
     
-    // https://raw.githubusercontent.com/用户名/仓库名/分支名/文件路径
-    // DOC: https://www.cnblogs.com/chen-xing/p/14058096.html
+    __block NSData *fileData = nil;
+    __block NSHTTPURLResponse *httpResp = nil;
+    __block NSError *httpError = nil;
     
-    NSMutableCharacterSet *mutSet = [NSCharacterSet URLPathAllowedCharacterSet].mutableCopy;
-    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [mutSet formUnionWithCharacterSet:[NSCharacterSet URLFragmentAllowedCharacterSet]];
-    filePath = [filePath stringByAddingPercentEncodingWithAllowedCharacters:mutSet];
-    
-    /**
-     // https://api.github.com/repos/Dengni8023/JGSourceBase/contents 获取仓库内容
-     {
-         "name": "LatestGlobalConfiguration.json.sec",
-         "path": "LatestGlobalConfiguration.json.sec",
-         "sha": "8913981d9b86a5080db01b25b4a59ba8e54d7d11",
-         "size": 124,
-         "url": "https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
-         "html_url": "https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
-         "git_url": "https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
-         "download_url": "https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master/LatestGlobalConfiguration.json.sec",
-         "type": "file",
-         "_links": {
-           "self": "https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
-           "git": "https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
-           "html": "https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec"
-         }
-       }
-     */
-    // 以下地址受限于网络，可能存在请求不到数据情况
-    // 同一地址可能4G请求报错，WiFi则正常
-    NSString *fileContentAPI = @"https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master";
-    NSString *fileURL = [fileContentAPI stringByAppendingPathComponent:filePath];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fileURL]];
-    request.HTTPMethod = @"GET";
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-    request.timeoutInterval = 10;
-    
-    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    // 并行从 Gitee、GitHub 获取文件内容
+    // 1、任一获取成功，则获取成功
+    // 2、两者均失败则重试
+    dispatch_queue_t requestQueue = dispatch_queue_create("com.meijigao.JGSourceBase.getGitFileContent", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); // 创建信号量
+    dispatch_async(requestQueue, ^{
         
-        NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
-        JGSPrivateLog(@"statusCode: %@, data length: %@, error: %@", @(httpResp.statusCode), @(data.length), error);
-        if (httpResp.statusCode == 200 || httpResp.statusCode == 404) {
-            if (completion) {
-                completion(httpResp.statusCode == 200 && data.length > 0 ? data : nil);
-            }
-            return;
-        }
+        __block int finishCount = 0;
+        NSPointerArray *taskPointer = [NSPointerArray pointerArrayWithOptions:NSPointerFunctionsWeakMemory];
         
-        switch (error.code) {
-            case NSURLErrorBadURL: {
-                if (completion) {
-                    completion(nil);
-                }
-                return;
-            }
-                break;
-                
-            default:
-                break;
-        }
-        
-        NSInteger retry = [retryTimesInfo[filePath] integerValue] + 1;
-        NSInteger maxRetryTimes = MAX(retryTimes, 5); // 为避免网络阻塞，无限重试限制次数
-        if (retry > maxRetryTimes) {
+        // 获取 Gitee 文件
+        [taskPointer addPointer:(void *)[self requestGiteeRepositoryFileContent:filePath completion:^(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
             
-            // 避免下次无法重试问题
-            [retryTimesInfo removeObjectForKey:filePath];
+            @synchronized (requestQueue) {
+                fileData = data;
+                httpResp = response;
+                httpError = error;
+                finishCount += 1;
+                
+                //JGSPrivateLog(@"\n%@ statusCode: %@, data length: %@, error: %@", filePath, @(httpResp.statusCode), @(fileData.length), httpError);
+                if (data.length > 0) {
+                    [taskPointer.allObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [(NSURLSessionDataTask *)obj cancel];
+                    }];
+                }
+                
+                if (data.length > 0 || finishCount > 1) {
+                    dispatch_semaphore_signal(semaphore);   // 发送信号
+                }
+            }
+        }]];
+        
+        // 获取 GitHub 文件
+        [taskPointer addPointer:(void *)[self requestGitHubRepositoryFileContent:filePath completion:^(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            @synchronized (requestQueue) {
+                fileData = data;
+                httpResp = response;
+                httpError = error;
+                finishCount += 1;
+                
+                //JGSPrivateLog(@"\n%@ statusCode: %@, data length: %@, error: %@", filePath, @(httpResp.statusCode), @(fileData.length), httpError);
+                if (data.length > 0) {
+                    [taskPointer.allObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [(NSURLSessionDataTask *)obj cancel];
+                    }];
+                }
+                
+                if (data.length > 0 || finishCount > 1) {
+                    dispatch_semaphore_signal(semaphore);   // 发送信号
+                }
+            }
+        }]];
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  // 一直等待完成
+    
+    JGSPrivateLog(@"\n%@ statusCode: %@, data length: %@, error: %@", filePath, @(httpResp.statusCode), @(fileData.length), httpError);
+    if (httpResp.statusCode == 200 || httpResp.statusCode == 404) {
+        if (completion) {
+            completion(httpResp.statusCode == 200 && fileData.length > 0 ? fileData : nil);
+        }
+        return;
+    }
+    
+    switch (httpError.code) {
+        case NSURLErrorBadURL: {
             if (completion) {
                 completion(nil);
             }
             return;
         }
+            break;
+            
+        default:
+            break;
+    }
+    
+    NSInteger retry = [retryTimesInfo[filePath] integerValue] + 1;
+    NSInteger maxRetryTimes = MAX(retryTimes, 5); // 为避免网络阻塞，无限重试限制次数
+    if (retry > maxRetryTimes) {
         
-        retryTimesInfo[filePath] = @(retry);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * (1 + log2(retry)) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [JGSBaseUtils requestGitRepositoryFileContent:filePath retryTimes:retryTimes completion:completion];
-        });
+        // 避免下次无法重试问题
+        [retryTimesInfo removeObjectForKey:filePath];
+        if (completion) {
+            completion(nil);
+        }
+        return;
+    }
+    
+    retryTimesInfo[filePath] = @(retry);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * (1 + log2(retry)) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [JGSBaseUtils requestGitRepositoryFileContent:filePath retryTimes:retryTimes completion:completion];
+    });
+}
+
++ (NSURLSessionDataTask *)requestGitHubRepositoryFileContent:(NSString *)urlEncodeFilePath completion:(void (^)(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completion {
+    
+    if (urlEncodeFilePath.length == 0) {
+        if (completion) {
+            completion(nil, nil, nil);
+        }
+        return nil;
+    }
+    
+    // GitHub API 文档：获取仓库具体路径下的内容
+    // 官方文档：https://docs.github.com/cn/rest/repos/contents#get-repository-content
+    // CNBlogs文档：https://www.cnblogs.com/chen-xing/p/14058096.html
+    /*
+     // API: https://api.github.com/api/v5//repos/{owner}/{repo}/contents/{path}
+     // API对应本仓库：https://api.github.com/repos/Dengni8023/JGSourceBase/contents/{path} 获取仓库内容
+     // 查看对应文件的信息如下：
+     {
+     "name":"LatestGlobalConfiguration.json.sec",
+     "path":"LatestGlobalConfiguration.json.sec",
+     "sha":"8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+     "size":124,
+     "url":"https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
+     "html_url":"https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
+     "git_url":"https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+     "download_url":"https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master/LatestGlobalConfiguration.json.sec",
+     "type":"file",
+     "_links":{
+     "self":"https://api.github.com/repos/Dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec?ref=master",
+     "git":"https://api.github.com/repos/Dengni8023/JGSourceBase/git/blobs/8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+     "html":"https://github.com/Dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
+     }
+     }
+     // 根据文件信息 download_url 获取文件下载地址API: https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{path}
+     // API对应本仓库：https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master/{path}
+     */
+    // 以下地址受限于网络，可能存在请求不到数据情况
+    // 同一地址可能4G请求报错，WiFi则正常
+    NSString *fileContentAPI = @"https://raw.githubusercontent.com/Dengni8023/JGSourceBase/master";
+    NSString *fileURL = [fileContentAPI stringByAppendingPathComponent:urlEncodeFilePath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fileURL]];
+    request.HTTPMethod = @"GET";
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+    request.timeoutInterval = 5;
+    
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-    }] resume];
+        completion(data, (NSHTTPURLResponse *)response, error);
+        
+    }];
+    [task resume];
+    return task;
+}
+
++ (NSURLSessionDataTask *)requestGiteeRepositoryFileContent:(NSString *)urlEncodeFilePath completion:(void (^)(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completion {
+    
+    if (urlEncodeFilePath.length == 0) {
+        if (completion) {
+            completion(nil, nil, nil);
+        }
+        return nil;
+    }
+    
+    // Gitee API 文档：获取仓库具体路径下的内容
+    // https://gitee.com/api/v5/swagger#/getV5ReposOwnerRepoContents(Path)
+    /*
+     // API: https://gitee.com/api/v5/repos/{owner}/{repo}/contents(/{path})
+     // API对应本仓库：https://gitee.com/api/v5/repos/Dengni8023/JGSourceBase/contents/{path} 获取仓库内容
+     // 查看对应文件的信息如下：
+     {
+     "type":"file",
+     "size":null,
+     "name":"LatestGlobalConfiguration.json.sec",
+     "path":"LatestGlobalConfiguration.json.sec",
+     "sha":"8913981d9b86a5080db01b25b4a59ba8e54d7d11",
+     "url":"https://gitee.com/api/v5/repos/dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec",
+     "html_url":"https://gitee.com/dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
+     "download_url":"https://gitee.com/dengni8023/JGSourceBase/raw/master/LatestGlobalConfiguration.json.sec",
+     "_links":{
+     "self":"https://gitee.com/api/v5/repos/dengni8023/JGSourceBase/contents/LatestGlobalConfiguration.json.sec",
+     "html":"https://gitee.com/dengni8023/JGSourceBase/blob/master/LatestGlobalConfiguration.json.sec",
+     }
+     }
+     // 根据文件信息 download_url 获取文件下载地址API: https://gitee.com/{owner}/{repo}/raw/{branch}/{path}
+     // API对应本仓库：https://gitee.com/dengni8023/JGSourceBase/raw/master/{path}
+     */
+    NSString *fileContentAPI = @"https://gitee.com/dengni8023/JGSourceBase/raw/master";
+    NSString *fileURL = [fileContentAPI stringByAppendingPathComponent:urlEncodeFilePath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fileURL]];
+    request.HTTPMethod = @"GET";
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+    request.timeoutInterval = 5;
+    
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        completion(data, (NSHTTPURLResponse *)response, error);
+        
+    }];
+    [task resume];
+    
+    return task;
 }
 
 @end
@@ -180,6 +305,9 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                         if (error) {
                             JGSPrivateLog(@"%@", error);
                         }
+                    }
+                    else {
+                        onceToken = 0;
                     }
                 }];
             });

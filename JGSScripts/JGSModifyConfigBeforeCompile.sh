@@ -2,10 +2,10 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-06-22 18:51:08
+ # @LastEditTime: 2022-10-28 14:57:03
  # @LastEditors: 梅继高
  # @Description: 
- # @FilePath: /JGSourceBase的副本/JGSScripts/JGSModifyConfigBeforeCompile.sh
+ # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
 ### 
 
@@ -33,23 +33,20 @@ fi
 SHELL_ROOT=$(cd "$(dirname "$0")"; pwd) # 脚本所在目录
 echo "脚本所在目录: $SHELL_ROOT"
 
-# 根据 JGSourceBase.podspec 文件中 spec.version 的值设置工程 Version
-SpecFile=${SHELL_ROOT}/../JGSourceBase.podspec
-if [[ ! -f ${SpecFile} ]]; then
-    exit
+# gitTag/tagDate 获取与 podspec 文件头部逻辑保持一致
+
+# 使用 git 命令获取最新 tag
+# gitTag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
+gitTag=`git describe --abbrev=0 --tags`
+if [ "$?" -ne 0 ]; then
+    gitTag="0.0.1"
 fi
 
-echo "SpecFile: ${SpecFile}"
-
-# spec.version = 所在行内容，获取 spec.version
-SpecVersion=$(sed -n '/^[ ]*spec.version[ ]*=[ ]*\"[0-9.]*\"$/p' ${SpecFile})
-JGSVersion=$(echo ${SpecVersion} | sed 's/^[ ]*spec.version[ ]*=[ ]*\"\([0-9.]*\)\"$/\1/')
-echo "spec.version: <${SpecVersion}> -> <${JGSVersion}>"
-
-# JGSBuild => 所在行，获取 JGSBuild
-SpecBuild=$(sed -n '/^[ ]*\"JGSBuild\"[ ]*=>[ ]*[\"].*\",$/p' ${SpecFile})
-JGSBuild=$(echo ${SpecBuild} | sed 's/^[ ]*\"JGSBuild\"[ ]*=>[ ]*\"\(.*\)\",$/\1/')
-echo "JGSBuild: <${SpecBuild}> -> <${JGSBuild}>"
+# 使用 git 命令获取 tag 对应的创建日期
+tagDate=`git log -1 --pretty=format:%ad --date=format:%Y%m%d "${gitTag}"`
+if [ "$?" -ne 0 ]; then
+    tagDate=$(date "+%Y%m%d %H:%M:%S")
+fi
 
 # JGSourceBase.xcconfig 路径
 ConfigFile="${PROJECT_DIR}/${TARGET_NAME}/JGSourceBase.xcconfig"
@@ -58,8 +55,8 @@ if [[ ! -f ${ConfigFile} ]]; then
 fi
 
 echo "Modify JGSourceBase.xcconfig"
-sed -i '' 's/^\(JGSVersion = \).*/\1'"${JGSVersion}"'/'  "${ConfigFile}"
-sed -i '' 's/^\(JGSBuild = \).*/\1'"${JGSBuild}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSVersion = \).*/\1'"${gitTag}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSBuild = \).*/\1'"${tagDate}"'/'  "${ConfigFile}"
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本
