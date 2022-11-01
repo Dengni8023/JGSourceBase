@@ -218,9 +218,6 @@ Pod::Spec.new do |spec|
   
   # Base
   spec.subspec "Base" do |sub|
-    sub.ios.deployment_target = "#{ios_version}"
-    sub.osx.deployment_target = "#{osx_version}"
-
     sub.source_files = "#{spec.name}/JGSBase/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSBase/*.h"
     sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
@@ -281,9 +278,6 @@ Pod::Spec.new do |spec|
   
   # Category
   spec.subspec 'Category' do |sub|
-    sub.ios.deployment_target = "#{ios_version}"
-    sub.osx.deployment_target = "#{osx_version}"
-
     sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSCategory/*.h"
     
@@ -363,9 +357,6 @@ Pod::Spec.new do |spec|
   
   # DataStorage
   spec.subspec 'DataStorage' do |sub|
-    sub.ios.deployment_target = "#{ios_version}"
-    sub.osx.deployment_target = "#{osx_version}"
-    
     sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSDataStorage/*.h"
     
@@ -388,9 +379,6 @@ Pod::Spec.new do |spec|
   
   # Encryption
   spec.subspec 'Encryption' do |sub|
-    sub.ios.deployment_target = "#{ios_version}"
-    sub.osx.deployment_target = "#{osx_version}"
-
     sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSEncryption/*.h"
     
@@ -445,9 +433,6 @@ Pod::Spec.new do |spec|
 
   # Reachability
   spec.subspec 'Reachability' do |sub|
-    sub.ios.deployment_target = "#{ios_version}"
-    sub.osx.deployment_target = "#{osx_version}"
-    
     sub.source_files = "#{spec.name}/JGSReachability/*.{h,m}"
     sub.public_header_files = "#{spec.name}/JGSReachability/*.h"
     

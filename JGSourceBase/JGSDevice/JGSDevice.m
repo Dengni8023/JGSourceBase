@@ -382,7 +382,7 @@
         NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
         if (deviceNamesByCode.count == 0) {
             
-            // AES 256 解密, 解密方式, key, iv 与 JGSResourceHandler/main.m 文件 aesEncryptData 保持一致
+            // AES 256 解密, 解密方式, key, iv 与 JGCommandLineDemo/main.m 文件 - aes256EncryptData:fileName: 保持一致
             size_t keyLen = kCCKeySizeAES256;
             size_t blockSize = kCCBlockSizeAES128;
             

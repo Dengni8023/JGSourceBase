@@ -58,6 +58,9 @@
 		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317F288A880D001D4119 /* NSArray+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3180288A880D001D4119 /* NSArray+JGSBase.m */; };
+		D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */; };
+		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; };
+		D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA162911407F00E1CBFF /* JGSFileUtils.m */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
 		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
@@ -152,7 +155,6 @@
 		D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */; };
 		D4EBE98E2850CCD00041E21B /* icon_29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE9892850CCC00041E21B /* icon_29pt.png */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4F4EE1D285041DC00ACB934 /* NSData+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7692844974A002C27D9 /* NSData+JGSAES.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +267,10 @@
 		D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSArray.h"; sourceTree = "<group>"; };
 		D45E317F288A880D001D4119 /* NSArray+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JGSBase.h"; sourceTree = "<group>"; };
 		D45E3180288A880D001D4119 /* NSArray+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JGSBase.m"; sourceTree = "<group>"; };
+		D473BA1229113F6200E1CBFF /* JGSCommandLineTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JGSCommandLineTool.h; path = JGCommandLineDemo/JGSCommandLineTool.h; sourceTree = SOURCE_ROOT; };
+		D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JGSCommandLineTool.m; path = JGCommandLineDemo/JGSCommandLineTool.m; sourceTree = SOURCE_ROOT; };
+		D473BA152911407F00E1CBFF /* JGSFileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSFileUtils.h; sourceTree = "<group>"; };
+		D473BA162911407F00E1CBFF /* JGSFileUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSFileUtils.m; sourceTree = "<group>"; };
 		D4767708290BB46F007119FC /* JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.release.xcconfig; sourceTree = "<group>"; };
 		D4767709290BB46F007119FC /* JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.debug.xcconfig; sourceTree = "<group>"; };
 		D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSiOSDeviceList.json; sourceTree = "<group>"; };
@@ -362,7 +368,7 @@
 		D4D697CF2806E0F900CE1F9F /* NSDate+JGSFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JGSFormat.m"; sourceTree = "<group>"; };
 		D4D697D02806E0F900CE1F9F /* JGSCategory+NSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSDate.h"; sourceTree = "<group>"; };
 		D4D697D12806E0F900CE1F9F /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
-		D4D698252806E16F00CE1F9F /* JGSResourceHandler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JGSResourceHandler; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D698252806E16F00CE1F9F /* JGCommandLineDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JGCommandLineDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D698272806E16F00CE1F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGSBase+JGSPrivate.m"; sourceTree = "<group>"; };
 		D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSBase+JGSPrivate.h"; sourceTree = "<group>"; };
@@ -780,16 +786,18 @@
 		D4D6978F2806E0F900CE1F9F /* JGSBase */ = {
 			isa = PBXGroup;
 			children = (
+				D403B13A2850356900F4F304 /* Assets.xcassets */,
+				D4EBE9852850CCC00041E21B /* icon_29pt */,
 				D4D697942806E0F900CE1F9F /* JGSBase.h */,
 				D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */,
 				D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */,
 				D4D697902806E0F900CE1F9F /* JGSBaseUtils.h */,
 				D4D697932806E0F900CE1F9F /* JGSBaseUtils.m */,
+				D473BA152911407F00E1CBFF /* JGSFileUtils.h */,
+				D473BA162911407F00E1CBFF /* JGSFileUtils.m */,
 				D4D697922806E0F900CE1F9F /* JGSLogFunction.h */,
 				D4D697952806E0F900CE1F9F /* JGSLogFunction.m */,
 				D4D697912806E0F900CE1F9F /* JGSWeakStrong.h */,
-				D4EBE9852850CCC00041E21B /* icon_29pt */,
-				D403B13A2850356900F4F304 /* Assets.xcassets */,
 			);
 			path = JGSBase;
 			sourceTree = "<group>";
@@ -933,12 +941,14 @@
 			path = NSDate;
 			sourceTree = "<group>";
 		};
-		D4D698262806E16F00CE1F9F /* JGSResourceHandler */ = {
+		D4D698262806E16F00CE1F9F /* JGCommandLineDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D473BA1229113F6200E1CBFF /* JGSCommandLineTool.h */,
+				D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */,
 				D4D698272806E16F00CE1F9F /* main.m */,
 			);
-			path = JGSResourceHandler;
+			path = JGCommandLineDemo;
 			sourceTree = "<group>";
 		};
 		D4EBE9852850CCC00041E21B /* icon_29pt */ = {
@@ -956,7 +966,7 @@
 			children = (
 				D4F3DA4722F0279D002EF0F0 /* JGSourceBase */,
 				D4F4EE1728503EAA00ACB934 /* JGSourceBase.bundle */,
-				D4D698262806E16F00CE1F9F /* JGSResourceHandler */,
+				D4D698262806E16F00CE1F9F /* JGCommandLineDemo */,
 				D45AAAA428337DEE004EE48C /* JGSScripts */,
 				D4075ADF2863123300E4BFEA /* JGSourceBaseDemo */,
 				D4F3DA4622F0279D002EF0F0 /* Products */,
@@ -970,7 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */,
-				D4D698252806E16F00CE1F9F /* JGSResourceHandler */,
+				D4D698252806E16F00CE1F9F /* JGCommandLineDemo */,
 				D403B1322850335200F4F304 /* JGSourceBase.bundle */,
 				D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */,
 			);
@@ -1036,6 +1046,7 @@
 				D436C7752844974A002C27D9 /* NSData+JGSAES.h in Headers */,
 				D4D697FC2806E0F900CE1F9F /* JGSSymbolKeyboard.h in Headers */,
 				D436C7732844974A002C27D9 /* JGSCategory+NSData.h in Headers */,
+				D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */,
 				D4D697D62806E0F900CE1F9F /* JGSKeychainUtils.h in Headers */,
 				D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */,
 				D4D698182806E0F900CE1F9F /* NSString+JGSBase.h in Headers */,
@@ -1103,9 +1114,9 @@
 			productReference = D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4D698242806E16F00CE1F9F /* JGSResourceHandler */ = {
+		D4D698242806E16F00CE1F9F /* JGCommandLineDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4D698292806E16F00CE1F9F /* Build configuration list for PBXNativeTarget "JGSResourceHandler" */;
+			buildConfigurationList = D4D698292806E16F00CE1F9F /* Build configuration list for PBXNativeTarget "JGCommandLineDemo" */;
 			buildPhases = (
 				D4D698212806E16F00CE1F9F /* Sources */,
 				D4D698222806E16F00CE1F9F /* Frameworks */,
@@ -1115,9 +1126,9 @@
 			);
 			dependencies = (
 			);
-			name = JGSResourceHandler;
-			productName = JGSResourceHandler;
-			productReference = D4D698252806E16F00CE1F9F /* JGSResourceHandler */;
+			name = JGCommandLineDemo;
+			productName = JGCommandLineDemo;
+			productReference = D4D698252806E16F00CE1F9F /* JGCommandLineDemo */;
 			productType = "com.apple.product-type.tool";
 		};
 		D4F3DA4422F0279D002EF0F0 /* JGSourceBase */ = {
@@ -1179,7 +1190,7 @@
 			projectRoot = "";
 			targets = (
 				D4F3DA4422F0279D002EF0F0 /* JGSourceBase */,
-				D4D698242806E16F00CE1F9F /* JGSResourceHandler */,
+				D4D698242806E16F00CE1F9F /* JGCommandLineDemo */,
 				D403B1312850335200F4F304 /* JGSourceBase.bundle */,
 				D4075ADD2863123300E4BFEA /* JGSourceBaseDemo */,
 			);
@@ -1343,8 +1354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */,
 				D4D698282806E16F00CE1F9F /* main.m in Sources */,
-				D4F4EE1D285041DC00ACB934 /* NSData+JGSAES.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,6 +1370,7 @@
 				D4D697DF2806E0F900CE1F9F /* UIView+JGSToast.m in Sources */,
 				D4D6981E2806E0F900CE1F9F /* NSDate+JGSFormat.m in Sources */,
 				D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */,
+				D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */,
 				D4D697FB2806E0F900CE1F9F /* JGSLetterKeyboard.m in Sources */,
 				D4D697F62806E0F900CE1F9F /* JGSKeyboardConstants.m in Sources */,
 				D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */,
@@ -1446,9 +1458,8 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MeiJiGao. All rights reserved.";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "";
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.JGSourceBase-bundle";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1475,9 +1486,8 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MeiJiGao. All rights reserved.";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "";
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.JGSourceBase-bundle";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1516,7 +1526,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1551,7 +1561,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1572,7 +1582,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSResourceHandler;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1592,7 +1602,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSResourceHandler;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1746,8 +1756,8 @@
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = "$(JGSVersion)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1778,8 +1788,8 @@
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = "$(JGSVersion)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meijigao.${TARGET_NAME}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1807,7 +1817,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4D698292806E16F00CE1F9F /* Build configuration list for PBXNativeTarget "JGSResourceHandler" */ = {
+		D4D698292806E16F00CE1F9F /* Build configuration list for PBXNativeTarget "JGCommandLineDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4D6982A2806E16F00CE1F9F /* Debug */,
