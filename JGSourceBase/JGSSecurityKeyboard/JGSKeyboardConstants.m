@@ -291,11 +291,15 @@ FOUNDATION_EXTERN NSArray<NSString *> * const JGSKeyboardKeysForType(JGSKeyboard
             }
             break;
             
-        case JGSKeyboardTypeNumber:
+        case JGSKeyboardTypeNumber: {
+            // 数字输入：小数点"."
+            return @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0", @"."];
+        }
+            break;
+            
         case JGSKeyboardTypeIDCard: {
-            // 身份证输入"."在功能按键上
-            // 身份证输入X在功能按键上
-            return @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"];
+            // 身份证输入：校验位x
+            return @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0", @"x"];
         }
             break;
     }

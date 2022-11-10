@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface UITextField (JGSSecurityKeyboard) <JGSSecurityKeyboardTextInput>
+@interface UITextField (JGSSecurityKeyboard) <JGSSecurityKeyboardTextInput, UITextFieldDelegate>
 
 /// 是否使用AES逐字符加密，输入内容逐字符进行 AES 加密后存入内存，默认 NO，此时内部对输入整体内容AES加密
 /// secureTextEntry 输入时，输入框使用"•"掩码展示，输入框 text 返回一串"•"掩码
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface UITextView (JGSSecurityKeyboard) <JGSSecurityKeyboardTextInput>
+@interface UITextView (JGSSecurityKeyboard) <JGSSecurityKeyboardTextInput, UITextViewDelegate>
 
 @end
 

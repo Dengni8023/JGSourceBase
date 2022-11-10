@@ -13,6 +13,7 @@
 static NSString *JGSSecurityKeyboardSecChar = @"•";
 static NSString *JGSSecurityKeyboardCRLFChar = @"\n";
 static char kJGSSecurityKeyboardTextInputOriginTextKey; // 原始内容
+static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对象与其delegate值
 
 @implementation UITextField (JGSSecurityKeyboard)
 
@@ -24,6 +25,8 @@ static char kJGSSecurityKeyboardTextInputOriginTextKey; // 原始内容
         Class class = [self class];
         // 重写的系统方法处理，dealloc仅用作日志输出检测页面释放情况，dealloc在ARC不能通过@selector获取
         NSArray<NSString *> *oriSelectors = @[
+            NSStringFromSelector(@selector(setDelegate:)),
+            NSStringFromSelector(@selector(delegate)),
             NSStringFromSelector(@selector(text)),
             NSStringFromSelector(@selector(setText:)),
             NSStringFromSelector(@selector(replaceRange:withText:)),
@@ -123,6 +126,161 @@ static char kJGSSecurityKeyboardTextInputOriginTextKey; // 原始内容
     
     [self JGSSwizzing_setSecureTextEntry:secureTextEntry];
     self.text = self.jg_securityOriginText;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)JGSSwizzing_setDelegate:(id<UITextFieldDelegate>)delegate {
+    
+    [self JGSSwizzing_setDelegate:self];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (JGSSecurityKeyboardTextInputDelegate == nil) {
+            JGSSecurityKeyboardTextInputDelegate = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory valueOptions:NSPointerFunctionsWeakMemory];
+        }
+    });
+    
+    [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+}
+
+- (id<UITextFieldDelegate>)JGSSwizzing_delegate {
+    return [self JGSSwizzing_delegate];
+}
+
+- (id<UITextFieldDelegate>)jg_textInputDelegate {
+    return [JGSSecurityKeyboardTextInputDelegate objectForKey:self];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
+        return [delegate textFieldShouldBeginEditing:self];
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+        return [delegate textFieldDidBeginEditing:self];
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
+        return [delegate textFieldShouldEndEditing:self];
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+        return [delegate textFieldDidEndEditing:self];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldDidEndEditing:reason:)]) {
+        return [delegate textFieldDidEndEditing:self reason:reason];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        
+        JGSSecurityKeyboard *keyboard = (JGSSecurityKeyboard *)self.inputView;
+        if (![keyboard shouldInputText:string]) {
+            //JGSPrivateLog(@"Should not input: %@", string);
+            return NO;
+        }
+    }
+    
+    BOOL shouldChange = YES;
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+        shouldChange = [delegate textField:self shouldChangeCharactersInRange:range replacementString:string];
+    }
+    
+    if (![self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        return shouldChange;
+    }
+    
+    // 安全键盘，允许输入之后，阻断系统输入相应
+    // 直接文本替换，否则加密文本内容混乱
+    UITextPosition *beginPos = [self positionFromPosition:self.beginningOfDocument offset:range.location];
+    UITextPosition *endPos = [self positionFromPosition:beginPos offset:range.length];
+    UITextRange *selectedRange = [self textRangeFromPosition:beginPos toPosition:endPos];
+    
+    if (!selectedRange.isEmpty || string.length > 0) {
+        [self replaceRange:selectedRange withText:string];
+    }
+    else {
+        UITextPosition *delStart = [self positionFromPosition:selectedRange.start offset:-1];
+        UITextRange *delTextRange = [self textRangeFromPosition:delStart toPosition:selectedRange.start];
+        [self replaceRange:delTextRange withText:string];
+    }
+    
+    return NO;
+}
+
+- (void)textFieldDidChangeSelection:(UITextField *)textField API_AVAILABLE(ios(13.0), tvos(13.0)) {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldDidChangeSelection:)]) {
+        return [delegate textFieldDidChangeSelection:self];
+    }
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldShouldClear:)]) {
+        return [delegate textFieldShouldClear:self];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
+        return [delegate textFieldShouldReturn:self];
+    }
+    return YES;
+}
+
+- (UIMenu *)textField:(UITextField *)textField editMenuForCharactersInRange:(NSRange)range suggestedActions:(NSArray<UIMenuElement *> *)suggestedActions API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textField:editMenuForCharactersInRange:suggestedActions:)]) {
+        return [delegate textField:self editMenuForCharactersInRange:range suggestedActions:suggestedActions];
+    }
+    return nil;
+}
+
+- (void)textField:(UITextField *)textField willPresentEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textField:willPresentEditMenuWithAnimator:)]) {
+        return [delegate textField:self willPresentEditMenuWithAnimator:animator];
+    }
+}
+
+- (void)textField:(UITextField *)textField willDismissEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textField:willDismissEditMenuWithAnimator:)]) {
+        return [delegate textField:self willDismissEditMenuWithAnimator:animator];
+    }
 }
 
 #pragma mark - securityOriginText
@@ -258,6 +416,8 @@ static char kJGSSecurityKeyboardTextInputOriginTextKey; // 原始内容
         Class class = [self class];
         // 重写的系统方法处理，dealloc仅用作日志输出检测页面释放情况，dealloc在ARC不能通过@selector获取
         NSArray<NSString *> *oriSelectors = @[
+            NSStringFromSelector(@selector(setDelegate:)),
+            NSStringFromSelector(@selector(delegate)),
             NSStringFromSelector(@selector(text)),
             NSStringFromSelector(@selector(setText:)),
             NSStringFromSelector(@selector(replaceRange:withText:)),
@@ -369,6 +529,171 @@ static char kJGSSecurityKeyboardTextInputOriginTextKey; // 原始内容
     
     [self JGSSwizzing_setSecureTextEntry:secureTextEntry];
     self.text = self.jg_securityOriginText;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)JGSSwizzing_setDelegate:(id<UITextViewDelegate>)delegate {
+    
+    [self JGSSwizzing_setDelegate:delegate ? self : nil];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (JGSSecurityKeyboardTextInputDelegate == nil) {
+            JGSSecurityKeyboardTextInputDelegate = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory valueOptions:NSPointerFunctionsWeakMemory];
+        }
+    });
+    
+    [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+}
+
+- (id<UITextViewDelegate>)JGSSwizzing_delegate {
+    return [self JGSSwizzing_delegate];
+}
+
+- (id<UITextViewDelegate>)jg_textInputDelegate {
+    return [JGSSecurityKeyboardTextInputDelegate objectForKey:self];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
+        return [delegate textViewShouldBeginEditing:self];
+    }
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewShouldEndEditing:)]) {
+        return [delegate textViewShouldEndEditing:self];
+    }
+    return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewDidBeginEditing:)]) {
+        return [delegate textViewDidBeginEditing:self];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewDidEndEditing:)]) {
+        return [delegate textViewDidEndEditing:self];
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        
+        JGSSecurityKeyboard *keyboard = (JGSSecurityKeyboard *)self.inputView;
+        if (![keyboard shouldInputText:text]) {
+            //JGSPrivateLog(@"Should not input: %@", text);
+            return NO;
+        }
+    }
+    
+    BOOL shouldChange = YES;
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:shouldChangeTextInRange:replacementText:)]) {
+        shouldChange = [delegate textView:self shouldChangeTextInRange:range replacementText:text];
+    }
+    
+    if (![self.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
+        return shouldChange;
+    }
+    
+    // 安全键盘，允许输入之后，阻断系统输入相应
+    // 直接文本替换，否则加密文本内容混乱
+    UITextPosition *beginPos = [self positionFromPosition:self.beginningOfDocument offset:range.location];
+    UITextPosition *endPos = [self positionFromPosition:beginPos offset:range.length];
+    UITextRange *selectedRange = [self textRangeFromPosition:beginPos toPosition:endPos];
+    
+    if (!selectedRange.isEmpty || text.length > 0) {
+        [self replaceRange:selectedRange withText:text];
+    }
+    else {
+        UITextPosition *delStart = [self positionFromPosition:selectedRange.start offset:-1];
+        UITextRange *delTextRange = [self textRangeFromPosition:delStart toPosition:selectedRange.start];
+        [self replaceRange:delTextRange withText:text];
+    }
+    
+    return NO;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewDidChange:)]) {
+        return [delegate textViewDidChange:self];
+    }
+}
+
+- (void)textViewDidChangeSelection:(UITextView *)textView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textViewDidChangeSelection:)]) {
+        return [delegate textViewDidChangeSelection:self];
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:shouldInteractWithURL:inRange:interaction:)]) {
+        return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange interaction:interaction];
+    }
+    else if ([delegate respondsToSelector:@selector(textView:shouldInteractWithURL:inRange:)]) {
+        JGSSuppressWarning_DeprecatedDeclarations(
+                                                  return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange];
+                                                  );
+    }
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:interaction:)]) {
+        return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange interaction:interaction];
+    }
+    else if ([delegate respondsToSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:)]) {
+        JGSSuppressWarning_DeprecatedDeclarations(
+                                                  return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+                                                  );
+    }
+    return YES;
+}
+
+- (UIMenu *)textView:(UITextView *)textView editMenuForTextInRange:(NSRange)range suggestedActions:(NSArray<UIMenuElement *> *)suggestedActions API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:editMenuForTextInRange:suggestedActions:)]) {
+        return [delegate textView:self editMenuForTextInRange:range suggestedActions:suggestedActions];
+    }
+    return nil;
+}
+
+- (void)textView:(UITextView *)textView willPresentEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:willPresentEditMenuWithAnimator:)]) {
+        return [delegate textView:self willPresentEditMenuWithAnimator:animator];
+    }
+}
+
+- (void)textView:(UITextView *)textView willDismissEditMenuWithAnimator:(id<UIEditMenuInteractionAnimating>)animator API_AVAILABLE(ios(16.0)) {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(textView:willDismissEditMenuWithAnimator:)]) {
+        return [delegate textView:self willDismissEditMenuWithAnimator:animator];
+    }
 }
 
 #pragma mark - securityOriginText

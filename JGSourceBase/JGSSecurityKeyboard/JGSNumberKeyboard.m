@@ -42,7 +42,7 @@
     
     if (!_showNumbers) {
         
-        NSArray<NSString *> *numbers = JGSKeyboardKeysForType(self.type, NO, NO);
+        NSArray<NSString *> *numbers = [JGSKeyboardKeysForType(self.type, NO, NO) subarrayWithRange:NSMakeRange(0, 10)];
         if (self.securityKeyboard.randomNumPad) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {
@@ -148,7 +148,7 @@
         }
         
         // 小数点/身份证X
-        NSString *keyText = self.type == JGSKeyboardTypeIDCard ? @"X" : @".";
+        NSString *keyText = JGSKeyboardKeysForType(self.type, NO, NO).lastObject;
         JGSKeyboardKey *symbolBtn = [[JGSKeyboardKey alloc] initWithType:JGSKeyboardKeyTypeInput text:keyText frame:CGRectMake(minX, lineY, itemWidth, itemHeight)];
         [lineKeys insertObject:symbolBtn atIndex:0]; // 该行第一个位置
         

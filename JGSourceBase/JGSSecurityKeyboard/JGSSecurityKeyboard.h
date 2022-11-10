@@ -15,6 +15,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 自定义安全软件盘，使用时，建议禁止三方软件盘，避免输入内容不符合软件盘定义的允许输入的内容
+/// 在Appdelegate中实现如下方法：
+/*
+ - (BOOL)application:(UIApplication *)application shouldAllowExtensionPointIdentifier:(UIApplicationExtensionPointIdentifier)extensionPointIdentifier {
+     if ([extensionPointIdentifier isEqualToString:@"com.apple.keyboard-service"]) {
+         return YES;
+     }
+     return NO;
+ }
+ */
 @interface JGSSecurityKeyboard : UIView
 
 /// This property is unavailable. Use JGSSecurityKeyboard.textInput instead!

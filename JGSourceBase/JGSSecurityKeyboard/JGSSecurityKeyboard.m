@@ -557,8 +557,8 @@
 
 @implementation JGSSecurityKeyboard (UITextInput)
 
-static char kJGSSecurityKeyboardTextFieldAESIVKey; // AES 逐字符加密 iv
-static char kJGSSecurityKeyboardTextFieldAESKeyKey; // AES 逐字符加密 key
+//static char kJGSSecurityKeyboardTextFieldAESIVKey; // AES 逐字符加密 iv
+//static char kJGSSecurityKeyboardTextFieldAESKeyKey; // AES 逐字符加密 key
 static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 
 #pragma mark - AES
@@ -619,6 +619,10 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 
 - (BOOL)shouldInputText:(NSString *)inputText {
     
+    if (inputText.length == 0) {
+        return YES;
+    }
+    
     // 符号/数字监听不需要区分大小写
     NSMutableSet<NSString *> *inputKeys = [NSMutableSet set];
     if (self.keyboardOptions & JGSKeyboardOptionLetter) {
@@ -640,6 +644,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     if (self.keyboardOptions & JGSKeyboardOptionNumber) {
         // 数值输入键盘
         [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeNumber, NO, NO)];
+        [inputKeys addObject:@"."]; // 数值允许输入小数点，键盘布局使用的
     }
     if (self.keyboardOptions & JGSKeyboardOptionIDCard) {
         // 证件输入键盘
@@ -649,7 +654,7 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     for (NSInteger i = 0; i < inputText.length; i++) {
         
         NSString *charAtIdx = [inputText substringWithRange:NSMakeRange(i, 1)];
-        if ([inputKeys containsObject:charAtIdx]) {
+        if ([inputKeys containsObject:charAtIdx.lowercaseString] || [inputKeys containsObject:charAtIdx.uppercaseString]) {
             return YES;
         }
     }
