@@ -387,10 +387,11 @@
             size_t blockSize = kCCBlockSizeAES128;
             
             NSString *key = fileName;
-            while (key.length < keyLen) {
+            while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
                 key = [key stringByAppendingString:key];
             }
             
+            key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
             NSString *iv = [key substringFromIndex:key.length - blockSize];
             key = [key substringToIndex:keyLen];
             

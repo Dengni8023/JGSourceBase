@@ -382,6 +382,20 @@
     return self;
 }
 
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (NSArray<UIKeyCommand *> *)keyCommands {
+    return @[
+        [UIKeyCommand keyCommandWithInput:@"Shift" modifierFlags:UIKeyModifierShift action:@selector(hardShiftPressed:)],
+    ];
+}
+
+- (void)hardShiftPressed:(id)sender {
+    JGSPrivateLog(@"%@", sender);
+}
+
 #pragma mark - Action
 - (BOOL)keyboardKeyAction:(JGSKeyboardKey *)key event:(JGSKeyboardKeyEvents)event {
     

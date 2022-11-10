@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-10-28 14:57:03
+ # @LastEditTime: 2022-11-02 13:38:44
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
@@ -54,6 +54,8 @@ if [[ ! -f ${ConfigFile} ]]; then
     exit
 fi
 
+# ⚠️ 执行脚本时，项目已经读取了 xcconfig 文件配置
+# 因此针对 xcconfig 文件的修改，本次运行不生效
 echo "Modify JGSourceBase.xcconfig"
 sed -i '' 's/^\(JGSVersion = \).*/\1'"${gitTag}"'/'  "${ConfigFile}"
 sed -i '' 's/^\(JGSBuild = \).*/\1'"${tagDate}"'/'  "${ConfigFile}"

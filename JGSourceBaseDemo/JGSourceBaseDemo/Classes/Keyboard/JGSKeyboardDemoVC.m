@@ -135,7 +135,9 @@
     secPwdInputView.randomNumPad = (accountInputShow % 2 == 0);
     secPwdInputView.enableHighlightedWhenTap = NO;
     self.secPwdInput.inputView = secPwdInputView;
-    if (@available(iOS 11.0, *)) {
+    if (@available(iOS 12.0, *)) {
+        self.secPwdInput.textContentType = UITextContentTypeNewPassword;
+    } else if (@available(iOS 11.0, *)) {
         self.secPwdInput.textContentType = UITextContentTypePassword;
     }
 
@@ -148,7 +150,11 @@
     secPwdFullInputView.randomNumPad = (accountInputShow % 2 == 1);
     secPwdFullInputView.enableFullAngle = YES;
     self.secPwdFullInput.inputView = secPwdFullInputView;
-    if (@available(iOS 10.0, *)) {
+    if (@available(iOS 12.0, *)) {
+        self.secPwdInput.textContentType = UITextContentTypeNewPassword;
+    } else if (@available(iOS 11.0, *)) {
+        self.secPwdInput.textContentType = UITextContentTypePassword;
+    } else if (@available(iOS 10.0, *)) {
         self.secPwdFullInput.textContentType = UITextContentTypeNickname;
     }
 

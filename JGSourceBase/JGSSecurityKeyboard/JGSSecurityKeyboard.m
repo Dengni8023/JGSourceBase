@@ -553,60 +553,47 @@ static char kJGSSecurityKeyboardTextFieldAESKeyKey; // AES 逐字符加密 key
 static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
 
 #pragma mark - AES
-- (NSString *)aesBase64EncodeString:(NSString *)string {
-    return [string jg_base64EncodeString];
-}
-
-- (NSString *)aesOperationIv {
+- (NSDictionary<NSString *, NSString *> *)aes256KeyIvPair:(size_t)keyLength {
     
-    NSString *aesIv = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESIVKey);
-    if (aesIv.length > 0) {
-        return aesIv;
+    /// TODO: KEY、IV安全处理，加解密参数不能原样存放在代码中
+    /// 外部测试方式：
+    /// 安全测试hook加解密方法获取加解密key、iv
+    /// 应用包逆向后代码搜索hook获取到的参数
+    /// 安全考虑代码中不能存在hook获取到的参数的原样数据
+    NSCAssert(keyLength == kCCKeySizeAES128 || keyLength == kCCKeySizeAES192 || keyLength == kCCKeySizeAES256, @"The keyLength of AES must be (%@、%@、%@)", @(kCCKeySizeAES128), @(kCCKeySizeAES192), @(kCCKeySizeAES256));
+    
+    NSMutableDictionary<NSNumber *, NSDictionary<NSString *, NSString *> *> *instance = nil;
+    
+    // 已经生成对应长度的key-iv则返回
+    NSDictionary<NSString *, NSString *> *keyIvPair = [instance objectForKey:@(keyLength)];
+    if (keyIvPair.allKeys.count == 1 && keyIvPair.allValues.count == 1) {
+        return keyIvPair;
     }
     
-    NSInteger ivSize = kCCBlockSizeAES128;
-    NSString *originStr = [NSString stringWithFormat:@"%p-%@-%@", self, NSStringFromClass([self class]), [NSProcessInfo processInfo].processName];
+    NSString *originStr = [NSString stringWithFormat:@"%p-%@-%@-%@", self, NSStringFromClass([self class]), [NSProcessInfo processInfo].processName, @([[NSDate date] timeIntervalSince1970])];
     // 最少两次Base64
-    NSString *base64 = [self aesBase64EncodeString:originStr];
+    NSString *base64 = [originStr jg_base64EncodeString];
     do {
-        base64 = [self aesBase64EncodeString:base64];
-    } while (base64.length < ivSize);
+        base64 = [base64 jg_base64EncodeString];
+    } while (base64.length < keyLength);
     
-    // sub(两次base64, 0, 16)
-    base64 = [base64 substringToIndex:ivSize];
-    aesIv = base64.copy;
+    // iv: sub(多次base64, 0, 16)
+    size_t blockSize = kCCBlockSizeAES128; // iv偏移，AES块最大为 kCCBlockSizeAES128
+    NSString *iv = [base64 substringToIndex:blockSize];
     
-    objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESIVKey, aesIv, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    //JGSPrivateLog(@"\nOri:\t%@\nIv:\t%@", originStr, aesIv);
-    return aesIv;
-}
-
-- (NSString *)aesOperationKey {
-    
-    NSString *aesKey = objc_getAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESKeyKey);
-    if (aesKey.length > 0) {
-        return aesKey;
+    // reverse(sub(多次base64, 0, 32))
+    NSString *tmp = [base64 substringToIndex:keyLength];
+    NSMutableString *key = @"".mutableCopy;
+    for (int i = 0; i < keyLength; i++) {
+        NSString *str = [tmp substringWithRange:NSMakeRange(keyLength - 1 - i, 1)];
+        [key appendString:str];
     }
     
-    NSInteger keySize = JGSSecurityKeyboardAESKeySize;
-    NSString *originStr = [NSString stringWithFormat:@"%p-%@-%@", self, NSStringFromClass([self class]), [NSProcessInfo processInfo].processName];
-    // 最少两次Base64
-    NSString *base64 = [self aesBase64EncodeString:originStr];
-    do {
-        base64 = [self aesBase64EncodeString:base64];
-    } while (base64.length < keySize);
+    keyIvPair = @{key: iv};
+    instance = instance ?: @{}.mutableCopy;
+    [instance setObject:keyIvPair forKey:@(keyLength)];
     
-    // reverse(sub(两次base64, 0, 16))
-    base64 = [base64 substringToIndex:keySize];
-    NSMutableString *key = [NSMutableString stringWithCapacity:base64.length];
-    for (NSInteger i = 0; i < base64.length; i++) {
-        [key insertString:[base64 substringWithRange:NSMakeRange(i, 1)] atIndex:0];
-    }
-    
-    aesKey = key.copy;
-    objc_setAssociatedObject(self, &kJGSSecurityKeyboardTextFieldAESKeyKey, aesKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    //JGSPrivateLog(@"\nOri:\t%@\nKey:\t%@", originStr, aesKey);
-    return aesKey;
+    return keyIvPair;
 }
 
 - (NSString *)aesOperation:(CCOperation)operation text:(NSString *)text {
@@ -615,8 +602,9 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
         return nil;
     }
     
-    NSString *key = [self aesOperationKey];
-    NSString *iv = [self aesOperationIv];
+    NSDictionary *keyIvPair = [self aes256KeyIvPair:JGSSecurityKeyboardAESKeySize];
+    NSString *key = keyIvPair.allKeys.firstObject;
+    NSString *iv = keyIvPair.allValues.firstObject;
     return [text jg_AESOperation:operation keyLength:JGSSecurityKeyboardAESKeySize key:key iv:iv];
 }
 
