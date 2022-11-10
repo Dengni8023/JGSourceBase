@@ -42,7 +42,7 @@
     
     if (!_showNumbers) {
         
-        NSArray<NSString *> *numbers = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0"];
+        NSArray<NSString *> *numbers = JGSKeyboardKeysForType(self.type, NO, NO);
         if (self.securityKeyboard.randomNumPad) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 if (arc4random_uniform(2) == 1) {

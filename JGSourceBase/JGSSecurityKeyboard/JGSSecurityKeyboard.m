@@ -135,6 +135,15 @@
         _title = title;//.length > 0 ? title : self.textField.placeholder;
         _textInput = textInput;
         
+        // 高版本系统外接扩展扩展/模拟器Mac键盘输入时会提示：Strong password，此处设置文本类型以屏蔽该提示
+        if (textInput.isSecureTextEntry || textInput.textContentType == UITextContentTypePassword) {
+            if (@available(iOS 12.0, *)) {
+                textInput.textContentType = UITextContentTypeNewPassword;
+            } else if (@available(iOS 11.0, *)) {
+                textInput.textContentType = UITextContentTypePassword;
+            }
+        }
+        
         _keyboardOptions = options & (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol | JGSKeyboardOptionNumber | JGSKeyboardOptionIDCard);
         if (!_keyboardOptions) {
             _keyboardOptions = (JGSKeyboardOptionLetter | JGSKeyboardOptionSymbol);
@@ -606,6 +615,46 @@ static NSInteger JGSSecurityKeyboardAESKeySize = kCCKeySizeAES256;
     NSString *key = keyIvPair.allKeys.firstObject;
     NSString *iv = keyIvPair.allValues.firstObject;
     return [text jg_AESOperation:operation keyLength:JGSSecurityKeyboardAESKeySize key:key iv:iv];
+}
+
+- (BOOL)shouldInputText:(NSString *)inputText {
+    
+    // 符号/数字监听不需要区分大小写
+    NSMutableSet<NSString *> *inputKeys = [NSMutableSet set];
+    if (self.keyboardOptions & JGSKeyboardOptionLetter) {
+        // 字母键盘
+        [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeLetter, NO, NO)];
+    }
+    if (self.keyboardOptions & JGSKeyboardOptionSymbol) {
+        
+        // 符号/符号+数字键盘
+        [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeSymbol, NO, NO)];
+        [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeSymbol, NO, YES)];
+        if (self.enableFullAngle) {
+            
+            [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeSymbol, YES, NO)];
+            [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeSymbol, YES, YES)];
+        }
+    }
+    
+    if (self.keyboardOptions & JGSKeyboardOptionNumber) {
+        // 数值输入键盘
+        [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeNumber, NO, NO)];
+    }
+    if (self.keyboardOptions & JGSKeyboardOptionIDCard) {
+        // 证件输入键盘
+        [inputKeys addObjectsFromArray:JGSKeyboardKeysForType(JGSKeyboardTypeIDCard, NO, NO)];
+    }
+    
+    for (NSInteger i = 0; i < inputText.length; i++) {
+        
+        NSString *charAtIdx = [inputText substringWithRange:NSMakeRange(i, 1)];
+        if ([inputKeys containsObject:charAtIdx]) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 @end

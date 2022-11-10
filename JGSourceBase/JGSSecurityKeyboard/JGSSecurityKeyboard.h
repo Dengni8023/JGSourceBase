@@ -128,7 +128,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JGSSecurityKeyboard (UITextInput)
 
+/// 输入内容AES 加/解密 存/取
+/// - Parameters:
+///   - operation: AES加 / 解密
+///   - text: 加解密内容
 - (nullable NSString *)aesOperation:(CCOperation)operation text:(NSString *)text;
+
+/// 判断当前键盘是否允许输入字符/字符串，内部判断当前文本输入键盘支持的输入字符，字符串存在当前支持的键盘均不允许输入的字符，则不允许输入
+/// - Parameter inputText: 输入字符串
+- (BOOL)shouldInputText:(NSString *)inputText;
 
 @end
 

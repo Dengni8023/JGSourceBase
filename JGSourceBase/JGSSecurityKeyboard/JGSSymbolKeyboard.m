@@ -62,14 +62,9 @@
     
     if (!_showHalfNumSyms) {
         
-        NSArray<NSString *> *numbers = @[
-			@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0",
-        ];
-        NSArray<NSString *> *symbols = @[
-			// 系统键盘按键，系统输入 UIKeyboardTypeASCIICapable 键盘类型时获取
-			@"-", @"/", @":", @";", @"(", @")", @"$", @"&", @"@", @"\"",
-			@".", @",", @"?", @"!", @"'",
-        ];
+        NSArray<NSString *> *keyTitles = JGSKeyboardKeysForType(self.type, NO, YES);
+        NSArray<NSString *> *numbers = [keyTitles subarrayWithRange:NSMakeRange(0, 10)];
+        NSArray<NSString *> *symbols = [keyTitles subarrayWithRange:NSMakeRange(10, keyTitles.count - 10)];
         if (self.securityKeyboard.randomPad) {
             
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -103,12 +98,7 @@
     
     if (!_showHalfSymbols) {
         
-        NSArray<NSString *> *symbols = @[
-			// 系统键盘按键，系统输入 UIKeyboardTypeASCIICapable 键盘类型时获取
-			@"[", @"]", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"=",
-			@"_", @"\\", @"|", @"~", @"<", @">", @"€", @"£", @"¥", @"•",
-			@".", @",", @"?", @"!", @"'",
-        ];
+        NSArray<NSString *> *symbols = JGSKeyboardKeysForType(self.type, NO, NO);
         if (self.securityKeyboard.randomPad) {
             
             symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -134,16 +124,9 @@
     
     if (!_showFullNumSyms) {
         
-        NSArray<NSString *> *numbers = @[
-            @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0",
-        ];
-        NSArray<NSString *> *symbols = @[
-			// 系统键盘按键，系统输入 UIKeyboardTypeNumbersAndPunctuation 类型时切换到中文输入时获取
-			// 中文左、右引号差别较小，肉眼容易当成一个符号
-			// 电脑键盘输入中文单、双引号为同一按键，自动配对识别成左、右引号
-			@"-", @"/", @"：", @"；", @"（", @"）", @"¥", @"@", @"“", @"”",
-			@"。", @"，", @"、", @"？", @"！", @".",
-        ];
+        NSArray<NSString *> *keyTitles = JGSKeyboardKeysForType(self.type, YES, YES);
+        NSArray<NSString *> *numbers = [keyTitles subarrayWithRange:NSMakeRange(0, 10)];
+        NSArray<NSString *> *symbols = [keyTitles subarrayWithRange:NSMakeRange(10, keyTitles.count - 10)];
         if (self.securityKeyboard.randomPad) {
             
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -177,15 +160,7 @@
     
     if (!_showFullSymbols) {
         
-        NSArray<NSString *> *symbols = @[
-			// 系统键盘按键，系统输入 UIKeyboardTypeNumbersAndPunctuation 类型时切换到中文输入时获取
-			// 系统键盘获取缺失右单引号，因此删除最后一行第三个字符 "^_^" ，行末增加右单引号 "’"
-			// 中文左、右引号差别较小，肉眼容易当成一个符号
-			// 电脑键盘输入中文单、双引号为同一按键，自动配对识别成左、右引号
-			@"【", @"】", @"｛", @"｝", @"#", @"%", @"^", @"*", @"+", @"=",
-			@"_", @"—", @"\\", @"｜", @"～", @"《", @"》", @"$", @"&", @"·",
-			@"…", @"，", /*@"^_^", */@"？", @"！", @"‘", @"’",
-        ];
+        NSArray<NSString *> *symbols = JGSKeyboardKeysForType(self.type, YES, NO);
         if (self.securityKeyboard.randomPad) {
             
             symbols = [symbols sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {

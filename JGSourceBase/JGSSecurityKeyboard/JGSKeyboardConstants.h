@@ -93,11 +93,19 @@ typedef NS_ENUM(NSInteger, JGSKeyboardType) {
     JGSKeyboardTypeNumber, // 数字键盘
     JGSKeyboardTypeIDCard, // 身份证专用输入键盘
 };
+
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleLetters;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleSymbolWithNumber;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleSymbols;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleNumbers;
 FOUNDATION_EXTERN NSString * const JGSKeyboardTitleForType(JGSKeyboardType type);
+
+/// 键盘输入按键标题
+/// - Parameters:
+///   - type: 键盘类型
+///   - halfAngle: 是否全半角
+///   - symbolWithNum: 符号键盘是否混合数字
+FOUNDATION_EXTERN NSArray<NSString *> * const JGSKeyboardKeysForType(JGSKeyboardType type, BOOL fullAngle, BOOL symbolWithNum);
 
 FOUNDATION_EXTERN NSString * const JGSKeyboardReturnTitleForType(UIReturnKeyType type);
 

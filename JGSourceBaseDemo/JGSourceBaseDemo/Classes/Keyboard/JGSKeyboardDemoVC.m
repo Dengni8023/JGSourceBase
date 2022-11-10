@@ -189,6 +189,10 @@
     }
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    JGSDemoShowConsoleLog(self, @"%@ -> %@", textField.jg_securityOriginText, textField.text);
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
