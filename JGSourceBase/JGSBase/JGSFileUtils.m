@@ -44,7 +44,7 @@
     return MIMEType;
 }
 
-#pragma mark - SOrt
+#pragma mark - Sort
 + (void)sortPlistFile:(NSString *)path rewrite:(BOOL)rewrite completion:(void (^)(id _Nullable, BOOL))completion {
     
     if (path.length == 0 || ![[NSFileManager defaultManager] fileExistsAtPath:path]) {

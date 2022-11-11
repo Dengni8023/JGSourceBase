@@ -320,7 +320,7 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                 NSMutableString *base64String = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding].mutableCopy;
                 NSInteger stringLen = base64String.length;
                 NSInteger blockSize = 5;
-                for (NSInteger i = 0; i < (stringLen / blockSize) * 0.5; i++) {
+                for (NSInteger i = 0; i < (stringLen / blockSize) / 2; i++) {
                     NSRange headrange = NSMakeRange(i * blockSize, blockSize);
                     NSString *headStr = [base64String substringWithRange:headrange];
                     NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);

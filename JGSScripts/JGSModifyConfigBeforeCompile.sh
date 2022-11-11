@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-11-02 13:38:44
+ # @LastEditTime: 2022-11-11 15:35:39
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
@@ -33,32 +33,56 @@ fi
 SHELL_ROOT=$(cd "$(dirname "$0")"; pwd) # 脚本所在目录
 echo "脚本所在目录: $SHELL_ROOT"
 
-# gitTag/tagDate 获取与 podspec 文件头部逻辑保持一致
-
-# 使用 git 命令获取最新 tag
-# gitTag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
-gitTag=`git describe --abbrev=0 --tags`
-if [ "$?" -ne 0 ]; then
-    gitTag="0.0.1"
-fi
-
-# 使用 git 命令获取 tag 对应的创建日期
-tagDate=`git log -1 --pretty=format:%ad --date=format:%Y%m%d "${gitTag}"`
-if [ "$?" -ne 0 ]; then
-    tagDate=$(date "+%Y%m%d %H:%M:%S")
-fi
-
 # JGSourceBase.xcconfig 路径
-ConfigFile="${PROJECT_DIR}/${TARGET_NAME}/JGSourceBase.xcconfig"
+ConfigFile="${PROJECT_DIR}/JGSourceBase/JGSourceBase.xcconfig"
+if [[ ! -d ${ConfigFile} ]]; then
+    ConfigFile="${PROJECT_DIR}/${TARGET_NAME}/JGSourceBase.xcconfig"
+fi
+ConfigFile="${ConfigFile}/JGSourceBase.xcconfig"
+echo "JGSourceBase.xcconfig: ${ConfigFile}"
 if [[ ! -f ${ConfigFile} ]]; then
+    echo "Could not found JGSourceBase.xcconfig"
     exit
 fi
 
+# lastGitTag/lastTagDate 获取与 podspec 文件头部逻辑保持一致
+# 使用 git 命令获取最新 tag
+# lastGitTag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
+lastGitTag=`git describe --abbrev=0 --tags`
+if [ "$?" -ne 0 ]; then
+    lastGitTag="0.0.1"
+fi
+
+# 使用 git 命令获取 tag 对应的创建日期
+lastTagDate=`git log -1 --pretty=format:%ad --date=format:%Y%m%d "${lastGitTag}"`
+if [ "$?" -ne 0 ]; then
+    lastTagDate=$(date "+%Y%m%d %H:%M:%S")
+fi
+
+# 获取最后一次 commit 对应的日期
+lastCommitDate=`git show --pretty=format:%ad --date=format:%Y%m%d | head -1`
+lastCommitTime=`git show --pretty=format:%ad --date=format:%Y%m%d.%H%M%S | head -1`
+
+# 获取最后一次提交的 commit Id, --short 指定获取短 ID
+lastCommitID=`git rev-parse --short HEAD`
+
 # ⚠️ 执行脚本时，项目已经读取了 xcconfig 文件配置
 # 因此针对 xcconfig 文件的修改，本次运行不生效
-echo "Modify JGSourceBase.xcconfig"
-sed -i '' 's/^\(JGSVersion = \).*/\1'"${gitTag}"'/'  "${ConfigFile}"
-sed -i '' 's/^\(JGSBuild = \).*/\1'"${tagDate}"'/'  "${ConfigFile}"
+echo "
+------------ Modify JGSourceBase.xcconfig ------------
+lastGitTag: ${lastGitTag}
+lastTagDate: ${lastTagDate}
+lastCommitDate: ${lastCommitDate}
+lastCommitTime: ${lastCommitTime}
+lastCommitID: ${lastCommitID}
+------------ Modify JGSourceBase.xcconfig ------------
+"
+# lastCommitTime="${lastTagDate}.${lastCommitDate}.${lastCommitID}"
+sed -i '' 's/^\(JGSVersion = \).*/\1'"${lastGitTag}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSBuild = \).*/\1'"${lastTagDate}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSLastCommitDate = \).*/\1'"${lastCommitDate}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSLastCommitTime = \).*/\1'"${lastCommitTime}"'/'  "${ConfigFile}"
+sed -i '' 's/^\(JGSLastCommitID = \).*/\1'"${lastCommitID}"'/'  "${ConfigFile}"
 
 # 此处不完整语句 Xcode 调试时会输出错误日志
 # 用于 Xcode 调试显示错误日志信息，便于通过查看脚本输出调试脚本

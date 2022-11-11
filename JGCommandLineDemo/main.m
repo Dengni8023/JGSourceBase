@@ -26,6 +26,7 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"Sort and base64 encrypt latest global config >>>>");
         [JGSCommandLineTool sortAndBase64EncryptGlobalConfiguration];
+        [JGSCommandLineTool globalConfigurationBase64Decrypt];
         NSLog(@"");
 	}
 	return 0;

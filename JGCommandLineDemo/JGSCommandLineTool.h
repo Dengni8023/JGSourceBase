@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 全局配置文件整理并 Base64 编码
 /// base64 编码后分别从首尾每第5位进行首尾替换
 + (void)sortAndBase64EncryptGlobalConfiguration;
++ (void)globalConfigurationBase64Decrypt;
 
 @end
 

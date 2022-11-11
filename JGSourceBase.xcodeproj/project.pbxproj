@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		202BEB27775D0B66D090C222 /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */; };
 		7844BE53F12C088D332D1C79 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
-		D403B1382850344800F4F304 /* JGSiOSDeviceList.json.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */; };
 		D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */ = {isa = PBXBuildFile; fileRef = D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */; };
 		D4075AE22863123300E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE12863123300E4BFEA /* AppDelegate.m */; };
 		D4075AE82863123300E4BFEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE72863123300E4BFEA /* ViewController.m */; };
@@ -59,8 +58,9 @@
 		D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317F288A880D001D4119 /* NSArray+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3180288A880D001D4119 /* NSArray+JGSBase.m */; };
 		D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */; };
-		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; };
+		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA162911407F00E1CBFF /* JGSFileUtils.m */; };
+		D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
 		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
@@ -277,6 +277,7 @@
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
 		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
+		D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JGSiOSDeviceList.json-v20221110.sec"; sourceTree = "<group>"; };
 		D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_1024.p12; sourceTree = "<group>"; };
 		D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_1024.der; sourceTree = "<group>"; };
 		D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_1024.pem; sourceTree = "<group>"; };
@@ -765,6 +766,7 @@
 			children = (
 				D4D697832806E0F900CE1F9F /* JGSiOSDeviceList-Origin.json */,
 				D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */,
+				D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */,
 				D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */,
 			);
 			path = Resources;
@@ -1202,8 +1204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D403B1382850344800F4F304 /* JGSiOSDeviceList.json.sec in Resources */,
 				D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */,
+				D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */,
 				D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */,
 				D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */,
 				D4EBE98C2850CCD00041E21B /* icon_29pt@2x.png in Resources */,
@@ -1506,7 +1508,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1541,7 +1543,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1575,7 +1577,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1595,7 +1597,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
+				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -127,7 +127,7 @@
 }
 
 #pragma mark - AES
-+ (NSData *)aes256EncryptData:(NSData *)fileData fileName:(NSString *)fileName {
++ (NSData *)aes256EncryptData:(NSData *)fileData fileName:(NSString *)fileName version:(NSString *)version {
     
     if (fileData.length == 0 || fileName.length == 0) {
         return nil;
@@ -137,11 +137,21 @@
     size_t blockSize = kCCBlockSizeAES128;
     
     NSString *key = fileName;
-    while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
-        key = [key stringByAppendingString:key];
+    if (version.length == 0) {
+        while (key.length < keyLen) {
+            key = [key stringByAppendingString:key];
+        }
+    }
+    else {
+        // 2022-11-10修改：加密规则变化，修改信息Commit：
+        // Commit ID: 044f0e75684a4b8db57d6cf840bd8beddd541381
+        // Commit Info: AES加解密key/iv优化    044f0e7    Dengni8023 <945835664@qq.com>    2022年11月10日 09:05
+        while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
+            key = [key stringByAppendingString:key];
+        }
+        key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     }
     
-    key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     NSString *iv = [key substringFromIndex:key.length - blockSize];
     key = [key substringToIndex:keyLen];
     
@@ -219,12 +229,20 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
     NSLog(@"[Formatted %@] %@", sortResult ? @"success" : @"fail", [jsonPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
     
     // AES加密：整理后源JSON文件
-    NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
-    NSData *secData = [JGSCommandLineTool aes256EncryptData:sortedData fileName:secFileName] ?: [NSData data];
-    NSString *secPath = [deviceSourceDir stringByAppendingPathComponent:secFileName];
-    BOOL aesResult = [secData writeToFile:secPath options:(NSDataWritingAtomic) error:nil];
-    
-    NSLog(@"[AES Encrypt %@] %@", aesResult ? @"success" : @"fail", [secPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
+    NSArray<NSString *> *versions = @[@"", @"20221110"];
+    [versions enumerateObjectsUsingBlock:^(NSString * _Nonnull version, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
+        if (version.length > 0) {
+            secFileName = [destFileName stringByAppendingFormat:@"-v%@.sec", version];
+        }
+        
+        NSData *secData = [JGSCommandLineTool aes256EncryptData:sortedData fileName:secFileName version:version] ?: [NSData data];
+        NSString *secPath = [deviceSourceDir stringByAppendingPathComponent:secFileName];
+        BOOL aesResult = [secData writeToFile:secPath options:(NSDataWritingAtomic) error:nil];
+        
+        NSLog(@"[AES Encrypt %@] %@", aesResult ? @"success" : @"fail", [secPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
+    }];
 }
 
 + (void)sortAndBase64EncryptGlobalConfiguration {
@@ -243,7 +261,7 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
         NSMutableString *base64String = [sortedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].mutableCopy;
         NSInteger stringLen = base64String.length;
         NSInteger blockSize = 5;
-        for (NSInteger i = 0; i < (stringLen / blockSize) * 0.5; i++) {
+        for (NSInteger i = 0; i < (stringLen / blockSize) / 2; i++) {
             NSRange headrange = NSMakeRange(i * blockSize, blockSize);
             NSString *headStr = [base64String substringWithRange:headrange];
             NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);
@@ -257,6 +275,43 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
         
         NSLog(@"[Base64 Encrypt and swap %@] %@", base64String.length > 0 ? @"success" : @"fail", [secPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
     }];
+}
+
++ (void)globalConfigurationBase64Decrypt {
+    
+    NSString *filePath = [JGSourceRepoLocationDirectory stringByAppendingPathComponent:@"LatestGlobalConfiguration.json.sec"];
+    NSData *jsonData = [[NSFileManager defaultManager] fileExistsAtPath:filePath] ? [NSData dataWithContentsOfFile:filePath] : nil;
+    if (jsonData.length == 0) {
+        return;
+    }
+    
+    // 配置文件Base64解密
+    // Baes64替换规则：同时从首尾遍历，每xx位字符串块首尾替换
+    NSMutableString *base64String = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding].mutableCopy;
+    NSInteger stringLen = base64String.length;
+    NSInteger blockSize = 5;
+    for (NSInteger i = 0; i < (stringLen / blockSize) / 2; i++) {
+        NSRange headrange = NSMakeRange(i * blockSize, blockSize);
+        NSString *headStr = [base64String substringWithRange:headrange];
+        NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);
+        NSString *tailStr = [base64String substringWithRange:tailRange];
+        [base64String replaceCharactersInRange:headrange withString:tailStr];
+        [base64String replaceCharactersInRange:tailRange withString:headStr];
+    }
+    
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, base64String);
+    NSData *originData = [[NSData alloc] initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSError *error = nil;
+    NSDictionary *instance = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:originData options:kNilOptions error:&error];
+    if (error != nil) {
+        //JGSPrivateLog(@"%@", error);
+    }
+    
+    NSLog(@"[Base64 Decrypt and swap %@] %@", instance.count > 0 ? @"success" : @"fail", [filePath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
+    if (instance.count > 0) {
+        NSLog(@"%@", instance);
+        NSLog(@"%@", [[NSString alloc] initWithData:originData encoding:NSUTF8StringEncoding]);
+    }
 }
 
 @end

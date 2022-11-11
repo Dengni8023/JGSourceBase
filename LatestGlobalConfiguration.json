@@ -1,3 +1,4 @@
 {
-  "iOSDeviceListFilePath": "JGSourceBase/JGSDevice/Resources/JGSiOSDeviceList.json.sec"
+  "iOSDeviceListFilePath": "JGSourceBase/JGSDevice/Resources/JGSiOSDeviceList.json.sec",
+  "iOSDeviceListFilePath-v20221110": "JGSourceBase/JGSDevice/Resources/JGSiOSDeviceList.json-v20221110.sec"
 }
