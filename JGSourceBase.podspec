@@ -177,6 +177,11 @@ Pod::Spec.new do |spec|
   #   "CFBundleShortVersionString" => "#{spec.version}",
   #   "CFBundleVersion" => "#{spec.version}",
   # }
+
+  # 解决新版本pod lib lint等检测因项目无Info.plist文件而失败问题
+  spec.user_target_xcconfig = {
+    'GENERATE_INFOPLIST_FILE' => 'YES'
+  }
   
   spec.pod_target_xcconfig = {
     "PRODUCT_BUNDLE_IDENTIFIER" => "com.meijigao.#{spec.name}",

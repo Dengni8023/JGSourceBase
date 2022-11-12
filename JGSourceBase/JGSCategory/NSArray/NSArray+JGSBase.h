@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray (JGSBase)
 
+- (nullable id)jg_objectAtIndex:(NSUInteger)index;
+
 - (BOOL)jg_boolAtIndex:(NSUInteger)index;
 - (BOOL)jg_boolAtIndex:(NSUInteger)index defaultValue:(BOOL)defaultValue;
 
