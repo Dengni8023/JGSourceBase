@@ -258,6 +258,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     return YES;
 }
 
+#ifdef __IPHONE_16_0
 - (UIMenu *)textField:(UITextField *)textField editMenuForCharactersInRange:(NSRange)range suggestedActions:(NSArray<UIMenuElement *> *)suggestedActions API_AVAILABLE(ios(16.0)) {
     
     id<UITextFieldDelegate> delegate = [self jg_textInputDelegate];
@@ -282,6 +283,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         return [delegate textField:self willDismissEditMenuWithAnimator:animator];
     }
 }
+#endif
 
 #pragma mark - securityOriginText
 - (void)setJg_securityOriginText:(NSString *)jg_securityOriginText {
@@ -671,6 +673,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     return YES;
 }
 
+#ifdef __IPHONE_16_0
 - (UIMenu *)textView:(UITextView *)textView editMenuForTextInRange:(NSRange)range suggestedActions:(NSArray<UIMenuElement *> *)suggestedActions API_AVAILABLE(ios(16.0)) {
     
     id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
@@ -695,6 +698,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         return [delegate textView:self willDismissEditMenuWithAnimator:animator];
     }
 }
+#endif
 
 #pragma mark - securityOriginText
 - (void)setJg_securityOriginText:(NSString *)jg_securityOriginText {
