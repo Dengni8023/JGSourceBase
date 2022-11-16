@@ -533,7 +533,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     self.text = self.jg_securityOriginText;
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextViewDelegate
 - (void)JGSSwizzing_setDelegate:(id<UITextViewDelegate>)delegate {
     
     [self JGSSwizzing_setDelegate:delegate ? self : nil];
@@ -645,6 +645,22 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    _Pragma("clang diagnostic push")
+    _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"")
+    if ([delegate respondsToSelector:@selector(textView:shouldInteractWithURL:inRange:)]) {
+        return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange];
+    }
+    _Pragma("clang diagnostic pop")
+    
+    return YES;
+}
+#pragma clang diagnostic pop
+
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     
     id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
@@ -659,6 +675,21 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     return YES;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    _Pragma("clang diagnostic push")
+    _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"")
+    if ([delegate respondsToSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:)]) {
+        return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    }
+    _Pragma("clang diagnostic pop")
+    return YES;
+}
+#pragma clang diagnostic pop
+    
 - (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     
     id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
@@ -699,6 +730,121 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
     }
 }
 #endif
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [delegate scrollViewDidScroll:self];
+    }
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidZoom:)]) {
+        [delegate scrollViewDidZoom:self];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+        [delegate scrollViewWillBeginDragging:self];
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
+        [delegate scrollViewWillEndDragging:self withVelocity:velocity targetContentOffset:targetContentOffset];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
+        [delegate scrollViewDidEndDragging:self willDecelerate:decelerate];
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
+        [delegate scrollViewWillBeginDecelerating:self];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+        [delegate scrollViewDidEndDecelerating:self];
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
+        [delegate scrollViewDidEndScrollingAnimation:self];
+    }
+}
+
+- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(viewForZoomingInScrollView:)]) {
+        return [delegate viewForZoomingInScrollView:self];
+    }
+    return nil;
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewWillBeginZooming:withView:)]) {
+        [delegate scrollViewWillBeginZooming:self withView:view];
+    }
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidEndZooming:withView:atScale:)]) {
+        [delegate scrollViewDidEndZooming:self withView:view atScale:scale];
+    }
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
+        return [delegate scrollViewShouldScrollToTop:self];
+    }
+    return YES;
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
+        [delegate scrollViewDidScrollToTop:self];
+    }
+}
+
+- (void)scrollViewDidChangeAdjustedContentInset:(UIScrollView *)scrollView {
+    
+    id<UITextViewDelegate> delegate = [self jg_textInputDelegate];
+    if ([delegate respondsToSelector:@selector(scrollViewDidChangeAdjustedContentInset:)]) {
+        [delegate scrollViewDidChangeAdjustedContentInset:self];
+    }
+}
 
 #pragma mark - securityOriginText
 - (void)setJg_securityOriginText:(NSString *)jg_securityOriginText {

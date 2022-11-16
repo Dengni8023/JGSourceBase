@@ -31,30 +31,30 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 常用警告消除
 // performSelector警告消除
 #define JGSSuppressWarning_PerformSelector(PerformCoding) \
-do { \
+{ \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
 PerformCoding \
 _Pragma("clang diagnostic pop") \
-} while (0)
+}
 
 // 消除方法弃用(过时)的警告
 #define JGSSuppressWarning_DeprecatedDeclarations(PerformCoding) \
-do { \
+{ \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
 PerformCoding \
 _Pragma("clang diagnostic pop") \
-} while (0)
+}
 
 // ignored(忽视)消除对应的selector的警告
 #define JGSSuppressWarning_UndeclaredSelector(PerformCoding) \
-do { \
+{ \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wundeclared-selector\"") \
 PerformCoding \
 _Pragma("clang diagnostic pop") \
-} while (0)
+}
 
 // Runtime
 #pragma mark - SwizzledMethod
