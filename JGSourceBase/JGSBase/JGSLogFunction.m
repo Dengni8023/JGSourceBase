@@ -8,7 +8,7 @@
 
 #import "JGSLogFunction.h"
 #import <sys/time.h>
-#import <sys/uio.h>
+//#import <sys/uio.h>
 #import "JGSBase+JGSPrivate.h"
 
 FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void) {

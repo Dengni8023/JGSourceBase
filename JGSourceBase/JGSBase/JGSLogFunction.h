@@ -35,20 +35,24 @@ typedef NS_ENUM(NSInteger, JGSLogLevel) {
 #pragma mark - Log - Define
 FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args);
 FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
-#define JGSLogWithModeLevel(mode, level, fmt, ...) {\
+
+// 为避免表达式参数 表达式未执行情况，是否输出 Log 判断放到最后
+// 输出 Log 前构建 Log 内容步骤不可省
+#define JGSLogWithModeLevel(mode, level, fmt, ...) { \
+    NSString *message = [NSString stringWithFormat:fmt, ## __VA_ARGS__]; \
     if (JGSEnableLogMode != JGSLogModeNone && mode != JGSLogModeNone && level >= JGSConsoleLogLevel) { \
         NSDictionary *map = JGSLogLevelMap()[@(level)]; \
         NSString *lvStr = [NSString stringWithFormat:@"%@ [%@]", map[@"emoji"], map[@"level"]]; \
         switch (mode) { \
             case JGSLogModeLog: \
-                JGSLogWithFormat((@"%@ " fmt ""), lvStr, ##__VA_ARGS__); \
+                JGSLogWithFormat((@"%@ %@"), lvStr, message); \
                 break; \
             case JGSLogModeFunc:\
-                JGSLogWithFormat((@"%@ %s Line: %@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
+                JGSLogWithFormat((@"%@ %s Line: %@ %@"), lvStr, __PRETTY_FUNCTION__, @(__LINE__), message); \
                 break; \
             case JGSLogModeFile: { \
                 NSString *file = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \
-                JGSLogWithFormat((@"%@ \nFile:\t%@ \nFunc:\t%s \nLine:\t%@ \n" fmt ""), lvStr, file, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
+                JGSLogWithFormat((@"%@ \nFile:\t%@ \nFunc:\t%s \nLine:\t%@ \n%@"), lvStr, file, __PRETTY_FUNCTION__, @(__LINE__), message); \
             } \
                 break; \
             case JGSLogModeNone: \
