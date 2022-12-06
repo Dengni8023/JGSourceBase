@@ -39,7 +39,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
 // 为避免表达式参数 表达式未执行情况，是否输出 Log 判断放到最后
 // 输出 Log 前构建 Log 内容步骤不可省
 #define JGSLogWithModeLevel(mode, level, fmt, ...) { \
-    NSString *message = [NSString stringWithFormat:fmt, ## __VA_ARGS__]; \
+    NSString *message = [NSString stringWithFormat:@"" fmt, ## __VA_ARGS__]; \
     if (JGSEnableLogMode != JGSLogModeNone && mode != JGSLogModeNone && level >= JGSConsoleLogLevel) { \
         NSDictionary *map = JGSLogLevelMap()[@(level)]; \
         NSString *lvStr = [NSString stringWithFormat:@"%@ [%@]", map[@"emoji"], map[@"level"]]; \
