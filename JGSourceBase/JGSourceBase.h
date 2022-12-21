@@ -14,6 +14,11 @@
 #error "JGSourceBase uses features only available in iOS SDK 11.0 and later."
 #endif
 
+// Xcode最低版本要求
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_16_0
+#error "JGSourceBase needs Xcode 13.0 or later."
+#endif
+
 //! Project version number for JGSourceBase.
 FOUNDATION_EXPORT double JGSourceBaseVersionNumber;
 

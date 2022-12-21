@@ -30,7 +30,7 @@ FOUNDATION_EXTERN BOOL JGSPrivateLogEnable;
 #define JGSPrivateLogWithModeLevel(level, fmt, ...) {\
     if (JGSPrivateLogEnable) { \
         NSDictionary *map = JGSLogLevelMap()[@(level)]; \
-        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@]", map[@"emoji"], map[@"level"]]; \
+        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@-OC]", map[@"emoji"], map[@"level"]]; \
         JGSLogWithFormat((@"%@ %s Line: %@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
     } \
 }

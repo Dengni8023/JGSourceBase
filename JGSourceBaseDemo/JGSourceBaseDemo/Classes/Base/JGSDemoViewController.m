@@ -82,7 +82,6 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 	}
 	
     self.view.backgroundColor = [UIColor colorWithWhite:0.99 alpha:1.f];
-    self.showTextView = YES;
     
     // tableView
     [self.view addSubview:self.tableView];
@@ -127,10 +126,8 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
     }
 	
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
-    self.tableView.hidden = (self.tableSectionData.count == 0);
-    self.scrollView.hidden = !self.tableView.hidden;
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(self.showTextView ? (isPortrait ? 180 : 120) : 0);
+        make.height.mas_equalTo(self.textView.isHidden ? 0 : (isPortrait ? 180 : 120));
     }];
 	
 	if (@available(iOS 15.0, *)) {
@@ -167,7 +164,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
     
     BOOL isPortrait = size.height > size.width;
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(self.showTextView ? (isPortrait ? 180 : 120) : 0);
+        make.height.mas_equalTo(self.textView.isHidden ? 0 : (isPortrait ? 180 : 120));
     }];
 }
 
@@ -267,15 +264,14 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.f];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
+        _tableView.hidden = YES;
         
         _tableView.sectionHeaderHeight = 44;
         _tableView.rowHeight = 44;
         
         _tableView.dataSource = self;
         _tableView.delegate = self;
-#ifdef JGSBase_h
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JGSReuseIdentifier(UITableViewCell)];
-#endif
     }
     return _tableView;
 }
@@ -287,6 +283,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.alwaysBounceVertical = YES;
+        _scrollView.hidden = YES;
         
         UIView *line = [[UIView alloc] init];
         [_scrollView addSubview:line];
@@ -308,9 +305,7 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         _textView.editable = NO;
         _textView.font = [UIFont systemFontOfSize:16];
 		_textView.layer.borderColor = [UIColor grayColor].CGColor;
-#ifdef JGSBase_h
 		_textView.layer.borderWidth = JGSMinimumPoint;
-#endif
         
         NSString *text = @"调试日志输出区域\n\n内容可复制、不可编辑";
         _textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
@@ -326,7 +321,9 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.demoData.count;
+    NSInteger sections = self.demoData.count;
+    tableView.hidden = sections == 0;
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -335,7 +332,6 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-#ifdef JGSBase_h
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JGSReuseIdentifier(UITableViewCell) forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -347,15 +343,8 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
 #endif
     
     return cell;
-#else
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:(arc4random() % 255) / 255.f green:(arc4random() % 255) / 255.f blue:(arc4random() % 255) / 255.f alpha:1.f];
-    
-    return cell;
-#endif
 }
 
-#ifdef JGSBase_h
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return self.demoData[section].title.length > 0 ? 32 : CGFLOAT_MIN;
@@ -390,7 +379,6 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
         func(object, rowData.selector, indexPath, self);
     }
 }
-#endif
 
 #pragma mark - Console
 - (void)showConsoleLog:(NSString *)format, ... {

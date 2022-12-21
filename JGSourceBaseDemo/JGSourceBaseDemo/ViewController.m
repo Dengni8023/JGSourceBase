@@ -15,6 +15,7 @@
 #import "JGSReachabilityDemoVC.h"
 #import "JGSKeyboardDemoVC.h"
 #import <AdSupport/ASIdentifierManager.h>
+#import "JGSourceBaseDemo-Swift.h"
 
 @interface ViewController ()
 
@@ -32,16 +33,19 @@
 	NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
 	self.subTitle = [NSString stringWithFormat:@"%@ (%@)", version, build];
     
-#ifdef JGSBase_h
+    UIImage *logo = [JGSBaseUtils imageInResourceBundle:@"source_logo-29"];
     if (@available(iOS 14.0, *)) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] menu:nil];
-        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] menu:nil];
+        JGSWeakSelf
+        UIAction *toSwiftDemoAction = [UIAction actionWithTitle:@"Swift Demo" image:logo identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+            JGSStrongSelf
+            [self jumpToSwiftDemo:action];
+        }];
+        UIMenu *menu = [UIMenu menuWithTitle:@"页面导航" children:@[toSwiftDemoAction]];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:logo menu:menu];
     } else {
         // Fallback on earlier versions
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"source_logo-29"] style:UIBarButtonItemStylePlain target:self action:nil];
-        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[JGSBaseUtils imageInResourceBundle:@"icon_29pt"] style:UIBarButtonItemStylePlain target:self action:nil];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ToSwift" style:UIBarButtonItemStylePlain target:self action:@selector(jumpToSwiftDemo:)];
     }
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,7 +66,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#ifdef JGSBase_h
 #pragma mark - TableRows
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
     
@@ -98,6 +101,13 @@
 }
 
 #pragma mark - Action
+- (void)jumpToSwiftDemo:(id)sender {
+    
+    JGSDemoShowConsoleLog(self, @"%@", sender);
+    SwiftViewController *swiftCtr = [[SwiftViewController alloc] init];
+    [self.navigationController pushViewController:swiftCtr animated:YES];
+}
+
 - (void)showLogModeList:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog(self, @"");
@@ -202,7 +212,6 @@
     JGSKeyboardDemoVC *vcT = [[JGSKeyboardDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
-#endif
 
 #pragma mark - End
 

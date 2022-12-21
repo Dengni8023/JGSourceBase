@@ -60,6 +60,7 @@
 #pragma mark - View
 - (void)addViewElements {
     
+    self.scrollView.hidden = NO;
     static NSInteger accountInputShow = 0;
     
     NSMutableArray<UITextField *> *fields = @[].mutableCopy;

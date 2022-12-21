@@ -16,6 +16,11 @@
 #error "JGSourceBase uses features only available in iOS SDK 11.0 and later."
 #endif
 
+// Xcode最低版本要求
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 150000
+#error "JGSourceBase needs Xcode 13 (support for iOS 15.0) or later."
+#endif
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

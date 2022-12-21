@@ -65,6 +65,7 @@ FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args) {
     char timeZone[8];
     strftime(timeZone, 8, "%z", timeinfo);
     
+    // 参考：https://www.cnblogs.com/itmarsung/p/14901052.html
     NSString *logMsg = [NSString stringWithFormat:@"%s.%.6d%s %@[%@] %@\n", dateTime, microseconds, timeZone, [NSProcessInfo processInfo].processName, @(getpid()), message];
     //NSUInteger msgLength = [logMsg lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     //if (msgLength > 4 * 1024) {
@@ -99,6 +100,14 @@ FOUNDATION_EXTERN void JGSConsoleLogWithLevel(JGSLogLevel level) {
 BOOL JGSConsoleWithNSLog = NO; // 默认使用printf，不使用NSLog
 FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog) {
     JGSConsoleWithNSLog = useNSLog;
+}
+
+NSInteger JGSConsoleLogLengthMinLimit = 0xFF;
+NSInteger JGSConsoleLogLengthLimit = NSIntegerMax;
+JGSLogTruncating JGSConsoleLogTruncating = JGSLogTruncatingMiddle;
+FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSLogTruncating truncating) {
+    JGSConsoleLogLengthLimit = MAX(limit, JGSConsoleLogLengthMinLimit);
+    JGSConsoleLogTruncating = truncating;
 }
 
 @implementation JGSLogFunction

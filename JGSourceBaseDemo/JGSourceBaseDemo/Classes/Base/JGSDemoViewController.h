@@ -12,29 +12,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef JGSBase_h
 #define JGSDemoShowConsoleLog(vcT, fmt, ...) { \
     JGSLog(fmt, ##__VA_ARGS__); \
     if ([vcT respondsToSelector:@selector(showConsoleLog:)]) { \
         [vcT showConsoleLog:(@"%s Line: %@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__]; \
     } \
 }
-#else
-#define JGSDemoShowConsoleLog(vcT, fmt, ...) JGSLog(@"%s Line: %@\n" fmt "", __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__);
-#define JGSLog(fmt, ...) NSLog(@"%s Line: %@\n" fmt "", __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__)
-#endif
 
 @interface JGSDemoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, copy, nullable) NSString *title; // 标题
 @property (nonatomic, copy, nullable) NSString *subTitle; // 副标题，用于设置多行标题
 
-@property (nonatomic, strong, readonly) UITableView *tableView;
-@property (nonatomic, strong, readonly) UIScrollView *scrollView;
-@property (nonatomic, strong, readonly) UITextView *textView;
-
-// 是否显示Table底部调试输出的文本框，默认YES
-@property (nonatomic, assign) BOOL showTextView;
+@property (nonatomic, strong, readonly) UITableView *tableView; // 测试项列表，tableSectionData控制显示隐藏
+@property (nonatomic, strong, readonly) UIScrollView *scrollView; // 默认隐藏，页面内容较多是使用该容器，默认隐藏，需要手动设置hidden控制显示
+@property (nonatomic, strong, readonly) UITextView *textView; // 是否显示Table底部调试输出的文本框，默认显示
 
 @property (nonatomic, copy) NSArray<JGSDemoTableSectionData *> *tableSectionData;
 

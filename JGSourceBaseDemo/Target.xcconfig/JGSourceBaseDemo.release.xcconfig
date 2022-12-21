@@ -1,5 +1,5 @@
 //
-//  JGSourceBase.xcconfig
+//  JGSourceBaseDemo.release.xcconfig
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2022/5/18.
@@ -9,8 +9,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-JGSVersion = 1.4.0
-JGSBuild = 20221112
-JGSLastCommitDate = 20221112
-JGSLastCommitTime = 20221112.204328
-JGSLastCommitID = ecaae3d
+#include "../../Pods/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"
+
+#include "../../JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"

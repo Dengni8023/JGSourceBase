@@ -20,6 +20,13 @@ typedef NS_ENUM(NSInteger, JGSLogMode) {
     JGSLogModePretty NS_ENUM_DEPRECATED_IOS(8_0, 10_0, "Use JGSLogModeFile") = JGSLogModeFile, // 打印日志所在方法名、行号，各部分分行显示
 };
 
+// 日志省略方式
+typedef NS_ENUM(NSInteger, JGSLogTruncating) {
+    JGSLogTruncatingMiddle, // 中间省略:  "ab...yz"
+    JGSLogTruncatingHead, // 头部省略: "...wxyz"
+    JGSLogTruncatingTail, // 尾部省略: "abcd..."
+};
+
 FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void);
 typedef NS_ENUM(NSInteger, JGSLogLevel) {
     // 此类级别表明我们当前正在临时打印一些log为了去调试程序, 或者说我们为了观察某个现象但是需要频繁打印, 比如相机回调中打印时间戳, 因为相机每秒钟出来几十帧数据, 所以打印十分频繁, 我们可以使用此级别在开发中作为调试信息, 一般不建议在正常使用中开启此级别
@@ -42,7 +49,7 @@ FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
     NSString *message = [NSString stringWithFormat:@"" fmt, ## __VA_ARGS__]; \
     if (JGSEnableLogMode != JGSLogModeNone && mode != JGSLogModeNone && level >= JGSConsoleLogLevel) { \
         NSDictionary *map = JGSLogLevelMap()[@(level)]; \
-        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@]", map[@"emoji"], map[@"level"]]; \
+        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@-OC]", map[@"emoji"], map[@"level"]]; \
         switch (mode) { \
             case JGSLogModeLog: \
                 JGSLogWithFormat((@"%@ %@"), lvStr, message); \
@@ -96,6 +103,15 @@ FOUNDATION_EXTERN JGSLogLevel JGSConsoleLogLevel;
  */
 FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog);
 FOUNDATION_EXTERN BOOL JGSConsoleWithNSLog;
+
+/// 日志输出内容长度限制，超出长度
+/// - Parameters:
+///   - limit: 日志长度限制，< 0xff 则不限制，默认不限制
+///   - truncating: 日志超长省略方式，默认中间省略
+FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSLogTruncating truncating);
+FOUNDATION_EXTERN NSInteger JGSConsoleLogLengthLimit;
+FOUNDATION_EXTERN JGSLogTruncating JGSConsoleLogTruncating;
+FOUNDATION_EXTERN NSInteger JGSConsoleLogLengthMinLimit;
 
 @interface JGSLogFunction : NSObject
 

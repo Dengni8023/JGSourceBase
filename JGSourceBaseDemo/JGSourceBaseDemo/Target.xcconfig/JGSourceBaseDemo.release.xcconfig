@@ -1,6 +1,6 @@
 //
-//  JGSourceBase.release.xcconfig
-//  JGSourceBase
+//  JGSourceBaseDemo.release.xcconfig
+//  JGSourceBaseDemo
 //
 //  Created by 梅继高 on 2022/5/18.
 //  Copyright © 2022 MeiJiGao. All rights reserved.
@@ -11,4 +11,4 @@
 
 #include "../../Pods/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"
 
-#include "./JGSourceBase.xcconfig"
+#include "../../../JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"

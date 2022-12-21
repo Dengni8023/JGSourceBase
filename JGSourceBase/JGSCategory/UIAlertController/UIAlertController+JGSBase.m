@@ -35,6 +35,11 @@ static NSPointerArray *jg_ShowingAlertControllers = nil;
     if (!sysAlertWindow) {
         
         sysAlertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        if (@available(iOS 13.0, *)) {
+            if (app.keyWindow.windowScene) {
+                sysAlertWindow = [[UIWindow alloc] initWithWindowScene:app.keyWindow.windowScene];
+            }
+        }
         sysAlertWindow.windowLevel = UIWindowLevelAlert;
         
         UIViewController *vcT = [[UIViewController alloc] init];

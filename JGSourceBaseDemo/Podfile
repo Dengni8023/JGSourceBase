@@ -30,16 +30,8 @@ workspace "JGSourceBaseDemo"
 # platform
 platform :ios, 11.0
 
-# JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
-target "JGSourceBaseDemo" do
-  
-  pod 'IQKeyboardManager', '~> 6.5.9' #  https://github.com/hackiftekhar/IQKeyboardManager.git
-  # pod 'SAMKeychain' # KeyChain 测试
-  # pod 'FLAnimatedImage'
-  
-  #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
-  pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
-  
+abstract_target "JGSBase" do
+
   # pod 'JGSourceBase', :git => 'https://github.com/dengni8023/JGSourceBase.git', :commit => 'd620ee8f5c1e782364804da8b5c541d2de38f55c' #'~> 1.4.0'
   # pod 'JGSourceBase', '~> 1.3.0'
   # pod 'JGSourceBase', :path => "./.."
@@ -86,8 +78,6 @@ target "JGSourceBaseDemo" do
   
   CMD
 
-  script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
-  
   JGSPodsScriptAfterCompile = <<-CMD
 
   echo "****** 编译结束后，执行Podfile自定义脚本 ******"
@@ -100,10 +90,22 @@ target "JGSourceBaseDemo" do
   
   CMD
 
-  script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
+  # JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
+  target "JGSourceBaseDemo" do
+    
+    pod 'IQKeyboardManager', '~> 6.5.10' #  https://github.com/hackiftekhar/IQKeyboardManager.git
+    
+    #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
+    pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
+    
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+    
+    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
+    
+    # project
+    project "JGSourceBaseDemo.xcodeproj"
+  end
   
-  # project
-  project "JGSourceBaseDemo.xcodeproj"
 end
 
 # Hooks: pre_install 在Pods被下载后但是还未安装前对Pods做一些改变

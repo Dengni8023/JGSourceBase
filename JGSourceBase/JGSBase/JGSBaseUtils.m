@@ -65,20 +65,21 @@ FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, S
     static NSString *bundleDir = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //
-        //
+        // 源码直接引用、打包方式引用 bundle 路径
         bundleDir = JGSourceBaseResourceBundleName;
         if ([[NSBundle mainBundle] pathForResource:bundleDir ofType:nil].length > 0) {
             JGSPrivateLog(@"%@ exist in main bundle", JGSourceBaseResourceBundleName);
             return;
         }
         
+        // Pod等方式引用 bundle 路径
         bundleDir = [JGSourceBaseFrameworkBundleName stringByAppendingPathComponent:JGSourceBaseResourceBundleName];
         if ([[self classBundle] pathForResource:JGSourceBaseResourceBundleName ofType:nil].length > 0) {
             JGSPrivateLog(@"%@ exist in %@", JGSourceBaseResourceBundleName, JGSourceBaseFrameworkBundleName);
             return;
         }
         
+        // bundle 不存在情况
         JGSPrivateLog(@"%@ not exist", JGSourceBaseResourceBundleName);
         bundleDir = nil;
     });

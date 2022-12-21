@@ -1,5 +1,5 @@
 //
-//  JGSourceBase.xcconfig
+//  JGSourceBaseDemo.debug.xcconfig
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2022/5/18.
@@ -11,4 +11,4 @@
 
 #include "../../Pods/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"
 
-#include "./JGSourceBase.xcconfig"
+#include "../../JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"

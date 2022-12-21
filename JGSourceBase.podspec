@@ -15,6 +15,7 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
+  # CocoaPods - Podspec文件配置讲解: https://www.jianshu.com/p/743bfd8f1d72
   def self.ios_version
     "11.0" # iOS最低支持版本
   end
@@ -36,10 +37,16 @@ Pod::Spec.new do |spec|
     date
   end
   
-  spec.name         = "JGSourceBase"
-  spec.version      = smart_version
-  spec.summary      = "JGSourceBase functional component library."
+  spec.name         = "JGSourceBase" # (必填) 库的名字
+  spec.version      = smart_version # (必填) 库的版本号
+  spec.summary      = "JGSourceBase functional component library." # (必填) 库描述
+  
+  # (选填) 标记库是否被废弃
+  # spec.deprecated = true
+  # (选填) 标明库的名字被废弃
+  # spec.deprecated_in_favor_of = "JGSourceCodeBase"
 
+  # (必填) 库详细描述
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
@@ -59,10 +66,17 @@ Pod::Spec.new do |spec|
   9. SecurityKeyboard - 自定义安全键盘
                    DESC
   
+  # (必填) pod首页地址
   spec.homepage     =  "https://#{smart_host}/dengni8023/JGSourceBase"
+  # (选填)
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
-
+  # (选填) readme文件地址
+  # spec.readme = "https://#{smart_host}/dengni8023/JGSourceBase"
+  # (选填) changelog文件地址
+  # spec.changelog = "https://#{smart_host}/dengni8023/JGSourceBase"
+  # (选填) 库的文档url
+  # spec.documentation_url
+  
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Licensing your code is important. See https://choosealicense.com for more info.
@@ -70,10 +84,10 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
+  # (必填) 许可证
   spec.license      = "MIT (LICENSE.md)"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-
-
+  
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the authors of the library, with email addresses. Email addresses
@@ -84,12 +98,14 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
+  # (必填) 作者信息
   spec.author             = {
     "Dengni8023" => "945835664@qq.com",
     "MeiJiGao" => "945835664@qq.com",
    }
   # Or just: spec.author    = "Dengni8023"
   # spec.authors            = { "Dengni8023" => "945835664@qq.com" }
+  # (选填) 作者第三方社交平台url
   # spec.social_media_url   = "https://twitter.com/Dengni8023"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -98,16 +114,23 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # spec.platform     = :ios
-  spec.platform     = :ios, "#{ios_version}"
+  #  (选填) 支持的Swift版本。CocoaPods会将“4”视为“4.0”，而不是“4.1”或“4.2”。
+  # spec.swift_version = "5.6"
+  spec.swift_versions = ["5.6", "5.7"]
 
+  #  (选填) 支持的CocoaPods版本
+  spec.cocoapods_version = '>= 1.10'
+  
+  # spec.platform     = :ios
+  spec.platform     = :ios, "#{ios_version}" # 指定最低支持 iOS 版本
+  
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
 
-
+  # (必填) 源文件地址
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the location from where the source should be retrieved.
@@ -123,12 +146,12 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  # spec.source_files  = "Classes", "Classes/**/*.{h,m,swift}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
 
-  spec.source_files = "#{spec.name}/*.{h,m}"
+  spec.source_files = "#{spec.name}/*.{h,m,swift}"
   spec.public_header_files = "#{spec.name}/*.h"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -164,11 +187,14 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
+  # (选填) 是否是静态framework的形式
   # 是否使用静态库。如果 Podfile 指明了 use_frameworks! 命令，但是pod仓库需要使用静态库则需要设置
   # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃，经测试，崩溃原因可能为：
   # 源码JGSourceBase.framework target 设置 Mach-O Type 为动态库 Dynamic Library，设置为 Static Library则不会崩溃
   # 设置为 true，在Podfile指定 use_frameworks!时，打包静态framework
   spec.static_framework = true
+  # requires_arc允许指定哪些source_files使用ARC。可以设置为true表示所有source_files使用ARC。
+  # 不使用ARC的文件会有-fno-objc-arc编译标志。
   spec.requires_arc = true
   
   # modify info.plist
@@ -179,16 +205,22 @@ Pod::Spec.new do |spec|
   # }
 
   # 解决新版本pod lib lint等检测因项目无Info.plist文件而失败问题
-  spec.user_target_xcconfig = {
-    'GENERATE_INFOPLIST_FILE' => 'YES'
-  }
+  # spec.user_target_xcconfig = {
+  #   'GENERATE_INFOPLIST_FILE' => 'YES'
+  # }
   
   spec.pod_target_xcconfig = {
     "PRODUCT_BUNDLE_IDENTIFIER" => "com.meijigao.#{spec.name}",
     "MARKETING_VERSION" => "#{spec.version}",
     "CURRENT_PROJECT_VERSION" => "#{spec.version}",
+    'GENERATE_INFOPLIST_FILE' => 'NO',
   }
-
+  
+  # (选填) 在安装前执行的脚本
+  # spec.prepare_command = <<-CMD
+  #   # echo "Pod 安装前执行的脚本"
+  # CMD
+  
   # # 修改构建产出物 framework 中 Info.plist 内容
   # modifyPodTargetInfoPlistScriptAfterCompile = <<-CMD
   #   # echo "自定义脚本修改构建产出物 framework 中 Info.plist 内容"
@@ -223,7 +255,7 @@ Pod::Spec.new do |spec|
   
   # Base
   spec.subspec "Base" do |sub|
-    sub.source_files = "#{spec.name}/JGSBase/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSBase/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSBase/*.h"
     sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
 
@@ -283,11 +315,11 @@ Pod::Spec.new do |spec|
   
   # Category
   spec.subspec 'Category' do |sub|
-    sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m}"
+    sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSCategory/*.h"
     
     sub.subspec 'NSArray' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSArray/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSArray/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSArray/*.h"
       
       subsub.dependency "JGSourceBase/Category/NSDictionary"
@@ -295,26 +327,26 @@ Pod::Spec.new do |spec|
     end
     
     sub.subspec 'NSData' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSData/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSData/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSData/*.h"
       
       subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'NSDate' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSDate/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSDate/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSDate/*.h"
     end
     
     sub.subspec 'NSDictionary' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSDictionary/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSDictionary/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSDictionary/*.h"
 
       subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'NSObject' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSObject/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSObject/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSObject/*.h"
       
       subsub.dependency "JGSourceBase/Category/NSData"
@@ -322,38 +354,38 @@ Pod::Spec.new do |spec|
     end
     
     sub.subspec 'NSString' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSString/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSString/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSString/*.h"
       
       subsub.dependency "JGSourceBase/Category/NSData"
     end
     
     sub.subspec 'NSURL' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSURL/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/NSURL/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/NSURL/*.h"
     end
     
     sub.subspec 'UIAlertController' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIAlertController/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/UIAlertController/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/UIAlertController/*.h"
       
       subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'UIApplication' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIApplication/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/UIApplication/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/UIApplication/*.h"
       
       subsub.dependency "JGSourceBase/Base"
     end
     
     sub.subspec 'UIColor' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIColor/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/UIColor/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/UIColor/*.h"
     end
     
     sub.subspec 'UIImage' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIImage/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSCategory/UIImage/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSCategory/UIImage/*.h"
       
       subsub.dependency "JGSourceBase/Base"
@@ -362,7 +394,7 @@ Pod::Spec.new do |spec|
   
   # DataStorage
   spec.subspec 'DataStorage' do |sub|
-    sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSDataStorage/*.h"
     
     sub.dependency "JGSourceBase/Base"
@@ -370,7 +402,7 @@ Pod::Spec.new do |spec|
   
   # Device
   spec.subspec 'Device' do |sub|
-    sub.source_files = "#{spec.name}/JGSDevice/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSDevice/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSDevice/*.h"
     
     sub.pod_target_xcconfig = {
@@ -384,7 +416,7 @@ Pod::Spec.new do |spec|
   
   # Encryption
   spec.subspec 'Encryption' do |sub|
-    sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSEncryption/*.h"
     
     sub.dependency "JGSourceBase/Category/NSData"
@@ -393,12 +425,12 @@ Pod::Spec.new do |spec|
   
   # HUD
   spec.subspec 'HUD' do |sub|
-    sub.source_files = "#{spec.name}/JGSHUD/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSHUD/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSHUD/*.h"
     
     # Loading
     sub.subspec 'Loading' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSHUD/Loading/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSHUD/Loading/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSHUD/Loading/*.h"
       
       subsub.dependency "MBProgressHUD"
@@ -408,7 +440,7 @@ Pod::Spec.new do |spec|
     
     # Toast
     sub.subspec 'Toast' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSHUD/Toast/*.{h,m}"
+      subsub.source_files = "#{spec.name}/JGSHUD/Toast/*.{h,m,swift}"
       subsub.public_header_files = "#{spec.name}/JGSHUD/Toast/*.h"
       
       subsub.dependency "MBProgressHUD"
@@ -418,7 +450,7 @@ Pod::Spec.new do |spec|
   
   # IntegrityCheck
   spec.subspec 'IntegrityCheck' do |sub|
-    sub.source_files = "#{spec.name}/JGSIntegrityCheck/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSIntegrityCheck/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSIntegrityCheck/*.h"
     
     # 脚本及说明文档不需要被Target编译、作为资源文件引用
@@ -438,7 +470,7 @@ Pod::Spec.new do |spec|
 
   # Reachability
   spec.subspec 'Reachability' do |sub|
-    sub.source_files = "#{spec.name}/JGSReachability/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSReachability/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSReachability/*.h"
     
     sub.dependency "JGSourceBase/Base"
@@ -446,7 +478,7 @@ Pod::Spec.new do |spec|
   
   # SecurityKeyboard
   spec.subspec 'SecurityKeyboard' do |sub|
-    sub.source_files = "#{spec.name}/JGSSecurityKeyboard/*.{h,m}"
+    sub.source_files = "#{spec.name}/JGSSecurityKeyboard/*.{h,m,swift}"
     sub.public_header_files = [
       "#{spec.name}/JGSSecurityKeyboard/**JGSSecurityKeyboard.h",
     ]

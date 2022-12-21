@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E7FBFBC6C25E3507F459D46 /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF7407B0DB3EFB696B52600 /* Pods_JGSourceBaseDemo.framework */; };
+		65EAD5540218B0A5BCFA17C0 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14EA9C67C53ED4D2EA36AAB /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
 		D4075B052863176800E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B042863176800E4BFEA /* AppDelegate.m */; };
 		D4075B0B2863176800E4BFEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B0A2863176800E4BFEA /* ViewController.m */; };
 		D4075B102863176900E4BFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4075B0F2863176900E4BFEA /* Assets.xcassets */; };
@@ -46,12 +46,21 @@
 		D4358B5E286EA9F6008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B4D286EA9F6008A0A11 /* rsa_message.txt */; };
 		D45E317B288A7808001D4119 /* JGSNSArrayDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3177288A7808001D4119 /* JGSNSArrayDemoVC.m */; };
 		D45E317C288A7808001D4119 /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */; };
+		D487705429502EDF00EA5764 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D487705329502EDF00EA5764 /* SwiftViewController.swift */; };
+		D487705629502F8100EA5764 /* JGSDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D487705529502F8100EA5764 /* JGSDViewController.swift */; };
+		D4CB68C12950488500AD91E8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CB68C02950488500AD91E8 /* SceneDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E9E853921B04B62C075154C /* Pods-JGSourceBaseDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo-Swift.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo-Swift/Pods-JGSourceBaseDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		47F1BD874F7175D4E7D5774F /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		83EA00E55E40026190C4BDDE /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
-		8EF7407B0DB3EFB696B52600 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A299171EE9AE693BB35FADE6 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A47D4A452E845CFA24FE2272 /* Pods-JGSourceBaseDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo-Swift.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo-Swift/Pods-JGSourceBaseDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		BB467D36FD46A0A204A68068 /* Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo-Swift/Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		BFEF572D6666F2680377B032 /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		CFFBA74A85402DCA97D8F5E0 /* Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo-Swift/Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		D14EA9C67C53ED4D2EA36AAB /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4075B002863176800E4BFEA /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4075B032863176800E4BFEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4075B042863176800E4BFEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,9 +126,13 @@
 		D45E3178288A7808001D4119 /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
 		D45E3179288A7808001D4119 /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
 		D45E317A288A7808001D4119 /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
-		D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
-		D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
-		D476770D290BB587007119FC /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
+		D476770B290BB587007119FC /* JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.debug.xcconfig; sourceTree = "<group>"; };
+		D476770C290BB587007119FC /* JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.release.xcconfig; sourceTree = "<group>"; };
+		D487705229502EDF00EA5764 /* JGSourceBaseDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSourceBaseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D487705329502EDF00EA5764 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
+		D487705529502F8100EA5764 /* JGSDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGSDViewController.swift; sourceTree = "<group>"; };
+		D4CB68BF2950488500AD91E8 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		D4CB68C02950488500AD91E8 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E7FBFBC6C25E3507F459D46 /* Pods_JGSourceBaseDemo.framework in Frameworks */,
+				65EAD5540218B0A5BCFA17C0 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +150,7 @@
 		2A8A0DEA9F45A77543EDEA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8EF7407B0DB3EFB696B52600 /* Pods_JGSourceBaseDemo.framework */,
+				D14EA9C67C53ED4D2EA36AAB /* Pods_JGSBase_JGSourceBaseDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,6 +160,12 @@
 			children = (
 				47F1BD874F7175D4E7D5774F /* Pods-JGSourceBaseDemo.debug.xcconfig */,
 				83EA00E55E40026190C4BDDE /* Pods-JGSourceBaseDemo.release.xcconfig */,
+				A47D4A452E845CFA24FE2272 /* Pods-JGSourceBaseDemo-Swift.debug.xcconfig */,
+				3E9E853921B04B62C075154C /* Pods-JGSourceBaseDemo-Swift.release.xcconfig */,
+				BFEF572D6666F2680377B032 /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */,
+				A299171EE9AE693BB35FADE6 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */,
+				CFFBA74A85402DCA97D8F5E0 /* Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig */,
+				BB467D36FD46A0A204A68068 /* Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,14 +191,18 @@
 		D4075B022863176800E4BFEA /* JGSourceBaseDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D476770A290BB587007119FC /* JGSourceBase.xcconfig */,
 				D4075B2828632D3500E4BFEA /* Classes */,
 				D4075B1C28632D3500E4BFEA /* Resources */,
+				D476770A290BB587007119FC /* Target.xcconfig */,
 				D4075B032863176800E4BFEA /* AppDelegate.h */,
 				D4075B042863176800E4BFEA /* AppDelegate.m */,
+				D4CB68BF2950488500AD91E8 /* SceneDelegate.h */,
+				D4CB68C02950488500AD91E8 /* SceneDelegate.m */,
 				D4075B092863176800E4BFEA /* ViewController.h */,
 				D4075B0A2863176800E4BFEA /* ViewController.m */,
+				D487705329502EDF00EA5764 /* SwiftViewController.swift */,
 				D4075B6928632DA400E4BFEA /* PrefixHeader.pch */,
+				D487705229502EDF00EA5764 /* JGSourceBaseDemo-Bridging-Header.h */,
 				D4075B0F2863176900E4BFEA /* Assets.xcassets */,
 				D4075B112863176900E4BFEA /* LaunchScreen.storyboard */,
 				D4075B6F28632EE100E4BFEA /* InfoPlist.strings */,
@@ -321,6 +344,7 @@
 				D4075B4928632D3500E4BFEA /* JGSDemoTableData.m */,
 				D4075B4828632D3500E4BFEA /* JGSDemoViewController.h */,
 				D4075B4A28632D3500E4BFEA /* JGSDemoViewController.m */,
+				D487705529502F8100EA5764 /* JGSDViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -359,14 +383,13 @@
 			path = RSA;
 			sourceTree = "<group>";
 		};
-		D476770A290BB587007119FC /* JGSourceBase.xcconfig */ = {
+		D476770A290BB587007119FC /* Target.xcconfig */ = {
 			isa = PBXGroup;
 			children = (
-				D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */,
-				D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */,
-				D476770D290BB587007119FC /* JGSourceBase.xcconfig */,
+				D476770B290BB587007119FC /* JGSourceBaseDemo.debug.xcconfig */,
+				D476770C290BB587007119FC /* JGSourceBaseDemo.release.xcconfig */,
 			);
-			path = JGSourceBase.xcconfig;
+			path = Target.xcconfig;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,10 +424,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					D4075AFF2863176800E4BFEA = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -462,15 +487,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */ = {
@@ -508,7 +533,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JGSourceBaseDemo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-JGSBase-JGSourceBaseDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -528,9 +553,12 @@
 				D4075B5B28632D3500E4BFEA /* JGSUIAlertControllerDemoVC.m in Sources */,
 				D4075B5F28632D3500E4BFEA /* JGSNSDictionaryDemoVC.m in Sources */,
 				D4075B5E28632D3500E4BFEA /* JGSNSURLDemoVC.m in Sources */,
+				D487705629502F8100EA5764 /* JGSDViewController.swift in Sources */,
+				D487705429502EDF00EA5764 /* SwiftViewController.swift in Sources */,
 				D4075B6728632D3500E4BFEA /* JGSKeyboardDemoVC.m in Sources */,
 				D4075B0B2863176800E4BFEA /* ViewController.m in Sources */,
 				D4075B6428632D3500E4BFEA /* JGSDataStorageDemoVC.m in Sources */,
+				D4CB68C12950488500AD91E8 /* SceneDelegate.m in Sources */,
 				D45E317C288A7808001D4119 /* JGSNSDataDemoVC.m in Sources */,
 				D4075B5D28632D3500E4BFEA /* JGSNSDateDemoVC.m in Sources */,
 				D4075B5C28632D3500E4BFEA /* JGSNSObjectDemoVC.m in Sources */,
@@ -620,6 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -674,33 +703,41 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		D4075B1A2863176900E4BFEA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D476770B290BB587007119FC /* JGSourceBase.debug.xcconfig */;
+			baseConfigurationReference = D476770B290BB587007119FC /* JGSourceBaseDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = JGSourceBaseDemo/PrefixHeader.pch;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -709,28 +746,37 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D4075B1B2863176900E4BFEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D476770C290BB587007119FC /* JGSourceBase.release.xcconfig */;
+			baseConfigurationReference = D476770C290BB587007119FC /* JGSourceBaseDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = JGSourceBaseDemo/PrefixHeader.pch;
-				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBaseDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "开启该权限，并不会获取你在其他站点的隐私信息，该权限仅用于标识设备，以及风控安全需要。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -739,6 +785,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

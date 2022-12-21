@@ -42,34 +42,46 @@ abstract_target "JGSBase" do
     project "JGSourceBase.xcodeproj"
   end
   
-  # JGSourceBaseDemo 测试 Pod 引用 JGSourceBase
+  JGSPodsScriptBeforeCompile = <<-CMD
+
+  echo "****** 编译开始前，执行Podfile自定义脚本 ******"
+  
+  echo "执行自定义脚本修改源码 JGSourceBase.xcconfig"
+  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限
+  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh
+  
+  echo "****** 编译前Podfile自定义脚本执行完成 ******"
+  
+  CMD
+
+  JGSPodsScriptAfterCompile = <<-CMD
+  
+  echo "****** 编译结束后，执行Podfile自定义脚本 ******"
+  
+  echo "执行应用完整性校验资源文件Hash记录脚本"
+  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
+  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
+  
+  echo "****** 编译后Podfile自定义脚本执行完成 ******"
+  
+  CMD
+  
+  # JGSourceBaseDemo
   target "JGSourceBaseDemo" do
     
-    pod 'IQKeyboardManager', '~> 6.5.9' #  https://github.com/hackiftekhar/IQKeyboardManager.git
-    # pod 'SAMKeychain' # KeyChain 测试
-    # pod 'FLAnimatedImage'
+    pod 'IQKeyboardManager', '~> 6.5.10' #  https://github.com/hackiftekhar/IQKeyboardManager.git
     
     #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
     pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
     
-    JGSPodsScriptAfterCompile = <<-CMD
-
-    echo "****** 编译结束后，执行Podfile自定义脚本 ******"
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
     
-    echo "执行应用完整性校验资源文件Hash记录脚本"
-    chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限
-    ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh
-    
-    echo "****** 编译后Podfile自定义脚本执行完成 ******"
-    
-    CMD
-
     script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
     
     # project
     project "JGSourceBase.xcodeproj"
   end
-
+  
 end
 
 # Hooks: pre_install 在Pods被下载后但是还未安装前对Pods做一些改变

@@ -11,7 +11,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCryptor.h>
+#if __has_include(<JGSourceBase/UITextInput+JGSSecurityKeyboard.h>)
 #import <JGSourceBase/UITextInput+JGSSecurityKeyboard.h>
+#else
+#import "UITextInput+JGSSecurityKeyboard.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

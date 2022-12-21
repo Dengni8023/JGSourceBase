@@ -2,7 +2,7 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-11-11 15:35:39
+ # @LastEditTime: 2022-12-02 23:51:10
  # @LastEditors: 梅继高
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
@@ -36,7 +36,7 @@ echo "脚本所在目录: $SHELL_ROOT"
 # JGSourceBase.xcconfig 路径
 ConfigFile="${PROJECT_DIR}/JGSourceBase/JGSourceBase.xcconfig"
 if [[ ! -d ${ConfigFile} ]]; then
-    ConfigFile="${PROJECT_DIR}/${TARGET_NAME}/JGSourceBase.xcconfig"
+    ConfigFile="${PROJECT_DIR}/../JGSourceBase/JGSourceBase.xcconfig"
 fi
 ConfigFile="${ConfigFile}/JGSourceBase.xcconfig"
 echo "JGSourceBase.xcconfig: ${ConfigFile}"
