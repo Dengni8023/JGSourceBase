@@ -229,6 +229,36 @@
     return task;
 }
 
++ (nullable NSDictionary<NSString *, id> *)decryptedJGSLatestGlobalConfiguration:(NSData *)fileData {
+    
+    if (fileData.length == 0) {
+        return nil;
+    }
+    
+    // 配置文件Base64解密
+    // Baes64替换规则：同时从首尾遍历，每xx位字符串块首尾替换
+    NSMutableString *base64String = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding].mutableCopy;
+    NSInteger stringLen = base64String.length;
+    NSInteger blockSize = 5;
+    for (NSInteger i = 0; i < (stringLen / blockSize) / 2; i++) {
+        NSRange headrange = NSMakeRange(i * blockSize, blockSize);
+        NSString *headStr = [base64String substringWithRange:headrange];
+        NSRange tailRange = NSMakeRange(stringLen - (i + 1) * blockSize, blockSize);
+        NSString *tailStr = [base64String substringWithRange:tailRange];
+        [base64String replaceCharactersInRange:headrange withString:tailStr];
+        [base64String replaceCharactersInRange:tailRange withString:headStr];
+    }
+    
+    NSData *originData = [[NSData alloc] initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSError *error = nil;
+    NSDictionary<NSString *, id> *instance = [NSJSONSerialization JSONObjectWithData:originData options:kNilOptions error:&error];
+    if (error != nil) {
+        JGSPrivateLog(@"%@", error);
+    }
+    
+    return [instance isKindOfClass:[NSDictionary class]] ? instance : nil;
+}
+
 @end
 
 BOOL JGSPrivateLogEnable = NO; // 默认不打印日志
@@ -305,13 +335,17 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                         if (error) {
                             JGSPrivateLog(@"%@", error);
                         }
-                    }
-                    else {
-                        onceToken = 0;
+                        // 更新配置
+                        error = nil;
+                        instance = [JGSBaseUtils decryptedJGSLatestGlobalConfiguration:fileData];
+                        if (error != nil) {
+                            JGSPrivateLog(@"%@", error);
+                        }
                     }
                 }];
             });
             
+            // 已存储配置
             NSData *jsonData = [[NSFileManager defaultManager] fileExistsAtPath:path] ? [NSData dataWithContentsOfFile:path] : nil;
             if (jsonData.length > 0) {
                 
@@ -333,7 +367,7 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                 NSError *error = nil;
                 instance = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:originData options:kNilOptions error:&error];
                 if (error != nil) {
-                    //JGSPrivateLog(@"%@", error);
+                    JGSPrivateLog(@"%@", error);
                 }
             }
             dispatch_semaphore_signal(semaphore);   //发送信号

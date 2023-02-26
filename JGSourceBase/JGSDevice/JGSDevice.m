@@ -337,19 +337,50 @@
         uname( &systemInfo );
         
         machine = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-        if ([machine isEqualToString:@"i386"] || [machine isEqualToString: @"x86_64"] ) {
+        if ([self isSimulator] || [machine isEqualToString:@"i386"] || [machine isEqualToString: @"x86_64"]) {
             
             NSString *deviceType = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"iPad" : @"iPhone";
-            machine = [NSString stringWithFormat:@"%@ Simulator", deviceType];
+            machine = [NSString stringWithFormat:@"%@ Simulator (%@)", deviceType, machine];
         }
     });
     
     return machine;
 }
 
++ (NSDictionary<NSString *, NSString *> *)decryptedJGSDeviceListFile:(NSData *)fileData fileName:(NSString *)fileName {
+    
+    if (fileData.length == 0) {
+        return nil;
+    }
+    
+    NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:fileData options:kNilOptions error:nil];
+    if (![deviceNamesByCode isKindOfClass:[NSDictionary class]] || deviceNamesByCode.count == 0) {
+        
+        // AES 256 解密, 解密方式, key, iv 与 JGCommandLineDemo/main.m 文件 - aes256EncryptData:fileName: 保持一致
+        size_t keyLen = kCCKeySizeAES256;
+        size_t blockSize = kCCBlockSizeAES128;
+        
+        NSString *key = fileName;
+        while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
+            key = [key stringByAppendingString:key];
+        }
+        
+        key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        NSString *iv = [key substringFromIndex:key.length - blockSize];
+        key = [key substringToIndex:keyLen];
+        
+        fileData = [fileData jg_AES256DecryptWithKey:key iv:iv];
+        deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:fileData options:kNilOptions error:nil];
+    }
+    
+    // 当前运行设备信息，参考 JGSiOSDeviceList.json
+    NSDictionary *deviceInfo = [deviceNamesByCode isKindOfClass:[NSDictionary class]] ? [deviceNamesByCode objectForKey:[self deviceMachine]] : nil;
+    return deviceInfo;
+}
+
 + (NSString *)deviceModel {
     
-    static NSString *deviceModel = nil;
+    static NSDictionary<NSString *, NSString *> *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -371,38 +402,23 @@
                 if (fileData.length > 0) {
                     // 网络文件存储本地
                     [fileData writeToFile:savedPath atomically:YES];
-                }
-                else {
-                    onceToken = 0;
+                    
+                    // 当前运行设备信息，参考 JGSiOSDeviceList.json
+                    NSDictionary *deviceNamesByCode = [self decryptedJGSDeviceListFile:fileData fileName:fileName];
+                    instance = [deviceNamesByCode isKindOfClass:[NSDictionary class]] ? deviceNamesByCode : nil;
+                    JGSPrivateLog(@"device info: %@", instance);
                 }
             }];
         });
         
+        // 当前运行设备信息，参考 JGSiOSDeviceList.json
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        NSDictionary *deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-        if (deviceNamesByCode.count == 0) {
-            
-            // AES 256 解密, 解密方式, key, iv 与 JGCommandLineDemo/main.m 文件 - aes256EncryptData:fileName: 保持一致
-            size_t keyLen = kCCKeySizeAES256;
-            size_t blockSize = kCCBlockSizeAES128;
-            
-            NSString *key = fileName;
-            while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
-                key = [key stringByAppendingString:key];
-            }
-            
-            key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-            NSString *iv = [key substringFromIndex:key.length - blockSize];
-            key = [key substringToIndex:keyLen];
-            
-            jsonData = [jsonData jg_AES256DecryptWithKey:key iv:iv];
-            deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-        }
-        
-        NSString *machine = [self deviceMachine];
-        NSDictionary *deviceInfo = [deviceNamesByCode objectForKey:machine];
-        deviceModel = [deviceInfo objectForKey:@"Generation"] ?: machine;
+        NSDictionary *deviceInfo = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
+        instance = [deviceInfo isKindOfClass:[NSDictionary class]] ? deviceInfo : nil;
+        JGSPrivateLog(@"device info: %@", instance);
     });
+    
+    NSString *deviceModel = instance ? [instance objectForKey:@"Generation"] : [self deviceMachine];
     
     return deviceModel;
 }
