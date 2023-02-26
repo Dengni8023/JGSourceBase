@@ -15,7 +15,9 @@
 #import "JGSReachabilityDemoVC.h"
 #import "JGSKeyboardDemoVC.h"
 #import <AdSupport/ASIdentifierManager.h>
+#if __has_include("JGSourceBaseDemo-Swift.h")
 #import "JGSourceBaseDemo-Swift.h"
+#endif
 
 @interface ViewController ()
 
@@ -59,6 +61,29 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    JGSLogWithFormat(@"%@, %@, %@", @"Test2", nil, @"Test1");
+    JGSLogWithFormat(@"%@, %@, %@, %d, %.1f, 0x%X", @"Test2", nil, @"Test1", 12, 12.f, 0xff);
+    
+//    JGSConsoleLogWithNSLog(YES);
+    NSString *message = @"Git•GitHub";
+    NSLog(@"%@: %@", @(__LINE__), message);
+    JGSLog(@"%@", message);
+    NSLog(@"%@: %s", @(__LINE__), [message UTF8String]);
+    JGSLog(@"%s", [message UTF8String]);
+    NSString *log = [NSString stringWithCString:[message UTF8String] encoding:NSUTF8StringEncoding];
+    NSLog(@"%@: %@", @(__LINE__), log);
+    JGSLog(@"%@", log);
+    NSLog(@"%@: %s", @(__LINE__), [log UTF8String]);
+    JGSLog(@"%s", [log UTF8String]);
+    
+    const char *filePath = __FILE__;
+    JGSLog(@"%s", filePath);
+    NSLog(@"%s", filePath);
+    JGSLog(@"%@", [NSString stringWithFormat:@"%s", filePath]);
+    JGSLog(@"%@", [[NSString alloc] initWithFormat:@"%s", filePath]);
+    JGSLog(@"%@", [NSString stringWithCString:filePath encoding:NSUTF8StringEncoding]);
+    JGSLog(@"%s", [[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String]);
+    JGSLog(@"%@", [NSString stringWithCString:[[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String] encoding:NSUTF8StringEncoding]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,8 +129,10 @@
 - (void)jumpToSwiftDemo:(id)sender {
     
     JGSDemoShowConsoleLog(self, @"%@", sender);
+#if __has_include("JGSourceBaseDemo-Swift.h")
     SwiftViewController *swiftCtr = [[SwiftViewController alloc] init];
     [self.navigationController pushViewController:swiftCtr animated:YES];
+#endif
 }
 
 - (void)showLogModeList:(NSIndexPath *)indexPath {

@@ -38,7 +38,10 @@
 	NSCAssert(keyLength == kCCKeySizeAES128 || keyLength == kCCKeySizeAES192 || keyLength == kCCKeySizeAES256, @"The keyLength of AES must be (%@、%@、%@)", @(kCCKeySizeAES128), @(kCCKeySizeAES192), @(kCCKeySizeAES256));
 	NSCAssert(operation == kCCEncrypt || operation == kCCDecrypt, @"The operation of AES must be (%@、%@)", @(kCCEncrypt), @(kCCDecrypt));
 	NSCAssert(key.length == keyLength, @"The key length of AES-%@ must be %@", @(keyLength * 8), @(keyLength));
-	
+    if (options & kCCOptionECBMode) {
+        NSCAssert(iv.length != 0, @"The AES-CBC mode must have iv params");
+    }
+    
 	NSUInteger dataLength = self.length;
 	void const *contentBytes = self.bytes;
 	void const *keyBytes = [key dataUsingEncoding:NSUTF8StringEncoding].bytes;

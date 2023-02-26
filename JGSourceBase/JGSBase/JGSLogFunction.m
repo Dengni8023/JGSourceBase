@@ -27,18 +27,67 @@ FOUNDATION_EXTERN NSDictionary *JGSLogLevelMap(void) {
     return instance;
 }
 
-FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...) {
+FOUNDATION_EXTERN void JGSLogWithArgs(JGSLogMode mode, JGSLogLevel level, const char *filePath, const char *funcName, NSInteger lineNum, NSString *format, ...) {
     
+    // 为避免表达式参数 表达式未执行情况，是否输出 Log 判断放到构建日志内容之后
+    // 输出 Log 前构建 Log 内容步骤不可省
     va_list varList;
     va_start(varList, format);
-    JGSLogv(format, varList);
+    NSString *log = [[NSString alloc] initWithFormat:format arguments:varList];
     va_end(varList);
-}
-
-FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args) {
     
+    // 判断log开关及log日志级别设置
+    if (mode == JGSLogModeNone || level < JGSConsoleLogLevel) {
+        return;
+    }
+    
+    // 日志长度、省略处理
+    NSInteger logLimit = MAX(JGSConsoleLogLengthLimit, JGSConsoleLogLengthMinLimit);
+    if (log.length > logLimit) {
+        switch (JGSConsoleLogTruncating) {
+            case JGSLogTruncatingMiddle: {
+                NSString *logHead = [log substringToIndex:logLimit / 2];
+                NSString *logTail = [log substringFromIndex:log.length - logLimit / 2];
+                log = [NSString stringWithFormat:@"%@ ... %@ (log count: %@)", logHead, logTail, @(log.length)];
+            }
+            break;
+            
+            case JGSLogTruncatingHead: {
+                NSString *logTail = [log substringFromIndex:log.length - logLimit];
+                log = [NSString stringWithFormat:@"... %@ (log count: %@)", logTail, @(log.length)];
+            }
+                break;
+            
+            case JGSLogTruncatingTail: {
+                NSString *logHead = [log substringToIndex:logLimit];
+                log = [NSString stringWithFormat:@"%@ ... (log count: %@)", logHead, @(log.length)];
+            }
+                break;
+        }
+    }
+    
+    // 日志级别
+    NSDictionary *lvMap = JGSLogLevelMap()[@(level)];
+    NSString *lvStr = [NSString stringWithFormat:@"%@ [%@-OC]", lvMap[@"emoji"], lvMap[@"level"]];
+    
+    // 执行输出日志方法所在文件、方法、行号
+    if (mode == JGSLogModeFunc) {
+        
+        // 对方法名进行处理
+        // Log长度小于最小限长是时不分行显示，否则 log 内容换行显示
+        log = [NSString stringWithFormat:@"%s Line: %@%@%@", funcName, @(lineNum), log.length > JGSConsoleLogLengthMinLimit ? @"\n" : @" ", log];
+    }
+    else if (mode == JGSLogModeFile) {
+        
+        // 对文件名、方法名
+        NSString *fileName = [NSString stringWithCString:filePath encoding:NSUTF8StringEncoding].lastPathComponent;
+        // Log长度小于最小限长是时不分行显示，否则 log 内容换行显示
+        log = [NSString stringWithFormat:@"%@ %s Line: %@%@%@", fileName, funcName, @(lineNum), log.length > JGSConsoleLogLengthMinLimit ? @"\n" : @" ", log];
+    }
+    
+    // 使用NSLog输出
     if (JGSConsoleWithNSLog) {
-        NSLogv(format, args);
+        NSLog(@"%@ %s", lvStr, [log cStringUsingEncoding:NSUTF8StringEncoding]);
         return;
     }
     
@@ -46,7 +95,6 @@ FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args) {
     // 如屏蔽调试控制台输出的系统提示信息，在
     // Edit Scheme -> Run -> Arguments -> Environment Variables 添加: OS_ACTIVITY_MODE: disable
     // 此时使用的NSLog日志也不会输出
-    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
     
     // 处理类似NSLog输出的日志头
     // 2021-03-11 20:25:42.949957+0800 JGSourceBaseDemo[25823:826858]
@@ -66,12 +114,18 @@ FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args) {
     strftime(timeZone, 8, "%z", timeinfo);
     
     // 参考：https://www.cnblogs.com/itmarsung/p/14901052.html
-    NSString *logMsg = [NSString stringWithFormat:@"%s.%.6d%s %@[%@] %@\n", dateTime, microseconds, timeZone, [NSProcessInfo processInfo].processName, @(getpid()), message];
+    // 格式化时间字符串
+    NSString *formatedDateTimeStr = [NSString stringWithFormat:@"%s.%.6d%s", dateTime, microseconds, timeZone];
+    // 运行进程信息，NSLog使用私有方法GSPrivateThreadID()获取threadID，此处无法获取，仅使用pid
+    NSString *prcessInfo = [NSString stringWithFormat:@"%@[%@]", [[NSProcessInfo processInfo] processName], @(getpid())];
+    NSString *logMsg = [NSString stringWithFormat:@"%@ %@ %@ %@", formatedDateTimeStr, prcessInfo, lvStr, log];
+    
     //NSUInteger msgLength = [logMsg lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     //if (msgLength > 4 * 1024) {
         
         // 数据量较大时writev性能较低
-        fprintf(stderr, "%s", logMsg.UTF8String);
+        // OC 中 printf 需添加换行
+        fprintf(stderr, "%s\n", logMsg.UTF8String);
     //    return;
     //}
     //
@@ -114,6 +168,10 @@ FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSL
 
 + (void)enableLog:(BOOL)enable {
 	JGSPrivateLogEnable = enable;
+}
+
++ (BOOL)isLogEnabled {
+    return JGSPrivateLogEnable;
 }
 
 @end

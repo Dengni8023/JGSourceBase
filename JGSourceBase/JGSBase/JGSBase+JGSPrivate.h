@@ -27,19 +27,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 是否开启内部调试日志，默认不开启打印日志
 FOUNDATION_EXTERN BOOL JGSPrivateLogEnable;
-#define JGSPrivateLogWithModeLevel(level, fmt, ...) {\
-    if (JGSPrivateLogEnable) { \
-        NSDictionary *map = JGSLogLevelMap()[@(level)]; \
-        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@-OC]", map[@"emoji"], map[@"level"]]; \
-        JGSLogWithFormat((@"%@ %s Line: %@ " fmt ""), lvStr, __PRETTY_FUNCTION__, @(__LINE__), ##__VA_ARGS__); \
-    } \
+#define JGSPrivateLogWithModeLevel(mode, level, fmt, ...) JGSLogWithArgs(mode, level, __FILE__, __PRETTY_FUNCTION__, __LINE__, @"" fmt "", ## __VA_ARGS__)
+#define JGSPrivateLogWithLevel(level, fmt, ...) { \
+    JGSLogMode mode = JGSPrivateLogEnable ? (JGSEnableLogMode != JGSLogModeNone ? JGSEnableLogMode : JGSLogModeFunc) : JGSLogModeNone; \
+    JGSPrivateLogWithModeLevel(mode, level, fmt, ## __VA_ARGS__); \
 }
 
-#define JGSPrivateLog(fmt, ...)     JGSPrivateLogD(fmt, ##__VA_ARGS__)
-#define JGSPrivateLogD(fmt, ...)    JGSPrivateLogWithModeLevel(JGSLogLevelDebug, fmt, ##__VA_ARGS__)
-#define JGSPrivateLogI(fmt, ...)    JGSPrivateLogWithModeLevel(JGSLogLevelInfo, fmt, ##__VA_ARGS__)
-#define JGSPrivateLogW(fmt, ...)    JGSPrivateLogWithModeLevel(JGSLogLevelWarn, fmt, ##__VA_ARGS__)
-#define JGSPrivateLogE(fmt, ...)    JGSPrivateLogWithModeLevel(JGSLogLevelError, fmt, ##__VA_ARGS__)
+#define JGSPrivateLog(fmt, ...)  JGSPrivateLogD(fmt, ## __VA_ARGS__)
+#define JGSPrivateLogD(fmt, ...) JGSPrivateLogWithLevel(JGSLogLevelDebug, fmt, ## __VA_ARGS__)
+#define JGSPrivateLogI(fmt, ...) JGSPrivateLogWithLevel(JGSLogLevelInfo, fmt, ## __VA_ARGS__)
+#define JGSPrivateLogW(fmt, ...) JGSPrivateLogWithLevel(JGSLogLevelWarn, fmt, ## __VA_ARGS__)
+#define JGSPrivateLogE(fmt, ...) JGSPrivateLogWithLevel(JGSLogLevelError, fmt, ## __VA_ARGS__)
 
 @interface JGSLogFunction (JGSPrivate)
 

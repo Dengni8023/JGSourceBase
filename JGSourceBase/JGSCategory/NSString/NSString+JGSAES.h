@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param keyLength  kCCKeySizeAES128 - 16 / kCCKeySizeAES256 - 32
 /// @param key 加解密key，不可为空，key长度需与对应的AES加密方式要求长度保持一致：kCCKeySizeAES128 - 16 / kCCKeySizeAES256 - 32
 /// @param iv 偏移向量，可为空
-/// @param options 加密模式以及填充模式，默认加密模式为CBC，可选ECB，填充模式PKCS7
+/// @param options 加密模式以及填充模式，默认加密模式为CBC-需要IV，可选ECB-不需要IV，填充模式PKCS7
 /// @return NSString 加密结果为base64字符串，解密结果为原始字符串
 - (nullable NSString *)jg_AESOperation:(CCOperation)operation keyLength:(size_t)keyLength key:(NSString *)key iv:(nullable NSString *)iv options:(CCOptions)options;
 

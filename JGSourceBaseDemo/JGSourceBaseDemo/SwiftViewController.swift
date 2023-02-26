@@ -12,7 +12,7 @@ class SwiftViewController: JGSDViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let bundleName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "JGSBaseDemo"
         self.title = bundleName.appending("-Swift");
@@ -37,13 +37,13 @@ class SwiftViewController: JGSDViewController {
     
     override func tableSectionData() -> [JGSDemoTableSectionData] {
          return [
-            JGSDemoTableSectionMake("Section1", [
-                JGSDemoTableRowMake("Row1", self, #selector(jumpToOCDemo))
-            ]),
-            JGSDemoTableSectionMake("Section2", []),
-            JGSDemoTableSectionMake("Section3", []),
-            JGSDemoTableSectionMake("Section4", []),
-            JGSDemoTableSectionMake("Section5", []),
+            //JGSDemoTableSectionMake("Section1", [
+            //    JGSDemoTableRowMake("Row1", self, #selector(jumpToOCDemo))
+            //]),
+            //JGSDemoTableSectionMake("Section2", []),
+            //JGSDemoTableSectionMake("Section3", []),
+            //JGSDemoTableSectionMake("Section4", []),
+            //JGSDemoTableSectionMake("Section5", []),
         ]
     }
     
@@ -110,6 +110,21 @@ class SwiftViewController: JGSDViewController {
         JGSLog("TestArray", arr)
         print(arr)
         JGSLog("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
+        JGSLogD("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
+        JGSLogI("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
+        JGSLogW("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
+        JGSLogE("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
         JGSLog("测试")
+        
+        JGSLog(13, 13.0, 14.0, 0xff, nil)
+        JGSLog()
+        
+        
+        JGSLog(#file)
+        JGSLog(#fileID)
+        JGSLog(#filePath)
+        print(#file)
+        print(#fileID)
+        print(#filePath)
     }
 }

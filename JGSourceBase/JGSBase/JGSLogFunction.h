@@ -40,48 +40,26 @@ typedef NS_ENUM(NSInteger, JGSLogLevel) {
 };
 
 #pragma mark - Log - Define
-FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list args);
-FOUNDATION_EXTERN void JGSLogWithFormat(NSString *format, ...);
+FOUNDATION_EXTERN void JGSLogWithArgs(JGSLogMode mode, JGSLogLevel level, const char *filePath, const char *funcName, NSInteger lineNum, NSString *format, ...);
+FOUNDATION_EXTERN void JGSLogv(NSString *format, va_list varList) NS_UNAVAILABLE DEPRECATED_MSG_ATTRIBUTE("Deprecated since v1.4.2. Replaced by JGSLogWithArgs(JGSLogMode mode, JGSLogLevel level, const char *filePath, const char *funcName, NSInteger lineNum, NSString *format, ...)");
 
-// 为避免表达式参数 表达式未执行情况，是否输出 Log 判断放到最后
-// 输出 Log 前构建 Log 内容步骤不可省
-#define JGSLogWithModeLevel(mode, level, fmt, ...) { \
-    NSString *message = [NSString stringWithFormat:@"" fmt, ## __VA_ARGS__]; \
-    if (JGSEnableLogMode != JGSLogModeNone && mode != JGSLogModeNone && level >= JGSConsoleLogLevel) { \
-        NSDictionary *map = JGSLogLevelMap()[@(level)]; \
-        NSString *lvStr = [NSString stringWithFormat:@"%@ [%@-OC]", map[@"emoji"], map[@"level"]]; \
-        switch (mode) { \
-            case JGSLogModeLog: \
-                JGSLogWithFormat((@"%@ %@"), lvStr, message); \
-                break; \
-            case JGSLogModeFunc:\
-                JGSLogWithFormat((@"%@ %s Line: %@ %@"), lvStr, __PRETTY_FUNCTION__, @(__LINE__), message); \
-                break; \
-            case JGSLogModeFile: { \
-                NSString *file = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \
-                JGSLogWithFormat((@"%@ \nFile:\t%@ \nFunc:\t%s \nLine:\t%@ \n%@"), lvStr, file, __PRETTY_FUNCTION__, @(__LINE__), message); \
-            } \
-                break; \
-            case JGSLogModeNone: \
-                break; \
-        } \
-    } \
-}
+#define JGSLogWithFormat(fmt, ...) JGSLogWithArgs(JGSEnableLogMode, JGSConsoleLogLevel, __FILE__, __PRETTY_FUNCTION__, __LINE__, @"" fmt "", ## __VA_ARGS__)
+#define JGSLogWithModeLevel(mode, level, fmt, ...) JGSLogWithArgs(mode, level, __FILE__, __PRETTY_FUNCTION__, __LINE__, @"" fmt "", ## __VA_ARGS__)
 
-#define JGSLog(fmt, ...)        JGSLogD(fmt, ##__VA_ARGS__)
-#define JGSLogD(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
-#define JGSLogI(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelInfo, fmt, ##__VA_ARGS__)
-#define JGSLogW(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelWarn, fmt, ##__VA_ARGS__)
-#define JGSLogE(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelError, fmt, ##__VA_ARGS__)
+#define JGSLog(fmt, ...)        JGSLogD(fmt, ## __VA_ARGS__)
+#define JGSLogD(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelDebug, fmt, ## __VA_ARGS__)
+#define JGSLogI(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelInfo, fmt, ## __VA_ARGS__)
+#define JGSLogW(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelWarn, fmt, ## __VA_ARGS__)
+#define JGSLogE(fmt, ...)       JGSLogWithModeLevel(JGSEnableLogMode, JGSLogLevelError, fmt, ## __VA_ARGS__)
 
 #pragma mark - Log - Deprecated
-#define JGSLogInfo(fmt, ...)    JGSLogI(fmt, ##__VA_ARGS__)
-#define JGSLogWarning(fmt, ...) JGSLogW(fmt, ##__VA_ARGS__)
-#define JGSLogError(fmt, ...)   JGSLogE(fmt, ##__VA_ARGS__)
-#define JGSLogOnly(fmt, ...)    JGSLogWithModeLevel(JGSLogModeLog, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
-#define JGSLogFunc(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFunc, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
-#define JGSLogPretty(fmt, ...)  JGSLogFile(fmt, ##__VA_ARGS__)
-#define JGSLogFile(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFile, JGSLogLevelDebug, fmt, ##__VA_ARGS__)
+#define JGSLogInfo(fmt, ...)    JGSLogI(fmt, ## __VA_ARGS__)
+#define JGSLogWarning(fmt, ...) JGSLogW(fmt, ## __VA_ARGS__)
+#define JGSLogError(fmt, ...)   JGSLogE(fmt, ## __VA_ARGS__)
+#define JGSLogOnly(fmt, ...)    JGSLogWithModeLevel(JGSLogModeLog, JGSLogLevelDebug, fmt, ## __VA_ARGS__)
+#define JGSLogFunc(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFunc, JGSLogLevelDebug, fmt, ## __VA_ARGS__)
+#define JGSLogFile(fmt, ...)    JGSLogWithModeLevel(JGSLogModeFile, JGSLogLevelDebug, fmt, ## __VA_ARGS__)
+#define JGSLogPretty(fmt, ...)  JGSLogFile(fmt, ## __VA_ARGS__)
 
 #pragma mark - Logger
 /**
@@ -117,6 +95,7 @@ FOUNDATION_EXTERN NSInteger JGSConsoleLogLengthMinLimit;
 
 /// 是否开启内部调试日志
 + (void)enableLog:(BOOL)enable;
++ (BOOL)isLogEnabled;
 
 @end
 

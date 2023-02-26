@@ -8,12 +8,13 @@
 
 import Foundation
 
-fileprivate let JGSNil2NullString = "nil"
+//fileprivate let JGSLogNil2NullString = "(null)" // 与 OC 保持一致
+fileprivate let JGSLogNil2NullString = "nil" // 与 Swift 保持一致
 public func JGSLog(format: String, _ args: CVarArg?..., mode: JGSLogMode? = JGSEnableLogMode, level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
     
     var tmpArgs: [CVarArg] = []
     for arg in args {
-        tmpArgs.append(arg ?? JGSNil2NullString)
+        tmpArgs.append(arg ?? JGSLogNil2NullString)
     }
     let msg = String(format: format, arguments: tmpArgs)
     JGSLog(msg, mode: mode, level: level, filePath: filePath, funcName: funcName, lineNum: lineNum)
@@ -21,8 +22,8 @@ public func JGSLog(format: String, _ args: CVarArg?..., mode: JGSLogMode? = JGSE
 
 public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode, level logLv: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
     
-    let level = logLv ?? .debug
-    let mode = logMode ?? .file
+    let level = logLv ?? JGSConsoleLogLevel
+    let mode = logMode ?? JGSEnableLogMode
     
     // 打印内容
     var log: String = ""
@@ -31,7 +32,7 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
         // nil 拦截处理，否则后续 is 判断会出错
         // nil 判断 is 结果始终为 true
         guard let arg = arg else {
-            log.append((log.count > 0 ? " " : "") + JGSNil2NullString)
+            log.append((log.count > 0 ? " " : "") + JGSLogNil2NullString)
             continue
         }
         
@@ -49,6 +50,11 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
         }
         
         log.append((log.count == 0 ? "": " ") + temp)
+    }
+    
+    // 判断log开关及log日志级别设置
+    if mode == .none || level < JGSConsoleLogLevel {
+        return
     }
     
     // 日志长度、省略处理
@@ -71,11 +77,6 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
         @unknown default:
             break
         }
-    }
-    
-    // 判断log开关及log日志级别设置
-    if JGSEnableLogMode == .none || mode == .none || level < JGSConsoleLogLevel {
-        return
     }
     
     // 日志级别
@@ -115,6 +116,7 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
     var timeZone: [CChar] = [CChar](repeating: 0, count: 8)
     strftime(&timeZone, 8, "%z", timeinfo);
     
+    // 参考：https://www.cnblogs.com/itmarsung/p/14901052.html
     // 格式化时间字符串
     let formatedDateTimeStr = String(cString: dateTime) + "." + String(format: "%.6d", microseconds) + String(cString: timeZone)
     // 运行进程信息，NSLog使用私有方法GSPrivateThreadID()获取threadID，此处无法获取，仅使用pid
@@ -127,6 +129,22 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
         lvStr, // 日志级别相关
         log // 日志文件、方法、行号、内容
     )
+}
+
+public func JGSLogD(_ args: Any?..., mode: JGSLogMode? = JGSEnableLogMode, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSLog(args, mode: mode, level: .debug, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+public func JGSLogI(_ args: Any?..., mode: JGSLogMode? = JGSEnableLogMode, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSLog(args, mode: mode, level: .info, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+public func JGSLogW(_ args: Any?..., mode: JGSLogMode? = JGSEnableLogMode, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSLog(args, mode: mode, level: .warn, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+public func JGSLogE(_ args: Any?..., mode: JGSLogMode? = JGSEnableLogMode, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSLog(args, mode: mode, level: .error, filePath: filePath, funcName: funcName, lineNum: lineNum)
 }
 
 // MARK: - 重写 description
@@ -361,4 +379,30 @@ extension JGSLogMode {
     static internal func <= (lhs: JGSLogMode, rhs: Int) -> Bool {
         return lhs.rawValue <= rhs
     }
+}
+
+// MARK: - Private
+internal func JGSPrivateLogWithLevel(_ args: Any?..., level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    let mode: JGSLogMode = JGSLogFunction.isLogEnabled() ? (JGSEnableLogMode != .none ? JGSEnableLogMode : .func) : .none;
+    JGSLog(args, mode: mode, level: level, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+internal func JGSPrivateLog(_ args: Any?..., level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSPrivateLogWithLevel(args, level: level, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+internal func JGSPrivateLogD(_ args: Any?..., filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSPrivateLogWithLevel(args, level: .debug, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+internal func JGSPrivateLogI(_ args: Any?..., filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSPrivateLogWithLevel(args, level: .info, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+internal func JGSPrivateLogW(_ args: Any?..., filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSPrivateLogWithLevel(args, level: .warn, filePath: filePath, funcName: funcName, lineNum: lineNum)
+}
+
+internal func JGSPrivateLogE(_ args: Any?..., filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    return JGSPrivateLogWithLevel(args, level: .error, filePath: filePath, funcName: funcName, lineNum: lineNum)
 }
