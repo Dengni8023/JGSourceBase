@@ -258,6 +258,13 @@ fileprivate extension JGSLogDescription {
             //var tempDesc = stringObj
             //tempDesc = tempDesc.replacingOccurrences(of: "\"", with: "\\\"")
             //tempDesc = "\"".appending(tempDesc).appending("\"")
+            if let data = stringObj.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data) {
+                if let dict = json as? Dictionary<AnyHashable, Any> {
+                    return "(JSON -> Dictionary)" + dict.jg_logDescription()
+                } else if let array = json as? Array<Any> {
+                    return "(JSON -> Array)" + array.jg_logDescription()
+                }
+            }
             
             var retDesc: String = ""
             do {
