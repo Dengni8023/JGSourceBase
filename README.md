@@ -1,7 +1,7 @@
 <!--
  * @Author: 梅继高
  * @Date: 2021-01-12 21:25:08
- * @LastEditTime: 2022-09-30 12:18:00
+ * @LastEditTime: 2023-03-13 21:33:25
  * @LastEditors: 梅继高
  * @Description: README.md
  * @FilePath: /JGSourceBase/README.md
@@ -83,3 +83,13 @@ JGSourceCode通用功能模块：iOS项目常用功能（UIAlertController、Rea
 # 仓库开源地址
 GitHub: [https://github.com/dengni8023/JGSourceBase](https://github.com/dengni8023/JGSourceBase)
 OSChina: [https://gitee.com/dengni8023/JGSourceBase](https://gitee.com/dengni8023/JGSourceBase)
+
+# Swift混编处理
+
+本工具组件使用了OC和Swift混编，针对纯OC项目，需要配置Bridging-Header，否则编译报错，配置路径：
+
+```
+Target -> Build Setting -> Swift Compiler - general 修改 Object-c Bridging Header
+```
+
+或者创建任意空Swift类文件，Xcode将提示是否创建Bridge文件，选择是，Xcode将自动创建并配置
