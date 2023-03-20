@@ -112,7 +112,7 @@
         // https://www.jianshu.com/p/50246a8aaddb
         
         JGSPrivateLog(@"默认 UserAgent Load");
-        instance = instance ?: [[WKWebView alloc] init];
+        instance = instance ?: [[WKWebView alloc] init]; // 此处必须使用存储属性，否则JS执行可能失败
         [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
             JGSPrivateLog(@"默认 UserAgent: %@, %@", result, error);
             if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {
@@ -126,6 +126,9 @@
             
             if (sysUserAgent.length == 0) {
                 onceToken = 0;
+            } else {
+                // 释放内存，避免获取成功后占用内存，可通过Safari开发调试工具检查内存是否释放
+                instance = nil;
             }
             
             JGSPrivateLog(@"fakeUA: %@", fakeUserAgent);
