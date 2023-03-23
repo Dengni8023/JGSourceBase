@@ -48,19 +48,19 @@ FOUNDATION_EXTERN void JGSLogWithArgs(JGSLogMode mode, JGSLogLevel level, const 
             case JGSLogTruncatingMiddle: {
                 NSString *logHead = [log substringToIndex:logLimit / 2];
                 NSString *logTail = [log substringFromIndex:log.length - logLimit / 2];
-                log = [NSString stringWithFormat:@"%@ ... %@ (log count: %@)", logHead, logTail, @(log.length)];
+                log = [NSString stringWithFormat:@"%@\n\n\t\t...\n\n\t\t%@ (log count: %@)", logHead, logTail, @(log.length)];
             }
             break;
             
             case JGSLogTruncatingHead: {
                 NSString *logTail = [log substringFromIndex:log.length - logLimit];
-                log = [NSString stringWithFormat:@"... %@ (log count: %@)", logTail, @(log.length)];
+                log = [NSString stringWithFormat:@"...\n\n\t\t%@ (log count: %@)", logTail, @(log.length)];
             }
                 break;
             
             case JGSLogTruncatingTail: {
                 NSString *logHead = [log substringToIndex:logLimit];
-                log = [NSString stringWithFormat:@"%@ ... (log count: %@)", logHead, @(log.length)];
+                log = [NSString stringWithFormat:@"%@\n\n\t\t... (log count: %@)", logHead, @(log.length)];
             }
                 break;
         }

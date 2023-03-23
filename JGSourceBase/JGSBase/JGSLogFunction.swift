@@ -64,15 +64,15 @@ public func JGSLog(_ args: Any?..., mode logMode: JGSLogMode? = JGSEnableLogMode
         case .middle:
             let logHead = log.prefix(logLimit / 2)
             let logTail = log.suffix(logLimit / 2)
-            log = logHead.appending(" ... ").appending(logTail).appending(" (log count: \(log.count))")
+            log = logHead.appending("\n\n\t\t...\n\n\t\t").appending(logTail).appending(" (log count: \(log.count))")
             
         case .head:
             let logTail = log.suffix(logLimit)
-            log = "... ".appending(logTail).appending(" (log count: \(log.count))")
+            log = "...\n\n\t\t".appending(logTail).appending(" (log count: \(log.count))")
             
         case .tail:
             let logHead = log.prefix(logLimit)
-            log = logHead.appending(" ...").appending(" (log count: \(log.count))")
+            log = logHead.appending("\n\n\t\t...").appending(" (log count: \(log.count))")
             
         @unknown default:
             break
@@ -260,9 +260,9 @@ fileprivate extension JGSLogDescription {
             //tempDesc = "\"".appending(tempDesc).appending("\"")
             if let data = stringObj.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data) {
                 if let dict = json as? Dictionary<AnyHashable, Any> {
-                    return "(JSON -> Dictionary)" + dict.jg_logDescription()
+                    return "(JSON -> Dictionary) " + dict.jg_logDescription()
                 } else if let array = json as? Array<Any> {
-                    return "(JSON -> Array)" + array.jg_logDescription()
+                    return "(JSON -> Array) " + array.jg_logDescription()
                 }
             }
             
