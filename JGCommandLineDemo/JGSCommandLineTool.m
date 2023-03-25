@@ -20,7 +20,8 @@
     NSCAssert(operation == kCCEncrypt || operation == kCCDecrypt, @"The operation of AES must be (%@、%@)", @(kCCEncrypt), @(kCCDecrypt));
     NSCAssert(key.length == keyLength, @"The key length of AES-%@ must be %@", @(keyLength * 8), @(keyLength));
     if (options & kCCOptionECBMode) {
-        NSCAssert(iv.length != 0, @"The AES-CBC mode must have iv params");
+        // 屏蔽ECB校验IV，系统能够正常加解密
+        //NSCAssert(iv.length != 0, @"The AES-CBC mode must have iv params");
     }
     
     NSUInteger dataLength = self.length;
@@ -31,7 +32,9 @@
     // 便宜向量长度为块大小 BlockSize
     char ivBytes[kCCBlockSizeAES128 + 1];
     memset(ivBytes, 0, sizeof(ivBytes));
-    [iv getCString:ivBytes maxLength:sizeof(ivBytes) encoding:NSUTF8StringEncoding];
+    if (iv.length > 0) {
+        [iv getCString:ivBytes maxLength:sizeof(ivBytes) encoding:NSUTF8StringEncoding];
+    }
     
     size_t operationSize = dataLength + kCCBlockSizeAES128; // 密文长度 <= 明文长度 + BlockSize
     void *operationBytes = malloc(operationSize);
