@@ -12,7 +12,7 @@
 
 - (NSData *)JGSCommandLine_AESOperation:(CCOperation)operation keyLength:(size_t)keyLength key:(NSString *)key iv:(NSString *)iv options:(CCOptions)options {
     
-    if (self == nil) {
+    if (self.length == 0) {
         return nil;
     }
     

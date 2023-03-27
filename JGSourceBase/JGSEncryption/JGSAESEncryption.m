@@ -100,7 +100,7 @@
 }
 
 - (NSString *)aesOperation:(CCOperation)operation string:(NSString *)string keyLength:(size_t)keyLength key:(NSString *)key iv:(NSString *)iv {
-    return [string jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:(kCCOptionPKCS7Padding)];
+    return [string jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:kNilOptions];
 }
 
 - (NSData *)jg_AESOperation:(CCOperation)operation data:(NSData *)data keyLength:(size_t)keyLength key:(NSString *)key iv:(NSString *)iv  {
@@ -108,7 +108,7 @@
 }
 
 - (NSData *)aesOperation:(CCOperation)operation data:(NSData *)data keyLength:(size_t)keyLength key:(NSString *)key iv:(NSString *)iv  {
-    return [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:(kCCOptionPKCS7Padding)];
+    return [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:kNilOptions];
 }
 
 #pragma mark - End
