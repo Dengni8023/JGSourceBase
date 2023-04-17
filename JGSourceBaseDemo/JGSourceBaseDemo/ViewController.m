@@ -18,6 +18,7 @@
 #if __has_include("JGSourceBaseDemo-Swift.h")
 #import "JGSourceBaseDemo-Swift.h"
 #endif
+#import <objc/runtime.h>
 
 @interface ViewController ()
 
@@ -70,20 +71,20 @@
     JGSLog(@"%@", message);
     NSLog(@"%@: %s", @(__LINE__), [message UTF8String]);
     JGSLog(@"%s", [message UTF8String]);
-    NSString *log = [NSString stringWithCString:[message UTF8String] encoding:NSUTF8StringEncoding];
-    NSLog(@"%@: %@", @(__LINE__), log);
-    JGSLog(@"%@", log);
-    NSLog(@"%@: %s", @(__LINE__), [log UTF8String]);
-    JGSLog(@"%s", [log UTF8String]);
-    
-    const char *filePath = __FILE__;
-    JGSLog(@"%s", filePath);
-    NSLog(@"%s", filePath);
-    JGSLog(@"%@", [NSString stringWithFormat:@"%s", filePath]);
-    JGSLog(@"%@", [[NSString alloc] initWithFormat:@"%s", filePath]);
-    JGSLog(@"%@", [NSString stringWithCString:filePath encoding:NSUTF8StringEncoding]);
-    JGSLog(@"%s", [[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String]);
-    JGSLog(@"%@", [NSString stringWithCString:[[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String] encoding:NSUTF8StringEncoding]);
+    //NSString *log = [NSString stringWithCString:[message UTF8String] encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@: %@", @(__LINE__), log);
+    //JGSLog(@"%@", log);
+    //NSLog(@"%@: %s", @(__LINE__), [log UTF8String]);
+    //JGSLog(@"%s", [log UTF8String]);
+    //
+    //const char *filePath = __FILE__;
+    //JGSLog(@"%s", filePath);
+    //NSLog(@"%s", filePath);
+    //JGSLog(@"%@", [NSString stringWithFormat:@"%s", filePath]);
+    //JGSLog(@"%@", [[NSString alloc] initWithFormat:@"%s", filePath]);
+    //JGSLog(@"%@", [NSString stringWithCString:filePath encoding:NSUTF8StringEncoding]);
+    //JGSLog(@"%s", [[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String]);
+    //JGSLog(@"%@", [NSString stringWithCString:[[NSString stringWithCString:filePath encoding:NSUTF8StringEncoding] UTF8String] encoding:NSUTF8StringEncoding]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -235,11 +236,48 @@
 }
 
 - (void)jumpToKeyboardDemo:(NSIndexPath *)indexPath {
-	
+    
     JGSKeyboardDemoVC *vcT = [[JGSKeyboardDemoVC alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
 
 #pragma mark - End
+
+@end
+
+
+@implementation NSJSONSerialization (JGSourceBaseDemo)
+
++ (void)load {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        Class class = [self class];
+        NSArray<NSString *> *originalArray = @[
+            NSStringFromSelector(@selector(JSONObjectWithData:options:error:)),
+        ];
+        
+        [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            SEL originSelector = NSSelectorFromString(obj);
+            SEL swizzledSelector = NSSelectorFromString([@"JGSDemo_" stringByAppendingString:obj]);
+            JGSRuntimeSwizzledClassMethod(class, originSelector, swizzledSelector);
+        }];
+    });
+}
+
++ (id)JGSDemo_JSONObjectWithData:(NSData *)data options:(NSJSONReadingOptions)opt error:(NSError *__autoreleasing  _Nullable *)error {
+    
+    NSError *err = nil;
+    id ret = [self JGSDemo_JSONObjectWithData:data options:opt error:&err];
+    if (err) {
+        if (error) {
+            *error = err;
+        }
+    }
+    JGSLog(@"%@", ret);
+    return ret;
+}
 
 @end

@@ -66,6 +66,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param style 字符串大小写风格
 - (nullable NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style;
 
+#pragma mark - Hex
+/// Data转16进制字符串，小写
+@property (nonatomic, copy, readonly, nullable) NSString *jg_hexString;
+
+/// Data转16进制字符串
+/// @param style 字符串大小写风格
+- (nullable NSString *)jg_hexString:(JGSStringUpperLowerStyle)style;
+
 @end
 
 NS_ASSUME_NONNULL_END

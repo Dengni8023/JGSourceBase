@@ -8,8 +8,8 @@
 
 import Foundation
 
-//fileprivate let JGSLogNil2NullString = "(null)" // 与 OC 保持一致
-fileprivate let JGSLogNil2NullString = "nil" // 与 Swift 保持一致
+//private let JGSLogNil2NullString = "(null)" // 与 OC 保持一致
+private let JGSLogNil2NullString = "nil" // 与 Swift 保持一致
 public func JGSLog(format: String, _ args: CVarArg?..., mode: JGSLogMode? = JGSEnableLogMode, level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
     
     var tmpArgs: [CVarArg] = []
@@ -148,7 +148,7 @@ public func JGSLogE(_ args: Any?..., mode: JGSLogMode? = JGSEnableLogMode, fileP
 }
 
 // MARK: - 重写 description
-fileprivate protocol JGSLogDescription {
+private protocol JGSLogDescription {
     
     /// 日志输出描述，类似
     /// 1. CustomStringConvertible 协议 description 方法
@@ -161,7 +161,7 @@ fileprivate protocol JGSLogDescription {
 extension Dictionary : JGSLogDescription { }
 extension Array: JGSLogDescription { }
 extension String: JGSLogDescription { }
-fileprivate extension JGSLogDescription {
+private extension JGSLogDescription {
     
     func jg_logDescription(level: Int64 = 0) -> String {
         switch self {

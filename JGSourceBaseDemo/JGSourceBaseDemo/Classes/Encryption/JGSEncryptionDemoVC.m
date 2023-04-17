@@ -59,6 +59,7 @@
 #pragma mark - Action
 - (void)showBase64Encryption:(NSIndexPath *)indexPath {
     
+#ifdef JGSCategory_NSString_h
     switch (indexPath.row) {
         case 0: {
             
@@ -79,10 +80,12 @@
         default:
             break;
     }
+#endif
 }
 
 - (void)showAESEncryption:(NSIndexPath *)indexPath {
     
+#ifdef JGSCategory_NSString_h
     // 加解密可以和在线工具进行对比验证：https://www.qtool.net/aes
     NSString *aes128Key = @"1234567890abcdef";
     NSString *aes256Key = @"1234567890abcdef1234567890ABCDEF";
@@ -120,6 +123,7 @@
         default:
             break;
     }
+#endif
 }
 
 - (void)showRSAEncryption:(NSIndexPath *)indexPath {

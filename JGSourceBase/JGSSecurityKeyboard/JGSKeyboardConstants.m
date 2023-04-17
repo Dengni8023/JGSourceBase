@@ -123,7 +123,7 @@ NSDictionary<NSString *, NSDictionary<NSString *, NSNumber *> *> *JGSKeyboardKey
     return whRatioInfo;
 }
 
-CGFloat const JGSKeyboardKeyInterSpacing() {
+CGFloat const JGSKeyboardKeyInterSpacing(void) {
     
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
@@ -135,7 +135,7 @@ CGFloat const JGSKeyboardKeyInterSpacing() {
     return [spacing floatValue];
 };
 
-CGFloat const JGSKeyboardKeyLineSpacing() {
+CGFloat const JGSKeyboardKeyLineSpacing(void) {
     
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
@@ -147,7 +147,7 @@ CGFloat const JGSKeyboardKeyLineSpacing() {
     return [spacing floatValue];
 }
 
-CGFloat const JGSKeyboardKeyWidthHeightRatio() {
+CGFloat const JGSKeyboardKeyWidthHeightRatio(void) {
     
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
     NSString *orientation = isPortrait ? @"Portrait" : @"Landscape";
@@ -159,7 +159,7 @@ CGFloat const JGSKeyboardKeyWidthHeightRatio() {
     return [ratio floatValue];
 }
 
-NSDictionary *JGSKeyboardSizeInfo() {
+NSDictionary *JGSKeyboardSizeInfo(void) {
     
     static NSMutableDictionary<NSString *, NSString *> *sizeInfo = nil;
     static dispatch_once_t onceToken;

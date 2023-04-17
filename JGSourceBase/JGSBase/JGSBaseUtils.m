@@ -10,16 +10,35 @@
 #import <objc/runtime.h>
 #import "JGSBase+JGSPrivate.h"
 
-FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+void JGSInnerRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector, BOOL classMethod) {
     
     Method originMethod = class_getInstanceMethod(cls, originSelector);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
+    if (classMethod) {
+        originMethod = class_getClassMethod(cls, originSelector);
+        swizzledMethod = class_getClassMethod(cls, swizzledSelector);
+        // 类方法必须使用 MetaClass
+        if (!class_isMetaClass(cls)) {
+            cls = objc_getMetaClass(NSStringFromClass(cls).UTF8String);
+        }
+    } else {
+        // 实例方法必须使用 Class
+        if (class_isMetaClass(cls)) {
+            cls = objc_getClass(NSStringFromClass(cls).UTF8String);
+        }
+    }
+    if (originMethod == nil || swizzledMethod == nil) {
+        return;
+    }
     
     /*
      严谨的方法替换逻辑：检查运行时源方法的实现是否已执行
      将新的实现添加到源方法，用来做检查用，避免源方法没有实现（有实现，但运行时尚未执行到该方法的实现）
      如果源方法已有实现，会返回 NO，此时直接交换源方法与新方法的实现即可
      如果源方法尚未实现，会返回 YES，此时新的实现已替换原方法的实现，需要将源方法的实现替换到新方法
+     
+     对于部分代理方法，可能存在该类本身是没有进行实现的，此时将新的实现添加到源方法必返回YES
+     之后不需要在进行其他操作，在新的实现内部如需执行源方法，需要判断新方法与源方法实现是否一致，一致时则不能执行原方法(否则死循环)
      */
     BOOL didAddMethod = class_addMethod(cls, originSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
     if (didAddMethod) {
@@ -28,6 +47,14 @@ FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, S
     else {
         method_exchangeImplementations(originMethod, swizzledMethod);
     }
+}
+
+FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+    JGSInnerRuntimeSwizzledMethod(cls, originSelector, swizzledSelector, NO);
+}
+
+FOUNDATION_EXTERN void JGSRuntimeSwizzledClassMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+    JGSInnerRuntimeSwizzledMethod(cls, originSelector, swizzledSelector, YES);
 }
 
 @implementation JGSBaseUtils

@@ -1,66 +1,18 @@
 PODS:
   - IQKeyboardManager (6.5.10)
   - JGSourceBase/Base (1.4.1)
-  - JGSourceBase/Category/NSArray (1.4.1):
-    - JGSourceBase/Category/NSDictionary
-    - JGSourceBase/Category/NSObject
-  - JGSourceBase/Category/NSData (1.4.1):
+  - JGSourceBase/Category (1.4.1):
     - JGSourceBase/Base
-  - JGSourceBase/Category/NSDictionary (1.4.1):
-    - JGSourceBase/Base
-  - JGSourceBase/Category/NSObject (1.4.1):
-    - JGSourceBase/Category/NSData
-    - JGSourceBase/Category/NSString
-  - JGSourceBase/Category/NSString (1.4.1):
-    - JGSourceBase/Category/NSData
-  - JGSourceBase/Category/UIColor (1.4.1)
-  - JGSourceBase/DataStorage (1.4.1):
-    - JGSourceBase/Base
-  - JGSourceBase/Device (1.4.1):
-    - JGSourceBase/Category/NSData
-    - JGSourceBase/Reachability
-  - JGSourceBase/Encryption (1.4.1):
-    - JGSourceBase/Category/NSData
-    - JGSourceBase/Category/NSString
-  - JGSourceBase/HUD (1.4.1):
-    - JGSourceBase/HUD/Loading (= 1.4.1)
-    - JGSourceBase/HUD/Toast (= 1.4.1)
-  - JGSourceBase/HUD/Loading (1.4.1):
-    - JGSourceBase/Base
-    - JGSourceBase/Category/UIColor
-    - MBProgressHUD
-  - JGSourceBase/HUD/Toast (1.4.1):
-    - JGSourceBase/Base
-    - MBProgressHUD
-  - JGSourceBase/IntegrityCheck (1.4.1):
-    - JGSourceBase/Base
-    - JGSourceBase/Encryption
-  - JGSourceBase/Reachability (1.4.1):
-    - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.4.1):
-    - JGSourceBase/Base
-    - JGSourceBase/Category/NSData
-    - JGSourceBase/Category/NSString
-    - JGSourceBase/Category/UIColor
   - Masonry (1.1.0)
-  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.10)
-  - JGSourceBase/Category/NSArray (from `./..`)
-  - JGSourceBase/DataStorage (from `./..`)
-  - JGSourceBase/Device (from `./..`)
-  - JGSourceBase/Encryption (from `./..`)
-  - JGSourceBase/HUD (from `./..`)
-  - JGSourceBase/IntegrityCheck (from `./..`)
-  - JGSourceBase/Reachability (from `./..`)
-  - JGSourceBase/SecurityKeyboard (from `./..`)
+  - JGSourceBase/Category (from `./..`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - IQKeyboardManager
-    - MBProgressHUD
 
 EXTERNAL SOURCES:
   JGSourceBase:
@@ -76,10 +28,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: 9736b265d6432d09a83dc71778528ea77e71ac32
+  JGSourceBase: 38d6d47121932cb442af1e430b49ae1de3bec329
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 5c8a98b5dcfda1a369e1f207de9dd770719000ca
+PODFILE CHECKSUM: 63a8261a765d5eec3f9bd604181398f4dc6dab4c
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.1

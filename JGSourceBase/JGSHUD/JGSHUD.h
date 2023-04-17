@@ -9,11 +9,17 @@
 #ifndef JGSHUD_h
 #define JGSHUD_h
 
-#if __has_include(<JGSourceBase/JGSHUD.h>)
+// Loading
+#if __has_include(<JGSourceBase/JGSLoadingHUD.h>)
 #import <JGSourceBase/JGSLoadingHUD.h>
-#import <JGSourceBase/JGSToast.h>
-#else
+#elif __has_include("JGSLoadingHUD.h")
 #import "JGSLoadingHUD.h"
+#endif
+
+// HUD
+#if __has_include(<JGSourceBase/JGSToast.h>)
+#import <JGSourceBase/JGSToast.h>
+#elif __has_include("JGSToast.h")
 #import "JGSToast.h"
 #endif
 

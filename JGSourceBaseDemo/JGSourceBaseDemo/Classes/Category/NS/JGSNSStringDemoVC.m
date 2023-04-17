@@ -35,6 +35,7 @@
 		@[
 			JGSDemoTableRowMake(@"URL Encode", nil, @selector(string2URLString:)),
 			JGSDemoTableRowMake(@"URL String", nil, @selector(string2URLString:)),
+            JGSDemoTableRowMake(@"URL String", nil, @selector(stringHexSwap:)),
 		])
 	];
 }
@@ -70,6 +71,35 @@
         default:
             break;
     }
+}
+
+- (void)stringHexSwap:(NSIndexPath *)indexPath {
+    
+    JGSLog(@"%@", @"0x7248".jg_hexToString);
+    JGSLog(@"%@", @"0X7248".jg_hexToString.jg_hexString);
+    
+    JGSLog(@"%@", @"6b6132686a6732653136386873366734".jg_hexToString); // ka2hjg2e168hs6g4
+    JGSLog(@"%@", @"ka2hjg2e168hs6g4".jg_hexString);
+    
+    NSInteger i = 0;
+    while (i++ < 20) {
+        NSString *hex = [@"ka2hjg2e168hs6g4" jg_hexString:JGSStringRandomCase];
+        JGSLog(@"%@", hex);
+        JGSLog(@"%@", hex.jg_hexToString); // ka2hjg2e168hs6g4
+        JGSLog();
+    }
+    
+    JGSLog(@"%@", @"63766231327876627835766234786166".jg_hexToString); // cvb12xvbx5vb4xaf
+    JGSLog(@"%@", @"cvb12xvbx5vb4xaf".jg_hexString);
+    
+    JGSLog(@"%@", @"6b6132686a6732653136384853364734".jg_hexToString); // ka2hjg2e168HS6G4
+    JGSLog(@"%@", @"ka2hjg2e168HS6G4".jg_hexString);
+    JGSLog(@"%@", @"43564231327856427835766234786166".jg_hexToString); // CVB12xVBx5vb4xaf
+    JGSLog(@"%@", @"CVB12xVBx5vb4xaf".jg_hexString);
+    
+    NSData *data = [@"CVB12xVBx5vb4xaf" dataUsingEncoding:NSUTF8StringEncoding];
+    JGSLog(@"%@", data);
+    JGSLog(@"%@", data.jg_hexString.jg_hexToData);
 }
 
 #endif

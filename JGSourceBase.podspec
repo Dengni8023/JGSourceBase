@@ -116,7 +116,10 @@ Pod::Spec.new do |spec|
 
   #  (选填) 支持的Swift版本。CocoaPods会将“4”视为“4.0”，而不是“4.1”或“4.2”。
   # spec.swift_version = "5.6"
-  spec.swift_versions = ["5.6", "5.7"]
+  # 5.6: Xcode 13.3
+  # 5.7: Xcode 14.2
+  # 5.8: Xcode 14.3
+  spec.swift_versions = ["5.6", "5.7", "5.8"]
 
   #  (选填) 支持的CocoaPods版本
   spec.cocoapods_version = '>= 1.10'
@@ -151,8 +154,8 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
-  spec.source_files = "#{spec.name}/*.{h,m,swift}"
-  spec.public_header_files = "#{spec.name}/*.h"
+  # spec.source_files = "#{spec.name}/*.{h,m,swift}"
+  # spec.public_header_files = "#{spec.name}/*.h"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -192,7 +195,7 @@ Pod::Spec.new do |spec|
   # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃，经测试，崩溃原因可能为：
   # 源码JGSourceBase.framework target 设置 Mach-O Type 为动态库 Dynamic Library，设置为 Static Library则不会崩溃
   # 设置为 true，在Podfile指定 use_frameworks!时，打包静态framework
-  spec.static_framework = true
+  spec.static_framework = false
   # requires_arc允许指定哪些source_files使用ARC。可以设置为true表示所有source_files使用ARC。
   # 不使用ARC的文件会有-fno-objc-arc编译标志。
   spec.requires_arc = true
@@ -214,6 +217,7 @@ Pod::Spec.new do |spec|
     "MARKETING_VERSION" => "#{spec.version}",
     "CURRENT_PROJECT_VERSION" => "#{spec.version}",
     'GENERATE_INFOPLIST_FILE' => 'NO',
+    # 'DEFINES_MODULE' => 'YES',
   }
   
   # (选填) 在安装前执行的脚本
@@ -255,9 +259,15 @@ Pod::Spec.new do |spec|
   
   # Base
   spec.subspec "Base" do |sub|
-    sub.source_files = "#{spec.name}/JGSBase/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSBase/*.h"
-    sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
+    sub.source_files = [
+      "#{spec.name}/*.{h,m,swift}",
+      "#{spec.name}/JGSBase/*.{h,m,swift}",
+    ]
+    sub.public_header_files = [
+      "#{spec.name}/*.h",
+      "#{spec.name}/JGSBase/*.h",
+    ]
+    # sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
 
     # resources形式资源文件引用到主Target，存在同名冲突情况，因此使用bundle方式
     # sub.resources = "JGSDevice/**/JGSiOSDeviceList.json.sec"
@@ -309,87 +319,21 @@ Pod::Spec.new do |spec|
       :script => RemoveUnInstalledJGSResource,
       # :execution_position => :before_compile,
       :execution_position => :after_compile,
+      :input_files => ["${BUILT_PRODUCTS_DIR}/$(PRODUCT_NAME)/$(PRODUCT_NAME).bundle"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME)/$(PRODUCT_NAME).bundle"],
     }
   
   end
   
   # Category
   spec.subspec 'Category' do |sub|
-    sub.source_files =  "#{spec.name}/JGSCategory/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSCategory/*.h"
+    sub.source_files = [
+      "#{spec.name}/JGSCategory/**/*.{h,m,swift}",
+    ]
+    sub.public_header_files = [
+      "#{spec.name}/JGSCategory/**/*.h",
+    ]
     
-    sub.subspec 'NSArray' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSArray/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSArray/*.h"
-      
-      subsub.dependency "JGSourceBase/Category/NSDictionary"
-      subsub.dependency "JGSourceBase/Category/NSObject"
-    end
-    
-    sub.subspec 'NSData' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSData/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSData/*.h"
-      
-      subsub.dependency "JGSourceBase/Base"
-    end
-    
-    sub.subspec 'NSDate' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSDate/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSDate/*.h"
-    end
-    
-    sub.subspec 'NSDictionary' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSDictionary/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSDictionary/*.h"
-
-      subsub.dependency "JGSourceBase/Base"
-    end
-    
-    sub.subspec 'NSObject' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSObject/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSObject/*.h"
-      
-      subsub.dependency "JGSourceBase/Category/NSData"
-      subsub.dependency "JGSourceBase/Category/NSString"
-    end
-    
-    sub.subspec 'NSString' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSString/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSString/*.h"
-      
-      subsub.dependency "JGSourceBase/Category/NSData"
-    end
-    
-    sub.subspec 'NSURL' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/NSURL/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/NSURL/*.h"
-    end
-    
-    sub.subspec 'UIAlertController' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIAlertController/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/UIAlertController/*.h"
-      
-      subsub.dependency "JGSourceBase/Base"
-    end
-    
-    sub.subspec 'UIApplication' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIApplication/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/UIApplication/*.h"
-      
-      subsub.dependency "JGSourceBase/Base"
-    end
-    
-    sub.subspec 'UIColor' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIColor/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/UIColor/*.h"
-    end
-    
-    sub.subspec 'UIImage' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSCategory/UIImage/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSCategory/UIImage/*.h"
-      
-      subsub.dependency "JGSourceBase/Base"
-    end
+    sub.dependency "JGSourceBase/Base"
   end
   
   # DataStorage
@@ -397,7 +341,7 @@ Pod::Spec.new do |spec|
     sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSDataStorage/*.h"
     
-    sub.dependency "JGSourceBase/Base"
+    sub.dependency "JGSourceBase/Encryption"
   end
   
   # Device
@@ -410,8 +354,8 @@ Pod::Spec.new do |spec|
         "GCC_PREPROCESSOR_DEFINITIONS" => "JGSDeviceInstalled='\"${JGSDeviceInstalled}\"'",
     }
     
+    sub.dependency "JGSourceBase/Category"
     sub.dependency "JGSourceBase/Reachability"
-    sub.dependency "JGSourceBase/Category/NSData"
   end
   
   # Encryption
@@ -419,33 +363,25 @@ Pod::Spec.new do |spec|
     sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m,swift}"
     sub.public_header_files = "#{spec.name}/JGSEncryption/*.h"
     
-    sub.dependency "JGSourceBase/Category/NSData"
-    sub.dependency "JGSourceBase/Category/NSString"
+    sub.dependency "JGSourceBase/Category"
   end
   
   # HUD
   spec.subspec 'HUD' do |sub|
-    sub.source_files = "#{spec.name}/JGSHUD/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSHUD/*.h"
     
-    # Loading
-    sub.subspec 'Loading' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSHUD/Loading/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSHUD/Loading/*.h"
-      
-      subsub.dependency "MBProgressHUD"
-      subsub.dependency "JGSourceBase/Base"
-      subsub.dependency "JGSourceBase/Category/UIColor"
-    end
+    sub.source_files = [
+      "#{spec.name}/JGSHUD/**/*.{h,m,swift}",
+      # "#{spec.name}/JGSHUD/*.{h,m,swift}",
+      # "#{spec.name}/JGSHUD/Toast/*.{h,m,swift}",
+    ]
+    sub.public_header_files = [
+      "#{spec.name}/JGSHUD/**/*.h",
+      # "#{spec.name}/JGSHUD/*.h",
+      # "#{spec.name}/JGSHUD/Toast/*.h",
+    ]
     
-    # Toast
-    sub.subspec 'Toast' do |subsub|
-      subsub.source_files = "#{spec.name}/JGSHUD/Toast/*.{h,m,swift}"
-      subsub.public_header_files = "#{spec.name}/JGSHUD/Toast/*.h"
-      
-      subsub.dependency "MBProgressHUD"
-      subsub.dependency "JGSourceBase/Base"
-    end
+    sub.dependency "MBProgressHUD"
+    sub.dependency "JGSourceBase/Category"
   end
   
   # IntegrityCheck
@@ -463,7 +399,6 @@ Pod::Spec.new do |spec|
       "GCC_PREPROCESSOR_DEFINITIONS" => "JGSIntegrityCheckInstalled='\"${JGSIntegrityCheckInstalled}\"' JGSResourcesCheckFileHashSecuritySalt='\"JGSIntegrityCheck\"' JGSApplicationIntegrityCheckFileHashFile='\"JGSApplicationIntegrityCheckFileHashFile\"'",
     }
     
-    sub.dependency "JGSourceBase/Base"
     sub.dependency "JGSourceBase/Encryption"
     
   end
@@ -483,10 +418,7 @@ Pod::Spec.new do |spec|
       "#{spec.name}/JGSSecurityKeyboard/**JGSSecurityKeyboard.h",
     ]
     
-    sub.dependency "JGSourceBase/Base"
-    sub.dependency "JGSourceBase/Category/NSData"
-    sub.dependency "JGSourceBase/Category/NSString"
-    sub.dependency "JGSourceBase/Category/UIColor"
+    sub.dependency "JGSourceBase/Category"
   end
   
   # subspec，不指定时默认安装所有subspec，用户可自行指定

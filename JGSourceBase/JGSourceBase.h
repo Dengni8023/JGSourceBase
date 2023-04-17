@@ -15,7 +15,7 @@
 #endif
 
 // Xcode最低版本要求
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_16_0
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 150000
 #error "JGSourceBase needs Xcode 13.0 or later."
 #endif
 
@@ -33,24 +33,39 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 // 本文件作为公有header，外部使用时可直接import本文件而不需要引入其他头文件即可使用所有引入的subspec功能
 // 因此各subspec头文件的引入均使用的头文件能否引用的判断
 
-#if __has_include(<JGSourceBase/JGSourceBase.h>)
-#import <JGSourceBase/JGSBase.h> // Base
-#import <JGSourceBase/JGSCategory.h> // Category
-#import <JGSourceBase/JGSDataStorage.h> // DataStorage
-#import <JGSourceBase/JGSDevice.h> // Device
-#import <JGSourceBase/JGSEncryption.h> // Encryption
-#import <JGSourceBase/JGSIntegrityCheck.h> // IntegrityCheck
-#import <JGSourceBase/JGSReachability.h> // Reachability
-#import <JGSourceBase/JGSSecurityKeyboard.h> // SecurityKeyboard
-#else
-#import "JGSBase.h" // Base
-#import "JGSCategory.h" // Category
-#import "JGSDataStorage.h" // DataStorage
-#import "JGSDevice.h" // Device
-#import "JGSEncryption.h" // Encryption
-#import "JGSIntegrityCheck.h" // IntegrityCheck
-#import "JGSReachability.h" // Reachability
-#import "JGSSecurityKeyboard.h" // SecurityKeyboard
+// Base
+#if __has_include(<JGSourceBase/JGSBase.h>)
+#import <JGSourceBase/JGSBase.h>
+#elif __has_include("JGSBase.h")
+#import "JGSBase.h"
+#endif
+
+// Category
+#if __has_include(<JGSourceBase/JGSCategory.h>)
+#import <JGSourceBase/JGSCategory.h>
+#elif __has_include("JGSCategory.h")
+#import "JGSCategory.h"
+#endif
+
+// DataStorage
+#if __has_include(<JGSourceBase/JGSDataStorage.h>)
+#import <JGSourceBase/JGSDataStorage.h>
+#elif __has_include("JGSDataStorage.h")
+#import "JGSDataStorage.h"
+#endif
+
+// Device
+#if __has_include(<JGSourceBase/JGSDevice.h>)
+#import <JGSourceBase/JGSDevice.h>
+#elif __has_include("JGSDevice.h")
+#import "JGSDevice.h"
+#endif
+
+// Encryption
+#if __has_include(<JGSourceBase/JGSEncryption.h>)
+#import <JGSourceBase/JGSEncryption.h>
+#elif __has_include("JGSEncryption.h")
+#import "JGSEncryption.h"
 #endif
 
 // HUD
@@ -58,4 +73,25 @@ FOUNDATION_EXPORT const unsigned char JGSourceBaseVersionString[];
 #import <JGSourceBase/JGSHUD.h>
 #elif __has_include("JGSHUD.h")
 #import "JGSHUD.h"
+#endif
+
+// IntegrityCheck
+#if __has_include(<JGSourceBase/JGSIntegrityCheck.h>)
+#import <JGSourceBase/JGSIntegrityCheck.h>
+#elif __has_include("JGSIntegrityCheck.h")
+#import "JGSIntegrityCheck.h"
+#endif
+
+// Reachability
+#if __has_include(<JGSourceBase/JGSReachability.h>)
+#import <JGSourceBase/JGSReachability.h>
+#elif __has_include("JGSReachability.h")
+#import "JGSReachability.h"
+#endif
+
+// SecurityKeyboard
+#if __has_include(<JGSourceBase/JGSSecurityKeyboard.h>)
+#import <JGSourceBase/JGSSecurityKeyboard.h>
+#elif __has_include("JGSSecurityKeyboard.h")
+#import "JGSSecurityKeyboard.h"
 #endif

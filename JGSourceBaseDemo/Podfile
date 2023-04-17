@@ -19,10 +19,10 @@ install! 'cocoapods', :deterministic_uuids => false
 # 调试 JGSourceBaseDemo: 
 # Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBaseDemo')
 
-# use_frameworks! # 使用默认，动态链接
+use_frameworks! # 使用默认，动态链接
 # use_frameworks! :linkage => :dynamic # 使用动态链接
 # 为便于查看header头文件，使用use_frameworks!且指定使用静态链接，以上调试警告可忽略
-use_frameworks! :linkage => :static # 使用静态链接
+# use_frameworks! :linkage => :static # 使用静态链接
 
 # workspace
 workspace "JGSourceBaseDemo"
@@ -39,31 +39,14 @@ abstract_target "JGSBase" do
   pod 'JGSourceBase', :path => "./..",
   :subspecs => [
     # 'Base',
-
-    # 'Category',
-    'Category/NSArray',
-    # 'Category/NSData',
-    # 'Category/NSDate',
-    # 'Category/NSDictionary',
-    # 'Category/NSObject',
-    # 'Category/NSString',
-    # 'Category/NSURL',
-    # 'Category/UIAlertController',
-    # 'Category/UIApplication',
-    # 'Category/UIColor',
-    # 'Category/UIImage',
-
-    'DataStorage',
-    'Device',
-    'Encryption',
-    'IntegrityCheck',
-    'Reachability',
-    'SecurityKeyboard',
-    
-    # HUD
-    'HUD',
-    # 'HUD/Loading',
-    # 'HUD/Toast',
+    'Category',
+    # 'DataStorage',
+    # 'Device',
+    # 'Encryption',
+    # 'HUD',
+    # 'IntegrityCheck',
+    # 'Reachability',
+    # 'SecurityKeyboard',
   ]
   
   JGSPodsScriptBeforeCompile = <<-CMD
@@ -98,9 +81,9 @@ abstract_target "JGSBase" do
     #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
     pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
     
-    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile, :input_files => ["$(SRC_ROOT)/JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/Info.plist"]
     
-    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
+    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile, :input_files => ["${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/JGSApplicationIntegrityCheckFileHashFile"]
     
     # project
     project "JGSourceBaseDemo.xcodeproj"
@@ -112,7 +95,10 @@ end
 pre_install do |installer|
   puts ""
   puts "##### pre_install start #####"
-  
+
+  # 打印installer信息
+  #putsInstanceVariables installer, "installer"
+
   # target has transitive dependencies that include statically linked  解决pod install失败
   # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
   # Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
@@ -125,6 +111,17 @@ end
 post_install do |installer|
   puts ""
   puts "##### post_install start #####"
+
+  # 打印installer信息
+  # putsInstanceVariables installer, "installer"
+  
+  # BuildIndependentTargetsInParallel 并发构建
+  installer.pods_project.root_object.attributes['BuildIndependentTargetsInParallel'] = "YES"
+  
+  installer.pods_project.build_configurations.each do |config|
+    # STRIP
+    config.build_settings['DEAD_CODE_STRIPPING'] = "YES"
+  end
   
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
@@ -136,11 +133,28 @@ post_install do |installer|
       config.build_settings['ARCHS'] = "$(ARCHS_STANDARD)"
       # 解决最新Mac系统编模拟器译报错：
       # building for iOS Simulator-x86_64 but attempting to link with file built for iOS Simulator-arm64
-      config.build_settings['ONLY_ACTIVE_ARCH'] = false
-      # Xcode 14适配
-      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+      # config.build_settings['ONLY_ACTIVE_ARCH'] = false
+      # Code Sign: Xcode 14适配
+      config.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
+      config.build_settings['CODE_SIGN_IDENTITY'] = ""
+      config.build_settings['CODE_SIGN_IDENTITY[sdk=appletvos*]'] = ""
+      config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = ""
+      config.build_settings['CODE_SIGN_IDENTITY[sdk=watchos*]'] = ""
       config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
       config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+      # STRIP
+      # config.build_settings['COPY_PHASE_STRIP'] = "YES"
+      # config.build_settings['STRIP_INSTALLED_PRODUCT'] = "YES"
+      # config.build_settings['STRIP_STYLE'] = "all"
+      # config.build_settings['STRIP_SWIFT_SYMBOLS'] = "YES"
+      config.build_settings['DEAD_CODE_STRIPPING'] = "YES"
+      # Enable Modules
+      # Module 是 编译器用于解决头文件引用导致重复编译等问题的方案
+      # 通过开启 Enable Modules 配置开关，可以大幅度的降低编译耗时
+      # 默认 NO $(CLANG_MODULES_ENABLE_VERIFIER_TOOL)
+      # config.build_settings['ENABLE_MODULE_VERIFIER'] = "YES"
+      # config.build_settings['MODULE_VERIFIER_SUPPORTED_LANGUAGES'] = "objective-c objective-c++"
+      # config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = "NO"
     end
   end
   

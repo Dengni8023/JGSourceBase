@@ -11,30 +11,95 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_include(<JGSourceBase/JGSCategory.h>)
-#import <JGSourceBase/JGSCategory+NSArray.h> // NSArray
-#import <JGSourceBase/JGSCategory+NSData.h> // NSData
-#import <JGSourceBase/JGSCategory+NSDate.h> // NSDate
-#import <JGSourceBase/JGSCategory+NSDictionary.h> // NSDictionary
-#import <JGSourceBase/JGSCategory+NSObject.h> // NSObject
-#import <JGSourceBase/JGSCategory+NSString.h> // NSString
-#import <JGSourceBase/JGSCategory+NSURL.h> // NSURL
-#import <JGSourceBase/JGSCategory+UIAlertController.h> // UIAlertController
-#import <JGSourceBase/JGSCategory+UIApplication.h> // UIApplication
-#import <JGSourceBase/JGSCategory+UIColor.h> // UIColor
-#import <JGSourceBase/JGSCategory+UIImage.h> // UIImage
-#else
-#import "JGSCategory+NSArray.h" // NSArray
-#import "JGSCategory+NSData.h" // NSData
-#import "JGSCategory+NSDate.h" // NSDate
-#import "JGSCategory+NSDictionary.h" // NSDictionary
-#import "JGSCategory+NSObject.h" // NSObject
-#import "JGSCategory+NSString.h" // NSString
-#import "JGSCategory+NSURL.h" // NSURL
-#import "JGSCategory+UIAlertController.h" // UIAlertController
-#import "JGSCategory+UIApplication.h" // UIApplication
-#import "JGSCategory+UIColor.h" // UIColor
-#import "JGSCategory+UIImage.h" // UIImage
+// NSArray
+#if __has_include(<JGSourceBase/JGSCategory+NSArray.h>)
+#import <JGSourceBase/JGSCategory+NSArray.h>
+#elif __has_include("JGSCategory+NSArray.h")
+#import "JGSCategory+NSArray.h"
+#endif
+
+// NSData
+#if __has_include(<JGSourceBase/JGSCategory+NSData.h>)
+#import <JGSourceBase/JGSCategory+NSData.h>
+#elif __has_include("JGSCategory+NSData.h")
+#import "JGSCategory+NSData.h"
+#endif
+
+// NSDate
+#if __has_include(<JGSourceBase/JGSCategory+NSDate.h>)
+#import <JGSourceBase/JGSCategory+NSDate.h>
+#elif __has_include("JGSCategory+NSDate.h")
+#import "JGSCategory+NSDate.h"
+#endif
+
+// NSDictionary
+#if __has_include(<JGSourceBase/JGSCategory+NSDictionary.h>)
+#import <JGSourceBase/JGSCategory+NSDictionary.h>
+#elif __has_include("JGSCategory+NSDictionary.h")
+#import "JGSCategory+NSDictionary.h"
+#endif
+
+// NSNumber
+#if __has_include(<JGSourceBase/JGSCategory+NSNumber.h>)
+#import <JGSourceBase/JGSCategory+NSNumber.h>
+#elif __has_include("JGSCategory+NSNumber.h")
+#import "JGSCategory+NSNumber.h"
+#endif
+
+// NSObject
+#if __has_include(<JGSourceBase/JGSCategory+NSObject.h>)
+#import <JGSourceBase/JGSCategory+NSObject.h>
+#elif __has_include("JGSCategory+NSObject.h")
+#import "JGSCategory+NSObject.h"
+#endif
+
+// NSSet
+#if __has_include(<JGSourceBase/JGSCategory+NSSet.h>)
+#import <JGSourceBase/JGSCategory+NSSet.h>
+#elif __has_include("JGSCategory+NSSet.h")
+#import "JGSCategory+NSSet.h"
+#endif
+
+// NSString
+#if __has_include(<JGSourceBase/JGSCategory+NSString.h>)
+#import <JGSourceBase/JGSCategory+NSString.h>
+#elif __has_include("JGSCategory+NSString.h")
+#import "JGSCategory+NSString.h"
+#endif
+
+// NSURL
+#if __has_include(<JGSourceBase/JGSCategory+NSURL.h>)
+#import <JGSourceBase/JGSCategory+NSURL.h>
+#elif __has_include("JGSCategory+NSURL.h")
+#import "JGSCategory+NSURL.h"
+#endif
+
+// UIAlertController
+#if __has_include(<JGSourceBase/JGSCategory+UIAlertController.h>)
+#import <JGSourceBase/JGSCategory+UIAlertController.h>
+#elif __has_include("JGSCategory+UIAlertController.h")
+#import "JGSCategory+UIAlertController.h"
+#endif
+
+// UIApplication
+#if __has_include(<JGSourceBase/JGSCategory+UIApplication.h>)
+#import <JGSourceBase/JGSCategory+UIApplication.h>
+#elif __has_include("JGSCategory+UIApplication.h")
+#import "JGSCategory+UIApplication.h"
+#endif
+
+// UIColor
+#if __has_include(<JGSourceBase/JGSCategory+UIColor.h>)
+#import <JGSourceBase/JGSCategory+UIColor.h>
+#elif __has_include("JGSCategory+UIColor.h")
+#import "JGSCategory+UIColor.h"
+#endif
+
+// UIImage
+#if __has_include(<JGSourceBase/JGSCategory+UIImage.h>)
+#import <JGSourceBase/JGSCategory+UIImage.h>
+#elif __has_include("JGSCategory+UIImage.h")
+#import "JGSCategory+UIImage.h"
 #endif
 
 #endif /* JGSCategory_h */

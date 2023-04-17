@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		202BEB27775D0B66D090C222 /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */; };
-		7844BE53F12C088D332D1C79 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
+		59867B27DF3DFF7986CFA8E2 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C70E3950572E7D1BB3ACDD1 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
+		B62322A4AFEA61DB451AB92A /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF1BC84BA468BAF5CFD16D4 /* Pods_JGSBase_JGSourceBase.framework */; };
 		D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */ = {isa = PBXBuildFile; fileRef = D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */; };
 		D4075AE22863123300E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE12863123300E4BFEA /* AppDelegate.m */; };
 		D4075AE82863123300E4BFEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE72863123300E4BFEA /* ViewController.m */; };
@@ -37,9 +37,10 @@
 		D4075BBF2863315D00E4BFEA /* JGSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075BA32863315D00E4BFEA /* JGSDemoViewController.m */; };
 		D4075BC02863315D00E4BFEA /* JGSKeyboardDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075BA52863315D00E4BFEA /* JGSKeyboardDemoVC.m */; };
 		D4075BC12863315D00E4BFEA /* JGSHUDDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075BA92863315D00E4BFEA /* JGSHUDDemoVC.m */; };
-		D4075BC62863334300E4BFEA /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4075BCE286334DE00E4BFEA /* JGSourceBase.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D403B1322850335200F4F304 /* JGSourceBase.bundle */; };
 		D40A3CCC28854048006DE6DD /* JGSNSArrayDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */; };
+		D4120AD429E650ED0020EE64 /* Set+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4120AD329E650ED0020EE64 /* Set+JGSBase.swift */; };
+		D4120AD729E6529C0020EE64 /* NSNumber+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4120AD629E6529C0020EE64 /* NSNumber+JGSBase.swift */; };
 		D4214A192942DC0500CEFACB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4214A182942DC0500CEFACB /* SceneDelegate.m */; };
 		D4214A1E29432EDE00CEFACB /* JGSDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4214A1D29432EDE00CEFACB /* JGSDViewController.swift */; };
 		D426FC8E293A22AE002C7476 /* Dictionary+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */; };
@@ -55,15 +56,29 @@
 		D43A0F8A2907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */; };
 		D43A0F8B2907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */; };
 		D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D444989F29E0356600BC6D9C /* JGSTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444989E29E0356600BC6D9C /* JGSTransformable.swift */; };
+		D44498A129E0377300BC6D9C /* Array+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A029E0377300BC6D9C /* Array+JGSBase.swift */; };
+		D44498A329E0379A00BC6D9C /* String+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A229E0379A00BC6D9C /* String+JGSBase.swift */; };
+		D44498A529E037AC00BC6D9C /* URL+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A429E037AC00BC6D9C /* URL+JGSBase.swift */; };
+		D44498A729E037BF00BC6D9C /* Date+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A629E037BF00BC6D9C /* Date+JGSBase.swift */; };
+		D44498A929E037F300BC6D9C /* Any+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A829E037F300BC6D9C /* Any+JGSBase.swift */; };
+		D44498AB29E0386D00BC6D9C /* UIAlertController+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AA29E0386D00BC6D9C /* UIAlertController+JGSBase.swift */; };
+		D44498AD29E0388D00BC6D9C /* UIApplication+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */; };
+		D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */; };
+		D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */; };
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
 		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317F288A880D001D4119 /* NSArray+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45E3182288A880D001D4119 /* NSArray+JGSBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E3180288A880D001D4119 /* NSArray+JGSBase.m */; };
+		D46D0BB629D1EF7200509B02 /* Data+JGSAES.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D0BB529D1EF7200509B02 /* Data+JGSAES.swift */; };
+		D46D0BB829D1EF8000509B02 /* Data+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D0BB729D1EF8000509B02 /* Data+JGSBase.swift */; };
 		D4734DC32946F63800E9CF10 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4734DC22946F63800E9CF10 /* SwiftViewController.swift */; };
 		D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */; };
 		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA162911407F00E1CBFF /* JGSFileUtils.m */; };
+		D47F04C329EB90D2009A275D /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
+		D47F04C429EB90D2009A275D /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
@@ -170,16 +185,20 @@
 			remoteGlobalIDString = D403B1312850335200F4F304;
 			remoteInfo = JGSourceBase.bundle;
 		};
-		D4075BC82863334300E4BFEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4F3DA3C22F0279D002EF0F0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4F3DA4422F0279D002EF0F0;
-			remoteInfo = JGSourceBase;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D47F04C529EB90D3009A275D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D47F04C429EB90D2009A275D /* JGSourceBase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4D698232806E16F00CE1F9F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,13 +212,11 @@
 
 /* Begin PBXFileReference section */
 		02E3D4D91AD940B3E013614E /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		0AF1BC84BA468BAF5CFD16D4 /* Pods_JGSBase_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC616F3137645F9C2752BA6 /* Pods-JGSBase-JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBase.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.debug.xcconfig"; sourceTree = "<group>"; };
-		394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		424BFF1D41EB0263CE31DA19 /* Pods_JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F47704EE52548EB1D2C86A /* Pods-JGSBase-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 		4AEB5C4410B3DA7C0E2E65A8 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
-		61E058075EB970CBC0E136E8 /* Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo-Swift/Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		C1DA704C093CC43F74444FE4 /* Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo-Swift/Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		9C70E3950572E7D1BB3ACDD1 /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D403B1322850335200F4F304 /* JGSourceBase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D403B13A2850356900F4F304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +273,8 @@
 		D4075BD22863368B00E4BFEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D40A3CCA28854048006DE6DD /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
 		D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSArrayDemoVC.m; sourceTree = "<group>"; };
+		D4120AD329E650ED0020EE64 /* Set+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+JGSBase.swift"; sourceTree = "<group>"; };
+		D4120AD629E6529C0020EE64 /* NSNumber+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+JGSBase.swift"; sourceTree = "<group>"; };
 		D4214A172942DC0500CEFACB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SceneDelegate.h; path = JGSourceBaseDemo/SceneDelegate.h; sourceTree = "<group>"; };
 		D4214A182942DC0500CEFACB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SceneDelegate.m; path = JGSourceBaseDemo/SceneDelegate.m; sourceTree = "<group>"; };
 		D4214A1A29432DE400CEFACB /* JGSourceBaseDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JGSourceBaseDemo-Bridging-Header.h"; path = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -272,6 +291,16 @@
 		D436C77F28449F4C002C27D9 /* JGSEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSEncryption.m; sourceTree = "<group>"; };
 		D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem_pkcs8; sourceTree = "<group>"; };
 		D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem_pkcs8; sourceTree = "<group>"; };
+		D444989E29E0356600BC6D9C /* JGSTransformable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGSTransformable.swift; sourceTree = "<group>"; };
+		D44498A029E0377300BC6D9C /* Array+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498A229E0379A00BC6D9C /* String+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498A429E037AC00BC6D9C /* URL+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498A629E037BF00BC6D9C /* Date+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498A829E037F300BC6D9C /* Any+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498AA29E0386D00BC6D9C /* UIAlertController+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JGSBase.swift"; sourceTree = "<group>"; };
+		D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+JGSBase.swift"; sourceTree = "<group>"; };
 		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
 		D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSIntegrityCheckResourcesHash.m; sourceTree = "<group>"; };
 		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -279,6 +308,8 @@
 		D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSCategory+NSArray.h"; sourceTree = "<group>"; };
 		D45E317F288A880D001D4119 /* NSArray+JGSBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JGSBase.h"; sourceTree = "<group>"; };
 		D45E3180288A880D001D4119 /* NSArray+JGSBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JGSBase.m"; sourceTree = "<group>"; };
+		D46D0BB529D1EF7200509B02 /* Data+JGSAES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JGSAES.swift"; sourceTree = "<group>"; };
+		D46D0BB729D1EF8000509B02 /* Data+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JGSBase.swift"; sourceTree = "<group>"; };
 		D4734DC22946F63800E9CF10 /* SwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftViewController.swift; path = JGSourceBaseDemo/SwiftViewController.swift; sourceTree = "<group>"; };
 		D473BA1229113F6200E1CBFF /* JGSCommandLineTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JGSCommandLineTool.h; path = JGCommandLineDemo/JGSCommandLineTool.h; sourceTree = SOURCE_ROOT; };
 		D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JGSCommandLineTool.m; path = JGCommandLineDemo/JGSCommandLineTool.m; sourceTree = SOURCE_ROOT; };
@@ -397,7 +428,6 @@
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F4EE1728503EAA00ACB934 /* JGSourceBase.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JGSourceBase.bundle; sourceTree = "<group>"; };
-		F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,7 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				202BEB27775D0B66D090C222 /* Pods_JGSBase_JGSourceBase.framework in Frameworks */,
+				B62322A4AFEA61DB451AB92A /* Pods_JGSBase_JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,8 +450,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4075BC62863334300E4BFEA /* JGSourceBase.framework in Frameworks */,
-				7844BE53F12C088D332D1C79 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
+				59867B27DF3DFF7986CFA8E2 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
+				D47F04C329EB90D2009A275D /* JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,8 +472,6 @@
 				44F47704EE52548EB1D2C86A /* Pods-JGSBase-JGSourceBase.release.xcconfig */,
 				02E3D4D91AD940B3E013614E /* Pods-JGSBase-JGSourceBaseDemo.debug.xcconfig */,
 				4AEB5C4410B3DA7C0E2E65A8 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */,
-				61E058075EB970CBC0E136E8 /* Pods-JGSBase-JGSourceBaseDemo-Swift.debug.xcconfig */,
-				C1DA704C093CC43F74444FE4 /* Pods-JGSBase-JGSourceBaseDemo-Swift.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -451,8 +479,8 @@
 		8F5566C1186FFED2CCE63677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F88DF3A0EB16068CA4C33467 /* Pods_JGSBase_JGSourceBaseDemo.framework */,
-				394B81C6D1F2284EC480989E /* Pods_JGSBase_JGSourceBase.framework */,
+				0AF1BC84BA468BAF5CFD16D4 /* Pods_JGSBase_JGSourceBase.framework */,
+				9C70E3950572E7D1BB3ACDD1 /* Pods_JGSBase_JGSourceBaseDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -638,12 +666,20 @@
 			path = HUD;
 			sourceTree = "<group>";
 		};
-		D414F5492845C3BA000A0C02 /* Recovered References */ = {
+		D4120AD229E650BE0020EE64 /* NSSet */ = {
 			isa = PBXGroup;
 			children = (
-				424BFF1D41EB0263CE31DA19 /* Pods_JGSourceBase.framework */,
+				D4120AD329E650ED0020EE64 /* Set+JGSBase.swift */,
 			);
-			name = "Recovered References";
+			path = NSSet;
+			sourceTree = "<group>";
+		};
+		D4120AD529E6527D0020EE64 /* NSNumber */ = {
+			isa = PBXGroup;
+			children = (
+				D4120AD629E6529C0020EE64 /* NSNumber+JGSBase.swift */,
+			);
+			path = NSNumber;
 			sourceTree = "<group>";
 		};
 		D426FCBF293A4DD5002C7476 /* Target.xcconfig */ = {
@@ -658,6 +694,8 @@
 		D436C7682844974A002C27D9 /* NSData */ = {
 			isa = PBXGroup;
 			children = (
+				D46D0BB529D1EF7200509B02 /* Data+JGSAES.swift */,
+				D46D0BB729D1EF8000509B02 /* Data+JGSBase.swift */,
 				D436C76C2844974A002C27D9 /* JGSCategory+NSData.h */,
 				D436C76E2844974A002C27D9 /* NSData+JGSAES.h */,
 				D436C7692844974A002C27D9 /* NSData+JGSAES.m */,
@@ -683,6 +721,7 @@
 				D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */,
 				D45E317F288A880D001D4119 /* NSArray+JGSBase.h */,
 				D45E3180288A880D001D4119 /* NSArray+JGSBase.m */,
+				D44498A029E0377300BC6D9C /* Array+JGSBase.swift */,
 			);
 			path = NSArray;
 			sourceTree = "<group>";
@@ -862,11 +901,14 @@
 			isa = PBXGroup;
 			children = (
 				D4D697B12806E0F900CE1F9F /* JGSCategory.h */,
+				D444989E29E0356600BC6D9C /* JGSTransformable.swift */,
 				D45E317D288A877E001D4119 /* NSArray */,
 				D436C7682844974A002C27D9 /* NSData */,
 				D4D697CC2806E0F900CE1F9F /* NSDate */,
 				D4D697AD2806E0F900CE1F9F /* NSDictionary */,
+				D4120AD529E6527D0020EE64 /* NSNumber */,
 				D4D697C82806E0F900CE1F9F /* NSObject */,
+				D4120AD229E650BE0020EE64 /* NSSet */,
 				D4D697C22806E0F900CE1F9F /* NSString */,
 				D4D697BE2806E0F900CE1F9F /* NSURL */,
 				D4D697BA2806E0F900CE1F9F /* UIAlertController */,
@@ -883,6 +925,7 @@
 				D4D697AB2806E0F900CE1F9F /* JGSCategory+UIImage.h */,
 				D4D697AC2806E0F900CE1F9F /* UIImage+JGSBase.h */,
 				D4D697AA2806E0F900CE1F9F /* UIImage+JGSBase.m */,
+				D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -890,10 +933,10 @@
 		D4D697AD2806E0F900CE1F9F /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */,
 				D4D697B02806E0F900CE1F9F /* JGSCategory+NSDictionary.h */,
 				D4D697AE2806E0F900CE1F9F /* NSDictionary+JGSBase.h */,
 				D4D697AF2806E0F900CE1F9F /* NSDictionary+JGSBase.m */,
-				D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */,
 			);
 			path = NSDictionary;
 			sourceTree = "<group>";
@@ -904,6 +947,7 @@
 				D4D697B42806E0F900CE1F9F /* JGSCategory+UIApplication.h */,
 				D4D697B52806E0F900CE1F9F /* UIApplication+JGSBase.h */,
 				D4D697B32806E0F900CE1F9F /* UIApplication+JGSBase.m */,
+				D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */,
 			);
 			path = UIApplication;
 			sourceTree = "<group>";
@@ -914,6 +958,7 @@
 				D4D697B82806E0F900CE1F9F /* JGSCategory+UIColor.h */,
 				D4D697B72806E0F900CE1F9F /* UIColor+JGSBase.h */,
 				D4D697B92806E0F900CE1F9F /* UIColor+JGSBase.m */,
+				D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */,
 			);
 			path = UIColor;
 			sourceTree = "<group>";
@@ -924,6 +969,7 @@
 				D4D697BC2806E0F900CE1F9F /* JGSCategory+UIAlertController.h */,
 				D4D697BB2806E0F900CE1F9F /* UIAlertController+JGSBase.h */,
 				D4D697BD2806E0F900CE1F9F /* UIAlertController+JGSBase.m */,
+				D44498AA29E0386D00BC6D9C /* UIAlertController+JGSBase.swift */,
 			);
 			path = UIAlertController;
 			sourceTree = "<group>";
@@ -934,6 +980,7 @@
 				D4D697C12806E0F900CE1F9F /* JGSCategory+NSURL.h */,
 				D4D697BF2806E0F900CE1F9F /* NSURL+JGSBase.h */,
 				D4D697C02806E0F900CE1F9F /* NSURL+JGSBase.m */,
+				D44498A429E037AC00BC6D9C /* URL+JGSBase.swift */,
 			);
 			path = NSURL;
 			sourceTree = "<group>";
@@ -948,6 +995,7 @@
 				D4D697C42806E0F900CE1F9F /* NSString+JGSBase.m */,
 				D4D697C32806E0F900CE1F9F /* NSString+JGSURL.h */,
 				D4D697C62806E0F900CE1F9F /* NSString+JGSURL.m */,
+				D44498A229E0379A00BC6D9C /* String+JGSBase.swift */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -955,6 +1003,7 @@
 		D4D697C82806E0F900CE1F9F /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				D44498A829E037F300BC6D9C /* Any+JGSBase.swift */,
 				D4D697C92806E0F900CE1F9F /* JGSCategory+NSObject.h */,
 				D4D697CA2806E0F900CE1F9F /* NSObject+JGSBase.h */,
 				D4D697CB2806E0F900CE1F9F /* NSObject+JGSBase.m */,
@@ -965,6 +1014,7 @@
 		D4D697CC2806E0F900CE1F9F /* NSDate */ = {
 			isa = PBXGroup;
 			children = (
+				D44498A629E037BF00BC6D9C /* Date+JGSBase.swift */,
 				D4D697D02806E0F900CE1F9F /* JGSCategory+NSDate.h */,
 				D4D697D12806E0F900CE1F9F /* NSDate+JGSBase.h */,
 				D4D697CE2806E0F900CE1F9F /* NSDate+JGSBase.m */,
@@ -1005,7 +1055,6 @@
 				D4F3DA4622F0279D002EF0F0 /* Products */,
 				8F5566C1186FFED2CCE63677 /* Frameworks */,
 				78C41E8D2B02C0871B492760 /* Pods */,
-				D414F5492845C3BA000A0C02 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1137,11 +1186,11 @@
 				D4075ADB2863123300E4BFEA /* Frameworks */,
 				D4075ADC2863123300E4BFEA /* Resources */,
 				6749534C34B4E1FE0283E2BF /* [CP-User] JGSPodsScriptAfterCompile */,
+				D47F04C529EB90D3009A275D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D4075BC92863334300E4BFEA /* PBXTargetDependency */,
 			);
 			name = JGSourceBaseDemo;
 			productName = JGSourceBaseDemo;
@@ -1190,10 +1239,11 @@
 		D4F3DA3C22F0279D002EF0F0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = JGS;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = MeiJiGao;
 				TargetAttributes = {
 					D403B1312850335200F4F304 = {
@@ -1213,7 +1263,7 @@
 				};
 			};
 			buildConfigurationList = D4F3DA3F22F0279D002EF0F0 /* Build configuration list for PBXProject "JGSourceBase" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1284,7 +1334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"$(SRC_ROOT)/JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig",
+			);
 			name = "[CP-User] JGSPodsScriptBeforeCompile";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/Info.plist",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n  echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n  \n  echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n  \n";
@@ -1338,7 +1394,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh",
+			);
 			name = "[CP-User] JGSPodsScriptAfterCompile";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/JGSApplicationIntegrityCheckFileHashFile",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "  \n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
@@ -1351,10 +1413,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(PROJECT_DIR)/JGSourceBase/JGSourceBase.xcconfig",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).bundle/Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1425,34 +1489,48 @@
 				D4D697FB2806E0F900CE1F9F /* JGSLetterKeyboard.m in Sources */,
 				D4D697F62806E0F900CE1F9F /* JGSKeyboardConstants.m in Sources */,
 				D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */,
+				D44498A929E037F300BC6D9C /* Any+JGSBase.swift in Sources */,
 				D4D698102806E0F900CE1F9F /* UIAlertController+JGSBase.m in Sources */,
 				D4D697EA2806E0F900CE1F9F /* JGSRSAEncryption.m in Sources */,
+				D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */,
+				D44498AD29E0388D00BC6D9C /* UIApplication+JGSBase.swift in Sources */,
+				D46D0BB629D1EF7200509B02 /* Data+JGSAES.swift in Sources */,
 				D4D698082806E0F900CE1F9F /* UIApplication+JGSBase.m in Sources */,
 				D4D697E32806E0F900CE1F9F /* JGSDevice.m in Sources */,
 				D4D698052806E0F900CE1F9F /* NSDictionary+JGSBase.m in Sources */,
 				D4D6981B2806E0F900CE1F9F /* NSObject+JGSBase.m in Sources */,
 				D4D697EE2806E0F900CE1F9F /* JGSBaseUtils.m in Sources */,
 				D4D697D52806E0F900CE1F9F /* JGSKeychainUtils.m in Sources */,
+				D4120AD729E6529C0020EE64 /* NSNumber+JGSBase.swift in Sources */,
+				D44498A729E037BF00BC6D9C /* Date+JGSBase.swift in Sources */,
 				D4D698172806E0F900CE1F9F /* NSString+JGSURL.m in Sources */,
 				D4D697DE2806E0F900CE1F9F /* JGSToast.m in Sources */,
 				D4EF943029422DFE002B778A /* JGSLogFunction.swift in Sources */,
 				D4D697F82806E0F900CE1F9F /* JGSKeyboardToolbar.m in Sources */,
 				D4D697F72806E0F900CE1F9F /* JGSBaseKeyboard.m in Sources */,
+				D44498AB29E0386D00BC6D9C /* UIAlertController+JGSBase.swift in Sources */,
 				D4D697F42806E0F900CE1F9F /* JGSSymbolKeyboard.m in Sources */,
+				D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */,
 				D4D697D72806E0F900CE1F9F /* JGSUserDefaults.m in Sources */,
+				D44498A329E0379A00BC6D9C /* String+JGSBase.swift in Sources */,
 				D4D697F02806E0F900CE1F9F /* JGSLogFunction.m in Sources */,
 				D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */,
 				D4D698122806E0F900CE1F9F /* NSURL+JGSBase.m in Sources */,
+				D4120AD429E650ED0020EE64 /* Set+JGSBase.swift in Sources */,
+				D44498A529E037AC00BC6D9C /* URL+JGSBase.swift in Sources */,
 				D4D697DB2806E0F900CE1F9F /* JGSLoadingHUD.m in Sources */,
 				D436C77D2844975C002C27D9 /* NSString+JGSAES.m in Sources */,
 				D4D697F22806E0F900CE1F9F /* JGSNumberKeyboard.m in Sources */,
 				D4D698152806E0F900CE1F9F /* NSString+JGSBase.m in Sources */,
+				D444989F29E0356600BC6D9C /* JGSTransformable.swift in Sources */,
 				D4D697FA2806E0F900CE1F9F /* JGSSecurityKeyboard.m in Sources */,
 				D4D6981D2806E0F900CE1F9F /* NSDate+JGSBase.m in Sources */,
+				D44498A129E0377300BC6D9C /* Array+JGSBase.swift in Sources */,
 				D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */,
 				D436C7742844974A002C27D9 /* NSData+JGSBase.m in Sources */,
 				D4D697FD2806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
 				D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */,
+				D46D0BB829D1EF8000509B02 /* Data+JGSBase.swift in Sources */,
 				D4D698012806E0F900CE1F9F /* UIImage+JGSBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1464,12 +1542,6 @@
 			isa = PBXTargetDependency;
 			target = D403B1312850335200F4F304 /* JGSourceBase.bundle */;
 			targetProxy = D403B136285033A800F4F304 /* PBXContainerItemProxy */;
-		};
-		D4075BC92863334300E4BFEA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = D4F3DA4422F0279D002EF0F0 /* JGSourceBase */;
-			targetProxy = D4075BC82863334300E4BFEA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1558,6 +1630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
@@ -1578,8 +1651,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1596,6 +1670,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
 				DEVELOPMENT_TEAM = Z28L6TKG58;
@@ -1616,8 +1691,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(JGSVersion)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1797,7 +1873,7 @@
 			baseConfigurationReference = D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEFINES_MODULE = YES;
@@ -1805,6 +1881,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
@@ -1815,8 +1892,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = "$(JGSVersion)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1833,7 +1912,7 @@
 			baseConfigurationReference = D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(JGSBuild)";
 				DEFINES_MODULE = YES;
@@ -1841,6 +1920,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
@@ -1851,8 +1931,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = "$(JGSVersion)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";

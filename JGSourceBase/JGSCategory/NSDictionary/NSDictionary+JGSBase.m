@@ -245,7 +245,8 @@
         return [obj boolValue];
     }
     
-    // 与OC语法保持一致，非空对象判断 bool 为 YES
+    // OC语法非空对象条件判断为 YES
+    // 此处直接获取 BOOL，返回 YES
     return YES;
 }
 

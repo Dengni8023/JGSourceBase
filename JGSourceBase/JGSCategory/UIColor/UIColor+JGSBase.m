@@ -84,7 +84,7 @@ FOUNDATION_EXTERN UIColor *JGSColorFRGB(float red, float green, float blue) {
 }
 
 FOUNDATION_EXTERN UIColor *JGSColorFRGBA(float red, float green, float blue, float alpha) {
-    alpha = MIN(1.0, MAX(0, alpha));
+    alpha = MIN(MAX(0, alpha), 1.0);
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 

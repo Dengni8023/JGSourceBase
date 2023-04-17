@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取SHA512散列字符串，小写
 @property (nonatomic, copy, readonly, nullable) NSString *jg_sha512String;
 
+#pragma mark - HASH
 /// 获取MD5散列字符串
 /// @param style 字符串大小写风格
 - (nullable NSString *)jg_md5String:(JGSStringUpperLowerStyle)style;
@@ -65,6 +66,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取SHA512散列字符串
 /// @param style 字符串大小写风格
 - (nullable NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style;
+
+#pragma mark - Hex
+/// 字符串转16进制字符串，不包含0x头，小写
+@property (nonatomic, copy, readonly, nullable) NSString *jg_hexString;
+
+/// 16进制字符串转字符串，如字符串以0x、0X开头，则忽略0x、0X头
+@property (nonatomic, copy, readonly, nullable) NSString *jg_hexToString;
+
+/// 16进制字符串转Data，如字符串以0x、0X开头，则忽略0x、0X头
+@property (nonatomic, copy, readonly, nullable) NSData *jg_hexToData;
+
+/// 字符串转16进制字符串，不包含0x头
+/// @param style 字符串大小写风格
+- (nullable NSString *)jg_hexString:(JGSStringUpperLowerStyle)style;
 
 @end
 

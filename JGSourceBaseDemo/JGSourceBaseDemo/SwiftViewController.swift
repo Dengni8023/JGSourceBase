@@ -55,76 +55,17 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        var opt: String?
-        opt = "Optional"
-        JGSLog(opt)
-        print(opt)
-        opt = "Test Optional"
-        JGSLog(opt)
-        print(opt)
-        
-        JGSLog("Test", "Test1")
-        JGSLog(format: "%@, %@", "Test", "Test1")
-        JGSLog(nil)
-        JGSLog(format: "%@ %@, %@", "Test", nil, "Test1")
-        
-        var optStr: String?
-        print(optStr)
-        JGSLog(optStr)
-
-        optStr = "Test optStr"
-        print(optStr)
-        JGSLog(optStr)
-
-        optStr = "{\"Key\":\"Value\"}"
-        print(optStr)
-        JGSLog(optStr)
-
-        let nonOptStr = "Test optStr"
-        print(nonOptStr)
-        JGSLog(nonOptStr)
-
-        var testArr: [Any]? = nil
-        JGSLog(testArr)
-        testArr = ["String1", "String2", ["String1", "String2"], ["Key": "Value"]]
-        JGSLog(testArr)
-
-        var optDict: [String: Any]?
-        //var optDict: Dictionary?
-        print(optDict)
-        JGSLog(optDict)
-        optDict = nil
-        print(optDict)
-        JGSLog(optDict)
-        optDict = ["TestOpt": "Test"]
-        print(optDict)
-        JGSLog(optDict)
-        let testDict: [String: Any] = ["TestOpt": "Test"]
-        print(testDict)
-        JGSLog(testDict, level: .debug + 1)
-        JGSLog("Test", nil, UIView())
-        let dict: [String : Any] = ["Key1": "value1","Key2": "value2", "Key3": ["Key1": "value1","Key2": "value2"], "Key4": ["value1", "value2", "value3", "JGS测试", ["value1", "value2", "value3", "JGS测试"]], "Key5": "JGS测试"]
-        JGSLog("TestDict", dict)
-        print(dict)
-        let arr: Any = ["value1", "value2", "value3", ["value1", "value2", "value3", "JGS测试"], ["Key3": ["Key1": "value1","Key2": "value2"]]]
-        JGSLog("TestArray", arr)
-        print(arr)
-        JGSLog("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
-        JGSLogD("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
-        JGSLogI("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
-        JGSLogW("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
-        JGSLogE("测试", "\\u6d4b\\u8bd5", "\\U6d4b\\U8bd5")
-        JGSLog("测试")
-        
-        JGSLog(13, 13.0, 14.0, 0xff, nil)
-        JGSLog()
-        
-        
-        JGSLog(#file)
-        JGSLog(#fileID)
-        JGSLog(#filePath)
-        print(#file)
-        print(#fileID)
-        print(#filePath)
+        let intV: Int = 12
+        let dicT: [String: Any] = ["Key": "value", "number": NSNumber(1), "Int": 1, "Float": 1.2, "Int12": intV, "True": true, "False": false, "Dict": ["1": 2], "Array": ["value1", "value2"]]
+        JGSLog(dicT.jg_string(forKey: "Key"))
+        JGSLog(dicT.jg_string(forKey: "number"))
+        JGSLog(dicT.jg_string(forKey: "Int"))
+        JGSLog(dicT.jg_string(forKey: "Float"))
+        JGSLog(dicT.jg_string(forKey: "Int12"))
+        JGSLog(dicT.jg_string(forKey: "True"))
+        JGSLog(dicT.jg_string(forKey: "False"))
+        JGSLog(dicT.jg_string(forKey: "Dict"))
+        JGSLog(dicT.jg_string(forKey: "DictT", default: "default"))
+        JGSLog(dicT.jg_array(forKey: "Array", default: ["default"]))
     }
 }

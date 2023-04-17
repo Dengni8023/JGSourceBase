@@ -49,8 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (double)jg_doubleForKey:(const KeyType)key;
 - (double)jg_doubleForKey:(const KeyType)key defaultValue:(double)defaultValue;
 
-// BOOL
+/// 获取BOOL，如存在非空、非NSNull对象，则返回YES
 - (BOOL)jg_boolForKey:(const KeyType)key;
+/// 获取BOOL，如存在非空、非NSNull对象，则返回YES
 - (BOOL)jg_boolForKey:(const KeyType)key defaultValue:(BOOL)defaultValue;
 
 // CGFloat

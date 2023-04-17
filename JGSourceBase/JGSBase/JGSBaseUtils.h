@@ -60,6 +60,7 @@ _Pragma("clang diagnostic pop") \
 #pragma mark - SwizzledMethod
 /// 更改方法实现，严谨逻辑实现
 FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector);
+FOUNDATION_EXTERN void JGSRuntimeSwizzledClassMethod(Class cls, SEL originSelector, SEL swizzledSelector);
 
 /// 字符串大小写风格
 typedef NS_ENUM(NSInteger, JGSStringUpperLowerStyle) {

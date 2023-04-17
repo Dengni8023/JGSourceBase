@@ -120,7 +120,9 @@
                     
                 case 2: {
                     static BOOL show = NO; show = !show;
+#ifdef JGSCategory_UIColor_h
                     [JGSLoadingHUDStyle sharedStyle].spinningLineColor = show ? JGSColorRGB(128, 100, 72) : nil;
+#endif
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUD"];
                 }
                     break;

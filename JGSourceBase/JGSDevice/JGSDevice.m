@@ -112,7 +112,10 @@
         // https://www.jianshu.com/p/50246a8aaddb
         
         JGSPrivateLog(@"默认 UserAgent Load");
-        instance = instance ?: [[WKWebView alloc] init]; // 此处必须使用存储属性，否则JS执行可能失败
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+        config.allowsInlineMediaPlayback = YES;
+        config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeAll;
+        instance = instance ?: [[WKWebView alloc] initWithFrame:CGRectZero configuration:config]; // 此处必须使用存储属性，否则JS执行可能失败
         [instance evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
             JGSPrivateLog(@"默认 UserAgent: %@, %@", result, error);
             if ([result isKindOfClass:[NSString class]] && [(NSString *)result length] > 0) {

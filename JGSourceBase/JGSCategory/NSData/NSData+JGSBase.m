@@ -55,7 +55,7 @@
 		[result appendFormat:(arc4random() % 2 == 0) ? @"%02X" : @"%02x", digest[i]];
 	}
 	
-	style = MIN(JGSStringLowercase, MAX(JGSStringRandomCase, style));
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
 	switch (style) {
 		case JGSStringLowercase:
 			return result.lowercaseString;
@@ -89,7 +89,7 @@
 		[result appendFormat:(arc4random() % 2 == 0) ? @"%02X" : @"%02x", digest[i]];
 	}
 	
-	style = MIN(JGSStringLowercase, MAX(JGSStringRandomCase, style));
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
 	switch (style) {
 		case JGSStringLowercase:
 			return result.lowercaseString;
@@ -123,7 +123,7 @@
 		[result appendFormat:(arc4random() % 2 == 0) ? @"%02X" : @"%02x", digest[i]];
 	}
 	
-	style = MIN(JGSStringLowercase, MAX(JGSStringRandomCase, style));
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
 	switch (style) {
 		case JGSStringLowercase:
 			return result.lowercaseString;
@@ -157,7 +157,7 @@
         [result appendFormat:(arc4random() % 2 == 0) ? @"%02X" : @"%02x", digest[i]];
     }
     
-    style = MIN(JGSStringLowercase, MAX(JGSStringRandomCase, style));
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
     switch (style) {
         case JGSStringLowercase:
             return result.lowercaseString;
@@ -191,7 +191,7 @@
         [result appendFormat:(arc4random() % 2 == 0) ? @"%02X" : @"%02x", digest[i]];
     }
     
-    style = MIN(JGSStringLowercase, MAX(JGSStringRandomCase, style));
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
     switch (style) {
         case JGSStringLowercase:
             return result.lowercaseString;
@@ -203,6 +203,40 @@
             
         case JGSStringRandomCase:
             return result;
+            break;
+    }
+}
+
+#pragma mark - Hex
+- (NSString *)jg_hexString {
+    return [self jg_hexString:JGSStringCaseDefault];
+}
+
+- (NSString *)jg_hexString:(JGSStringUpperLowerStyle)style {
+    
+    if (self.length == 0) {
+        return nil;
+    }
+    
+    NSMutableString *hex = [NSMutableString stringWithCapacity:self.length * 2];
+    Byte *bytes = (Byte *)[self bytes];
+    for (NSInteger i = 0; i < self.length; i++) {
+        NSString *byteStr = [NSString stringWithFormat:(arc4random() % 2 == 0) ? @"%02x" : @"%02X", bytes[i] & 0xFF]; // 16进制
+        [hex appendString:byteStr];
+    }
+    
+    style = MIN(MAX(JGSStringLowercase, style), JGSStringRandomCase);
+    switch (style) {
+        case JGSStringLowercase:
+            return hex.lowercaseString;
+            break;
+            
+        case JGSStringUppercase:
+            return hex.uppercaseString;
+            break;
+            
+        case JGSStringRandomCase:
+            return hex;
             break;
     }
 }
