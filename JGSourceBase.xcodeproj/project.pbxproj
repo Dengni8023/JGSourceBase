@@ -55,6 +55,8 @@
 		D436C78028449F4C002C27D9 /* JGSEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C77F28449F4C002C27D9 /* JGSEncryption.m */; };
 		D43A0F8A2907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */; };
 		D43A0F8B2907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 in Resources */ = {isa = PBXBuildFile; fileRef = D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */; };
+		D43E59FB29EF8EF700EDF59F /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
+		D43E59FC29EF8EF700EDF59F /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */ = {isa = PBXBuildFile; fileRef = D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D444989F29E0356600BC6D9C /* JGSTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444989E29E0356600BC6D9C /* JGSTransformable.swift */; };
 		D44498A129E0377300BC6D9C /* Array+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498A029E0377300BC6D9C /* Array+JGSBase.swift */; };
@@ -77,8 +79,6 @@
 		D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */; };
 		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA162911407F00E1CBFF /* JGSFileUtils.m */; };
-		D47F04C329EB90D2009A275D /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
-		D47F04C429EB90D2009A275D /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
@@ -188,13 +188,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D47F04C529EB90D3009A275D /* Embed Frameworks */ = {
+		D43E59FD29EF8EF800EDF59F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D47F04C429EB90D2009A275D /* JGSourceBase.framework in Embed Frameworks */,
+				D43E59FC29EF8EF700EDF59F /* JGSourceBase.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,7 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59867B27DF3DFF7986CFA8E2 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
-				D47F04C329EB90D2009A275D /* JGSourceBase.framework in Frameworks */,
+				D43E59FB29EF8EF700EDF59F /* JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,7 +1186,8 @@
 				D4075ADB2863123300E4BFEA /* Frameworks */,
 				D4075ADC2863123300E4BFEA /* Resources */,
 				6749534C34B4E1FE0283E2BF /* [CP-User] JGSPodsScriptAfterCompile */,
-				D47F04C529EB90D3009A275D /* Embed Frameworks */,
+				D43E59FD29EF8EF800EDF59F /* Embed Frameworks */,
+				C54659685BDC05FC692DB016 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1404,6 +1405,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "  \n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
+		};
+		C54659685BDC05FC692DB016 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		D44F3843290BAD5A00654EE3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

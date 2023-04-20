@@ -190,12 +190,14 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # (选填) 是否是静态framework的形式
-  # 是否使用静态库。如果 Podfile 指明了 use_frameworks! 命令，但是pod仓库需要使用静态库则需要设置
-  # 注意测试，设置为 true 且 Podfile 指明 use_frameworks! 时，启动可能会崩溃，经测试，崩溃原因可能为：
-  # 源码JGSourceBase.framework target 设置 Mach-O Type 为动态库 Dynamic Library，设置为 Static Library则不会崩溃
-  # 设置为 true，在Podfile指定 use_frameworks!时，打包静态framework
-  spec.static_framework = false
+  # (选填) 是否使用静态库
+  # 如果 Podfile 指明了 use_frameworks! 命令，是否以静态framework的形式构建
+  # use_frameworks! 默认构建动态链接库
+  # use_frameworks! :linkage => :dynamic # 使用动态链接库
+  # use_frameworks! :linkage => :static # 使用静态链接库
+  # 设置为 true，在Podfile使用 use_frameworks!指定动态链接库时，仍旧打包静态库
+  # 由于存在bundle资源使用，在动态链接库中，无法直接使用到framework内的bundle资源
+  spec.static_framework = true
   # requires_arc允许指定哪些source_files使用ARC。可以设置为true表示所有source_files使用ARC。
   # 不使用ARC的文件会有-fno-objc-arc编译标志。
   spec.requires_arc = true

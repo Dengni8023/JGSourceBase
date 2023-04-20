@@ -321,31 +321,8 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
-            NSString *path = JGSLatestGlobalConfigurationSavedPath();
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                
-                // 因版本问题，版本内置资源不一定为最新，需要读取网络仓库最新资源
-                NSString *gitFilePath = @"LatestGlobalConfiguration.json.sec";
-                [JGSBaseUtils requestGitRepositoryFileContent:gitFilePath retryTimes:0 completion:^(NSData * _Nullable fileData) {
-                    
-                    if (fileData.length > 0) {
-                        //JGSPrivateLog(@"Use remote git file: %@", [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding]);
-                        NSError *error = nil;
-                        [fileData writeToFile:path options:(NSDataWritingAtomic) error:&error];
-                        if (error) {
-                            JGSPrivateLog(@"%@", error);
-                        }
-                        // 更新配置
-                        error = nil;
-                        instance = [JGSBaseUtils decryptedJGSLatestGlobalConfiguration:fileData];
-                        if (error != nil) {
-                            JGSPrivateLog(@"%@", error);
-                        }
-                    }
-                }];
-            });
-            
             // 已存储配置
+            NSString *path = JGSLatestGlobalConfigurationSavedPath();
             NSData *jsonData = [[NSFileManager defaultManager] fileExistsAtPath:path] ? [NSData dataWithContentsOfFile:path] : nil;
             if (jsonData.length > 0) {
                 
@@ -370,6 +347,30 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                     JGSPrivateLog(@"%@", error);
                 }
             }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                
+                // 因版本问题，版本内置资源不一定为最新，需要读取网络仓库最新资源
+                NSString *gitFilePath = @"LatestGlobalConfiguration.json.sec";
+                [JGSBaseUtils requestGitRepositoryFileContent:gitFilePath retryTimes:0 completion:^(NSData * _Nullable fileData) {
+                    
+                    if (fileData.length > 0) {
+                        //JGSPrivateLog(@"Use remote git file: %@", [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding]);
+                        NSError *error = nil;
+                        [fileData writeToFile:path options:(NSDataWritingAtomic) error:&error];
+                        if (error) {
+                            JGSPrivateLog(@"%@", error);
+                        }
+                        // 更新配置
+                        error = nil;
+                        instance = [JGSBaseUtils decryptedJGSLatestGlobalConfiguration:fileData];
+                        if (error != nil) {
+                            JGSPrivateLog(@"%@", error);
+                        }
+                    }
+                }];
+            });
+            
             dispatch_semaphore_signal(semaphore);   //发送信号
         });
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);  //等待

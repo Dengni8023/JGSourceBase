@@ -9,20 +9,10 @@ install! 'cocoapods', :deterministic_uuids => false
 # 源码测试请屏蔽此选项，否则源码库内部调用出现的警告将不会提示
 # inhibit_all_warnings!
 
-# use_frameworks! 要求生成的是 .framework 而不是静态库 .a
-# :linkage 指定使用动态(dynamic)/静态链接(static)，始终以podspec中设置的static_framework优先
-# podspec中未设置static_framework，且不指定linkage，默认动态链接
-
-# 调试 JGSourceFrameworkDemo: 
-# Multiple targets match implicit dependency for product reference 'JGSourceBase.framework'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceFrameworkDemo' from project 'JGSourceBaseDemo')
-
-# 调试 JGSourceBaseDemo: 
-# Multiple targets match implicit dependency for linker flags '-framework JGSourceBase'. Consider adding an explicit dependency on the intended target to resolve this ambiguity. (in target 'JGSourceBaseDemo' from project 'JGSourceBaseDemo')
-
-# use_frameworks! # 使用默认，动态链接
+# use_frameworks! 要求生成的是 .framework 而不是 .a
+use_frameworks! # 使用默认，动态链接
 # use_frameworks! :linkage => :dynamic # 使用动态链接
-# 为便于查看header头文件，使用use_frameworks!且指定使用静态链接，以上调试警告可忽略
-use_frameworks! :linkage => :static # 使用静态链接
+# use_frameworks! :linkage => :static # 使用静态链接
 
 # workspace
 workspace "JGSourceBase"

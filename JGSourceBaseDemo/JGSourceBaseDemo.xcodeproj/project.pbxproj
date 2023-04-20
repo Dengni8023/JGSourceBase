@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C343001161D46333D6EF5A84 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CC9ADD474BC914AB1E9B29 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
+		A29CD6B6ECE4BE2D229344D3 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7531599C91039C5416FEC528 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
 		D4075B052863176800E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B042863176800E4BFEA /* AppDelegate.m */; };
 		D4075B0B2863176800E4BFEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075B0A2863176800E4BFEA /* ViewController.m */; };
 		D4075B102863176900E4BFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4075B0F2863176900E4BFEA /* Assets.xcassets */; };
@@ -54,7 +54,7 @@
 /* Begin PBXFileReference section */
 		3E9E853921B04B62C075154C /* Pods-JGSourceBaseDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo-Swift.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo-Swift/Pods-JGSourceBaseDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		47F1BD874F7175D4E7D5774F /* Pods-JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		59CC9ADD474BC914AB1E9B29 /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7531599C91039C5416FEC528 /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EA00E55E40026190C4BDDE /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A299171EE9AE693BB35FADE6 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A47D4A452E845CFA24FE2272 /* Pods-JGSourceBaseDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo-Swift.debug.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo-Swift/Pods-JGSourceBaseDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C343001161D46333D6EF5A84 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
+				A29CD6B6ECE4BE2D229344D3 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +150,7 @@
 		2A8A0DEA9F45A77543EDEA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				59CC9ADD474BC914AB1E9B29 /* Pods_JGSBase_JGSourceBaseDemo.framework */,
+				7531599C91039C5416FEC528 /* Pods_JGSBase_JGSourceBaseDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -405,7 +405,8 @@
 				D4075AFD2863176800E4BFEA /* Frameworks */,
 				D4075AFE2863176800E4BFEA /* Resources */,
 				90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */,
-				CA0787B23E9DAB0DB163CA02 /* [CP] Embed Pods Frameworks */,
+				29553C683DDE1CAC114585A4 /* [CP] Copy Pods Resources */,
+				BCE09F8DEA74C67803AB79F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -481,6 +482,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		29553C683DDE1CAC114585A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,7 +531,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\n  echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n  \n  echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n  \n";
 		};
-		CA0787B23E9DAB0DB163CA02 /* [CP] Embed Pods Frameworks */ = {
+		BCE09F8DEA74C67803AB79F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

@@ -395,6 +395,13 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
         NSString *path = [[NSFileManager defaultManager] fileExistsAtPath:savedPath] ? savedPath : bundlePath;
         
+        
+        // 当前运行设备信息，参考 JGSiOSDeviceList.json
+        NSData *jsonData = [NSData dataWithContentsOfFile:path];
+        NSDictionary *deviceInfo = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
+        instance = [deviceInfo isKindOfClass:[NSDictionary class]] ? deviceInfo : nil;
+        JGSPrivateLog(@"device info: %@", instance);
+        
         dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
             // 因版本问题，版本内置资源不一定为最新，读取网络仓库最新资源并存本地
@@ -416,12 +423,6 @@
                 }
             }];
         });
-        
-        // 当前运行设备信息，参考 JGSiOSDeviceList.json
-        NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        NSDictionary *deviceInfo = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
-        instance = [deviceInfo isKindOfClass:[NSDictionary class]] ? deviceInfo : nil;
-        JGSPrivateLog(@"device info: %@", instance);
     });
     
     NSString *deviceModel = instance ? [instance objectForKey:@"Generation"] : [self deviceMachine];
