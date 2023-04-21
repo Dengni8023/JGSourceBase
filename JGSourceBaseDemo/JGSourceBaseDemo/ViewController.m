@@ -15,9 +15,7 @@
 #import "JGSReachabilityDemoVC.h"
 #import "JGSKeyboardDemoVC.h"
 #import <AdSupport/ASIdentifierManager.h>
-#if __has_include("JGSourceBaseDemo-Swift.h")
 #import "JGSourceBaseDemo-Swift.h"
-#endif
 #import <objc/runtime.h>
 
 @interface ViewController ()

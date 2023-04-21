@@ -14,6 +14,12 @@ use_frameworks! # 使用默认，动态链接
 # use_frameworks! :linkage => :dynamic # 使用动态链接
 # use_frameworks! :linkage => :static # 使用静态链接
 
+# 将 pods 转为 Modular，因为 Modular 是可以直接在 Swift中 import ，所以不需要再经过 bridging-header 的桥接。
+# 但是开启 use_modular_headers! 之后，会使用更严格的 header 搜索路径，开启后 pod 会启用更严格的搜索路径和生成模块映射
+# 历史项目可能会出现重复引用等问题，因为在一些老项目里 CocoaPods 是利用Header Search Paths 来完成引入编译
+# 当然使用 use_modular_headers!可以提高加载性能和减少体积。
+use_modular_headers!
+
 # workspace
 workspace "JGSourceBase"
 
@@ -234,13 +240,6 @@ post_install do |installer|
       # config.build_settings['STRIP_STYLE'] = "all"
       # config.build_settings['STRIP_SWIFT_SYMBOLS'] = "YES"
       config.build_settings['DEAD_CODE_STRIPPING'] = "YES"
-      # Enable Modules
-      # Module 是 编译器用于解决头文件引用导致重复编译等问题的方案
-      # 通过开启 Enable Modules 配置开关，可以大幅度的降低编译耗时
-      # 默认 NO $(CLANG_MODULES_ENABLE_VERIFIER_TOOL)
-      # config.build_settings['ENABLE_MODULE_VERIFIER'] = "YES"
-      # config.build_settings['MODULE_VERIFIER_SUPPORTED_LANGUAGES'] = "objective-c objective-c++"
-      # config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = "NO"
     end
   end
   

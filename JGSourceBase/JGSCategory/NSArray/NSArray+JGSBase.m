@@ -54,9 +54,23 @@
     }
     else if ([obj isKindOfClass:[NSString class]]) {
         
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
+        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        //return number ? number.intValue : defaultValue;
+        NSString *numStr = (NSString *)obj;
+        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
+        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
+        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
+        if ([number isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
         return number ? number.intValue : defaultValue;
     }
     return defaultValue;
@@ -78,9 +92,23 @@
     }
     else if ([obj isKindOfClass:[NSString class]]) {
         
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
+        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        //return number ? number.integerValue : defaultValue;
+        NSString *numStr = (NSString *)obj;
+        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
+        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
+        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
+        if ([number isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
         return number ? number.integerValue : defaultValue;
     }
     return defaultValue;
@@ -106,9 +134,25 @@
     }
     else if ([obj isKindOfClass:[NSString class]]) {
         
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
+        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        NSString *numStr = (NSString *)obj;
+        NSInteger dotFrom = [numStr rangeOfString:@"."].location;
+        NSInteger dotLen = dotFrom != NSNotFound ? numStr.length - dotFrom - 1 : 0;
+        
+        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
+        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
+        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:dotLen raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
+        if ([number isEqual:[NSDecimalNumber notANumber]]) {
+            return defaultValue;
+        }
+        
 #if defined(__LP64__) && __LP64__
         return number ? number.doubleValue : defaultValue;
 #else
