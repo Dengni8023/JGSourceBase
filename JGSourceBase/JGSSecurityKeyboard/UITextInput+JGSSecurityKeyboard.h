@@ -1,8 +1,9 @@
 //
 //  UITextInput+JGSSecurityKeyboard.h
-//  JGSourceBase-d7db3116
+//  JGSourceBase
 //
 //  Created by 梅继高 on 2022/2/20.
+//  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

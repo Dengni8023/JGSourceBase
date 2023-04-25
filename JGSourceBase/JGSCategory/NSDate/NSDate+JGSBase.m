@@ -1,8 +1,9 @@
 //
 //  NSDate+JGSBase.m
-//  
+//  JGSourceBase
 //
 //  Created by 梅继高 on 2019/6/14.
+//  Copyright © 2019 MeiJiGao. All rights reserved.
 //
 
 #import "NSDate+JGSBase.h"

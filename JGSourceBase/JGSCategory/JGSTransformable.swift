@@ -1,8 +1,9 @@
 //
 //  JGSTransformable.swift
-//  Pods
+//  JGSourceBase
 //
 //  Created by 梅继高 on 2023/4/7.
+//  Copyright © 2023 MeiJiGao. All rights reserved.
 //
 
 import Foundation
@@ -11,9 +12,12 @@ import UIKit
 // 参考 HandyJSON: _Transformable
 // https://github.com/alibaba/handyjson
 
+// 参考 SwiftyJSON
+// https://github.com/SwiftyJSON/SwiftyJSON
+
 // MARK: - Transformable
 
-internal protocol JGSTransformable {
+protocol JGSTransformable {
     // 定义optional必须引入 objc
     // 此处不引入 objc，在扩展中定义方法
     // 继承时重写扩展方法
@@ -162,7 +166,7 @@ internal protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicTy
 }
 
 extension JGSFloatProtocol {
-    static func jg_transform(from object: Any?) -> JGSFloatProtocol? {
+    static func jg_transform(from object: Any?) -> Self? {
         guard let object = object else {
             return nil
         }
@@ -240,8 +244,8 @@ extension Collection {
         
         var result: [Element] = [Element]()
         arr.forEach { each in
-            JGSPrivateLogD(Element.self)
-            JGSPrivateLogD(Element.self as? JGSTransformable.Type)
+            //JGSPrivateLogD(Element.self)
+            //JGSPrivateLogD(Element.self as? JGSTransformable.Type)
             if Element.self == Any.self {
                 if let element = each as? Element {
                     result.append(element)

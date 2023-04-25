@@ -112,7 +112,7 @@ extension Dictionary where Key : Hashable {
     }
 
     // Int
-    public func jg_int(forKey key: Key, default defaultValue: Int?) -> Int? {
+    public func jg_int(forKey key: Key, default defaultValue: Int? = nil) -> Int? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -121,7 +121,7 @@ extension Dictionary where Key : Hashable {
     }
     
     // Float
-    public func jg_float(forKey key: Key, default defaultValue: Float?) -> Float? {
+    public func jg_float(forKey key: Key, default defaultValue: Float? = nil) -> Float? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -129,7 +129,7 @@ extension Dictionary where Key : Hashable {
         return Float.jg_transform(from: value)
     }
 
-    public func jg_double(forKey key: Key, default defaultValue: Double?) -> Double? {
+    public func jg_double(forKey key: Key, default defaultValue: Double? = nil) -> Double? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -138,7 +138,7 @@ extension Dictionary where Key : Hashable {
     }
 
     // BOOL
-    public func jg_bool(forKey key: Key, default defaultValue: Bool?) -> Bool? {
+    public func jg_bool(forKey key: Key, default defaultValue: Bool? = nil) -> Bool? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -147,7 +147,7 @@ extension Dictionary where Key : Hashable {
     }
     
     // Object
-    public func jg_object<T>(forKey key: Key, default defaultValue: T?) -> T? {
+    public func jg_object<T>(forKey key: Key, default defaultValue: T? = nil) -> T? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -197,7 +197,7 @@ extension Dictionary where Key : Hashable {
     }
     
     // Dict
-    public func jg_dictionary(forKey key: Key, default defaultValue: [AnyHashable: Any]?) -> [AnyHashable: Any]? {
+    public func jg_dictionary(forKey key: Key, default defaultValue: [AnyHashable: Any]? = nil) -> [AnyHashable: Any]? {
         guard let value = self[key] else {
             return defaultValue
         }
@@ -206,11 +206,23 @@ extension Dictionary where Key : Hashable {
     }
     
     // Array
-    public func jg_array(forKey key: Key, default defaultValue: [Any]?) -> [Any]? {
+    public func jg_array(forKey key: Key, default defaultValue: [Any]? = nil) -> [Any]? {
         guard let value = self[key] else {
             return defaultValue
         }
         
         return Array<Any>.jg_transform(from: value)
+    }
+    
+    // Set
+    public func jg_set(forKey key: Key, default defaultValue: [AnyHashable]? = nil) -> Set<AnyHashable>? {
+        guard let value = self[key] else {
+            if let defaultValue = defaultValue {
+                return Set(defaultValue)
+            }
+            return nil
+        }
+        
+        return Set<AnyHashable>.jg_transform(from: value)
     }
 }

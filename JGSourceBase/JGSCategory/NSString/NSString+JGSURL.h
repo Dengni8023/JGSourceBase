@@ -1,6 +1,6 @@
 //
 //  NSString+JGSURL.h
-//  JGSCategory
+//  JGSourceBase
 //
 //  Created by 梅继高 on 2022/3/17.
 //  Copyright © 2022 MeiJiGao. All rights reserved.

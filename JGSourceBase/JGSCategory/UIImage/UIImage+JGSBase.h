@@ -3,6 +3,7 @@
 //  JGSourceBase
 //
 //  Created by 梅继高 on 2021/3/6.
+//  Copyright © 2021 MeiJiGao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

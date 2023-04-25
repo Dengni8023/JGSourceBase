@@ -1,6 +1,6 @@
 //
 //  JGSBase.h
-//  JGSBase
+//  JGSourceBase
 //
 //  Created by 梅继高 on 2022/1/17.
 //  Copyright © 2022 MeiJiGao. All rights reserved.

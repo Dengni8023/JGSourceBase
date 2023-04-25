@@ -56,16 +56,32 @@ class SwiftViewController: JGSDViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let intV: Int = 12
-        let dicT: [String: Any] = ["Key": "value", "number": NSNumber(1), "Int": 1, "Float": 1.2, "Int12": intV, "True": true, "False": false, "Dict": ["1": 2], "Array": ["value1", "value2"]]
-        JGSLog(dicT.jg_string(forKey: "Key"))
-        JGSLog(dicT.jg_string(forKey: "number"))
-        JGSLog(dicT.jg_string(forKey: "Int"))
-        JGSLog(dicT.jg_string(forKey: "Float"))
-        JGSLog(dicT.jg_string(forKey: "Int12"))
-        JGSLog(dicT.jg_string(forKey: "True"))
-        JGSLog(dicT.jg_string(forKey: "False"))
-        JGSLog(dicT.jg_string(forKey: "Dict"))
-        JGSLog(dicT.jg_string(forKey: "DictT", default: "default"))
-        JGSLog(dicT.jg_array(forKey: "Array", default: ["default"]))
+        let dicT: [String: Any] = [
+            "Key": "T",
+            "number": NSNumber(1),
+            "Int": 1,
+            "Float": 1.2,
+            "Int12": intV,
+            "True": true,
+            "False": false,
+            "Dict": ["1": 2],
+            "Array": ["value1", "value2", "value1", "value2"],
+            "Double": 103.1236547,
+            "Double2": "103.1236547",
+            "Double3": ".01"
+        ]
+        dicT.keys.forEach { (key: String) in
+            JGSLog("key:\(key), value: \(dicT[key] ?? "")",
+                   dicT.jg_string(forKey: key),
+                   dicT.jg_number(forKey: key),
+                   dicT.jg_int(forKey: key),
+                   dicT.jg_float(forKey: key),
+                   dicT.jg_double(forKey: key),
+                   dicT.jg_bool(forKey: key),
+                   dicT.jg_dictionary(forKey: key),
+                   dicT.jg_array(forKey: key),
+                   dicT.jg_set(forKey: key)
+            )
+        }
     }
 }
