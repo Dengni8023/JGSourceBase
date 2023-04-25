@@ -266,15 +266,9 @@ private extension JGSLogDescription {
                 }
             }
             
-            var retDesc: String = ""
-            do {
-                retDesc = try PropertyListSerialization.propertyList(from: stringObj.data(using: .utf8)!, options: [], format: nil) as! String
-                //retDesc = try PropertyListSerialization.propertyList(from: tempDesc.data(using: .utf8)!, options: [], format: nil) as! String
-            } catch {
-                retDesc = stringObj
-            }
+            let retDesc = try? PropertyListSerialization.propertyList(from: stringObj.data(using: .utf8)!, options: [], format: nil) as? String
             //retDesc = retDesc.replacingOccurrences(of: "\\r\\n", with: "\n")
-            return retDesc
+            return retDesc ?? stringObj
             
         default:
             return "\(self)"
