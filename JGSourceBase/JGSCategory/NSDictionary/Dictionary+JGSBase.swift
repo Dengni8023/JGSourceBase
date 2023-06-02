@@ -8,89 +8,6 @@
 
 import Foundation
 
-// MARK: - JGSBuildInBasicType
-
-extension Dictionary: JGSBuildInBasicType {
-    
-    static func jg_transform(from object: Any?) -> Dictionary<Key, Value>? {
-        guard let object = object else {
-            return nil
-        }
-        
-        // String -> Dictionary
-        if let str = object as? String,
-           let data = str.data(using: .utf8),
-           let dict = try? JSONSerialization.jsonObject(with: data) as? Self {
-            return dict
-        }
-        
-        guard let dict = object as? [AnyHashable: Any] else {
-            JGSPrivateLogD("Expect object to be an Dictionary but it's not")
-            return nil
-        }
-        
-        var result = [Key: Value]()
-        for (key, value) in dict {
-            if let sKey = key as? Key {
-                if let nValue = (Value.self as? JGSTransformable.Type)?.jg_transform(from: value) as? Value {
-                    result[sKey] = nValue
-                } else if let nValue = value as? Value {
-                    result[sKey] = nValue
-                } else {
-                    JGSPrivateLogD("Expect value to be an \(type(of: Value.self)) but it's not")
-                }
-            } else {
-                JGSPrivateLogD("Expect key to be any Hashable but it's not")
-            }
-        }
-        return result
-    }
-    
-    func jg_plainValue() -> Any? {
-        
-        var result = [AnyHashable: Value]()
-        for (key, value) in self {
-            //if let key = key as? AnyHashable {
-            if let transformable = value as? JGSTransformable {
-                if let transValue = transformable.jg_plainValue() as? Value {
-                    result[key] = transValue
-                } else {
-                    JGSPrivateLogD("Expect value to be an \(type(of: Value.self)) but it's not")
-                }
-            } else {
-                JGSPrivateLogE("value: \(value) isn't transformable type!")
-            }
-            //} else {
-            //    JGSPrivateLogE("key: \(key) isn't String type!")
-            //}
-        }
-        return result
-    }
-}
-
-// MARK: - JGSBuildInBridgeType
-extension NSDictionary: JGSBuildInBridgeType {
-    
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else {
-            return nil
-        }
-        
-        // String -> NSDictionary
-        if let str = object as? String,
-           let data = str.data(using: .utf8),
-           let dict = try? JSONSerialization.jsonObject(with: data) as? Self {
-            return dict
-        }
-        
-        return object as? Self
-    }
-    
-    func jg_plainValue() -> Any? {
-        return (self as? Dictionary<AnyHashable, Value>)?.jg_plainValue()
-    }
-}
-
 extension Dictionary where Key : Hashable {
 
     // String
@@ -197,12 +114,12 @@ extension Dictionary where Key : Hashable {
     }
     
     // Dict
-    public func jg_dictionary(forKey key: Key, default defaultValue: [AnyHashable: Any]? = nil) -> [AnyHashable: Any]? {
+    public func jg_dictionary(forKey key: Key, default defaultValue: [Key: Value]? = nil) -> [Key: Value]? {
         guard let value = self[key] else {
             return defaultValue
         }
         
-        return Dictionary<AnyHashable, Any>.jg_transform(from: value)
+        return Dictionary<Key, Value>.jg_transform(from: value)
     }
     
     // Array

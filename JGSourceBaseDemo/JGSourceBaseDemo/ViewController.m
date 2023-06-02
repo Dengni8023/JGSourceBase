@@ -274,7 +274,7 @@
             *error = err;
         }
     }
-    JGSLog(@"%@", ret);
+    //JGSLog(@"%@", ret);
     return ret;
 }
 

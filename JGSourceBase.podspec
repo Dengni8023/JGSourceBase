@@ -336,6 +336,7 @@ Pod::Spec.new do |spec|
     ]
     
     sub.dependency "JGSourceBase/Base"
+    sub.dependency "JGSourceBase/JSON"
   end
   
   # DataStorage
@@ -382,7 +383,7 @@ Pod::Spec.new do |spec|
       # "#{spec.name}/JGSHUD/Toast/*.h",
     ]
     
-    sub.dependency "MBProgressHUD"
+    sub.dependency "MBProgressHUD", ">= 1.2.0"
     sub.dependency "JGSourceBase/Category"
   end
   
@@ -402,7 +403,14 @@ Pod::Spec.new do |spec|
     }
     
     sub.dependency "JGSourceBase/Encryption"
+  end
+
+  # JSON
+  spec.subspec 'JSON' do |sub|
+    sub.source_files = "#{spec.name}/JGSJSON/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSJSON/*.h"
     
+    sub.dependency "JGSourceBase/Base"
   end
 
   # Reachability

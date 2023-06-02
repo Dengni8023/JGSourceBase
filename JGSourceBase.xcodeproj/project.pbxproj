@@ -44,6 +44,7 @@
 		D4214A192942DC0500CEFACB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4214A182942DC0500CEFACB /* SceneDelegate.m */; };
 		D4214A1E29432EDE00CEFACB /* JGSDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4214A1D29432EDE00CEFACB /* JGSDViewController.swift */; };
 		D426FC8E293A22AE002C7476 /* Dictionary+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */; };
+		D43285DC29F7A9EA00DE584A /* JGSJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43285DB29F7A9EA00DE584A /* JGSJSON.swift */; };
 		D4358B3C286E93E9008A0A11 /* rsa_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4358B3B286E93E9008A0A11 /* rsa_message.txt */; };
 		D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */ = {isa = PBXBuildFile; fileRef = D436C7692844974A002C27D9 /* NSData+JGSAES.m */; };
 		D436C7712844974A002C27D9 /* NSData+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D436C76A2844974A002C27D9 /* NSData+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +69,11 @@
 		D44498AD29E0388D00BC6D9C /* UIApplication+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */; };
 		D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */; };
 		D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */; };
+		D454D8C52A093AEC00C6C7B0 /* JGSCustomModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */; };
+		D454D8C72A09EB4200C6C7B0 /* JGSProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */; };
+		D454D8C92A09EB5F00C6C7B0 /* JGSAnyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C82A09EB5F00C6C7B0 /* JGSAnyExtension.swift */; };
+		D454D8CB2A0A13E700C6C7B0 /* JGSMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8CA2A0A13E700C6C7B0 /* JGSMetadata.swift */; };
+		D455AC272A04E8CE00CBEE59 /* JGSCustomModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D455AC262A04E8CE00CBEE59 /* JGSCustomModelType.swift */; };
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */; };
 		D45AAAA928339DBD004EE48C /* JGSIntegrityCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAAA828339DA2004EE48C /* JGSIntegrityCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,6 +85,9 @@
 		D473BA1429113F6200E1CBFF /* JGSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA1329113F6200E1CBFF /* JGSCommandLineTool.m */; };
 		D473BA172911407F00E1CBFF /* JGSFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D473BA152911407F00E1CBFF /* JGSFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D473BA182911407F00E1CBFF /* JGSFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D473BA162911407F00E1CBFF /* JGSFileUtils.m */; };
+		D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */; };
+		D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */; };
+		D4830D1329F91CD500B42377 /* JGSSwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1229F91CD500B42377 /* JGSSwiftyJSON.swift */; };
 		D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
@@ -280,6 +289,7 @@
 		D4214A1A29432DE400CEFACB /* JGSourceBaseDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JGSourceBaseDemo-Bridging-Header.h"; path = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4214A1D29432EDE00CEFACB /* JGSDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSDViewController.swift; sourceTree = "<group>"; };
 		D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JGSBase.swift"; sourceTree = "<group>"; };
+		D43285DB29F7A9EA00DE584A /* JGSJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSJSON.swift; sourceTree = "<group>"; };
 		D4358B3B286E93E9008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
 		D436C7692844974A002C27D9 /* NSData+JGSAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JGSAES.m"; sourceTree = "<group>"; };
 		D436C76A2844974A002C27D9 /* NSData+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JGSBase.h"; sourceTree = "<group>"; };
@@ -301,6 +311,11 @@
 		D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+JGSBase.swift"; sourceTree = "<group>"; };
+		D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSCustomModelHelper.swift; sourceTree = "<group>"; };
+		D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSProperty.swift; sourceTree = "<group>"; };
+		D454D8C82A09EB5F00C6C7B0 /* JGSAnyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSAnyExtension.swift; sourceTree = "<group>"; };
+		D454D8CA2A0A13E700C6C7B0 /* JGSMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSMetadata.swift; sourceTree = "<group>"; };
+		D455AC262A04E8CE00CBEE59 /* JGSCustomModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSCustomModelType.swift; sourceTree = "<group>"; };
 		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
 		D45AAA9B2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSIntegrityCheckResourcesHash.m; sourceTree = "<group>"; };
 		D45AAAA328337DC7004EE48C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -317,6 +332,9 @@
 		D473BA162911407F00E1CBFF /* JGSFileUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSFileUtils.m; sourceTree = "<group>"; };
 		D4767708290BB46F007119FC /* JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.release.xcconfig; sourceTree = "<group>"; };
 		D4767709290BB46F007119FC /* JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.debug.xcconfig; sourceTree = "<group>"; };
+		D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSBuildInBasicType.swift; sourceTree = "<group>"; };
+		D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSBuildInBridgeType.swift; sourceTree = "<group>"; };
+		D4830D1229F91CD500B42377 /* JGSSwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSSwiftyJSON.swift; sourceTree = "<group>"; };
 		D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSiOSDeviceList.json; sourceTree = "<group>"; };
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
@@ -691,6 +709,23 @@
 			path = Target.xcconfig;
 			sourceTree = "<group>";
 		};
+		D43285DD29F8B39000DE584A /* JGSJSON */ = {
+			isa = PBXGroup;
+			children = (
+				D454D8C82A09EB5F00C6C7B0 /* JGSAnyExtension.swift */,
+				D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */,
+				D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */,
+				D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */,
+				D455AC262A04E8CE00CBEE59 /* JGSCustomModelType.swift */,
+				D43285DB29F7A9EA00DE584A /* JGSJSON.swift */,
+				D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */,
+				D454D8CA2A0A13E700C6C7B0 /* JGSMetadata.swift */,
+				D4830D1229F91CD500B42377 /* JGSSwiftyJSON.swift */,
+				D444989E29E0356600BC6D9C /* JGSTransformable.swift */,
+			);
+			path = JGSJSON;
+			sourceTree = "<group>";
+		};
 		D436C7682844974A002C27D9 /* NSData */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,7 +936,6 @@
 			isa = PBXGroup;
 			children = (
 				D4D697B12806E0F900CE1F9F /* JGSCategory.h */,
-				D444989E29E0356600BC6D9C /* JGSTransformable.swift */,
 				D45E317D288A877E001D4119 /* NSArray */,
 				D436C7682844974A002C27D9 /* NSData */,
 				D4D697CC2806E0F900CE1F9F /* NSDate */,
@@ -1080,6 +1114,7 @@
 				D4D697872806E0F900CE1F9F /* JGSEncryption */,
 				D4D697752806E0F900CE1F9F /* JGSHUD */,
 				D4C3ED98282B7F2700C5C1F8 /* JGSIntegrityCheck */,
+				D43285DD29F8B39000DE584A /* JGSJSON */,
 				D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */,
 				D4B7DF352834EBC400BFAE79 /* JGSourceBase.xcconfig */,
 				D4D6976C2806E0F900CE1F9F /* JGSReachability */,
@@ -1496,6 +1531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D6980D2806E0F900CE1F9F /* UIColor+JGSBase.m in Sources */,
+				D454D8C72A09EB4200C6C7B0 /* JGSProperty.swift in Sources */,
 				D4D96C0E284F2EE800D8B0ED /* JGSBase+JGSPrivate.m in Sources */,
 				D4D697E42806E0F900CE1F9F /* JGSAESEncryption.m in Sources */,
 				D426FC8E293A22AE002C7476 /* Dictionary+JGSBase.swift in Sources */,
@@ -1517,6 +1553,7 @@
 				D4D697E32806E0F900CE1F9F /* JGSDevice.m in Sources */,
 				D4D698052806E0F900CE1F9F /* NSDictionary+JGSBase.m in Sources */,
 				D4D6981B2806E0F900CE1F9F /* NSObject+JGSBase.m in Sources */,
+				D43285DC29F7A9EA00DE584A /* JGSJSON.swift in Sources */,
 				D4D697EE2806E0F900CE1F9F /* JGSBaseUtils.m in Sources */,
 				D4D697D52806E0F900CE1F9F /* JGSKeychainUtils.m in Sources */,
 				D4120AD729E6529C0020EE64 /* NSNumber+JGSBase.swift in Sources */,
@@ -1531,22 +1568,29 @@
 				D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */,
 				D4D697D72806E0F900CE1F9F /* JGSUserDefaults.m in Sources */,
 				D44498A329E0379A00BC6D9C /* String+JGSBase.swift in Sources */,
+				D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */,
 				D4D697F02806E0F900CE1F9F /* JGSLogFunction.m in Sources */,
 				D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */,
 				D4D698122806E0F900CE1F9F /* NSURL+JGSBase.m in Sources */,
+				D454D8C92A09EB5F00C6C7B0 /* JGSAnyExtension.swift in Sources */,
+				D455AC272A04E8CE00CBEE59 /* JGSCustomModelType.swift in Sources */,
 				D4120AD429E650ED0020EE64 /* Set+JGSBase.swift in Sources */,
 				D44498A529E037AC00BC6D9C /* URL+JGSBase.swift in Sources */,
 				D4D697DB2806E0F900CE1F9F /* JGSLoadingHUD.m in Sources */,
 				D436C77D2844975C002C27D9 /* NSString+JGSAES.m in Sources */,
 				D4D697F22806E0F900CE1F9F /* JGSNumberKeyboard.m in Sources */,
+				D454D8CB2A0A13E700C6C7B0 /* JGSMetadata.swift in Sources */,
 				D4D698152806E0F900CE1F9F /* NSString+JGSBase.m in Sources */,
 				D444989F29E0356600BC6D9C /* JGSTransformable.swift in Sources */,
 				D4D697FA2806E0F900CE1F9F /* JGSSecurityKeyboard.m in Sources */,
+				D454D8C52A093AEC00C6C7B0 /* JGSCustomModelHelper.swift in Sources */,
 				D4D6981D2806E0F900CE1F9F /* NSDate+JGSBase.m in Sources */,
 				D44498A129E0377300BC6D9C /* Array+JGSBase.swift in Sources */,
+				D4830D1329F91CD500B42377 /* JGSSwiftyJSON.swift in Sources */,
 				D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */,
 				D436C7742844974A002C27D9 /* NSData+JGSBase.m in Sources */,
 				D4D697FD2806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
+				D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */,
 				D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */,
 				D46D0BB829D1EF8000509B02 /* Data+JGSBase.swift in Sources */,
 				D4D698012806E0F900CE1F9F /* UIImage+JGSBase.m in Sources */,

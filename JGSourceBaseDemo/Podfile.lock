@@ -3,6 +3,9 @@ PODS:
   - JGSourceBase/Base (1.4.1)
   - JGSourceBase/Category (1.4.1):
     - JGSourceBase/Base
+    - JGSourceBase/JSON
+  - JGSourceBase/JSON (1.4.1):
+    - JGSourceBase/Base
   - Masonry (1.1.0)
 
 DEPENDENCIES:
@@ -28,7 +31,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: 5ad1c15b01a0ba6c42305ab21676690bb12fa666
+  JGSourceBase: 869867392916dad7d9fc3fb264ae23e0495f6e59
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
 
 PODFILE CHECKSUM: 3da64efbb1fb7e419a2ac4e4f2b4cf0f5caca936

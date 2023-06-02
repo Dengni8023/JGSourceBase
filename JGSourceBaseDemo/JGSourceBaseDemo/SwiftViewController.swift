@@ -55,6 +55,10 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        let _set: Set<AnyHashable> = Set([1, "2", ["3": "4"]])
+        JGSLog(Array<Any>.jg_transform(from: _set))
+        return;
+        
         let intV: Int = 12
         let dicT: [String: Any] = [
             "Key": "T",
@@ -64,24 +68,59 @@ class SwiftViewController: JGSDViewController {
             "Int12": intV,
             "True": true,
             "False": false,
-            "Dict": ["1": 2],
-            "Array": ["value1", "value2", "value1", "value2"],
+            "Dict": ["1": 2,
+                     "dict": [
+                        "key": "value",
+                        "array": [
+                            "vallue1", "value2",
+                            ["key": "value"]] as [Any]
+                     ] as [String : Any],
+                     "array": ["vallue1", "value2", ["key": "value"]] as [Any],
+            ] as [String: Any],
+            "Array": ["value1", "value2", "value1", "value2",
+                      ["key": "value"],
+                      ["key", "value"],
+                      ["key": ["key": "value"]],
+                      ["1": "2",
+                       "dict": ["key": "value"],
+                       "array": ["vallue1", "value2"],
+                      ] as [String : Any],
+            ] as [Any],
             "Double": 103.1236547,
             "Double2": "103.1236547",
-            "Double3": ".01"
+            "Double3": ".01",
         ]
-        dicT.keys.forEach { (key: String) in
-            JGSLog("key:\(key), value: \(dicT[key] ?? "")",
-                   dicT.jg_string(forKey: key),
-                   dicT.jg_number(forKey: key),
-                   dicT.jg_int(forKey: key),
-                   dicT.jg_float(forKey: key),
-                   dicT.jg_double(forKey: key),
-                   dicT.jg_bool(forKey: key),
-                   dicT.jg_dictionary(forKey: key),
-                   dicT.jg_array(forKey: key),
-                   dicT.jg_set(forKey: key)
+        dicT.forEach { (key: String, value: Any) in
+            
+            JGSLog("Set: ", Set<AnyHashable>.jg_transform(from: value))
+            
+            JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
+                   "string:", dicT.jg_string(forKey: key), "\n",
+                   "number:", dicT.jg_number(forKey: key), "\n",
+                   "int:", dicT.jg_int(forKey: key), "\n",
+                   "float:", dicT.jg_float(forKey: key), "\n",
+                   "double:", dicT.jg_double(forKey: key), "\n",
+                   "bool:", dicT.jg_bool(forKey: key), "\n",
+                   "dict:", dicT.jg_dictionary(forKey: key), "\n",
+                   "array:", dicT.jg_array(forKey: key), "\n",
+                   ""
             )
+            if let value = dicT[key] as? JGSSwiftyJSON {
+                JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
+                       "string:", value.jg_string, "\n",
+                       "number:", value.jg_number, "\n",
+                       "number:", value.jg_numberValue, "\n",
+                       "url:", value.jg_URL, "\n",
+                       "null:", value.jg_null, "\n",
+                       "int:", value.jg_int, "\n",
+                       "float:", value.jg_float, "\n",
+                       "double:", value.jg_double, "\n",
+                       "bool:", value.jg_bool, "\n",
+                       "dict:", value.jg_dictionary, "\n",
+                       "array:", value.jg_array, "\n",
+                       ""
+                )
+            }
         }
     }
 }
