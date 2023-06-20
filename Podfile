@@ -65,6 +65,7 @@ abstract_target "JGSBase" do
   # JGSourceBaseDemo
   target "JGSourceBaseDemo" do
     
+    # pod 'SwiftyJSON'
     pod 'IQKeyboardManager', '~> 6.5.10' #  https://github.com/hackiftekhar/IQKeyboardManager.git
     
     #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃

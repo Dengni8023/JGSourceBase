@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGSourceBase
 
 class SwiftViewController: JGSDViewController {
 
@@ -122,5 +123,56 @@ class SwiftViewController: JGSDViewController {
                 )
             }
         }
+        
+        let testJSON = """
+        {
+        "name": "老师1"，
+        "age": 0,
+        "type": "teacher",
+        "adminPerson": [{
+                "name": "老师2"，
+                "age": 0,
+                "type": 1,
+                "adminPerson": [
+                        "name": "学生2"，
+                        "age": 0,
+                        "type": "student"
+                ]
+        }, {
+                "name": "学生1"，
+                "age": 0,
+                "type": 2
+        }]
+        }
+        """
+        //print(JGSSwiftyJSON.)
     }
+}
+
+enum PersonStrType: String, JGSJSONEnum {
+    case teacher = "teacher"
+    case student = "student"
+    case other = "other"
+}
+
+struct PersonStruct: JGSJSON {
+    
+    var name: String?
+    var age: Int = 0
+    var type: PersonStrType = .other
+    var adminPerson: [PersonClass]?
+}
+
+enum PersonIntType: Int, JGSJSONEnum {
+    case teacher = 1
+    case student = 2
+    case other = 0
+}
+
+struct PersonClass: JGSJSON {
+    
+    var name: String?
+    var age: Int = 0
+    var type: PersonIntType = .other
+    var adminPerson: [PersonStruct]?
 }

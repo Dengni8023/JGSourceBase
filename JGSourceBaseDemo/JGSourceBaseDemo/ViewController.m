@@ -212,7 +212,7 @@
 	
 	JGSReachabilityDemoVC *vcT = [[JGSReachabilityDemoVC alloc] init];
 	[self.navigationController pushViewController:vcT animated:YES];
-	
+    
 #ifdef JGSReachability_h
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
