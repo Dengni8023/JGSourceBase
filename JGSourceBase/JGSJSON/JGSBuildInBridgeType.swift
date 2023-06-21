@@ -50,7 +50,7 @@ extension NSURL: JGSBuildInBridgeType {
     }
     
     public func jg_plainValue() -> Any? {
-        return self
+        return self.absoluteString?.removingPercentEncoding
     }
 }
 

@@ -223,7 +223,7 @@ extension URL: JGSBuildInBasicType {
     }
     
     public func jg_plainValue() -> Any? {
-        return self.absoluteString
+        return self.absoluteString.removingPercentEncoding
     }
 }
 
