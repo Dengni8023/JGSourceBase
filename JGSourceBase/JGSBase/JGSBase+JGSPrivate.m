@@ -10,7 +10,7 @@
 
 @implementation JGSBaseUtils (JGSPrivate)
 
-+ (void)requestGitRepositoryFileContent:(NSString *)filePath retryTimes:(NSInteger)retryTimes completion:(void (^)(NSData * _Nullable))completion {
++ (void)requestGitRepositoryFileContent:(NSString *)filePath completion:(void (^)(NSData * _Nullable))completion {
     
     NSMutableCharacterSet *mutSet = [NSCharacterSet URLPathAllowedCharacterSet].mutableCopy;
     [mutSet formUnionWithCharacterSet:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -21,11 +21,6 @@
             completion(nil);
         }
         return;
-    }
-    
-    static NSMutableDictionary *retryTimesInfo = nil;
-    if (retryTimesInfo == nil) {
-        retryTimesInfo = @{}.mutableCopy;
     }
     
     __block NSData *fileData = nil;
@@ -109,22 +104,9 @@
             break;
     }
     
-    NSInteger retry = [retryTimesInfo[filePath] integerValue] + 1;
-    NSInteger maxRetryTimes = MAX(retryTimes, 5); // 为避免网络阻塞，无限重试限制次数
-    if (retry > maxRetryTimes) {
-        
-        // 避免下次无法重试问题
-        [retryTimesInfo removeObjectForKey:filePath];
-        if (completion) {
-            completion(nil);
-        }
-        return;
+    if (completion) {
+        completion(nil);
     }
-    
-    retryTimesInfo[filePath] = @(retry);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * (1 + log2(retry)) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [JGSBaseUtils requestGitRepositoryFileContent:filePath retryTimes:retryTimes completion:completion];
-    });
 }
 
 + (NSURLSessionDataTask *)requestGitHubRepositoryFileContent:(NSString *)urlEncodeFilePath completion:(void (^)(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completion {
@@ -352,7 +334,7 @@ FOUNDATION_EXTERN NSDictionary<NSString *, id> * const JGSLatestGlobalConfigurat
                 
                 // 因版本问题，版本内置资源不一定为最新，需要读取网络仓库最新资源
                 NSString *gitFilePath = @"LatestGlobalConfiguration.json.sec";
-                [JGSBaseUtils requestGitRepositoryFileContent:gitFilePath retryTimes:0 completion:^(NSData * _Nullable fileData) {
+                [JGSBaseUtils requestGitRepositoryFileContent:gitFilePath completion:^(NSData * _Nullable fileData) {
                     
                     if (fileData.length > 0) {
                         //JGSPrivateLog(@"Use remote git file: %@", [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding]);

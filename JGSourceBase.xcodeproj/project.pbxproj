@@ -69,6 +69,7 @@
 		D44498AD29E0388D00BC6D9C /* UIApplication+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */; };
 		D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */; };
 		D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */; };
+		D44F04EB2A5D40F100E735C8 /* JGSJSONConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F04EA2A5D40F100E735C8 /* JGSJSONConfiguration.swift */; };
 		D454D8C52A093AEC00C6C7B0 /* JGSCustomModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */; };
 		D454D8C72A09EB4200C6C7B0 /* JGSProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */; };
 		D454D8C92A09EB5F00C6C7B0 /* JGSAnyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454D8C82A09EB5F00C6C7B0 /* JGSAnyExtension.swift */; };
@@ -97,6 +98,7 @@
 		D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */; };
 		D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */; };
 		D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */; };
+		D4CDDA342A8626CC00C9DF79 /* JGSMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDDA332A8626CC00C9DF79 /* JGSMeasurable.swift */; };
 		D4D0369E2885071200BA8FAE /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6976E2806E0F900CE1F9F /* JGSReachability.m */; };
@@ -311,6 +313,7 @@
 		D44498AC29E0388D00BC6D9C /* UIApplication+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+JGSBase.swift"; sourceTree = "<group>"; };
+		D44F04EA2A5D40F100E735C8 /* JGSJSONConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSJSONConfiguration.swift; sourceTree = "<group>"; };
 		D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSCustomModelHelper.swift; sourceTree = "<group>"; };
 		D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSProperty.swift; sourceTree = "<group>"; };
 		D454D8C82A09EB5F00C6C7B0 /* JGSAnyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSAnyExtension.swift; sourceTree = "<group>"; };
@@ -349,6 +352,7 @@
 		D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_2048.p12; sourceTree = "<group>"; };
 		D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_2048.pem; sourceTree = "<group>"; };
 		D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckRecordResourcesHash.sh; sourceTree = "<group>"; };
+		D4CDDA332A8626CC00C9DF79 /* JGSMeasurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSMeasurable.swift; sourceTree = "<group>"; };
 		D4D0369C2885071200BA8FAE /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
 		D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
 		D4D6976D2806E0F900CE1F9F /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
@@ -718,8 +722,10 @@
 				D454D8C42A093AEC00C6C7B0 /* JGSCustomModelHelper.swift */,
 				D455AC262A04E8CE00CBEE59 /* JGSCustomModelType.swift */,
 				D43285DB29F7A9EA00DE584A /* JGSJSON.swift */,
-				D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */,
+				D44F04EA2A5D40F100E735C8 /* JGSJSONConfiguration.swift */,
+				D4CDDA332A8626CC00C9DF79 /* JGSMeasurable.swift */,
 				D454D8CA2A0A13E700C6C7B0 /* JGSMetadata.swift */,
+				D454D8C62A09EB4200C6C7B0 /* JGSProperty.swift */,
 				D4830D1229F91CD500B42377 /* JGSSwiftyJSON.swift */,
 				D444989E29E0356600BC6D9C /* JGSTransformable.swift */,
 			);
@@ -1559,6 +1565,7 @@
 				D4120AD729E6529C0020EE64 /* NSNumber+JGSBase.swift in Sources */,
 				D44498A729E037BF00BC6D9C /* Date+JGSBase.swift in Sources */,
 				D4D698172806E0F900CE1F9F /* NSString+JGSURL.m in Sources */,
+				D4CDDA342A8626CC00C9DF79 /* JGSMeasurable.swift in Sources */,
 				D4D697DE2806E0F900CE1F9F /* JGSToast.m in Sources */,
 				D4EF943029422DFE002B778A /* JGSLogFunction.swift in Sources */,
 				D4D697F82806E0F900CE1F9F /* JGSKeyboardToolbar.m in Sources */,
@@ -1591,6 +1598,7 @@
 				D436C7742844974A002C27D9 /* NSData+JGSBase.m in Sources */,
 				D4D697FD2806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
 				D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */,
+				D44F04EB2A5D40F100E735C8 /* JGSJSONConfiguration.swift in Sources */,
 				D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */,
 				D46D0BB829D1EF8000509B02 /* Data+JGSBase.swift in Sources */,
 				D4D698012806E0F900CE1F9F /* UIImage+JGSBase.m in Sources */,
@@ -1775,7 +1783,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGCommandLineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1795,7 +1802,6 @@
 				DEVELOPMENT_TEAM = Z28L6TKG58;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = "$(JGSVersion)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGCommandLineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1859,7 +1865,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1919,7 +1925,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

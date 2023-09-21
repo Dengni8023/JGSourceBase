@@ -410,7 +410,7 @@
                 return;
             }
             
-            [JGSBaseUtils requestGitRepositoryFileContent:urlStr retryTimes:0 completion:^(NSData * _Nullable fileData) {
+            [JGSBaseUtils requestGitRepositoryFileContent:urlStr completion:^(NSData * _Nullable fileData) {
                 
                 if (fileData.length > 0) {
                     // 网络文件存储本地

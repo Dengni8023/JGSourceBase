@@ -19,9 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 从git仓库加载文件内容
 /// - Parameters:
 ///   - urlString: 文件路径，相对于仓库的根目录
-///   - retryTimes: 重试次数，0表示始终重试，为避免网络阻塞，内部限制5次
 ///   - completion: 加载结果回调
-+ (void)requestGitRepositoryFileContent:(NSString *)filePath retryTimes:(NSInteger)retryTimes completion:(void (^)(NSData * _Nullable fileData))completion;
++ (void)requestGitRepositoryFileContent:(NSString *)filePath completion:(void (^)(NSData * _Nullable fileData))completion;
 
 @end
 

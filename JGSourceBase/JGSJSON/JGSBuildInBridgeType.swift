@@ -8,12 +8,12 @@
 
 import Foundation
 
-public protocol JGSBuildInBridgeType: JGSTransformable {
+internal protocol JGSBuildInBridgeType: JGSTransformable {
     static func jg_transform(from object: Any?) -> JGSBuildInBridgeType?
 }
 
 extension NSNull: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if object == nil {
             return NSNull()
         }
@@ -29,7 +29,7 @@ extension NSNull: JGSBuildInBridgeType {
 }
 
 extension NSString: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if let str = String.jg_transform(from: object) {
             return NSString(string: str) as! Self
         }
@@ -42,7 +42,7 @@ extension NSString: JGSBuildInBridgeType {
 }
 
 extension NSURL: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if let _url = URL.jg_transform(from: object) {
             return NSURL(string: _url.absoluteString) as? Self
         }
@@ -55,7 +55,7 @@ extension NSURL: JGSBuildInBridgeType {
 }
 
 extension NSNumber: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         guard let object = object else {
             return nil
         }
@@ -86,19 +86,24 @@ extension NSNumber: JGSBuildInBridgeType {
 }
 
 extension NSArray: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         guard let object = object else {
             return nil
         }
-
+        
+        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        if #available(iOS 15.0, *) {
+            options.insert(.json5Allowed)
+        }
+        
         // JSON String -> NSArray
         if let str = object as? String,
            let data = str.data(using: .utf8),
-           let collection = try? JSONSerialization.jsonObject(with: data) as? Self {
+           let collection = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
             return collection
         }
         // JSON Data -> NSArray
-        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: [.fragmentsAllowed]) as? Self {
+        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
             return collection
         }
         
@@ -111,19 +116,24 @@ extension NSArray: JGSBuildInBridgeType {
 }
 
 extension NSDictionary: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         guard let object = object else {
             return nil
+        }
+        
+        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        if #available(iOS 15.0, *) {
+            options.insert(.json5Allowed)
         }
         
         // JSON String -> Dictionary
         if let str = object as? String,
            let data = str.data(using: .utf8),
-           let dict = try? JSONSerialization.jsonObject(with: data) as? Self {
+           let dict = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
             return dict
         }
         // JSON Data -> Dictionary
-        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: [.fragmentsAllowed]) as? Self {
+        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
             return dict
         }
         

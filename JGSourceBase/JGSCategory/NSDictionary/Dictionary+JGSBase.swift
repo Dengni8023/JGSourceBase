@@ -101,11 +101,15 @@ extension Dictionary where Key : Hashable {
         }
         
         // String
+        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        if #available(iOS 15.0, *) {
+            options.insert(.json5Allowed)
+        }
         let nilString: String? = nil
         if let string = value as? String,
            value is String || type(of: value) == type(of: nilString),
            let jsonData = string.data(using: .utf8),
-           let object = try? JSONSerialization.jsonObject(with: jsonData) as? T {
+           let object = try? JSONSerialization.jsonObject(with: jsonData, options: options) as? T {
             return object
         }
         

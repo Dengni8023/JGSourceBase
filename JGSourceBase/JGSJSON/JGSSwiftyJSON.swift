@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-// 参考 SwiftyJSON
-// https://github.com/SwiftyJSON/SwiftyJSON
+// 参考
+// SwiftyJSON: https://github.com/SwiftyJSON/SwiftyJSON
+// HandyJSON: https://github.com/alibaba/handyjson
 
 public protocol JGSSwiftyJSON {
     // MARK: - Int, UInt, Int8, Int16, Int32, Int64
@@ -137,7 +138,12 @@ public extension JGSSwiftyJSON {
         guard JSONSerialization.isValidJSONObject(self) else {
             return ""
         }
-        if let data = try? JSONSerialization.data(withJSONObject: self, options: [.sortedKeys]) {
+        var options: JSONSerialization.WritingOptions = [.sortedKeys, .prettyPrinted]
+        if #available(iOS 13.0, *) {
+            options.insert(.withoutEscapingSlashes)
+        }
+        
+        if let data = try? JSONSerialization.data(withJSONObject: self, options: options) {
             return String(data: data, encoding: .utf8) ?? ""
         }
         return ""

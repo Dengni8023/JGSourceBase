@@ -166,18 +166,17 @@ private extension JGSLogDescription {
     func jg_logDescription(level: Int64 = 0) -> String {
         switch self {
         case let validJsonObj where JSONSerialization.isValidJSONObject(validJsonObj):
-
+            
+            var options: JSONSerialization.WritingOptions = [.sortedKeys, .prettyPrinted]
+            if #available(iOS 13.0, *) {
+                options.insert(.withoutEscapingSlashes)
+            }
+            
             // key升序整理、格式化输出、禁用正斜杠"/"前增加反斜杠"\"转译
             var retDesc = ""
-            if #available(iOS 13.0, *) {
-                if let data = try? JSONSerialization.data(withJSONObject: validJsonObj, options: [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]) {
-                    retDesc = String(data: data, encoding: .utf8) ?? "JGSLog JSONSerialization error"
-                }
-            } else {
-                if let data = try? JSONSerialization.data(withJSONObject: validJsonObj, options: [.sortedKeys, .prettyPrinted]) {
-                    retDesc = String(data: data, encoding: .utf8) ?? "JGSLog JSONSerialization error"
-                    retDesc = retDesc.replacingOccurrences(of: "\\/", with: "/")
-                }
+            if let data = try? JSONSerialization.data(withJSONObject: validJsonObj, options: options) {
+                retDesc = String(data: data, encoding: .utf8) ?? "JGSLog JSONSerialization error"
+                retDesc = retDesc.replacingOccurrences(of: "\\/", with: "/") // Below iOS 13
             }
             
             if retDesc.count == 0 {
@@ -258,7 +257,11 @@ private extension JGSLogDescription {
             //var tempDesc = stringObj
             //tempDesc = tempDesc.replacingOccurrences(of: "\"", with: "\\\"")
             //tempDesc = "\"".appending(tempDesc).appending("\"")
-            if let data = stringObj.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data) {
+            var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+            if #available(iOS 15.0, *) {
+                options.insert(.json5Allowed)
+            }
+            if let data = stringObj.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data, options: options) {
                 if let dict = json as? Dictionary<AnyHashable, Any> {
                     return "(JSON -> Dictionary) " + dict.jg_logDescription()
                 } else if let array = json as? Array<Any> {

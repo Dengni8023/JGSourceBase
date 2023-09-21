@@ -11,13 +11,16 @@ import Foundation
 // 参考 HandyJSON: _Transformable
 // https://github.com/alibaba/handyjson
 
-public protocol JGSTransformable {
-    static func jg_transform(from object: Any?) -> Self?
-    func jg_plainValue() -> Any?
-    
-    init?(_ data: Data?)
-    init?(_ json: String?)
-    init?(_ dict: [String: Any]?)
+public protocol JGSTransformable: JGSMeasurable {
+    // 定义optional必须引入 objc
+    // 此处不引入 objc，在扩展中定义方法
+    // 继承时重写扩展方法
+    // static func jg_transform(from object: Any?) -> Self?
+    // optional func jg_plainValue() -> Any?
+
+    // init?(_ data: Data?)
+    // init?(_ json: String?)
+    // init?(_ dict: [String: Any]?)
 }
 
 public extension JGSTransformable {
@@ -35,7 +38,9 @@ public extension JGSTransformable {
             return _type.jg_transform(from: object) as? Self
         case let _type as JGSBuildInBasicType.Type:
             return _type.jg_transform(from: object) as? Self
-        case let _type as JGSBuildInRawEnumType.Type:
+        case let _type as JGSRawEnumProtocol.Type:
+            return _type.jg_transform(from: object) as? Self
+        case let _type as JGSCustomModelType.Type:
             return _type.jg_transform(from: object) as? Self
         default:
             return nil
@@ -48,7 +53,9 @@ public extension JGSTransformable {
             return _rawValue.jg_plainValue()
         case let _rawValue as JGSBuildInBasicType:
             return _rawValue.jg_plainValue()
-        case let _rawValue as JGSBuildInRawEnumType:
+        case let _rawValue as JGSRawEnumProtocol:
+            return _rawValue.jg_plainValue()
+        case let _rawValue as JGSCustomModelType:
             return _rawValue.jg_plainValue()
         default:
             return nil
@@ -80,8 +87,8 @@ public extension JGSTransformable {
 
 // MARK: - JGSRawEnumProtocol
 
-public protocol JGSBuildInRawEnumType: JGSTransformable {}
-public extension RawRepresentable where Self: JGSBuildInRawEnumType {
+public protocol JGSRawEnumProtocol: JGSTransformable {}
+public extension RawRepresentable where Self: JGSRawEnumProtocol {
     static func jg_transform(from object: Any?) -> Self? {
         if let transformableType = RawValue.self as? JGSTransformable.Type {
             if let typedValue = transformableType.jg_transform(from: object) {

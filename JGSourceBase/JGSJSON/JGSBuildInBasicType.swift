@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol JGSBuildInBasicType: JGSTransformable {}
+internal protocol JGSBuildInBasicType: JGSTransformable {}
 
 // MARK: - Integer
 
-public protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
+internal protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
     // Swift.Math.Integers/FixedWidthInteger
     // @inlinable public init?<S>(_ text: S, radix: Int = 10) where S : StringProtocol
     init?(_ text: String, radix: Int)
@@ -24,7 +24,7 @@ public protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
     init(truncating number: NSNumber)
 }
 
-public extension JGSIntegerProtocol {
+extension JGSIntegerProtocol {
     static func jg_transform(from object: Any?) -> Self? {
         guard let object = object else {
             return nil
@@ -87,7 +87,7 @@ extension Bool: JGSBuildInBasicType {
 
 // MARK: - Float
 
-public protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType {
+internal protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType {
     // Swift.Math.Floating/Float
     // @inlinable public init?<S>(_ text: S) where S : StringProtocol
     init?(_ text: String)
@@ -99,7 +99,7 @@ public protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType
     init(truncating number: NSNumber)
 }
 
-public extension JGSFloatProtocol {
+extension JGSFloatProtocol {
     static func jg_transform(from object: Any?) -> Self? {
         guard let object = object else {
             return nil
@@ -269,15 +269,19 @@ public extension Collection {
         }
 
         var elements = object as? [Any]
+        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        if #available(iOS 15.0, *) {
+            options.insert(.json5Allowed)
+        }
         
         // JSON String -> Collection
         if let str = object as? String,
            let _data = str.data(using: .utf8),
-           let collection = try? JSONSerialization.jsonObject(with: _data, options: [.fragmentsAllowed]) as? [Any] {
+           let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
             elements = collection
         }
         // JSON Data -> Collection
-        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: [.fragmentsAllowed]) as? [Any] {
+        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
             elements = collection
         }
 
@@ -356,15 +360,19 @@ extension Dictionary: JGSBuildInBasicType {
         }
         
         var keyValues = object as? [AnyHashable: Any]
+        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        if #available(iOS 15.0, *) {
+            options.insert(.json5Allowed)
+        }
         
         // JSON String -> Dictionary
         if let str = object as? String,
            let data = str.data(using: .utf8),
-           let dict = try? JSONSerialization.jsonObject(with: data) as? [AnyHashable: Any] {
+           let dict = try? JSONSerialization.jsonObject(with: data, options: options) as? [AnyHashable: Any] {
             keyValues = dict
         }
         // JSON Data -> Dictionary
-        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: [.fragmentsAllowed]) as? [AnyHashable: Any] {
+        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? [AnyHashable: Any] {
             keyValues = dict
         }
         

@@ -56,6 +56,39 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        let testJSON = """
+        {
+          "name": "老师1",
+          "age": 0,
+          "type": "teacher",
+          "adminPerson": [
+            {
+              "name": "老师2",
+              "age": 0,
+              "type": 1,
+              "adminPerson": [
+                {
+                  "name": "学生2",
+                  "age": 0,
+                  "type": "student"
+                }
+              ]
+            },
+            {
+              "name": "学生1",
+              "age": 0,
+              "type": 2
+            }
+          ]
+        }
+        """
+        
+        let structObj = PersonStruct.deserialize(from: testJSON)
+        print(structObj)
+        let classObj = PersonClass.deserialize(from: testJSON)
+        print(classObj)
+        return;
+        
         let _set: Set<AnyHashable> = Set([1, "2", ["3": "4"]])
         JGSLog(Array<Any>.jg_transform(from: _set))
         return;
@@ -123,29 +156,6 @@ class SwiftViewController: JGSDViewController {
                 )
             }
         }
-        
-        let testJSON = """
-        {
-        "name": "老师1"，
-        "age": 0,
-        "type": "teacher",
-        "adminPerson": [{
-                "name": "老师2"，
-                "age": 0,
-                "type": 1,
-                "adminPerson": [
-                        "name": "学生2"，
-                        "age": 0,
-                        "type": "student"
-                ]
-        }, {
-                "name": "学生1"，
-                "age": 0,
-                "type": 2
-        }]
-        }
-        """
-        //print(JGSSwiftyJSON.)
     }
 }
 
