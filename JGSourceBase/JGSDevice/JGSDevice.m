@@ -367,11 +367,10 @@
         size_t blockSize = kCCBlockSizeAES128;
         
         NSString *key = fileName;
-        while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
+        while (key.length < keyLen) {
             key = [key stringByAppendingString:key];
         }
         
-        key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
         NSString *iv = [key substringFromIndex:key.length - blockSize];
         key = [key substringToIndex:keyLen];
         
@@ -390,39 +389,16 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        NSString *fileName = @"JGSiOSDeviceList.json-v20221110.sec";
+        NSString *fileName = @"JGSiOSDeviceList.json.sec";
         NSString *savedPath = [JGSPermanentFileSavedDirectory() stringByAppendingPathComponent:fileName];
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[JGSBaseUtils fileInResourceBundle:fileName] ofType:nil];
         NSString *path = [[NSFileManager defaultManager] fileExistsAtPath:savedPath] ? savedPath : bundlePath;
-        
         
         // 当前运行设备信息，参考 JGSiOSDeviceList.json
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
         NSDictionary *deviceInfo = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
         instance = [deviceInfo isKindOfClass:[NSDictionary class]] ? deviceInfo : nil;
         JGSPrivateLog(@"device info: %@", instance);
-        
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            
-            // 因版本问题，版本内置资源不一定为最新，读取网络仓库最新资源并存本地
-            NSString *urlStr = JGSLatestGlobalConfiguration()[@"iOSDeviceListFilePath-v20221110"];
-            if (![urlStr isKindOfClass:NSString.class] || urlStr.length == 0) {
-                return;
-            }
-            
-            [JGSBaseUtils requestGitRepositoryFileContent:urlStr completion:^(NSData * _Nullable fileData) {
-                
-                if (fileData.length > 0) {
-                    // 网络文件存储本地
-                    [fileData writeToFile:savedPath atomically:YES];
-                    
-                    // 当前运行设备信息，参考 JGSiOSDeviceList.json
-                    NSDictionary *deviceNamesByCode = [self decryptedJGSDeviceListFile:fileData fileName:fileName];
-                    instance = [deviceNamesByCode isKindOfClass:[NSDictionary class]] ? deviceNamesByCode : nil;
-                    JGSPrivateLog(@"device info: %@", instance);
-                }
-            }];
-        });
     });
     
     NSString *deviceModel = instance ? [instance objectForKey:@"Generation"] : [self deviceMachine];

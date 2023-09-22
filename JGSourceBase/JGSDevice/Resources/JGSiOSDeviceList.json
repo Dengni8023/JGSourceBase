@@ -437,6 +437,18 @@
     "SizePT" : "1180x820",
     "SizePX" : "2360x1640"
   },
+  "iPad13,18" : {
+    "Generation" : "iPad (10th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1180x820",
+    "SizePX" : "2360x1640"
+  },
+  "iPad13,19" : {
+    "Generation" : "iPad (10th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1180x820",
+    "SizePX" : "2360x1640"
+  },
   "iPad14,1" : {
     "Generation" : "iPad mini (6th generation)",
     "Scale" : "2x",

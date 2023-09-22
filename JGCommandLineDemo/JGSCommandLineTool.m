@@ -137,7 +137,7 @@
 }
 
 #pragma mark - AES
-+ (NSData *)aes256EncryptData:(NSData *)fileData fileName:(NSString *)fileName version:(NSString *)version {
++ (NSData *)aes256EncryptData:(NSData *)fileData fileName:(NSString *)fileName {
     
     if (fileData.length == 0 || fileName.length == 0) {
         return nil;
@@ -147,19 +147,8 @@
     size_t blockSize = kCCBlockSizeAES128;
     
     NSString *key = fileName;
-    if (version.length == 0) {
-        while (key.length < keyLen) {
-            key = [key stringByAppendingString:key];
-        }
-    }
-    else {
-        // 2022-11-10修改：加密规则变化，修改信息Commit：
-        // Commit ID: 044f0e75684a4b8db57d6cf840bd8beddd541381
-        // Commit Info: AES加解密key/iv优化    044f0e7    Dengni8023 <945835664@qq.com>    2022年11月10日 09:05
-        while ([[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed].length < keyLen) {
-            key = [key stringByAppendingString:key];
-        }
-        key = [[key dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    while (key.length < keyLen) {
+        key = [key stringByAppendingString:key];
     }
     
     NSString *iv = [key substringFromIndex:key.length - blockSize];
@@ -239,20 +228,12 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
     NSLog(@"[Formatted %@] %@", sortResult ? @"success" : @"fail", [jsonPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
     
     // AES加密：整理后源JSON文件
-    NSArray<NSString *> *versions = @[@"", @"20221110"];
-    [versions enumerateObjectsUsingBlock:^(NSString * _Nonnull version, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
-        if (version.length > 0) {
-            secFileName = [destFileName stringByAppendingFormat:@"-v%@.sec", version];
-        }
-        
-        NSData *secData = [JGSCommandLineTool aes256EncryptData:sortedData fileName:secFileName version:version] ?: [NSData data];
-        NSString *secPath = [deviceSourceDir stringByAppendingPathComponent:secFileName];
-        BOOL aesResult = [secData writeToFile:secPath options:(NSDataWritingAtomic) error:nil];
-        
-        NSLog(@"[AES Encrypt %@] %@", aesResult ? @"success" : @"fail", [secPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
-    }];
+    NSString *secFileName = [destFileName stringByAppendingPathExtension:@"sec"];
+    NSData *secData = [JGSCommandLineTool aes256EncryptData:sortedData fileName:secFileName] ?: [NSData data];
+    NSString *secPath = [deviceSourceDir stringByAppendingPathComponent:secFileName];
+    BOOL aesResult = [secData writeToFile:secPath options:(NSDataWritingAtomic) error:nil];
+    
+    NSLog(@"[AES Encrypt %@] %@", aesResult ? @"success" : @"fail", [secPath stringByReplacingOccurrencesOfString:[JGSourceRepoLocationDirectory stringByAppendingString:@"/"] withString:@""]);
 }
 
 + (void)sortAndBase64EncryptGlobalConfiguration {

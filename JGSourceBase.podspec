@@ -279,7 +279,7 @@ Pod::Spec.new do |spec|
         # 远程未安装subspec时，对应资源将不会打包
         # 本地Demo将打包所有subspec资源
         "#{spec.name}/JGSBase/**/*.{xcassets,png,jpg,gif}",
-        "#{spec.name}/JGSDevice/**/JGSiOSDeviceList.json-v20221110.sec",
+        "#{spec.name}/JGSDevice/**/JGSiOSDeviceList.json.sec",
         "#{spec.name}/JGSIntegrityCheck/**/JGSIntegrityCheckRecordResourcesHash.sh",
       ]
     }
@@ -307,7 +307,7 @@ Pod::Spec.new do |spec|
       }
       # JGSDevice 资源清理
       if [[ ''${JGSDeviceInstalled} != 'YES' ]]; then
-        RemoveUninstalledSubspecResource "JGSiOSDeviceList.json-v20221110.sec"
+        RemoveUninstalledSubspecResource "JGSiOSDeviceList.json.sec"
       fi
       # JGSIntegrityCheck 资源清理
       if [[ ''${JGSIntegrityCheckInstalled} != 'YES' ]]; then

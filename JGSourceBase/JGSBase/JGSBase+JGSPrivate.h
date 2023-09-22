@@ -14,16 +14,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JGSBaseUtils (JGSPrivate)
-
-/// 从git仓库加载文件内容
-/// - Parameters:
-///   - urlString: 文件路径，相对于仓库的根目录
-///   - completion: 加载结果回调
-+ (void)requestGitRepositoryFileContent:(NSString *)filePath completion:(void (^)(NSData * _Nullable fileData))completion;
-
-@end
-
 /// 是否开启内部调试日志，默认不开启打印日志
 FOUNDATION_EXTERN BOOL JGSPrivateLogEnable;
 #define JGSPrivateLogWithModeLevel(mode, level, fmt, ...) JGSLogWithArgs(mode, level, __FILE__, __PRETTY_FUNCTION__, __LINE__, @"" fmt "", ## __VA_ARGS__)
@@ -46,8 +36,5 @@ FOUNDATION_EXTERN BOOL JGSPrivateLogEnable;
 FOUNDATION_EXTERN NSString * const JGSTemporaryFileSavedDirectory(void);
 // 永久存储文件路径文件夹
 FOUNDATION_EXTERN NSString * const JGSPermanentFileSavedDirectory(void);
-
-// 远程仓库最新资源配置信息
-FOUNDATION_EXTERN NSDictionary<NSString *, id> * const _Nullable JGSLatestGlobalConfiguration(void);
 
 NS_ASSUME_NONNULL_END

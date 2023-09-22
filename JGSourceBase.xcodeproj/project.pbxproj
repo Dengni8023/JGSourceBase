@@ -89,7 +89,6 @@
 		D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */; };
 		D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */; };
 		D4830D1329F91CD500B42377 /* JGSSwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1229F91CD500B42377 /* JGSSwiftyJSON.swift */; };
-		D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
 		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
@@ -98,6 +97,7 @@
 		D4BDE1CD286DD6CC006FDCA5 /* rsa_private_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C9286DD6CC006FDCA5 /* rsa_private_2048.pem */; };
 		D4BDE1CE286DD6CC006FDCA5 /* rsa_private_2048.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CA286DD6CC006FDCA5 /* rsa_private_2048.p12 */; };
 		D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */; };
+		D4C92CC62ABC94D800F7D18C /* JGSiOSDeviceList.json.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */; };
 		D4CDDA342A8626CC00C9DF79 /* JGSMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDDA332A8626CC00C9DF79 /* JGSMeasurable.swift */; };
 		D4D0369E2885071200BA8FAE /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -342,7 +342,6 @@
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
 		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
-		D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JGSiOSDeviceList.json-v20221110.sec"; sourceTree = "<group>"; };
 		D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_private_1024.p12; sourceTree = "<group>"; };
 		D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = rsa_public_1024.der; sourceTree = "<group>"; };
 		D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_1024.pem; sourceTree = "<group>"; };
@@ -875,7 +874,6 @@
 			children = (
 				D4D697832806E0F900CE1F9F /* JGSiOSDeviceList-Origin.json */,
 				D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */,
-				D4B86C7C291E3A9F006FB770 /* JGSiOSDeviceList.json-v20221110.sec */,
 				D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */,
 			);
 			path = Resources;
@@ -1331,8 +1329,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C92CC62ABC94D800F7D18C /* JGSiOSDeviceList.json.sec in Resources */,
 				D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */,
-				D4B86C7D291E3AAC006FB770 /* JGSiOSDeviceList.json-v20221110.sec in Resources */,
 				D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */,
 				D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */,
 				D4EBE98C2850CCD00041E21B /* icon_29pt@2x.png in Resources */,

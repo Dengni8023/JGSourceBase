@@ -11,8 +11,8 @@
 
 JGSVersion = 1.4.1
 JGSBuild = 20221116
-JGSLastCommitDate = 20230621
-JGSLastCommitTime = 20230621.142731
-JGSLastCommitID = 2651b42
+JGSLastCommitDate = 20230921
+JGSLastCommitTime = 20230921.233447
+JGSLastCommitID = dd447fe
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) JGSUserAgent='"JGSourceBase/${JGSVersion}"' JGSVersion='"${JGSVersion}"' JGSBuild='"${JGSBuild}"' JGSResourcesCheckFileHashSecuritySalt='"JGSIntegrityCheck"' JGSApplicationIntegrityCheckFileHashFile='"JGSApplicationIntegrityCheckFileHashFile"'
