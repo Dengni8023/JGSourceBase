@@ -183,6 +183,7 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
     
     // JSON 文件整理
     NSArray<NSString *> *sortFiles = @[
+        @"JGSourceBase/JGSDevice/Resources/JGSiOSDeviceList-Origin.json"
     ];
     
     [sortFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

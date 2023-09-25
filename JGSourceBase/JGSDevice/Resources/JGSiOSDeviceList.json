@@ -737,6 +737,30 @@
     "SizePT" : "932x430",
     "SizePX" : "2796x1290"
   },
+  "iPhone15,4" : {
+    "Generation" : "iPhone 15",
+    "Scale" : "3x",
+    "SizePT" : "852x393",
+    "SizePX" : "2556x1179"
+  },
+  "iPhone15,5" : {
+    "Generation" : "iPhone 15 Plus",
+    "Scale" : "3x",
+    "SizePT" : "932x430",
+    "SizePX" : "2796x1290"
+  },
+  "iPhone16,1" : {
+    "Generation" : "iPhone 15 Pro",
+    "Scale" : "3x",
+    "SizePT" : "852x393",
+    "SizePX" : "2556x1179"
+  },
+  "iPhone16,2" : {
+    "Generation" : "iPhone 15 Pro Max",
+    "Scale" : "3x",
+    "SizePT" : "932x430",
+    "SizePX" : "2796x1290"
+  },
   "iPod1,1" : {
     "Generation" : "iPod touch",
     "Scale" : "1x",
@@ -778,5 +802,17 @@
     "Scale" : "2x",
     "SizePT" : "568x320",
     "SizePX" : "1136x640"
+  },
+  "Unknown iPad Pro (11-inch) (4th generation)" : {
+    "Generation" : "iPad Pro (11-inch) (4th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1194x834",
+    "SizePX" : "2388x1668"
+  },
+  "Unknown iPad Pro (12.9-inch) (6th generation)" : {
+    "Generation" : "iPad Pro (12.9-inch) (6th generation)",
+    "Scale" : "2x",
+    "SizePT" : "1366x1024",
+    "SizePX" : "2732x2048"
   }
 }
