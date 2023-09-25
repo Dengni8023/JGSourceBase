@@ -56,42 +56,11 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let testJSON = """
-        {
-          "name": "老师1",
-          "age": 0,
-          "type": "teacher",
-          "adminPerson": [
-            {
-              "name": "老师2",
-              "age": 0,
-              "type": 1,
-              "adminPerson": [
-                {
-                  "name": "学生2",
-                  "age": 0,
-                  "type": "student"
-                }
-              ]
-            },
-            {
-              "name": "学生1",
-              "age": 0,
-              "type": 2
-            }
-          ]
-        }
-        """
-        
-        let structObj = PersonStruct.deserialize(from: testJSON)
-        print(structObj)
-        let classObj = PersonClass.deserialize(from: testJSON)
-        print(classObj)
-        return;
+        JGSLog(String.jg_transform(from: ["key":"value", "number": 0] as [String: Any]) as Any);
+        JGSLog(NSString.jg_transform(from: ["key":"value", "number": 0] as [String : Any]) as Any);
         
         let _set: Set<AnyHashable> = Set([1, "2", ["3": "4"]])
         JGSLog(Array<Any>.jg_transform(from: _set))
-        return;
         
         let intV: Int = 12
         let dicT: [String: Any] = [
@@ -139,7 +108,7 @@ class SwiftViewController: JGSDViewController {
                    "array:", dicT.jg_array(forKey: key), "\n",
                    ""
             )
-            if let value = dicT[key] as? JGSSwiftyJSON {
+            if let value = dicT[key] as? JGSJSON {
                 JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
                        "string:", value.jg_string, "\n",
                        "number:", value.jg_number, "\n",
@@ -166,7 +135,6 @@ enum PersonStrType: String, JGSJSONEnum {
 }
 
 struct PersonStruct: JGSJSON {
-    
     var name: String?
     var age: Int = 0
     var type: PersonStrType = .other
@@ -174,9 +142,9 @@ struct PersonStruct: JGSJSON {
 }
 
 enum PersonIntType: Int, JGSJSONEnum {
+    case other = 0
     case teacher = 1
     case student = 2
-    case other = 0
 }
 
 struct PersonClass: JGSJSON {

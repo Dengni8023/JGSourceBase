@@ -8,11 +8,14 @@
 
 import Foundation
 
-internal protocol JGSBuildInBasicType: JGSTransformable {}
+public protocol JGSBuildInBasicType: JGSTransformable {
+    static func jg_transform(from object: Any?) -> Self?
+    func jg_plainValue() -> Any?
+}
 
 // MARK: - Integer
 
-internal protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
+protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
     // Swift.Math.Integers/FixedWidthInteger
     // @inlinable public init?<S>(_ text: S, radix: Int = 10) where S : StringProtocol
     init?(_ text: String, radix: Int)
@@ -25,11 +28,9 @@ internal protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
 }
 
 extension JGSIntegerProtocol {
-    static func jg_transform(from object: Any?) -> Self? {
-        guard let object = object else {
-            return nil
-        }
-
+    public static func jg_transform(from object: Any?) -> Self? {
+        guard let object = object else { return nil }
+        
         switch object {
         case let str as String:
             return Self(str, radix: 10) // 10进制
@@ -40,7 +41,7 @@ extension JGSIntegerProtocol {
         }
     }
 
-    func jg_plainValue() -> Any? {
+    public func jg_plainValue() -> Any? {
         return self
     }
 }
@@ -60,13 +61,19 @@ extension UInt64: JGSIntegerProtocol {}
 
 extension Bool: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> Bool? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
 
         switch object {
         case let str as String:
             let lower = str.lowercased()
+            if ["0", "f", "false", "n", "no"].contains(lower) {
+                return false
+            } else if ["1", "t", "true", "y", "yes"].contains(lower) {
+                return true
+            }
+            return nil
+        case let str as NSString:
+            let lower = str.lowercased
             if ["0", "f", "false", "n", "no"].contains(lower) {
                 return false
             } else if ["1", "t", "true", "y", "yes"].contains(lower) {
@@ -87,7 +94,7 @@ extension Bool: JGSBuildInBasicType {
 
 // MARK: - Float
 
-internal protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType {
+protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType {
     // Swift.Math.Floating/Float
     // @inlinable public init?<S>(_ text: S) where S : StringProtocol
     init?(_ text: String)
@@ -100,10 +107,8 @@ internal protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicTy
 }
 
 extension JGSFloatProtocol {
-    static func jg_transform(from object: Any?) -> Self? {
-        guard let object = object else {
-            return nil
-        }
+    public static func jg_transform(from object: Any?) -> Self? {
+        guard let object = object else { return nil }
 
         switch object {
         case let str as String:
@@ -115,7 +120,7 @@ extension JGSFloatProtocol {
         }
     }
 
-    func jg_plainValue() -> Any? {
+    public func jg_plainValue() -> Any? {
         return self
     }
 }
@@ -123,7 +128,7 @@ extension JGSFloatProtocol {
 extension Float: JGSFloatProtocol {}
 extension Double: JGSFloatProtocol {}
 
-// MARK: - JGSBuildInBasicType
+// MARK: - String & URL
 
 fileprivate let JGSNumberFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
@@ -135,16 +140,10 @@ fileprivate let JGSNumberFormatter: NumberFormatter = {
 
 extension String: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> String? {
-        return jg_transform(from: object, jsonOptions: nil)
-    }
-
-    public static func jg_transform(from object: Any?, jsonOptions: JSONSerialization.WritingOptions? = [.sortedKeys, .prettyPrinted]) -> String? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
 
         // JSON Object -> String
-        let options = jsonOptions ?? [.sortedKeys, .prettyPrinted]
+        let options: JSONSerialization.WritingOptions = [.sortedKeys, .prettyPrinted]
         if JSONSerialization.isValidJSONObject(object),
            let _data = try? JSONSerialization.data(withJSONObject: object, options: options),
            let json = String(data: _data, encoding: .utf8) {
@@ -162,7 +161,9 @@ extension String: JGSBuildInBasicType {
                 return utf8
             }
             
-            // Base64 Encoded String
+            // 如不能直接转UTF8字符串，考虑可能是加密数据
+            // 进行Base64编码为UTF8字符串（Base64编码后的数据为UTF8编码）
+            // .endLineWithLineFeed: 保持Android、ios、后台统一
             return _data.base64EncodedString(options: [.endLineWithLineFeed])
         }
         
@@ -176,16 +177,6 @@ extension String: JGSBuildInBasicType {
                 return num.boolValue ? "true" : "false"
             }
             return JGSNumberFormatter.string(from: num)
-        case let _data as Data:
-            if let utf8 = String(data: _data, encoding: .utf8) {
-                return utf8
-            } else {
-                // 如不能直接转UTF8字符串，考虑可能是加密数据
-                // 进行Base64编码为UTF8字符串（Base64编码后的数据为UTF8编码）
-                // .endLineWithLineFeed: 保持Android、ios、后台统一
-                let base64 = _data.base64EncodedString(options: .endLineWithLineFeed)
-                return base64.count > 0 ? base64 : nil
-            }
         case _ as NSNull:
             return nil
         default:
@@ -200,9 +191,7 @@ extension String: JGSBuildInBasicType {
 
 extension URL: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> URL? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
         
         switch object {
         case let _url as URL:
@@ -223,7 +212,7 @@ extension URL: JGSBuildInBasicType {
     }
     
     public func jg_plainValue() -> Any? {
-        return self.absoluteString.removingPercentEncoding
+        return self.absoluteString
     }
 }
 
@@ -231,9 +220,7 @@ extension URL: JGSBuildInBasicType {
 
 extension Optional: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> Optional<Wrapped>? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
 
         if let value = (Wrapped.self as? JGSTransformable.Type)?.jg_transform(from: object) as? Wrapped {
             return Optional(value)
@@ -260,13 +247,11 @@ extension Optional: JGSBuildInBasicType {
     }
 }
 
-// MARK: Collection Support : Array & Set
+// MARK: - Collection Support : Array & Set
 
 public extension Collection {
     static func jg_collectionTransform(from object: Any?) -> [Element]? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
 
         var elements = object as? [Any]
         var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
@@ -298,6 +283,7 @@ public extension Collection {
             if Element.self == Any.self, let element = each as? Element {
                 result.append(element)
             } else if let element = (Element.self as? JGSTransformable.Type)?.jg_transform(from: each) as? Element {
+                // 转换
                 result.append(element)
             } else if let element = each as? Element {
                 result.append(element)
@@ -314,6 +300,7 @@ public extension Collection {
         forEach { each in
             if let transformable = each as? JGSTransformable {
                 if let transValue = transformable.jg_plainValue() as? Element {
+                    // 转换
                     result.append(transValue)
                 } else {
                     JGSPrivateLog("Expect element to be \(type(of: Element.self)) but it's \(type(of: transformable))")
@@ -326,10 +313,10 @@ public extension Collection {
     }
 }
 
-// MARK: - JGSBuildInBasicType
+// MARK: - Array & Set
 
 extension Array: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> Array<Element>? {
+    public static func jg_transform(from object: Any?) -> [Element]? {
         return jg_collectionTransform(from: object)
     }
 
@@ -351,13 +338,11 @@ extension Set: JGSBuildInBasicType {
     }
 }
 
-// MARK: - JGSBuildInBasicType
+// MARK: - Dictionary
 
 extension Dictionary: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> Dictionary<Key, Value>? {
-        guard let object = object else {
-            return nil
-        }
+        guard let object = object else { return nil }
         
         var keyValues = object as? [AnyHashable: Any]
         var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
@@ -388,6 +373,7 @@ extension Dictionary: JGSBuildInBasicType {
                 if Value.self == Any.self, let value = value as? Value {
                     result[key] = value
                 } else if let value = (Value.self as? JGSTransformable.Type)?.jg_transform(from: value) as? Value {
+                    // 转换
                     result[key] = value
                 } else if let value = value as? Value {
                     result[key] = value
@@ -406,6 +392,7 @@ extension Dictionary: JGSBuildInBasicType {
         forEach { pair in
             if let transformable = pair.value as? JGSTransformable {
                 if let transValue = transformable.jg_plainValue() as? Value {
+                    // 转换
                     result[pair.key] = transValue
                 } else {
                     JGSPrivateLog("Expect value to be \(type(of: Value.self)) but it's \(type(of: transformable))")

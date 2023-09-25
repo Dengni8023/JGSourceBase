@@ -24,8 +24,8 @@ Pod::Spec.new do |spec|
   end
   def self.smart_host
     # 网络防火墙问题，优先使用 Gitee
-    # "github.com"
-    "gitee.com"
+    "github.com"
+    # "gitee.com"
   end
   def self.smart_version
     # tag = `git describe --abbrev=0 --tags 2>/dev/null`.strip
@@ -119,7 +119,8 @@ Pod::Spec.new do |spec|
   # 5.6: Xcode 13.3
   # 5.7: Xcode 14.2
   # 5.8: Xcode 14.3
-  spec.swift_versions = ["5.6", "5.7", "5.8"]
+  # 5.9: Xcode 15
+  spec.swift_versions = ["5.6", "5.7", "5.8", "5.9"]
 
   #  (选填) 支持的CocoaPods版本
   spec.cocoapods_version = '>= 1.10'

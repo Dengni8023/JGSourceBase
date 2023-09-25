@@ -8,12 +8,13 @@
 
 import Foundation
 
-internal protocol JGSBuildInBridgeType: JGSTransformable {
+public protocol JGSBuildInBridgeType: JGSTransformable {
     static func jg_transform(from object: Any?) -> JGSBuildInBridgeType?
+    func jg_plainValue() -> Any?
 }
 
 extension NSNull: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if object == nil {
             return NSNull()
         }
@@ -29,9 +30,9 @@ extension NSNull: JGSBuildInBridgeType {
 }
 
 extension NSString: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if let str = String.jg_transform(from: object) {
-            return NSString(string: str) as! Self
+            return NSString(string: str)
         }
         return nil
     }
@@ -42,7 +43,7 @@ extension NSString: JGSBuildInBridgeType {
 }
 
 extension NSURL: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
         if let _url = URL.jg_transform(from: object) {
             return NSURL(string: _url.absoluteString) as? Self
         }
@@ -50,15 +51,13 @@ extension NSURL: JGSBuildInBridgeType {
     }
     
     public func jg_plainValue() -> Any? {
-        return self.absoluteString?.removingPercentEncoding
+        return self.absoluteString
     }
 }
 
 extension NSNumber: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else {
-            return nil
-        }
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+        guard let object = object else { return nil }
         
         switch object {
         case let num as NSNumber:
@@ -75,21 +74,31 @@ extension NSNumber: JGSBuildInBridgeType {
                 formatter.numberStyle = .decimal
                 return formatter.number(from: str)
             }
+        case let str as NSString:
+            let lower = str.lowercased
+            if ["0", "f", "false", "n", "no"].contains(lower) {
+                return NSNumber(booleanLiteral: false)
+            } else if ["1", "t", "true", "y", "yes"].contains(lower) {
+                return NSNumber(booleanLiteral: true)
+            } else {
+                // normal number
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .decimal
+                return formatter.number(from: str as String)
+            }
         default:
             return nil
         }
     }
-
+    
     public func jg_plainValue() -> Any? {
         return self
     }
 }
 
 extension NSArray: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else {
-            return nil
-        }
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+        guard let object = object else { return nil }
         
         var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
         if #available(iOS 15.0, *) {
@@ -111,15 +120,13 @@ extension NSArray: JGSBuildInBridgeType {
     }
 
     public func jg_plainValue() -> Any? {
-        return (self as? Self)?.jg_plainValue()
+        return (self as? Array<Any>)?.jg_plainValue()
     }
 }
 
 extension NSDictionary: JGSBuildInBridgeType {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else {
-            return nil
-        }
+    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+        guard let object = object else { return nil }
         
         var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
         if #available(iOS 15.0, *) {
@@ -141,6 +148,6 @@ extension NSDictionary: JGSBuildInBridgeType {
     }
 
     public func jg_plainValue() -> Any? {
-        return (self as? Self)?.jg_plainValue()
+        return (self as? Dictionary<String, Any>)?.jg_plainValue()
     }
 }
