@@ -9,10 +9,10 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-JGSVersion = 1.4.1
-JGSBuild = 20221116
-JGSLastCommitDate = 20230922
-JGSLastCommitTime = 20230922.092350
-JGSLastCommitID = b5b7c74
+JGSVersion = 1.4.2
+JGSBuild = 20230925
+JGSLastCommitDate = 20230925
+JGSLastCommitTime = 20230925.212329
+JGSLastCommitID = 027baf9
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) JGSUserAgent='"JGSourceBase/${JGSVersion}"' JGSVersion='"${JGSVersion}"' JGSBuild='"${JGSBuild}"' JGSResourcesCheckFileHashSecuritySalt='"JGSIntegrityCheck"' JGSApplicationIntegrityCheckFileHashFile='"JGSApplicationIntegrityCheckFileHashFile"'

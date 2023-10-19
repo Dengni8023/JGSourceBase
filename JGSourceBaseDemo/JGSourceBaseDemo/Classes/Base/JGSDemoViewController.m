@@ -336,11 +336,8 @@ NSDictionary<NSAttributedStringKey, id> *JGSDemoSubTitleTextAttributes(void) {
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     cell.textLabel.text = self.demoData[indexPath.section].rows[indexPath.row].title;
-    
-#ifdef JGSCategory_UIColor_h
     cell.backgroundColor = JGSColorHex(arc4random() % 0x01000000);
     cell.contentView.backgroundColor = JGSColorHex(0xffffff);
-#endif
     
     return cell;
 }

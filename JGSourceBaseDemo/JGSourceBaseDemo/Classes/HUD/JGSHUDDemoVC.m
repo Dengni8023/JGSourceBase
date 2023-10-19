@@ -7,6 +7,7 @@
 //
 
 #import "JGSHUDDemoVC.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface JGSHUDDemoVC ()
 
@@ -26,7 +27,6 @@
 - (NSArray<JGSDemoTableSectionData *> *)tableSectionData {
 	
 	return @[
-#ifdef JGSLoadingHUD_h
 		// Section 全屏Loading
 		JGSDemoTableSectionMake(@" 全屏Loading",
 		@[
@@ -50,9 +50,8 @@
 			JGSDemoTableRowMake(@"Default 无边框", self, @selector(showLoadingHUD:)),
 			JGSDemoTableRowMake(@"Indicator 无边框", self, @selector(showLoadingHUD:)),
 			JGSDemoTableRowMake(@"Custom Icon 无边框", self, @selector(showLoadingHUD:)),
+            JGSDemoTableRowMake(@"Custom gif 无边框", self, @selector(showLoadingHUD:)),
 		]),
-#endif
-#ifdef JGSToast_h
 		// Section 全屏Toast
 		JGSDemoTableSectionMake(@" 全屏Toast",
 		@[
@@ -63,12 +62,10 @@
 			JGSDemoTableRowMake(@"Bottom样式", self, @selector(showToastHUD:)),
 			JGSDemoTableRowMake(@"Default样式+completion", self, @selector(showToastHUD:)),
 		]),
-#endif
 	];
 }
 
 #pragma mark - Action
-#ifdef JGSLoadingHUD_h
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog(self, @"");
@@ -120,9 +117,7 @@
                     
                 case 2: {
                     static BOOL show = NO; show = !show;
-#ifdef JGSCategory_UIColor_h
                     [JGSLoadingHUDStyle sharedStyle].spinningLineColor = show ? JGSColorRGB(128, 100, 72) : nil;
-#endif
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeSpinningCircle message:@"JGSHUD"];
                 }
                     break;
@@ -130,9 +125,7 @@
                 case 3: {
                     
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
-#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
                 }
@@ -140,9 +133,7 @@
                     
                 case 4: {
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
-#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:@"Loading..."];
                 }
@@ -175,12 +166,33 @@
                     break;
                     
                 case 2: {
-                    static BOOL show = NO; show = !show;
                     UIImage *hudImg = [UIImage imageNamed:@"AppIcon"];
-#ifdef JGSCategory_UIImage_h
                     hudImg = [hudImg jg_imageScaleAspectFit:CGSizeMake(60, 60)];
-#endif
                     [JGSLoadingHUDStyle sharedStyle].customView = [[UIImageView alloc] initWithImage:hudImg];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
+                    [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
+                    [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = nil; // 还原设置
+                }
+                    break;
+                    
+                case 3: {
+                    static int show = 0; show += 1;
+                    NSString *gifName = @[@"LoadingWithAlpha-1.gif",
+                                          @"LoadingWithAlpha-2.gif",
+                                          @"LoadingWithAlpha-3.gif",
+                                          @"LoadingWithAlpha-4.gif",
+                                          @"LoadingWithAlpha-5.gif",
+                                          @"LoadingWithoutAlpha-1.gif"][show % 6];
+                    show = show >= 6 ? 0 : show;
+                    NSData *gifData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:gifName ofType:nil]];
+                    UIImageView *gifImgView = [[UIImageView alloc] initWithImage:[UIImage sd_imageWithData:gifData]];
+                    gifImgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.28];
+                    
+                    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:gifImgView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:120];
+                    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:gifImgView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:120];
+                    [gifImgView addConstraints:@[width, height]];
+                    
+                    [JGSLoadingHUDStyle sharedStyle].customView = gifImgView;
                     [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = [UIColor clearColor];
                     [JGSLoadingHUD showLoadingHUD:JGSHUDTypeCustomView message:nil];
                     [JGSLoadingHUDStyle sharedStyle].bezelBackgroundColor = nil; // 还原设置
@@ -203,9 +215,7 @@
         [self.view jg_hideLoading];
     });
 }
-#endif
 
-#ifdef JGSToast_h
 - (void)showToastHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog(self, @"");
@@ -248,7 +258,6 @@
             break;
     }
 }
-#endif
 
 /*
 #pragma mark - Navigation

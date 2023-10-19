@@ -71,6 +71,8 @@ abstract_target "JGSBase" do
     #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
     pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
     
+    pod 'SDWebImage', '~> 5.15.8' # https://github.com/SDWebImage/SDWebImage
+    
     # 语法说明：https://blog.csdn.net/holdsky/article/details/87876221
     script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile, :input_files => ["$(SRC_ROOT)/JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/Info.plist"]
     

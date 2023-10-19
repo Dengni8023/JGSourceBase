@@ -2,16 +2,21 @@ PODS:
   - IQKeyboardManager (6.5.10)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.10)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
   - MBProgressHUD
+  - SDWebImage (~> 5.15.8)
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - IQKeyboardManager
     - MBProgressHUD
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Masonry:
@@ -27,7 +32,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
 
-PODFILE CHECKSUM: 286a18b65323e259bcc83534fe1cccf544908259
+PODFILE CHECKSUM: ec25f62e92b6f570bb1408e4857f390e8a817983
 
 COCOAPODS: 1.11.1
