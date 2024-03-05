@@ -737,10 +737,10 @@
 		D45E317D288A877E001D4119 /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
+				D44498A029E0377300BC6D9C /* Array+JGSBase.swift */,
 				D45E317E288A8796001D4119 /* JGSCategory+NSArray.h */,
 				D45E317F288A880D001D4119 /* NSArray+JGSBase.h */,
 				D45E3180288A880D001D4119 /* NSArray+JGSBase.m */,
-				D44498A029E0377300BC6D9C /* Array+JGSBase.swift */,
 			);
 			path = NSArray;
 			sourceTree = "<group>";

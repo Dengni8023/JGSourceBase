@@ -261,7 +261,11 @@ private extension JGSLogDescription {
             if #available(iOS 15.0, *) {
                 options.insert(.json5Allowed)
             }
-            if let data = stringObj.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data, options: options) {
+            if ["{", "["].filter({ prefix in
+                stringObj.hasPrefix(prefix)
+            }).count > 0,
+                let data = stringObj.data(using: .utf8),
+                let json = try? JSONSerialization.jsonObject(with: data, options: options) {
                 if let dict = json as? Dictionary<AnyHashable, Any> {
                     return "(JSON -> Dictionary) " + dict.jg_logDescription()
                 } else if let array = json as? Array<Any> {

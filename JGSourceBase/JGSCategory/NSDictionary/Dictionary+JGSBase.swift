@@ -107,6 +107,9 @@ extension Dictionary where Key : Hashable {
         }
         let nilString: String? = nil
         if let string = value as? String,
+           ["{", "["].filter({ prefix in
+               string.hasPrefix(prefix)
+           }).count > 0,
            value is String || type(of: value) == type(of: nilString),
            let jsonData = string.data(using: .utf8),
            let object = try? JSONSerialization.jsonObject(with: jsonData, options: options) as? T {

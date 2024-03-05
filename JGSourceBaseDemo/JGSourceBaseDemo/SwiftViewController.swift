@@ -93,6 +93,11 @@ class SwiftViewController: JGSDViewController {
             "Double2": "103.1236547",
             "Double3": ".01",
         ]
+        
+        JGSLog(Dictionary<String, Any>.jg_transform(from: dicT))
+        JGSLog()
+        JGSLog(Dictionary<String, Any>.jg_transform(from: try? JSONSerialization.data(withJSONObject: dicT)))
+        
         dicT.forEach { (key: String, value: Any) in
             
             JGSLog("Set: ", Set<AnyHashable>.jg_transform(from: value))

@@ -107,12 +107,19 @@ extension NSArray: JGSBuildInBridgeType {
         
         // JSON String -> NSArray
         if let str = object as? String,
+           ["{", "["].filter({ prefix in
+               str.hasPrefix(prefix)
+           }).count > 0,
            let data = str.data(using: .utf8),
            let collection = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
             return collection
         }
         // JSON Data -> NSArray
-        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
+        else if let _data = object as? Data,
+                ["{", "["].filter({ prefix in
+                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
+                }).count > 0,
+                let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
             return collection
         }
         
@@ -135,12 +142,19 @@ extension NSDictionary: JGSBuildInBridgeType {
         
         // JSON String -> Dictionary
         if let str = object as? String,
+           ["{", "["].filter({ prefix in
+               str.hasPrefix(prefix)
+           }).count > 0,
            let data = str.data(using: .utf8),
            let dict = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
             return dict
         }
         // JSON Data -> Dictionary
-        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
+        else if let _data = object as? Data,
+                ["{", "["].filter({ prefix in
+                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
+                }).count > 0,
+                let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
             return dict
         }
         

@@ -261,17 +261,23 @@ public extension Collection {
         
         // JSON String -> Collection
         if let str = object as? String,
+           ["{", "["].filter({ prefix in
+               str.hasPrefix(prefix)
+           }).count > 0,
            let _data = str.data(using: .utf8),
            let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
             elements = collection
         }
         // JSON Data -> Collection
-        else if let _data = object as? Data, let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
+        else if let _data = object as? Data,
+                ["{", "["].filter({ prefix in
+                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
+                }).count > 0,
+                let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
             elements = collection
         }
 
         guard let elements = elements else {
-            JGSPrivateLog("Expect object to be \(type(of: Self.self)) but it's \(type(of: object))")
             return nil
         }
         
@@ -352,17 +358,23 @@ extension Dictionary: JGSBuildInBasicType {
         
         // JSON String -> Dictionary
         if let str = object as? String,
+           ["{", "["].filter({ prefix in
+               str.hasPrefix(prefix)
+           }).count > 0,
            let data = str.data(using: .utf8),
            let dict = try? JSONSerialization.jsonObject(with: data, options: options) as? [AnyHashable: Any] {
             keyValues = dict
         }
         // JSON Data -> Dictionary
-        else if let _data = object as? Data, let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? [AnyHashable: Any] {
+        else if let _data = object as? Data,
+                ["{", "["].filter({ prefix in
+                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
+                }).count > 0,
+                let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? [AnyHashable: Any] {
             keyValues = dict
         }
         
         guard let keyValues = keyValues else {
-            JGSPrivateLog("Expect object to be Dictionary but it's not")
             return nil
         }
         

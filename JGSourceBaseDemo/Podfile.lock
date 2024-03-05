@@ -1,21 +1,26 @@
 PODS:
   - IQKeyboardManager (6.5.10)
-  - JGSourceBase/Base (1.4.1)
-  - JGSourceBase/Category (1.4.1):
+  - JGSourceBase/Base (1.4.2)
+  - JGSourceBase/Category (1.4.2):
     - JGSourceBase/Base
     - JGSourceBase/JSON
-  - JGSourceBase/JSON (1.4.1):
+  - JGSourceBase/JSON (1.4.2):
     - JGSourceBase/Base
   - Masonry (1.1.0)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
 
 DEPENDENCIES:
   - IQKeyboardManager (~> 6.5.10)
   - JGSourceBase/Category (from `./..`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+  - SDWebImage (~> 5.15.8)
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - IQKeyboardManager
+    - SDWebImage
 
 EXTERNAL SOURCES:
   JGSourceBase:
@@ -31,9 +36,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: dd77a127bad93c1ad1e60d4a03359296dd17a9a5
+  JGSourceBase: c854d51ca17c12ec36300befbc666f58b2c17384
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
 
-PODFILE CHECKSUM: 3da64efbb1fb7e419a2ac4e4f2b4cf0f5caca936
+PODFILE CHECKSUM: 8bc9defcdc54c1ec55342495da7249c00aaca886
 
 COCOAPODS: 1.11.1
