@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		59867B27DF3DFF7986CFA8E2 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C70E3950572E7D1BB3ACDD1 /* Pods_JGSBase_JGSourceBaseDemo.framework */; };
 		B62322A4AFEA61DB451AB92A /* Pods_JGSBase_JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF1BC84BA468BAF5CFD16D4 /* Pods_JGSBase_JGSourceBase.framework */; };
+		D40139362BB452A6007BB1F2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D40139352BB43D51007BB1F2 /* PrivacyInfo.xcprivacy */; };
 		D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */ = {isa = PBXBuildFile; fileRef = D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */; };
 		D4075AE22863123300E4BFEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE12863123300E4BFEA /* AppDelegate.m */; };
 		D4075AE82863123300E4BFEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4075AE72863123300E4BFEA /* ViewController.m */; };
@@ -221,6 +222,7 @@
 		44F47704EE52548EB1D2C86A /* Pods-JGSBase-JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBase.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBase/Pods-JGSBase-JGSourceBase.release.xcconfig"; sourceTree = "<group>"; };
 		4AEB5C4410B3DA7C0E2E65A8 /* Pods-JGSBase-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9C70E3950572E7D1BB3ACDD1 /* Pods_JGSBase_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSBase_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40139352BB43D51007BB1F2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		D403B1322850335200F4F304 /* JGSourceBase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D403B13A2850356900F4F304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1102,6 +1104,7 @@
 				D4B7DF352834EBC400BFAE79 /* JGSourceBase.xcconfig */,
 				D4D6976C2806E0F900CE1F9F /* JGSReachability */,
 				D4D697962806E0F900CE1F9F /* JGSSecurityKeyboard */,
+				D40139352BB43D51007BB1F2 /* PrivacyInfo.xcprivacy */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -1309,6 +1312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4C92CC62ABC94D800F7D18C /* JGSiOSDeviceList.json.sec in Resources */,
+				D40139362BB452A6007BB1F2 /* PrivacyInfo.xcprivacy in Resources */,
 				D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */,
 				D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */,
 				D403B1392850344D00F4F304 /* JGSIntegrityCheckRecordResourcesHash.sh in Resources */,
@@ -1834,8 +1838,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1894,8 +1898,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

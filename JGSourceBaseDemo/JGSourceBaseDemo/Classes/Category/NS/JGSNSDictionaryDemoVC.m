@@ -58,8 +58,8 @@
             @"HexVale": @"0xff",
             @"TwoVale": @"0b10",
             @"EightVale": @"010",
-            @"ArrayValue": @[@"Array Value 1", @"Array Value 2"],
-            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2"},
+            @"ArrayValue": @[@"Array Value 1", @"Array Value 2", @"Array中文输出：你好啊", @[@"嵌套Array"]],
+            @"Dictionary": @{@"Key 1": @"Value 1", @"Key 2": @"Value 2", @"CN-Value": @"Dictionary中文输出：你好吗", @"Dict": @{@"key": @"嵌套字典Value"}},
         };
     });
     
@@ -73,14 +73,14 @@
                 
                 JGSStrongSelf
                 id value = [storeDictionary jg_objectForKey:obj];
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, number value: %@", NSStringFromClass([value class]), value, [storeDictionary jg_numberForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, short value: %d", NSStringFromClass([value class]), value, [storeDictionary jg_shortForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, integer value: %zd", NSStringFromClass([value class]), value, [storeDictionary jg_integerForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, long value: %ld", NSStringFromClass([value class]), value, [storeDictionary jg_longForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, float value: %f", NSStringFromClass([value class]), value, [storeDictionary jg_floatForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, bool value: %@", NSStringFromClass([value class]), value, [storeDictionary jg_boolForKey:obj] ? @"YES" : @"NO");
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, CGFloat value: %lf", NSStringFromClass([value class]), value, [storeDictionary jg_CGFloatForKey:obj]);
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, unsignedInt value: %u", NSStringFromClass([value class]), value, [storeDictionary jg_unsignedIntForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, number value: %@", obj, NSStringFromClass([value class]), value, [storeDictionary jg_numberForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, short value: %d", obj, NSStringFromClass([value class]), value, [storeDictionary jg_shortForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, integer value: %zd", obj, NSStringFromClass([value class]), value, [storeDictionary jg_integerForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, long value: %ld", obj, NSStringFromClass([value class]), value, [storeDictionary jg_longForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, float value: %f", obj, NSStringFromClass([value class]), value, [storeDictionary jg_floatForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, bool value: %@", obj, NSStringFromClass([value class]), value, [storeDictionary jg_boolForKey:obj] ? @"YES" : @"NO");
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, CGFloat value: %lf", obj, NSStringFromClass([value class]), value, [storeDictionary jg_CGFloatForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, unsignedInt value: %u", obj, NSStringFromClass([value class]), value, [storeDictionary jg_unsignedIntForKey:obj]);
             }];
         }
             break;
@@ -92,7 +92,7 @@
                 
                 JGSStrongSelf
                 id value = [storeDictionary jg_objectForKey:obj];
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, array value: %@", NSStringFromClass([value class]), value, [storeDictionary jg_arrayForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, array value: %@", obj, NSStringFromClass([value class]), value, [storeDictionary jg_arrayForKey:obj]);
             }];
         }
             break;
@@ -104,7 +104,7 @@
                 
                 JGSStrongSelf
                 id value = [storeDictionary jg_objectForKey:obj];
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, array value: %@", NSStringFromClass([value class]), value, [storeDictionary jg_dictionaryForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, dictionary value: %@", obj, NSStringFromClass([value class]), value, [storeDictionary jg_dictionaryForKey:obj]);
             }];
         }
             break;
@@ -116,7 +116,7 @@
                 
                 JGSStrongSelf
                 id value = [storeDictionary jg_objectForKey:obj];
-                JGSDemoShowConsoleLog(self, @"%@ object: %@, string value: %@", NSStringFromClass([value class]), value, [storeDictionary jg_stringForKey:obj]);
+                JGSDemoShowConsoleLog(self, @"key: %@, %@ object: %@, string value: %@", obj, NSStringFromClass([value class]), value, [storeDictionary jg_stringForKey:obj]);
             }];
         }
             break;

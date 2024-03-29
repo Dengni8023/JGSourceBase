@@ -72,7 +72,7 @@ extension Dictionary where Key : Hashable {
         // T
         let nilT: T? = nil
         if value is T || type(of: value) == type(of: nilT) {
-            return value as? T
+            return (value as? T) ?? defaultValue
         }
         
         switch T.self {
@@ -88,10 +88,16 @@ extension Dictionary where Key : Hashable {
             return jg_double(forKey: key, default: defaultValue as? Double) as? T
         case _ as Bool.Type:
             return jg_bool(forKey: key, default: defaultValue as? Bool) as? T
+        case _ as [Key: Value].Type:
+            return jg_dictionary(forKey: key, default: defaultValue as? [Key: Value]) as? T
         case _ as Dictionary.Type:
             return jg_dictionary(forKey: key, default: defaultValue as? Dictionary) as? T
         //case _ as [AnyHashable: Any].Type:
         //    return jg_dictionary(forKey: key, default: defaultValue as? [AnyHashable: Any]) as? T
+        case _ as [Element].Type:
+            return jg_array(forKey: key, default: defaultValue as? [Element]) as? T
+        case _ as Array<Element>.Type:
+            return jg_array(forKey: key, default: defaultValue as? Array<Element>) as? T
         case _ as Array<Any>.Type:
             return jg_array(forKey: key, default: defaultValue as? Array) as? T
         //case _ as [Any].Type:
@@ -125,21 +131,20 @@ extension Dictionary where Key : Hashable {
         guard let value = self[key] else {
             return defaultValue
         }
-        
         return Dictionary<Key, Value>.jg_transform(from: value)
     }
     
     // Array
-    public func jg_array(forKey key: Key, default defaultValue: [Any]? = nil) -> [Any]? {
+    public func jg_array(forKey key: Key, default defaultValue: [Element]? = nil) -> [Element]? {
         guard let value = self[key] else {
             return defaultValue
         }
         
-        return Array<Any>.jg_transform(from: value)
+        return Array<Element>.jg_transform(from: value)
     }
     
     // Set
-    public func jg_set(forKey key: Key, default defaultValue: [AnyHashable]? = nil) -> Set<AnyHashable>? {
+    public func jg_set<Element>(forKey key: Key, default defaultValue: [Element]? = nil) -> Set<Element>? {
         guard let value = self[key] else {
             if let defaultValue = defaultValue {
                 return Set(defaultValue)
@@ -147,6 +152,6 @@ extension Dictionary where Key : Hashable {
             return nil
         }
         
-        return Set<AnyHashable>.jg_transform(from: value)
+        return Set<Element>.jg_transform(from: value)
     }
 }

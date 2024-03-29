@@ -17,10 +17,10 @@ Pod::Spec.new do |spec|
 
   # CocoaPods - Podspec文件配置讲解: https://www.jianshu.com/p/743bfd8f1d72
   def self.ios_version
-    "11.0" # iOS最低支持版本
+    "12.0" # iOS最低支持版本
   end
   def self.osx_version
-    "11.0" # osx最低支持版本
+    "13.0" # osx最低支持版本
   end
   def self.smart_host
     # 网络防火墙问题，优先使用 Gitee
@@ -116,11 +116,13 @@ Pod::Spec.new do |spec|
 
   #  (选填) 支持的Swift版本。CocoaPods会将“4”视为“4.0”，而不是“4.1”或“4.2”。
   # spec.swift_version = "5.6"
-  # 5.6: Xcode 13.3
-  # 5.7: Xcode 14.2
-  # 5.8: Xcode 14.3
-  # 5.9: Xcode 15
-  spec.swift_versions = ["5.6", "5.7", "5.8", "5.9"]
+  # https://docs.swift.org/swift-book/documentation/the-swift-programming-language/revisionhistory/
+  # 2022/03/14 Swift 5.6: Xcode 13.3
+  # 2022/09/12 Swift 5.7: Xcode 14.2
+  # 2023/03/30 Swift 5.8: Xcode 14.3
+  # 2023/09/18 Swift 5.9: Xcode 15
+  # 2024/03/05 Swift 5.10: Xcode 15.3
+  spec.swift_versions = ["5.6", "5.7", "5.8", "5.9", "5.10"]
 
   #  (选填) 支持的CocoaPods版本
   spec.cocoapods_version = '>= 1.10'
@@ -279,6 +281,7 @@ Pod::Spec.new do |spec|
         # resource_bundles 只能指定一次，所以subspec资源统一在此处打包进bundle
         # 远程未安装subspec时，对应资源将不会打包
         # 本地Demo将打包所有subspec资源
+        "#{spec.name}/*.xcprivacy",
         "#{spec.name}/JGSBase/**/*.{xcassets,png,jpg,gif}",
         "#{spec.name}/JGSDevice/**/JGSiOSDeviceList.json.sec",
         "#{spec.name}/JGSIntegrityCheck/**/JGSIntegrityCheckRecordResourcesHash.sh",

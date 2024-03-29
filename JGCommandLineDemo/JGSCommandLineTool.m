@@ -165,6 +165,7 @@ static NSString * const JGSourceRepoLocationDirectory = @"/Users/meijigao/Deskto
     // Plist 文件整理
     NSArray<NSString *> *sortFiles = @[
         @"JGSourceBase/Info.plist",
+        @"JGSourceBase/PrivacyInfo.xcprivacy",
         @"JGSourceBase.bundle/Info.plist",
         @"JGSourceBaseDemo/Info.plist",
         @"JGSourceBaseDemo/JGSourceBaseDemo/Info.plist",

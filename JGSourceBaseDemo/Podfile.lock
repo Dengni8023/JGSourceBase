@@ -1,25 +1,54 @@
 PODS:
-  - IQKeyboardManager (6.5.10)
-  - JGSourceBase/Base (1.4.2)
-  - JGSourceBase/Category (1.4.2):
+  - IQKeyboardManager (6.5.18)
+  - JGSourceBase (1.4.3):
+    - JGSourceBase/Base (= 1.4.3)
+    - JGSourceBase/Category (= 1.4.3)
+    - JGSourceBase/DataStorage (= 1.4.3)
+    - JGSourceBase/Device (= 1.4.3)
+    - JGSourceBase/Encryption (= 1.4.3)
+    - JGSourceBase/HUD (= 1.4.3)
+    - JGSourceBase/IntegrityCheck (= 1.4.3)
+    - JGSourceBase/JSON (= 1.4.3)
+    - JGSourceBase/Reachability (= 1.4.3)
+    - JGSourceBase/SecurityKeyboard (= 1.4.3)
+  - JGSourceBase/Base (1.4.3)
+  - JGSourceBase/Category (1.4.3):
     - JGSourceBase/Base
     - JGSourceBase/JSON
-  - JGSourceBase/JSON (1.4.2):
+  - JGSourceBase/DataStorage (1.4.3):
+    - JGSourceBase/Encryption
+  - JGSourceBase/Device (1.4.3):
+    - JGSourceBase/Category
+    - JGSourceBase/Reachability
+  - JGSourceBase/Encryption (1.4.3):
+    - JGSourceBase/Category
+  - JGSourceBase/HUD (1.4.3):
+    - JGSourceBase/Category
+    - MBProgressHUD (>= 1.2.0)
+  - JGSourceBase/IntegrityCheck (1.4.3):
+    - JGSourceBase/Encryption
+  - JGSourceBase/JSON (1.4.3):
     - JGSourceBase/Base
+  - JGSourceBase/Reachability (1.4.3):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.4.3):
+    - JGSourceBase/Category
   - Masonry (1.1.0)
-  - SDWebImage (5.15.8):
-    - SDWebImage/Core (= 5.15.8)
-  - SDWebImage/Core (5.15.8)
+  - MBProgressHUD (1.2.0)
+  - SDWebImage (5.19.1):
+    - SDWebImage/Core (= 5.19.1)
+  - SDWebImage/Core (5.19.1)
 
 DEPENDENCIES:
-  - IQKeyboardManager (~> 6.5.10)
-  - JGSourceBase/Category (from `./..`)
+  - IQKeyboardManager (~> 6.5.18)
+  - JGSourceBase (from `./..`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
-  - SDWebImage (~> 5.15.8)
+  - SDWebImage (~> 5.19.1)
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - IQKeyboardManager
+    - MBProgressHUD
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -35,11 +64,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
-  JGSourceBase: c854d51ca17c12ec36300befbc666f58b2c17384
+  IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
+  JGSourceBase: 2f00a17c24b42b941d49fe70b44f7f64177d1675
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
-  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
 
-PODFILE CHECKSUM: 8bc9defcdc54c1ec55342495da7249c00aaca886
+PODFILE CHECKSUM: edfb9504f9f60288eef8e613c3e252db8607242a
 
-COCOAPODS: 1.11.1
+COCOAPODS: 1.15.2

@@ -22,7 +22,6 @@
 }
 
 + (void)saveToKeychain:(id)data forKey:(NSString *)key {
-    
     if (!data) {
         [self removeFromKeychain:key];
         return;
@@ -33,7 +32,9 @@
     // Delete old item before add new item
     SecItemDelete((__bridge CFDictionaryRef)keychainQuery);
     // Add new object to search dictionary(Attention:the data format)
-    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(__bridge id)kSecValueData];
+    JGSSuppressWarning_DeprecatedDeclarations(
+        [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(__bridge id)kSecValueData];
+        )
     // Add item to keychain with the search dictionary
     SecItemAdd((__bridge CFDictionaryRef)keychainQuery, NULL);
 }
@@ -49,7 +50,9 @@
     CFDataRef keyData = NULL;
     if (SecItemCopyMatching((__bridge CFDictionaryRef)keychainQuery, (CFTypeRef *)&keyData) == noErr) {
         @try {
-            ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
+            JGSSuppressWarning_DeprecatedDeclarations(
+                ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
+                )
         } @catch (NSException *e) {
             JGSPrivateLog(@"Unarchive of %@ failed: %@", key, e);
         } @finally {

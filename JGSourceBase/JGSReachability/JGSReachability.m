@@ -317,14 +317,12 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
 }
 
 - (JGSWWANType)WWANType {
-    
     JGSWWANType type = JGSWWANTypeUnknown;
+    
     if (self.reachableViaWWAN) {
-        
         static NSDictionary<NSString *, NSNumber *> *wwanInfoDict = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            
             NSMutableDictionary<NSString *, NSNumber *> *tmp = @{
                 CTRadioAccessTechnologyGPRS: @(JGSWWANTypeGPRS), // GPRS网络
                 CTRadioAccessTechnologyEdge: @(JGSWWANType2G), // EDGE为GPRS到第三代移动通信的过渡，EDGE俗称2.75G
@@ -347,17 +345,22 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
                     CTRadioAccessTechnologyNR: @(JGSWWANType5G), // 5G NR的非独立组网（NSA）模式
                 }];
             }
+            
             wwanInfoDict = tmp.copy;
         });
         
         // 获取手机网络类型
         CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
         NSString *currentStatus = nil;
+        
         if (@available(iOS 12.0, *)) {
             currentStatus = info.serviceCurrentRadioAccessTechnology.allValues.firstObject;
         } else {
-            currentStatus = info.currentRadioAccessTechnology;
+            JGSSuppressWarning_DeprecatedDeclarations(
+                currentStatus = info.currentRadioAccessTechnology;
+                )
         }
+        
         if (currentStatus.length > 0 && [wwanInfoDict.allKeys containsObject:currentStatus]) {
             type = [wwanInfoDict[currentStatus] integerValue];
         }

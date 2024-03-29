@@ -17,6 +17,7 @@
 #import <AdSupport/ASIdentifierManager.h>
 #import "JGSourceBaseDemo-Swift.h"
 #import <objc/runtime.h>
+@import JGSourceBase;
 
 @interface ViewController ()
 
@@ -142,6 +143,7 @@
     NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
     [UIAlertController jg_actionSheetWithTitle:@"选择日志类型" cancel:@"取消" others:types action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
         
+        JGSDemoShowConsoleLog(self, @"<%@: %p> %@", NSStringFromClass([alert class]), alert, @(idx));
         if (idx == alert.jg_cancelIdx) {
             return;
         }
@@ -157,9 +159,14 @@
             JGSStrongSelf
             JGSDemoShowConsoleLog(self, @"<%@: %p> %@", NSStringFromClass([_alert class]), _alert, @(_idx));
             
-#ifdef JGSCategory_UIApplication
-            JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
-            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
+#ifdef JGSCategory_UIApplication_h
+            JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);;
+            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViewController]);
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+                JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViewController]);
+            });
 #endif
         }];
         
@@ -169,12 +176,18 @@
             JGSDemoShowConsoleLog(self, @"key: %p", [UIApplication sharedApplication].keyWindow);
             JGSDemoShowConsoleLog(self, @"window: %p", [UIApplication sharedApplication].delegate.window);
             
-#ifdef JGSCategory_UIApplication
+#ifdef JGSCategory_UIApplication_h
             JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
-            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViwController]);
+            JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViewController]);
 #endif
         });
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        JGSDemoShowConsoleLog(self, @"");
+        JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+        JGSDemoShowConsoleLog(self, @"visiable: %@", [[UIApplication sharedApplication] jg_visibleViewController]);
+    });
 #endif
 }
 
