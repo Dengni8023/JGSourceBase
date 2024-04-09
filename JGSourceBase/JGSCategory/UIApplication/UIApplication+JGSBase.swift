@@ -26,11 +26,11 @@ public extension UIApplication {
                 scene.windows
             }.filter { window in
                 window.isKeyWindow
-            }.first
+            }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
         }
         return keyWindow ?? windows.filter { win in
             win.isKeyWindow
-        }.first
+        }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
     }
     
     /// 应用界面视图window
@@ -48,7 +48,7 @@ public extension UIApplication {
                 scene as? UIWindowScene
             }.flatMap { scene in
                 scene.windows
-            }.first
+            }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
         }
         return (delegate?.window as? UIWindow) ?? windows.first
     }

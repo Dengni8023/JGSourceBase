@@ -2,7 +2,7 @@
  # @Author: Dengni8023 (Mei JiGao: 94583664@qq.com)
  # @Date: 2024-03-27 09:38:50
  # @LastEditors: Dengni8023 (Mei JiGao: 94583664@qq.com)
- # @LastEditTime: 2024-03-27 20:03:45
+ # @LastEditTime: 2024-04-01 10:28:19
  # @FilePath: /JGSourceBase/JGSScripts/JGSFindPrivacyAPIUsage.sh
  # @Description: 
  # 
@@ -51,7 +51,7 @@ while IFS= read -r searchAPI; do
       # -type f 表示只查找文件
       # -exec grep -H -i "$formattedSearchAPI" {} + 表示对每个找到的文件执行 grep 命令，输出包含匹配字符串的文件路径和匹配的行
       # result=$(find "$searchDir" -type f -exec grep -H -i "$formattedSearchAPI" {} +)
-      result=$(find "$searchDir" -type f ! -path "build" ! -path "node_nodules" ! -path "*.xcodeproj" ! -path "*.xcworkspace" ! -path "Pods" ! -name "*.js*" ! -name "*.htm*" | xargs grep -s "$formattedSearchAPI")
+      result=$(find "$searchDir" -type f ! -path "*/build/*" ! -path "*/node_nodules/*" ! -path "*.xcodeproj" ! -path "*.xcworkspace" ! -path "*/Pods/*" ! -name "*.js*" ! -name "*.htm*" | xargs grep -s "$formattedSearchAPI")
         # 检查结果是否为空
         if [ -n "$result" ]; then
             echo "找到包含 ${formattedSearchAPI} 符串的文件："
