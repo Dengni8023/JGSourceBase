@@ -13,85 +13,54 @@ public extension UIApplication {
     /// 可能为UIAlertController、UIAlertView、UIActionSheet等系统弹窗弹窗、键盘输入窗
     /// 以及应用自定义Window窗口
     @objc var jg_keyWindow: UIWindow? {
-        // UIAlertController、UIAlertView、UIActionSheet弹出后
-        // 这些View 出现生成了一个新的window，加在了界面上面
-        // keyWindow就会变成UIAlertControllerShimPresenterWindow这个类
         // delegate、keyWindow、rootViewController均需在主线程获取
         if #available(iOS 13.0, *) {
             return connectedScenes.filter { scene in
                 scene.activationState == .foregroundActive
-            }.compactMap { scene in
+            }.compactMap { scene in // compactMap 会剔除结果中的 nil 值
                 scene as? UIWindowScene
-            }.flatMap { scene in
+            }.flatMap { scene in // flatMap 将所有结果集合并成一个，数组将维
                 scene.windows
             }.filter { window in
                 window.isKeyWindow
-            }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
+            }.first ?? windows.filter { win in
+                win.isKeyWindow
+            }.first ?? (delegate?.window as? UIWindow)
         }
         return keyWindow ?? windows.filter { win in
             win.isKeyWindow
-        }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
+        }.first ?? (delegate?.window as? UIWindow) ?? windows.first
     }
     
-    /// 应用界面视图window
-    /// 不包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗
-    /// 以及应用自定义Window窗口
-    @objc var jg_appWindow: UIWindow? {
-        // UIAlertController、UIAlertView、UIActionSheet弹出后
-        // 这些View 出现生成了一个新的window，加在了界面上面
-        // keyWindow就会变成UIAlertControllerShimPresenterWindow这个类
-        // delegate、keyWindow、rootViewController均需在主线程获取
-        if #available(iOS 13.0, *) {
-            return connectedScenes.filter { scene in
-                scene.activationState == .foregroundActive
-            }.compactMap { scene in
-                scene as? UIWindowScene
-            }.flatMap { scene in
-                scene.windows
-            }.first ?? (UIApplication.shared.delegate?.window as? UIWindow)
-        }
-        return (delegate?.window as? UIWindow) ?? windows.first
-    }
-
     /// vcT对应的最顶层显示的ViewController
-    /// vcT为空则内部使用jg_appWindow获取应用rootViewController
-    /// 内部使用jg_appWindow获取应用rootViewController
-    /// 因此不包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗对应的页面
+    /// 包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗对应的页面
     /// 以及应用自定义Window窗口对应的页面
-    fileprivate func topMostViewController(_ vcT: UIViewController? = nil, visible: Bool) -> UIViewController? {
-        let curCtr = vcT ?? (visible ? jg_keyWindow : jg_appWindow)?.rootViewController
+    fileprivate func topMostViewController(_ vcT: UIViewController? = nil) -> UIViewController? {
+        
+        var curCtr = vcT
+        while curCtr?.presentedViewController != nil {
+            curCtr = curCtr?.presentedViewController
+        }
+        
         if let rootCtr = (curCtr as? UITabBarController)?.selectedViewController {
             // UITabBarController
-            return topMostViewController(rootCtr, visible: visible)
+            return topMostViewController(rootCtr)
         } else if let rootCtr = curCtr as? UINavigationController {
             // UINavigationController
             // visibleViewController: Return modal view controller if it exists. Otherwise the top view controller.
-            return topMostViewController(rootCtr.topViewController, visible: visible)
-        } else if let rootCtr = curCtr?.presentedViewController {
-            return topMostViewController(rootCtr, visible: visible)
+            return topMostViewController(rootCtr.visibleViewController)
         }
         return curCtr
     }
 
     /// 应用页面层最顶层显示的ViewController
-    /// 内部使用jg_appWindow获取应用rootViewController
-    /// 因此不包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗对应的页面
-    /// 以及应用自定义Window窗口对应的页面
     @objc var jg_topViewController: UIViewController? {
-        return topMostViewController(visible: false)
+        return topMostViewController((delegate?.window ?? windows.first)?.rootViewController)
     }
     
     /// root最顶层显示的ViewController
     /// 包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗对应的页面
     @objc func jg_topViewController(_ root: UIViewController) -> UIViewController? {
-        return topMostViewController(root, visible: true)
-    }
-    
-    /// 应用层最顶层显示的ViewController
-    /// 内部使用jg_keyWindow获取应用rootViewController
-    /// 因此包含UIAlertController、UIAlertView、UIActionSheet等系统弹窗、键盘输入窗对应的页面
-    /// 以及应用自定义Window窗口对应的页面
-    @objc var jg_visibleViewController: UIViewController? {
-        return topMostViewController(visible: true)
+        return topMostViewController(root)
     }
 }
