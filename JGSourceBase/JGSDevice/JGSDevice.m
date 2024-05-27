@@ -378,9 +378,7 @@
         deviceNamesByCode = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:fileData options:kNilOptions error:nil];
     }
     
-    // 当前运行设备信息，参考 JGSiOSDeviceList.json
-    NSDictionary *deviceInfo = [deviceNamesByCode isKindOfClass:[NSDictionary class]] ? [deviceNamesByCode objectForKey:[self deviceMachine]] : nil;
-    return deviceInfo;
+    return deviceNamesByCode;
 }
 
 + (NSString *)deviceModel {
@@ -396,7 +394,10 @@
         
         // 当前运行设备信息，参考 JGSiOSDeviceList.json
         NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        NSDictionary *deviceInfo = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
+        NSDictionary *deviceNamesByCode = [self decryptedJGSDeviceListFile:jsonData fileName:fileName];
+        
+        // 当前运行设备信息，参考 JGSiOSDeviceList.json
+        NSDictionary *deviceInfo = [deviceNamesByCode isKindOfClass:[NSDictionary class]] ? [deviceNamesByCode objectForKey:[self deviceMachine]] : nil;
         instance = [deviceInfo isKindOfClass:[NSDictionary class]] ? deviceInfo : nil;
         JGSPrivateLog(@"device info: %@", instance);
     });
