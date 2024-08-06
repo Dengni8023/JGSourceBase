@@ -101,18 +101,18 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
 - (void)JGSSwizzing_replaceRange:(UITextRange *)range withText:(NSString *)text {
     
     // 记录的原字符串更新
-    UITextPosition *begin = self.beginningOfDocument;
-    UITextPosition *rangeStart = range.start;
-    UITextPosition *rangeEnd = range.end;
-    
-    NSInteger location = [self offsetFromPosition:begin toPosition:rangeStart];
-    NSInteger length = [self offsetFromPosition:rangeStart toPosition:rangeEnd];
-    
-    NSString *origin = self.jg_securityOriginText ?: @"";
-    origin = [origin stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:text];
-    self.jg_securityOriginText = origin;
-    
     if ([self.inputView isKindOfClass:[JGSSecurityKeyboard class]] && self.isSecureTextEntry) {
+        UITextPosition *begin = self.beginningOfDocument;
+        UITextPosition *rangeStart = range.start;
+        UITextPosition *rangeEnd = range.end;
+        
+        NSInteger location = [self offsetFromPosition:begin toPosition:rangeStart];
+        NSInteger length = [self offsetFromPosition:rangeStart toPosition:rangeEnd];
+        
+        NSString *origin = self.jg_securityOriginText ?: @"";
+        origin = [origin stringByReplacingCharactersInRange:NSMakeRange(location, length) withString:text];
+        self.jg_securityOriginText = origin;
+        
         // 掩码显示 "•"
         NSString *dotSecStr = @"";
         for (NSInteger i = 0; i < text.length; i++) {
