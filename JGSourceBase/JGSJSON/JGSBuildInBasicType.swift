@@ -129,15 +129,6 @@ extension Float: JGSFloatProtocol {}
 extension Double: JGSFloatProtocol {}
 
 // MARK: - String & URL
-
-fileprivate let JGSNumberFormatter: NumberFormatter = {
-    let formatter = NumberFormatter()
-    formatter.usesGroupingSeparator = false
-    formatter.numberStyle = .decimal
-    formatter.maximumFractionDigits = 16 // 最大分数位数
-    return formatter
-}()
-
 extension String: JGSBuildInBasicType {
     public static func jg_transform(from object: Any?) -> String? {
         guard let object = object else { return nil }
@@ -176,7 +167,7 @@ extension String: JGSBuildInBasicType {
             if type(of: num) == type(of: boolean) {
                 return num.boolValue ? "true" : "false"
             }
-            return JGSNumberFormatter.string(from: num)
+            return num.stringValue
         case _ as NSNull:
             return nil
         default:
