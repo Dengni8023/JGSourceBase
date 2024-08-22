@@ -117,6 +117,7 @@
     // 键盘设置
     self.normalInput = fields[0];
 	self.normalInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;//UIKeyboardTypeDefault + accountInputShow % 12; //12;
+    [self.normalInput addTarget:self action:@selector(textFiledDidChangedTextEditing:) forControlEvents:UIControlEventEditingChanged];
     
     // 安全键盘设置
     self.accountInput = fields[1];
@@ -131,6 +132,7 @@
     self.secPwdInput = fields[2];
     self.secPwdInput.placeholder = @"安全键盘加密输入";
     self.secPwdInput.secureTextEntry = YES;
+    [self.secPwdInput addTarget:self action:@selector(textFiledDidChangedTextEditing:) forControlEvents:UIControlEventEditingChanged];
     JGSSecurityKeyboard *secPwdInputView = [JGSSecurityKeyboard keyboardWithTextField:self.secPwdInput title:nil];
     secPwdInputView.randomPad = (accountInputShow % 2 == 1);
     secPwdInputView.randomNumPad = (accountInputShow % 2 == 0);
@@ -196,9 +198,9 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    JGSDemoShowConsoleLog(self, @"%@ %@: %@", textField.text, NSStringFromRange(range), string);
     if ([textField.inputView isKindOfClass:[JGSSecurityKeyboard class]]) {
-        JGSDemoShowConsoleLog(self, @"%@", textField.text);
-        JGSDemoShowConsoleLog(self, @"%@ -> (%@)", NSStringFromRange(range), string);
+        
     }
     
     return YES;
@@ -227,6 +229,10 @@
         [textField resignFirstResponder];
     }
     return YES;
+}
+
+- (void)textFiledDidChangedTextEditing:(UITextField *)sender {
+    JGSLog(@"%@", sender.jg_securityOriginText);
 }
 
 #pragma mark - UITextViewDelegate

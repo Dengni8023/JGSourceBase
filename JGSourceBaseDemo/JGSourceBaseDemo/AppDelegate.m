@@ -163,7 +163,6 @@
 
 - (BOOL)application:(UIApplication *)application shouldAllowExtensionPointIdentifier:(UIApplicationExtensionPointIdentifier)extensionPointIdentifier {
     
-    JGSLog();
     // 禁用第三方键盘
     if ([extensionPointIdentifier isEqualToString:@"com.apple.keyboard-service"]) {
         return YES;
