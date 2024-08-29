@@ -65,7 +65,7 @@ abstract_target "JGSBase" do
   # JGSourceBaseDemo
   target "JGSourceBaseDemo" do
     
-    # pod 'SwiftyJSON'
+    # pod 'HandyJSON', '~> 5.0.4-beta' # https://github.com/alibaba/handyjson
     pod 'IQKeyboardManager', '~> 6.5.18' #  https://github.com/hackiftekhar/IQKeyboardManager.git
     
     #pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
