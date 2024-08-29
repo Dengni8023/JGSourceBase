@@ -80,7 +80,6 @@
 		D457C4252C80BCCF00B80538 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4012C80BCCE00B80538 /* Configuration.swift */; };
 		D457C4262C80BCCF00B80538 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4022C80BCCE00B80538 /* TransformType.swift */; };
 		D457C4272C80BCCF00B80538 /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4032C80BCCE00B80538 /* EnumType.swift */; };
-		D457C4282C80BCCF00B80538 /* HandyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D457C4042C80BCCE00B80538 /* HandyJSON.h */; };
 		D457C4292C80BCCF00B80538 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4052C80BCCE00B80538 /* URLTransform.swift */; };
 		D457C42A2C80BCCF00B80538 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4062C80BCCE00B80538 /* Serializer.swift */; };
 		D457C42B2C80BCCF00B80538 /* ReflectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4072C80BCCE00B80538 /* ReflectionHelper.swift */; };
@@ -354,7 +353,6 @@
 		D457C4012C80BCCE00B80538 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D457C4022C80BCCE00B80538 /* TransformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
 		D457C4032C80BCCE00B80538 /* EnumType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumType.swift; sourceTree = "<group>"; };
-		D457C4042C80BCCE00B80538 /* HandyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandyJSON.h; sourceTree = "<group>"; };
 		D457C4052C80BCCE00B80538 /* URLTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransform.swift; sourceTree = "<group>"; };
 		D457C4062C80BCCE00B80538 /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		D457C4072C80BCCE00B80538 /* ReflectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionHelper.swift; sourceTree = "<group>"; };
@@ -819,7 +817,6 @@
 				D457C4182C80BCCF00B80538 /* ExtendCustomBasicType.swift */,
 				D457C40E2C80BCCE00B80538 /* ExtendCustomModelType.swift */,
 				D457C3FB2C80BCCE00B80538 /* FieldDescriptor.swift */,
-				D457C4042C80BCCE00B80538 /* HandyJSON.h */,
 				D457C41C2C80BCCF00B80538 /* HelpingMapper.swift */,
 				D457C40F2C80BCCE00B80538 /* HexColorTransform.swift */,
 				D457C4132C80BCCF00B80538 /* ISO8601DateTransform.swift */,
@@ -1247,7 +1244,6 @@
 				D4D697E62806E0F900CE1F9F /* JGSRSAEncryption.h in Headers */,
 				D4D697F32806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.h in Headers */,
 				D4D697FE2806E0F900CE1F9F /* JGSKeyboardToolbar.h in Headers */,
-				D457C4282C80BCCF00B80538 /* HandyJSON.h in Headers */,
 				D4D698192806E0F900CE1F9F /* JGSCategory+NSObject.h in Headers */,
 				D440D061288E8A8A00195218 /* JGSCategory+NSArray.h in Headers */,
 				D4D698202806E0F900CE1F9F /* NSDate+JGSBase.h in Headers */,

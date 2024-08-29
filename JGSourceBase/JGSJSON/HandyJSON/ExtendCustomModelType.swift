@@ -126,7 +126,7 @@ extension _ExtendCustomModelType {
         if let _nsType = Self.self as? NSObject.Type {
             instance = _nsType.createInstance() as! Self
         } else {
-            instance = Self.init()
+            instance = Self()
         }
         instance.willStartMapping()
         _transform(dict: dict, to: &instance)

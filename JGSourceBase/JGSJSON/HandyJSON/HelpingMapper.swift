@@ -109,9 +109,13 @@ public class HelpingMapper {
         
         if let _converter = converter {
             let assignmentClosure = { (jsonValue: Any?) -> Any? in
-                if let _value = jsonValue{
+                if let _value = jsonValue {
                     if let object = _value as? NSObject {
-                        if let str = String.transform(from: object){
+                        if let _dic = object as? [String: Any],
+                           let jsonData = try? JSONSerialization.data(withJSONObject: _dic, options: []),
+                           let jsonString = String(data: jsonData, encoding: .utf8) {
+                            return _converter(jsonString)
+                        } else if let str = String.transform(from: object) {
                             return _converter(str)
                         }
                     }

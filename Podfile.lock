@@ -1,5 +1,4 @@
 PODS:
-  - HandyJSON (5.0.4-beta)
   - IQKeyboardManager (6.5.18)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -8,7 +7,6 @@ PODS:
   - SDWebImage/Core (5.19.1)
 
 DEPENDENCIES:
-  - HandyJSON (~> 5.0.4-beta)
   - IQKeyboardManager (~> 6.5.18)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
   - MBProgressHUD
@@ -16,7 +14,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
-    - HandyJSON
     - IQKeyboardManager
     - MBProgressHUD
     - SDWebImage
@@ -32,12 +29,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
-  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
 
-PODFILE CHECKSUM: c9078f7b83a7fff5e35d798eee9c671b2d477231
+PODFILE CHECKSUM: 0bf94e064d4b56d59636f1a64d4e61b3ce030230
 
 COCOAPODS: 1.15.2
