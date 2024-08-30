@@ -70,7 +70,6 @@
 		D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */; };
 		D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */; };
 		D457C41D2C80BCCF00B80538 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C3F92C80BCCE00B80538 /* Metadata.swift */; };
-		D457C41E2C80BCCF00B80538 /* Measuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C3FA2C80BCCE00B80538 /* Measuable.swift */; };
 		D457C41F2C80BCCF00B80538 /* FieldDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C3FB2C80BCCE00B80538 /* FieldDescriptor.swift */; };
 		D457C4202C80BCCF00B80538 /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C3FC2C80BCCE00B80538 /* TransformOf.swift */; };
 		D457C4212C80BCCF00B80538 /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C3FD2C80BCCE00B80538 /* Deserializer.swift */; };
@@ -80,7 +79,6 @@
 		D457C4252C80BCCF00B80538 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4012C80BCCE00B80538 /* Configuration.swift */; };
 		D457C4262C80BCCF00B80538 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4022C80BCCE00B80538 /* TransformType.swift */; };
 		D457C4272C80BCCF00B80538 /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4032C80BCCE00B80538 /* EnumType.swift */; };
-		D457C4292C80BCCF00B80538 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4052C80BCCE00B80538 /* URLTransform.swift */; };
 		D457C42A2C80BCCF00B80538 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4062C80BCCE00B80538 /* Serializer.swift */; };
 		D457C42B2C80BCCF00B80538 /* ReflectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4072C80BCCE00B80538 /* ReflectionHelper.swift */; };
 		D457C42C2C80BCCF00B80538 /* BuiltInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4082C80BCCE00B80538 /* BuiltInBasicType.swift */; };
@@ -99,9 +97,7 @@
 		D457C4392C80BCCF00B80538 /* AnyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4152C80BCCF00B80538 /* AnyExtensions.swift */; };
 		D457C43A2C80BCCF00B80538 /* PropertyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4162C80BCCF00B80538 /* PropertyInfo.swift */; };
 		D457C43B2C80BCCF00B80538 /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4172C80BCCF00B80538 /* NSDecimalNumberTransform.swift */; };
-		D457C43C2C80BCCF00B80538 /* ExtendCustomBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4182C80BCCF00B80538 /* ExtendCustomBasicType.swift */; };
 		D457C43D2C80BCCF00B80538 /* OtherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C4192C80BCCF00B80538 /* OtherExtension.swift */; };
-		D457C43E2C80BCCF00B80538 /* Transformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C41A2C80BCCF00B80538 /* Transformable.swift */; };
 		D457C43F2C80BCCF00B80538 /* CBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C41B2C80BCCF00B80538 /* CBridge.swift */; };
 		D457C4402C80BCCF00B80538 /* HelpingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457C41C2C80BCCF00B80538 /* HelpingMapper.swift */; };
 		D45AAA9C2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h in Headers */ = {isa = PBXBuildFile; fileRef = D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -343,7 +339,6 @@
 		D44498AE29E0389E00BC6D9C /* UIColor+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498B029E038AB00BC6D9C /* UIImage+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+JGSBase.swift"; sourceTree = "<group>"; };
 		D457C3F92C80BCCE00B80538 /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		D457C3FA2C80BCCE00B80538 /* Measuable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measuable.swift; sourceTree = "<group>"; };
 		D457C3FB2C80BCCE00B80538 /* FieldDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldDescriptor.swift; sourceTree = "<group>"; };
 		D457C3FC2C80BCCE00B80538 /* TransformOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformOf.swift; sourceTree = "<group>"; };
 		D457C3FD2C80BCCE00B80538 /* Deserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializer.swift; sourceTree = "<group>"; };
@@ -353,7 +348,6 @@
 		D457C4012C80BCCE00B80538 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D457C4022C80BCCE00B80538 /* TransformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
 		D457C4032C80BCCE00B80538 /* EnumType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumType.swift; sourceTree = "<group>"; };
-		D457C4052C80BCCE00B80538 /* URLTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransform.swift; sourceTree = "<group>"; };
 		D457C4062C80BCCE00B80538 /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		D457C4072C80BCCE00B80538 /* ReflectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionHelper.swift; sourceTree = "<group>"; };
 		D457C4082C80BCCE00B80538 /* BuiltInBasicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuiltInBasicType.swift; sourceTree = "<group>"; };
@@ -372,9 +366,7 @@
 		D457C4152C80BCCF00B80538 /* AnyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyExtensions.swift; sourceTree = "<group>"; };
 		D457C4162C80BCCF00B80538 /* PropertyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyInfo.swift; sourceTree = "<group>"; };
 		D457C4172C80BCCF00B80538 /* NSDecimalNumberTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberTransform.swift; sourceTree = "<group>"; };
-		D457C4182C80BCCF00B80538 /* ExtendCustomBasicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendCustomBasicType.swift; sourceTree = "<group>"; };
 		D457C4192C80BCCF00B80538 /* OtherExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtension.swift; sourceTree = "<group>"; };
-		D457C41A2C80BCCF00B80538 /* Transformable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformable.swift; sourceTree = "<group>"; };
 		D457C41B2C80BCCF00B80538 /* CBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBridge.swift; sourceTree = "<group>"; };
 		D457C41C2C80BCCF00B80538 /* HelpingMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpingMapper.swift; sourceTree = "<group>"; };
 		D45AAA9A2832686B004EE48C /* JGSIntegrityCheckResourcesHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSIntegrityCheckResourcesHash.h; sourceTree = "<group>"; };
@@ -814,7 +806,6 @@
 				D457C40D2C80BCCE00B80538 /* EnumTransform.swift */,
 				D457C4032C80BCCE00B80538 /* EnumType.swift */,
 				D457C4102C80BCCF00B80538 /* Export.swift */,
-				D457C4182C80BCCF00B80538 /* ExtendCustomBasicType.swift */,
 				D457C40E2C80BCCE00B80538 /* ExtendCustomModelType.swift */,
 				D457C3FB2C80BCCE00B80538 /* FieldDescriptor.swift */,
 				D457C41C2C80BCCF00B80538 /* HelpingMapper.swift */,
@@ -822,7 +813,6 @@
 				D457C4132C80BCCF00B80538 /* ISO8601DateTransform.swift */,
 				D457C4142C80BCCF00B80538 /* Logger.swift */,
 				D457C40B2C80BCCE00B80538 /* MangledName.swift */,
-				D457C3FA2C80BCCE00B80538 /* Measuable.swift */,
 				D457C3F92C80BCCE00B80538 /* Metadata.swift */,
 				D457C4172C80BCCF00B80538 /* NSDecimalNumberTransform.swift */,
 				D457C4192C80BCCF00B80538 /* OtherExtension.swift */,
@@ -831,10 +821,8 @@
 				D457C4162C80BCCF00B80538 /* PropertyInfo.swift */,
 				D457C4072C80BCCE00B80538 /* ReflectionHelper.swift */,
 				D457C4062C80BCCE00B80538 /* Serializer.swift */,
-				D457C41A2C80BCCF00B80538 /* Transformable.swift */,
 				D457C3FC2C80BCCE00B80538 /* TransformOf.swift */,
 				D457C4022C80BCCE00B80538 /* TransformType.swift */,
-				D457C4052C80BCCE00B80538 /* URLTransform.swift */,
 			);
 			path = HandyJSON;
 			sourceTree = "<group>";
@@ -1657,9 +1645,7 @@
 				D44498B129E038AB00BC6D9C /* UIImage+JGSBase.swift in Sources */,
 				D44498AD29E0388D00BC6D9C /* UIApplication+JGSBase.swift in Sources */,
 				D457C4272C80BCCF00B80538 /* EnumType.swift in Sources */,
-				D457C41E2C80BCCF00B80538 /* Measuable.swift in Sources */,
 				D46D0BB629D1EF7200509B02 /* Data+JGSAES.swift in Sources */,
-				D457C4292C80BCCF00B80538 /* URLTransform.swift in Sources */,
 				D457C4322C80BCCF00B80538 /* ExtendCustomModelType.swift in Sources */,
 				D4D698082806E0F900CE1F9F /* UIApplication+JGSBase.m in Sources */,
 				D4D697E32806E0F900CE1F9F /* JGSDevice.m in Sources */,
@@ -1687,7 +1673,6 @@
 				D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */,
 				D457C4362C80BCCF00B80538 /* DateFormatterTransform.swift in Sources */,
 				D4D697D72806E0F900CE1F9F /* JGSUserDefaults.m in Sources */,
-				D457C43C2C80BCCF00B80538 /* ExtendCustomBasicType.swift in Sources */,
 				D44498A329E0379A00BC6D9C /* String+JGSBase.swift in Sources */,
 				D457C41F2C80BCCF00B80538 /* FieldDescriptor.swift in Sources */,
 				D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */,
@@ -1709,7 +1694,6 @@
 				D444989F29E0356600BC6D9C /* JGSTransformable.swift in Sources */,
 				D4D697FA2806E0F900CE1F9F /* JGSSecurityKeyboard.m in Sources */,
 				D4D6981D2806E0F900CE1F9F /* NSDate+JGSBase.m in Sources */,
-				D457C43E2C80BCCF00B80538 /* Transformable.swift in Sources */,
 				D44498A129E0377300BC6D9C /* Array+JGSBase.swift in Sources */,
 				D457C4392C80BCCF00B80538 /* AnyExtensions.swift in Sources */,
 				D4830D1329F91CD500B42377 /* JGSJSON.swift in Sources */,

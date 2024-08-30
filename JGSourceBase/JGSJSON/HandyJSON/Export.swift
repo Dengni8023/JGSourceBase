@@ -8,8 +8,5 @@
 
 import Foundation
 
-public protocol HandyJSONCustomTransformable: _ExtendCustomBasicType {}
-
 public protocol HandyJSON: _ExtendCustomModelType {}
-
 public protocol HandyJSONEnum: _RawEnumProtocol {}
