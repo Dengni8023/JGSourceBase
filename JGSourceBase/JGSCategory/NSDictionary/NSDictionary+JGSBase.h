@@ -11,15 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary<KeyType, ObjectType> (JGSBase)
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JGSBase)
 
 // String
 - (nullable NSString *)jg_stringForKey:(const KeyType)key;
-- (nullable NSString *)jg_stringForKey:(const KeyType)key defaultValue:(nullable NSString *)defaultValue;
 
 // Number
 - (nullable NSNumber *)jg_numberForKey:(const KeyType)key;
-- (nullable NSNumber *)jg_numberForKey:(const KeyType)key defaultValue:(nullable NSNumber *)defaultValue;
 
 // Short
 - (short)jg_shortForKey:(const KeyType)key;
@@ -66,17 +64,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Object
 - (nullable ObjectType)jg_objectForKey:(const KeyType)key;
-- (nullable ObjectType)jg_objectForKey:(const KeyType)key defaultValue:(nullable ObjectType)defaultValue;
 - (nullable ObjectType)jg_objectForKey:(const KeyType)key withClass:(__unsafe_unretained Class)cls;
-- (nullable ObjectType)jg_objectForKey:(const KeyType)key withClass:(__unsafe_unretained Class)cls defaultValue:(nullable ObjectType)defaultValue;
 
 // Dict
 - (nullable NSDictionary *)jg_dictionaryForKey:(const KeyType)key;
-- (nullable NSDictionary *)jg_dictionaryForKey:(const KeyType)key defaultValue:(nullable NSDictionary *)defaultValue;
 
 // Array
 - (nullable NSArray *)jg_arrayForKey:(const KeyType)key;
-- (nullable NSArray *)jg_arrayForKey:(const KeyType)key defaultValue:(nullable NSArray *)defaultValue;
 
 @end
 

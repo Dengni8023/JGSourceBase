@@ -12,13 +12,157 @@
 
 @implementation NSArray (JGSBase)
 
-- (id)jg_objectAtIndex:(NSUInteger)index {
-    if (index < 0 || index > self.count) {
+#pragma mark - String
+- (NSString *)jg_stringAtIndex:(NSUInteger)index {
+    
+    id obj = [self jg_objectAtIndex:index];
+    if (obj == nil) {
         return nil;
     }
-    return [self objectAtIndex:index];
+    
+    if ([obj isKindOfClass:[NSString class]]) {
+        return obj;
+    }
+    else if ([obj isKindOfClass:[NSNumber class]]) {
+        return [(NSNumber *)obj stringValue];
+    } else if ([NSJSONSerialization isValidJSONObject:obj]) {
+        return [obj jg_JSONString];
+    }
+    
+    return nil;
 }
 
+#pragma mark - Number
+- (NSNumber *)jg_numberAtIndex:(NSUInteger)index {
+    
+    id obj = [self objectAtIndex:index];
+    if ([obj isKindOfClass:[NSNumber class]]) {
+        return obj;
+    }
+    else if ([obj isKindOfClass:[NSString class]]) {
+        
+        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
+        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
+        //return number ?: defaultValue;
+        NSString *numStr = (NSString *)obj;
+        NSInteger dotFrom = [numStr rangeOfString:@"."].location;
+        NSInteger dotLen = dotFrom != NSNotFound ? numStr.length - dotFrom - 1 : 0;
+        
+        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
+        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
+            return nil;
+        }
+        
+        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:dotLen raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
+        if ([number isEqual:[NSDecimalNumber notANumber]]) {
+            return nil;
+        }
+        
+        return number;
+    }
+    return nil;
+}
+
+#pragma mark - Short
+- (short)jg_shortAtIndex:(NSUInteger)index {
+    return [self jg_shortAtIndex:index defaultValue:0];
+}
+
+- (short)jg_shortAtIndex:(NSUInteger)index defaultValue:(short)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.shortValue : defaultValue;
+}
+
+- (unsigned short)jg_unsignedShortAtIndex:(NSUInteger)index {
+    return [self jg_unsignedShortAtIndex:index defaultValue:0];
+}
+
+- (unsigned short)jg_unsignedShortAtIndex:(NSUInteger)index defaultValue:(unsigned short)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.unsignedShortValue : defaultValue;
+}
+
+#pragma mark - Int
+- (int)jg_intAtIndex:(NSUInteger)index {
+    return [self jg_intAtIndex:index defaultValue:0];
+}
+
+- (int)jg_intAtIndex:(NSUInteger)index defaultValue:(int)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.intValue : defaultValue;
+}
+
+- (unsigned int)jg_unsignedIntAtIndex:(NSUInteger)index {
+    return [self jg_unsignedIntAtIndex:index defaultValue:0];
+}
+
+- (unsigned int)jg_unsignedIntAtIndex:(NSUInteger)index defaultValue:(unsigned int)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.unsignedIntValue : defaultValue;
+}
+
+#pragma mark - Long
+- (long)jg_longAtIndex:(NSUInteger)index {
+    return [self jg_longAtIndex:index defaultValue:0];
+}
+
+- (long)jg_longAtIndex:(NSUInteger)index defaultValue:(long)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.longValue : defaultValue;
+}
+
+- (unsigned long)jg_unsignedLongAtIndex:(NSUInteger)index {
+    return [self jg_unsignedLongAtIndex:index defaultValue:0];
+}
+
+- (unsigned long)jg_unsignedLongAtIndex:(NSUInteger)index defaultValue:(unsigned long)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.unsignedLongValue : defaultValue;
+}
+
+- (long long)jg_longLongAtIndex:(NSUInteger)index {
+    return [self jg_longLongAtIndex:index defaultValue:0];
+}
+
+- (long long)jg_longLongAtIndex:(NSUInteger)index defaultValue:(long long)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.longLongValue : defaultValue;
+}
+
+- (unsigned long long)jg_unsignedLongLongAtIndex:(NSUInteger)index {
+    return [self jg_unsignedLongLongAtIndex:index defaultValue:0];
+}
+
+- (unsigned long long)jg_unsignedLongLongAtIndex:(NSUInteger)index defaultValue:(unsigned long long)defaultValue {
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.unsignedLongLongValue : defaultValue;
+}
+
+#pragma mark - Float
+- (float)jg_floatAtIndex:(NSUInteger)index {
+    return [self jg_floatAtIndex:index defaultValue:0.f];
+}
+
+- (float)jg_floatAtIndex:(NSUInteger)index defaultValue:(float)defaultValue {
+    
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.floatValue : defaultValue;
+}
+
+- (double)jg_doubleAtIndex:(NSUInteger)index {
+    return [self jg_doubleAtIndex:index defaultValue:0];
+}
+
+- (double)jg_doubleAtIndex:(NSUInteger)index defaultValue:(double)defaultValue {
+    
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.doubleValue : defaultValue;
+}
+
+#pragma mark - BOOL
 - (BOOL)jg_boolAtIndex:(NSUInteger)index {
     return [self jg_boolAtIndex:index defaultValue:NO];
 }
@@ -38,217 +182,85 @@
     return YES;
 }
 
-- (int)jg_intAtIndex:(NSUInteger)index {
-    return [self jg_intAtIndex:index defaultValue:0];
+#pragma mark - CGFloat
+- (CGFloat)jg_CGFloatAtIndex:(NSUInteger)index {
+    return [self jg_CGFloatAtIndex:index defaultValue:0.f];
 }
 
-- (int)jg_intAtIndex:(NSUInteger)index defaultValue:(int)defaultValue {
+- (CGFloat)jg_CGFloatAtIndex:(NSUInteger)index defaultValue:(CGFloat)defaultValue {
     
-    id obj = [self jg_objectAtIndex:index];
-    if (obj == nil) {
-        return defaultValue;
-    }
-    
-    if ([obj isKindOfClass:[NSNumber class]]) {
-        return [(NSNumber *)obj intValue];
-    }
-    else if ([obj isKindOfClass:[NSString class]]) {
-        
-        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
-        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
-        //return number ? number.intValue : defaultValue;
-        NSString *numStr = (NSString *)obj;
-        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
-        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
-        if ([number isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-        return number ? number.intValue : defaultValue;
-    }
-    return defaultValue;
+    NSNumber *obj = [self jg_numberAtIndex:index];
+#if defined(__LP64__) && __LP64__
+    return obj ? obj.doubleValue : defaultValue;
+#else
+    return obj ? obj.floatValue : defaultValue;
+#endif
 }
 
+#pragma mark - NSInteger
 - (NSInteger)jg_integerAtIndex:(NSUInteger)index {
     return [self jg_integerAtIndex:index defaultValue:0];
 }
 
 - (NSInteger)jg_integerAtIndex:(NSUInteger)index defaultValue:(NSInteger)defaultValue {
     
-    id obj = [self jg_objectAtIndex:index];
-    if (obj == nil) {
-        return defaultValue;
-    }
-    
-    if ([obj isKindOfClass:[NSNumber class]]) {
-        return [(NSNumber *)obj integerValue];
-    }
-    else if ([obj isKindOfClass:[NSString class]]) {
-        
-        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
-        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
-        //return number ? number.integerValue : defaultValue;
-        NSString *numStr = (NSString *)obj;
-        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
-        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
-        if ([number isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-        return number ? number.integerValue : defaultValue;
-    }
-    return defaultValue;
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.integerValue : defaultValue;
 }
 
-- (CGFloat)jg_floatAtIndex:(NSUInteger)index {
-    return [self jg_floatAtIndex:index defaultValue:0.f];
+- (NSUInteger)jg_unsignedIntegerAtIndex:(NSUInteger)index {
+    return [self jg_integerAtIndex:index defaultValue:0];
 }
 
-- (CGFloat)jg_floatAtIndex:(NSUInteger)index defaultValue:(CGFloat)defaultValue {
+- (NSUInteger)jg_unsignedIntegerAtIndex:(NSUInteger)index defaultValue:(NSUInteger)defaultValue {
     
-    id obj = [self jg_objectAtIndex:index];
-    if (obj == nil) {
-        return defaultValue;
-    }
-    
-    if ([obj isKindOfClass:[NSNumber class]]) {
-#if defined(__LP64__) && __LP64__
-        return [(NSNumber *)obj doubleValue];
-#else
-        return [(NSNumber *)obj floatValue];
-#endif
-    }
-    else if ([obj isKindOfClass:[NSString class]]) {
-        
-        // 小数点后存在多位小数 NSNumberFormatterDecimalStyle 转换失败
-        //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        //NSNumber *number = [numberFormatter numberFromString:(NSString *)obj];
-        NSString *numStr = (NSString *)obj;
-        NSInteger dotFrom = [numStr rangeOfString:@"."].location;
-        NSInteger dotLen = dotFrom != NSNotFound ? numStr.length - dotFrom - 1 : 0;
-        
-        NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
-        if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-        NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:dotLen raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
-        NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
-        if ([number isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
-        }
-        
-#if defined(__LP64__) && __LP64__
-        return number ? number.doubleValue : defaultValue;
-#else
-        return number ? number.floatValue : defaultValue;
-#endif
-    }
-    return defaultValue;
+    NSNumber *obj = [self jg_numberAtIndex:index];
+    return obj ? obj.unsignedIntegerValue : defaultValue;
 }
 
-- (NSString *)jg_stringAtIndex:(NSUInteger)index {
-    return [self jg_stringAtIndex:index defaultValue:nil];
-}
-
-- (NSString *)jg_stringAtIndex:(NSUInteger)index defaultValue:(NSString *)defaultValue {
-    
-    id obj = [self jg_objectAtIndex:index];
-    if (obj == nil) {
-        return defaultValue;
+#pragma mark - Object
+- (id)jg_objectAtIndex:(NSUInteger)index {
+    if (index < 0 || index > self.count) {
+        return nil;
     }
     
-    if ([obj isKindOfClass:[NSString class]]) {
+    id obj = [self objectAtIndex:index];
+    if ([obj isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
+    return obj;
+}
+
+- (id)jg_objectAtIndex:(NSUInteger)index withClass:(__unsafe_unretained Class)cls {
+    if (index < 0 || index > self.count) {
+        return nil;
+    }
+    
+    id obj = [self objectAtIndex:index];
+    if ([obj isKindOfClass:[NSNull class]]) {
         return obj;
     }
-    else if ([obj isKindOfClass:[NSNumber class]]) {
-        return [(NSNumber *)obj stringValue];
-    }
-    
-    return defaultValue;
+    return nil;
 }
 
+#pragma mark - Dict
 - (NSDictionary *)jg_dictionaryAtIndex:(NSUInteger)index {
-    return [self jg_dictionaryAtIndex:index defaultValue:nil];
-}
-
-- (NSDictionary *)jg_dictionaryAtIndex:(NSUInteger)index defaultValue:(NSDictionary *)defaultValue {
     
     id obj = [[self jg_objectAtIndex:index] jg_JSONObject];
-    if (obj == nil) {
-        return defaultValue;
-    }
-    
     if ([obj isKindOfClass:NSDictionary.class]) {
         return (NSDictionary *)obj;
     }
-    
-    NSData *data = nil;
-    if ([obj isKindOfClass:NSData.class]) {
-        data = (NSData *)data;
-    } else if ([obj isKindOfClass:NSString.class]) {
-        data = [(NSString *)obj dataUsingEncoding:NSUTF8StringEncoding];
-    }
-    
-    if (data.length == 0) {
-        return defaultValue;
-    }
-    
-    obj = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    if ([obj isKindOfClass:NSDictionary.class]) {
-        return (NSDictionary *)obj;
-    }
-    
-    return defaultValue;
+    return nil;
 }
 
+#pragma mark - Array
 - (NSArray *)jg_arrayAtIndex:(NSUInteger)index {
-    return [self jg_arrayAtIndex:index defaultValue:nil];
-}
-
-- (NSArray *)jg_arrayAtIndex:(NSUInteger)index defaultValue:(NSArray *)defaultValue {
     
     id obj = [[self jg_objectAtIndex:index] jg_JSONObject];
-    if (obj == nil) {
-        return defaultValue;
-    }
-    
     if ([obj isKindOfClass:NSArray.class]) {
         return (NSArray *)obj;
     }
-    
-    NSData *data = nil;
-    if ([obj isKindOfClass:NSData.class]) {
-        data = (NSData *)data;
-    } else if ([obj isKindOfClass:NSString.class]) {
-        data = [(NSString *)obj dataUsingEncoding:NSUTF8StringEncoding];
-    }
-    
-    if (data.length == 0) {
-        return defaultValue;
-    }
-    
-    obj = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    if ([obj isKindOfClass:NSArray.class]) {
-        return (NSArray *)obj;
-    }
-    
-    return defaultValue;
+    return nil;
 }
 
 @end

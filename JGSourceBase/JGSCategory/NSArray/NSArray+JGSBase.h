@@ -10,30 +10,66 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSArray (JGSBase)
+@interface NSArray<__covariant ObjectType> (JGSBase)
 
-- (nullable id)jg_objectAtIndex:(NSUInteger)index;
+// String
+- (nullable NSString *)jg_stringAtIndex:(NSUInteger)index;
 
-- (BOOL)jg_boolAtIndex:(NSUInteger)index;
-- (BOOL)jg_boolAtIndex:(NSUInteger)index defaultValue:(BOOL)defaultValue;
+// Number
+- (nullable NSNumber *)jg_numberAtIndex:(NSUInteger)index;
 
+// Short
+- (short)jg_shortAtIndex:(NSUInteger)index;
+- (short)jg_shortAtIndex:(NSUInteger)index defaultValue:(short)defaultValue;
+- (unsigned short)jg_unsignedShortAtIndex:(NSUInteger)index;
+- (unsigned short)jg_unsignedShortAtIndex:(NSUInteger)index defaultValue:(unsigned short)defaultValue;
+
+// Int
 - (int)jg_intAtIndex:(NSUInteger)index;
 - (int)jg_intAtIndex:(NSUInteger)index defaultValue:(int)defaultValue;
+- (unsigned int)jg_unsignedIntAtIndex:(NSUInteger)index;
+- (unsigned int)jg_unsignedIntAtIndex:(NSUInteger)index defaultValue:(unsigned int)defaultValue;
 
+// Long
+- (long)jg_longAtIndex:(NSUInteger)index;
+- (long)jg_longAtIndex:(NSUInteger)index defaultValue:(long)defaultValue;
+- (unsigned long)jg_unsignedLongAtIndex:(NSUInteger)index;
+- (unsigned long)jg_unsignedLongAtIndex:(NSUInteger)index defaultValue:(unsigned long)defaultValue;
+- (long long)jg_longLongAtIndex:(NSUInteger)index;
+- (long long)jg_longLongAtIndex:(NSUInteger)index defaultValue:(long long)defaultValue;
+- (unsigned long long)jg_unsignedLongLongAtIndex:(NSUInteger)index;
+- (unsigned long long)jg_unsignedLongLongAtIndex:(NSUInteger)index defaultValue:(unsigned long long)defaultValue;
+
+// Float
+- (float)jg_floatAtIndex:(NSUInteger)index;
+- (float)jg_floatAtIndex:(NSUInteger)index defaultValue:(float)defaultValue;
+- (double)jg_doubleAtIndex:(NSUInteger)index;
+- (double)jg_doubleAtIndex:(NSUInteger)index defaultValue:(double)defaultValue;
+
+/// 获取BOOL，如存在非空、非NSNull对象，则返回YES
+- (BOOL)jg_boolAtIndex:(NSUInteger)index;
+/// 获取BOOL，如存在非空、非NSNull对象，则返回YES
+- (BOOL)jg_boolAtIndex:(NSUInteger)index defaultValue:(BOOL)defaultValue;
+
+// CGFloat
+- (CGFloat)jg_CGFloatAtIndex:(NSUInteger)index;
+- (CGFloat)jg_CGFloatAtIndex:(NSUInteger)index defaultValue:(CGFloat)defaultValue;
+
+// NSInteger
 - (NSInteger)jg_integerAtIndex:(NSUInteger)index;
 - (NSInteger)jg_integerAtIndex:(NSUInteger)index defaultValue:(NSInteger)defaultValue;
+- (NSUInteger)jg_unsignedIntegerAtIndex:(NSUInteger)index;
+- (NSUInteger)jg_unsignedIntegerAtIndex:(NSUInteger)index defaultValue:(NSUInteger)defaultValue;
 
-- (CGFloat)jg_floatAtIndex:(NSUInteger)index;
-- (CGFloat)jg_floatAtIndex:(NSUInteger)index defaultValue:(CGFloat)defaultValue;
+// Object
+- (nullable ObjectType)jg_objectAtIndex:(NSUInteger)index;
+- (nullable ObjectType)jg_objectAtIndex:(NSUInteger)index withClass:(__unsafe_unretained Class)cls;
 
-- (nullable NSString *)jg_stringAtIndex:(NSUInteger)index;
-- (nullable NSString *)jg_stringAtIndex:(NSUInteger)index defaultValue:(nullable NSString *)defaultValue;
-
+// Dict
 - (nullable NSDictionary *)jg_dictionaryAtIndex:(NSUInteger)index;
-- (nullable NSDictionary *)jg_dictionaryAtIndex:(NSUInteger)index defaultValue:(nullable NSDictionary *)defaultValue;
 
+// Array
 - (nullable NSArray *)jg_arrayAtIndex:(NSUInteger)index;
-- (nullable NSArray *)jg_arrayAtIndex:(NSUInteger)index defaultValue:(nullable NSArray *)defaultValue;
 
 @end
 
