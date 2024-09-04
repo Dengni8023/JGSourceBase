@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+JGSBase.h"
+#import "NSObject+JGSBase.h"
 #import "JGSBase+JGSPrivate.h"
 
 @implementation NSDictionary (JGSBase)
@@ -16,24 +17,8 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = NSClassFromString(@"__NSSingleEntryDictionaryI");
+        Class class = NSClassFromString(@"__NSPlaceholderDictionary");
         NSArray<NSString *> *originalArray = @[
-            // 为避免影响其他功能，取值方法不做默认交换
-            // 其他功能可能存在获取NSNull对象，并针对NSNull的情况做不同处理
-            //NSStringFromSelector(@selector(objectForKey:)),
-            //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
-            //NSStringFromSelector(@selector(valueForKey:))
-        ];
-        
-        [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            SEL originalSelector = NSSelectorFromString(obj);
-            SEL swizzledSelector = NSSelectorFromString([@"JGSBase_" stringByAppendingString:obj]);
-            JGSRuntimeSwizzledMethod(class, originalSelector, swizzledSelector);
-        }];
-        
-        class = NSClassFromString(@"__NSPlaceholderDictionary");
-        originalArray = @[
             NSStringFromSelector(@selector(initWithObjects:forKeys:count:)),
         ];
         
@@ -66,32 +51,8 @@
     return [self JGSBase_initWithObjects:newObjects forKeys:newKeys count:cnt];
 }
 
-- (id)JGSBase_objectForKey:(id)aKey {
-    id obj = [self JGSBase_objectForKey:aKey];
-    if ([obj isKindOfClass:[NSNull class]]) {
-        return nil;
-    }
-    return obj;
-}
-
-- (id)JGSBase_objectForKeyedSubscript:(id)key {
-    return [self objectForKey:key];
-}
-
-- (id)JGSBase_valueForKey:(NSString *)key {
-    id obj = [self JGSBase_valueForKey:key];
-    if ([obj isKindOfClass:[NSNull class]]) {
-        return nil;
-    }
-    return obj;
-}
-
 #pragma mark - String
 - (NSString *)jg_stringForKey:(const id)key {
-    return [self jg_stringForKey:key defaultValue:nil];
-}
-
-- (NSString *)jg_stringForKey:(const id)key defaultValue:(NSString *)defaultValue {
     
     id obj = [self objectForKey:key];
     if ([obj isKindOfClass:[NSString class]]) {
@@ -100,16 +61,11 @@
     else if ([obj isKindOfClass:[NSNumber class]]) {
         return [(NSNumber *)obj stringValue];
     }
-    
-    return defaultValue;
+    return nil;
 }
 
 #pragma mark - Number
 - (NSNumber *)jg_numberForKey:(const id)key {
-    return [self jg_numberForKey:key defaultValue:nil];
-}
-
-- (NSNumber *)jg_numberForKey:(const id)key defaultValue:(NSNumber *)defaultValue {
     
     id obj = [self objectForKey:key];
     if ([obj isKindOfClass:[NSNumber class]]) {
@@ -128,18 +84,18 @@
         
         NSDecimalNumber *decimalNum = [NSDecimalNumber decimalNumberWithString:numStr];
         if ([decimalNum isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
+            return nil;
         }
         
         NSDecimalNumberHandler *handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:dotLen raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
         NSDecimalNumber *number = [decimalNum decimalNumberByRoundingAccordingToBehavior:handler];
         if ([number isEqual:[NSDecimalNumber notANumber]]) {
-            return defaultValue;
+            return nil;
         }
         
-        return number ?: defaultValue;
+        return number;
     }
-    return defaultValue;
+    return nil;
 }
 
 #pragma mark - Short
@@ -149,8 +105,8 @@
 
 - (short)jg_shortForKey:(const id)key defaultValue:(short)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.shortValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.shortValue : defaultValue;
 }
 
 - (unsigned short)jg_unsignedShortForKey:(const id)key {
@@ -159,8 +115,8 @@
 
 - (unsigned short)jg_unsignedShortForKey:(const id)key defaultValue:(unsigned short)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.unsignedShortValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.unsignedShortValue : defaultValue;
 }
 
 #pragma mark - Int
@@ -170,8 +126,8 @@
 
 - (int)jg_intForKey:(const id)key defaultValue:(int)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.intValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.intValue : defaultValue;
 }
 
 - (unsigned int)jg_unsignedIntForKey:(const id)key {
@@ -180,8 +136,8 @@
 
 - (unsigned int)jg_unsignedIntForKey:(const id)key defaultValue:(unsigned int)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.unsignedIntValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.unsignedIntValue : defaultValue;
 }
 
 #pragma mark - Long
@@ -191,8 +147,8 @@
 
 - (long)jg_longForKey:(const id)key defaultValue:(long)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.longValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.longValue : defaultValue;
 }
 
 - (unsigned long)jg_unsignedLongForKey:(const id)key {
@@ -201,8 +157,8 @@
 
 - (unsigned long)jg_unsignedLongForKey:(const id)key defaultValue:(unsigned long)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.unsignedLongValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.unsignedLongValue : defaultValue;
 }
 
 - (long long)jg_longLongForKey:(const id)key {
@@ -210,9 +166,8 @@
 }
 
 - (long long)jg_longLongForKey:(const id)key defaultValue:(long long)defaultValue {
-    
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.longLongValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.longLongValue : defaultValue;
 }
 
 - (unsigned long long)jg_unsignedLongLongForKey:(const id)key {
@@ -220,9 +175,8 @@
 }
 
 - (unsigned long long)jg_unsignedLongLongForKey:(const id)key defaultValue:(unsigned long long)defaultValue {
-    
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.unsignedLongLongValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.unsignedLongLongValue : defaultValue;
 }
 
 #pragma mark - Float
@@ -232,8 +186,8 @@
 
 - (float)jg_floatForKey:(const id)key defaultValue:(float)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.floatValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.floatValue : defaultValue;
 }
 
 - (double)jg_doubleForKey:(const id)key {
@@ -242,8 +196,8 @@
 
 - (double)jg_doubleForKey:(const id)key defaultValue:(double)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.doubleValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.doubleValue : defaultValue;
 }
 
 #pragma mark - BOOL
@@ -274,11 +228,11 @@
 
 - (CGFloat)jg_CGFloatForKey:(const id)key defaultValue:(CGFloat)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
+    NSNumber *obj = [self jg_numberForKey:key];
 #if defined(__LP64__) && __LP64__
-    return obj.doubleValue;
+    return obj ? obj.doubleValue : defaultValue;
 #else
-    return obj.floatValue;
+    return obj ? obj.floatValue : defaultValue;
 #endif
 }
 
@@ -289,8 +243,8 @@
 
 - (NSInteger)jg_integerForKey:(const id)key defaultValue:(NSInteger)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.integerValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.integerValue : defaultValue;
 }
 
 - (NSUInteger)jg_unsignedIntegerForKey:(const id)key {
@@ -299,90 +253,49 @@
 
 - (NSUInteger)jg_unsignedIntegerForKey:(const id)key defaultValue:(NSUInteger)defaultValue {
     
-    NSNumber *obj = [self jg_numberForKey:key defaultValue:@(defaultValue)];
-    return obj.unsignedIntegerValue;
+    NSNumber *obj = [self jg_numberForKey:key];
+    return obj ? obj.unsignedIntegerValue : defaultValue;
 }
 
 #pragma mark - Object
 - (id)jg_objectForKey:(const id)key {
-    return [self jg_objectForKey:key defaultValue:nil];
-}
-
-- (id)jg_objectForKey:(const id)key defaultValue:(id)defaultValue {
     
     id obj = [self objectForKey:key];
-    return obj ?: defaultValue;
+    if ([obj isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
+    return obj;
 }
 
 - (id)jg_objectForKey:(const id)key withClass:(__unsafe_unretained Class)cls {
-    return [self jg_objectForKey:key withClass:cls defaultValue:nil];
-}
-
-- (id)jg_objectForKey:(const id)key withClass:(__unsafe_unretained Class)cls defaultValue:(id)defaultValue {
     
-    id obj = [self jg_objectForKey:key defaultValue:defaultValue];
+    id obj = [self jg_objectForKey:key];
     if ([obj isKindOfClass:cls]) {
         return obj;
     }
-    return defaultValue;
+    return nil;
 }
 
 #pragma mark - Dict
 - (NSDictionary *)jg_dictionaryForKey:(const id)key {
-    return [self jg_dictionaryForKey:key defaultValue:nil];
-}
-
-- (NSDictionary *)jg_dictionaryForKey:(const id)key defaultValue:(NSDictionary *)defaultValue {
     
-    //id obj = [self jg_objectForKey:key withClass:[NSDictionary class] defaultValue:defaultValue];
-    id obj = [self jg_objectForKey:key withClass:[NSDictionary class]];
-    if (obj == nil) {
-        
-        NSData *jsonData = [self jg_objectForKey:key withClass:[NSData class]];
-        if (jsonData.length == 0) {
-            NSString *json = [self jg_stringForKey:key];
-            if (json.length > 0) {
-                jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-            }
-        }
-        
-        if (jsonData.length > 0) {
-            id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-            if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-                obj = jsonObject;
-            }
-        }
+    id obj = [[self jg_objectForKey:key] jg_JSONObject];
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        return (NSDictionary *)obj;
     }
-    return obj ?: defaultValue;
+    
+    return nil;
 }
 
 #pragma mark - Array
 - (NSArray *)jg_arrayForKey:(const id)key {
-    return [self jg_arrayForKey:key defaultValue:nil];
-}
-
-- (NSArray *)jg_arrayForKey:(const id)key defaultValue:(NSArray *)defaultValue {
     
-    //id obj = [self jg_objectForKey:key withClass:[NSArray class] defaultValue:defaultValue];
-    id obj = [self jg_objectForKey:key withClass:[NSArray class]];
-    if (obj == nil) {
-        
-        NSData *jsonData = [self jg_objectForKey:key withClass:[NSData class]];
-        if (jsonData.length == 0) {
-            NSString *json = [self jg_stringForKey:key];
-            if (json.length > 0) {
-                jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-            }
-        }
-        
-        if (jsonData.length > 0) {
-            id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-            if ([jsonObject isKindOfClass:[NSArray class]]) {
-                obj = jsonObject;
-            }
-        }
+    id obj = [[self jg_objectForKey:key] jg_JSONObject];
+    if ([obj isKindOfClass:[NSArray class]]) {
+        return (NSArray *)obj;
     }
-    return obj ?: defaultValue;
+    
+    return nil;
 }
 
 #pragma mark - End
@@ -400,11 +313,6 @@
         NSArray<NSString *> *originalArray = @[
             NSStringFromSelector(@selector(setObject:forKey:)),
             NSStringFromSelector(@selector(setObject:forKeyedSubscript:)), // subscripting字面量方法
-            // 为避免影响其他功能，取值方法不做默认交换
-            // 其他功能可能存在设置、获取NSNull对象，并针对NSNull的情况做不同处理
-            //NSStringFromSelector(@selector(objectForKey:)),
-            //NSStringFromSelector(@selector(objectForKeyedSubscript:)), // subscripting字面量方法
-            //NSStringFromSelector(@selector(valueForKey:))
         ];
         [originalArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -425,26 +333,6 @@
 
 - (void)JGSBase_setObject:(id)anObject forKeyedSubscript:(nonnull id<NSCopying>)key {
     [self setObject:anObject forKey:key];
-}
-
-- (id)JGSBase_objectForKey:(id)aKey {
-    id obj = [self JGSBase_objectForKey:aKey];
-    if ([obj isKindOfClass:[NSNull class]]) {
-        return nil;
-    }
-    return obj;
-}
-
-- (id)JGSBase_objectForKeyedSubscript:(id)key {
-    return [self objectForKey:key];
-}
-
-- (id)JGSBase_valueForKey:(NSString *)key {
-    id obj = [self JGSBase_valueForKey:key];
-    if ([obj isKindOfClass:[NSNull class]]) {
-        return nil;
-    }
-    return obj;
 }
 
 #pragma mark - End
