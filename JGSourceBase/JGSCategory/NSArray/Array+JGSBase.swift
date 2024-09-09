@@ -8,7 +8,8 @@
 
 import Foundation
 
-public extension Array {
+public
+extension Array {
     
     func jg_object<T: JGSTransformable>(at index: Int) -> T? {
         guard index >= 0 && index < count else { return nil }
