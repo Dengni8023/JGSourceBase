@@ -8,45 +8,46 @@
 
 import Foundation
 
+public
 extension Dictionary where Key : Hashable {
 
     // String
-    public func jg_string(forKey key: Key) -> String? {
+    func jg_string(forKey key: Key) -> String? {
         guard let value = self[key] else { return nil }
         return String.jg_transform(from: value)
     }
 
     // Number
-    public func jg_number(forKey key: Key) -> NSNumber? {
+    func jg_number(forKey key: Key) -> NSNumber? {
         guard let value = self[key] else { return nil }
         return NSNumber.jg_transform(from: value)
     }
 
     // Int
-    public func jg_int(forKey key: Key) -> Int? {
+    func jg_int(forKey key: Key) -> Int? {
         guard let value = self[key] else { return nil }
         return Int.jg_transform(from: value)
     }
 
     // Float
-    public func jg_float(forKey key: Key) -> Float? {
+    func jg_float(forKey key: Key) -> Float? {
         guard let value = self[key] else { return nil }
         return Float.jg_transform(from: value)
     }
 
-    public func jg_double(forKey key: Key) -> Double? {
+    func jg_double(forKey key: Key) -> Double? {
         guard let value = self[key] else { return nil }
         return Double.jg_transform(from: value)
     }
 
     // BOOL
-    public func jg_bool(forKey key: Key) -> Bool? {
+    func jg_bool(forKey key: Key) -> Bool? {
         guard let value = self[key] else { return nil }
         return Bool.jg_transform(from: value)
     }
 
     // Object
-    public func jg_object<T>(forKey key: Key) -> T? {
+    func jg_object<T>(forKey key: Key) -> T? {
         guard let value = self[key] else { return nil }
 
         // T
@@ -107,19 +108,19 @@ extension Dictionary where Key : Hashable {
     }
 
     // Dict
-    public func jg_dictionary(forKey key: Key) -> [Key: Value]? {
+    func jg_dictionary(forKey key: Key) -> [Key: Value]? {
         guard let value = self[key] else { return nil }
         return Dictionary<Key, Value>.jg_transform(from: value)
     }
 
     // Array
-    public func jg_array(forKey key: Key) -> [Element]? {
+    func jg_array(forKey key: Key) -> [Element]? {
         guard let value = self[key] else { return nil }
         return Array<Element>.jg_transform(from: value)
     }
 
     // Set
-    public func jg_set<Element>(forKey key: Key) -> Set<Element>? {
+    func jg_set<Element>(forKey key: Key) -> Set<Element>? {
         guard let value = self[key] else { return nil }
         return Set<Element>.jg_transform(from: value)
     }

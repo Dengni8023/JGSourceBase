@@ -8,6 +8,7 @@
 
 import Foundation
 
+public
 extension Data {
     
 }
