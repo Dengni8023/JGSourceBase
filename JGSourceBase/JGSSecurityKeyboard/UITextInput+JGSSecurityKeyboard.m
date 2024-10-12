@@ -135,7 +135,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
 #pragma mark - UITextFieldDelegate
 - (void)JGSSwizzing_setDelegate:(id<UITextFieldDelegate>)delegate {
     
-    [self JGSSwizzing_setDelegate:self];
+    [self JGSSwizzing_setDelegate:delegate ? self : nil];
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -144,7 +144,9 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         }
     });
     
-    [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+    if (![delegate isEqual:self]) {
+        [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+    }
 }
 
 - (id<UITextFieldDelegate>)JGSSwizzing_delegate {
@@ -549,7 +551,9 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         }
     });
     
-    [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+    if (![delegate isEqual:self]) {
+        [JGSSecurityKeyboardTextInputDelegate setObject:delegate forKey:self];
+    }
 }
 
 - (id<UITextViewDelegate>)JGSSwizzing_delegate {
