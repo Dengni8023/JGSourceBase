@@ -35,6 +35,8 @@ echo "${ShellPath}"
 if [[ -f "${ShellPath}" ]]; then
     chmod +x ${ShellPath} # 脚本执行权限
     ${ShellPath} # 执行脚本
+else
+    echo "Shell not found"
 fi
 
 echo "为避免脚本泄漏，脚本之行完成后，删除脚本"

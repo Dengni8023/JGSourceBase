@@ -324,8 +324,7 @@ Pod::Spec.new do |spec|
       :name => "RemoveUnInstalledJGSResource",
       :script => RemoveUnInstalledJGSResource,
       # :execution_position => :before_compile,
-      :execution_position => :after_compile,
-      :input_files => ["${BUILT_PRODUCTS_DIR}/$(PRODUCT_NAME)/$(PRODUCT_NAME).bundle"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME)/$(PRODUCT_NAME).bundle"],
+      :execution_position => :after_compile
     }
   
   end
@@ -403,7 +402,7 @@ Pod::Spec.new do |spec|
     
     sub.pod_target_xcconfig = {
       "JGSIntegrityCheckInstalled" => "YES",
-      "GCC_PREPROCESSOR_DEFINITIONS" => "JGSIntegrityCheckInstalled='\"${JGSIntegrityCheckInstalled}\"' JGSResourcesCheckFileHashSecuritySalt='\"JGSIntegrityCheck\"' JGSApplicationIntegrityCheckFileHashFile='\"JGSApplicationIntegrityCheckFileHashFile\"'",
+      "GCC_PREPROCESSOR_DEFINITIONS" => "JGSIntegrityCheckInstalled='\"${JGSIntegrityCheckInstalled}\"' JGSAppIntegrityCheckFile='\"JGSAppIntegrityCheckFile.json\"'",
     }
     
     sub.dependency "JGSourceBase/Encryption"

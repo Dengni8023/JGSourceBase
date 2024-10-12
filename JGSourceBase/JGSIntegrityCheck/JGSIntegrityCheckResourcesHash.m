@@ -27,119 +27,100 @@
 
 - (id)checkInfoPlistNode:(id)usingObject record:(id)recordObject blackKeys:(NSArray<NSString *> *)blackKeys {
 	
-	if ([recordObject isKindOfClass:[NSString class]]) {
-		
-		if (!usingObject) {
-			return nil;
-		}
-		
-		NSData *recordData = [[NSData alloc] initWithBase64EncodedString:(NSString *)recordObject options:NSDataBase64DecodingIgnoreUnknownCharacters];
-		if (recordData.length == 0) {
-			return nil;
-		}
-		
-		NSString *recordValue = [[NSString alloc] initWithData:recordData encoding:NSUTF8StringEncoding];
-		if (recordValue.length == 0) {
-			return nil;
-		}
-		
-		BOOL checkResult = YES;
-		if ([usingObject isKindOfClass:[NSString class]]) {
-			checkResult = [[(NSString *)usingObject lowercaseString] isEqualToString:recordValue.lowercaseString];
-		}
-		else if ([usingObject isKindOfClass:[NSNumber class]]) {
-			// 数值类型可以同时为Int、Bool，因此判断NSNumber
-			// 注意脚本中bool统一处理为0/1
-			checkResult = [[(NSNumber *)usingObject stringValue].lowercaseString isEqualToString:recordValue.lowercaseString];
-		}
-		else {
-			JGSPrivateLog(@"校验未进行 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
-			return nil;
-		}
-		
-		if (!checkResult) {
-			JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordValue);
-		}
-		
-		return checkResult ? nil : usingObject;
-	}
-	else if ([recordObject isKindOfClass:[NSArray class]]) {
-		
-		NSArray *usingArray = (NSArray *)usingObject;
-		NSArray *recordArray = (NSArray *)recordObject;
-		if (recordArray.count != usingArray.count) {
-			JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordObject);
-			return usingObject;
-		}
-		
-		if (usingArray.count == 0) {
-			return nil;
-		}
-		
-		NSMutableArray *unpassInfo = @{}.mutableCopy;
-		for (NSInteger i = 0; i < recordArray.count; i++) {
-			
-			id usingItem = [usingArray objectAtIndex:i];
-			id recordItem = [recordArray objectAtIndex:i];
-			id result = [self checkInfoPlistNode:usingItem record:recordItem blackKeys:blackKeys];
-			if (result) {
-				[unpassInfo addObject:result];
-			}
-		}
-		
-		return unpassInfo.count > 0 ? unpassInfo : nil;
-	}
-	else if ([recordObject isKindOfClass:[NSDictionary class]]) {
-		
-		NSDictionary<NSString *, id> *usingMap = (NSDictionary *)usingObject;
-		NSDictionary<NSString *, id> *recordMap = (NSDictionary *)recordObject;
-		NSMutableDictionary<NSString *, id> *unpassInfoKeys = @{}.mutableCopy;
-		[recordMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull recordVlue, BOOL * _Nonnull stop) {
-			
-			NSData *keyData = [[NSData alloc] initWithBase64EncodedString:key options:NSDataBase64DecodingIgnoreUnknownCharacters];
-			if (keyData.length == 0) {
-				return;
-			}
-			
-			NSString *recordKey = [[NSString alloc] initWithData:keyData encoding:NSUTF8StringEncoding];
-			if (recordKey.length == 0) {
-				return;
-			}
-			
-			// 黑名单key不做校验
-			if ([blackKeys containsObject:recordKey]) {
-				JGSPrivateLog(@"Check Plist Black Key: \t%@", recordKey);
-				return;
-			}
-			
-			id usingValue = [usingMap objectForKey:recordKey];
-			if (!usingValue) {
-				return;
-			}
-			
-			// 下一层黑名单key
-			NSMutableArray *nextBlackKeys = @[].mutableCopy;
-			for (NSString *blackKey in blackKeys) {
-				NSMutableArray *subDirs = [blackKey componentsSeparatedByString:@"."].mutableCopy;
-				[subDirs removeObjectAtIndex:0];
-				NSString *newKey = [subDirs componentsJoinedByString:@"."];
-				if (newKey.length > 0) {
-					[nextBlackKeys addObject:newKey];
-				}
-			}
-			
-			//JGSPrivateLog("Check Plist Key: \t\(recordKey)")
-			id mapItemResult = [self checkInfoPlistNode:usingValue record:recordVlue blackKeys:nextBlackKeys.copy];
-			//JGSPrivateLog("Check Plist Key: \t\(recordKey)\nCheck Plist Result:\t\(mapItemResult ?? "pass")")
-			if (!mapItemResult) {
-				return;
-			}
-			
-			unpassInfoKeys[recordKey] = mapItemResult;
-		}];
-		
-		return unpassInfoKeys.count > 0 ? unpassInfoKeys.copy : nil;
-	}
+    if ([recordObject isKindOfClass:[NSDictionary class]]) {
+        
+        NSDictionary<NSString *, id> *usingMap = (NSDictionary *)usingObject;
+        NSDictionary<NSString *, id> *recordMap = (NSDictionary *)recordObject;
+        NSMutableDictionary<NSString *, id> *unpassInfoKeys = @{}.mutableCopy;
+        [recordMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull recordKey, id  _Nonnull recordVlue, BOOL * _Nonnull stop) {
+            
+            if (recordKey.length == 0) {
+                return;
+            }
+            
+            // 黑名单key不做校验
+            if ([blackKeys containsObject:recordKey]) {
+                JGSPrivateLog(@"Check Plist Black Key: \t%@", recordKey);
+                return;
+            }
+            
+            id usingValue = [usingMap objectForKey:recordKey];
+            if (!usingValue) {
+                return;
+            }
+            
+            // 下一层黑名单key
+            NSMutableArray *nextBlackKeys = @[].mutableCopy;
+            for (NSString *blackKey in blackKeys) {
+                NSMutableArray *subDirs = [blackKey componentsSeparatedByString:@"."].mutableCopy;
+                [subDirs removeObjectAtIndex:0];
+                NSString *newKey = [subDirs componentsJoinedByString:@"."];
+                if (newKey.length > 0) {
+                    [nextBlackKeys addObject:newKey];
+                }
+            }
+            
+            //JGSPrivateLog("Check Plist Key: \t\(recordKey)")
+            id mapItemResult = [self checkInfoPlistNode:usingValue record:recordVlue blackKeys:nextBlackKeys.copy];
+            //JGSPrivateLog(@"Check Plist: <%@: %@>", recordKey, mapItemResult ?: @"pass")
+            if (!mapItemResult) {
+                return;
+            }
+            
+            unpassInfoKeys[recordKey] = mapItemResult;
+        }];
+        
+        return unpassInfoKeys.count > 0 ? unpassInfoKeys.copy : nil;
+    } else if ([recordObject isKindOfClass:[NSArray class]]) {
+        
+        NSArray *usingArray = (NSArray *)usingObject;
+        if (usingArray.count == 0) {
+            return nil;
+        }
+        
+        NSArray *recordArray = (NSArray *)recordObject;
+        if (recordArray.count != usingArray.count) {
+            JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordObject);
+            return usingObject;
+        }
+        
+        NSMutableArray *unpassInfo = @{}.mutableCopy;
+        for (NSInteger i = 0; i < recordArray.count; i++) {
+            
+            id usingItem = [usingArray objectAtIndex:i];
+            id recordItem = [recordArray objectAtIndex:i];
+            id result = [self checkInfoPlistNode:usingItem record:recordItem blackKeys:blackKeys];
+            if (result) {
+                [unpassInfo addObject:result];
+            }
+        }
+        
+        return unpassInfo.count > 0 ? unpassInfo : nil;
+    } else {
+        
+        if (!usingObject || !recordObject) {
+            return nil;
+        }
+        
+        BOOL checkResult = [usingObject isKindOfClass:[recordObject class]];
+        if (checkResult) {
+            if ([usingObject isKindOfClass:NSString.class]) {
+                checkResult = [(NSString *)usingObject isEqualToString:(NSString *)recordObject];
+            }
+            else if ([usingObject isKindOfClass:[NSNumber class]]) {
+                // 数值类型可以同时为Int、Bool，因此判断NSNumber
+                checkResult = [[(NSNumber *)usingObject stringValue].lowercaseString isEqualToString:[(NSNumber *)recordObject stringValue].lowercaseString];
+            } else {
+                checkResult = [usingObject isEqual:recordObject];
+            }
+        }
+        
+        if (!checkResult) {
+            JGSPrivateLog(@"校验不通过 \t%@\nUsing:\t<%@>\nRecord:\t<%@>", NSStringFromClass([usingObject class]), usingObject, recordObject);
+        }
+        
+        return checkResult ? nil : usingObject;
+    }
 	
 	return nil;
 }
@@ -155,7 +136,7 @@
 		JGSStrongSelf
 		
 		// 校验文件
-		NSString *hashFileName = [NSString stringWithUTF8String:JGSApplicationIntegrityCheckFileHashFile];
+		NSString *hashFileName = [NSString stringWithUTF8String:JGSAppIntegrityCheckFile];
 		NSString *hashFilePath = [[NSBundle mainBundle] pathForResource:hashFileName ofType:nil];
 		if (![[NSFileManager defaultManager] fileExistsAtPath:hashFilePath]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -195,9 +176,15 @@
 		
 		// 校验文件移除混淆头，后进行翻转获取校验文件真实内容
 		// 该步骤请与 JGSIntegrityCheckRecordResourcesHash.sh 保持逆过程的一致性
-		NSString *hashSalt = [NSString stringWithUTF8String:JGSResourcesCheckFileHashSecuritySalt];
-		NSInteger hashSaltLen = [hashSalt jg_base64EncodeString].length;
-		NSInteger realCheckContentLength = chechFileContent.length - hashSaltLen * 2;
+		NSString *hashSalt = [[NSString stringWithUTF8String:JGSAppIntegrityCheckFile] stringByDeletingPathExtension];
+        NSString *headerSalt = [hashSalt jg_base64EncodeString];
+        NSMutableString *saltRev = @"".mutableCopy;
+        for (NSInteger i = headerSalt.length; i > 0 ; i--) {
+            [saltRev appendString:[headerSalt substringWithRange:NSMakeRange(i - 1, 1)]];
+        }
+        headerSalt = headerSalt.jg_sha256String;
+        NSString *tailSalt = saltRev.jg_sha256String;
+		NSInteger realCheckContentLength = chechFileContent.length - headerSalt.length - tailSalt.length;
 		if (realCheckContentLength <= 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, nil);
@@ -206,7 +193,7 @@
 		}
 		
 		// 校验文件内容翻转
-		NSString *realCheckFileContent = [chechFileContent substringWithRange:NSMakeRange(hashSaltLen, realCheckContentLength)];
+		NSString *realCheckFileContent = [chechFileContent substringWithRange:NSMakeRange(headerSalt.length, realCheckContentLength)];
 		NSMutableString *reversedContent = @"".mutableCopy;
 		for (NSInteger i = realCheckFileContent.length; i > 0 ; i--) {
 			[reversedContent appendString:[realCheckFileContent substringWithRange:NSMakeRange(i - 1, 1)]];
@@ -223,7 +210,7 @@
 		}
 		
 		// 检验文件JSON解析
-		NSDictionary<NSString *, NSString *> *realCheckFileMap = [NSJSONSerialization JSONObjectWithData:realCheckFileJSONData options:kNilOptions error:nil];
+		NSDictionary<NSString *, id> *realCheckFileMap = [NSJSONSerialization JSONObjectWithData:realCheckFileJSONData options:kNilOptions error:nil];
 		if (realCheckFileMap.count == 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, nil);
@@ -235,14 +222,21 @@
 		NSMutableArray<NSString *> *unpassFiles = @[].mutableCopy;
 		NSMutableDictionary<NSString *, id> *unpassPlistInfo = @{}.mutableCopy;
 		JGSWeakSelf
-		[realCheckFileMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull base64FileName, NSString * _Nonnull recordFileHash, BOOL * _Nonnull stop) {
-			
+        [realCheckFileMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull base64FileName, id _Nonnull recordContent, BOOL * _Nonnull stop) {
+            
 			JGSStrongSelf
-			// 文件Hash记录空则检查下一文件
-			if (recordFileHash.length == 0) {
-				return;
-			}
-			
+            NSString *recordFileHash = nil;
+            NSDictionary<NSString *, id> *recordPlistMap = nil;
+            if ([recordContent isKindOfClass:NSString.class]) {
+                // 文件Hash记录空则检查下一文件
+                recordFileHash = (NSString *)recordContent;
+            } else if([recordContent isKindOfClass:NSDictionary.class]) {
+                // Info.plist文件记录
+                recordPlistMap = (NSDictionary<NSString *, id> *)recordContent;
+            } else {
+                return;
+            }
+            
 			// 解析文件名
 			NSData *recordNameData = [[NSData alloc] initWithBase64EncodedString:base64FileName options:NSDataBase64DecodingIgnoreUnknownCharacters];
 			if (recordNameData.length == 0) {
@@ -254,21 +248,9 @@
 			}
 			
 			// Info.plist单独处理
-			if ([recordFileName.lowercaseString isEqualToString:@"Info.plist".lowercaseString]) {
+			if ([recordFileName.lowercaseString isEqualToString:@"Info.plist".lowercaseString] && recordPlistMap.count > 0) {
 				
 				JGSPrivateLog(@"应用完整性校验-Info.plist文件内容校验");
-				
-				// Plist记录Base64内容解密
-				NSData *recordPlistData = [[NSData alloc] initWithBase64EncodedString:recordFileHash options:NSDataBase64DecodingIgnoreUnknownCharacters];
-				if (recordPlistData.length == 0) {
-					return;
-				}
-				
-				// Plist记录内容解析为Dictionary
-				NSDictionary *recordPlistMap = [NSJSONSerialization JSONObjectWithData:recordPlistData options:kNilOptions error:nil];
-				if (![recordPlistMap isKindOfClass:[NSDictionary class]] || recordPlistMap.count == 0) {
-					return;
-				}
 				
 				// Plist根结点开始校验，校验方法内部递归校验子节点
 				NSDictionary *usingPlist = [[NSBundle mainBundle] infoDictionary];
@@ -278,9 +260,14 @@
 					[unpassPlistInfo setDictionary:plistResult];
 					JGSPrivateLog(@"校验不通过：%@ =>\n%@)", recordFileName, [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:unpassPlistInfo options:(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:nil] encoding:NSUTF8StringEncoding]);
 				}
-				
+                
 				return;
 			}
+            
+            // 文件Hash记录空则检查下一文件
+            if (recordFileHash.length == 0) {
+                return;
+            }
 			
 			// 非白名单子目录不做校验
 			if (self.checkFileSubDirectoryWhitelist.count > 0 && [recordFileName containsString:@"/"] && [self.checkFileSubDirectoryWhitelist containsObject:recordFileName.stringByDeletingLastPathComponent]) {

@@ -121,11 +121,11 @@
     JGSEnableLogWithMode(JGSLogModeFunc);
 	
 #ifdef JGSIntegrityCheck_h
-	[[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[
-		@"MinimumOSVersion", // 该字段在Xcode 13.0打包时工具添加，经验证配置最低支持11.0时，打包为11.0，但TestFlight测试发现修改为15.0
-		@"CFBundleURLTypes.CFBundleURLName", //
-		@"NSAppTransportSecurity.NSAllowsArbitraryLoads"
-	]];
+//	[[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[
+//		@"MinimumOSVersion", // 该字段在Xcode 13.0打包时工具添加，经验证配置最低支持11.0时，打包为11.0，但TestFlight测试发现修改为15.0
+//		@"CFBundleURLTypes.CFBundleURLName", //
+//		@"NSAppTransportSecurity.NSAllowsArbitraryLoads"
+//	]];
 	[[JGSIntegrityCheckResourcesHash shareInstance] checkAPPResourcesHash:^(NSArray<NSString *> * _Nullable unpassFiles, NSDictionary * _Nullable unpassPlistInfo) {
 		
 		JGSLog(@"%@, %@", unpassFiles, unpassPlistInfo);

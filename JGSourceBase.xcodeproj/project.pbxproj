@@ -241,9 +241,6 @@
 		D4075B7A2863315D00E4BFEA /* LoadingWithAlpha-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-2.gif"; sourceTree = "<group>"; };
 		D4075B7B2863315D00E4BFEA /* LoadingWithAlpha-3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-3.gif"; sourceTree = "<group>"; };
 		D4075B7C2863315D00E4BFEA /* LoadingWithAlpha-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "LoadingWithAlpha-1.gif"; sourceTree = "<group>"; };
-		D4075B7E2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSApplicationIntegrityCheckFileHashFile.Info.plist.json; sourceTree = "<group>"; };
-		D4075B7F2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json"; sourceTree = "<group>"; };
-		D4075B802863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JGSApplicationIntegrityCheckFileHashFile; sourceTree = "<group>"; };
 		D4075B832863315D00E4BFEA /* JGSEncryptionDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSEncryptionDemoVC.m; sourceTree = "<group>"; };
 		D4075B842863315D00E4BFEA /* JGSEncryptionDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSEncryptionDemoVC.h; sourceTree = "<group>"; };
 		D4075B872863315D00E4BFEA /* JGSUIAlertControllerDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUIAlertControllerDemoVC.h; sourceTree = "<group>"; };
@@ -521,7 +518,6 @@
 		D4075B752863315D00E4BFEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D4075B7D2863315D00E4BFEA /* IntegrityCheck */,
 				D4075B762863315D00E4BFEA /* Loading */,
 				D4BDE1B9286D6C3E006FDCA5 /* RSA */,
 			);
@@ -540,16 +536,6 @@
 				D4075B772863315D00E4BFEA /* LoadingWithoutAlpha-1.gif */,
 			);
 			path = Loading;
-			sourceTree = "<group>";
-		};
-		D4075B7D2863315D00E4BFEA /* IntegrityCheck */ = {
-			isa = PBXGroup;
-			children = (
-				D4075B802863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile */,
-				D4075B7F2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info-1.plist.json */,
-				D4075B7E2863315D00E4BFEA /* JGSApplicationIntegrityCheckFileHashFile.Info.plist.json */,
-			);
-			path = IntegrityCheck;
 			sourceTree = "<group>";
 		};
 		D4075B812863315D00E4BFEA /* Classes */ = {
@@ -1206,9 +1192,9 @@
 				D4075ADA2863123300E4BFEA /* Sources */,
 				D4075ADB2863123300E4BFEA /* Frameworks */,
 				D4075ADC2863123300E4BFEA /* Resources */,
-				6749534C34B4E1FE0283E2BF /* [CP-User] JGSPodsScriptAfterCompile */,
 				D43E59FD29EF8EF800EDF59F /* Embed Frameworks */,
 				C54659685BDC05FC692DB016 /* [CP] Embed Pods Frameworks */,
+				6749534C34B4E1FE0283E2BF /* [CP-User] JGSPodsScriptAfterCompile */,
 			);
 			buildRules = (
 			);
@@ -1357,13 +1343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"$(SRC_ROOT)/JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig",
-			);
 			name = "[CP-User] JGSPodsScriptBeforeCompile";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/Info.plist",
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n  echo \"****** 编译开始前，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\n  chmod +x ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n  ${PROJECT_DIR}/../JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n  \n  echo \"****** 编译前Podfile自定义脚本执行完成 ******\"\n  \n";
@@ -1373,15 +1353,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JGSBase-JGSourceBase-checkManifestLockResult.txt",
 			);
@@ -1395,15 +1371,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JGSBase-JGSourceBaseDemo-checkManifestLockResult.txt",
 			);
@@ -1417,13 +1389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh",
-			);
 			name = "[CP-User] JGSPodsScriptAfterCompile";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/JGSApplicationIntegrityCheckFileHashFile",
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "  \n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
@@ -1449,16 +1415,6 @@
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(PROJECT_DIR)/JGSourceBase/JGSourceBase.xcconfig",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).bundle/Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

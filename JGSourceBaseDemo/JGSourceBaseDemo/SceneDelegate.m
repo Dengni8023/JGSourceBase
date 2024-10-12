@@ -48,6 +48,45 @@
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     JGSLog(@"");
+    
+    static NSInteger times = 0;
+    JGSConsoleLogWithNSLog(times++ % 3 == 2);
+    JGSEnableLogWithMode(JGSLogModeFunc);
+    
+#ifdef JGSIntegrityCheck_h
+//    [[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[
+//        @"MinimumOSVersion", // 该字段在Xcode 13.0打包时工具添加，经验证配置最低支持11.0时，打包为11.0，但TestFlight测试发现修改为15.0
+//        @"CFBundleURLTypes.CFBundleURLName", //
+//        @"NSAppTransportSecurity.NSAllowsArbitraryLoads"
+//    ]];
+    [[JGSIntegrityCheckResourcesHash shareInstance] checkAPPResourcesHash:^(NSArray<NSString *> * _Nullable unpassFiles, NSDictionary * _Nullable unpassPlistInfo) {
+        
+        JGSLog(@"%@, %@", unpassFiles, unpassPlistInfo);
+        if (unpassFiles) {
+            
+            NSString *extraMsg = nil;
+#ifdef DEBUG
+            extraMsg = [NSString stringWithFormat:@"unpassFiles: %@", unpassFiles];
+            if (unpassPlistInfo.count > 0) {
+                extraMsg = [extraMsg stringByAppendingFormat:@"\nunpassPlistInfo: %@", unpassPlistInfo];
+            }
+#endif
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+#ifdef JGSCategory_UIAlertController_h
+                [UIAlertController jg_alertWithTitle:@"您安装的应用已损坏，存在安全隐患，请退出应用，并从官方渠道下载安装后使用！" message:extraMsg cancel:@"确定"];
+#else
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您安装的应用已损坏，存在安全隐患，请退出应用，并从官方渠道下载安装后使用！" message:extraMsg preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                [self.window.rootViewController presentViewController:alert animated:YES completion:^{
+                    
+                }];
+#endif
+            });
+        }
+    }];
+#endif
 }
 
 - (void)sceneWillResignActive:(UIScene *)scene {

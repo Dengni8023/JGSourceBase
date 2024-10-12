@@ -74,9 +74,8 @@ abstract_target "JGSBase" do
     pod 'SDWebImage', '~> 5.19.1' # https://github.com/SDWebImage/SDWebImage
     
     # 语法说明：https://blog.csdn.net/holdsky/article/details/87876221
-    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile, :input_files => ["$(SRC_ROOT)/JGSourceBase/JGSourceBase.xcconfig/JGSourceBase.xcconfig"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/Info.plist"]
-    
-    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile, :input_files => ["${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh"], :output_files => ["$(DERIVED_FILE_DIR)/$(PRODUCT_NAME).app/JGSApplicationIntegrityCheckFileHashFile"]
+    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+    script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
     
     # project
     project "JGSourceBase.xcodeproj"
