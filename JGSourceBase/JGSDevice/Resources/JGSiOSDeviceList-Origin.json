@@ -831,6 +831,46 @@
         "Size": "6.7-inch",
         "SizePT": "932x430",
         "SizePX": "2796x1290"
+      },
+      {
+        "Generation": "iPhone 16",
+        "Identifier": [
+          "iPhone17,3"
+        ],
+        "Scale": "3x",
+        "Size": "6.1-inch",
+        "SizePT": "852x393",
+        "SizePX": "2556x1179"
+      },
+      {
+        "Generation": "iPhone 16 Plus",
+        "Identifier": [
+          "iPhone17,4"
+        ],
+        "Scale": "3x",
+        "Size": "6.7-inch",
+        "SizePT": "932x430",
+        "SizePX": "2796x1290"
+      },
+      {
+        "Generation": "iPhone 16 Pro",
+        "Identifier": [
+          "iPhone17,1"
+        ],
+        "Scale": "3x",
+        "Size": "6.3-inch",
+        "SizePT": "874x402",
+        "SizePX": "2622x1206"
+      },
+      {
+        "Generation": "iPhone 16 Pro Max",
+        "Identifier": [
+          "iPhone17,2"
+        ],
+        "Scale": "3x",
+        "Size": "6.9-inch",
+        "SizePT": "956x440",
+        "SizePX": "2868x1320"
       }
     ],
     "iPod touch": [
