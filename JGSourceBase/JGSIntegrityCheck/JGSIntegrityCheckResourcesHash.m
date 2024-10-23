@@ -84,7 +84,7 @@
             return usingObject;
         }
         
-        NSMutableArray *unpassInfo = @{}.mutableCopy;
+        NSMutableArray *unpassInfo = @[].mutableCopy;
         for (NSInteger i = 0; i < recordArray.count; i++) {
             
             id usingItem = [usingArray objectAtIndex:i];
