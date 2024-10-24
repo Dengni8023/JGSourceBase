@@ -8,25 +8,12 @@
 
 import Foundation
 
+// 参考 HandyJSON: _BuiltInBridgeType
+// https://github.com/alibaba/handyjson
+
 public protocol JGSBuildInBridgeType: JGSTransformable {
     static func jg_transform(from object: Any?) -> JGSBuildInBridgeType?
     func jg_plainValue() -> Any?
-}
-
-extension NSNull: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        if object == nil {
-            return NSNull()
-        }
-        if let _null = object as? NSNull {
-            return _null
-        }
-        return nil
-    }
-    
-    public func jg_plainValue() -> Any? {
-        return self
-    }
 }
 
 extension NSString: JGSBuildInBridgeType {
@@ -57,7 +44,9 @@ extension NSURL: JGSBuildInBridgeType {
 
 extension NSNumber: JGSBuildInBridgeType {
     public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else { return nil }
+        guard let object = object else {
+            return nil
+        }
         
         switch object {
         case let num as NSNumber:
@@ -74,18 +63,6 @@ extension NSNumber: JGSBuildInBridgeType {
                 formatter.numberStyle = .decimal
                 return formatter.number(from: str)
             }
-        case let str as NSString:
-            let lower = str.lowercased
-            if ["0", "f", "false", "n", "no"].contains(lower) {
-                return NSNumber(booleanLiteral: false)
-            } else if ["1", "t", "true", "y", "yes"].contains(lower) {
-                return NSNumber(booleanLiteral: true)
-            } else {
-                // normal number
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .decimal
-                return formatter.number(from: str as String)
-            }
         default:
             return nil
         }
@@ -98,70 +75,25 @@ extension NSNumber: JGSBuildInBridgeType {
 
 extension NSArray: JGSBuildInBridgeType {
     public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else { return nil }
-        
-        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
-        if #available(iOS 15.0, *) {
-            options.insert(.json5Allowed)
-        }
-        
-        // JSON String -> NSArray
-        if let str = object as? String,
-           ["{", "["].filter({ prefix in
-               str.hasPrefix(prefix)
-           }).count > 0,
-           let data = str.data(using: .utf8),
-           let collection = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
-            return collection
-        }
-        // JSON Data -> NSArray
-        else if let _data = object as? Data,
-                ["{", "["].filter({ prefix in
-                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
-                }).count > 0,
-                let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
-            return collection
-        }
-        
-        return object as? Self
+        return [Element].jg_transform(from: object) as? Self
     }
 
     public func jg_plainValue() -> Any? {
-        return (self as? Array<Any>)?.jg_plainValue()
+        return (self as? [Element])?.jg_plainValue()
     }
 }
 
 extension NSDictionary: JGSBuildInBridgeType {
+    
     public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        guard let object = object else { return nil }
-        
-        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
-        if #available(iOS 15.0, *) {
-            options.insert(.json5Allowed)
-        }
-        
-        // JSON String -> Dictionary
-        if let str = object as? String,
-           ["{", "["].filter({ prefix in
-               str.hasPrefix(prefix)
-           }).count > 0,
-           let data = str.data(using: .utf8),
-           let dict = try? JSONSerialization.jsonObject(with: data, options: options) as? Self {
-            return dict
-        }
-        // JSON Data -> Dictionary
-        else if let _data = object as? Data,
-                ["{", "["].filter({ prefix in
-                    _data.firstRange(of: Data(prefix.utf8))?.startIndex == _data.startIndex
-                }).count > 0,
-                let dict = try? JSONSerialization.jsonObject(with: _data, options: options) as? Self {
-            return dict
+        if Key.self is AnyHashable {
+            return [AnyHashable: Element].jg_transform(from: object) as? Self
         }
         
         return object as? Self
     }
 
     public func jg_plainValue() -> Any? {
-        return (self as? Dictionary<String, Any>)?.jg_plainValue()
+        return (self as? Dictionary<AnyHashable, Any>)?.jg_plainValue()
     }
 }

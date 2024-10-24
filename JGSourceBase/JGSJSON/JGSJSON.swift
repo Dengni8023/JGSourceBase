@@ -14,61 +14,7 @@ import UIKit
 // HandyJSON: https://github.com/alibaba/handyjson
 
 public protocol JGSJSONEnum: JGSRawRepresentable {}
-public protocol JGSJSON: JGSTransformable {
-
-    // MARK: - Int, UInt, Int8, Int16, Int32, Int64
-
-    var jg_int: Int? { get }
-    var jg_intValue: Int { get }
-    var jg_integerValue: NSInteger { get }
-    var jg_uInt: UInt? { get }
-    var jg_uIntValue: UInt { get }
-
-    var jg_int8: Int8? { get }
-    var jg_int8Value: Int8 { get }
-    var jg_uInt8: UInt8? { get }
-    var jg_uInt8Value: UInt8 { get }
-
-    var jg_int16: Int16? { get }
-    var jg_int16Value: Int16 { get }
-    var jg_uInt16: UInt16? { get }
-    var jg_uInt16Value: UInt16 { get }
-
-    var jg_int32: Int32? { get }
-    var jg_int32Value: Int32 { get }
-    var jg_uInt32: UInt32? { get }
-    var jg_uInt32Value: UInt32 { get }
-
-    var jg_int64: Int64? { get }
-    var jg_int64Value: Int64 { get }
-    var jg_uInt64: UInt64? { get }
-    var jg_uInt64Value: UInt64 { get }
-
-    // MARK: - Double, Float, Bool
-
-    var jg_double: Double? { get }
-    var jg_doubleValue: Double { get }
-    var jg_float: Float? { get }
-    var jg_floatValue: Float { get }
-    var jg_bool: Bool? { get }
-    var jg_boolValue: Bool { get }
-
-    // MARK: - String, Number, Null, URL
-
-    var jg_string: String? { get }
-    var jg_stringValue: String { get }
-    var jg_number: NSNumber? { get }
-    var jg_numberValue: NSNumber { get }
-    var jg_URL: URL? { get }
-    var jg_null: NSNull? { get }
-
-    // MARK: - Array, Dict
-
-    var jg_array: Array<any JGSJSON>? { get }
-    var jg_arrayValue: Array<any JGSJSON> { get }
-    var jg_dictionary: [String: any JGSJSON]? { get }
-    var jg_dictionaryValue: [String: any JGSJSON] { get }
-}
+public protocol JGSJSON: JGSTransformable {}
 
 public extension JGSJSON {
     
@@ -116,8 +62,7 @@ public extension JGSJSON {
     var jg_number: NSNumber? { return NSNumber.jg_transform(from: self) }
     var jg_numberValue: NSNumber { return jg_number ?? NSNumber(value: 0.0) }
     var jg_URL: URL? { return URL.jg_transform(from: self) }
-    var jg_null: NSNull? { return NSNull.jg_transform(from: self) }
-
+    
     // MARK: - Array, Dict
 
     var jg_array: Array<any JGSJSON>? {
@@ -135,427 +80,38 @@ public extension JGSJSON {
     var jg_dictionaryValue: [String: any JGSJSON] {
         return jg_dictionary ?? [:]
     }
-
-    fileprivate func jg_sortedJSON() -> String {
-        guard JSONSerialization.isValidJSONObject(self) else {
-            return ""
-        }
-        var options: JSONSerialization.WritingOptions = [.sortedKeys, .prettyPrinted]
-        if #available(iOS 13.0, *) {
-            options.insert(.withoutEscapingSlashes)
-        }
-        
-        if let data = try? JSONSerialization.data(withJSONObject: self, options: options) {
-            return String(data: data, encoding: .utf8) ?? ""
-        }
-        return ""
-    }
 }
 
-// MARK: - Comparable
-
-public protocol JGSComparable: JGSJSON, Comparable {}
-public extension JGSComparable {
-    static func < (lhs: Self, rhs: Self) -> Bool { return lhs < rhs }
-    static func <= (lhs: Self, rhs: Self) -> Bool { return lhs <= rhs }
-    static func >= (lhs: Self, rhs: Self) -> Bool { return lhs >= rhs }
-    static func > (lhs: Self, rhs: Self) -> Bool { return lhs > rhs }
-    static func == (lhs: Self, rhs: Self) -> Bool { return lhs == rhs }
-}
+// MARK: - Optional
+extension Optional: JGSJSON {}
 
 // MARK: - BuildInType
-
 extension Int: JGSJSON {}
-extension UInt: JGSJSON {}
 extension Int8: JGSJSON {}
-extension UInt8: JGSJSON {}
 extension Int16: JGSJSON {}
-extension UInt16: JGSJSON {}
 extension Int32: JGSJSON {}
-extension UInt32: JGSJSON {}
 extension Int64: JGSJSON {}
+
+extension UInt: JGSJSON {}
+extension UInt8: JGSJSON {}
+extension UInt16: JGSJSON {}
+extension UInt32: JGSJSON {}
 extension UInt64: JGSJSON {}
 
 extension Double: JGSJSON {}
 extension Float: JGSJSON {}
-extension Bool: JGSComparable {
-    public static func < (lhs: Self, rhs: Self) -> Bool { return lhs.jg_intValue < rhs.jg_intValue }
-    public static func <= (lhs: Self, rhs: Self) -> Bool { return lhs.jg_intValue <= rhs.jg_intValue }
-    public static func >= (lhs: Self, rhs: Self) -> Bool { return lhs.jg_intValue >= rhs.jg_intValue }
-    public static func > (lhs: Self, rhs: Self) -> Bool { return lhs.jg_intValue > rhs.jg_intValue }
-    public static func == (lhs: Self, rhs: Self) -> Bool { return lhs.jg_intValue == rhs.jg_intValue }
-}
+extension Bool: JGSJSON {}
 
-// enum
-public extension RawRepresentable where RawValue: Comparable {
-    static func < (lhs: RawValue, rhs: Self) -> Bool { return lhs < rhs.rawValue }
-    static func < (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue < rhs }
-    static func <= (lhs: RawValue, rhs: Self) -> Bool { return lhs <= rhs.rawValue }
-    static func <= (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue <= rhs }
-    static func >= (lhs: RawValue, rhs: Self) -> Bool { return lhs >= rhs.rawValue }
-    static func >= (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue >= rhs }
-    static func > (lhs: RawValue, rhs: Self) -> Bool { return lhs > rhs.rawValue }
-    static func > (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue > rhs }
-    static func == (lhs: RawValue, rhs: Self) -> Bool { return lhs == rhs.rawValue }
-    static func == (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue == rhs }
-}
+extension String: JGSJSON {}
+extension URL: JGSJSON {}
+extension Array: JGSJSON {}
+extension Dictionary: JGSJSON {}
+extension Data: JGSJSON {}
 
-public extension RawRepresentable where RawValue: JGSComparable {
-    static func < (lhs: RawValue, rhs: Self) -> Bool { return lhs < rhs.rawValue }
-    static func < (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue < rhs }
-    static func <= (lhs: RawValue, rhs: Self) -> Bool { return lhs <= rhs.rawValue }
-    static func <= (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue <= rhs }
-    static func >= (lhs: RawValue, rhs: Self) -> Bool { return lhs >= rhs.rawValue }
-    static func >= (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue >= rhs }
-    static func > (lhs: RawValue, rhs: Self) -> Bool { return lhs > rhs.rawValue }
-    static func > (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue > rhs }
-    static func == (lhs: RawValue, rhs: Self) -> Bool { return lhs == rhs.rawValue }
-    static func == (lhs: Self, rhs: RawValue) -> Bool { return lhs.rawValue == rhs }
-}
-
-// MARK: - Optional
-
-extension Optional: JGSJSON {}
-extension NSNumber: JGSComparable {}
-extension String: JGSComparable {}
-extension NSString: JGSComparable {}
-extension URL: JGSComparable {}
-extension NSURL: JGSComparable {}
-extension Data: JGSComparable {}
-extension NSData: JGSComparable {}
-
-// MARK: - Array
-
-extension Array: JGSJSON {
-    /// 数组比较：
-    /// 1、先比对数量
-    /// 数量不一致，直接使用数量比较结果
-    /// 2、数量一致，则逐个比较元素
-
-    public static func < (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending
-    }
-
-    public static func <= (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending || compare == .orderedSame
-    }
-
-    public static func >= (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func > (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending
-    }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedSame
-    }
-}
-
-extension NSArray: JGSComparable {
-    /// 数组比较：
-    /// 1、先比对数量
-    /// 数量不一致，直接使用数量比较结果
-    /// 2、数量一致，则逐个比较元素
-
-    public static func < (lhs: NSArray, rhs: NSArray) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending
-    }
-
-    public static func <= (lhs: NSArray, rhs: NSArray) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending || compare == .orderedSame
-    }
-
-    public static func >= (lhs: NSArray, rhs: NSArray) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func > (lhs: NSArray, rhs: NSArray) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending
-    }
-
-    public static func == (lhs: NSArray, rhs: NSArray) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-
-        if let rAny = rhs as? [Any], lhs.isEqual(to: rAny) { return true }
-        if lhs.isEqual(rhs) { return true }
-
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedSame
-    }
-}
-
-extension Array: Comparable where Element: Comparable {
-    /// 数组比较：
-    /// 1、先比对数量
-    /// 数量不一致，直接使用数量比较结果
-    /// 2、数量一致，则逐个比较元素
-
-    public static func < (lhs: [Element], rhs: [Element]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-
-        for idx in 0 ..< lhs.count {
-            guard lhs[idx] <= rhs[idx] else { return false }
-        }
-        return lhs.last! < rhs.last!
-    }
-
-    public static func <= (lhs: [Element], rhs: [Element]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-
-        for idx in 0 ..< lhs.count {
-            guard lhs[idx] <= rhs[idx] else { return false }
-        }
-        return lhs.last! <= rhs.last!
-    }
-
-    public static func >= (lhs: [Element], rhs: [Element]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-
-        for idx in 0 ..< lhs.count {
-            guard lhs[idx] >= rhs[idx] else { return false }
-        }
-        return lhs.last! >= rhs.last!
-    }
-
-    public static func > (lhs: [Element], rhs: [Element]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-
-        for idx in 0 ..< lhs.count {
-            guard lhs[idx] >= rhs[idx] else { return false }
-        }
-        return lhs.last! > rhs.last!
-    }
-
-    public static func == (lhs: [Element], rhs: [Element]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-
-        for idx in 0 ..< lhs.count {
-            guard lhs[idx] == rhs[idx] else { return false }
-        }
-        return lhs.last! == rhs.last!
-    }
-}
-
-// MARK: - Dictionary
-
-extension Dictionary: JGSJSON {
-    /// 字典比较：
-    /// 1、先比key-value键值对数量
-    /// 数量不一致，直接使用数量比较结果
-    /// 2、数量一致，则逐个比较键值对
-    /// 3、键值对先比较Key，后比较value
-
-    public static func < (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending
-    }
-
-    public static func <= (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending || compare == .orderedSame
-    }
-
-    public static func >= (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func > (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending
-    }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedSame
-    }
-}
-
-extension NSDictionary: JGSComparable {
-    public static func < (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending
-    }
-
-    public static func <= (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending || compare == .orderedSame
-    }
-
-    public static func >= (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func > (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending
-    }
-
-    public static func == (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-
-        if let rAny = rhs as? [AnyHashable: Any], lhs.isEqual(to: rAny) { return true }
-        if lhs.isEqual(rhs) { return true }
-
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedSame
-    }
-}
-
-extension Dictionary: Comparable where Key: Comparable, Value: Comparable {
-    /// 字典比较：
-    /// 1、先比key-value键值对数量
-    /// 数量不一致，直接使用数量比较结果
-    /// 2、数量一致，则逐个比较键值对
-    /// 3、键值对先比较Key，后比较value
-
-    public static func < (lhs: [Key: Value], rhs: [Key: Value]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count < rhs.count }
-        
-        let lKeys = lhs.keys.sorted(by: <)
-        let rKeys = rhs.keys.sorted(by: <)
-        guard lKeys.count == rKeys.count, lKeys.count > 0 else { return lKeys.count < rKeys.count }
-        
-        for idx in 0 ..< lKeys.count {
-            
-            let lKey = lKeys[idx], rKey = rKeys[idx]
-            guard lKey <= rKey else { return false }
-            guard let lValue = lhs[lKey], let rValue = rhs[rKey], lValue <= rValue else {
-                return false
-            }
-        }
-        
-        if let lValue = lhs[lKeys.last!], let rValue = rhs[rKeys.last!] {
-            return lValue < rValue
-        }
-        
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending
-    }
-
-    public static func <= (lhs: [Key: Value], rhs: [Key: Value]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count <= rhs.count }
-        
-        let lKeys = lhs.keys.sorted(by: <)
-        let rKeys = rhs.keys.sorted(by: <)
-        guard lKeys.count == rKeys.count, lKeys.count > 0 else { return lKeys.count <= rKeys.count }
-
-        for idx in 0 ..< lKeys.count {
-            
-            let lKey = lKeys[idx], rKey = rKeys[idx]
-            guard lKey <= rKey else { return false }
-            guard let lValue = lhs[lKey], let rValue = rhs[rKey], lValue <= rValue else {
-                return false
-            }
-        }
-        
-        if let lValue = lhs[lKeys.last!], let rValue = rhs[rKeys.last!] {
-            return lValue <= rValue
-        }
-        
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedAscending || compare == .orderedSame
-    }
-
-    public static func >= (lhs: [Key: Value], rhs: [Key: Value]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count >= rhs.count }
-        
-        let lKeys = lhs.keys.sorted(by: <)
-        let rKeys = rhs.keys.sorted(by: <)
-        guard lKeys.count == rKeys.count, lKeys.count > 0 else { return lKeys.count >= rKeys.count }
-
-        for idx in 0 ..< lKeys.count {
-            
-            let lKey = lKeys[idx], rKey = rKeys[idx]
-            guard lKey >= rKey else { return false }
-            guard let lValue = lhs[lKey], let rValue = rhs[rKey], lValue >= rValue else {
-                return false
-            }
-        }
-        
-        if let lValue = lhs[lKeys.last!], let rValue = rhs[rKeys.last!] {
-            return lValue >= rValue
-        }
-        
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func > (lhs: [Key: Value], rhs: [Key: Value]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count > rhs.count }
-        
-        let lKeys = lhs.keys.sorted(by: <)
-        let rKeys = rhs.keys.sorted(by: <)
-        guard lKeys.count == rKeys.count, lKeys.count > 0 else { return lKeys.count > rKeys.count }
-
-        for idx in 0 ..< lKeys.count {
-            
-            let lKey = lKeys[idx], rKey = rKeys[idx]
-            guard lKey >= rKey else { return false }
-            guard let lValue = lhs[lKey], let rValue = rhs[rKey], lValue >= rValue else {
-                return false
-            }
-        }
-        
-        if let lValue = lhs[lKeys.last!], let rValue = rhs[rKeys.last!] {
-            return lValue > rValue
-        }
-        
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedDescending || compare == .orderedSame
-    }
-
-    public static func == (lhs: [Key: Value], rhs: [Key: Value]) -> Bool {
-        guard lhs.count == rhs.count, lhs.count > 0 else { return lhs.count == rhs.count }
-        
-        let lKeys = lhs.keys.sorted(by: <)
-        let rKeys = rhs.keys.sorted(by: <)
-        guard lKeys.count == rKeys.count, lKeys.count > 0 else { return lKeys.count == rKeys.count }
-
-        for idx in 0 ..< lKeys.count {
-            
-            let lKey = lKeys[idx], rKey = rKeys[idx]
-            guard lKey == rKey else { return false }
-            guard let lValue = lhs[lKey], let rValue = rhs[rKey], lValue == rValue else {
-                return false
-            }
-        }
-        
-        if let lValue = lhs[lKeys.last!], let rValue = rhs[rKeys.last!] {
-            return lValue == rValue
-        }
-        
-        let compare = lhs.jg_sortedJSON().compare(rhs.jg_sortedJSON(), options: [.caseInsensitive, .numeric])
-        return compare == .orderedSame
-    }
-}
+// MARK: - BuildInBridgeType
+extension NSNumber: JGSJSON {}
+extension NSString: JGSJSON {}
+extension NSURL: JGSJSON {}
+extension NSData: JGSJSON {}
+extension NSArray: JGSJSON {}
+extension NSDictionary: JGSJSON {}

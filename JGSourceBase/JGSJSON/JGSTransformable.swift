@@ -11,7 +11,7 @@ import Foundation
 // 参考 HandyJSON: _Transformable
 // https://github.com/alibaba/handyjson
 
-public protocol JGSTransformable {
+public protocol JGSTransformable: JGSMeasurable {
     // 定义optional必须引入 objc
     // 此处不引入 objc，在扩展中定义方法
     // 继承时重写扩展方法
@@ -19,7 +19,7 @@ public protocol JGSTransformable {
     // optional func jg_plainValue() -> Any?
 }
 
-extension JGSTransformable {
+public extension JGSTransformable {
     static func jg_transform(from object: Any?) -> Self? {
         guard let object = object else { return nil }
 

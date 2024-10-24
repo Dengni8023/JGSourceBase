@@ -93,6 +93,7 @@
 		D4BDE1CF286DD6CC006FDCA5 /* rsa_public_2048.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1CB286DD6CC006FDCA5 /* rsa_public_2048.pem */; };
 		D4C92CC62ABC94D800F7D18C /* JGSiOSDeviceList.json.sec in Resources */ = {isa = PBXBuildFile; fileRef = D4D697842806E0F900CE1F9F /* JGSiOSDeviceList.json.sec */; };
 		D4D0369E2885071200BA8FAE /* JGSNSDataDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */; };
+		D4D417C22CC8D95500BBA369 /* JGSComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D417C12CC8D95500BBA369 /* JGSComparable.swift */; };
 		D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D6976D2806E0F900CE1F9F /* JGSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697D32806E0F900CE1F9F /* JGSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6976E2806E0F900CE1F9F /* JGSReachability.m */; };
 		D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -173,6 +174,7 @@
 		D4D698282806E16F00CE1F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D698272806E16F00CE1F9F /* main.m */; };
 		D4D96C0E284F2EE800D8B0ED /* JGSBase+JGSPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */; };
 		D4D96C0F284F2EE800D8B0ED /* JGSBase+JGSPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */; };
+		D4E651D02CC6274300AFD4D1 /* JGSMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */; };
 		D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D403B13A2850356900F4F304 /* Assets.xcassets */; };
 		D4EBE98C2850CCD00041E21B /* icon_29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE98A2850CCC00041E21B /* icon_29pt@2x.png */; };
 		D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */; };
@@ -338,6 +340,7 @@
 		D4C3ED99282B800C00C5C1F8 /* JGSIntegrityCheckRecordResourcesHash.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSIntegrityCheckRecordResourcesHash.sh; sourceTree = "<group>"; };
 		D4D0369C2885071200BA8FAE /* JGSNSDataDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSNSDataDemoVC.h; sourceTree = "<group>"; };
 		D4D0369D2885071200BA8FAE /* JGSNSDataDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSDataDemoVC.m; sourceTree = "<group>"; };
+		D4D417C12CC8D95500BBA369 /* JGSComparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSComparable.swift; sourceTree = "<group>"; };
 		D4D6976D2806E0F900CE1F9F /* JGSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSReachability.h; sourceTree = "<group>"; };
 		D4D6976E2806E0F900CE1F9F /* JGSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSReachability.m; sourceTree = "<group>"; };
 		D4D697702806E0F900CE1F9F /* JGSUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSUserDefaults.h; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		D4DEB22A28740A22000CFB67 /* JGSDemoIntegrityCheckAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoIntegrityCheckAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22B28740A22000CFB67 /* JGSDemoModifyBuildAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoModifyBuildAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22C28740A22000CFB67 /* JGSModifyConfigBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyConfigBeforeCompile.sh; sourceTree = "<group>"; };
+		D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSMeasurable.swift; sourceTree = "<group>"; };
 		D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29pt@3x.png"; sourceTree = "<group>"; };
 		D4EBE9892850CCC00041E21B /* icon_29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_29pt.png; sourceTree = "<group>"; };
 		D4EBE98A2850CCC00041E21B /* icon_29pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29pt@2x.png"; sourceTree = "<group>"; };
@@ -691,7 +695,9 @@
 			children = (
 				D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */,
 				D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */,
+				D4D417C12CC8D95500BBA369 /* JGSComparable.swift */,
 				D4830D1229F91CD500B42377 /* JGSJSON.swift */,
+				D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */,
 				D4FBC1212AC1AC6100CEE6FB /* JGSRawRepresentable.swift */,
 				D444989E29E0356600BC6D9C /* JGSTransformable.swift */,
 			);
@@ -1476,6 +1482,7 @@
 				D4D6980D2806E0F900CE1F9F /* UIColor+JGSBase.m in Sources */,
 				D4D96C0E284F2EE800D8B0ED /* JGSBase+JGSPrivate.m in Sources */,
 				D4D697E42806E0F900CE1F9F /* JGSAESEncryption.m in Sources */,
+				D4D417C22CC8D95500BBA369 /* JGSComparable.swift in Sources */,
 				D426FC8E293A22AE002C7476 /* Dictionary+JGSBase.swift in Sources */,
 				D4D697DA2806E0F900CE1F9F /* UIView+JGSLoadingHUD.m in Sources */,
 				D4D697DF2806E0F900CE1F9F /* UIView+JGSToast.m in Sources */,
@@ -1530,6 +1537,7 @@
 				D4D697FD2806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.m in Sources */,
 				D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */,
 				D45AAA9D2832686B004EE48C /* JGSIntegrityCheckResourcesHash.m in Sources */,
+				D4E651D02CC6274300AFD4D1 /* JGSMeasurable.swift in Sources */,
 				D46D0BB829D1EF8000509B02 /* Data+JGSBase.swift in Sources */,
 				D4D698012806E0F900CE1F9F /* UIImage+JGSBase.m in Sources */,
 			);

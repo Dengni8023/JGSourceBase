@@ -266,11 +266,11 @@ Pod::Spec.new do |spec|
   spec.subspec "Base" do |sub|
     sub.source_files = [
       "#{spec.name}/*.{h,m,swift}",
-      "#{spec.name}/JGSBase/*.{h,m,swift}",
+      "#{spec.name}/JGSBase/**/*.{h,m,swift}",
     ]
     sub.public_header_files = [
       "#{spec.name}/*.h",
-      "#{spec.name}/JGSBase/*.h",
+      "#{spec.name}/JGSBase/**/*.h",
     ]
     # sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
 
@@ -344,16 +344,16 @@ Pod::Spec.new do |spec|
   
   # DataStorage
   spec.subspec 'DataStorage' do |sub|
-    sub.source_files = "#{spec.name}/JGSDataStorage/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSDataStorage/*.h"
+    sub.source_files = "#{spec.name}/JGSDataStorage/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSDataStorage/**/*.h"
     
     sub.dependency "JGSourceBase/Encryption"
   end
   
   # Device
   spec.subspec 'Device' do |sub|
-    sub.source_files = "#{spec.name}/JGSDevice/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSDevice/*.h"
+    sub.source_files = "#{spec.name}/JGSDevice/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSDevice/**/*.h"
     
     sub.pod_target_xcconfig = {
         "JGSDeviceInstalled" => "YES",
@@ -366,8 +366,8 @@ Pod::Spec.new do |spec|
   
   # Encryption
   spec.subspec 'Encryption' do |sub|
-    sub.source_files = "#{spec.name}/JGSEncryption/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSEncryption/*.h"
+    sub.source_files = "#{spec.name}/JGSEncryption/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSEncryption/**/*.h"
     
     sub.dependency "JGSourceBase/Category"
   end
@@ -377,13 +377,9 @@ Pod::Spec.new do |spec|
     
     sub.source_files = [
       "#{spec.name}/JGSHUD/**/*.{h,m,swift}",
-      # "#{spec.name}/JGSHUD/*.{h,m,swift}",
-      # "#{spec.name}/JGSHUD/Toast/*.{h,m,swift}",
     ]
     sub.public_header_files = [
       "#{spec.name}/JGSHUD/**/*.h",
-      # "#{spec.name}/JGSHUD/*.h",
-      # "#{spec.name}/JGSHUD/Toast/*.h",
     ]
     
     sub.dependency "MBProgressHUD", ">= 1.2.0"
@@ -392,8 +388,8 @@ Pod::Spec.new do |spec|
   
   # IntegrityCheck
   spec.subspec 'IntegrityCheck' do |sub|
-    sub.source_files = "#{spec.name}/JGSIntegrityCheck/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSIntegrityCheck/*.h"
+    sub.source_files = "#{spec.name}/JGSIntegrityCheck/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSIntegrityCheck/**/*.h"
     
     # 脚本及说明文档不需要被Target编译、作为资源文件引用
     # 但又不能被清理，要保证使用这能够访问到文件
@@ -410,25 +406,25 @@ Pod::Spec.new do |spec|
 
   # JSON
   spec.subspec 'JSON' do |sub|
-    sub.source_files = "#{spec.name}/JGSJSON/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSJSON/*.h"
+    sub.source_files = "#{spec.name}/JGSJSON/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSJSON/**/*.h"
     
     sub.dependency "JGSourceBase/Base"
   end
 
   # Reachability
   spec.subspec 'Reachability' do |sub|
-    sub.source_files = "#{spec.name}/JGSReachability/*.{h,m,swift}"
-    sub.public_header_files = "#{spec.name}/JGSReachability/*.h"
+    sub.source_files = "#{spec.name}/JGSReachability/**/*.{h,m,swift}"
+    sub.public_header_files = "#{spec.name}/JGSReachability/**/*.h"
     
     sub.dependency "JGSourceBase/Base"
   end
   
   # SecurityKeyboard
   spec.subspec 'SecurityKeyboard' do |sub|
-    sub.source_files = "#{spec.name}/JGSSecurityKeyboard/*.{h,m,swift}"
+    sub.source_files = "#{spec.name}/JGSSecurityKeyboard/**/*.{h,m,swift}"
     sub.public_header_files = [
-      "#{spec.name}/JGSSecurityKeyboard/**JGSSecurityKeyboard.h",
+      "#{spec.name}/JGSSecurityKeyboard/**/**JGSSecurityKeyboard.h",
     ]
     
     sub.dependency "JGSourceBase/Category"

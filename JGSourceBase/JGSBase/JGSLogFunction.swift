@@ -158,9 +158,14 @@ private protocol JGSLogDescription {
     func jg_logDescription(level: Int64) -> String
 }
 
-extension Dictionary : JGSLogDescription { }
-extension Array: JGSLogDescription { }
-extension String: JGSLogDescription { }
+extension Dictionary: JGSLogDescription {}
+extension Array: JGSLogDescription {}
+extension String: JGSLogDescription {}
+
+extension NSDictionary: JGSLogDescription {}
+extension NSArray: JGSLogDescription {}
+extension NSString: JGSLogDescription {}
+
 private extension JGSLogDescription {
     
     func jg_logDescription(level: Int64 = 0) -> String {
@@ -261,10 +266,11 @@ private extension JGSLogDescription {
             if #available(iOS 15.0, *) {
                 options.insert(.json5Allowed)
             }
+            let jsonStr = stringObj.trimmingCharacters(in: .whitespacesAndNewlines)
             if ["{", "["].filter({ prefix in
-                stringObj.hasPrefix(prefix)
+                jsonStr.hasPrefix(prefix)
             }).count > 0,
-                let data = stringObj.data(using: .utf8),
+                let data = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: data, options: options) {
                 if let dict = json as? Dictionary<AnyHashable, Any> {
                     return "(JSON -> Dictionary) " + dict.jg_logDescription()
@@ -284,115 +290,104 @@ private extension JGSLogDescription {
 }
 
 // MARK: JGSLogLevel - Calculate
-extension JGSLogLevel {
+public extension JGSLogLevel {
     
     // 枚举类型运算、比较重载 +、-、>、>=、==、<、<=
-    static public func + (lhs: JGSLogLevel, rhs: Int) -> JGSLogLevel? {
+    static func + (lhs: JGSLogLevel, rhs: Int) -> JGSLogLevel? {
         return JGSLogLevel(rawValue: lhs.rawValue + rhs)
     }
     
-    static internal func - (lhs: JGSLogLevel, rhs: Int) -> JGSLogLevel? {
+    static func - (lhs: JGSLogLevel, rhs: Int) -> JGSLogLevel? {
         return JGSLogLevel(rawValue: lhs.rawValue - rhs)
     }
     
-    static internal func > (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
+    static func > (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
         return lhs.rawValue > rhs.rawValue
     }
     
-    static internal func > (lhs: JGSLogLevel, rhs: Int) -> Bool {
-        return lhs.rawValue > rhs
-    }
-    
-    static internal func >= (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
+    static func >= (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
         return lhs.rawValue >= rhs.rawValue
     }
     
-    static internal func >= (lhs: JGSLogLevel, rhs: Int) -> Bool {
-        return lhs.rawValue >= rhs
-    }
-    
-    static internal func == (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
+    static func == (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
     
-    static internal func == (lhs: JGSLogLevel, rhs: Int) -> Bool {
-        return lhs.rawValue == rhs
-    }
-    
-    static internal func < (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
+    static func < (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
     
-    static internal func < (lhs: JGSLogLevel, rhs: Int) -> Bool {
-        return lhs.rawValue < rhs
-    }
-    
-    static internal func <= (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
+    static func <= (lhs: JGSLogLevel, rhs: JGSLogLevel) -> Bool {
         return lhs.rawValue <= rhs.rawValue
-    }
-    
-    static internal func <= (lhs: JGSLogLevel, rhs: Int) -> Bool {
-        return lhs.rawValue <= rhs
     }
 }
 
 // MARK: JGSLogMode - Calculate
-extension JGSLogMode {
+public extension JGSLogMode {
     
     // 枚举类型运算、比较重载 +、-、>、>=、==、<、<=
-    static internal func + (lhs: JGSLogMode, rhs: Int) -> JGSLogMode? {
+    static func + (lhs: JGSLogMode, rhs: Int) -> JGSLogMode? {
         return JGSLogMode(rawValue: lhs.rawValue + rhs)
     }
     
-    static internal func - (lhs: JGSLogMode, rhs: Int) -> JGSLogMode? {
+    static func - (lhs: JGSLogMode, rhs: Int) -> JGSLogMode? {
         return JGSLogMode(rawValue: lhs.rawValue - rhs)
     }
     
-    static internal func > (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
+    static func > (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
         return lhs.rawValue > rhs.rawValue
     }
     
-    static internal func > (lhs: JGSLogMode, rhs: Int) -> Bool {
-        return lhs.rawValue > rhs
-    }
-    
-    static internal func >= (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
+    static func >= (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
         return lhs.rawValue >= rhs.rawValue
     }
     
-    static internal func >= (lhs: JGSLogMode, rhs: Int) -> Bool {
-        return lhs.rawValue >= rhs
-    }
-    
-    static internal func == (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
+    static func == (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
     
-    static internal func == (lhs: JGSLogMode, rhs: Int) -> Bool {
-        return lhs.rawValue == rhs
-    }
-    
-    static internal func < (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
+    static func < (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
     
-    static internal func < (lhs: JGSLogMode, rhs: Int) -> Bool {
-        return lhs.rawValue < rhs
-    }
-    
-    static internal func <= (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
+    static func <= (lhs: JGSLogMode, rhs: JGSLogMode) -> Bool {
         return lhs.rawValue <= rhs.rawValue
-    }
-    
-    static internal func <= (lhs: JGSLogMode, rhs: Int) -> Bool {
-        return lhs.rawValue <= rhs
     }
 }
 
 // MARK: - Private
 internal func JGSPrivateLogWithLevel(_ args: Any?..., level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {
+    
+    // 打印内容
+    var log: String = ""
+    for arg in args {
+        
+        // nil 拦截处理，否则后续 is 判断会出错
+        // nil 判断 is 结果始终为 true
+        guard let arg = arg else {
+            log.append((log.count > 0 ? " " : "") + JGSLogNil2NullString)
+            continue
+        }
+        
+        // 下列 is 判断，arg 不能为 nil，否则判断结果始终为 true
+        var temp = ""
+        if arg is JGSLogDescription {
+            // Dictionary、Array、String
+            temp = (arg as! JGSLogDescription).jg_logDescription()
+        } else if arg is CustomStringConvertible {
+            // CustomStringConvertible
+            temp = (arg as! CustomStringConvertible).description
+        } else {
+            // Other
+            temp = "\(arg)"
+        }
+        
+        log.append((log.count == 0 ? "": " ") + temp)
+    }
+    // mode
     let mode: JGSLogMode = JGSLogFunction.isLogEnabled() ? (JGSEnableLogMode != .none ? JGSEnableLogMode : .func) : .none;
-    JGSLog(args, mode: mode, level: level, filePath: filePath, funcName: funcName, lineNum: lineNum)
+    
+    return JGSLog(log, mode: mode, level: level, filePath: filePath, funcName: funcName, lineNum: lineNum)
 }
 
 internal func JGSPrivateLog(_ args: Any?..., level: JGSLogLevel? = JGSConsoleLogLevel, filePath: String = #file, funcName: String = #function, lineNum : Int = #line) {

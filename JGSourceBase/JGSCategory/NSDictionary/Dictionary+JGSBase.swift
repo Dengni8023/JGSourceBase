@@ -88,12 +88,12 @@ extension Dictionary where Key : Hashable {
         }
 
         // String
-        var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
+        var options: JSONSerialization.ReadingOptions = []
         if #available(iOS 15.0, *) {
             options.insert(.json5Allowed)
         }
         let nilString: String? = nil
-        if let string = value as? String,
+        if let string = (value as? String)?.trimmingCharacters(in: .whitespacesAndNewlines),
            ["{", "["].filter({ prefix in
                string.hasPrefix(prefix)
            }).count > 0,

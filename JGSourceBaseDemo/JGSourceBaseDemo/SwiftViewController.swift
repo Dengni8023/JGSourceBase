@@ -56,6 +56,15 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        let url1: Bool? = true
+        let url2 = false
+        print("\(url1 ?? false) > \(url2): \(url1 > url2)")
+        print("\(url1 ?? false) >= \(url2): \(url1 >= url2)")
+        print("\(url1 ?? false) == \(url2): \(url1 == url2)")
+        print("\(url1 ?? false) != \(url2): \(url1 != url2)")
+        print("\(url1 ?? false) <= \(url2): \(url1 <= url2)")
+        print("\(url1 ?? false) < \(url2): \(url1 < url2)")
+        
         JGSLog(String.jg_transform(from: ["key":"value", "number": 0] as [String: Any]) as Any);
         JGSLog(NSString.jg_transform(from: ["key":"value", "number": 0] as [String : Any]) as Any);
         
@@ -92,6 +101,7 @@ class SwiftViewController: JGSDViewController {
             "Double": 103.1236547,
             "Double2": "103.1236547",
             "Double3": ".01",
+            "url": "https://m.baidu.com&key=value&key1=你 好",
         ]
         
         JGSLog(Dictionary<String, Any>.jg_transform(from: dicT))
@@ -119,7 +129,6 @@ class SwiftViewController: JGSDViewController {
                        "number:", value.jg_number, "\n",
                        "number:", value.jg_numberValue, "\n",
                        "url:", value.jg_URL, "\n",
-                       "null:", value.jg_null, "\n",
                        "int:", value.jg_int, "\n",
                        "float:", value.jg_float, "\n",
                        "double:", value.jg_double, "\n",
@@ -130,6 +139,13 @@ class SwiftViewController: JGSDViewController {
                 )
             }
         }
+        let en = PersonIntType.jg_transform(from: "0")
+        JGSLog("Enum:", en)
+        let json = """
+        {"name":"struct","age":12,"type":"student","adminPerson":[{"name":"class","age":37,"type":"teacher","adminPerson":[{}]}]}
+        """
+        JGSLog("PersonStruct:", PersonStruct.jg_transform(from: json))
+        JGSLog("PersonClass:", PersonClass.jg_transform(from: json))
     }
 }
 

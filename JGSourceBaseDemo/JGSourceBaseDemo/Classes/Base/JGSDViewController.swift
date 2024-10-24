@@ -17,6 +17,14 @@ class JGSDViewController: JGSDemoViewController {
         self.tableSectionData = self.tableSectionData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        JGSEnableLogWithMode(.func + 1 ?? .none)
+        JGSLogFunction.enableLog(true)
+        JGSLog("Test lv", mode: .file + 1, level: .debug + 1)
+    }
+    
     open func tableSectionData() -> [JGSDemoTableSectionData] {
         return []
     }
