@@ -66,8 +66,8 @@ public extension JGSComparable {
 }
 
 extension JGSJSON {
-    func jg_sortedJSON() -> String {
-        return String.jg_transform(from: self) ?? ""
+    func jg_sortedJSON() -> String? {
+        return String.jg_transform(from: self)
     }
 }
 
@@ -109,41 +109,73 @@ extension Bool: JGSComparable {
 
 extension Array {
     public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.jg_sortedJSON() == rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson == rJson
+        }
+        return lhs == rhs
     }
 
     public static func != (lhs: Self, rhs: Self) -> Bool {
-        return lhs.jg_sortedJSON() != rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson != rJson
+        }
+        return lhs != rhs
     }
 }
 
 extension Dictionary {
     public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.jg_sortedJSON() == rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson == rJson
+        }
+        return lhs == rhs
     }
 
     public static func != (lhs: Self, rhs: Self) -> Bool {
-        return lhs.jg_sortedJSON() != rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson != rJson
+        }
+        return lhs != rhs
     }
 }
 
 // MARK: - BuildInBridgeType
 extension NSArray {
     public static func == (lhs: NSArray, rhs: NSArray) -> Bool {
-        return lhs.jg_sortedJSON() == rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson == rJson
+        }
+        return lhs == rhs
     }
 
     public static func != (lhs: NSArray, rhs: NSArray) -> Bool {
-        return lhs.jg_sortedJSON() != rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson != rJson
+        }
+        return lhs != rhs
     }
 }
 
 extension NSDictionary {
     public static func == (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        return lhs.jg_sortedJSON() == rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson == rJson
+        }
+        return lhs == rhs
     }
 
     public static func != (lhs: NSDictionary, rhs: NSDictionary) -> Bool {
-        return lhs.jg_sortedJSON() != rhs.jg_sortedJSON()
+        if let lJson = lhs.jg_sortedJSON(),
+           let rJson = rhs.jg_sortedJSON() {
+           return lJson != rJson
+        }
+        return lhs != rhs
     }
 }
