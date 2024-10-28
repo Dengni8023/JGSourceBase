@@ -65,12 +65,6 @@ public extension JGSComparable {
     }
 }
 
-extension JGSJSON {
-    func jg_sortedJSON() -> String? {
-        return String.jg_transform(from: self)
-    }
-}
-
 // MARK: - Optional
 public extension Optional where Wrapped: JGSComparable {}
 
@@ -104,6 +98,12 @@ extension Bool: JGSComparable {
 
     public static func > (lhs: Self, rhs: Self) -> Bool {
         return lhs && !rhs
+    }
+}
+
+extension JGSTransformable {
+    fileprivate func jg_sortedJSON() -> String? {
+        return String.jg_transform(from: self)
     }
 }
 

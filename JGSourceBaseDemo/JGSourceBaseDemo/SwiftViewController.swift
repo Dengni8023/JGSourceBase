@@ -69,7 +69,10 @@ class SwiftViewController: JGSDViewController {
         JGSLog(NSString.jg_transform(from: ["key":"value", "number": 0] as [String : Any]) as Any);
         
         let _set: Set<AnyHashable> = Set([1, "2", ["3": "4"]])
-        JGSLog(Array<Any>.jg_transform(from: _set))
+        let _arr = Array<Any>.jg_transform(from: _set)
+        JGSLog(_arr)
+        JGSLog(Array<Int>.jg_transform(from: _set))
+        JGSLog(Set<AnyHashable>.jg_transform(from: _arr))
         
         let intV: Int = 12
         let dicT: [String: Any] = [
@@ -110,20 +113,9 @@ class SwiftViewController: JGSDViewController {
         
         dicT.forEach { (key: String, value: Any) in
             
-            JGSLog("Set: ", Set<AnyHashable>.jg_transform(from: value))
-            
-            JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
-                   "string:", dicT.jg_string(forKey: key), "\n",
-                   "number:", dicT.jg_number(forKey: key), "\n",
-                   "int:", dicT.jg_int(forKey: key), "\n",
-                   "float:", dicT.jg_float(forKey: key), "\n",
-                   "double:", dicT.jg_double(forKey: key), "\n",
-                   "bool:", dicT.jg_bool(forKey: key), "\n",
-                   "dict:", dicT.jg_dictionary(forKey: key), "\n",
-                   "array:", dicT.jg_array(forKey: key), "\n",
-                   ""
-            )
-            if let value = dicT[key] as? JGSJSON {
+            if let value = dicT[key] as? JGSTransformable {
+                let dicV: [AnyHashable: Any]? = value.jg_dictionary()
+                let arrV: [Any]? = value.jg_array()
                 JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
                        "string:", value.jg_string, "\n",
                        "number:", value.jg_number, "\n",
@@ -133,11 +125,25 @@ class SwiftViewController: JGSDViewController {
                        "float:", value.jg_float, "\n",
                        "double:", value.jg_double, "\n",
                        "bool:", value.jg_bool, "\n",
-                       "dict:", value.jg_dictionary, "\n",
-                       "array:", value.jg_array, "\n",
+                       "dict:", dicV, "\n",
+                       "array:", arrV, "\n",
                        ""
                 )
             }
+            
+            let dicV: [AnyHashable: Any]? = dicT.jg_dictionary(forKey: key)
+            let arrV: [Any]? = dicT.jg_array(forKey: key)
+            JGSLog("\n{\(key): <\(type(of: dicT[key]))>\(dicT[key] ?? "nil")}", "\n",
+                   "string:", dicT.jg_string(forKey: key), "\n",
+                   "number:", dicT.jg_number(forKey: key), "\n",
+                   "int:", dicT.jg_int(forKey: key), "\n",
+                   "float:", dicT.jg_float(forKey: key), "\n",
+                   "double:", dicT.jg_double(forKey: key), "\n",
+                   "bool:", dicT.jg_bool(forKey: key), "\n",
+                   "dict:", dicV, "\n",
+                   "array:", arrV, "\n",
+                   ""
+            )
         }
         let en = PersonIntType.jg_transform(from: "0")
         JGSLog("Enum:", en)

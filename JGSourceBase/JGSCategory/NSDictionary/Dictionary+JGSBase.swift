@@ -57,6 +57,8 @@ extension Dictionary where Key : Hashable {
         }
 
         switch T.self {
+        case let transformableType as JGSTransformable.Type:
+            return transformableType.jg_transform(from: value) as? T
         case _ as String.Type:
             return jg_string(forKey: key) as? T
         case _ as NSNumber.Type:
@@ -69,20 +71,6 @@ extension Dictionary where Key : Hashable {
             return jg_double(forKey: key) as? T
         case _ as Bool.Type:
             return jg_bool(forKey: key) as? T
-        case _ as [Key: Value].Type:
-            return jg_dictionary(forKey: key) as? T
-        case _ as Dictionary.Type:
-            return jg_dictionary(forKey: key) as? T
-        // case _ as [AnyHashable: Any].Type:
-        //    return jg_dictionary(forKey: key) as? T
-        case _ as [Element].Type:
-            return jg_array(forKey: key) as? T
-        case _ as Array<Element>.Type:
-            return jg_array(forKey: key) as? T
-        case _ as Array<Any>.Type:
-            return jg_array(forKey: key) as? T
-        // case _ as [Any].Type:
-        //    return jg_array(forKey: key) as? T
         default:
             JGSPrivateLog()
         }
@@ -106,22 +94,22 @@ extension Dictionary where Key : Hashable {
         // 直接转换
         return value as? T
     }
-
+    
     // Dict
-    func jg_dictionary(forKey key: Key) -> [Key: Value]? {
+    func jg_dictionary<K, V>(forKey key: Key) -> [K: V]? {
         guard let value = self[key] else { return nil }
-        return Dictionary<Key, Value>.jg_transform(from: value)
+        return Dictionary<K, V>.jg_transform(from: value)
     }
 
     // Array
-    func jg_array(forKey key: Key) -> [Element]? {
+    func jg_array<Ele>(forKey key: Key) -> [Ele]? {
         guard let value = self[key] else { return nil }
-        return Array<Element>.jg_transform(from: value)
+        return Array<Ele>.jg_transform(from: value)
     }
 
     // Set
-    func jg_set<Element>(forKey key: Key) -> Set<Element>? {
+    func jg_set<Ele>(forKey key: Key) -> Set<Ele>? {
         guard let value = self[key] else { return nil }
-        return Set<Element>.jg_transform(from: value)
+        return Set<Ele>.jg_transform(from: value)
     }
 }

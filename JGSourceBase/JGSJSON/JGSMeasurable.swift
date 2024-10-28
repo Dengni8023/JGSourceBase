@@ -8,10 +8,10 @@
 
 import Foundation
 
-// 参考 HandyJSON: _Measurable
+// 参考 HandyJSON: Measurable.swift
 // https://github.com/alibaba/handyjson
 
-private typealias Byte = Int8
+typealias Byte = Int8
 
 public protocol JGSMeasurable {}
 
@@ -33,7 +33,7 @@ extension JGSMeasurable {
     }
 
     // locating the head of an object
-    private mutating func headPointer() -> UnsafeMutablePointer<Byte> {
+    mutating func headPointer() -> UnsafeMutablePointer<Byte> {
         if Self.self is AnyClass {
             return self.headPointerOfClass()
         } else {
@@ -41,11 +41,11 @@ extension JGSMeasurable {
         }
     }
 
-    private func isNSObjectType() -> Bool {
+    func isNSObjectType() -> Bool {
         return (type(of: self) as? NSObject.Type) != nil
     }
 
-    private func getBridgedPropertyList() -> Set<String> {
+    func getBridgedPropertyList() -> Set<String> {
         if let anyClass = type(of: self) as? AnyClass {
             return _getBridgedPropertyList(anyClass: anyClass)
         }
@@ -73,12 +73,12 @@ extension JGSMeasurable {
     }
     
     // memory size occupy by self object
-    private static func size() -> Int {
+    static func size() -> Int {
         return MemoryLayout<Self>.size
     }
 
     // align
-    private static func align() -> Int {
+    static func align() -> Int {
         return MemoryLayout<Self>.alignment
     }
 

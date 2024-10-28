@@ -8,7 +8,7 @@
 
 import Foundation
 
-// 参考 HandyJSON: _RawEnumProtocol
+// 参考 HandyJSON: EnumType.swift
 // https://github.com/alibaba/handyjson
 
 // MARK: - RawRepresentable

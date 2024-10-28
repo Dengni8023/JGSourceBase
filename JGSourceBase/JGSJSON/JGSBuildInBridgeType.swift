@@ -8,42 +8,42 @@
 
 import Foundation
 
-// 参考 HandyJSON: _BuiltInBridgeType
+// 参考 HandyJSON: BuiltInBridgeType.swift
 // https://github.com/alibaba/handyjson
 
 public protocol JGSBuildInBridgeType: JGSTransformable {
-    static func jg_transform(from object: Any?) -> JGSBuildInBridgeType?
-    func jg_plainValue() -> Any?
+    static func _transform(from object: Any?) -> JGSBuildInBridgeType?
+    func _plainValue() -> Any?
 }
 
 extension NSString: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        if let str = String.jg_transform(from: object) {
+    public static func _transform(from object: Any?) -> JGSBuildInBridgeType? {
+        if let str = String._transform(from: object) {
             return NSString(string: str)
         }
         return nil
     }
 
-    public func jg_plainValue() -> Any? {
+    public func _plainValue() -> Any? {
         return self
     }
 }
 
 extension NSURL: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        if let _url = URL.jg_transform(from: object) {
+    public static func _transform(from object: Any?) -> JGSBuildInBridgeType? {
+        if let _url = URL._transform(from: object) {
             return NSURL(string: _url.absoluteString) as? Self
         }
         return nil
     }
     
-    public func jg_plainValue() -> Any? {
+    public func _plainValue() -> Any? {
         return self.absoluteString
     }
 }
 
 extension NSNumber: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    public static func _transform(from object: Any?) -> JGSBuildInBridgeType? {
         guard let object = object else {
             return nil
         }
@@ -68,32 +68,32 @@ extension NSNumber: JGSBuildInBridgeType {
         }
     }
     
-    public func jg_plainValue() -> Any? {
+    public func _plainValue() -> Any? {
         return self
     }
 }
 
 extension NSArray: JGSBuildInBridgeType {
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
-        return [Element].jg_transform(from: object) as? Self
+    public static func _transform(from object: Any?) -> JGSBuildInBridgeType? {
+        return [Element]._transform(from: object) as? Self
     }
 
-    public func jg_plainValue() -> Any? {
-        return (self as? [Element])?.jg_plainValue()
+    public func _plainValue() -> Any? {
+        return (self as? [Element])?._plainValue()
     }
 }
 
 extension NSDictionary: JGSBuildInBridgeType {
     
-    public static func jg_transform(from object: Any?) -> JGSBuildInBridgeType? {
+    public static func _transform(from object: Any?) -> JGSBuildInBridgeType? {
         if Key.self is AnyHashable {
-            return [AnyHashable: Element].jg_transform(from: object) as? Self
+            return [AnyHashable: Element]._transform(from: object) as? Self
         }
         
         return object as? Self
     }
 
-    public func jg_plainValue() -> Any? {
-        return (self as? Dictionary<AnyHashable, Any>)?.jg_plainValue()
+    public func _plainValue() -> Any? {
+        return (self as? Dictionary<AnyHashable, Any>)?._plainValue()
     }
 }

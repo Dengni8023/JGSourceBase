@@ -8,12 +8,13 @@
 
 import Foundation
 
-// 参考 HandyJSON: _BuiltInBasicType
+//
+// 参考 HandyJSON: BuiltInBasicType.swift
 // https://github.com/alibaba/handyjson
 
 protocol JGSBuildInBasicType: JGSTransformable {
-    static func jg_transform(from object: Any?) -> Self?
-    func jg_plainValue() -> Any?
+    static func _transform(from object: Any?) -> Self?
+    func _plainValue() -> Any?
 }
 
 // MARK: - Integer
@@ -31,7 +32,7 @@ protocol JGSIntegerProtocol: FixedWidthInteger, JGSBuildInBasicType {
 }
 
 extension JGSIntegerProtocol {
-    public static func jg_transform(from object: Any?) -> Self? {
+    static func _transform(from object: Any?) -> Self? {
         guard let object = object else {
             return nil
         }
@@ -46,7 +47,7 @@ extension JGSIntegerProtocol {
         }
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return self
     }
 }
@@ -66,7 +67,7 @@ extension UInt64: JGSIntegerProtocol {}
 // MARK: - Bool
 
 extension Bool: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> Bool? {
+    static func _transform(from object: Any?) -> Bool? {
         guard let object = object else {
             return nil
         }
@@ -87,7 +88,7 @@ extension Bool: JGSBuildInBasicType {
         }
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return self
     }
 }
@@ -107,7 +108,7 @@ protocol JGSFloatProtocol: LosslessStringConvertible, JGSBuildInBasicType {
 }
 
 extension JGSFloatProtocol {
-    public static func jg_transform(from object: Any?) -> Self? {
+    static func _transform(from object: Any?) -> Self? {
         guard let object = object else {
             return nil
         }
@@ -122,7 +123,7 @@ extension JGSFloatProtocol {
         }
     }
     
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return self
     }
 }
@@ -132,7 +133,7 @@ extension Double: JGSFloatProtocol {}
 
 // MARK: - String & URL
 extension String: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> String? {
+    static func _transform(from object: Any?) -> String? {
         guard let object = object else {
             return nil
         }
@@ -178,13 +179,13 @@ extension String: JGSBuildInBasicType {
         }
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return self
     }
 }
 
 extension URL: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> URL? {
+    static func _transform(from object: Any?) -> URL? {
         guard let object = object else { return nil }
 
         switch object {
@@ -241,7 +242,7 @@ extension URL: JGSBuildInBasicType {
         }
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return self.absoluteString
     }
 }
@@ -249,7 +250,7 @@ extension URL: JGSBuildInBasicType {
 // MARK: - Optional
 
 extension Optional: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> Optional? {
+    static func _transform(from object: Any?) -> Optional? {
         guard let object = object else {
             return nil
         }
@@ -268,7 +269,7 @@ extension Optional: JGSBuildInBasicType {
         }
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         if let value = _wrappedValue() {
             if let transformable = value as? JGSTransformable {
                 return transformable.jg_plainValue()
@@ -287,19 +288,29 @@ extension Collection {
             return nil
         }
         
-        var elements = object as? [Any]
         var options: JSONSerialization.ReadingOptions = [.fragmentsAllowed]
         if #available(iOS 15.0, *) {
             options.insert(.json5Allowed)
         }
         
+        var elements = object as? [Any]
+        // Collection
+        if let collection = object as? any Collection,
+           ["Array", "Set"].filter({ item in
+               "\(type(of: collection))".hasPrefix(item)
+           }).count > 0 {
+            elements = []
+            collection.forEach { ele in
+                elements?.append(ele)
+            }
+        }
         // JSON String -> Collection
-        if let str = (object as? String)?.trimmingCharacters(in: .whitespacesAndNewlines),
-           ["{", "["].filter({ prefix in
-               str.hasPrefix(prefix)
-           }).count > 0,
-           let _data = str.data(using: .utf8),
-           let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
+        else if let str = (object as? String)?.trimmingCharacters(in: .whitespacesAndNewlines),
+                ["{", "["].filter({ prefix in
+                    str.hasPrefix(prefix)
+                }).count > 0,
+                let _data = str.data(using: .utf8),
+                let collection = try? JSONSerialization.jsonObject(with: _data, options: options) as? [Any] {
             elements = collection
         }
         // JSON Data -> Collection
@@ -325,7 +336,8 @@ extension Collection {
                 JGSPrivateLog("Expect element to be \(type(of: Element.self)) but it's \(type(of: each))")
             }
         }
-
+        JGSLog("object type: \(type(of: object)), object: \(object)")
+        JGSLog("Element type: \(type(of: Element.self)), result: \(result)")
         return result
     }
     
@@ -346,24 +358,24 @@ extension Collection {
 // MARK: - Array & Set
 
 extension Array: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> [Element]? {
+    static func _transform(from object: Any?) -> [Element]? {
         return _collectionTransform(from: object)
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return _collectionPlainValue()
     }
 }
 
 extension Set: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> Set<Element>? {
+    static func _transform(from object: Any?) -> Set<Element>? {
         if let arr = _collectionTransform(from: object) {
             return Set(arr)
         }
         return nil
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         return _collectionPlainValue()
     }
 }
@@ -371,7 +383,7 @@ extension Set: JGSBuildInBasicType {
 // MARK: - Dictionary
 
 extension Dictionary: JGSBuildInBasicType {
-    public static func jg_transform(from object: Any?) -> Dictionary<Key, Value>? {
+    static func _transform(from object: Any?) -> Dictionary<Key, Value>? {
         guard let object = object else {
             return nil
         }
@@ -421,7 +433,7 @@ extension Dictionary: JGSBuildInBasicType {
         return result
     }
 
-    public func jg_plainValue() -> Any? {
+    func _plainValue() -> Any? {
         var result = [AnyHashable: Value]()
         forEach { pair in
             if let transformable = pair.value as? JGSTransformable {
