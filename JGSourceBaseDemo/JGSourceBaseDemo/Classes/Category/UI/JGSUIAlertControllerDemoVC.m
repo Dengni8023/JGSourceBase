@@ -38,6 +38,7 @@
 			JGSDemoTableRowMake(@"Alert canle & destructive", self, @selector(categoryAlertDemo:)),
 			JGSDemoTableRowMake(@"Alert canle & other", self, @selector(categoryAlertDemo:)),
 			JGSDemoTableRowMake(@"Alert canle & others", self, @selector(categoryAlertDemo:)),
+            JGSDemoTableRowMake(@"Alert canle & destructive & other", self, @selector(categoryAlertDemo:)),
 			JGSDemoTableRowMake(@"Alert canle & destructive & others", self, @selector(categoryAlertDemo:)),
 		]),
 		JGSDemoTableSectionMake(@" ActionSheet",
@@ -123,6 +124,15 @@
             break;
             
         case 5: {
+            
+            // canle & destructive & others
+            [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" destructive:@"Destructive" others:@[@"Other"] action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
+                
+            }];
+        }
+            break;
+            
+        case 6: {
             
             // canle & destructive & others
             [UIAlertController jg_alertWithTitle:@"Title" message:@"Message" cancel:@"Cancel" destructive:@"Destructive" others:@[@"Other 1", @"Other 2"] action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
