@@ -45,7 +45,7 @@ extension Array {
         return jg_object<Bool>(at: index)
     }
     
-    func jg_dict<Key, Val>(at index: Int) -> Dictionary<Key, Val>? {
+    func jg_dict<K, V>(at index: Int) -> Dictionary<K, V>? {
         return jg_object<Dictionary<K, V>>(at: index)
     }
     
