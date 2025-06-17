@@ -1,15 +1,16 @@
 <!--
  * @Author: 梅继高
  * @Date: 2022-05-17 13:53:31
- * @LastEditTime: 2024-10-12 10:08:19
- * @LastEditors: Dengni8023 (Mei JiGao: 94583664@qq.com)
+ * @LastEditTime: 2025-04-14 13:24:20
+ * @LastEditors: Dengni8023
  * @Description: 
  * @FilePath: /JGSourceBase/JGSourceBase/JGSIntegrityCheck/README.md
  * Copyright © 2022 MeiJiGao. All rights reserved.
 -->
 #  <center>应用完整性校验之资源文件检验</center>
 
-<center><font style='color: gray'>JGSIntegrityCheck使用手册及方案介绍</font></center>
+<font style='color: gray'>`JGSIntegrityCheck`使用手册及方案介绍
+</font>
 
 [TOC]
 
@@ -21,7 +22,7 @@
 flowchart TB
 
 	subgraph PackageShell[打包脚本]
-		start(源码编译) -.app包.-> executeSH[执行脚本记录<br/>.app包资源文件<br/>Hash及Info.plist内容] --> output[文件Hash及Info.plist<br/>内容写入校验文件] -.-> stop(打包完成<br/>生成.ipa包)
+		start(源码编译) --app包--> executeSH[执行脚本记录<br/>.app包资源文件<br/>Hash及Info.plist内容] --> output[文件Hash及Info.plist<br/>内容写入校验文件] -.-> stop(打包完成<br/>生成.ipa包) 
 	end
 ```
 

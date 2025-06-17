@@ -107,13 +107,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return instancetype
 + (nullable instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title randomNumPad:(BOOL)randomNum DEPRECATED_MSG_ATTRIBUTE("Use + numberKeyboardWithTextInput:title: and - randomNumPad instead!");
 
-/// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
+/// 自定义数字键盘，title为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textField 键盘对应的输入框
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @return instancetype
 + (instancetype)numberKeyboardWithTextField:(UITextField *)textField title:(nullable NSString *)title;
 
-/// 自定义数字键盘，itle为非空字符串时，顶部显示toolbar菜单、title、完成按钮
+/// 自定义数字键盘，title为非空字符串时，顶部显示toolbar菜单、title、完成按钮
 /// @param textInput 键盘对应的输入框，支持UITextField、UITextView及其子类
 /// @param title 键盘顶部toolbar显示时的标题，可为空字符串或nil，若title为空或nil，则不显示键盘顶部toolbar
 /// @return instancetype

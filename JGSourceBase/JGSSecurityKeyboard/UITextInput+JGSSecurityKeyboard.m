@@ -339,26 +339,19 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
 - (void)jg_keyboardInputText:(NSString *)text {
     
     text = text ?: @"";
-    if (text.length == 0 && self.text.length == 0) {
-        return;
-    }
-    
     UITextRange *selectedRange = self.selectedTextRange;
-    if (!selectedRange) {
-        return;
-    }
     
     NSRange editRange = NSMakeRange(self.text.length, 0);
     UITextPosition *position = [self positionFromPosition:selectedRange.start offset:0];
     UITextPosition *beginPos = [self beginningOfDocument];
     editRange.location = [self offsetFromPosition:beginPos toPosition:position];
     editRange.length = [self offsetFromPosition:selectedRange.start toPosition:selectedRange.end];
-    
+    // 判断是否允许输入
     if ([self.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] &&
         ![self.delegate textField:self shouldChangeCharactersInRange:editRange replacementString:text]) {
         return;
     }
-    
+    // 允许输入时使用系统方法替换文本框内容，会触发 setText:
     if (editRange.length > 0 || text.length > 0) {
         [self replaceRange:selectedRange withText:text];
     }
@@ -902,14 +895,7 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
 - (void)jg_keyboardInputText:(NSString *)text {
     
     text = text ?: @"";
-    if (text.length == 0 && self.text.length == 0) {
-        return;
-    }
-    
     UITextRange *selectedRange = self.selectedTextRange;
-    if (!selectedRange) {
-        return;
-    }
     
     NSRange editRange = NSMakeRange(self.text.length, 0);
     UITextPosition *position = [self positionFromPosition:selectedRange.start offset:0];

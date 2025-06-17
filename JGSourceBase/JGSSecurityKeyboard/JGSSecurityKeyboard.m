@@ -198,7 +198,8 @@
     if (self.title.length > 0) {
         keyboardHeight += JGSKeyboardToolbarHeight;
     }
-    
+
+    // 键盘高度更新，此处仅做初步的键盘高度计算
     // JGSPrivateLog(@"%@, %@", NSStringFromCGRect(self.frame), @(keyboardHeight));
     [self.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -427,6 +428,7 @@
     
     switch (key.type) {
         case JGSKeyboardKeyTypeInput: {
+            // 输入字符内容
             [self keyboardInputText:key.text];
         }
             break;

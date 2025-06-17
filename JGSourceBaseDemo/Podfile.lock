@@ -1,37 +1,37 @@
 PODS:
   - IQKeyboardManager (6.5.18)
-  - JGSourceBase (1.4.4):
-    - JGSourceBase/Base (= 1.4.4)
-    - JGSourceBase/Category (= 1.4.4)
-    - JGSourceBase/DataStorage (= 1.4.4)
-    - JGSourceBase/Device (= 1.4.4)
-    - JGSourceBase/Encryption (= 1.4.4)
-    - JGSourceBase/HUD (= 1.4.4)
-    - JGSourceBase/IntegrityCheck (= 1.4.4)
-    - JGSourceBase/JSON (= 1.4.4)
-    - JGSourceBase/Reachability (= 1.4.4)
-    - JGSourceBase/SecurityKeyboard (= 1.4.4)
-  - JGSourceBase/Base (1.4.4)
-  - JGSourceBase/Category (1.4.4):
+  - JGSourceBase (1.4.5):
+    - JGSourceBase/Base (= 1.4.5)
+    - JGSourceBase/Category (= 1.4.5)
+    - JGSourceBase/DataStorage (= 1.4.5)
+    - JGSourceBase/Device (= 1.4.5)
+    - JGSourceBase/Encryption (= 1.4.5)
+    - JGSourceBase/HUD (= 1.4.5)
+    - JGSourceBase/IntegrityCheck (= 1.4.5)
+    - JGSourceBase/JSON (= 1.4.5)
+    - JGSourceBase/Reachability (= 1.4.5)
+    - JGSourceBase/SecurityKeyboard (= 1.4.5)
+  - JGSourceBase/Base (1.4.5)
+  - JGSourceBase/Category (1.4.5):
     - JGSourceBase/Base
     - JGSourceBase/JSON
-  - JGSourceBase/DataStorage (1.4.4):
+  - JGSourceBase/DataStorage (1.4.5):
     - JGSourceBase/Encryption
-  - JGSourceBase/Device (1.4.4):
+  - JGSourceBase/Device (1.4.5):
     - JGSourceBase/Category
     - JGSourceBase/Reachability
-  - JGSourceBase/Encryption (1.4.4):
+  - JGSourceBase/Encryption (1.4.5):
     - JGSourceBase/Category
-  - JGSourceBase/HUD (1.4.4):
+  - JGSourceBase/HUD (1.4.5):
     - JGSourceBase/Category
     - MBProgressHUD (>= 1.2.0)
-  - JGSourceBase/IntegrityCheck (1.4.4):
+  - JGSourceBase/IntegrityCheck (1.4.5):
     - JGSourceBase/Encryption
-  - JGSourceBase/JSON (1.4.4):
+  - JGSourceBase/JSON (1.4.5):
     - JGSourceBase/Base
-  - JGSourceBase/Reachability (1.4.4):
+  - JGSourceBase/Reachability (1.4.5):
     - JGSourceBase/Base
-  - JGSourceBase/SecurityKeyboard (1.4.4):
+  - JGSourceBase/SecurityKeyboard (1.4.5):
     - JGSourceBase/Category
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -65,7 +65,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
-  JGSourceBase: 088108d91df1e2c1135d26a45a7305fd1d0e387c
+  JGSourceBase: 7723081c0cbfbfd4cd403e5a18610a90d13e4817
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb

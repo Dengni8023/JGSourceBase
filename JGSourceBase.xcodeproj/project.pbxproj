@@ -1422,6 +1422,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"执行自定义脚本修改源码 JGSourceBase.xcconfig\"\nchmod +x ${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # sh执行权限\n${PROJECT_DIR}/JGSScripts/JGSModifyConfigBeforeCompile.sh # 执行sh\n";
@@ -1893,6 +1897,7 @@
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				JGSVersion = 1.4.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1932,6 +1937,7 @@
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				JGSVersion = 1.4.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
