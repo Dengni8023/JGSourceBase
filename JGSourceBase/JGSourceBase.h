@@ -10,13 +10,13 @@
 #import <Availability.h>
 
 // 最低版本限制处理
-#if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_11_0
+#if __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ < __IPHONE_12_0
 #error "JGSourceBase uses features only available in iOS SDK 12.0 and later."
 #endif
 
 // Xcode最低版本要求
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 150000
-#error "JGSourceBase needs Xcode 13.0 or later."
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_18_0
+#error "JGSourceBase needs Xcode 16.0 or later."
 #endif
 
 //! Project version number for JGSourceBase.

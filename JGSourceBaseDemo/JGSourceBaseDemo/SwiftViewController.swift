@@ -56,15 +56,6 @@ class SwiftViewController: JGSDViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let url1: Bool? = true
-        let url2 = false
-        print("\(url1 ?? false) > \(url2): \(url1 > url2)")
-        print("\(url1 ?? false) >= \(url2): \(url1 >= url2)")
-        print("\(url1 ?? false) == \(url2): \(url1 == url2)")
-        print("\(url1 ?? false) != \(url2): \(url1 != url2)")
-        print("\(url1 ?? false) <= \(url2): \(url1 <= url2)")
-        print("\(url1 ?? false) < \(url2): \(url1 < url2)")
-        
         JGSLog(String.jg_transform(from: ["key":"value", "number": 0] as [String: Any]) as Any);
         JGSLog(NSString.jg_transform(from: ["key":"value", "number": 0] as [String : Any]) as Any);
         

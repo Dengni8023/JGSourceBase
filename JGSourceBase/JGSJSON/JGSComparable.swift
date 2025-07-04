@@ -12,56 +12,65 @@ import Foundation
 
 public protocol JGSComparable: Comparable {}
 public extension JGSComparable {
+    
     // <
-    static func < (lhs: Self, rhs: Self) -> Bool {
-        return lhs < rhs
-    }
-
     static func < (lhs: Self?, rhs: Self) -> Bool {
-        return lhs != nil ? lhs! < rhs : true
+        if let lhs = lhs {
+            return lhs < rhs
+        }
+        return true
     }
 
     static func < (lhs: Self, rhs: Self?) -> Bool {
-        return rhs != nil ? lhs < rhs! : false
+        if let rhs = rhs {
+            return lhs < rhs
+        }
+        return false
     }
 
     // <=
-    static func <= (lhs: Self, rhs: Self) -> Bool {
-        return lhs <= rhs
-    }
-
     static func <= (lhs: Self?, rhs: Self) -> Bool {
-        return lhs != nil ? lhs! <= rhs : true
+        if let lhs = lhs {
+            return lhs <= rhs
+        }
+        return true
     }
 
     static func <= (lhs: Self, rhs: Self?) -> Bool {
-        return rhs != nil ? lhs <= rhs! : false
+        if let rhs = rhs {
+            return lhs <= rhs
+        }
+        return false
     }
 
     // >=
-    static func >= (lhs: Self, rhs: Self) -> Bool {
-        return lhs >= rhs
-    }
-
     static func >= (lhs: Self?, rhs: Self) -> Bool {
-        return lhs != nil ? lhs! >= rhs : false
+        if let lhs = lhs {
+            return lhs >= rhs
+        }
+        return false
     }
 
     static func >= (lhs: Self, rhs: Self?) -> Bool {
-        return rhs != nil ? lhs >= rhs! : true
+        if let rhs = rhs {
+            return lhs >= rhs
+        }
+        return true
     }
 
     // >
-    static func > (lhs: Self, rhs: Self) -> Bool {
-        return lhs > rhs
-    }
-
     static func > (lhs: Self?, rhs: Self) -> Bool {
-        return lhs != nil ? lhs! > rhs : false
+        if let lhs = lhs {
+            return lhs > rhs
+        }
+        return false
     }
 
     static func > (lhs: Self, rhs: Self?) -> Bool {
-        return rhs != nil ? lhs > rhs! : true
+        if let rhs = rhs {
+            return lhs > rhs
+        }
+        return true
     }
 }
 
@@ -89,23 +98,6 @@ extension UInt64: JGSComparable {}
 
 extension Double: JGSComparable {}
 extension Float: JGSComparable {}
-extension Bool: JGSComparable {
-    public static func < (lhs: Self, rhs: Self) -> Bool {
-        return !lhs && rhs
-    }
-
-    public static func <= (lhs: Self, rhs: Self) -> Bool {
-        return !lhs || rhs
-    }
-
-    public static func >= (lhs: Self, rhs: Self) -> Bool {
-        return lhs || !rhs
-    }
-
-    public static func > (lhs: Self, rhs: Self) -> Bool {
-        return lhs && !rhs
-    }
-}
 
 extension Array {
     public static func == (lhs: Self, rhs: Self) -> Bool {
