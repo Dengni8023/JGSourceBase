@@ -1,32 +1,27 @@
 //
 //  main.m
-//  JGCommandLineDemo
+//  JGCommandLine
 //
 //  Created by 梅继高 on 2022/4/13.
 //  Copyright © 2022 MeiJiGao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "JGSCommandLineTool.h"
+#import "JGSCommandLine.h"
 
 int main(int argc, const char * argv[]) {
 	@autoreleasepool {
         
         NSLog(@"Sort plist file >>>>");
-        [JGSCommandLineTool sortPlistFiles];
+        [JGSCommandLine sortPlistFiles];
         NSLog(@"");
         
         NSLog(@"Sort json file >>>>");
-        [JGSCommandLineTool sortJSONFiles];
+        [JGSCommandLine sortJSONFiles];
         NSLog(@"");
         
 		NSLog(@"Sort and aes encrypt device list data >>>>");
-        [JGSCommandLineTool sortAndAESEncryptDeviceListData];
-        NSLog(@"");
-        
-        NSLog(@"Sort and base64 encrypt latest global config >>>>");
-        [JGSCommandLineTool sortAndBase64EncryptGlobalConfiguration];
-        [JGSCommandLineTool globalConfigurationBase64Decrypt];
+        [JGSCommandLine sortAndAESEncryptDeviceListData];
         NSLog(@"");
 	}
 	return 0;
