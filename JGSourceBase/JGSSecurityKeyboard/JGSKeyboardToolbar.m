@@ -8,7 +8,7 @@
 
 #import "JGSKeyboardToolbar.h"
 #import "JGSKeyboardConstants.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 
 @implementation JGSKeyboardToolbarItem
 

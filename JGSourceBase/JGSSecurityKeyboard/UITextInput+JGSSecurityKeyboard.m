@@ -8,7 +8,7 @@
 
 #import "UITextInput+JGSSecurityKeyboard.h"
 #import "JGSSecurityKeyboard.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 #import <objc/runtime.h>
 
 static NSString *JGSSecurityKeyboardSecChar = @"•";

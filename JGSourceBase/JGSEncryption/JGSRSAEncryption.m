@@ -7,7 +7,7 @@
 //
 
 #import "JGSRSAEncryption.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 #import <Security/Security.h>
 #import "NSData+JGSBase.h"
 #import "NSString+JGSBase.h"

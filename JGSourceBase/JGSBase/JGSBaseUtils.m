@@ -8,12 +8,15 @@
 
 #import "JGSBaseUtils.h"
 #import <objc/runtime.h>
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 
 void JGSInnerRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector, BOOL classMethod) {
     
+    // 获取原始方法和新方法
     Method originMethod = class_getInstanceMethod(cls, originSelector);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
+
+    // 如果是类方法，则获取类方法并使用元类
     if (classMethod) {
         originMethod = class_getClassMethod(cls, originSelector);
         swizzledMethod = class_getClassMethod(cls, swizzledSelector);
@@ -27,15 +30,18 @@ void JGSInnerRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSe
             cls = objc_getClass(NSStringFromClass(cls).UTF8String);
         }
     }
+
+    // 如果原始方法或新方法为空，则直接返回
     if (originMethod == nil || swizzledMethod == nil) {
         return;
     }
     
     /*
-     严谨的方法替换逻辑：检查运行时源方法的实现是否已执行
-     将新的实现添加到源方法，用来做检查用，避免源方法没有实现（有实现，但运行时尚未执行到该方法的实现）
-     如果源方法已有实现，会返回 NO，此时直接交换源方法与新方法的实现即可
-     如果源方法尚未实现，会返回 YES，此时新的实现已替换原方法的实现，需要将源方法的实现替换到新方法
+     严谨的方法替换逻辑：
+     1. 检查运行时源方法的实现是否已执行
+     2. 将新的实现添加到源方法，用来做检查用，避免源方法没有实现（有实现，但运行时尚未执行到该方法的实现）
+     3. 如果源方法已有实现，会返回 NO，此时直接交换源方法与新方法的实现即可
+     4. 如果源方法尚未实现，会返回 YES，此时新的实现已替换原方法的实现，需要将源方法的实现替换到新方法
      
      对于部分代理方法，可能存在该类本身是没有进行实现的，此时将新的实现添加到源方法必返回YES
      之后不需要在进行其他操作，在新的实现内部如需执行源方法，需要判断新方法与源方法实现是否一致，一致时则不能执行原方法(否则死循环)
@@ -50,10 +56,12 @@ void JGSInnerRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSe
 }
 
 FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+    // 调用内部方法进行方法交换，参数为类、原始方法选择器、新方法选择器，且指定为实例方法
     JGSInnerRuntimeSwizzledMethod(cls, originSelector, swizzledSelector, NO);
 }
 
 FOUNDATION_EXTERN void JGSRuntimeSwizzledClassMethod(Class cls, SEL originSelector, SEL swizzledSelector) {
+    // 调用内部方法进行方法交换，参数为类、原始方法选择器、新方法选择器，且指定为类方法
     JGSInnerRuntimeSwizzledMethod(cls, originSelector, swizzledSelector, YES);
 }
 

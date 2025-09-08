@@ -7,7 +7,7 @@
 //
 
 #import "JGSIntegrityCheckResourcesHash.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import "NSString+JGSBase.h"
 #import "NSData+JGSBase.h"

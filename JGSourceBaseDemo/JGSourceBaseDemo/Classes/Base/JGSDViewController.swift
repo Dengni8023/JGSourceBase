@@ -8,6 +8,16 @@
 
 import UIKit
 
+func JGSDemoShowConsoleLog(vcT: JGSDViewController, format: String, _ args: CVarArg?...) {
+    JGSLog(args)
+    vcT.showConsoleLog(format: format, args)
+}
+
+func JGSDemoShowConsoleLog(_ vcT: JGSDViewController, _ args: Any?...) {
+    JGSLog(args)
+    vcT.showConsoleLog(args)
+}
+
 class JGSDViewController: JGSDemoViewController {
 
     open override func viewDidLoad() {
@@ -38,4 +48,18 @@ class JGSDViewController: JGSDemoViewController {
     }
     */
 
+    // MARK: - Console
+    func showConsoleLog(format: String, _ args: CVarArg?...) {
+        
+        var tmpArgs: [CVarArg] = []
+        for arg in args {
+            tmpArgs.append(arg ?? "nil")
+        }
+        let msg = String(format: format, arguments: tmpArgs)
+        showConsoleLog(msg)
+    }
+    
+    func showConsoleLog(_ args: Any?...) {
+        
+    }
 }

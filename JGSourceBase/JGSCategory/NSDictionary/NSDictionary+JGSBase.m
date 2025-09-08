@@ -8,7 +8,7 @@
 
 #import "NSDictionary+JGSBase.h"
 #import "NSObject+JGSBase.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 
 @implementation NSDictionary (JGSBase)
 

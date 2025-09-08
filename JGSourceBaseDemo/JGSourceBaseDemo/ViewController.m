@@ -119,7 +119,7 @@
     
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 0 && indexPath.row == 0) {
-        cell.textLabel.text = [cell.textLabel.text stringByAppendingFormat:@"（type: %@）", @(JGSEnableLogMode)];
+        cell.textLabel.text = [cell.textLabel.text stringByAppendingFormat:@"（type: %@）", @(JGSLogger.mode)];
     }
     
     return cell;
@@ -140,7 +140,7 @@
     JGSDemoShowConsoleLog(self, @"");
 #ifdef JGSCategory_UIAlertController_h
     JGSWeakSelf
-    NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with function line and pretty out", @"Log with file function line"];
+    NSArray *types = @[@"Log disable", @"Log only", @"Log with function line", @"Log with file function line"];
     [UIAlertController jg_actionSheetWithTitle:@"选择日志类型" cancel:@"取消" others:types action:^(UIAlertController * _Nonnull alert, NSInteger idx) {
         
         JGSDemoShowConsoleLog(self, @"<%@: %p> %@", NSStringFromClass([alert class]), alert, @(idx));

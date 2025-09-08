@@ -25,6 +25,7 @@
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, [JGSBaseUtils version]);
     JGSEnableLogWithMode(JGSLogModeFunc);
     [JGSLogFunction enableLog:YES];
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogLevelDebug useNSLog:YES lengthLimit:0 truncating:JGSLogTruncatingMiddle];
     
     //NSLog(@"%@", @(JGSBaseVersionNumber));
     //NSLog(@"%s", JGSBaseVersionString);

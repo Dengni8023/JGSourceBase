@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+JGSBase.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 //#import <ImageIO/ImageIO.h>
 #import <Accelerate/Accelerate.h>
 

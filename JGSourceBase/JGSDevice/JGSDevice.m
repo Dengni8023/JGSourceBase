@@ -7,7 +7,7 @@
 //
 
 #import "JGSDevice.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 #import "JGSCategory+NSData.h"
 #import <WebKit/WebKit.h>
 #import <AdSupport/ASIdentifierManager.h>

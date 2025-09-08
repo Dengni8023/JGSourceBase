@@ -8,7 +8,7 @@
 
 #import "NSString+JGSBase.h"
 #import "JGSCategory+NSData.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 
 @implementation NSString (JGSBase)
 

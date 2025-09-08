@@ -1,0 +1,16 @@
+//
+//  JGSourceBase.modulemap
+//  JGSourceBase
+//
+//  Created by 梅继高 on 2025/7/7.
+//  Copyright © 2025 MeiJiGao. All rights reserved.
+//
+
+// 如果OC需要访问Swift代码，需要modulemap
+
+framework module JGSourceBase {
+    umbrella header "JGSourceBase.h"
+
+    export *
+    // module * { export *  }
+}

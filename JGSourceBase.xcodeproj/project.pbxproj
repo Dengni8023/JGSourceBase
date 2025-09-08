@@ -42,6 +42,10 @@
 		D40A3CCC28854048006DE6DD /* JGSNSArrayDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */; };
 		D4120AD429E650ED0020EE64 /* Set+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4120AD329E650ED0020EE64 /* Set+JGSBase.swift */; };
 		D4120AD729E6529C0020EE64 /* NSNumber+JGSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4120AD629E6529C0020EE64 /* NSNumber+JGSBase.swift */; };
+		D413D2892E1BA39200053119 /* JGSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D413D2882E1BA39200053119 /* JGSLogger.swift */; };
+		D413D28B2E1BA3FD00053119 /* JGSLogger+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D413D28A2E1BA3FD00053119 /* JGSLogger+Private.swift */; };
+		D413D28E2E1BA6AF00053119 /* JGSLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D413D28C2E1BA6AF00053119 /* JGSLogger+Private.h */; };
+		D413D28F2E1BA6AF00053119 /* JGSLogger+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D413D28D2E1BA6AF00053119 /* JGSLogger+Private.m */; };
 		D41D41F02E179DE40072537B /* JGSAESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697882806E0F900CE1F9F /* JGSAESEncryption.m */; };
 		D4214A192942DC0500CEFACB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4214A182942DC0500CEFACB /* SceneDelegate.m */; };
 		D4214A1E29432EDE00CEFACB /* JGSDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4214A1D29432EDE00CEFACB /* JGSDViewController.swift */; };
@@ -120,10 +124,10 @@
 		D4D697EA2806E0F900CE1F9F /* JGSRSAEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D6978E2806E0F900CE1F9F /* JGSRSAEncryption.m */; };
 		D4D697EB2806E0F900CE1F9F /* JGSBaseUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697902806E0F900CE1F9F /* JGSBaseUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697EC2806E0F900CE1F9F /* JGSWeakStrong.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697912806E0F900CE1F9F /* JGSWeakStrong.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4D697ED2806E0F900CE1F9F /* JGSLogFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697922806E0F900CE1F9F /* JGSLogFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4D697ED2806E0F900CE1F9F /* JGSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697922806E0F900CE1F9F /* JGSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697EE2806E0F900CE1F9F /* JGSBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697932806E0F900CE1F9F /* JGSBaseUtils.m */; };
 		D4D697EF2806E0F900CE1F9F /* JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697942806E0F900CE1F9F /* JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4D697F02806E0F900CE1F9F /* JGSLogFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697952806E0F900CE1F9F /* JGSLogFunction.m */; };
+		D4D697F02806E0F900CE1F9F /* JGSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697952806E0F900CE1F9F /* JGSLogger.m */; };
 		D4D697F12806E0F900CE1F9F /* JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697972806E0F900CE1F9F /* JGSSecurityKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D697F22806E0F900CE1F9F /* JGSNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D697982806E0F900CE1F9F /* JGSNumberKeyboard.m */; };
 		D4D697F32806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697992806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -173,14 +177,13 @@
 		D4D6981F2806E0F900CE1F9F /* JGSCategory+NSDate.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697D02806E0F900CE1F9F /* JGSCategory+NSDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D698202806E0F900CE1F9F /* NSDate+JGSBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D697D12806E0F900CE1F9F /* NSDate+JGSBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D698282806E16F00CE1F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D698272806E16F00CE1F9F /* main.m */; };
-		D4D96C0E284F2EE800D8B0ED /* JGSBase+JGSPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */; };
-		D4D96C0F284F2EE800D8B0ED /* JGSBase+JGSPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */; };
+		D4D96C0E284F2EE800D8B0ED /* JGSBase+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D96C0C284F2EE800D8B0ED /* JGSBase+Private.m */; };
+		D4D96C0F284F2EE800D8B0ED /* JGSBase+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D96C0D284F2EE800D8B0ED /* JGSBase+Private.h */; };
 		D4E651D02CC6274300AFD4D1 /* JGSMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */; };
 		D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D403B13A2850356900F4F304 /* Assets.xcassets */; };
 		D4EBE98C2850CCD00041E21B /* icon_29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE98A2850CCC00041E21B /* icon_29pt@2x.png */; };
 		D4EBE98D2850CCD00041E21B /* icon_29pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */; };
 		D4EBE98E2850CCD00041E21B /* icon_29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE9892850CCC00041E21B /* icon_29pt.png */; };
-		D4EF943029422DFE002B778A /* JGSLogFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF942F29422DFE002B778A /* JGSLogFunction.swift */; };
 		D4F3DA4A22F0279D002EF0F0 /* JGSourceBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4FBC1222AC1AC6100CEE6FB /* JGSRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBC1212AC1AC6100CEE6FB /* JGSRawRepresentable.swift */; };
 /* End PBXBuildFile section */
@@ -281,9 +284,15 @@
 		D40A3CCB28854048006DE6DD /* JGSNSArrayDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSNSArrayDemoVC.m; sourceTree = "<group>"; };
 		D4120AD329E650ED0020EE64 /* Set+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+JGSBase.swift"; sourceTree = "<group>"; };
 		D4120AD629E6529C0020EE64 /* NSNumber+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+JGSBase.swift"; sourceTree = "<group>"; };
+		D413D2882E1BA39200053119 /* JGSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSLogger.swift; sourceTree = "<group>"; };
+		D413D28A2E1BA3FD00053119 /* JGSLogger+Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JGSLogger+Private.swift"; sourceTree = "<group>"; };
+		D413D28C2E1BA6AF00053119 /* JGSLogger+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSLogger+Private.h"; sourceTree = "<group>"; };
+		D413D28D2E1BA6AF00053119 /* JGSLogger+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JGSLogger+Private.m"; sourceTree = "<group>"; };
+		D413D2912E1BB58000053119 /* Bridging-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.pch"; sourceTree = "<group>"; };
+		D413D2922E1BB59F00053119 /* JGSourceBase.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = JGSourceBase.modulemap; sourceTree = "<group>"; };
 		D4214A172942DC0500CEFACB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SceneDelegate.h; path = JGSourceBaseDemo/SceneDelegate.h; sourceTree = "<group>"; };
 		D4214A182942DC0500CEFACB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SceneDelegate.m; path = JGSourceBaseDemo/SceneDelegate.m; sourceTree = "<group>"; };
-		D4214A1A29432DE400CEFACB /* JGSourceBaseDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JGSourceBaseDemo-Bridging-Header.h"; path = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D4214A1A29432DE400CEFACB /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Demo-Bridging-Header.h"; path = "JGSourceBaseDemo/Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4214A1D29432EDE00CEFACB /* JGSDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSDViewController.swift; sourceTree = "<group>"; };
 		D426FC8D293A22AE002C7476 /* Dictionary+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+JGSBase.swift"; sourceTree = "<group>"; };
 		D4358B3B286E93E9008A0A11 /* rsa_message.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_message.txt; sourceTree = "<group>"; };
@@ -369,10 +378,10 @@
 		D4D6978E2806E0F900CE1F9F /* JGSRSAEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSRSAEncryption.m; sourceTree = "<group>"; };
 		D4D697902806E0F900CE1F9F /* JGSBaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBaseUtils.h; sourceTree = "<group>"; };
 		D4D697912806E0F900CE1F9F /* JGSWeakStrong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSWeakStrong.h; sourceTree = "<group>"; };
-		D4D697922806E0F900CE1F9F /* JGSLogFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLogFunction.h; sourceTree = "<group>"; };
+		D4D697922806E0F900CE1F9F /* JGSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSLogger.h; sourceTree = "<group>"; };
 		D4D697932806E0F900CE1F9F /* JGSBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSBaseUtils.m; sourceTree = "<group>"; };
 		D4D697942806E0F900CE1F9F /* JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSBase.h; sourceTree = "<group>"; };
-		D4D697952806E0F900CE1F9F /* JGSLogFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLogFunction.m; sourceTree = "<group>"; };
+		D4D697952806E0F900CE1F9F /* JGSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSLogger.m; sourceTree = "<group>"; };
 		D4D697972806E0F900CE1F9F /* JGSSecurityKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSSecurityKeyboard.h; sourceTree = "<group>"; };
 		D4D697982806E0F900CE1F9F /* JGSNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSNumberKeyboard.m; sourceTree = "<group>"; };
 		D4D697992806E0F900CE1F9F /* UITextInput+JGSSecurityKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextInput+JGSSecurityKeyboard.h"; sourceTree = "<group>"; };
@@ -424,8 +433,8 @@
 		D4D697D12806E0F900CE1F9F /* NSDate+JGSBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JGSBase.h"; sourceTree = "<group>"; };
 		D4D698252806E16F00CE1F9F /* JGCommandLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JGCommandLine; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D698272806E16F00CE1F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGSBase+JGSPrivate.m"; sourceTree = "<group>"; };
-		D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSBase+JGSPrivate.h"; sourceTree = "<group>"; };
+		D4D96C0C284F2EE800D8B0ED /* JGSBase+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGSBase+Private.m"; sourceTree = "<group>"; };
+		D4D96C0D284F2EE800D8B0ED /* JGSBase+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSBase+Private.h"; sourceTree = "<group>"; };
 		D4DEB22A28740A22000CFB67 /* JGSDemoIntegrityCheckAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoIntegrityCheckAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22B28740A22000CFB67 /* JGSDemoModifyBuildAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoModifyBuildAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22C28740A22000CFB67 /* JGSModifyConfigBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyConfigBeforeCompile.sh; sourceTree = "<group>"; };
@@ -433,7 +442,6 @@
 		D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29pt@3x.png"; sourceTree = "<group>"; };
 		D4EBE9892850CCC00041E21B /* icon_29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_29pt.png; sourceTree = "<group>"; };
 		D4EBE98A2850CCC00041E21B /* icon_29pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29pt@2x.png"; sourceTree = "<group>"; };
-		D4EF942F29422DFE002B778A /* JGSLogFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSLogFunction.swift; sourceTree = "<group>"; };
 		D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F3DA4822F0279D002EF0F0 /* JGSourceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JGSourceBase.h; sourceTree = "<group>"; };
 		D4F3DA4922F0279D002EF0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -510,7 +518,7 @@
 				D4075AE72863123300E4BFEA /* ViewController.m */,
 				D4734DC22946F63800E9CF10 /* SwiftViewController.swift */,
 				D4075BCB2863339600E4BFEA /* PrefixHeader.pch */,
-				D4214A1A29432DE400CEFACB /* JGSourceBaseDemo-Bridging-Header.h */,
+				D4214A1A29432DE400CEFACB /* Demo-Bridging-Header.h */,
 				D4075AEC2863123300E4BFEA /* Assets.xcassets */,
 				D4075AEE2863123300E4BFEA /* LaunchScreen.storyboard */,
 				D4075B722863313400E4BFEA /* InfoPlist.strings */,
@@ -768,6 +776,18 @@
 			path = RSA;
 			sourceTree = "<group>";
 		};
+		D4BEEAD22E4C39500057A61F /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				D4D96C0D284F2EE800D8B0ED /* JGSBase+Private.h */,
+				D4D96C0C284F2EE800D8B0ED /* JGSBase+Private.m */,
+				D413D28C2E1BA6AF00053119 /* JGSLogger+Private.h */,
+				D413D28D2E1BA6AF00053119 /* JGSLogger+Private.m */,
+				D413D28A2E1BA3FD00053119 /* JGSLogger+Private.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		D4C3ED98282B7F2700C5C1F8 /* JGSIntegrityCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,15 +892,14 @@
 				D403B13A2850356900F4F304 /* Assets.xcassets */,
 				D4EBE9852850CCC00041E21B /* icon_29pt */,
 				D4D697942806E0F900CE1F9F /* JGSBase.h */,
-				D4D96C0D284F2EE800D8B0ED /* JGSBase+JGSPrivate.h */,
-				D4D96C0C284F2EE800D8B0ED /* JGSBase+JGSPrivate.m */,
+				D4BEEAD22E4C39500057A61F /* Private */,
 				D4D697902806E0F900CE1F9F /* JGSBaseUtils.h */,
 				D4D697932806E0F900CE1F9F /* JGSBaseUtils.m */,
 				D473BA152911407F00E1CBFF /* JGSFileUtils.h */,
 				D473BA162911407F00E1CBFF /* JGSFileUtils.m */,
-				D4D697922806E0F900CE1F9F /* JGSLogFunction.h */,
-				D4D697952806E0F900CE1F9F /* JGSLogFunction.m */,
-				D4EF942F29422DFE002B778A /* JGSLogFunction.swift */,
+				D4D697922806E0F900CE1F9F /* JGSLogger.h */,
+				D4D697952806E0F900CE1F9F /* JGSLogger.m */,
+				D413D2882E1BA39200053119 /* JGSLogger.swift */,
 				D4D697912806E0F900CE1F9F /* JGSWeakStrong.h */,
 			);
 			path = JGSBase;
@@ -1098,6 +1117,8 @@
 				D4D6976C2806E0F900CE1F9F /* JGSReachability */,
 				D4D697962806E0F900CE1F9F /* JGSSecurityKeyboard */,
 				D40139352BB43D51007BB1F2 /* PrivacyInfo.xcprivacy */,
+				D413D2912E1BB58000053119 /* Bridging-Header.pch */,
+				D413D2922E1BB59F00053119 /* JGSourceBase.modulemap */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -1116,7 +1137,6 @@
 				D4D697F12806E0F900CE1F9F /* JGSSecurityKeyboard.h in Headers */,
 				D4D697D22806E0F900CE1F9F /* JGSReachability.h in Headers */,
 				D4D697D82806E0F900CE1F9F /* JGSDataStorage.h in Headers */,
-				D4D96C0F284F2EE800D8B0ED /* JGSBase+JGSPrivate.h in Headers */,
 				D4D6980B2806E0F900CE1F9F /* UIColor+JGSBase.h in Headers */,
 				D4D697DC2806E0F900CE1F9F /* UIView+JGSLoadingHUD.h in Headers */,
 				D4D698142806E0F900CE1F9F /* NSString+JGSURL.h in Headers */,
@@ -1158,9 +1178,11 @@
 				D4D697E22806E0F900CE1F9F /* JGSDevice.h in Headers */,
 				D4D698032806E0F900CE1F9F /* UIImage+JGSBase.h in Headers */,
 				D45E3181288A880D001D4119 /* NSArray+JGSBase.h in Headers */,
-				D4D697ED2806E0F900CE1F9F /* JGSLogFunction.h in Headers */,
+				D4D697ED2806E0F900CE1F9F /* JGSLogger.h in Headers */,
 				D4D698002806E0F900CE1F9F /* JGSBaseKeyboard.h in Headers */,
 				D436C77B2844975C002C27D9 /* NSString+JGSAES.h in Headers */,
+				D4D96C0F284F2EE800D8B0ED /* JGSBase+Private.h in Headers */,
+				D413D28E2E1BA6AF00053119 /* JGSLogger+Private.h in Headers */,
 				D4D697D42806E0F900CE1F9F /* JGSUserDefaults.h in Headers */,
 				D4D697EF2806E0F900CE1F9F /* JGSBase.h in Headers */,
 				D4D697E02806E0F900CE1F9F /* JGSToast.h in Headers */,
@@ -1486,7 +1508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D6980D2806E0F900CE1F9F /* UIColor+JGSBase.m in Sources */,
-				D4D96C0E284F2EE800D8B0ED /* JGSBase+JGSPrivate.m in Sources */,
+				D4D96C0E284F2EE800D8B0ED /* JGSBase+Private.m in Sources */,
 				D4D697E42806E0F900CE1F9F /* JGSAESEncryption.m in Sources */,
 				D4D417C22CC8D95500BBA369 /* JGSComparable.swift in Sources */,
 				D426FC8E293A22AE002C7476 /* Dictionary+JGSBase.swift in Sources */,
@@ -1514,7 +1536,6 @@
 				D44498A729E037BF00BC6D9C /* Date+JGSBase.swift in Sources */,
 				D4D698172806E0F900CE1F9F /* NSString+JGSURL.m in Sources */,
 				D4D697DE2806E0F900CE1F9F /* JGSToast.m in Sources */,
-				D4EF943029422DFE002B778A /* JGSLogFunction.swift in Sources */,
 				D4D697F82806E0F900CE1F9F /* JGSKeyboardToolbar.m in Sources */,
 				D4D697F72806E0F900CE1F9F /* JGSBaseKeyboard.m in Sources */,
 				D4FBC1222AC1AC6100CEE6FB /* JGSRawRepresentable.swift in Sources */,
@@ -1522,9 +1543,12 @@
 				D4D697F42806E0F900CE1F9F /* JGSSymbolKeyboard.m in Sources */,
 				D44498AF29E0389E00BC6D9C /* UIColor+JGSBase.swift in Sources */,
 				D4D697D72806E0F900CE1F9F /* JGSUserDefaults.m in Sources */,
+				D413D28B2E1BA3FD00053119 /* JGSLogger+Private.swift in Sources */,
 				D44498A329E0379A00BC6D9C /* String+JGSBase.swift in Sources */,
 				D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */,
-				D4D697F02806E0F900CE1F9F /* JGSLogFunction.m in Sources */,
+				D4D697F02806E0F900CE1F9F /* JGSLogger.m in Sources */,
+				D413D2892E1BA39200053119 /* JGSLogger.swift in Sources */,
+				D413D28F2E1BA6AF00053119 /* JGSLogger+Private.m in Sources */,
 				D436C7702844974A002C27D9 /* NSData+JGSAES.m in Sources */,
 				D4D698122806E0F900CE1F9F /* NSURL+JGSBase.m in Sources */,
 				D4120AD429E650ED0020EE64 /* Set+JGSBase.swift in Sources */,
@@ -1669,7 +1693,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1709,7 +1733,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo/Demo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1895,8 +1919,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1915,6 +1937,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1936,8 +1959,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
 				GENERATE_INFOPLIST_FILE = "$(inherited)";
 				INFOPLIST_FILE = JGSourceBase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1956,6 +1977,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

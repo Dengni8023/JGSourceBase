@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define JGSDemoShowConsoleLog(vcT, fmt, ...) { \
     JGSLog(fmt, ## __VA_ARGS__); \
-    if ([vcT respondsToSelector:@selector(showConsoleLog:)]) { \
+    if ([vcT isKindOfClass:JGSDemoViewController.class]) { \
         [vcT showConsoleLog:(@"%s Line: %@\n" fmt ""), __PRETTY_FUNCTION__, @(__LINE__), ## __VA_ARGS__]; \
     } \
 }

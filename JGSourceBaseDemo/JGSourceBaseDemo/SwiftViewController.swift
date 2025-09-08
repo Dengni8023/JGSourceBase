@@ -38,9 +38,15 @@ class SwiftViewController: JGSDViewController {
     
     override func tableSectionData() -> [JGSDemoTableSectionData] {
          return [
-            //JGSDemoTableSectionMake("Section1", [
-            //    JGSDemoTableRowMake("Row1", self, #selector(jumpToOCDemo))
-            //]),
+            // 基础组件
+            JGSDemoTableSectionMake(" 基础组件",
+            [
+                JGSDemoTableRowMake("调试日志控制-Alert扩展", nil, #selector(showLogModeList))
+            ]),
+            JGSDemoTableSectionMake(" 功能组件",
+            [
+                
+            ])
             //JGSDemoTableSectionMake("Section2", []),
             //JGSDemoTableSectionMake("Section3", []),
             //JGSDemoTableSectionMake("Section4", []),
@@ -53,6 +59,57 @@ class SwiftViewController: JGSDViewController {
         
         self.navigationController?.popViewController(animated: true);
     }
+    
+    @objc func showLogModeList(_ indexPath: NSIndexPath) {
+        
+        print("JGSCategory_UIAlertController")
+        JGSDemoShowConsoleLog(self)
+    #if JGSCategory_UIAlertController_h
+        print("JGSCategory_UIAlertController_h")
+        let types = ["Log disable", "Log only", "Log with function line", "Log with file function line"]
+        UIAlertController.jg_actionSheet(withTitle: "选择日志类型", cancel: "取消", others: types) { [weak self] alert, idx in
+            
+            JGSDemoShowConsoleLog(self, type(of: alert), alert, idx)
+            if (idx == alert.jg_cancelIdx) {
+                return
+            }
+            
+            let selIdx = idx - alert.jg_firstOtherIdx;
+            JGSEnableLogWithMode(JGSLogModeNone + selIdx)
+            self?.tableView.reloadData()
+            
+            UIAlertController.jg_alert(title: "日志输出设置", message:types[selIdx], cancel:"确定") { [weak self] alert, idx in
+                
+                JGSDemoShowConsoleLog(self, type(of: alert), alert, idx)
+                
+    #if JGSCategory_UIApplication_h
+                JGSDemoShowConsoleLog(self, "top:", UIApplication.shared.jg_topViewController)
+                
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+//                });
+    #endif
+            }
+            
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                
+//                JGSStrongSelf
+//                JGSDemoShowConsoleLog(self, @"key: %p", [UIApplication sharedApplication].keyWindow);
+//                JGSDemoShowConsoleLog(self, @"window: %p", [UIApplication sharedApplication].delegate.window);
+//                
+//    #ifdef JGSCategory_UIApplication_h
+//                JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+//    #endif
+//            });
+        }
+        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            JGSDemoShowConsoleLog(self, @"");
+//            JGSDemoShowConsoleLog(self, @"top: %@", [[UIApplication sharedApplication] jg_topViewController]);
+//        });
+    #endif
+    }
+
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         

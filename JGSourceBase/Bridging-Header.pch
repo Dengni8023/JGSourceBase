@@ -1,0 +1,24 @@
+//
+//  Bridging-Header.pch
+//  JGSourceBase
+//
+//  Created by 梅继高 on 2025/7/7.
+//  Copyright © 2025 MeiJiGao. All rights reserved.
+//
+
+#ifndef Bridging_Header_pch
+#define Bridging_Header_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+// Swift访问OC桥接文件
+#if __has_include(<JGSourceBase/JGSBase.h>)
+//#import <JGSourceBase/JGSBase.h>
+//#import <JGSourceBase/JGSLogger+Private.h>
+#else
+//#import "JGSBase.h"
+//#import "JGSLogger+Private.h"
+#endif
+
+#endif /* Bridging_Header_pch */

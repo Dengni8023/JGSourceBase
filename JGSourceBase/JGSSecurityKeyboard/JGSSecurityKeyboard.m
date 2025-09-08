@@ -10,7 +10,7 @@
 #import "JGSLetterKeyboard.h"
 #import "JGSNumberKeyboard.h"
 #import "JGSSymbolKeyboard.h"
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 #import "JGSCategory+NSData.h"
 #import "JGSCategory+NSString.h"
 #import <objc/runtime.h>

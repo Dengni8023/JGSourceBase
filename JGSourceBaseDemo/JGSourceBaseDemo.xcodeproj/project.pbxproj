@@ -118,7 +118,7 @@
 		D45E317A288A7808001D4119 /* JGSNSArrayDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSNSArrayDemoVC.h; sourceTree = "<group>"; };
 		D476770B290BB587007119FC /* JGSourceBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.debug.xcconfig; sourceTree = "<group>"; };
 		D476770C290BB587007119FC /* JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBaseDemo.release.xcconfig; sourceTree = "<group>"; };
-		D487705229502EDF00EA5764 /* JGSourceBaseDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGSourceBaseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D487705229502EDF00EA5764 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		D487705329502EDF00EA5764 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		D487705529502F8100EA5764 /* JGSDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGSDViewController.swift; sourceTree = "<group>"; };
 		D4CB68BF2950488500AD91E8 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				D4075B0A2863176800E4BFEA /* ViewController.m */,
 				D487705329502EDF00EA5764 /* SwiftViewController.swift */,
 				D4075B6928632DA400E4BFEA /* PrefixHeader.pch */,
-				D487705229502EDF00EA5764 /* JGSourceBaseDemo-Bridging-Header.h */,
+				D487705229502EDF00EA5764 /* Demo-Bridging-Header.h */,
 				D4075B0F2863176900E4BFEA /* Assets.xcassets */,
 				D4075B112863176900E4BFEA /* LaunchScreen.storyboard */,
 				D4075B6F28632EE100E4BFEA /* InfoPlist.strings */,
@@ -732,7 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,7 +771,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBase.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/JGSourceBaseDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/Demo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

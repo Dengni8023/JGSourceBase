@@ -55,4 +55,12 @@
 #define JGSStrongSelf JGSStrong(self)
 #endif
 
+// weakself, self
+#ifndef JGSWS
+#define JGSWS JGSWeakSelf
+#endif
+#ifndef JGSSS
+#define JGSSS JGSStrongSelf
+#endif
+
 #endif /* JGSWeakStrong_h */

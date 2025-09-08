@@ -115,14 +115,14 @@ Pod::Spec.new do |spec|
   #
 
   #  (选填) 支持的Swift版本。CocoaPods会将“4”视为“4.0”，而不是“4.1”或“4.2”。
+  # 不配置时，CocoaPods 会根据用户项目的 Swift 版本自动选择合适的版本
   # spec.swift_version = "5.6"
   # https://docs.swift.org/swift-book/documentation/the-swift-programming-language/revisionhistory/
-  # 2022/03/14 Swift 5.6: Xcode 13.3
-  # 2022/09/12 Swift 5.7: Xcode 14.2
-  # 2023/03/30 Swift 5.8: Xcode 14.3
-  # 2023/09/18 Swift 5.9: Xcode 15
-  # 2024/03/05 Swift 5.10: Xcode 15.3
-  spec.swift_versions = ["5.6", "5.7", "5.8", "5.9", "5.10"]
+  # 2021/09/20 Swift 5.5: Xcode 13.0
+  # 2022/09/12 Swift 5.7: Xcode 14.0
+  # 2023/09/18 Swift 5.9: Xcode 15.0
+  # 2024/09/23 Swift 6: Xcode 16.0
+  # spec.swift_versions = ["5.6", "5.7", "5.8", "5.9", "5.10"]
 
   #  (选填) 支持的CocoaPods版本
   spec.cocoapods_version = '>= 1.10'
@@ -159,6 +159,13 @@ Pod::Spec.new do |spec|
 
   # spec.source_files = "#{spec.name}/*.{h,m,swift}"
   # spec.public_header_files = "#{spec.name}/*.h"
+  
+  # 如果Swift需要访问OC代码，需要创建桥接头文件
+  # 并在podspec中指定
+  spec.prefix_header_file = "#{spec.name}/Bridging-Header.pch"
+  
+  # 如果OC需要访问Swift代码，需要modulemap
+  spec.module_map = "#{spec.name}/JGSourceBase.modulemap"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -270,7 +277,7 @@ Pod::Spec.new do |spec|
     ]
     sub.public_header_files = [
       "#{spec.name}/*.h",
-      "#{spec.name}/JGSBase/**/*.h",
+      "#{spec.name}/JGSBase/*.h",
     ]
     # sub.private_header_files = "#{spec.name}/JGSBase/*Private.h"
 

@@ -8,7 +8,7 @@
 
 #import "NSData+JGSBase.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "JGSBase+JGSPrivate.h"
+#import "JGSBase+Private.h"
 
 @implementation NSData (JGSBase)
 
