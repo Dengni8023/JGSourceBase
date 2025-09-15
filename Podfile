@@ -73,8 +73,15 @@ abstract_target "JGSBase" do
     
     pod 'SDWebImage', '~> 5.19.1' # https://github.com/SDWebImage/SDWebImage
     
+    # 给主工程添加自定义脚本
     # 语法说明：https://blog.csdn.net/holdsky/article/details/87876221
-    script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+
+    # 编译前脚本
+    # 为保持Framework、bundle版本一致，JGSourceBase.bundle Target已执行脚本
+    # Framework Target不再重复执行
+    # script_phase :name => "JGSPodsScriptBeforeCompile", :script => JGSPodsScriptBeforeCompile, :execution_position => :before_compile
+
+    # 编译后脚本
     script_phase :name => "JGSPodsScriptAfterCompile", :script => JGSPodsScriptAfterCompile, :execution_position => :after_compile
     
     # project

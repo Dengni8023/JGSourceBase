@@ -160,9 +160,8 @@ Pod::Spec.new do |spec|
   # spec.source_files = "#{spec.name}/*.{h,m,swift}"
   # spec.public_header_files = "#{spec.name}/*.h"
   
-  # 如果Swift需要访问OC代码，需要创建桥接头文件
-  # 并在podspec中指定
-  spec.prefix_header_file = "#{spec.name}/Bridging-Header.pch"
+  # 不推荐使用prefix_header，如果使用了，需要在podspec中指定
+  # spec.prefix_header_file = "#{spec.name}/Prefix-Header.pch"
   
   # 如果OC需要访问Swift代码，需要modulemap
   spec.module_map = "#{spec.name}/JGSourceBase.modulemap"
@@ -219,17 +218,20 @@ Pod::Spec.new do |spec|
   #   "CFBundleVersion" => "#{spec.version}",
   # }
 
-  # 解决新版本pod lib lint等检测因项目无Info.plist文件而失败问题
-  # spec.user_target_xcconfig = {
-  #   'GENERATE_INFOPLIST_FILE' => 'YES'
-  # }
+  # 主工程配置
+  spec.user_target_xcconfig = {
+    # 解决新版本pod lib lint等检测因项目无Info.plist文件而失败问题
+    # 'GENERATE_INFOPLIST_FILE' => 'YES',
+    # Xcode15之后默认配置为YES，限制了编译构建期间sh脚本执行
+    'ENABLE_USER_SCRIPT_SANDBOXING' => 'NO',
+  }
   
   spec.pod_target_xcconfig = {
     "PRODUCT_BUNDLE_IDENTIFIER" => "com.meijigao.#{spec.name}",
     "MARKETING_VERSION" => "#{spec.version}",
     "CURRENT_PROJECT_VERSION" => "#{spec.version}",
-    'GENERATE_INFOPLIST_FILE' => 'NO',
-    # 'DEFINES_MODULE' => 'YES',
+    # 'GENERATE_INFOPLIST_FILE' => 'YES', # Xcode 新建项目 Target 默认配置为 YES
+    # 'DEFINES_MODULE' => 'NO', # Xcode 新建项目 Target 默认配置为 NO
   }
   
   # (选填) 在安装前执行的脚本

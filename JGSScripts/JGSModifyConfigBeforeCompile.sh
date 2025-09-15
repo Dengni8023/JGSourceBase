@@ -2,8 +2,8 @@
 ###
  # @Author: 梅继高
  # @Date: 2022-06-08 18:16:38
- # @LastEditTime: 2022-12-02 23:51:10
- # @LastEditors: 梅继高
+ # @LastEditTime: 2025-09-15 15:28:45
+ # @LastEditors: Dengni8023
  # @Description: 
  # @FilePath: /JGSourceBase/JGSScripts/JGSModifyConfigBeforeCompile.sh
  # Copyright © 2022 MeiJiGao. All rights reserved.
@@ -65,6 +65,7 @@ lastCommitTime=`git show --pretty=format:%ad --date=format:%Y%m%d.%H%M%S | head 
 
 # 获取最后一次提交的 commit Id, --short 指定获取短 ID
 lastCommitID=`git rev-parse --short HEAD`
+# lastCommitID=`git rev-parse HEAD`
 
 # ⚠️ 执行脚本时，项目已经读取了 xcconfig 文件配置
 # 因此针对 xcconfig 文件的修改，本次运行不生效
