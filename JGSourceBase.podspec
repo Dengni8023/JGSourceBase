@@ -85,8 +85,11 @@ Pod::Spec.new do |spec|
   #
 
   # (必填) 许可证
-  spec.license      = "MIT (LICENSE.md)"
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # spec.license      = "MIT (LICENSE.md)"
+  spec.license      = {
+    :type => "MIT",
+    :file => "./JGSourceBase/JGSourceBase.docc/LICENSE.md"
+  }
   
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -101,8 +104,7 @@ Pod::Spec.new do |spec|
   # (必填) 作者信息
   spec.author             = {
     "Dengni8023" => "945835664@qq.com",
-    "MeiJiGao" => "945835664@qq.com",
-   }
+  }
   # Or just: spec.author    = "Dengni8023"
   # spec.authors            = { "Dengni8023" => "945835664@qq.com" }
   # (选填) 作者第三方社交平台url

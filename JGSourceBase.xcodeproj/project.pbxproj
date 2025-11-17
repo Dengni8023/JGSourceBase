@@ -306,6 +306,7 @@
 		D436C77F28449F4C002C27D9 /* JGSEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JGSEncryption.m; sourceTree = "<group>"; };
 		D43A0F882907FDBF00E5A44F /* rsa_private_1024.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_1024.pem_pkcs8; sourceTree = "<group>"; };
 		D43A0F892907FDBF00E5A44F /* rsa_private_2048.pem_pkcs8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_2048.pem_pkcs8; sourceTree = "<group>"; };
+		D43F09532ECAF75D005C1192 /* JGSourceBase.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JGSourceBase.docc; sourceTree = "<group>"; };
 		D444989E29E0356600BC6D9C /* JGSTransformable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGSTransformable.swift; sourceTree = "<group>"; };
 		D44498A029E0377300BC6D9C /* Array+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+JGSBase.swift"; sourceTree = "<group>"; };
 		D44498A229E0379A00BC6D9C /* String+JGSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+JGSBase.swift"; sourceTree = "<group>"; };
@@ -1103,6 +1104,7 @@
 		D4F3DA4722F0279D002EF0F0 /* JGSourceBase */ = {
 			isa = PBXGroup;
 			children = (
+				D43F09532ECAF75D005C1192 /* JGSourceBase.docc */,
 				D4F3DA4922F0279D002EF0F0 /* Info.plist */,
 				D4D6978F2806E0F900CE1F9F /* JGSBase */,
 				D4D697A82806E0F900CE1F9F /* JGSCategory */,
