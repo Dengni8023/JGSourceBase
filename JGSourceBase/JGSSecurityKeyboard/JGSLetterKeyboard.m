@@ -47,7 +47,7 @@
         if (self.securityKeyboard.randomPad) {
             
             letters = [letters sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                if (arc4random_uniform(2) == 1) {
+                if (arc4random_uniform(2) < 1) {
                     return [obj1 compare:obj2 options:kNilOptions];
                 }
                 else {

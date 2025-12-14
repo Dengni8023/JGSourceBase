@@ -378,9 +378,9 @@
 				D4075AFC2863176800E4BFEA /* Sources */,
 				D4075AFD2863176800E4BFEA /* Frameworks */,
 				D4075AFE2863176800E4BFEA /* Resources */,
-				29553C683DDE1CAC114585A4 /* [CP] Copy Pods Resources */,
 				BCE09F8DEA74C67803AB79F4 /* [CP] Embed Pods Frameworks */,
 				90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */,
+				E9B3A1623C0A2A71F6E48B05 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,23 +456,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		29553C683DDE1CAC114585A4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		90A311AFAEE9E0F7D641F238 /* [CP-User] JGSPodsScriptAfterCompile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +491,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9B3A1623C0A2A71F6E48B05 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC5A3BEB5ABD881F86FAD75C /* [CP] Check Pods Manifest.lock */ = {

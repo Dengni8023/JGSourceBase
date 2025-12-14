@@ -160,8 +160,7 @@ extension String: JGSBuildInBasicType {
             
             // 如不能直接转UTF8字符串，考虑可能是加密数据
             // 进行Base64编码为UTF8字符串（Base64编码后的数据为UTF8编码）
-            // .endLineWithLineFeed: 保持Android、ios、后台统一
-            return _data.base64EncodedString(options: [.endLineWithLineFeed])
+            return _data.base64EncodedString(options: [])
         default:
             // JSON Object -> String
             if JSONSerialization.isValidJSONObject(object) {

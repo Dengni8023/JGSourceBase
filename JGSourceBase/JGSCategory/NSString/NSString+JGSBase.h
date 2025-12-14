@@ -49,23 +49,23 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - HASH
 /// 获取MD5散列字符串
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_md5String:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_md5String:(JGSStringCaseStyle)style;
 
 /// 获取SHA128散列字符串
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_sha128String:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_sha128String:(JGSStringCaseStyle)style;
 
 /// 获取SHA256散列字符串
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_sha256String:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_sha256String:(JGSStringCaseStyle)style;
 
 /// 获取SHA384散列字符串
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_sha384String:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_sha384String:(JGSStringCaseStyle)style;
 
 /// 获取SHA512散列字符串
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_sha512String:(JGSStringCaseStyle)style;
 
 #pragma mark - Hex
 /// 字符串转16进制字符串，不包含0x头，小写
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 字符串转16进制字符串，不包含0x头
 /// @param style 字符串大小写风格
-- (nullable NSString *)jg_hexString:(JGSStringUpperLowerStyle)style;
+- (nullable NSString *)jg_hexString:(JGSStringCaseStyle)style;
 
 @end
 

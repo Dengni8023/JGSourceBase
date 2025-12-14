@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -289,7 +289,6 @@
 		D413D28C2E1BA6AF00053119 /* JGSLogger+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JGSLogger+Private.h"; sourceTree = "<group>"; };
 		D413D28D2E1BA6AF00053119 /* JGSLogger+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JGSLogger+Private.m"; sourceTree = "<group>"; };
 		D413D2912E1BB58000053119 /* Bridging-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.pch"; sourceTree = "<group>"; };
-		D413D2922E1BB59F00053119 /* JGSourceBase.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = JGSourceBase.modulemap; sourceTree = "<group>"; };
 		D4214A172942DC0500CEFACB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SceneDelegate.h; path = JGSourceBaseDemo/SceneDelegate.h; sourceTree = "<group>"; };
 		D4214A182942DC0500CEFACB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SceneDelegate.m; path = JGSourceBaseDemo/SceneDelegate.m; sourceTree = "<group>"; };
 		D4214A1A29432DE400CEFACB /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Demo-Bridging-Header.h"; path = "JGSourceBaseDemo/Demo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -449,6 +448,14 @@
 		D4F4EE1728503EAA00ACB934 /* JGSourceBase.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JGSourceBase.bundle; sourceTree = "<group>"; };
 		D4FBC1212AC1AC6100CEE6FB /* JGSRawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSRawRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D4B41BF52ECC4D8700E37ADF /* Dispatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Dispatch;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4B3EA7BF27729F175F83E047 /* Frameworks */ = {
@@ -933,6 +940,7 @@
 		D4D697A82806E0F900CE1F9F /* JGSCategory */ = {
 			isa = PBXGroup;
 			children = (
+				D4B41BF52ECC4D8700E37ADF /* Dispatch */,
 				D4D697B12806E0F900CE1F9F /* JGSCategory.h */,
 				D45E317D288A877E001D4119 /* NSArray */,
 				D436C7682844974A002C27D9 /* NSData */,
@@ -1120,7 +1128,6 @@
 				D4D697962806E0F900CE1F9F /* JGSSecurityKeyboard */,
 				D40139352BB43D51007BB1F2 /* PrivacyInfo.xcprivacy */,
 				D413D2912E1BB58000053119 /* Bridging-Header.pch */,
-				D413D2922E1BB59F00053119 /* JGSourceBase.modulemap */,
 			);
 			path = JGSourceBase;
 			sourceTree = "<group>";
@@ -1266,6 +1273,9 @@
 			dependencies = (
 				D403B137285033A800F4F304 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				D4B41BF52ECC4D8700E37ADF /* Dispatch */,
+			);
 			name = JGSourceBase;
 			productName = JGSourceBase;
 			productReference = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */;
@@ -1301,7 +1311,6 @@
 				};
 			};
 			buildConfigurationList = D4F3DA3F22F0279D002EF0F0 /* Build configuration list for PBXProject "JGSourceBase" */;
-			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1310,6 +1319,8 @@
 				"zh-Hans",
 			);
 			mainGroup = D4F3DA3B22F0279D002EF0F0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = D4F3DA4622F0279D002EF0F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

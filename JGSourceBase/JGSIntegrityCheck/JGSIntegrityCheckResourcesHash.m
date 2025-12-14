@@ -157,7 +157,7 @@
 		}
 		
 		// 校验文件Base64解密
-		NSData *chechFileData = [[NSData alloc] initWithBase64EncodedString:chechFileContentBase64 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *chechFileData = [chechFileContentBase64 jg_base64DecodeData];
 		if (chechFileData.length == 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, nil);
@@ -201,7 +201,7 @@
 		realCheckFileContent = reversedContent.copy;
 		
 		// 检验文件Base64解密
-		NSData *realCheckFileJSONData = [[NSData alloc] initWithBase64EncodedString:realCheckFileContent options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *realCheckFileJSONData = [realCheckFileContent jg_base64DecodeData];
 		if (realCheckFileJSONData.length <= 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, nil);
@@ -238,7 +238,7 @@
             }
             
 			// 解析文件名
-			NSData *recordNameData = [[NSData alloc] initWithBase64EncodedString:base64FileName options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            NSData *recordNameData = [base64FileName jg_base64DecodeData];
 			if (recordNameData.length == 0) {
 				return;
 			}
