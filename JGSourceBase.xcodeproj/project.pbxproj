@@ -88,6 +88,7 @@
 		D4830D0F29F8F0D200B42377 /* JGSBuildInBasicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D0E29F8F0D200B42377 /* JGSBuildInBasicType.swift */; };
 		D4830D1129F8F0DD00B42377 /* JGSBuildInBridgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */; };
 		D4830D1329F91CD500B42377 /* JGSJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4830D1229F91CD500B42377 /* JGSJSON.swift */; };
+		D4B5E3E22EF13BC3008772A4 /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F3DA4522F0279D002EF0F0 /* JGSourceBase.framework */; platformFilter = ios; };
 		D4BDE1C0286D7BC2006FDCA5 /* rsa_private_1024.p12 in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BB286D7BC1006FDCA5 /* rsa_private_1024.p12 */; };
 		D4BDE1C1286D7BC2006FDCA5 /* rsa_public_1024.der in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1BC286D7BC2006FDCA5 /* rsa_public_1024.der */; };
 		D4BDE1C6286D8BEF006FDCA5 /* rsa_public_1024.pem in Resources */ = {isa = PBXBuildFile; fileRef = D4BDE1C4286D8BEF006FDCA5 /* rsa_public_1024.pem */; };
@@ -195,6 +196,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D403B1312850335200F4F304;
 			remoteInfo = JGSourceBase.bundle;
+		};
+		D4B5E3E32EF13BC3008772A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4F3DA3C22F0279D002EF0F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4F3DA4422F0279D002EF0F0;
+			remoteInfo = JGSourceBase;
+		};
+		D4B5E3E82EF13F06008772A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4F3DA3C22F0279D002EF0F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4075ADD2863123300E4BFEA;
+			remoteInfo = JGSourceBaseDemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -336,6 +351,7 @@
 		D4830D1029F8F0DD00B42377 /* JGSBuildInBridgeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSBuildInBridgeType.swift; sourceTree = "<group>"; };
 		D4830D1229F91CD500B42377 /* JGSJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSJSON.swift; sourceTree = "<group>"; };
 		D494AE9228D191F200AC37C8 /* JGSiOSDeviceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JGSiOSDeviceList.json; sourceTree = "<group>"; };
+		D4B5E3DE2EF13BC3008772A4 /* JGSourceBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B7DF332834EB8A00BFAE79 /* JGSourceBase.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.debug.xcconfig; sourceTree = "<group>"; };
 		D4B7DF342834EBB600BFAE79 /* JGSourceBase.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.release.xcconfig; sourceTree = "<group>"; };
 		D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JGSourceBase.xcconfig; sourceTree = "<group>"; };
@@ -455,6 +471,11 @@
 			path = Dispatch;
 			sourceTree = "<group>";
 		};
+		D4B5E3DF2EF13BC3008772A4 /* JGSourceBaseTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JGSourceBaseTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,6 +500,14 @@
 			files = (
 				59867B27DF3DFF7986CFA8E2 /* Pods_JGSBase_JGSourceBaseDemo.framework in Frameworks */,
 				D43E59FB29EF8EF700EDF59F /* JGSourceBase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4B5E3DB2EF13BC3008772A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B5E3E22EF13BC3008772A4 /* JGSourceBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1121,7 @@
 				D4D698262806E16F00CE1F9F /* JGCommandLine */,
 				D45AAAA428337DEE004EE48C /* JGSScripts */,
 				D4075ADF2863123300E4BFEA /* JGSourceBaseDemo */,
+				D4B5E3DF2EF13BC3008772A4 /* JGSourceBaseTests */,
 				D4F3DA4622F0279D002EF0F0 /* Products */,
 				8F5566C1186FFED2CCE63677 /* Frameworks */,
 				78C41E8D2B02C0871B492760 /* Pods */,
@@ -1105,6 +1135,7 @@
 				D4D698252806E16F00CE1F9F /* JGCommandLine */,
 				D403B1322850335200F4F304 /* JGSourceBase.bundle */,
 				D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */,
+				D4B5E3DE2EF13BC3008772A4 /* JGSourceBaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1242,6 +1273,30 @@
 			productReference = D4075ADE2863123300E4BFEA /* JGSourceBaseDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D4B5E3DD2EF13BC3008772A4 /* JGSourceBaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4B5E3E72EF13BC3008772A4 /* Build configuration list for PBXNativeTarget "JGSourceBaseTests" */;
+			buildPhases = (
+				D4B5E3DA2EF13BC3008772A4 /* Sources */,
+				D4B5E3DB2EF13BC3008772A4 /* Frameworks */,
+				D4B5E3DC2EF13BC3008772A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4B5E3E42EF13BC3008772A4 /* PBXTargetDependency */,
+				D4B5E3E92EF13F06008772A4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D4B5E3DF2EF13BC3008772A4 /* JGSourceBaseTests */,
+			);
+			name = JGSourceBaseTests;
+			packageProductDependencies = (
+			);
+			productName = JGSourceBaseTests;
+			productReference = D4B5E3DE2EF13BC3008772A4 /* JGSourceBaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D4D698242806E16F00CE1F9F /* JGCommandLine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4D698292806E16F00CE1F9F /* Build configuration list for PBXNativeTarget "JGCommandLine" */;
@@ -1301,6 +1356,11 @@
 						CreatedOnToolsVersion = 13.4.1;
 						LastSwiftMigration = 1410;
 					};
+					D4B5E3DD2EF13BC3008772A4 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+						TestTargetID = D4075ADD2863123300E4BFEA;
+					};
 					D4D698242806E16F00CE1F9F = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -1329,6 +1389,7 @@
 				D4D698242806E16F00CE1F9F /* JGCommandLine */,
 				D403B1312850335200F4F304 /* JGSourceBase.bundle */,
 				D4075ADD2863123300E4BFEA /* JGSourceBaseDemo */,
+				D4B5E3DD2EF13BC3008772A4 /* JGSourceBaseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1373,6 +1434,13 @@
 				D4075BAD2863315D00E4BFEA /* LoadingWithAlpha-2.gif in Resources */,
 				D4075AED2863123300E4BFEA /* Assets.xcassets in Resources */,
 				D4075BAA2863315D00E4BFEA /* LoadingWithoutAlpha-1.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4B5E3DC2EF13BC3008772A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1499,6 +1567,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4B5E3DA2EF13BC3008772A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4D698212806E16F00CE1F9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1586,6 +1661,17 @@
 			isa = PBXTargetDependency;
 			target = D403B1312850335200F4F304 /* JGSourceBase.bundle */;
 			targetProxy = D403B136285033A800F4F304 /* PBXContainerItemProxy */;
+		};
+		D4B5E3E42EF13BC3008772A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = D4F3DA4422F0279D002EF0F0 /* JGSourceBase */;
+			targetProxy = D4B5E3E32EF13BC3008772A4 /* PBXContainerItemProxy */;
+		};
+		D4B5E3E92EF13F06008772A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4075ADD2863123300E4BFEA /* JGSourceBaseDemo */;
+			targetProxy = D4B5E3E82EF13F06008772A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1749,6 +1835,55 @@
 			};
 			name = Release;
 		};
+		D4B5E3E52EF13BC3008772A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseTests/JGSourceBaseTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JGSourceBaseDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JGSourceBaseDemo";
+			};
+			name = Debug;
+		};
+		D4B5E3E62EF13BC3008772A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z28L6TKG58;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseTests/JGSourceBaseTests-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JGSourceBaseDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JGSourceBaseDemo";
+			};
+			name = Release;
+		};
 		D4D6982A2806E16F00CE1F9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4B7DF362834EBF200BFAE79 /* JGSourceBase.xcconfig */;
@@ -1842,7 +1977,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1902,7 +2037,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2008,6 +2143,15 @@
 			buildConfigurations = (
 				D4075AF52863123300E4BFEA /* Debug */,
 				D4075AF62863123300E4BFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4B5E3E72EF13BC3008772A4 /* Build configuration list for PBXNativeTarget "JGSourceBaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4B5E3E52EF13BC3008772A4 /* Debug */,
+				D4B5E3E62EF13BC3008772A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

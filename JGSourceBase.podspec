@@ -17,10 +17,10 @@ Pod::Spec.new do |spec|
 
   # CocoaPods - Podspec文件配置讲解: https://www.jianshu.com/p/743bfd8f1d72
   def self.ios_version
-    "12.0" # iOS最低支持版本
+    "13.0" # iOS最低支持版本
   end
   def self.osx_version
-    "13.0" # osx最低支持版本
+    "15.0" # osx最低支持版本
   end
   def self.smart_host
     # 网络防火墙问题，优先使用 Gitee
