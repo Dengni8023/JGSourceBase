@@ -197,12 +197,10 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        return [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        return [(NSData *)self jg_base64DecodeData];
         
     } else if ([self isKindOfClass:[NSString class]]) {
-        
-        NSData *data = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
-        return [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        return [(NSString *)self jg_base64DecodeData];
     }
     
     return nil;
@@ -212,13 +210,10 @@
     
     if ([self isKindOfClass:[NSData class]]) {
         
-        NSData *data = [[NSData alloc] initWithBase64EncodedData:(NSData *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        return [(NSData *)self jg_base64DecodeString];
         
     } else if ([self isKindOfClass:[NSString class]]) {
-        
-        NSData *data = [[NSData alloc] initWithBase64EncodedString:(NSString *)self options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        return [(NSString *)self jg_base64DecodeString];
     }
     
     return nil;

@@ -45,7 +45,7 @@
         NSArray<NSString *> *numbers = [JGSKeyboardKeysForType(self.type, NO, NO) subarrayWithRange:NSMakeRange(0, 10)];
         if (self.securityKeyboard.randomNumPad) {
             numbers = [numbers sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                if (arc4random_uniform(2) == 1) {
+                if (arc4random_uniform(2) < 1) {
                     return [obj1 compare:obj2 options:kNilOptions];
                 }
                 else {

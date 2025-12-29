@@ -71,11 +71,22 @@ FOUNDATION_EXTERN void JGSRuntimeSwizzledMethod(Class cls, SEL originSelector, S
 FOUNDATION_EXTERN void JGSRuntimeSwizzledClassMethod(Class cls, SEL originSelector, SEL swizzledSelector);
 
 /// 字符串大小写风格枚举
-typedef NS_ENUM(NSInteger, JGSStringUpperLowerStyle) {
-    JGSStringLowercase = 0, // 字母小写，默认风格
+typedef NS_ENUM(NSInteger, JGSStringCaseStyle) {
+    JGSStringLowercase = 0, // 字母小写
     JGSStringUppercase, // 字母大写风格
-	JGSStringRandomCase, // 随机，字符串中随机存在大小写
-    JGSStringCaseDefault = JGSStringLowercase, // 默认风格，即字母小写
+    JGSStringRandomCase, // 随机，字符串中随机存在大小写
+    JGSStringCaseDefault = JGSStringLowercase, // 默认风格
+};
+
+typedef JGSStringCaseStyle JGSStringUpperLowerStyle DEPRECATED_MSG_ATTRIBUTE("Use JGSStringCaseStyle derecated");
+
+/// HASH散列算法类型
+typedef NS_ENUM(NSInteger, JGSHASHStringType) {
+    JGSHASHStringMd5 = 0, // md5
+    JGSHASHStringSHA128, // SHA128
+    JGSHASHStringSHA256, // SHA256
+    JGSHASHStringSHA384, // SHA384
+    JGSHASHStringSHA512, // SHA512
 };
 
 /// JGSourceBase框架的bundle名称

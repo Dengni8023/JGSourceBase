@@ -8,6 +8,7 @@
 
 #import "NSString+JGSAES.h"
 #import "JGSCategory+NSData.h"
+#import "NSString+JGSBase.h"
 
 @implementation NSString (JGSAES)
 
@@ -77,7 +78,7 @@
         return encryptData;
     } else if (operation == kCCDecrypt) {
         // 解密Data不能直接转UTF8字符串，需使用base64解码
-        NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *data = [self jg_base64DecodeData];
         NSData *decryptData = [data jg_AESOperation:operation keyLength:keyLength key:key iv:iv options:options];
         return decryptData;
     }

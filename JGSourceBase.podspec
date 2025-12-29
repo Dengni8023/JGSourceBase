@@ -165,9 +165,6 @@ Pod::Spec.new do |spec|
   # 不推荐使用prefix_header，如果使用了，需要在podspec中指定
   # spec.prefix_header_file = "#{spec.name}/Prefix-Header.pch"
   
-  # 如果OC需要访问Swift代码，需要modulemap
-  spec.module_map = "#{spec.name}/JGSourceBase.modulemap"
-
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the

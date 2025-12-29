@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "JGSourceBaseDemo-Swift.h"
+@import JGSourceBase;
 
 @interface AppDelegate ()
 

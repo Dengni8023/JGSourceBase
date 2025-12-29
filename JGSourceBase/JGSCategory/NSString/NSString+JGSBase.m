@@ -26,7 +26,7 @@
 }
 
 - (NSData *)jg_base64DecodeData {
-    return [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] jg_base64DecodeData];
 }
 
 - (NSString *)jg_base64DecodeString {
@@ -40,7 +40,7 @@
     return [self jg_md5String:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_md5String:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_md5String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data jg_md5String:style];
@@ -50,7 +50,7 @@
     return [self jg_sha128String:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_sha128String:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_sha128String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data jg_sha128String:style];
@@ -60,7 +60,7 @@
     return [self jg_sha256String:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_sha256String:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_sha256String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data jg_sha256String:style];
@@ -70,7 +70,7 @@
     return [self jg_sha384String:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_sha384String:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_sha384String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data jg_sha384String:style];
@@ -80,7 +80,7 @@
     return [self jg_sha512String:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_sha512String:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_sha512String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data jg_sha512String:style];
@@ -91,7 +91,7 @@
     return [self jg_hexString:JGSStringCaseDefault];
 }
 
-- (NSString *)jg_hexString:(JGSStringUpperLowerStyle)style {
+- (NSString *)jg_hexString:(JGSStringCaseStyle)style {
     
     NSData *hexData = [self dataUsingEncoding:NSUTF8StringEncoding];
     if (hexData.length == 0) {
