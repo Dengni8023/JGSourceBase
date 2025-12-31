@@ -150,7 +150,7 @@
         
         JGSStrongSelf
         NSInteger selIdx = idx - alert.jg_firstOtherIdx;
-        JGSEnableLogWithMode(JGSLogModeNone + selIdx);
+        [JGSLogger enableLogWithMode:JGSLogModeNone + selIdx level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
         [self.tableView reloadData];
         
         JGSWeakSelf

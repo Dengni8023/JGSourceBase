@@ -7,6 +7,7 @@
 //
 
 #import "JGSNSStringDemoVC.h"
+@import JGSourceBase;
 
 @interface JGSNSStringDemoVC ()
 
@@ -43,7 +44,7 @@
 #pragma mark - Action
 - (void)string2URLString:(NSIndexPath *)indexPath {
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {
@@ -99,7 +100,7 @@
     
     NSData *data = [@"CVB12xVBx5vb4xaf" dataUsingEncoding:NSUTF8StringEncoding];
     JGSLog(@"%@", data);
-    JGSLog(@"%@", data.jg_hexString.jg_hexToData);
+    JGSLog(@"%@", data.jg_hex.jg_hexToData);
 }
 
 #endif

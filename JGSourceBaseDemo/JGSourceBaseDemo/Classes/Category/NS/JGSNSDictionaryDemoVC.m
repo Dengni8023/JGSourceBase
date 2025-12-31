@@ -7,6 +7,7 @@
 //
 
 #import "JGSNSDictionaryDemoVC.h"
+@import JGSourceBase;
 
 @interface JGSNSDictionaryDemoVC ()
 
@@ -63,7 +64,7 @@
         };
     });
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {

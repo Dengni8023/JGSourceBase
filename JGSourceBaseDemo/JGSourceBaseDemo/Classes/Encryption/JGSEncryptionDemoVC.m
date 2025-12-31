@@ -168,10 +168,11 @@
                     NSString *originText = @"RSA encryption test special content";
                     NSString *testFilePath = [[NSBundle mainBundle] pathForResource:@"rsa_message.txt" ofType:nil];
                     originText = testFilePath ? [NSString stringWithContentsOfFile:testFilePath encoding:NSUTF8StringEncoding error:nil] : originText;
-                    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
                     // 原始数据可能较长，因此不直接使用原数据方式
                     for (JGSRSASignatureDigest digest = JGSRSASignatureDigestSHA256; digest <= JGSRSASignatureDigestMD5; digest++) {
-                        
+#pragma clang diagnostic pop
                         NSString *publicEnc = [JGSRSAEncryption signatureString:originText privateKeyWithContentsOfFile:privateP12 password:nil digest:digest algorithm:(SecKeyAlgorithm)algorithm];
                         JGSDemoShowConsoleLog(self, @"signature: %@", publicEnc);
                         BOOL verified = [JGSRSAEncryption verifySignature:publicEnc originString:originText publicKeyWithContentsOfFile:publicDer digest:digest algorithm:(SecKeyAlgorithm)algorithm];
@@ -224,10 +225,11 @@
                     NSString *originText = @"RSA encryption test special content";
                     NSString *testFilePath = [[NSBundle mainBundle] pathForResource:@"rsa_message.txt" ofType:nil];
                     originText = testFilePath ? [NSString stringWithContentsOfFile:testFilePath encoding:NSUTF8StringEncoding error:nil] : originText;
-                    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
                     // 原始数据可能较长，因此不直接使用原数据方式
                     for (JGSRSASignatureDigest digest = JGSRSASignatureDigestSHA256; digest <= JGSRSASignatureDigestMD5; digest++) {
-                        
+#pragma clang diagnostic pop
                         NSString *publicEnc = [JGSRSAEncryption signatureString:originText privateKey:privateKey digest:digest algorithm:(SecKeyAlgorithm)algorithm];
                         JGSDemoShowConsoleLog(self, @"signature: %@", publicEnc);
                         BOOL verified = [JGSRSAEncryption verifySignature:publicEnc originString:originText publicKey:publicKey digest:digest algorithm:(SecKeyAlgorithm)algorithm];

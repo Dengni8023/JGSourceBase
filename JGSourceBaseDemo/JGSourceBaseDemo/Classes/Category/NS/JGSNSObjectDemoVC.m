@@ -7,6 +7,7 @@
 //
 
 #import "JGSNSObjectDemoVC.h"
+@import JGSourceBase;
 
 @interface JGSNSObjectDemoVC ()
 
@@ -58,7 +59,7 @@
         storeString = [storeDictionary jg_JSONString];
     });
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {

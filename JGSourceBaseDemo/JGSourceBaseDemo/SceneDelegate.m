@@ -8,6 +8,7 @@
 
 #import "SceneDelegate.h"
 #import "ViewController.h"
+@import JGSourceBase;
 
 @interface SceneDelegate ()
 
@@ -50,8 +51,7 @@
     JGSLog(@"");
     
     static NSInteger times = 0;
-    JGSConsoleLogWithNSLog(times++ % 3 == 2);
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:times++ % 3 == 2 lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     
 #ifdef JGSIntegrityCheck_h
     [[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[

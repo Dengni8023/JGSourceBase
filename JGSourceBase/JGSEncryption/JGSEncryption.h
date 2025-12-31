@@ -36,8 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSString *)stringWithBase64EncodedString:(NSString *)string;
 
 #pragma mark - File
-+ (nullable NSString *)md5WithFile:(NSString *)filePath;
-+ (nullable NSString *)sha128WithFile:(NSString *)filePath;
++ (nullable NSString *)md5WithFile:(NSString *)filePath DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
++ (nullable NSString *)sha128WithFile:(NSString *)filePath DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 + (nullable NSString *)sha256WithFile:(NSString *)filePath;
 
 + (nullable NSData *)aes128EncryptDataWithFile:(NSString *)filePath key:(NSString *)key iv:(NSString *)iv;

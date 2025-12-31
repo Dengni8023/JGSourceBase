@@ -345,7 +345,7 @@
         machine = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
         if ([self isSimulator] || [machine isEqualToString:@"i386"] || [machine isEqualToString: @"x86_64"]) {
             
-            NSString *deviceType = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"iPad" : @"iPhone";
+            NSString *deviceType = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) ? @"iPad" : @"iPhone";
             machine = [NSString stringWithFormat:@"%@ Simulator (%@)", deviceType, machine];
         }
     });

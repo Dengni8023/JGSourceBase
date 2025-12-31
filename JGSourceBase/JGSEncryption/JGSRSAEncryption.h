@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, JGSRSASignatureDigest) {
     JGSRSASignatureDigestRaw = 0, // 原数据较短或外部已进行HASH处理，内部无需HASH处理
     JGSRSASignatureDigestSHA256, // 先获取SHA256，对SHA256进行签名、验证
-    JGSRSASignatureDigestMD5, // 先获取MD5，对MD5进行签名、验证
+    JGSRSASignatureDigestMD5 DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation"), // 先获取MD5，对MD5进行签名、验证
 };
 
 /// RSA加解密，私钥支持pcks1、pkcs8，长度仅支持1024、2048

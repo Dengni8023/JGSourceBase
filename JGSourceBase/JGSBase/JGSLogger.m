@@ -186,6 +186,8 @@ FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSL
     [JGSLogger enableLogWithMode:JGSLogger.mode level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:limit truncating:truncating];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation JGSLogFunction
 
 + (void)enableLog:(BOOL)enable {
@@ -197,3 +199,4 @@ FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSL
 }
 
 @end
+#pragma clang diagnostic pop

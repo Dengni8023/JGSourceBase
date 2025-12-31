@@ -345,12 +345,14 @@
     NSString *digestString = nil;
     switch (signDigest) {
         case JGSRSASignatureDigestSHA256:
-            digestString = [data jg_sha256String];
+            digestString = [data jg_sha256];
             break;
-            
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         case JGSRSASignatureDigestMD5:
             digestString = [data jg_md5String];
             break;
+#pragma clang diagnostic pop
             
         case JGSRSASignatureDigestRaw:
             break;

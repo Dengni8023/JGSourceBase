@@ -32,10 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - HASH
 /// 获取MD5散列字符串，小写
-@property (nonatomic, copy, readonly, nullable) NSString *jg_md5String;
+@property (nonatomic, copy, readonly, nullable) NSString *jg_md5String DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 /// 获取SHA128散列字符串，小写
-@property (nonatomic, copy, readonly, nullable) NSString *jg_sha128String;
+@property (nonatomic, copy, readonly, nullable) NSString *jg_sha128String DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 /// 获取SHA256散列字符串，小写
 @property (nonatomic, copy, readonly, nullable) NSString *jg_sha256String;

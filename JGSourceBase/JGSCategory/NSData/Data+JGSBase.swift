@@ -69,6 +69,7 @@ extension Data {
     
     // MARK: - MD5
     /// 获取MD5字符串
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
     var jg_md5: String {
         return jg_md5()
     }
@@ -76,6 +77,7 @@ extension Data {
     /// 获取MD5
     /// - Parameter style: 字符串大小写风格
     /// - Returns: String
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
     func jg_md5(_ style: JGSStringCaseStyle = .caseDefault) -> String {
         return jg_hash(.md5, style)
     }
@@ -83,6 +85,7 @@ extension Data {
     // MARK: - SHA
     
     /// 获取SHA128
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
     var jg_sha128: String {
         return jg_sha128()
     }
@@ -90,6 +93,7 @@ extension Data {
     /// 获取SHA128
     /// - Parameter style: 字符串大小写风格
     /// - Returns: String
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
     func jg_sha128(_ style: JGSStringCaseStyle = .caseDefault) -> String {
         return jg_hash(.SHA128, style)
     }

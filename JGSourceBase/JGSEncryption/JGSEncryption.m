@@ -77,7 +77,7 @@
 	}
 	
 	NSData *data = [NSData dataWithContentsOfFile:filePath];
-	return [data jg_sha256String];
+	return [data jg_sha256];
 }
 
 + (NSData *)aes128EncryptDataWithFile:(NSString *)filePath key:(NSString *)key iv:(NSString *)iv {

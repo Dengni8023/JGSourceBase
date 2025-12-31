@@ -136,24 +136,28 @@
 
 #pragma mark - HASH
 - (NSString *)jg_hash:(JGSHASHStringType)type style:(JGSStringCaseStyle)style {
+    
     int secLen = CC_SHA512_DIGEST_LENGTH;
     switch (type) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         case JGSHASHStringMd5:
             secLen = CC_MD5_DIGEST_LENGTH;
             break;
-            
+
         case JGSHASHStringSHA128:
             secLen = CC_SHA1_DIGEST_LENGTH;
             break;
-            
+#pragma clang diagnostic pop
+
         case JGSHASHStringSHA256:
             secLen = CC_SHA256_DIGEST_LENGTH;
             break;
-            
+
         case JGSHASHStringSHA384:
             secLen = CC_SHA384_DIGEST_LENGTH;
             break;
-            
+
         case JGSHASHStringSHA512:
             secLen = CC_SHA512_DIGEST_LENGTH;
             break;
@@ -163,13 +167,16 @@
     
     // FIX: NSData获取byte之后bytes长度可能比data长度长，因此此处不能使用strlen(cStr)
     switch (type) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         case JGSHASHStringMd5:
             CC_MD5(cStr, (CC_LONG)self.length, digest);
             break;
-            
+
         case JGSHASHStringSHA128:
             CC_SHA1(cStr, (CC_LONG)self.length, digest);
             break;
+#pragma clang diagnostic pop
             
         case JGSHASHStringSHA256:
             CC_SHA256(cStr, (CC_LONG)self.length, digest);
@@ -183,6 +190,7 @@
             CC_SHA512(cStr, (CC_LONG)self.length, digest);
             break;
     }
+    
     NSMutableString *result = [NSMutableString stringWithCapacity:secLen * 2];
     for (int i = 0; i < secLen; i++) {
         [result appendFormat:arc4random_uniform(2) < 1 ? @"%02hhx" : @"%02hhX", digest[i]];

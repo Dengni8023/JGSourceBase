@@ -30,8 +30,8 @@ class JGSDViewController: JGSDemoViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        JGSEnableLogWithMode(.func + 1 ?? .none)
-        JGSLogFunction.enableLog(true)
+        JGSLogger.enableLog(mode: .func + 1)
+        JGSLogger.enableDebug = true
         JGSLog("Test lv", mode: .file + 1, level: .debug + 1)
     }
     

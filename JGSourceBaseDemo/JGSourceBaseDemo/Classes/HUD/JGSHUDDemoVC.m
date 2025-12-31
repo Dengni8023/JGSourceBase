@@ -8,6 +8,7 @@
 
 #import "JGSHUDDemoVC.h"
 #import <SDWebImage/SDWebImage.h>
+@import JGSourceBase;
 
 @interface JGSHUDDemoVC ()
 
@@ -69,7 +70,7 @@
 - (void)showLoadingHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog(self, @"");
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     switch (indexPath.section) {
         case 0: {
             switch (indexPath.row) {
@@ -219,7 +220,7 @@
 - (void)showToastHUD:(NSIndexPath *)indexPath {
     
     JGSDemoShowConsoleLog(self, @"");
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {

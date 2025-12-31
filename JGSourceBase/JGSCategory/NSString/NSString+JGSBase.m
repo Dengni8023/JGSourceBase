@@ -43,7 +43,10 @@
 - (NSString *)jg_md5String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data jg_md5String:style];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [data jg_md5:style];
+#pragma clang diagnostic pop
 }
 
 - (NSString *)jg_sha128String {
@@ -53,7 +56,10 @@
 - (NSString *)jg_sha128String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data jg_sha128String:style];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [data jg_sha128:style];
+#pragma clang diagnostic pop
 }
 
 - (NSString *)jg_sha256String {
@@ -63,7 +69,7 @@
 - (NSString *)jg_sha256String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data jg_sha256String:style];
+    return [data jg_sha256:style];
 }
 
 - (NSString *)jg_sha384String {
@@ -73,7 +79,7 @@
 - (NSString *)jg_sha384String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data jg_sha384String:style];
+    return [data jg_sha384:style];
 }
 
 - (NSString *)jg_sha512String {
@@ -83,7 +89,7 @@
 - (NSString *)jg_sha512String:(JGSStringCaseStyle)style {
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    return [data jg_sha512String:style];
+    return [data jg_sha512:style];
 }
 
 #pragma mark - Hex
@@ -98,7 +104,7 @@
         return nil;
     }
     
-    return [hexData jg_hexString:style];
+    return [hexData jg_hex:style];
 }
 
 - (NSString *)jg_hexToString {

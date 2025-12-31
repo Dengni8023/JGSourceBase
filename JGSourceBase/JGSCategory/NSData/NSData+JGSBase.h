@@ -57,11 +57,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)jg_md5String:(JGSStringCaseStyle)style DEPRECATED_MSG_ATTRIBUTE("Use -jg_md5: instead");;
 
 /// 获取MD5散列字符串，小写
-@property (nonatomic, copy, readonly) NSString *jg_md5;
+@property (nonatomic, copy, readonly) NSString *jg_md5 DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 /// 获取MD5散列字符串
 /// @param style 字符串大小写风格
-- (NSString *)jg_md5:(JGSStringCaseStyle)style;
+- (NSString *)jg_md5:(JGSStringCaseStyle)style DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 #pragma mark - SHA128
 /// 获取SHA128散列字符串，小写
@@ -72,11 +72,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)jg_sha128String:(JGSStringCaseStyle)style DEPRECATED_MSG_ATTRIBUTE("Use -jg_sha128: instead");
 
 /// 获取SHA128散列字符串，小写
-@property (nonatomic, copy, readonly) NSString *jg_sha128;
+@property (nonatomic, copy, readonly) NSString *jg_sha128 DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 /// 获取SHA128散列字符串
 /// @param style 字符串大小写风格
-- (NSString *)jg_sha128:(JGSStringCaseStyle)style;
+- (NSString *)jg_sha128:(JGSStringCaseStyle)style DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation");
 
 #pragma mark - SHA256
 /// 获取SHA256散列字符串，小写

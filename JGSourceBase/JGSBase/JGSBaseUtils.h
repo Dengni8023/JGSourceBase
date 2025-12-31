@@ -82,8 +82,8 @@ typedef JGSStringCaseStyle JGSStringUpperLowerStyle DEPRECATED_MSG_ATTRIBUTE("Us
 
 /// HASH散列算法类型
 typedef NS_ENUM(NSInteger, JGSHASHStringType) {
-    JGSHASHStringMd5 = 0, // md5
-    JGSHASHStringSHA128, // SHA128
+    JGSHASHStringMd5 DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation") = 0, // md5
+    JGSHASHStringSHA128 DEPRECATED_MSG_ATTRIBUTE("Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation"), // SHA128
     JGSHASHStringSHA256, // SHA256
     JGSHASHStringSHA384, // SHA384
     JGSHASHStringSHA512, // SHA512

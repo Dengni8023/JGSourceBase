@@ -356,9 +356,10 @@ static void JGSNetworkReachabilityReleaseCallback(const void *info) {
         if (@available(iOS 12.0, *)) {
             currentStatus = info.serviceCurrentRadioAccessTechnology.allValues.firstObject;
         } else {
-            JGSSuppressWarning_DeprecatedDeclarations(
-                currentStatus = info.currentRadioAccessTechnology;
-                )
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            currentStatus = info.currentRadioAccessTechnology;
+#pragma clang diagnostic pop
         }
         
         if (currentStatus.length > 0 && [wwanInfoDict.allKeys containsObject:currentStatus]) {

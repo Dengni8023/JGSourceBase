@@ -7,6 +7,7 @@
 //
 
 #import "JGSNSURLDemoVC.h"
+@import JGSourceBase;
 
 @interface JGSNSURLDemoVC ()
 
@@ -42,7 +43,7 @@
 #pragma mark - Action
 - (void)getURLQuery:(NSIndexPath *)indexPath {
     
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     NSInteger rowIndex = indexPath.row;
     switch (rowIndex) {
         case 0: {

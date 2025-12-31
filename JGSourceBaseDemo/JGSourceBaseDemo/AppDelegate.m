@@ -24,8 +24,8 @@
     
     sleep(3);
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, [JGSBaseUtils version]);
-    JGSEnableLogWithMode(JGSLogModeFunc);
-    [JGSLogFunction enableLog:YES];
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
+    JGSLogger.enableDebug = true;
     [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogLevelDebug useNSLog:YES lengthLimit:0 truncating:JGSLogTruncatingMiddle];
     
     //NSLog(@"%@", @(JGSBaseVersionNumber));
@@ -119,8 +119,7 @@
     JGSLog();
     
     static NSInteger times = 0;
-    JGSConsoleLogWithNSLog(times++ % 3 == 2);
-    JGSEnableLogWithMode(JGSLogModeFunc);
+    [JGSLogger enableLogWithMode:JGSLogModeFunc level:JGSLogger.level useNSLog:times++ % 3 == 2 lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
 	
 #ifdef JGSIntegrityCheck_h
 	[[JGSIntegrityCheckResourcesHash shareInstance] setCheckInfoPlistKeyBlacklist:@[

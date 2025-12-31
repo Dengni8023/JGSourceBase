@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
     "12.0" # iOS最低支持版本
   end
   def self.osx_version
-    "13.0" # osx最低支持版本
+    "15.0" # osx最低支持版本
   end
   def self.smart_host
     # 网络防火墙问题，优先使用 Gitee

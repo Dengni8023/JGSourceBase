@@ -32,9 +32,10 @@
     // Delete old item before add new item
     SecItemDelete((__bridge CFDictionaryRef)keychainQuery);
     // Add new object to search dictionary(Attention:the data format)
-    JGSSuppressWarning_DeprecatedDeclarations(
-        [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(__bridge id)kSecValueData];
-        )
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(__bridge id)kSecValueData];
+#pragma clang diagnostic pop
     // Add item to keychain with the search dictionary
     SecItemAdd((__bridge CFDictionaryRef)keychainQuery, NULL);
 }
@@ -50,9 +51,10 @@
     CFDataRef keyData = NULL;
     if (SecItemCopyMatching((__bridge CFDictionaryRef)keychainQuery, (CFTypeRef *)&keyData) == noErr) {
         @try {
-            JGSSuppressWarning_DeprecatedDeclarations(
-                ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
-                )
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
+#pragma clang diagnostic pop
         } @catch (NSException *e) {
             JGSPrivateLog(@"Unarchive of %@ failed: %@", key, e);
         } @finally {

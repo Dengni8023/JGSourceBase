@@ -669,9 +669,10 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange interaction:interaction];
     }
     else if ([delegate respondsToSelector:@selector(textView:shouldInteractWithURL:inRange:)]) {
-        JGSSuppressWarning_DeprecatedDeclarations(
-                                                  return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange];
-                                                  );
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        return [delegate textView:self shouldInteractWithURL:URL inRange:characterRange];
+#pragma clang diagnostic pop
     }
     return YES;
 }
@@ -698,9 +699,10 @@ static NSMapTable *JGSSecurityKeyboardTextInputDelegate = nil; // 存储Input对
         return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange interaction:interaction];
     }
     else if ([delegate respondsToSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:)]) {
-        JGSSuppressWarning_DeprecatedDeclarations(
-                                                  return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
-                                                  );
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        return [delegate textView:self shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+#pragma clang diagnostic pop
     }
     return YES;
 }
