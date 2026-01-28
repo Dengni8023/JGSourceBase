@@ -205,14 +205,13 @@ extension URL: JGSBuildInBasicType {
             urlCharSet.formUnion(.urlUserAllowed)
             urlCharSet.formUnion(.urlPasswordAllowed)
 
-            // query参数未进行url编码，则进行编码
+            // 参数未进行url编码，则进行编码
             if urlStr.range(of: "%[0-9A-Fa-f]{2}", options: .regularExpression, range: nil, locale: nil) == nil,
                let urlEncodedStr = urlStr.addingPercentEncoding(withAllowedCharacters: urlCharSet) {
                 JGSLogD("urlEncodedStr: \(urlEncodedStr)")
-                JGSPrivateLog("urlEncodedStr: \(urlEncodedStr)")
                 // urlStr = urlEncodedStr
             }
-
+            
             // 正则表达式匹配查找中文字符串、不可见字符串，并进行替换
             ["[[\u{4e00}-\u{9fa5}][\u{3002}\u{ff1b}\u{ff0c}\u{ff1a}\u{201c}\u{201d}\u{ff08}\u{ff09}\u{3001}\u{ff1f}\u{300a}\u{300b}]]+", // 中文+中文符号：。 ； ， ： “ ”（ ） 、 ？ 《 》
              "\\s+", // 不可见字符正则表达式
@@ -321,10 +320,9 @@ extension Collection {
             } else if let element = each as? Element {
                 result.append(element)
             } else {
-                JGSPrivateLog("Expect element to be \(type(of: Element.self)) but it's \(type(of: each))")
+                JGSPrivateLog("Expect value to be \(type(of: Element.self)) but it's \(type(of: each))")
             }
         }
-
         return result
     }
     
@@ -414,24 +412,24 @@ extension Dictionary: JGSBuildInBasicType {
                     JGSPrivateLog("Expect value to be \(type(of: Value.self)) but it's \(type(of: value))")
                 }
             } else {
-                JGSPrivateLog("Expect key to be any \(type(of: Key.self)) but it's \(type(of: key))")
+                JGSPrivateLog("Expect value to be any \(type(of: Key.self)) but it's \(type(of: key))")
             }
         }
         return result
     }
-
+    
     public func jg_plainValue() -> Any? {
         var result = [AnyHashable: Value]()
-        forEach { pair in
-            if let transformable = pair.value as? JGSTransformable {
+        for (key, value) in self {
+            if let transformable = value as? JGSTransformable {
                 if let transValue = transformable.jg_plainValue() as? Value {
                     // 转换
-                    result[pair.key] = transValue
+                    result[key] = transValue
                 } else {
                     JGSPrivateLog("Expect value to be \(type(of: Value.self)) but it's \(type(of: transformable))")
                 }
             } else {
-                JGSPrivateLog("value: \(type(of: pair.value)) isn't transformable type!")
+                JGSPrivateLog("Expect value to be any transformable but it's \(type(of: value))")
             }
         }
         return result
