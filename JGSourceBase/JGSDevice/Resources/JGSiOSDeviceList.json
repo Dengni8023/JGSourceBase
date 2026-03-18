@@ -290,6 +290,18 @@
   "iPad16,6" : {
     "Generation" : "iPad Pro 13-inch (M4)"
   },
+  "iPad16,8" : {
+    "Generation" : "iPad Air 11-inch (M4)"
+  },
+  "iPad16,9" : {
+    "Generation" : "iPad Air 11-inch (M4)"
+  },
+  "iPad16,10" : {
+    "Generation" : "iPad Air 13-inch (M4)"
+  },
+  "iPad16,11" : {
+    "Generation" : "iPad Air 13-inch (M4)"
+  },
   "iPad17,1" : {
     "Generation" : "iPad Pro 11-inch (M5)"
   },
@@ -478,6 +490,9 @@
   },
   "iPhone18,4" : {
     "Generation" : "iPhone Air"
+  },
+  "iPhone18,5" : {
+    "Generation" : "iPhone 17e"
   },
   "iPod4,1" : {
     "Generation" : "iPod touch (4th generation)"
