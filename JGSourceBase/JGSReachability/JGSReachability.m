@@ -11,7 +11,8 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <netinet/in.h>
-#import <netinet6/in6.h>
+///这个头文件在模块系统中被标记为私有,并且已经包含到[<netinet/in.h>]了,故无须在这里导入私有模块
+///#import <netinet6/in6.h>
 
 NSNotificationName const JGSReachabilityStatusChangedNotification = @"JGSReachabilityStatusChangedNotification";
 
