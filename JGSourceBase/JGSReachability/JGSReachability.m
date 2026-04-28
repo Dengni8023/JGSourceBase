@@ -11,7 +11,6 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <netinet/in.h>
-#import <netinet6/in6.h>
 
 NSNotificationName const JGSReachabilityStatusChangedNotification = @"JGSReachabilityStatusChangedNotification";
 
