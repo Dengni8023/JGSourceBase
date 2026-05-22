@@ -179,6 +179,18 @@
 		D4D698282806E16F00CE1F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D698272806E16F00CE1F9F /* main.m */; };
 		D4D96C0E284F2EE800D8B0ED /* JGSBase+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D96C0C284F2EE800D8B0ED /* JGSBase+Private.m */; };
 		D4D96C0F284F2EE800D8B0ED /* JGSBase+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D96C0D284F2EE800D8B0ED /* JGSBase+Private.h */; };
+		D4E27FE62FBDFB6E00B8F45C /* NFCTagInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FD72FBDFB6E00B8F45C /* NFCTagInfo.swift */; };
+		D4E27FE72FBDFB6E00B8F45C /* ISO7816Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDB2FBDFB6E00B8F45C /* ISO7816Reader.swift */; };
+		D4E27FE82FBDFB6E00B8F45C /* NFCProtocolReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDE2FBDFB6E00B8F45C /* NFCProtocolReader.swift */; };
+		D4E27FE92FBDFB6E00B8F45C /* NFCSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDF2FBDFB6E00B8F45C /* NFCSessionManager.swift */; };
+		D4E27FEA2FBDFB6E00B8F45C /* ScanHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FE22FBDFB6E00B8F45C /* ScanHistoryView.swift */; };
+		D4E27FEB2FBDFB6E00B8F45C /* TagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FE32FBDFB6E00B8F45C /* TagDetailView.swift */; };
+		D4E27FEC2FBDFB6E00B8F45C /* ISO15693Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDC2FBDFB6E00B8F45C /* ISO15693Reader.swift */; };
+		D4E27FED2FBDFB6E00B8F45C /* ScanRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FD82FBDFB6E00B8F45C /* ScanRecord.swift */; };
+		D4E27FEE2FBDFB6E00B8F45C /* NFCReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FE12FBDFB6E00B8F45C /* NFCReaderViewController.swift */; };
+		D4E27FEF2FBDFB6E00B8F45C /* FeliCaReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDA2FBDFB6E00B8F45C /* FeliCaReader.swift */; };
+		D4E27FF02FBDFB6E00B8F45C /* MIFAREReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FDD2FBDFB6E00B8F45C /* MIFAREReader.swift */; };
+		D4E27FF12FBDFB6E00B8F45C /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E27FE42FBDFB6E00B8F45C /* UIComponents.swift */; };
 		D4E651D02CC6274300AFD4D1 /* JGSMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */; };
 		D4EBE9842850CC190041E21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D403B13A2850356900F4F304 /* Assets.xcassets */; };
 		D4EBE98C2850CCD00041E21B /* icon_29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EBE98A2850CCC00041E21B /* icon_29pt@2x.png */; };
@@ -438,6 +450,19 @@
 		D4DEB22A28740A22000CFB67 /* JGSDemoIntegrityCheckAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoIntegrityCheckAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22B28740A22000CFB67 /* JGSDemoModifyBuildAfterCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSDemoModifyBuildAfterCompile.sh; sourceTree = "<group>"; };
 		D4DEB22C28740A22000CFB67 /* JGSModifyConfigBeforeCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = JGSModifyConfigBeforeCompile.sh; sourceTree = "<group>"; };
+		D4E27FD72FBDFB6E00B8F45C /* NFCTagInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTagInfo.swift; sourceTree = "<group>"; };
+		D4E27FD82FBDFB6E00B8F45C /* ScanRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRecord.swift; sourceTree = "<group>"; };
+		D4E27FDA2FBDFB6E00B8F45C /* FeliCaReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeliCaReader.swift; sourceTree = "<group>"; };
+		D4E27FDB2FBDFB6E00B8F45C /* ISO7816Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO7816Reader.swift; sourceTree = "<group>"; };
+		D4E27FDC2FBDFB6E00B8F45C /* ISO15693Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO15693Reader.swift; sourceTree = "<group>"; };
+		D4E27FDD2FBDFB6E00B8F45C /* MIFAREReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIFAREReader.swift; sourceTree = "<group>"; };
+		D4E27FDE2FBDFB6E00B8F45C /* NFCProtocolReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCProtocolReader.swift; sourceTree = "<group>"; };
+		D4E27FDF2FBDFB6E00B8F45C /* NFCSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCSessionManager.swift; sourceTree = "<group>"; };
+		D4E27FE12FBDFB6E00B8F45C /* NFCReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReaderViewController.swift; sourceTree = "<group>"; };
+		D4E27FE22FBDFB6E00B8F45C /* ScanHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistoryView.swift; sourceTree = "<group>"; };
+		D4E27FE32FBDFB6E00B8F45C /* TagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailView.swift; sourceTree = "<group>"; };
+		D4E27FE42FBDFB6E00B8F45C /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		D4E27FF62FBE007400B8F45C /* JGSourceBaseDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JGSourceBaseDemo.entitlements; sourceTree = "<group>"; };
 		D4E651CF2CC6274300AFD4D1 /* JGSMeasurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGSMeasurable.swift; sourceTree = "<group>"; };
 		D4EBE9882850CCC00041E21B /* icon_29pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29pt@3x.png"; sourceTree = "<group>"; };
 		D4EBE9892850CCC00041E21B /* icon_29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_29pt.png; sourceTree = "<group>"; };
@@ -515,6 +540,7 @@
 		D4075ADF2863123300E4BFEA /* JGSourceBaseDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D4E27FF62FBE007400B8F45C /* JGSourceBaseDemo.entitlements */,
 				D4075B812863315D00E4BFEA /* Classes */,
 				D4075B752863315D00E4BFEA /* Resources */,
 				D426FCBF293A4DD5002C7476 /* Target.xcconfig */,
@@ -562,6 +588,7 @@
 		D4075B812863315D00E4BFEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D4E27FD62FBDFB4200B8F45C /* NFC */,
 				D4075B9F2863315D00E4BFEA /* Base */,
 				D4075B852863315D00E4BFEA /* Category */,
 				D4075B9C2863315D00E4BFEA /* DataStorage */,
@@ -1074,6 +1101,49 @@
 			path = JGCommandLine;
 			sourceTree = "<group>";
 		};
+		D4E27FD62FBDFB4200B8F45C /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				D4E27FD92FBDFB6E00B8F45C /* Models */,
+				D4E27FE02FBDFB6E00B8F45C /* NFC */,
+				D4E27FE12FBDFB6E00B8F45C /* NFCReaderViewController.swift */,
+				D4E27FE52FBDFB6E00B8F45C /* Views */,
+			);
+			path = NFC;
+			sourceTree = "<group>";
+		};
+		D4E27FD92FBDFB6E00B8F45C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4E27FD72FBDFB6E00B8F45C /* NFCTagInfo.swift */,
+				D4E27FD82FBDFB6E00B8F45C /* ScanRecord.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4E27FE02FBDFB6E00B8F45C /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				D4E27FDA2FBDFB6E00B8F45C /* FeliCaReader.swift */,
+				D4E27FDB2FBDFB6E00B8F45C /* ISO7816Reader.swift */,
+				D4E27FDC2FBDFB6E00B8F45C /* ISO15693Reader.swift */,
+				D4E27FDD2FBDFB6E00B8F45C /* MIFAREReader.swift */,
+				D4E27FDE2FBDFB6E00B8F45C /* NFCProtocolReader.swift */,
+				D4E27FDF2FBDFB6E00B8F45C /* NFCSessionManager.swift */,
+			);
+			path = NFC;
+			sourceTree = "<group>";
+		};
+		D4E27FE52FBDFB6E00B8F45C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4E27FE22FBDFB6E00B8F45C /* ScanHistoryView.swift */,
+				D4E27FE32FBDFB6E00B8F45C /* TagDetailView.swift */,
+				D4E27FE42FBDFB6E00B8F45C /* UIComponents.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D4EBE9852850CCC00041E21B /* icon_29pt */ = {
 			isa = PBXGroup;
 			children = (
@@ -1420,7 +1490,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] JGSPodsScriptAfterCompile";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "  \n  echo \"****** 编译结束后，执行Podfile自定义脚本 ******\"\n  \n  echo \"执行应用完整性校验资源文件Hash记录脚本\"\n  chmod +x ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # sh执行权限\n  ${PROJECT_DIR}/JGSScripts/JGSDemoIntegrityCheckAfterCompile.sh # 执行sh\n  \n  echo \"****** 编译后Podfile自定义脚本执行完成 ******\"\n  \n";
@@ -1433,9 +1507,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSBase-JGSourceBaseDemo/Pods-JGSBase-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1475,6 +1553,18 @@
 			files = (
 				D4734DC32946F63800E9CF10 /* SwiftViewController.swift in Sources */,
 				D4075BBE2863315D00E4BFEA /* JGSDemoTableData.m in Sources */,
+				D4E27FE62FBDFB6E00B8F45C /* NFCTagInfo.swift in Sources */,
+				D4E27FE72FBDFB6E00B8F45C /* ISO7816Reader.swift in Sources */,
+				D4E27FE82FBDFB6E00B8F45C /* NFCProtocolReader.swift in Sources */,
+				D4E27FE92FBDFB6E00B8F45C /* NFCSessionManager.swift in Sources */,
+				D4E27FEA2FBDFB6E00B8F45C /* ScanHistoryView.swift in Sources */,
+				D4E27FEB2FBDFB6E00B8F45C /* TagDetailView.swift in Sources */,
+				D4E27FEC2FBDFB6E00B8F45C /* ISO15693Reader.swift in Sources */,
+				D4E27FED2FBDFB6E00B8F45C /* ScanRecord.swift in Sources */,
+				D4E27FEE2FBDFB6E00B8F45C /* NFCReaderViewController.swift in Sources */,
+				D4E27FEF2FBDFB6E00B8F45C /* FeliCaReader.swift in Sources */,
+				D4E27FF02FBDFB6E00B8F45C /* MIFAREReader.swift in Sources */,
+				D4E27FF12FBDFB6E00B8F45C /* UIComponents.swift in Sources */,
 				D4075BBA2863315D00E4BFEA /* JGSCategoryDemoVC.m in Sources */,
 				D4214A1E29432EDE00CEFACB /* JGSDViewController.swift in Sources */,
 				D4075BBB2863315D00E4BFEA /* JGSReachabilityDemoVC.m in Sources */,
@@ -1676,6 +1766,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JGSourceBaseDemo/JGSourceBaseDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
@@ -1693,6 +1784,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1717,6 +1809,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JGSourceBaseDemo/JGSourceBaseDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "${JGSBuild}.${JGSLastCommitDate}.${JGSLastCommitID}";
@@ -1734,6 +1827,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

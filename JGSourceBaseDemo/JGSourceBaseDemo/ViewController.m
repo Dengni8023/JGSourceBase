@@ -110,6 +110,7 @@
 			JGSDemoTableRowMake(@"HUD（Loading、Toast）", nil, @selector(jumpToHudDemo:)),
 			JGSDemoTableRowMake(@"Reachability", nil, @selector(jumpToReachabilityDemo:)),
 			JGSDemoTableRowMake(@"Security Keyboard", nil, @selector(jumpToKeyboardDemo:)),
+            JGSDemoTableRowMake(@"NFC", nil, @selector(jumpToNFCDemo:)),
 		]),
 	];
 }
@@ -245,6 +246,12 @@
 - (void)jumpToKeyboardDemo:(NSIndexPath *)indexPath {
     
     JGSKeyboardDemoVC *vcT = [[JGSKeyboardDemoVC alloc] init];
+    [self.navigationController pushViewController:vcT animated:YES];
+}
+
+- (void)jumpToNFCDemo:(NSIndexPath *)indexPath {
+    
+    NFCReaderViewController *vcT = [[NFCReaderViewController alloc] init];
     [self.navigationController pushViewController:vcT animated:YES];
 }
 
