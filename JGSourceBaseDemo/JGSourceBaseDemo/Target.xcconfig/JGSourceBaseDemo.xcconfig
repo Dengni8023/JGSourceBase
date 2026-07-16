@@ -12,6 +12,6 @@
 #include "../../../JGSourceBase/JGSourceBase/JGSourceBase.xcconfig"
 
 JGSDResourceDate = 20260716.2244
-JGSDBuildDate = 2026-07-16 22:52:28
+JGSDBuildDate = 2026-07-16 23:18:47
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited)
