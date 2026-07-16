@@ -78,6 +78,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [JGSReachability.shared/*sharedInstance*/ addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
+        JGSLog(@"Network status changed: %@, %@", @(status), JGSReachability.shared/*sharedInstance*/.reachabilityStatusString)
+    }];
+    
+    [JGSReachability.shared/*sharedInstance*/ addObserver:self selector:@selector(networkReachabilityStatusChanged:)];
+    [NSNotificationCenter.defaultCenter addObserverForName:JGSReachabilityStatusChangedNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull notification) {
+        NSNumber *notiStatus = notification.userInfo[JGSReachabilityNotificationStatusKey];
+        if (notiStatus) {
+            JGSReachabilityStatus status = [notiStatus integerValue];
+            JGSLog(@"Network status changed: %@ %@, %@", @(status), @(JGSReachability.shared/*sharedInstance*/.reachabilityStatus), JGSReachability.shared/*sharedInstance*/.reachabilityStatusString)
+        } else {
+            JGSLog(@"Network status changed: %@, %@", @(JGSReachability.shared/*sharedInstance*/.reachabilityStatus), JGSReachability.shared/*sharedInstance*/.reachabilityStatusString)
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,13 +100,30 @@
     JGSLog(@"%@", JGSourceBaseVersion());
     JGSLog(@"%@", [JGSBaseUtils classBundle]);
     JGSLog(@"%@", [JGSBaseUtils resourceBundle]);
-    JGSLog(@"%@", [JGSBaseUtils fileInResourceBundle:@""]);
-    JGSLog(@"%@", [JGSBaseUtils bundleWithName:@"" extension:nil checkLoaded:NO]);
-    JGSLog(@"%@", [JGSBaseUtils imageInResourceBundle:@"assest_icon_29"]);
-    JGSLog(@"%@", [JGSBaseUtils imageInResourceBundle:@"icon_29"]);
-    JGSLog(@"%@", [JGSBaseUtils imageInResourceBundle:@"bundle_assest_icon_29"]);
-    JGSLog(@"%@", [JGSBaseUtils imageInResourceBundle:@"bundle_icon_29"]);
     JGSLog(@"%@", [JGSBaseUtils sdkVersion]);
+}
+
+// MARK: - Action
+- (void)networkReachabilityStatusChanged:(JGSReachability *)sender {
+    JGSReachability *reachability = sender ?: JGSReachability.shared/*sharedInstance*/;
+    JGSLog(@"Network status changed: %@, %@, %@", sender, @(reachability.reachabilityStatus), reachability.reachabilityStatusString)
+    
+    switch (reachability.reachabilityStatus) {
+        case JGSReachabilityStatusUnknown:
+        case JGSReachabilityStatusUnreachable:
+            break;
+        case JGSReachabilityStatusWiFi:
+            break;
+        case JGSReachabilityStatusWWAN:
+        case JGSReachabilityStatusWWANGPRS:
+        case JGSReachabilityStatusWWAN2G:
+        case JGSReachabilityStatusWWAN3G:
+        case JGSReachabilityStatusWWAN4G:
+        case JGSReachabilityStatusWWAN5G:
+            break;
+        case JGSReachabilityStatusWired:
+            break;
+    }
 }
 
 // MARK: - UISplitViewControllerDelegate

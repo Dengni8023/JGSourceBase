@@ -19,7 +19,7 @@ enum JGSLogMode: Int, Sendable {
     
     // 保留旧的命名，并标记为废弃，提供迁移提示
     @available(*, deprecated, renamed: "file")
-    static var pretty: JGSLogMode { .file }
+    public static var pretty: JGSLogMode { .file }
 }
 
 /// 日志省略方式

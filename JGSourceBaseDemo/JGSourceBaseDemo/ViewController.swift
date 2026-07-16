@@ -46,6 +46,21 @@ class ViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.jg_once("JGSReachability_startMonitor") {
+             JGSReachability.shared/*sharedInstance()*/.startMonitor()
+        }
+        JGSReachability.shared/*sharedInstance()*/.addObserver(self) { status in
+            JGSLog("Network status changed:", status, JGSReachability.shared/*shasharedInstance()*/.reachabilityStatusString)
+        }
+        JGSReachability.shared/*sharedInstance()*/.addObserver(self, selector: #selector(networkReachabilityStatusChanged))
+        NotificationCenter.default.addObserver(forName: JGSReachabilityStatusChangedNotification/*JGSReachability.statusChangedNotification*/, object: nil, queue: nil) { notification in
+            if let notiStatus = notification.userInfo?[JGSReachabilityNotificationStatusKey] as? Int,
+               let status = JGSReachabilityStatus(rawValue: notiStatus) {
+                JGSLog("Network status changed:", status, JGSReachability.shared/*sharedInstance()*/.reachabilityStatus, JGSReachability.shared/*sharedInstance()*/.reachabilityStatusString)
+            } else {
+                JGSLog("Network status changed:", JGSReachability.shared/*sharedInstance()*/.reachabilityStatus, JGSReachability.shared/*sharedInstance()*/.reachabilityStatusString)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +69,36 @@ class ViewController: UISplitViewController {
         JGSLog(JGSourceBaseVersion())
         JGSLog(JGSBaseUtils.classBundle)
         JGSLog(JGSBaseUtils.resourceBundle)
-        JGSLog(JGSBaseUtils.fileInResourceBundle(named: ""))
-        JGSLog(JGSBaseUtils.bundle(named: "", extension: nil, check: false))
-        JGSLog(JGSBaseUtils.imageInResourceBundle(named: "assest_icon_29"))
-        JGSLog(JGSBaseUtils.imageInResourceBundle(named: "icon_29"))
-        JGSLog(JGSBaseUtils.imageInResourceBundle(named: "bundle_assest_icon_29"))
-        JGSLog(JGSBaseUtils.imageInResourceBundle(named: "bundle_icon_29"))
         JGSLog(JGSBaseUtils.version);
+    }
+    
+    // MARK: - Action
+    @objc private
+    func networkReachabilityStatusChanged(_ sender: JGSReachability? = nil) {
+        let reachability = sender ?? JGSReachability.shared/*sharedInstance()*/
+        JGSLog("Network status changed:", sender, reachability.reachabilityStatus, reachability.reachabilityStatusString)
+        
+        switch reachability.reachabilityStatus {
+        case .unknown:
+            break
+        case .unreachable:
+            break
+        //case .viaWiFi:
+        //    break
+        case .WiFi:
+            break
+        case .WWAN,
+             .WWANGPRS,
+             .WWAN2G,
+             .WWAN3G,
+             .WWAN4G,
+             .WWAN5G:
+            break
+        case .Wired:
+            break
+        @unknown default:
+            break
+        }
     }
 }
 

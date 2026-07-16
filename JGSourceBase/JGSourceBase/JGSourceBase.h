@@ -43,6 +43,16 @@
 #import "JGSCategory.h"
 #endif
 
+// Device
+
+// Reachability
+#if __has_include(<JGSourceBase/JGSReachability.h>)
+#import <JGSourceBase/JGSReachability.h>
+#elif __has_include("JGSReachability.h")
+//#else
+#import "JGSReachability.h"
+#endif
+
 // Safe
 #if __has_include(<JGSourceBase/JGSSafe.h>)
 #import <JGSourceBase/JGSSafe.h>
