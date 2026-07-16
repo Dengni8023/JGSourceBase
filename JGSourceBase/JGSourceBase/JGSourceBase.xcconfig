@@ -1,0 +1,16 @@
+//
+//  JGSourceBase.xcconfig
+//  JGSourceBase
+//
+//  Created by Mei JiGao on 2026/6/17.
+//  Copyright © 2026 ByMountains. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+JGSVersion = 1.4.6
+JGSBuild = 20260716.0040
+JGSResourceDate = 20260716.0038
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited)

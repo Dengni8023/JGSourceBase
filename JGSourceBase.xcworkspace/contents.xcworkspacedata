@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:JGSScripts"
+      name = "JGSScripts">
+      <FileRef
+         location = "group:AggregateXCFramework.sh">
+      </FileRef>
+      <FileRef
+         location = "group:JGSBaseBeforeCompile.sh">
+      </FileRef>
+      <FileRef
+         location = "group:JGSDemoBeforeCompile.sh">
+      </FileRef>
+   </Group>
    <FileRef
-      location = "group:JGSourceBase.xcodeproj">
+      location = "group:JGSourceBase/JGSourceBase.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
