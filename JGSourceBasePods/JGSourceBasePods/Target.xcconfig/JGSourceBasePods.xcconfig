@@ -11,7 +11,7 @@
 
 #include "../../../JGSourceBase/JGSourceBase/JGSourceBase.xcconfig"
 
-JGSDResourceDate = 20260716.2244
-JGSDBuildDate = 2026-07-16 23:18:47
+JGSDResourceDate = 20260717.1029
+JGSDBuildDate = 2026-07-17 10:47:23
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) JGS_DEMO_TARGET_Pods

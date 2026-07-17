@@ -13,6 +13,9 @@
 #ifdef JGS_DEMO_TARGET_Pods
 #import "JGSourceBasePods-Swift.h"
 #endif
+#ifdef JGS_DEMO_TARGET_SPM
+#import "JGSourceBaseSPM-Swift.h"
+#endif
 @import JGSourceBase;
 #import <Masonry/Masonry.h>
 #import "JGSDAlertController.h"
@@ -83,6 +86,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    JGSWeakSelf
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        JGSStrongSelf
+        [self networkReachabilityStatusTick];
+    });
+    
     [JGSReachability.shared/*sharedInstance*/ addObserver:self statusChangeBlock:^(JGSReachabilityStatus status) {
         JGSLog(@"Network status changed: %@, %@", @(status), JGSReachability.shared/*sharedInstance*/.reachabilityStatusString)
     }];
@@ -109,6 +118,16 @@
 }
 
 // MARK: - Action
+- (void)networkReachabilityStatusTick {
+    JGSLog("Network status tick: %@", JGSReachability.shared/*sharedInstance()*/.reachabilityStatusString)
+    
+    JGSWeakSelf
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        JGSStrongSelf
+        [self networkReachabilityStatusTick];
+    });
+}
+
 - (void)networkReachabilityStatusChanged:(JGSReachability *)sender {
     JGSReachability *reachability = sender ?: JGSReachability.shared/*sharedInstance*/;
     JGSLog(@"Network status changed: %@, %@, %@", sender, @(reachability.reachabilityStatus), reachability.reachabilityStatusString)

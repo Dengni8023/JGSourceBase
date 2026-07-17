@@ -134,6 +134,8 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
         
         showConsoleLog("<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque())> viewWillAppear at:", Date())
         
+        // JGSLogFunction.enableLog(!JGSLogFunction.isLogEnabled)
+        
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .blue
         if #available(iOS 15.0, *) {
@@ -161,6 +163,9 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
         DispatchQueue.jg_once(jg_uuid) { [weak self] in
             JGSLog("jg_once:", self?.jg_uuid)
         }
+        
+        // 刷新数据
+        tableView.reloadData()
     }
     
     // MARK: - UI
@@ -183,6 +188,15 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
             make.left.bottom.right.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.25)
         }
+        
+        let btn = UIButton(type: .close)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 6, bottom: 6, right: 8)
+        btn.addTarget(self, action: #selector(clearLog), for: .touchUpInside)
+        view.addSubview(btn)
+        btn.snp.makeConstraints { make in
+            make.top.right.equalTo(logTextView)
+            make.width.height.equalTo(28)
+        }
     }
 
     /*
@@ -195,6 +209,11 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
     }
     */
 
+    // MARK: - Action
+    @objc private
+    func clearLog(_ sender: Any?) {
+        logTextView.text = nil
+    }
 }
 
 // MARK: - Console
@@ -221,12 +240,12 @@ extension JGSDViewController {
             
             // 页面日志展示框日志
             let log = "\(fileFuncLine) \(message)"
-            if var text = logTextView.text {
-                text.append("\n\(log)")
-                logTextView.text = text
-            } else {
-                logTextView.text = log
+            var lines = (logTextView.text ?? "").components(separatedBy: "\n")
+            if lines.count > 7 {
+                lines.removeFirst(lines.count - 7)
             }
+            lines.append(log)
+            logTextView.text = lines.joined(separator: "\n")
             
             // 滚动到最新日志
             logTextView.scrollRangeToVisible(NSMakeRange(logTextView.text.count - 1, 1))

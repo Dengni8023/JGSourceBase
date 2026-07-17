@@ -1,0 +1,17 @@
+//
+//  JGSourceBaseSPM.xcconfig
+//  JGSourceBaseSPM
+//
+//  Created by Mei JiGao on 2026/6/26.
+//  Copyright © 2026 ByMountains. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+#include "../../../JGSourceBase/JGSourceBase/JGSourceBase.xcconfig"
+
+JGSDResourceDate = 20260717.1029
+JGSDBuildDate = 2026-07-17 12:43:27
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) JGS_DEMO_TARGET_SPM

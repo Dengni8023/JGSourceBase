@@ -46,6 +46,9 @@ class ViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(8)) { [weak self] in
+            self?.networkReachabilityStatusTick()
+        }
         DispatchQueue.jg_once("JGSReachability_startMonitor") {
              JGSReachability.shared/*sharedInstance()*/.startMonitor()
         }
@@ -72,7 +75,20 @@ class ViewController: UISplitViewController {
         JGSLog(JGSBaseUtils.version);
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
     // MARK: - Action
+    func networkReachabilityStatusTick() {
+        JGSDShowConsoleLog(primaryCtr, "Network status tick:", JGSReachability.shared/*sharedInstance()*/.reachabilityStatusString)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(8)) { [weak self] in
+            self?.networkReachabilityStatusTick()
+        }
+    }
+    
     @objc private
     func networkReachabilityStatusChanged(_ sender: JGSReachability? = nil) {
         let reachability = sender ?? JGSReachability.shared/*sharedInstance()*/

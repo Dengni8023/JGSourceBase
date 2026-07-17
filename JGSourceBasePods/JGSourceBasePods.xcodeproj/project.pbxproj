@@ -94,6 +94,7 @@
 			buildConfigurationList = D4568288300933D400E78B24 /* Build configuration list for PBXNativeTarget "JGSourceBasePods" */;
 			buildPhases = (
 				3203513D9568F74940502621 /* [CP] Check Pods Manifest.lock */,
+				D4568A753009CCD900E78B24 /* ShellScript */,
 				D4568271300933D200E78B24 /* Sources */,
 				D4568272300933D200E78B24 /* Frameworks */,
 				D4568273300933D200E78B24 /* Resources */,
@@ -188,18 +189,31 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBasePods/Pods-JGSourceBasePods-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBasePods/Pods-JGSourceBasePods-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JGSourceBasePods/Pods-JGSourceBasePods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D4568A753009CCD900E78B24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"${TARGET_NAME}修改配置文件\"\nShell_Path=\"${PROJECT_DIR}/../JGSScripts/JGSDemoBeforeCompile.sh\"\nchmod +x ${Shell_Path} # sh执行权限\n${Shell_Path} # 执行sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

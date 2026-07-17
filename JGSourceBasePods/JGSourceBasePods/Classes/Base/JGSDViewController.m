@@ -13,6 +13,9 @@
 #ifdef JGS_DEMO_TARGET_Pods
 #import "JGSourceBasePods-Swift.h"
 #endif
+#ifdef JGS_DEMO_TARGET_SPM
+#import "JGSourceBaseSPM-Swift.h"
+#endif
 
 @interface JGSDViewController ()
 
@@ -158,12 +161,15 @@
     
     JGSDShowConsoleLog(self, @"<%@: %p> viewWillAppear at: %@", NSStringFromClass([self class]), self, [NSDate date]);
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [JGSLogFunction enableLog:!JGSLogFunction.isLogEnabled];
-#pragma clang diagnostic pop
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+//    [JGSLogFunction enableLog:!JGSLogFunction.isLogEnabled];
+//#pragma clang diagnostic pop
 //    [JGSLogger enableLogWithMode:!JGSLogger.enableDebug level:JGSLogger.level useNSLog:JGSLogger.useNSLog];
 //    [JGSLogger enableLogWithMode:!JGSLogger.enableDebug level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
+    
+    // 刷新数据
+    [self.tableView reloadData];
 }
 
 // MARK: - UI
@@ -196,7 +202,13 @@
     NSString *message = [[NSString alloc] initWithFormat:format arguments:varList];
     va_end(varList);
     
-    self.logTextView.text = [self.logTextView.text stringByAppendingFormat:@"\n%@", message];
+    NSMutableArray<NSString *> *lines = [self.logTextView.text ?: @"" componentsSeparatedByString:@"\n"].mutableCopy;
+    if (lines.count > 7) {
+        [lines subarrayWithRange:NSMakeRange(lines.count - 7, 7)];
+    }
+    [lines addObject:message];
+    
+    self.logTextView.text = [lines componentsJoinedByString:@"\n"];
     [self.logTextView scrollRangeToVisible:NSMakeRange(self.logTextView.text.length - 1, 1)];
 }
 

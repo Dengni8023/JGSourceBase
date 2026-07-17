@@ -47,23 +47,27 @@ JGSDBuildDate: ${BuildDate}
 sed -i '' 's/^\(JGSDResourceDate = \).*/\1'"${ResourceDate}"'/'  "${ConfigFile}"
 sed -i '' 's/^\(JGSDBuildDate = \).*/\1'"${BuildDate}"'/'  "${ConfigFile}"
 
-# 复制文件到Pods、SPM工程
-SrcDir="${PROJECT_DIR}/${TARGET_NAME}"
-PodsDstDir="${PROJECT_DIR}/../JGSourceBasePods/JGSourceBasePods"
-CopyFiles=(
-    "${SrcDir}/Classes"
-    "${SrcDir}/Resources"
-    "${SrcDir}/AppDelegate.swift"
-    "${SrcDir}/Assets.xcassets"
-    "${SrcDir}/Demo-Bridging-Header.h"
-    "${SrcDir}/Info.plist"
-    "${SrcDir}/OCViewController.h"
-    "${SrcDir}/OCViewController.m"
-    "${SrcDir}/SceneDelegate.swift"
-    "${SrcDir}/ViewController.swift"
-)
-for file in "${CopyFiles[@]}"
-do
-    echo "file: ${file}"
-    cp -fr "${file}" "${PodsDstDir}"
-done
+if [[ ${TARGET_NAME} == "JGSourceBaseDemo" ]]; then
+    # 复制文件到Pods、SPM工程
+    SrcDir="${PROJECT_DIR}/${TARGET_NAME}"
+    PodsDstDir="${PROJECT_DIR}/../JGSourceBasePods/JGSourceBasePods"
+    SPMDstDir="${PROJECT_DIR}/../JGSourceBaseSPM/JGSourceBaseSPM"
+    CopyFiles=(
+        "${SrcDir}/Classes"
+        "${SrcDir}/Resources"
+        "${SrcDir}/AppDelegate.swift"
+        "${SrcDir}/Assets.xcassets"
+        "${SrcDir}/Demo-Bridging-Header.h"
+        "${SrcDir}/Info.plist"
+        "${SrcDir}/OCViewController.h"
+        "${SrcDir}/OCViewController.m"
+        "${SrcDir}/SceneDelegate.swift"
+        "${SrcDir}/ViewController.swift"
+    )
+    for file in "${CopyFiles[@]}"
+    do
+        echo "file: ${file}"
+        cp -fr "${file}" "${PodsDstDir}"
+        cp -fr "${file}" "${SPMDstDir}"
+    done
+fi

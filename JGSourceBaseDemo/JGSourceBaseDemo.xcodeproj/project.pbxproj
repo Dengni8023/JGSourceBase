@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		124C9D38C38DCDE6F2F5179E /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A179B3F42C71020B3DA338 /* Pods_JGSourceBaseDemo.framework */; };
 		D4AF962E2FE1362800570019 /* JGSourceBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AF962C2FE135D200570019 /* JGSourceBase.framework */; };
 		D4AF962F2FE1362800570019 /* JGSourceBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AF962C2FE135D200570019 /* JGSourceBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4C5B2882FE2E34600FBE309 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4C5B2872FE2E34600FBE309 /* SnapKit */; };
+		F8E7733E00B6679FC74AFB75 /* Pods_JGSourceBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A179B3F42C71020B3DA338 /* Pods_JGSourceBaseDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,7 +63,7 @@
 			files = (
 				D4AF962E2FE1362800570019 /* JGSourceBase.framework in Frameworks */,
 				D4C5B2882FE2E34600FBE309 /* SnapKit in Frameworks */,
-				124C9D38C38DCDE6F2F5179E /* Pods_JGSourceBaseDemo.framework in Frameworks */,
+				F8E7733E00B6679FC74AFB75 /* Pods_JGSourceBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

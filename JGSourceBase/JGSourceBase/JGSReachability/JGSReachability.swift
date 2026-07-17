@@ -64,13 +64,24 @@ class JGSReachability: NSObject, @unchecked Sendable {
     
     private let lock = NSRecursiveLock()
     
+    /// 初始化网络可达性管理器
+    /// 创建 IPv6 回环地址（::1）对应的 SCNetworkReachability 对象，用于监控默认路由的网络状态。
+    /// 使用 IPv6 地址而非 IPv4 的原因：
+    /// 1. IPv6 是未来网络协议标准，iOS/macOS 优先支持
+    /// 2. 空的 IPv6 地址（全零）可以同时监控 IPv4 和 IPv6 网络
+    /// 3. SCNetworkReachabilityCreateWithAddress 使用全零地址时，会监控整个网络栈的可达性
     public override init() {
         super.init()
         
+        // 创建 IPv6 套接字地址结构体，所有字段初始化为 0
         var address = sockaddr_in6()
+        // 设置地址长度字段，必须等于 sockaddr_in6 结构体的实际大小
         address.sin6_len = UInt8(MemoryLayout<sockaddr_in6>.size)
+        // 设置地址族为 IPv6（AF_INET6）
         address.sin6_family = sa_family_t(AF_INET6)
         
+        // 将 sockaddr_in6 指针强制转换为通用的 sockaddr 指针，因为
+        // SCNetworkReachabilityCreateWithAddress 接受的是 sockaddr 类型参数
         let reachability = withUnsafePointer(to: &address) { ptr in
             ptr.withMemoryRebound(to: sockaddr.self, capacity: 1) { addr in
                 SCNetworkReachabilityCreateWithAddress(nil, addr)
@@ -110,30 +121,60 @@ class JGSReachability: NSObject, @unchecked Sendable {
             return
         }
         
+        // 将 self 转换为不透明指针，传递给 C 回调函数。
+        // 使用 passUnretained 而非 passRetained，因为 SCNetworkReachability 不会持有这个对象，
+        // 而是通过 context 中的 retain/release 函数来管理生命周期
         let selfPtr = Unmanaged.passUnretained(self).toOpaque()
         
+        // SCNetworkReachabilityContext 是传递给 C 回调的上下文信息，包含：
+        // - version: 版本号，必须为 0
+        // - info: 自定义数据指针，这里是 self 的不透明指针
+        // - retain: 当 context 需要被保留时调用的函数
+        // - release: 当 context 需要被释放时调用的函数
+        // - copyDescription: 可选的描述复制函数
         var context = SCNetworkReachabilityContext(
             version: 0,
             info: selfPtr,
             retain: { info in
+                // retain 回调：将 info 指针还原为 AnyObject，然后 retain 它
+                // 返回值是新的保留后的指针，SCNetworkReachability 会使用这个指针
                 let obj = Unmanaged<AnyObject>.fromOpaque(info).takeUnretainedValue()
                 return UnsafeRawPointer(Unmanaged.passRetained(obj).toOpaque())
             },
             release: { info in
+                // release 回调：将 info 指针还原为 AnyObject，然后 release 它
                 Unmanaged<AnyObject>.fromOpaque(info).release()
             },
             copyDescription: nil
         )
         
+        // 网络状态变化回调函数，当 SCNetworkReachability 检测到网络状态变化时触发
+        // - target: 保留的上下文指针（通过 retain 函数保留的）
+        // - flags: 最新的网络可达性标志位
+        // - info: 原始的上下文指针（未保留）
         let callback: SCNetworkReachabilityCallBack = { target, flags, info in
             guard let info = info else { return }
+            // 将 info 指针还原为 JGSReachability 实例
             let reachability = Unmanaged<JGSReachability>.fromOpaque(info).takeUnretainedValue()
+            // 在主线程通知状态变化，确保 UI 更新和回调在主线程执行
             DispatchQueue.main.async {
                 reachability.notifyReachabilityStatusChange()
             }
+#if targetEnvironment(simulator)
+            // 模拟器特殊处理：当 SCNetworkReachability 报告不可达时，
+            // 延迟 2 秒再次检查，因为模拟器的网络状态变化通知可能有延迟
+            // 这是一个 workaround，用于处理模拟器中网络状态变化的时序问题
+            if !flags.contains(.reachable) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    reachability.notifyReachabilityStatusChange()
+                }
+            }
+#endif
         }
         
+        // 设置回调函数和上下文
         if SCNetworkReachabilitySetCallback(reachabilityRef, callback, &context) {
+            // 将 SCNetworkReachability 对象注册到主 RunLoop，使其开始监听网络状态变化
             runningSchedule = SCNetworkReachabilityScheduleWithRunLoop(
                 reachabilityRef,
                 CFRunLoopGetMain(),
@@ -269,134 +310,349 @@ class JGSReachability: NSObject, @unchecked Sendable {
     // MARK: - Private
     
 #if targetEnvironment(simulator)
-    /// 网络接口标志常量
-    /// IFF_WIRELESS 在 iOS SDK 中未定义，此处手动定义用于区分无线接口
-    private let IFF_WIRELESS = 0x8000
-    
-    /// 检测当前是否通过有线网络连接
-    /// 在 macOS 多网卡环境下，`en*` 接口可能是以太网也可能是 WiFi，无法通过接口名称区分。
-    /// 解决方案：使用 IFF_WIRELESS 标志区分 WiFi 和有线接口。
+    /// 获取所有活跃的以太网接口（en*）名称列表
+    /// 通过 getifaddrs 系统调用遍历系统中的所有网络接口，筛选出符合条件的以太网接口：
+    /// 1. 接口名称以 "en" 开头（以太网接口命名约定）
+    /// 2. 接口处于活跃状态（UP 且 RUNNING）
+    /// 3. 拥有有效的 IPv4 地址（非回环地址、非链路本地地址）
+    /// 4. 拥有有效的子网掩码
     ///
-    /// 检测逻辑：
-    /// 1. 通过 getifaddrs 枚举所有网络接口
-    /// 2. 检查接口是否启用（IFF_UP）并运行（IFF_RUNNING）
-    /// 3. 排除特殊接口（回环、AirDrop、点对点、VPN）
-    /// 4. 检查接口名称前缀（en*、bridge*）
-    /// 5. 使用 IFF_WIRELESS 标志判断是否为 WiFi 接口
-    /// 6. 验证 IP 地址和子网掩码是否有效
+    /// 注意：一个网络接口可能有多个地址条目（IPv4、IPv6、不同的地址类型），
+    /// 使用 seenInterfaces Set 去重，确保每个接口只添加一次
     ///
-    /// @return YES 表示当前通过有线网络连接
-    private func isWiredNetworkActive() -> Bool {
+    /// @return 活跃的以太网接口名称数组，如 ["en0", "en1"]
+    private func getActiveENInterfaces() -> [String] {
+        // ifaddrs 是一个链表结构，每个节点代表一个网络接口的地址信息
         var interfaces: UnsafeMutablePointer<ifaddrs>?
+        // 使用 defer 确保在函数返回前释放 ifaddrs 链表资源
         defer {
             if interfaces != nil {
                 freeifaddrs(interfaces)
             }
         }
         
-        // 调用失败直接返回 NO
+        // 调用 getifaddrs 获取系统中所有网络接口的信息
+        // 返回 0 表示成功，interfaces 指向链表头节点
         guard getifaddrs(&interfaces) == 0, let firstInterface = interfaces else {
+            return []
+        }
+        
+        var activeInterfaces = [String]()
+        // seenInterfaces 用于去重，避免同一个接口多次添加
+        var seenInterfaces = Set<String>()
+        
+        var currentInterface = firstInterface
+        // 遍历 ifaddrs 链表，直到遇到 nil（链表结束）
+        while true {
+            let interface = currentInterface.pointee
+            
+            // 过滤条件1：必须有地址信息，且地址族为 IPv4（AF_INET）
+            // 忽略 IPv6 地址和其他类型的地址
+            guard let addr = interface.ifa_addr, addr.pointee.sa_family == UInt8(AF_INET) else {
+                guard let nextInterface = interface.ifa_next else { break }
+                currentInterface = nextInterface
+                continue
+            }
+            
+            // 获取接口名称，如 "en0"、"lo0" 等
+            // 使用 String(decoding:as:) 替代 cString，避免编译器警告
+            let ifname = String(decoding: interface.ifa_name.withMemoryRebound(to: UInt8.self, capacity: Int(strlen(interface.ifa_name))) {
+                UnsafeBufferPointer(start: $0, count: Int(strlen(interface.ifa_name)))
+            }, as: UTF8.self)
+            
+            // 过滤条件2：跳过已经处理过的接口（去重）
+            if seenInterfaces.contains(ifname) {
+                guard let nextInterface = interface.ifa_next else { break }
+                currentInterface = nextInterface
+                continue
+            }
+            
+            // 过滤条件3：接口名称必须以 "en" 开头（以太网接口），
+            // 并且通过 isInterfaceActive 检查接口是否真正活跃
+            if ifname.hasPrefix("en"), isInterfaceActive(currentInterface) {
+                activeInterfaces.append(ifname)
+                seenInterfaces.insert(ifname)
+            }
+            
+            // 移动到链表的下一个节点
+            guard let nextInterface = interface.ifa_next else { break }
+            currentInterface = nextInterface
+        }
+        
+        return activeInterfaces
+    }
+    
+    /// 判断网络接口是否处于活跃状态
+    /// 一个接口被认为是活跃的，需要同时满足以下条件：
+    /// 1. 接口标志位包含 IFF_UP（接口已启用）和 IFF_RUNNING（接口正在运行）
+    /// 2. 拥有有效的 IPv4 地址（非回环地址 127.0.0.1，非链路本地地址 169.254.x.x）
+    /// 3. 拥有有效的子网掩码（非全零）
+    ///
+    /// @param interfacePtr ifaddrs 链表节点指针
+    /// @return YES 表示接口活跃且可用，NO 表示接口不活跃或不可用
+    private func isInterfaceActive(_ interfacePtr: UnsafeMutablePointer<ifaddrs>) -> Bool {
+        let interface = interfacePtr.pointee
+        
+        // 获取接口标志位，通过位运算检查接口状态
+        let flags = interface.ifa_flags
+        // IFF_UP：接口已启用（管理员已将其启用）
+        let isUp = (flags & UInt32(IFF_UP)) != 0
+        // IFF_RUNNING：接口正在运行（有载波信号，物理连接正常）
+        let isRunning = (flags & UInt32(IFF_RUNNING)) != 0
+        
+        // 快速失败：接口未启用或未运行，直接返回 false
+        guard isUp && isRunning else {
             return false
         }
         
-        // 遍历网络接口链表
-        var currentInterface = firstInterface
-        while true {
-            let addr = currentInterface.pointee.ifa_addr
-            
-            // 仅检查 IPv4 接口（AF_INET）
-            guard let addr = addr, addr.pointee.sa_family == UInt8(AF_INET) else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            let ifname = String(cString: currentInterface.pointee.ifa_name)
-            let flags = currentInterface.pointee.ifa_flags
-            
-            // 检查接口标志：IFF_UP（接口已启用）&& IFF_RUNNING（接口已连接）
-            guard (flags & UInt32(IFF_UP)) != 0 && (flags & UInt32(IFF_RUNNING)) != 0 else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            // 排除非物理网络接口：
-            // - lo*: 回环接口
-            // - awdl*: AirDrop 接口
-            // - p2p*: 点对点连接接口
-            // - utun*: VPN 隧道接口
-            if ifname.hasPrefix("lo") ||
-                ifname.hasPrefix("awdl") ||
-                ifname.hasPrefix("p2p") ||
-                ifname.hasPrefix("utun") {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            // 有线网络接口特征：en*（以太网）、bridge*（桥接）
-            guard ifname.hasPrefix("en") || ifname.hasPrefix("bridge") else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            // 关键判断：使用 IFF_WIRELESS 标志区分 WiFi 和有线
-            // IFF_WIRELESS 标志在 net/if.h 中定义，表示无线接口
-            if (flags & UInt32(IFF_WIRELESS)) != 0 {
-                // 这是 WiFi 接口，不是有线网络
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            // 获取 IP 地址
-            var addrBuf = [CChar](repeating: 0, count: Int(INET_ADDRSTRLEN))
-            let sockaddrIn = currentInterface.pointee.ifa_addr!.withMemoryRebound(to: sockaddr_in.self, capacity: 1) { $0 }
-            inet_ntop(AF_INET, &sockaddrIn.pointee.sin_addr, &addrBuf, socklen_t(INET_ADDRSTRLEN))
-            let ipAddr = String(decoding: addrBuf[..<addrBuf.count].map({ UInt8($0) }), as: UTF8.self)
-            
-            // 排除回环地址和 APIPA 地址（169.254.x.x）
-            guard ipAddr != "127.0.0.1" && !ipAddr.hasPrefix("169.254.") else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
-            // 检查子网掩码是否有效（非全0）
-            guard let netmaskAddr = currentInterface.pointee.ifa_netmask else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
-            }
-            
+        // 将 sockaddr 指针转换为 sockaddr_in 指针，提取 IPv4 地址
+        var addrBuf = [CChar](repeating: 0, count: Int(INET_ADDRSTRLEN))
+        let sockaddrIn = interface.ifa_addr!.withMemoryRebound(to: sockaddr_in.self, capacity: 1) { $0 }
+        // 将二进制 IP 地址转换为字符串格式（如 "192.168.1.100"）
+        inet_ntop(AF_INET, &sockaddrIn.pointee.sin_addr, &addrBuf, socklen_t(INET_ADDRSTRLEN))
+        let ipAddr = String(decoding: addrBuf[..<addrBuf.count].map({ UInt8($0) }), as: UTF8.self)
+        
+        // 过滤无效 IP 地址：
+        // - 回环地址 127.0.0.1：表示本地回环接口，不是真实网络连接
+        // - 链路本地地址 169.254.x.x：DHCP 失败时自动分配的地址，无法访问外部网络
+        guard ipAddr != "127.0.0.1" && !ipAddr.hasPrefix("169.254.") else {
+            return false
+        }
+        
+        // 检查子网掩码是否有效：
+        // 如果子网掩码为全零（sin_addr.s_addr == 0），表示没有正确配置子网掩码，
+        // 这样的接口无法进行正常的网络通信
+        if let netmaskAddr = interface.ifa_netmask {
             let netmaskSockaddrIn = netmaskAddr.withMemoryRebound(to: sockaddr_in.self, capacity: 1) { $0 }
-            let netmaskValue = netmaskSockaddrIn.pointee.sin_addr.s_addr
-            guard netmaskValue != 0 else {
-                guard let nextInterface = currentInterface.pointee.ifa_next else {
-                    break
-                }
-                currentInterface = nextInterface
-                continue
+            if netmaskSockaddrIn.pointee.sin_addr.s_addr == 0 {
+                return false
             }
+        }
+        
+        // 所有检查通过，接口是活跃的
+        return true
+    }
+    
+    /// 执行系统命令并返回输出结果
+    /// 使用 POSIX 的 posix_spawn API 执行命令，相比 Swift 的 Process API 更稳定可靠，
+    /// 尤其在模拟器环境下兼容性更好。
+    ///
+    /// 执行流程：
+    /// 1. 将命令字符串按空格分割为参数数组
+    /// 2. 创建管道（pipe）用于捕获命令输出
+    /// 3. 配置 posix_spawn 的文件操作，将子进程的 stdout 重定向到管道
+    /// 4. 调用 posix_spawn 创建并执行子进程
+    /// 5. 等待子进程执行完毕（waitpid）
+    /// 6. 从管道读取命令输出数据
+    /// 7. 清理资源（关闭文件描述符、释放内存）
+    ///
+    /// @param command 命令字符串，如 "networksetup -listallhardwareports"
+    /// @return 命令执行的输出字符串，失败时返回 nil
+    private func executeCommand(_ command: String) -> String? {
+        // 将命令字符串按空格分割为参数数组
+        let args = command.components(separatedBy: " ")
+        guard let path = args.first else {
+            return nil
+        }
+        
+        // 将参数数组转换为 C 风格的 argv 数组（以 nil 结尾）
+        // strdup 复制每个字符串到堆内存，需要在 defer 中释放
+        var argv = args.map { strdup($0) }
+        argv.append(nil)
+        defer {
+            argv.forEach { if let ptr = $0 { free(ptr) } }
+        }
+        
+        // 创建管道，用于捕获子进程的标准输出
+        // pipeFD[0] 是读取端，pipeFD[1] 是写入端
+        var pipeFD: [Int32] = [0, 0]
+        guard pipe(&pipeFD) == 0 else {
+            return nil
+        }
+        
+        let stdoutRead = pipeFD[0]
+        let stdoutWrite = pipeFD[1]
+        
+        var pid: pid_t = 0
+        // posix_spawn_file_actions_t 用于配置子进程的文件描述符
+        var fileActions: posix_spawn_file_actions_t?
+        
+        // 初始化文件操作对象
+        let initResult = posix_spawn_file_actions_init(&fileActions)
+        guard initResult == 0 else {
+            close(stdoutRead)
+            close(stdoutWrite)
+            return nil
+        }
+        
+        // 在函数返回前销毁文件操作对象
+        defer {
+            posix_spawn_file_actions_destroy(&fileActions)
+        }
+        
+        // 添加文件操作：关闭子进程中的读取端文件描述符
+        // 子进程不需要读取管道，只需要写入
+        guard posix_spawn_file_actions_addclose(&fileActions, stdoutRead) == 0 else {
+            close(stdoutRead)
+            close(stdoutWrite)
+            return nil
+        }
+        
+        // 添加文件操作：将管道的写入端复制到 STDOUT_FILENO（标准输出）
+        // 这样子进程的标准输出就会写入管道
+        guard posix_spawn_file_actions_adddup2(&fileActions, stdoutWrite, STDOUT_FILENO) == 0 else {
+            close(stdoutRead)
+            close(stdoutWrite)
+            return nil
+        }
+        
+        // 添加文件操作：关闭子进程中的写入端文件描述符
+        // dup2 之后原始的写入端就不需要了
+        guard posix_spawn_file_actions_addclose(&fileActions, stdoutWrite) == 0 else {
+            close(stdoutRead)
+            close(stdoutWrite)
+            return nil
+        }
+        
+        // 调用 posix_spawn 创建并执行子进程
+        // - pid: 输出参数，返回子进程 ID
+        // - path: 可执行文件路径
+        // - fileActions: 文件操作配置
+        // - nil: 属性参数，使用默认值
+        // - argv: 命令参数数组
+        // - environ: 环境变量，继承父进程的环境变量
+        let status = posix_spawn(&pid, path, &fileActions, nil, argv, environ)
+        
+        // 父进程关闭写入端，因为已经不需要了
+        close(stdoutWrite)
+        
+        // posix_spawn 返回非零表示失败
+        if status != 0 {
+            close(stdoutRead)
+            return nil
+        }
+        
+        // 等待子进程执行完毕
+        var waitStatus: Int32 = 0
+        waitpid(pid, &waitStatus, 0)
+        
+        // 从管道读取命令输出
+        var data = [UInt8]()
+        var buffer = [UInt8](repeating: 0, count: 1024)
+        
+        while true {
+            let bytesRead = read(stdoutRead, &buffer, buffer.count)
+            if bytesRead <= 0 {
+                break
+            }
+            data.append(contentsOf: buffer[0..<Int(bytesRead)])
+        }
+        
+        // 关闭读取端
+        close(stdoutRead)
+        
+        // 将二进制数据转换为字符串
+        return String(bytes: data, encoding: .utf8)
+    }
+    
+    private func isWiFiInterface(_ ifname: String) -> Bool {
+        let wifiInterfaces = getWiFiInterfaceNames()
+        // JGSDebugLog("WiFi interfaces: \(wifiInterfaces)")
+        return wifiInterfaces.contains(ifname)
+    }
+    
+    /// 获取 WiFi 接口名称集合
+    /// 通过执行 `networksetup -listallhardwareports` 命令获取系统中所有硬件端口信息，
+    /// 解析输出内容，找到类型为 "Wi-Fi" 的端口对应的设备名称（如 "en0"）。
+    ///
+    /// 命令输出格式示例：
+    /// ```
+    /// Hardware Port: Wi-Fi
+    /// Device: en0
+    /// Ethernet Address: aa:bb:cc:dd:ee:ff
+    ///
+    /// Hardware Port: Ethernet
+    /// Device: en1
+    /// Ethernet Address: 11:22:33:44:55:66
+    /// ```
+    ///
+    /// 解析逻辑：
+    /// 1. 遍历每一行，记录当前端口类型（Hardware Port）
+    /// 2. 当遇到 Device 行时，检查当前端口类型是否为 "Wi-Fi"
+    /// 3. 如果是，提取设备名称并添加到结果集合中
+    ///
+    /// 容错处理：
+    /// - 命令执行失败时，默认返回 ["en0"]（macOS 上 WiFi 接口通常是 en0）
+    /// - 解析结果为空时，同样默认返回 ["en0"]
+    ///
+    /// @return WiFi 接口名称集合，如 ["en0"]
+    private func getWiFiInterfaceNames() -> Set<String> {
+        var names = Set<String>()
+        
+        // 执行 networksetup 命令获取硬件端口信息
+        guard let output = executeCommand("networksetup -listallhardwareports") else {
+            // 命令执行失败，返回默认值 en0
+            names.insert("en0")
+            return names
+        }
+        
+        // 用于记录当前正在处理的端口类型
+        var currentPortType: String?
+        
+        // 按行分割命令输出
+        for line in output.components(separatedBy: "\n") {
+            let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // 满足所有条件：有线接口、已启用且已连接、无 IFF_WIRELESS 标志、有有效网络配置
-            return true
+            // 匹配 "Hardware Port: xxx" 行，提取端口类型
+            if trimmedLine.hasPrefix("Hardware Port:") {
+                let portType = trimmedLine.replacingOccurrences(of: "Hardware Port: ", with: "")
+                currentPortType = portType
+            }
+            // 匹配 "Device: xxx" 行，提取设备名称
+            else if trimmedLine.hasPrefix("Device:") {
+                let device = trimmedLine.replacingOccurrences(of: "Device: ", with: "")
+                // 如果当前端口类型是 Wi-Fi，将设备名称添加到结果中
+                if let portType = currentPortType, portType == "Wi-Fi" {
+                    names.insert(device)
+                }
+            }
+        }
+        
+        // 如果没有找到 WiFi 接口，返回默认值 en0
+        if names.isEmpty {
+            names.insert("en0")
+        }
+        
+        return names
+    }
+    
+    /// 检测当前是否通过有线网络连接
+    /// 在 macOS 多网卡环境下，`en*` 接口可能是以太网也可能是 WiFi，无法通过接口名称区分。
+    /// 解决方案：获取所有活跃的 en* 接口，通过接口类型判断 WiFi 接口。
+    /// 如果只有一个活跃的 en* 接口且不是 WiFi，则认为是有线网络。
+    /// 如果有多个活跃的 en* 接口，排除 WiFi 接口后检查是否有有线接口。
+    ///
+    /// @return YES 表示当前通过有线网络连接
+    private func isWiredNetworkActive(_ activeInterfaces: [String]? = nil) -> Bool {
+        let interfaces = activeInterfaces ?? getActiveENInterfaces()
+        // JGSDebugLog("Active en* interfaces: \(interfaces)")
+        
+        if interfaces.count == 0 {
+            return false
+        }
+        
+        if interfaces.count == 1 {
+            let ifname = interfaces[0]
+            let isWiFi = isWiFiInterface(ifname)
+            // JGSDebugLog("Single interface: \(ifname), isWiFi: \(isWiFi)")
+            return !isWiFi
+        }
+        
+        for ifname in interfaces {
+            if !isWiFiInterface(ifname) {
+                // JGSDebugLog("Found wired interface: \(ifname)")
+                return true
+            }
         }
         
         return false
@@ -414,10 +670,8 @@ class JGSReachability: NSObject, @unchecked Sendable {
     /// @return 蜂窝网络状态枚举值（WWAN/GPRS/2G/3G/4G/5G）
     private func wwanNetworkStatus() -> JGSReachabilityStatus {
         var wwanInfoDict: [String: JGSReachabilityStatus] = [
-            // 2G 网络类型
             CTRadioAccessTechnologyGPRS: .WWANGPRS,
             CTRadioAccessTechnologyEdge: .WWAN2G,
-            // 3G 网络类型
             CTRadioAccessTechnologyWCDMA: .WWAN3G,
             CTRadioAccessTechnologyHSDPA: .WWAN3G,
             CTRadioAccessTechnologyHSUPA: .WWAN3G,
@@ -426,27 +680,21 @@ class JGSReachability: NSObject, @unchecked Sendable {
             CTRadioAccessTechnologyCDMAEVDORevA: .WWAN3G,
             CTRadioAccessTechnologyCDMAEVDORevB: .WWAN3G,
             CTRadioAccessTechnologyeHRPD: .WWAN3G,
-            // 4G 网络类型
             CTRadioAccessTechnologyLTE: .WWAN4G,
         ]
         
-        // iOS 14.1 及以上版本支持 5G 网络类型定义
         if #available(iOS 14.1, *) {
             wwanInfoDict[CTRadioAccessTechnologyNRNSA] = .WWAN5G
             wwanInfoDict[CTRadioAccessTechnologyNR] = .WWAN5G
         }
         
-        // 默认返回未知蜂窝网络类型
-        var status: JGSReachabilityStatus = .WWAN
-        // 创建 CoreTelephony 网络信息对象，获取当前无线接入技术
         let info = CTTelephonyNetworkInfo()
-        info.serviceCurrentRadioAccessTechnology?.forEach({ (key: String, value: String) in
-            if let networkStatus = wwanInfoDict[value] {
-                status = networkStatus
-                return
+        for (_, accessTechnology) in info.serviceCurrentRadioAccessTechnology ?? [:] {
+            if let networkStatus = wwanInfoDict[accessTechnology] {
+                return networkStatus
             }
-        })
-        return status
+        }
+        return .WWAN
     }
     
     /// 根据网络可达性标志位判断网络类型
@@ -461,11 +709,14 @@ class JGSReachability: NSObject, @unchecked Sendable {
         }
         
 #if targetEnvironment(simulator)
-        // 模拟器环境下，通过枚举网络接口进一步区分有线和 WiFi
-        // 在 macOS/iOS 模拟器环境下，有线网络接口通常以 en/bridge 开头
-        if isWiredNetworkActive() {
-            return .Wired
+        let activeInterfaces = getActiveENInterfaces()
+        // JGSDebugLog("networkType: flags reachable, active interfaces count: \(activeInterfaces.count)")
+        
+        if activeInterfaces.isEmpty {
+            return .unreachable
         }
+        
+        return isWiredNetworkActive(activeInterfaces) ? .Wired : .WiFi
 #endif
         
         // 真机上非蜂窝网络即为 WiFi
@@ -495,8 +746,6 @@ class JGSReachability: NSObject, @unchecked Sendable {
     ///
     /// @return 当前网络连接状态枚举值（Unreachable/WiFi/WWAN/Wired）
     @objc public var reachabilityStatus: JGSReachabilityStatus {
-        // 获取网络可达性标志位，flags 代表对默认路由地址的可连接性，
-        // 包括是否需要网络连接、是否需要用户干预等信息
         guard let reachabilityRef = reachabilityRef else {
             return .unknown
         }
@@ -506,37 +755,67 @@ class JGSReachability: NSObject, @unchecked Sendable {
             SCNetworkReachabilityGetFlags(reachabilityRef, ptr)
         }
         
-        // 获取标志位失败，返回未知状态
         guard didRetrieveFlags else {
             return .unknown
         }
         
-        // 判断网络是否可达：标志位包含 .reachable 表示目标地址在当前网络配置下可达
-        let isReachable = flags.contains(.reachable)
-        if !isReachable {
+        return status(from: flags)
+    }
+    
+    /// 根据网络可达性标志位解析当前网络状态
+    /// 这是网络状态判断的核心逻辑，按照以下优先级顺序判断：
+    ///
+    /// 1. **网络不可达**：flags 不包含 .reachable
+    ///    - 模拟器环境下有特殊处理：即使 SCNetworkReachability 报告不可达，
+    ///      仍通过枚举网络接口来判断实际网络状态（避免模拟器误报）
+    ///
+    /// 2. **网络可达且无需额外连接**：flags 不包含 .connectionRequired
+    ///    - 直接判断网络类型（WiFi/WWAN/Wired）
+    ///
+    /// 3. **网络可达但需要额外连接**：flags 包含 .connectionRequired
+    ///    - 检查是否可以自动连接（.connectionOnDemand 或 .connectionOnTraffic）
+    ///    - 检查是否需要用户干预（.interventionRequired）
+    ///    - 如果可以自动连接且无需用户干预，则判断网络类型
+    ///    - 否则视为不可达
+    ///
+    /// @param flags SCNetworkReachabilityFlags 标志位集合
+    /// @return 网络状态枚举值
+    private func status(from flags: SCNetworkReachabilityFlags) -> JGSReachabilityStatus {
+        // 第一步：判断网络是否可达
+        guard flags.contains(.reachable) else {
+#if targetEnvironment(simulator)
+            // 模拟器特殊处理：SCNetworkReachability 可能在网络切换时误报不可达，
+            // 通过枚举实际网络接口来确认真实的网络状态
+            let activeInterfaces = getActiveENInterfaces()
+            if !activeInterfaces.isEmpty {
+                return isWiredNetworkActive(activeInterfaces) ? .Wired : .WiFi
+            }
+#endif
             return .unreachable
         }
         
-        // 判断是否需要主动建立连接：包含 .connectionRequired 表示需要额外的连接过程
-        // 例如 VPN、拨号网络等需要手动或自动建立连接的场景
-        let needsConnection = flags.contains(.connectionRequired)
-        if !needsConnection {
+        // 第二步：判断是否需要额外连接才能访问目标
+        // .connectionRequired 表示需要先建立连接（如 VPN、拨号等）
+        guard flags.contains(.connectionRequired) else {
             // 无需额外连接，直接判断网络类型
             return networkType(for: flags)
         }
         
-        // 判断是否可以自动建立连接，无需用户干预：
-        // - .connectionOnDemand 或 .connectionOnTraffic 表示系统可自动建立连接
-        // - 且没有设置 .interventionRequired（不需要用户手动配置）
+        // 第三步：如果需要额外连接，检查是否可以自动连接
+        // .connectionOnDemand：系统会在需要时自动建立连接（通过 CFSocketStream）
+        // .connectionOnTraffic：系统会在有流量时自动建立连接
         let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        
+        // 检查是否需要用户手动干预（如输入密码、确认连接等）
+        // 如果设置了 .interventionRequired，则无法自动连接
         let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
         
-        // 需要连接但无法自动连接（需用户手动配置），判定为不可达
-        if !canConnectWithoutUserInteraction {
+        guard canConnectWithoutUserInteraction else {
+            // 需要用户干预才能连接，视为不可达
             return .unreachable
         }
         
-        // 可自动连接，判断具体网络类型
+        // 可以自动连接，判断具体网络类型
         return networkType(for: flags)
     }
     
@@ -557,18 +836,9 @@ class JGSReachability: NSObject, @unchecked Sendable {
     /// @return YES 表示当前通过任意蜂窝移动网络连接
     @objc public var reachableViaWWAN: Bool {
         switch reachabilityStatus {
-        case .unknown,
-             .unreachable,
-             .WiFi:
-            return false
-        case .WWAN,
-             .WWANGPRS,
-             .WWAN2G,
-             .WWAN3G,
-             .WWAN4G,
-             .WWAN5G:
+        case .WWAN, .WWANGPRS, .WWAN2G, .WWAN3G, .WWAN4G, .WWAN5G:
             return true
-        case .Wired:
+        default:
             return false
         }
     }
