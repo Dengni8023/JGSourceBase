@@ -132,7 +132,10 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showConsoleLog()
+        showConsoleLog("<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque())> viewWillAppear at:", Date())
+        
+        JGSLogFunction.enableLog(!JGSLogFunction.isLogEnabled)
+        
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .blue
         if #available(iOS 15.0, *) {
@@ -160,6 +163,9 @@ class JGSDViewController: JGSDSwiftViewController<UIViewController>, JGDispatchQ
         DispatchQueue.jg_once(jg_uuid) { [weak self] in
             JGSLog("jg_once:", self?.jg_uuid)
         }
+        
+        // 刷新数据
+        tableView.reloadData()
     }
     
     // MARK: - UI

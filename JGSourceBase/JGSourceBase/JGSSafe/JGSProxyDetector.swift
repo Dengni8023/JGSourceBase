@@ -9,7 +9,7 @@
 import CFNetwork
 
 public
-struct JGSProxyOptions: OptionSet {
+struct JGSProxyOptions: OptionSet, @unchecked Sendable {
     public let rawValue: Int
     public init(rawValue: Int) {
         self.rawValue = rawValue
@@ -27,7 +27,7 @@ struct JGSProxyOptions: OptionSet {
     public static var vpn: JGSProxyOptions { JGSProxyOptions(rawValue: 1 << 4) }
 }
 
-public
+public final
 class JGSProxyDetector: JGSSwiftClass<NSObject> {
     
     /// 系统层VPN、网络代理开启状态判断，无法针对特定域名判断

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objcMembers public
+@objcMembers public final
 class JGSFileUtils: NSObject {
 
     // MARK: - MIMEType

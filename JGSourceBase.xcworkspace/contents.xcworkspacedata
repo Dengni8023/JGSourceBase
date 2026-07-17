@@ -21,6 +21,9 @@
       location = "group:JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:JGSourceBasePods/JGSourceBasePods.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

@@ -35,6 +35,19 @@ target "JGSourceBaseDemo" do
   project "JGSourceBaseDemo/JGSourceBaseDemo.xcodeproj"
 end
 
+# JGSourceBasePods
+target "JGSourceBasePods" do
+  
+  pod 'JGSourceBase', :path => '.'
+  # pod 'Masonry', '~> 1.1.0' # 该发布版本 mas_safeAreaLayoutGuide 有bug导致多条约束崩溃
+  pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804' # https://github.com/cloudkite/Masonry.git
+  
+  pod 'SnapKit', '~> 5.7.1' # https://github.com/SnapKit/SnapKit
+  
+  # project
+  project "JGSourceBasePods/JGSourceBasePods.xcodeproj"
+end
+
 # Hooks: post_install 在生成的 Pods project 写入硬盘前做最后的改动
 post_install do |installer|
   puts ""
@@ -47,19 +60,21 @@ post_install do |installer|
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 13.0
       end
 
-      if target.name.to_s == "Pods-JGSourceBaseDemo"
-        # puts "#{target.name}: #{config.base_configuration_reference.real_path}"
-        # 获取当前配置对应的 xcconfig 文件路径
-        xcconfig_path = config.base_configuration_reference.real_path
-        xcconfig = File.read(xcconfig_path)
-        # 配置内容追加
-        [
-          "#include \"../../../JGSourceBaseDemo/JGSourceBaseDemo/Target.xcconfig/JGSourceBaseDemo.#{config.name.downcase}.xcconfig\"",
-        ].each do |additional|
-          # 检查是否已经包含，避免重复
-          unless xcconfig.include?(additional.strip)
-            File.open(xcconfig_path, 'a') do |file|
-              file.puts additional
+      ["JGSourceBaseDemo", "JGSourceBasePods"].each do |ownerT|
+        if target.name.to_s == "Pods-#{ownerT}"
+          # puts "#{target.name}: #{config.base_configuration_reference.real_path}"
+          # 获取当前配置对应的 xcconfig 文件路径
+          xcconfig_path = config.base_configuration_reference.real_path
+          xcconfig = File.read(xcconfig_path)
+          # 配置内容追加
+          [
+            "#include \"../../../#{ownerT}/#{ownerT}/Target.xcconfig/#{ownerT}.#{config.name.downcase}.xcconfig\"",
+          ].each do |additional|
+            # 检查是否已经包含，避免重复
+            unless xcconfig.include?(additional.strip)
+              File.open(xcconfig_path, 'a') do |file|
+                file.puts additional
+              end
             end
           end
         end

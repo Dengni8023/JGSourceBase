@@ -124,20 +124,3 @@ void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, JGSLogTruncating trunc
         [JGSLogger enableLogWithMode:JGSLogger.mode level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:limit truncating:val];
     });
 }
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-
-@implementation JGSLogFunction
-
-+ (void)enableLog:(BOOL)enable {
-    [JGSLogger setEnableDebug:enable];
-}
-
-+ (BOOL)isLogEnabled {
-    return [JGSLogger enableDebug];
-}
-
-@end
-
-#pragma clang diagnostic pop

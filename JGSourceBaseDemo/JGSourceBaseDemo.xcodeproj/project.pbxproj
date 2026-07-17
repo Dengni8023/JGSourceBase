@@ -13,23 +13,6 @@
 		D4C5B2882FE2E34600FBE309 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4C5B2872FE2E34600FBE309 /* SnapKit */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D42482422FE0544000C35E62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D42482232FE0543F00C35E62 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D424822A2FE0543F00C35E62;
-			remoteInfo = JGSourceBaseDemo;
-		};
-		D424824C2FE0544000C35E62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D42482232FE0543F00C35E62 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D424822A2FE0543F00C35E62;
-			remoteInfo = JGSourceBaseDemo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		D4AF96302FE1362800570019 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -49,8 +32,6 @@
 		C010A3A0929AD1CC53F81E3E /* Pods-JGSourceBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JGSourceBaseDemo.release.xcconfig"; path = "Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C2A179B3F42C71020B3DA338 /* Pods_JGSourceBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JGSourceBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D424822B2FE0543F00C35E62 /* JGSourceBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JGSourceBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D42482412FE0544000C35E62 /* JGSourceBaseDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBaseDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D424824B2FE0544000C35E62 /* JGSourceBaseDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JGSourceBaseDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AF962C2FE135D200570019 /* JGSourceBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JGSourceBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,16 +54,6 @@
 			path = JGSourceBaseDemo;
 			sourceTree = "<group>";
 		};
-		D42482442FE0544000C35E62 /* JGSourceBaseDemoTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JGSourceBaseDemoTests;
-			sourceTree = "<group>";
-		};
-		D424824E2FE0544000C35E62 /* JGSourceBaseDemoUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JGSourceBaseDemoUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,20 +64,6 @@
 				D4AF962E2FE1362800570019 /* JGSourceBase.framework in Frameworks */,
 				D4C5B2882FE2E34600FBE309 /* SnapKit in Frameworks */,
 				124C9D38C38DCDE6F2F5179E /* Pods_JGSourceBaseDemo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D424823E2FE0544000C35E62 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D42482482FE0544000C35E62 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				D424822D2FE0543F00C35E62 /* JGSourceBaseDemo */,
-				D42482442FE0544000C35E62 /* JGSourceBaseDemoTests */,
-				D424824E2FE0544000C35E62 /* JGSourceBaseDemoUITests */,
 				D4AF962B2FE135D200570019 /* Frameworks */,
 				D424822C2FE0543F00C35E62 /* Products */,
 				025455C6E26B05C5D201A603 /* Pods */,
@@ -139,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				D424822B2FE0543F00C35E62 /* JGSourceBaseDemo.app */,
-				D42482412FE0544000C35E62 /* JGSourceBaseDemoTests.xctest */,
-				D424824B2FE0544000C35E62 /* JGSourceBaseDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,48 +137,6 @@
 			productReference = D424822B2FE0543F00C35E62 /* JGSourceBaseDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D42482402FE0544000C35E62 /* JGSourceBaseDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D42482592FE0544000C35E62 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemoTests" */;
-			buildPhases = (
-				D424823D2FE0544000C35E62 /* Sources */,
-				D424823E2FE0544000C35E62 /* Frameworks */,
-				D424823F2FE0544000C35E62 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D42482432FE0544000C35E62 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D42482442FE0544000C35E62 /* JGSourceBaseDemoTests */,
-			);
-			name = JGSourceBaseDemoTests;
-			productName = JGSourceBaseDemoTests;
-			productReference = D42482412FE0544000C35E62 /* JGSourceBaseDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D424824A2FE0544000C35E62 /* JGSourceBaseDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D424825C2FE0544000C35E62 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemoUITests" */;
-			buildPhases = (
-				D42482472FE0544000C35E62 /* Sources */,
-				D42482482FE0544000C35E62 /* Frameworks */,
-				D42482492FE0544000C35E62 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D424824D2FE0544000C35E62 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D424824E2FE0544000C35E62 /* JGSourceBaseDemoUITests */,
-			);
-			name = JGSourceBaseDemoUITests;
-			productName = JGSourceBaseDemoUITests;
-			productReference = D424824B2FE0544000C35E62 /* JGSourceBaseDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -241,14 +152,6 @@
 					D424822A2FE0543F00C35E62 = {
 						CreatedOnToolsVersion = 26.3;
 						LastSwiftMigration = 2630;
-					};
-					D42482402FE0544000C35E62 = {
-						CreatedOnToolsVersion = 26.3;
-						TestTargetID = D424822A2FE0543F00C35E62;
-					};
-					D424824A2FE0544000C35E62 = {
-						CreatedOnToolsVersion = 26.3;
-						TestTargetID = D424822A2FE0543F00C35E62;
 					};
 				};
 			};
@@ -270,28 +173,12 @@
 			projectRoot = "";
 			targets = (
 				D424822A2FE0543F00C35E62 /* JGSourceBaseDemo */,
-				D42482402FE0544000C35E62 /* JGSourceBaseDemoTests */,
-				D424824A2FE0544000C35E62 /* JGSourceBaseDemoUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D42482292FE0543F00C35E62 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D424823F2FE0544000C35E62 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D42482492FE0544000C35E62 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,13 +235,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JGSourceBaseDemo/Pods-JGSourceBaseDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -371,34 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D424823D2FE0544000C35E62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D42482472FE0544000C35E62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D42482432FE0544000C35E62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D424822A2FE0543F00C35E62 /* JGSourceBaseDemo */;
-			targetProxy = D42482422FE0544000C35E62 /* PBXContainerItemProxy */;
-		};
-		D424824D2FE0544000C35E62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D424822A2FE0543F00C35E62 /* JGSourceBaseDemo */;
-			targetProxy = D424824C2FE0544000C35E62 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D42482552FE0544000C35E62 /* Debug */ = {
@@ -429,7 +285,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${TARGET_NAME}/Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -464,7 +320,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "JGSourceBaseDemo/Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${TARGET_NAME}/Demo-Bridging-Header.h";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -597,80 +453,6 @@
 			};
 			name = Release;
 		};
-		D424825A2FE0544000C35E62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JGSourceBaseDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JGSourceBaseDemo";
-			};
-			name = Debug;
-		};
-		D424825B2FE0544000C35E62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JGSourceBaseDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JGSourceBaseDemo";
-			};
-			name = Release;
-		};
-		D424825D2FE0544000C35E62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				TEST_TARGET_NAME = JGSourceBaseDemo;
-			};
-			name = Debug;
-		};
-		D424825E2FE0544000C35E62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z28L6TKG58;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meijigao.JGSourceBaseDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				TEST_TARGET_NAME = JGSourceBaseDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -688,24 +470,6 @@
 			buildConfigurations = (
 				D42482552FE0544000C35E62 /* Debug */,
 				D42482562FE0544000C35E62 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D42482592FE0544000C35E62 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D424825A2FE0544000C35E62 /* Debug */,
-				D424825B2FE0544000C35E62 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D424825C2FE0544000C35E62 /* Build configuration list for PBXNativeTarget "JGSourceBaseDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D424825D2FE0544000C35E62 /* Debug */,
-				D424825E2FE0544000C35E62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

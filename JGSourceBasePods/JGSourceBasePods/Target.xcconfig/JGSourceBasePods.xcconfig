@@ -1,0 +1,17 @@
+//
+//  JGSourceBasePods.xcconfig
+//  JGSourceBasePods
+//
+//  Created by Mei JiGao on 2026/6/26.
+//  Copyright © 2026 ByMountains. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+#include "../../../JGSourceBase/JGSourceBase/JGSourceBase.xcconfig"
+
+JGSDResourceDate = 20260716.2244
+JGSDBuildDate = 2026-07-16 23:18:47
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) JGS_DEMO_TARGET_Pods

@@ -13,7 +13,7 @@ import CoreTelephony
 /// 网络连接状态枚举
 /// 表示当前设备的网络连接类型，支持 WiFi、蜂窝移动网络和有线网络（模拟器）
 @objc public
-enum JGSReachabilityStatus: Int {
+enum JGSReachabilityStatus: Int, Sendable {
     case unknown = 0 /// 未知网络类型
     case unreachable /// 网络不可达
     case WiFi /// 通过 WiFi 网络连接
@@ -38,7 +38,7 @@ public let JGSReachabilityStatusChangedNotification = Notification.Name("JGSReac
 
 public let JGSReachabilityNotificationStatusKey = "JGSReachabilityNotificationStatusKey"
 
-@objcMembers public
+@objcMembers public final
 class JGSReachability: NSObject, @unchecked Sendable {
     
     public nonisolated class var statusChangedNotification: NSNotification.Name {

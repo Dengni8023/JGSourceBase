@@ -1,10 +1,54 @@
 PODS:
+  - JGSourceBase (1.4.6):
+    - JGSourceBase/Base (= 1.4.6)
+    - JGSourceBase/Category (= 1.4.6)
+    - JGSourceBase/DataStorage (= 1.4.6)
+    - JGSourceBase/Device (= 1.4.6)
+    - JGSourceBase/Encryption (= 1.4.6)
+    - JGSourceBase/HUD (= 1.4.6)
+    - JGSourceBase/IntegrityCheck (= 1.4.6)
+    - JGSourceBase/JSON (= 1.4.6)
+    - JGSourceBase/Reachability (= 1.4.6)
+    - JGSourceBase/SecurityKeyboard (= 1.4.6)
+  - JGSourceBase/Base (1.4.6)
+  - JGSourceBase/Category (1.4.6):
+    - JGSourceBase/Base
+    - JGSourceBase/JSON
+  - JGSourceBase/DataStorage (1.4.6):
+    - JGSourceBase/Encryption
+  - JGSourceBase/Device (1.4.6):
+    - JGSourceBase/Category
+    - JGSourceBase/Reachability
+  - JGSourceBase/Encryption (1.4.6):
+    - JGSourceBase/Category
+  - JGSourceBase/HUD (1.4.6):
+    - JGSourceBase/Category
+    - MBProgressHUD (>= 1.2.0)
+  - JGSourceBase/IntegrityCheck (1.4.6):
+    - JGSourceBase/Encryption
+  - JGSourceBase/JSON (1.4.6):
+    - JGSourceBase/Base
+  - JGSourceBase/Reachability (1.4.6):
+    - JGSourceBase/Base
+  - JGSourceBase/SecurityKeyboard (1.4.6):
+    - JGSourceBase/Category
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - SnapKit (5.7.1)
 
 DEPENDENCIES:
+  - JGSourceBase (from `.`)
   - Masonry (from `https://github.com/SnapKit/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+  - SnapKit (~> 5.7.1)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - MBProgressHUD
+    - SnapKit
 
 EXTERNAL SOURCES:
+  JGSourceBase:
+    :path: "."
   Masonry:
     :commit: 8bd77ea92bbe995e14c454f821200b222e5a8804
     :git: https://github.com/SnapKit/Masonry.git
@@ -15,8 +59,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SnapKit/Masonry.git
 
 SPEC CHECKSUMS:
+  JGSourceBase: e2e66f0c73c39d1e0de8dbe09474603e4c5bcf3d
   Masonry: 890751a1008d6f33a97b032f4ecad4870d7eed3a
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: a1701e8700f15b06b466a230bce0c8fd637c3a48
+PODFILE CHECKSUM: c3a650fff460501890b74c90bf9765fe3b354fd9
 
 COCOAPODS: 1.16.2

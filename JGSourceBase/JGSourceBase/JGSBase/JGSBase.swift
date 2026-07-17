@@ -10,7 +10,7 @@ import Foundation
 
 /// 字符串大小写风格枚举
 @objc public
-enum JGSStringCaseStyle: Int {
+enum JGSStringCaseStyle: Int, Sendable {
     case lower = 0 // 字母小写，默认风格
     case upper // 字母大写风格
     case random // 随机，字符串中随机存在大小写
@@ -18,10 +18,10 @@ enum JGSStringCaseStyle: Int {
 
 /// HASH散列算法类型
 @objc public
-enum JGSHASHStringType: Int {
-    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
+enum JGSHASHStringType: Int, Sendable {
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use sha256 algorithm for data hashing operation")
     case md5 = 0 // md5
-    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use CC_SHA256 algorithm for data hashing operation")
+    @available(*, deprecated, message: "Weak hashing algorithm, it is recommended to use sha256 algorithm for data hashing operation")
     case sha128 // SHA128
     case sha256 // SHA256
     case sha384 // SHA384

@@ -19,7 +19,7 @@ internal let JGSourceBaseResourceBundleName = {
     "JGSourceBase.bundle"
 }()
 
-@objcMembers public
+@objcMembers public final
 class JGSBaseUtils: NSObject {
     
     /// 获取JGSourceBase.framework的bundle

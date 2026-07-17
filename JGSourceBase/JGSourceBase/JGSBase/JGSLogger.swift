@@ -24,7 +24,7 @@ enum JGSLogMode: Int, Sendable {
 
 /// 日志省略方式
 @objc public
-enum JGSLogTruncating: Int {
+enum JGSLogTruncating: Int, Sendable {
     case middle // 中间省略:  "ab...yz"
     case head // 头部省略: "...wxyz"
     case tail // 尾部省略: "abcd..."
@@ -32,7 +32,7 @@ enum JGSLogTruncating: Int {
 
 /// 日志打印级别，低于该级别日志不打印
 @objc public
-enum JGSLogLevel: Int {
+enum JGSLogLevel: Int, Sendable {
     // 此类级别表明我们当前正在临时打印一些log为了去调试程序, 或者说我们为了观察某个现象但是需要频繁打印, 比如相机回调中打印时间戳, 因为相机每秒钟出来几十帧数据, 所以打印十分频繁, 我们可以使用此级别在开发中作为调试信息, 一般不建议在正常使用中开启此级别
     case debug = 0 // 调试级别
     // 此类级别一般用于打印模块中一些重要的点, 比如我们可以在某个类初始化完成时打印此类中初始化好的一些重要信息, 或者在使用某个功能前做一个打印, 这样对于追踪代码十分有效
@@ -44,7 +44,7 @@ enum JGSLogLevel: Int {
 }
 
 // MARK: - JGSLogger
-@objcMembers public
+@objcMembers public final
 class JGSLogger: NSObject, @unchecked Sendable {
     
     private static let shared = {
@@ -347,4 +347,20 @@ public func JGSLogMessage(format: String? = nil, _ args: Any?...) -> String {
         return field
     })
     return fields.joined(separator: " ")
+}
+
+@available(*, deprecated, renamed: "JGSLogger", message: "Replaced by JGSLogger")
+@objc public final
+class JGSLogFunction: NSObject {
+    
+    /// 是否开启内部调试日志
+    @objc public static
+    func enableLog(_ enable: Bool) {
+        JGSLogger.enableDebug = enable
+    }
+    
+    @objc public static
+    var isLogEnabled: Bool {
+        return JGSLogger.enableDebug
+    }
 }

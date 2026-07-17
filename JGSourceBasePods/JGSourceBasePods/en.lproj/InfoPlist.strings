@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  JGSourceBasePods
+
+  Created by Mei JiGao on 2026/6/16.
+  Copyright © 2026 ByMountains. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "JGSBasePods";
+"CFBundleName" = "JGSBasepods";

@@ -87,13 +87,4 @@ FOUNDATION_EXTERN void JGSConsoleLogWithNSLog(BOOL useNSLog) DEPRECATED_MSG_ATTR
 ///   - truncating: 日志超长省略方式，JGSLogTruncating，默认中间省略
 FOUNDATION_EXTERN void JGSConsoleLogWithLimitAndTruncating(NSInteger limit, NSInteger /*JGSLogTruncating*/ truncating) DEPRECATED_MSG_ATTRIBUTE("Replaced by + [JGSLogger enableLogWithMode: level: useNSLog: lengthLimit: truncating:]");
 
-__deprecated_msg("Replaced by JGSLogger")
-@interface JGSLogFunction : NSObject
-
-/// 是否开启内部调试日志
-+ (void)enableLog:(BOOL)enable;
-+ (BOOL)isLogEnabled;
-
-@end
-
 NS_ASSUME_NONNULL_END

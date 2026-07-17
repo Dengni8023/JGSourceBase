@@ -10,7 +10,7 @@
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
 JGSVersion = 1.4.6
-JGSBuild = 20260716.2318
-JGSResourceDate = 20260716.2316
+JGSBuild = 20260717.0957
+JGSResourceDate = 20260717.0956
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited)

@@ -1,4 +1,3 @@
-#  JGSConfigBeforeCompile.sh
 #  
 #
 #  Created by Mei JiGao on 2026/6/26.
@@ -45,7 +44,26 @@ JGSDResourceDate: ${ResourceDate}
 JGSDBuildDate: ${BuildDate}
 -------- Modify ${TARGET_NAME}.xcconfig --------
 "
-echo "JGSDBuildDate:1"
 sed -i '' 's/^\(JGSDResourceDate = \).*/\1'"${ResourceDate}"'/'  "${ConfigFile}"
 sed -i '' 's/^\(JGSDBuildDate = \).*/\1'"${BuildDate}"'/'  "${ConfigFile}"
-echo "JGSDBuildDate:2"
+
+# 复制文件到Pods、SPM工程
+SrcDir="${PROJECT_DIR}/${TARGET_NAME}"
+PodsDstDir="${PROJECT_DIR}/../JGSourceBasePods/JGSourceBasePods"
+CopyFiles=(
+    "${SrcDir}/Classes"
+    "${SrcDir}/Resources"
+    "${SrcDir}/AppDelegate.swift"
+    "${SrcDir}/Assets.xcassets"
+    "${SrcDir}/Demo-Bridging-Header.h"
+    "${SrcDir}/Info.plist"
+    "${SrcDir}/OCViewController.h"
+    "${SrcDir}/OCViewController.m"
+    "${SrcDir}/SceneDelegate.swift"
+    "${SrcDir}/ViewController.swift"
+)
+for file in "${CopyFiles[@]}"
+do
+    echo "file: ${file}"
+    cp -fr "${file}" "${PodsDstDir}"
+done

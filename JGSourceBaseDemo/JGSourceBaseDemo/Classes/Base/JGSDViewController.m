@@ -7,7 +7,12 @@
 //
 
 #import "JGSDViewController.h"
+#ifdef JGS_DEMO_TARGET_FRM
 #import "JGSourceBaseDemo-Swift.h"
+#endif
+#ifdef JGS_DEMO_TARGET_Pods
+#import "JGSourceBasePods-Swift.h"
+#endif
 
 @interface JGSDViewController ()
 
@@ -40,7 +45,7 @@
         return _tableView;
     }
     
-    UITableView *v = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    UITableView *v = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleInsetGrouped];
     v.hidden = YES;
     v.backgroundColor = self.view.backgroundColor;
     v.alwaysBounceVertical = YES;
@@ -151,14 +156,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-//    [JGSLogFunction enableLog:!JGSLogFunction.isLogEnabled];
-//#pragma clang diagnostic pop
+    JGSDShowConsoleLog(self, @"<%@: %p> viewWillAppear at: %@", NSStringFromClass([self class]), self, [NSDate date]);
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    [JGSLogFunction enableLog:!JGSLogFunction.isLogEnabled];
+#pragma clang diagnostic pop
 //    [JGSLogger enableLogWithMode:!JGSLogger.enableDebug level:JGSLogger.level useNSLog:JGSLogger.useNSLog];
 //    [JGSLogger enableLogWithMode:!JGSLogger.enableDebug level:JGSLogger.level useNSLog:JGSLogger.useNSLog lengthLimit:JGSLogger.lengthLimit truncating:JGSLogger.truncating];
     
-    JGSLog(@"%.02f", 0.926);
+    // 刷新数据
+    [self.tableView reloadData];
 }
 
 // MARK: - UI
